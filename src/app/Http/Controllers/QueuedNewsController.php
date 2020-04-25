@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\NewsFeedQueue;
 use \Illuminate\Http\Request;
 
-class AdminController extends Controller
+class QueuedNewsController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -18,16 +18,19 @@ class AdminController extends Controller
     }
 
     /**
-     * Show the application dashboard.
+     * Show the queued listings.
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
     {
         $news = NewsFeedQueue::all();
-        return view('admin.queue.queue', ["news" => $news]);
+        return view('admin.queue.listings', ["news" => $news]);
     }
 
+    /**
+     * Edit an existing queued item
+     */
     public function edit($id)
     {
         $newsItem = NewsFeedQueue::find($id);
@@ -35,12 +38,15 @@ class AdminController extends Controller
         return view('admin.queue.edit', ["newsItem" => $newsItem]);
     }
 
+    /** 
+     * Save queue data and status
+     */
     public function save(Request $request)
     {
         $queuedItem = NewsFeedQueue::find($request->id);
         if ($queuedItem == null)
         {
-            return redirect("admin.queue");
+            return redirect("admin/queue");
         }
 
         // Reject news, marks as rejected and deletes
@@ -50,14 +56,15 @@ class AdminController extends Controller
             return redirect("admin/queue");
         }
 
+        $queuedItem->title = $request->title;
+        $queuedItem->post = $request->post;
+        $queuedItem->save();
+
         if ($request->status === NewsFeedQueue::APPROVED)
         {
             $queuedItem->approveQueuedItem();
             return redirect("admin/queue");
         }
-        
-        $queuedItem->post = $request->post;
-        $queuedItem->save();
         
         return redirect()->back();
     }

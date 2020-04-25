@@ -21,6 +21,10 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/admin/queue', 'AdminController@index')->name('admin.queue.listing');
-Route::get('/admin/queue/edit/{id}', 'AdminController@edit')->name('admin.queue.edit');
-Route::post('/admin/queue/edit/{id}', 'AdminController@save')->name('admin.queue.edit');
+Route::get('/admin/news', 'NewsController@index')->name('admin.news.listing');
+Route::get('/admin/news/edit/{id}', 'NewsController@edit')->name('admin.news.edit');
+Route::post('/admin/news/edit/{id}', 'NewsController@save')->name('admin.news.edit');
+
+Route::get('/admin/queue', 'QueuedNewsController@index')->name('admin.queue.listing');
+Route::get('/admin/queue/edit/{id}', 'QueuedNewsController@edit')->name('admin.queue.edit');
+Route::post('/admin/queue/edit/{id}', 'QueuedNewsController@save')->name('admin.queue.edit');

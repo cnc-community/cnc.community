@@ -42,6 +42,6 @@ class FeedHelper
         $newImagePath = sha1($newImage) . ".jpg";
         Storage::disk('public')->put($newImagePath, $newImage);
         
-        return $newImagePath;
+        return "storage/" . $newImagePath;
     }
 }

@@ -7,6 +7,9 @@ use App\NewsReject;
 
 class News extends Model
 {
+    public const APPROVED = "approved";
+    public const DELETE = "delete";
+
     public static function createFromQueuedItem($queuedItem): void
     {
         $news = new News();

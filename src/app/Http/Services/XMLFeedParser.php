@@ -17,7 +17,7 @@ class XMLFeedParser extends AbstractFeedParser
     public function run()
     {
         try {
-            $xml = simplexml_load_file($this->_feedUrl . "sss") or die("Failed to load");
+            $xml = simplexml_load_file($this->_feedUrl) or die("Failed to load");
 
             // <author>
             // <title>

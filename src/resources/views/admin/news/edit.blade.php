@@ -6,10 +6,10 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
-                    <a href="/admin/queue">View all queued news items</a>
+                    <a href="/admin/news">View all news</a>
                 </div>
                 <div class="card-header">
-                    Queued - {{ $newsItem->title }}
+                    Live - {{ $newsItem->title }}
                 </div>
 
                 <div class="card-body">
@@ -31,18 +31,15 @@
                         <div class="form-group">
                             <label for="status">Status</label>
                             <select id="status" class="form-control" name="status">
-                                <option value="{{ \App\NewsFeedQueue::PENDING }}">Pending</option>
-                                <option value="{{ \App\NewsFeedQueue::APPROVED }}">Approve</option>
-                                <option value="{{ \App\NewsFeedQueue::REJECTED }}">Reject</option>
+                                <option value="{{ \App\News::APPROVED }}">Approve</option>
+                                <option value="{{ \App\News::DELETE }}">Permanently delete</option>
                             </select>
                         </div>
 
                         <div class="form-group">
-                            @if($newsItem->image != null)
                             <div style="margin-bottom: 15px">
-                                <img src="/{{ $newsItem->image }}" />
+                                <img src="{{ asset('storage/' . $newsItem->image) }}" />
                             </div>
-                            @endif
 
                             <label for="image">Choose a new image</label>
                             <input id="image" type="file" name="image" class="form-control" />

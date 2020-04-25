@@ -12,6 +12,11 @@ class NewsFeedQueue extends Model
     public const APPROVED = "approved";
     public const REJECTED = "rejected";
 
+    public function __construct()
+    {
+    }
+
+    
     /**
      * Rejects this queued item and removes it from being added
      */
