@@ -13,7 +13,7 @@ Check out [our mission](OURMISSION.MD)
 
 ```shell
     docker-compose up -d --build
-    docker-compose run --rm composer update
+    docker-compose run --rm composer install
     docker-compose run --rm npm run dev
     docker-compose run --rm artisan migrate
     docker-compose run artisan storage:link
@@ -28,4 +28,4 @@ It could be the symlink for images needs to be updated for you.
 If so run `rm -rf public/storage` from the src.
 
 * Get container id by running `docker ps`
-* Relink symlink for storage `docker exec -it <CONTAINER_ID> php artisan storage:link`
+* Relink symlink for storage `docker exec -it 15f2f7114930 php artisan storage:link`

@@ -1,15 +1,23 @@
 <?php
 
-interface iFeed
+namespace App\Http\Services;
+
+interface FeedHandlerInterface
 {
     public function loadFeed();
 }
 
-class FeedServiceHandler implements iFeed
+class FeedServiceHandler implements FeedHandlerInterface
 {
-    public function __construct($feed)
-    {
+    private $_feed;
 
+    public function __construct(AbstractCommunityFeed $feed)
+    {
+        $this->_feed = $feed;
+    }
+
+    public function loadFeed()
+    {
+        $this->_feed->run();
     }
 }
-

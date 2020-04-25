@@ -20,3 +20,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/admin/queue', 'AdminController@index')->name('admin.queue.listing');
+Route::get('/admin/queue/edit/{id}', 'AdminController@edit')->name('admin.queue.edit');
+Route::post('/admin/queue/edit/{id}', 'AdminController@save')->name('admin.queue.edit');

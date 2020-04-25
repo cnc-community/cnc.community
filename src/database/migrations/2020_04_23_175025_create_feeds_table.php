@@ -13,12 +13,14 @@ class CreateFeedsTable extends Migration
      */
     public function up()
     {
-        Schema::create('feeds', function (Blueprint $table) {
+        Schema::create('news_feed_queues', function (Blueprint $table) 
+        {
             $table->id();
+            $table->string('title');
             $table->text('post');
-            $table->string('image', 100);
-            $table->string('url', 100);
-            $table->string('feed_uuid', 100);
+            $table->string('image')->nullable();
+            $table->string('url');
+            $table->string('feed_uuid')->unique();
             $table->timestamps();
         });
     }
@@ -30,6 +32,6 @@ class CreateFeedsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('feeds');
+        Schema::dropIfExists('news_feed_queue');
     }
 }

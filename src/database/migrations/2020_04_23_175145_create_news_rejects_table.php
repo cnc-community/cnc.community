@@ -15,7 +15,8 @@ class CreateNewsRejectsTable extends Migration
     {
         Schema::create('news_rejects', function (Blueprint $table) {
             $table->id();
-            $table->string('feed_uuid', 100);
+            $table->string('feed_uuid');
+            $table->string('url');
             $table->timestamps();
         });
     }
