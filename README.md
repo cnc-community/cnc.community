@@ -9,6 +9,17 @@ Check out [our mission](OURMISSION.MD)
 
 ## 🚀 Quick start
 
+**Without docker**
+
+In the `src` directory is the standard Laravel files. Run the following commands
+```shell
+    composer install
+    npm run dev
+    php artisan migrate
+    php artisan storage:link
+```
+
+
 **Using docker**
 
 ```shell
