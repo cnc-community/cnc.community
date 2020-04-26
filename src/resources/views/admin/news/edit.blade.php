@@ -38,7 +38,7 @@
 
                         <div class="form-group">
                             <div style="margin-bottom: 15px">
-                                <img src="{{ asset('storage/' . $newsItem->image) }}" />
+                                <img src="{{ asset($newsItem->image) }}" />
                             </div>
 
                             <label for="image">Choose a new image</label>
