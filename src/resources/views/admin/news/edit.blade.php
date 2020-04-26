@@ -37,6 +37,17 @@
                         </div>
 
                         <div class="form-group">
+                            <label for="category">Category</label>
+                            <select id="category" class="form-control" name="category_id">
+                            @foreach(\App\Category::all() as $category)
+                                <option value="{{ $category->id}}" {{ $category->id == $newsItem->category_id ? "selected": ""}}>
+                                {{ $category->name }}
+                                </option>
+                            @endforeach
+                            </select>
+                        </div>
+
+                        <div class="form-group">
                             <div style="margin-bottom: 15px">
                                 <img src="{{ asset($newsItem->image) }}" />
                             </div>

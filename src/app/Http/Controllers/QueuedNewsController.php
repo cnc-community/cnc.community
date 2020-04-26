@@ -58,6 +58,7 @@ class QueuedNewsController extends Controller
 
         $queuedItem->title = $request->title;
         $queuedItem->post = $request->post;
+        $queuedItem->category_id = $request->category_id;
         $queuedItem->save();
 
         if ($request->status === NewsFeedQueue::APPROVED)

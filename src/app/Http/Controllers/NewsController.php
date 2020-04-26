@@ -52,6 +52,7 @@ class NewsController extends Controller
 
         $newsItem->title = $request->title;
         $newsItem->post = $request->post;
+        $newsItem->category_id = $request->category_id;
         $newsItem->save();
         
         return redirect()->back();

@@ -20,6 +20,7 @@ class CreateFeedsTable extends Migration
             $table->text('post');
             $table->string('image')->nullable();
             $table->string('url');
+            $table->unsignedInteger('category_id');
             $table->string('feed_uuid')->unique();
             $table->timestamps();
         });

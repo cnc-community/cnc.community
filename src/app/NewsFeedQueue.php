@@ -16,7 +16,12 @@ class NewsFeedQueue extends Model
     {
     }
 
-    
+    public function category()
+    {
+        return Category::where("id", $this->category_id)->first();
+    }
+
+
     /**
      * Rejects this queued item and removes it from being added
      */
@@ -70,6 +75,7 @@ class NewsFeedQueue extends Model
     {
         $uuid = NewsFeedQueue::createUuid($url);
         $exists = NewsFeedQueue::checkForDuplicateByUuid($uuid);
+        $communityCategory = Category::where("name", "=", "Community News")->first();
 
         if ($exists == true)
         {
@@ -81,6 +87,7 @@ class NewsFeedQueue extends Model
         $newsQueue->post = strip_tags($postHtml, ["<p><a>"]);
         $newsQueue->url = $url;
         $newsQueue->feed_uuid = $uuid;
+        $newsQueue->category_id = $communityCategory->id;
 
         $imageUrl = FeedHelper::getImageUrlFromString($postHtml);
         if ($imageUrl) 

@@ -16,7 +16,17 @@
 
                     <?php foreach($news as $newsItem): ?>
                         <div>
-                            <a href="queue/edit/{{ $newsItem->id}}">{{ $newsItem->title}}</a>
+                            <a href="{{ route('admin.queue.edit', ['id' => $newsItem->id ]) }}">{{ $newsItem->title}}</a>
+                            <div>
+                                <ul class="list-unstyled">
+                                    <li>
+                                        <small>Updated</small> <small>- {{ $newsItem->updated_at->diffForHumans() }}</small> 
+                                    </li>
+                                    <li>
+                                        <small>Category</small> <small>- {{ $newsItem->category()->name }}</small>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     <?php endforeach; ?>
                 </div>

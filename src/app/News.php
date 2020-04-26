@@ -10,6 +10,16 @@ class News extends Model
     public const APPROVED = "approved";
     public const DELETE = "delete";
 
+    public function __construct()
+    {
+        
+    }
+
+    public function category()
+    {
+        return Category::where("id", $this->category_id)->first();
+    }
+
     public static function createFromQueuedItem($queuedItem): void
     {
         $news = new News();
@@ -18,6 +28,7 @@ class News extends Model
         $news->url = $queuedItem->url;
         $news->feed_uuid = $queuedItem->feed_uuid;
         $news->image = $queuedItem->image;
+        $news->category_id = $queuedItem->category_id;
         $news->save();
     }
 }
