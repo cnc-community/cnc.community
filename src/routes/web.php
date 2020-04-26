@@ -25,16 +25,15 @@ Route::get('/news/{categorySlug}', 'SiteController@showNewsByCategorySlug')->nam
 Auth::routes();
 
 // Users admin
-Route::get('/admin/users', 'UsersController@index')->name('admin.users.listings');
-Route::get('/admin/users/edit/{id}', 'UsersController@edit')->name('admin.users.edit');
-Route::post('/admin/users/edit/{id}', 'UsersController@save')->name('admin.users.edit');
-
+Route::get('/admin/users', 'UsersController@index')->name('admin.users.listings')->middleware('role:admin');
+Route::get('/admin/users/edit/{id}', 'UsersController@edit')->name('admin.users.edit')->middleware('role:admin');
+Route::post('/admin/users/edit/{id}', 'UsersController@save')->name('admin.users.edit')->middleware('role:admin');
 
 // News admin 
-Route::get('/admin/news', 'NewsController@index')->name('admin.news.listing');
-Route::get('/admin/news/edit/{id}', 'NewsController@edit')->name('admin.news.edit');
-Route::post('/admin/news/edit/{id}', 'NewsController@save')->name('admin.news.edit');
+Route::get('/admin/news', 'NewsController@index')->name('admin.news.listing')->middleware('role:admin,editor');
+Route::get('/admin/news/edit/{id}', 'NewsController@edit')->name('admin.news.edit')->middleware('role:admin,editor');
+Route::post('/admin/news/edit/{id}', 'NewsController@save')->name('admin.news.edit')->middleware('role:admin,editor');
 
-Route::get('/admin/queue', 'QueuedNewsController@index')->name('admin.queue.listing');
-Route::get('/admin/queue/edit/{id}', 'QueuedNewsController@edit')->name('admin.queue.edit');
-Route::post('/admin/queue/edit/{id}', 'QueuedNewsController@save')->name('admin.queue.edit');
+Route::get('/admin/queue', 'QueuedNewsController@index')->name('admin.queue.listing')->middleware('role:admin,editor');
+Route::get('/admin/queue/edit/{id}', 'QueuedNewsController@edit')->name('admin.queue.edit')->middleware('role:admin,editor');
+Route::post('/admin/queue/edit/{id}', 'QueuedNewsController@save')->name('admin.queue.edit')->middleware('role:admin,editor');
