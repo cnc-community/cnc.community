@@ -10,7 +10,7 @@
                 <div class="card-body">
                     @foreach($news as $newsItem)
                         <div>
-                            <a href="{{ route('admin.news.edit', ['id' => $newsItem->id ]) }}">{{ $newsItem->title}}</a>
+                            <a href="{{ $newsItem->url }}" rel="nofollow" title="{{ $newsItem->title }}" target="_blank">{{ $newsItem->title}}</a>
                             <div>
                                 <ul class="list-unstyled">
                                     <li>

@@ -27,8 +27,12 @@ class SiteController extends Controller
      */
     public function index()
     {
-        $news = News::all();
-        return view('home', ["news" => $news]);
+        return view('home.index', 
+            [
+                "communityNews" => News::communityNewsPaginated(),
+                "officialNews" =>  News::officialNewsPaginated()
+            ]
+        );
     }
 
     /**

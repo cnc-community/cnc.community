@@ -18,7 +18,7 @@ Route::get('/', function () {
 });
 
 // Public routes
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'SiteController@index')->name('home');
 Route::get('/news/{categorySlug}', 'SiteController@showNewsByCategorySlug')->name('news.listing');
 
 // Admin routes

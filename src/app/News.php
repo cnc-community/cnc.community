@@ -20,6 +20,18 @@ class News extends Model
         return Category::where("id", $this->category_id)->first();
     }
 
+    public static function communityNewsPaginated()
+    {
+        $category = Category::where("name", "Community News")->first();
+        return News::where("category_id", $category->id)->paginate(20);
+    }
+
+    public static function officialNewsPaginated()
+    {
+        $category = Category::where("name", "Official News")->first();
+        return News::where("category_id", $category->id)->paginate(20);
+    }
+
     public static function newsPaginatedByCategory($categoryId)
     {
         return News::where("category_id", $categoryId)->paginate(20);
