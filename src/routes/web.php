@@ -24,6 +24,13 @@ Route::get('/news/{categorySlug}', 'SiteController@showNewsByCategorySlug')->nam
 // Admin routes
 Auth::routes();
 
+// Users admin
+Route::get('/admin/users', 'UsersController@index')->name('admin.users.listings');
+Route::get('/admin/users/edit/{id}', 'UsersController@edit')->name('admin.users.edit');
+Route::post('/admin/users/edit/{id}', 'UsersController@save')->name('admin.users.edit');
+
+
+// News admin 
 Route::get('/admin/news', 'NewsController@index')->name('admin.news.listing');
 Route::get('/admin/news/edit/{id}', 'NewsController@edit')->name('admin.news.edit');
 Route::post('/admin/news/edit/{id}', 'NewsController@save')->name('admin.news.edit');

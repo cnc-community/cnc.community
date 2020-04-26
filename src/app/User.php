@@ -10,6 +10,9 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    public const ROLE_ADMIN = "admin";
+    public const ROLE_EDITOR = "editor";
+
     /**
      * The attributes that are mass assignable.
      *

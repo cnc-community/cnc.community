@@ -54,6 +54,10 @@
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif -->
+                            @else
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('admin.users.listings') }}">{{ __('Users') }}</a>
+                            </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('home') }}">{{ __('Run Task') }}</a>
                             </li>
@@ -63,7 +67,6 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('admin.news.listing') }}">{{ __('News') }}</a>
                             </li>
-                        @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
