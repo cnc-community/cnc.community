@@ -33,6 +33,6 @@ class CreateFeedsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('news_feed_queue');
+        Schema::dropIfExists('news_feed_queues');
     }
 }
