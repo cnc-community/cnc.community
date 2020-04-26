@@ -13,14 +13,15 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
-        $this->create("Official News");
-        $this->create("Community News");
+        $this->create("Official News", "official-news");
+        $this->create("Community News", "community-news");
     }
 
-    private function create($name)
+    private function create($name, $slug)
     {
         $category = new Category();
         $category->name = $name;
+        $category->slug = $slug;
         $category->save();
     }
 }

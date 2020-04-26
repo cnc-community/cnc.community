@@ -20,6 +20,11 @@ class News extends Model
         return Category::where("id", $this->category_id)->first();
     }
 
+    public static function newsPaginatedByCategory($categoryId)
+    {
+        return News::where("category_id", $categoryId)->paginate(20);
+    }
+
     public static function createFromQueuedItem($queuedItem): void
     {
         $news = new News();

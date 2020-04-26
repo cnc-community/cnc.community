@@ -17,9 +17,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
-
+// Public routes
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/news/{categorySlug}', 'SiteController@showNewsByCategorySlug')->name('news.listing');
+
+// Admin routes
+Auth::routes();
 
 Route::get('/admin/news', 'NewsController@index')->name('admin.news.listing');
 Route::get('/admin/news/edit/{id}', 'NewsController@edit')->name('admin.news.edit');
