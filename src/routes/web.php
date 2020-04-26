@@ -24,6 +24,10 @@ Route::get('/news/{categorySlug}', 'SiteController@showNewsByCategorySlug')->nam
 // Admin routes
 Auth::routes();
 
+// Feed endpoint - eventually hit by task runner
+Route::get('/admin/feed', 'FeedController@index')->name('admin.feed')->middleware('role:admin,editor');
+
+
 // Users admin
 Route::get('/admin/users', 'UsersController@index')->name('admin.users.listings')->middleware('role:admin');
 Route::get('/admin/users/edit/{id}', 'UsersController@edit')->name('admin.users.edit')->middleware('role:admin');

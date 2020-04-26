@@ -7,7 +7,7 @@ use App\Http\Sites\DTAFeed;
 use App\Http\Services\XMLFeedParser;
 use App\News;
 
-class HomeController extends Controller
+class FeedController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -37,7 +37,6 @@ class HomeController extends Controller
         $ppmFeed->run();
         $dtaFeed->run();
 
-        $news = News::all();
-        return view('home', ["news" => $news]);
+        return redirect("admin/queue");
     }
 }
