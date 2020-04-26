@@ -75,21 +75,40 @@ class NewsFeedQueue extends Model
     {
         $uuid = NewsFeedQueue::createUuid($url);
         $exists = NewsFeedQueue::checkForDuplicateByUuid($uuid);
-        $communityCategory = Category::where("name", "=", "Community News")->first();
+        $category = Category::where("name", "=", "Community News")->first();
+        $imageUrl = FeedHelper::getImageUrlFromString($postHtml);
 
         if ($exists == true)
         {
             return;
         }
 
+        NewsFeedQueue::create($title, $url, $postHtml, $uuid, $category, $imageUrl);
+    }
+
+    public static function createFromRedditItem($title, $url, $imageUrl): void
+    {
+        $uuid = NewsFeedQueue::createUuid($url);
+        $exists = NewsFeedQueue::checkForDuplicateByUuid($uuid);
+        $category = Category::where("name", "=", "Community News")->first();
+
+        if ($exists == true)
+        {
+            return;
+        }
+
+        NewsFeedQueue::create($title, $url, "", $uuid, $category, $imageUrl);
+    }
+
+    private static function create($title, $url, $postHtml, $uuid, $category, $imageUrl)
+    {
         $newsQueue = new NewsFeedQueue();
-        $newsQueue->title = $title;
-        $newsQueue->post = strip_tags($postHtml, ["<p><a>"]);
+        $newsQueue->title = html_entity_decode($title);
+        $newsQueue->post = strip_tags(html_entity_decode($postHtml), ["<p><a>"]);
         $newsQueue->url = $url;
         $newsQueue->feed_uuid = $uuid;
-        $newsQueue->category_id = $communityCategory->id;
+        $newsQueue->category_id = $category->id;
 
-        $imageUrl = FeedHelper::getImageUrlFromString($postHtml);
         if ($imageUrl) 
         {
             $newImageName = FeedHelper::createImageFromUrl($imageUrl);
