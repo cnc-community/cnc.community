@@ -50,24 +50,17 @@
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
                             @else
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('admin.users.listings') }}">{{ __('Users') }}</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('admin.feed') }}">{{ __('Run Task') }}</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('admin.queue.listing') }}">{{ __('Queued News') }}</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('admin.news.listing') }}">{{ __('News') }}</a>
-                            </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('admin.pages.listing') }}">{{ __('Manage Pages') }}</a>
+                                    <a class="dropdown-item" href="{{ route('admin.users.listing') }}">{{ __('Manage Users') }}</a>
+                                    <a class="dropdown-item" href="{{ route('admin.news.listing') }}">{{ __('Manage News') }}</a>
+                                    <a class="dropdown-item" href="{{ route('admin.queue.listing') }}">{{ __('News Feed') }}</a>
+                                    <a class="dropdown-item" href="{{ route('admin.feed') }}">{{ __('Run Task') }}</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
