@@ -49,17 +49,4 @@ class SiteController extends Controller
 
         return view('news.listing', ["news" => $newsByCategory]);
     }
-
-    /**
-     * Show page by slug
-     */
-    public function showPageBySlug($slugCategory, $slug)
-    {
-        $page = Page::where("slug_category", $slugCategory)->where("slug", $slug)->first();
-        if ($page == null)
-        {
-            abort(404);
-        }
-        return view('pages.detail', array("page" => $page));
-    }
 }
