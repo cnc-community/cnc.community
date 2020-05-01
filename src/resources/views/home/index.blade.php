@@ -3,6 +3,16 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
+        <div class="col-md-12">
+            <div>
+            <h3>Pages</h3>
+            @foreach($pages as $page)
+                <a href="{{ $page->url() }}">{{ $page->title }}</a> <br/>
+            @endforeach
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header">Official News</div>

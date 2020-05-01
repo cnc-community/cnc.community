@@ -7,6 +7,7 @@ use App\Http\Sites\PPMFeed;
 use App\Http\Sites\DTAFeed;
 use App\Http\Services\XMLFeedParser;
 use App\News;
+use App\Page;
 
 class SiteController extends Controller
 {
@@ -29,6 +30,7 @@ class SiteController extends Controller
     {
         return view('home.index', 
             [
+                "pages" => Page::all(),
                 "communityNews" => News::communityNewsPaginated(),
                 "officialNews" =>  News::officialNewsPaginated()
             ]
@@ -46,5 +48,18 @@ class SiteController extends Controller
         $newsByCategory = News::newsPaginatedByCategory($category->id);
 
         return view('news.listing', ["news" => $newsByCategory]);
+    }
+
+    /**
+     * Show page by slug
+     */
+    public function showPageBySlug($slugCategory, $slug)
+    {
+        $page = Page::where("slug_category", $slugCategory)->where("slug", $slug)->first();
+        if ($page == null)
+        {
+            abort(404);
+        }
+        return view('pages.detail', array("page" => $page));
     }
 }

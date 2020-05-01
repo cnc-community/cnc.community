@@ -27,7 +27,6 @@ class FeedController extends Controller
      */
     public function index()
     {
-        /*
         $ppmFeed = new PPMFeed(
             new XMLFeedParser("https://www.ppmsite.com/news/rss/ppm_all.xml")
         );
@@ -38,7 +37,7 @@ class FeedController extends Controller
 
         $ppmFeed->run();
         $dtaFeed->run();
-        */
+ 
 
         $test = new RedditFeedParser("https://www.reddit.com/r/commandandconquer.json");
         return $test->run();

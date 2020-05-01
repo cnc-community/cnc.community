@@ -17,16 +17,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Public routes
-Route::get('/', 'SiteController@index')->name('home');
-Route::get('/news/{categorySlug}', 'SiteController@showNewsByCategorySlug')->name('news.listing');
-
 // Admin routes
 Auth::routes();
-
-// Feed endpoint - eventually hit by task runner
-Route::get('/admin/feed', 'FeedController@index')->name('admin.feed')->middleware('role:admin,editor');
-
 
 // Users admin
 Route::get('/admin/users', 'UsersController@index')->name('admin.users.listings')->middleware('role:admin');
@@ -41,3 +33,14 @@ Route::post('/admin/news/edit/{id}', 'NewsController@save')->name('admin.news.ed
 Route::get('/admin/queue', 'QueuedNewsController@index')->name('admin.queue.listing')->middleware('role:admin,editor');
 Route::get('/admin/queue/edit/{id}', 'QueuedNewsController@edit')->name('admin.queue.edit')->middleware('role:admin,editor');
 Route::post('/admin/queue/edit/{id}', 'QueuedNewsController@save')->name('admin.queue.edit')->middleware('role:admin,editor');
+
+// Feed endpoint - eventually hit by task runner
+Route::get('/admin/feed', 'FeedController@index')->name('admin.feed')->middleware('role:admin,editor');
+
+//
+// Public routes
+Route::get('/', 'SiteController@index')->name('home');
+Route::get('/news/{categorySlug}', 'SiteController@showNewsByCategorySlug')->name('news.listing');
+
+// Pages by category + slug
+Route::get('/{category}/{pageSlug}', 'SiteController@showPageBySlug')->name('pages.detail');
