@@ -20,6 +20,6 @@ class Page extends Model
 
     public function url()
     {
-        return $this->slug_category . "/" . $this->slug;
+        return "/" . $this->slug_category . "/" . $this->slug;
     }
 }
