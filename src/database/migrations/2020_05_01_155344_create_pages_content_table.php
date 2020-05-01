@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Schema;
 
 class CreatePagesContentTable extends Migration
 {
+    protected $table = 'page_content';
+
     /**
      * Run the migrations.
      *
@@ -13,7 +15,7 @@ class CreatePagesContentTable extends Migration
      */
     public function up()
     {
-        Schema::create('pages_content', function (Blueprint $table)
+        Schema::create('page_content', function (Blueprint $table)
         {
             $table->id();
             $table->string("body");
@@ -28,6 +30,6 @@ class CreatePagesContentTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pages_content');
+        Schema::dropIfExists('page_content');
     }
 }

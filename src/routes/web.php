@@ -38,9 +38,9 @@ Route::post('/admin/queue/edit/{id}', 'QueuedNewsController@save')->name('admin.
 Route::get('/admin/pages', 'PageController@listPages')->name('admin.pages.listing')->middleware('role:admin');
 Route::get('/admin/pages/edit/{id}', 'PageController@editPage')->name('admin.pages.edit')->middleware('role:admin');
 
-
 // Feed endpoint - eventually hit by task runner
 Route::get('/admin/feed', 'FeedController@index')->name('admin.feed')->middleware('role:admin,editor');
+
 
 //
 // Public routes
@@ -48,4 +48,5 @@ Route::get('/', 'SiteController@index')->name('home');
 Route::get('/news/{categorySlug}', 'SiteController@showNewsByCategorySlug')->name('news.listing');
 
 // Pages by category + slug
-Route::get('/{category}/{pageSlug}', 'PageController@showPageBySlug')->name('pages.detail');
+Route::get('/{category?}', 'PageController@showPageByCategory');
+Route::get('/{category}/{pageSlug?}', 'PageController@showPageBySlug')->name('pages.detail');
