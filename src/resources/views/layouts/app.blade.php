@@ -19,9 +19,13 @@
     <!-- Include stylesheet -->
     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 
-    <!-- Include the Quill library -->
     <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
     
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jodit/3.3.1/jodit.min.css"/>
+    
+    <link href="{{ asset('css/admin/editor/jodit.min.css') }}" rel="stylesheet">
+    <script src="{{ asset('js/admin/editor/jodit.min.js') }}"></script>
+
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>

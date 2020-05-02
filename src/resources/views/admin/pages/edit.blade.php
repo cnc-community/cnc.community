@@ -1,6 +1,18 @@
 @extends('layouts.app')
 
 @section('content')
+<style>
+    .custom-fields 
+    {
+        padding: 15px 0;
+    }
+
+    .custom-fields .field
+    {
+        padding: 15px 0;
+    }
+</style>
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -9,7 +21,7 @@
                     <a href="/admin/pages">View all pages</a>
                 </div>
                 <div class="card-header">
-                    {{ $page->title }}
+                    Edit page
                 </div>
 
                 <div class="card-body">
@@ -19,22 +31,93 @@
                         </div>
                     @endif
 
+                    @if (Session::has('error'))
+                    <div class="alert alert-danger">
+                        {{Session::get('error')}}
+                    </div>
+                    @endif
+
                     <form method="post">
                         {{csrf_field()}}
-                        <input type="hidden" name="post" id="post" />
 
+                        <input type="hidden" name="id" value="{{$page->id}}" />
+                        
                         <div class="form-group">
-                            <label for="title">Post Title</label>
-                            <input id="title" type="text" name="title" class="form-control" value="{{ $page->title }}" />
+                            <label for="title">Page Title</label>
+                            <input id="title" type="text" name="title" class="form-control"  value="{{ $page->title }}" required/>
                         </div>
 
+                        <div class="form-group">
+                            <label for="description">Page description</label>
+                            <input id="description" type="text" name="description" class="form-control" value="{{ $page->description }}" required/>
+                        </div>
 
                         <div class="form-group">
-                            <label for="content">Post</label>
+                            <label for="template">Select a template</label>
+                            <select id="template" name="template" class="form-control"  required>
+                                @foreach($templates as $template)
+                                <option value="{{ $template->id}}" <?php echo $template->id == $page->template_id ? "selected": ""; ?>
+                                >
+                                    {{$template->name}}
+                                </option>
+                                @endforeach
+                            </select>
+                        </div>
 
-                            <div id="editor">
+                        <div class="form-group">
+                            <label for="category">Slug Category</label>
+                            <input id="category" 
+                                type="text" 
+                                name="slug_category" 
+                                class="form-control" 
+                                placeholder="e.g red-alert" 
+                                value="{{ $page->slug_category }}" 
+                                required 
+                                disabled
+                            />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="slug">Slug</label>
+                            <input id="slug" 
+                                type="text" 
+                                name="slug" 
+                                class="form-control" 
+                                placeholder="e.g how-to-play" 
+                                value="{{ $page->slug}}" 
+                                required 
+                                disabled
+                            />
+                        </div>
+                        
+                        <div class="custom-fields">
+                            <h4>Custom Fields</h4>
+                            <p>
+                                Create a custom html element to render in the page template.
+                            </p>
+                            <a href="#">Add custom field</a>
+
+                            @foreach($customFields as $field)
+                            <div class="field">
+                                <div class="form-group">
+                                    <div class="details">
+                                        <ul class="list-unstyled">
+                                            <li><strong>Name:</strong> {{ $field->name }}</li>
+                                            <li><strong>Key:</strong> {{ $field->key }}</li>
+                                        </ul>
+                                    </div>
+                                    <textarea id="editor_{{ $field->id }}" name="custom_field_{{ $field->id }}">
+                                        {{ $field->getContent() }}
+                                    </textarea>
+                                </div>
+
+                                <script>
+                                        new Jodit('#editor_{{ $field->id }}');
+                                </script>
                             </div>
+                            @endforeach
                         </div>
+
                         <button type="submit" class="btn btn-primary">Save</button>
                     </form>
                 </div>
@@ -42,31 +125,6 @@
         </div>
     </div>
 </div>
-
-<!-- Initialize Quill editor -->
-<script>
-    (function()
-    {
-        var quill = new Quill('#editor', {
-            theme: 'snow'
-        });
-        
-        var editor = document.getElementById("editor");
-        var post = document.getElementById("post");
-        
-        quill.on('text-change', function (){
-            updatePost();
-        });
-
-        function updatePost()
-        {
-            post.value = editor.children[0].innerHTML;
-        }
-
-        updatePost();
-    }());
-</script>
-
 @endsection
 
 

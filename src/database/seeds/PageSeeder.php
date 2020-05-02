@@ -1,7 +1,10 @@
 <?php
 
+use App\CustomFieldNames;
 use Illuminate\Database\Seeder;
 use App\Page;
+use App\PageContent;
+use App\PageCustomField;
 use App\PageTemplate;
 
 class PageSeeder extends Seeder
@@ -31,5 +34,23 @@ class PageSeeder extends Seeder
         $page->template_id = $templateId;
         $page->slug = $slug;
         $page->save();
+
+        $this->createDemoCustomFields($page->id);
+    }
+
+    private function createDemoCustomFields($pageId)
+    {
+        $key = CustomFieldNames::HOW_TO_PLAY_STEPS;
+        $name = "How to play";
+        $body = "<div>1,2,3, Help me!</div>";
+        $content = PageContent::createPageContent($body);
+        PageCustomField::createCustomField($key, $name, $pageId, $content->id, 0);
+
+
+        $key = CustomFieldNames::HOW_TO_PLAY_VIDEO;
+        $name = "Video Tutorial";
+        $body = '<iframe width="560" height="315" src="https://www.youtube.com/embed/9iMfypQj3k0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+        $content = PageContent::createPageContent($body);
+        PageCustomField::createCustomField($key, $name, $pageId, $content->id, 0);
     }
 }

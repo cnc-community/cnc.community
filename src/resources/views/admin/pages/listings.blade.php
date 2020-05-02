@@ -13,7 +13,9 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
+                    <div>
+                        <a href="{{ route('admin.pages.add', '') }}" class="btn btn-primary" title="Add page">Add page</a>
+                    </div>
                     <?php foreach($pages as $page): ?>
                         <div>
                             <a href="{{ route('admin.pages.edit', ['id' => $page->id ]) }}">{{ $page->title}}</a>

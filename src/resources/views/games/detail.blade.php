@@ -13,6 +13,12 @@
                             {{ session('status') }}
                         </div>
                     @endif
+
+                    <h3>How to play</h3>
+                    <?php echo App\ViewHelper::getCustomFieldContents($page->id, App\CustomFieldNames::HOW_TO_PLAY_STEPS); ?>
+
+                    <h3>Watch the video</h3>
+                    <?php echo App\ViewHelper::getCustomFieldContents($page->id, App\CustomFieldNames::HOW_TO_PLAY_VIDEO); ?>
                 </div>
             </div>
         </div>

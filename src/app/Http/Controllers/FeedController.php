@@ -42,6 +42,6 @@ class FeedController extends Controller
         $test = new RedditFeedParser("https://www.reddit.com/r/commandandconquer.json");
         return $test->run();
 
-        return redirect("admin/queue");
+        return redirect("/admin/queue");
     }
 }
