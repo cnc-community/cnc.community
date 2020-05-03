@@ -22,6 +22,12 @@
                     @foreach($officialNews as $newsItem)
                         <div>
                             <a href="{{ $newsItem->url }}" rel="nofollow" title="{{ $newsItem->title }}" target="_blank">{{ $newsItem->title}}</a>
+                            <a href="{{ $newsItem->url }}" rel="nofollow" title="{{ $newsItem->title }}" target="_blank">
+                                <img src="{{ asset($newsItem->image) }}" style="max-width: 100%" alt="{{ $newsItem->title}}"/>
+                            </a>
+                            <div>
+                            {!! $newsItem->post !!}
+                            </div>
                             <div>
                                 <ul class="list-unstyled">
                                     <li>
@@ -46,6 +52,12 @@
                     @foreach($communityNews as $newsItem)
                         <div>
                             <a href="{{ $newsItem->url }}" rel="nofollow" title="{{ $newsItem->title }}" target="_blank">{{ $newsItem->title}}</a>
+                            <a href="{{ $newsItem->url }}" rel="nofollow" title="{{ $newsItem->title }}" target="_blank">
+                                <img src="{{ asset($newsItem->image) }}" style="max-width: 100%" alt="{{ $newsItem->title}}"/>
+                            </a>
+                            <div>
+                            {!! $newsItem->post !!}
+                            </div>
                             <div>
                                 <ul class="list-unstyled">
                                     <li>

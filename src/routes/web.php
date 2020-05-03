@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\Cache;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -61,6 +61,8 @@ Route::post('/admin/pages/edit/{id}/custom-fields', 'PageController@createCustom
 // Feed endpoint - eventually hit by task runner
 Route::get('/admin/feed', 'FeedController@index')->name('admin.feed')->middleware('role:admin,editor');
 
+// Endpoint if we want to clear cache
+Route::get('/admin/cache/clear', function(){ Cache::flush(); })->middleware('role:admin,editor');
 
 // ----
 
