@@ -38,14 +38,13 @@ class PageCustomField extends Model
         return PageCustomField::where("page_id", $pageId)->get();
     }
 
-    public static function createCustomField($key, $name, $pageId, $contentId, $position)
+    public static function createCustomField($key, $name, $pageId, $contentId)
     {
         $field = new PageCustomField();
         $field->key = $key;
         $field->name = $name;
         $field->page_id = $pageId;
         $field->content_id = $contentId;
-        $field->position = $position;
         $field->save();
     }
 }

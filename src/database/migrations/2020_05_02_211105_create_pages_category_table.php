@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePagesCustomFieldsTable extends Migration
+class CreatePagesCategoryTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreatePagesCustomFieldsTable extends Migration
      */
     public function up()
     {
-        Schema::create('page_custom_fields', function (Blueprint $table) 
+        Schema::create('page_category', function (Blueprint $table) 
         {
             $table->id();
-            $table->string("key");
-            $table->string("name");
-            $table->unsignedInteger("page_id");
-            $table->unsignedInteger("content_id")->nullable();
+            $table->string("title");
+            $table->string("description");
+            $table->string("slug");
+            $table->unsignedInteger("template_id");
             $table->timestamps();
         });
     }
@@ -31,6 +31,6 @@ class CreatePagesCustomFieldsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('page_custom_fields');
+        Schema::dropIfExists('page_category');
     }
 }

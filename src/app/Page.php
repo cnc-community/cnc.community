@@ -27,6 +27,8 @@ class Page extends Model
         $page->slug = $slug;
         $page->template_id = $templateId;
         $page->save();
+
+        return $page;
     }
 
     public function updatePage($title, $description, $templateId)
@@ -43,6 +45,16 @@ class Page extends Model
             ->where("slug", "=", $slug)
             ->first();
     }
+    
+    public static function getPagesByCategory($categoryId)
+    {
+        return Page::where("category_id", $categoryId)->get();
+    }
+
+    public function category()
+    {
+        return PageCategory::find($this->category_id);
+    }
 
     public function bladeTemplate()
     {
@@ -53,6 +65,6 @@ class Page extends Model
 
     public function url()
     {
-        return "/" . $this->slug_category . "/" . $this->slug;
+        return "/" . $this->category()->slug . "/" . $this->slug;
     }
 }

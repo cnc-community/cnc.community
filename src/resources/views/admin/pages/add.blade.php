@@ -57,12 +57,7 @@
                             <label for="slug">Slug</label>
                             <input id="slug" type="text" name="slug" class="form-control" placeholder="e.g how-to-play" required/>
                         </div>
-
-                        <div class="form-group">
-                            <label for="editor">Post</label>
-                            <div id="editor">
-                            </div>
-                        </div>
+                        
                         <button type="submit" class="btn btn-primary">Save</button>
                     </form>
                 </div>
@@ -70,31 +65,6 @@
         </div>
     </div>
 </div>
-
-<!-- Initialize Quill editor -->
-<script>
-    (function()
-    {
-        let quill = new Quill('#editor', {
-            theme: 'snow'
-        });
-        
-        let editor = document.getElementById("editor");
-        let post = document.getElementById("content");
-        
-        quill.on('text-change', function (){
-            updatePost();
-        });
-
-        function updatePost()
-        {
-            post.value = editor.children[0].innerHTML;
-        }
-
-        updatePost();
-    }());
-</script>
-
 @endsection
 
 

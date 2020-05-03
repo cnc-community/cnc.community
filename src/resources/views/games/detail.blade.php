@@ -19,6 +19,9 @@
 
                     <h3>Watch the video</h3>
                     <?php echo App\ViewHelper::getCustomFieldContents($page->id, App\CustomFieldNames::HOW_TO_PLAY_VIDEO); ?>
+
+                    <h3>Discord</h3>
+                    <?php echo App\ViewHelper::getCustomFieldContents($page->id, App\CustomFieldNames::HOW_TO_PLAY_HELP); ?>
                 </div>
             </div>
         </div>

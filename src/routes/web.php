@@ -43,6 +43,9 @@ Route::post('/admin/pages/add', 'PageController@createPage')->name('admin.pages.
 Route::get('/admin/pages/edit/{id}', 'PageController@editPage')->name('admin.pages.edit')->middleware('role:admin');
 Route::post('/admin/pages/edit/{id}', 'PageController@savePage')->name('admin.pages.edit')->middleware('role:admin');
 
+Route::get('/admin/pages/edit/{id}/custom-fields', 'PageController@addField')->name('admin.pages.fields.add')->middleware('role:admin');
+Route::post('/admin/pages/edit/{id}/custom-fields', 'PageController@createCustomField')->name('admin.pages.fields.add')->middleware('role:admin');
+
 // Feed endpoint - eventually hit by task runner
 Route::get('/admin/feed', 'FeedController@index')->name('admin.feed')->middleware('role:admin,editor');
 

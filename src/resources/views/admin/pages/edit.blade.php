@@ -95,7 +95,8 @@
                             <p>
                                 Create a custom html element to render in the page template.
                             </p>
-                            <a href="#">Add custom field</a>
+
+                            <a href="{{ route('admin.pages.fields.add', $page->id) }}" class="btn btn-secondary">Add custom field to page</a>
 
                             @foreach($customFields as $field)
                             <div class="field">

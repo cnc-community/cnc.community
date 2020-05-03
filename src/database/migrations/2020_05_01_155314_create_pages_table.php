@@ -18,8 +18,8 @@ class CreatePagesTable extends Migration
             $table->id();
             $table->string("title");
             $table->string("description");
-            $table->string("slug_category");
             $table->string("slug");
+            $table->unsignedInteger("category_id")->nullable();
             $table->unsignedInteger("template_id")->nullable();
             $table->timestamps();
         });

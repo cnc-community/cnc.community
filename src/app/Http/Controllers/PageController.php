@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Page;
+use App\PageCategory;
 use App\PageTemplate;
 use \Illuminate\Http\Request;
 use App\PageContent;
@@ -25,8 +26,15 @@ class PageController extends Controller
      */
     public function showPageByCategory($category)
     {
-        $pages = Page::where("slug_category", $category)->get();
-        return view('pages.category', ["pages" => $pages]);
+        $category = PageCategory::where("slug", $category)->first();
+        $pages = Page::getPagesByCategory($category->id);
+        $template = $category->bladeTemplate();
+        
+        if ($template == null)
+        {
+            return view('pages.category', ["pages" => $pages]);
+        }
+        return view($template, ["pages" => $pages]);
     }
 
     /**
@@ -34,7 +42,9 @@ class PageController extends Controller
      */
     public function showPageBySlug($slugCategory, $slug)
     {
-        $page = Page::where("slug_category", $slugCategory)->where("slug", $slug)->first();
+        $category = PageCategory::where("slug", $slugCategory)->first();
+        $page = Page::where("slug", $slug)->where("category_id", $category->id)->first();
+
         if ($page == null) abort(404);
         
         if ($page->bladeTemplate() == null)
@@ -83,15 +93,13 @@ class PageController extends Controller
     public function createPage(Request $request) 
     {
         $pageTemplate = PageTemplate::find($request->template);
-        $pageContent = PageContent::createPageContent($request->content);
 
         $page = Page::createPage(
             $request->title, 
             $request->description, 
             $request->slug_category, 
             $request->slug, 
-            $pageTemplate->id, 
-            $pageContent->id
+            $pageTemplate->id
         );
 
         if ($page == null)
@@ -100,7 +108,7 @@ class PageController extends Controller
             return redirect("/admin/pages/add");
         }
 
-        return redirect("/admin/pages");
+        return redirect("/admin/pages/edit/" . $page->id);
     }
 
     /**
@@ -135,5 +143,36 @@ class PageController extends Controller
 
         $request->session()->flash('status', 'Page saved');
         return redirect("/admin/pages/edit/" . $request->id);
+    }
+
+
+    /**
+     * Admin add custom field
+     */
+    public function addField($id)
+    {
+        $page = Page::find($id);
+        return view('admin.pages.fields.add', ['page' => $page]);
+    }
+
+
+    /**
+     * Admin - create custom fields
+     */
+    public function createCustomField(Request $request, $id) 
+    {
+        $pageTemplate = PageTemplate::find($request->template);
+
+        $page = Page::find($id);
+        if ($page == null)
+        {
+            $request->session()->flash('error', 'Page does not exist.');
+            return redirect("/admin/pages/");
+        }
+
+        $pageContent = PageContent::createPageContent("");
+
+        PageCustomField::createCustomField($request->key, $request->name, $page->id, $pageContent->id);
+        return redirect("/admin/pages/edit/" . $page->id);
     }
 }
