@@ -13,7 +13,6 @@
                             {{ session('status') }}
                         </div>
                     @endif
-sgdsdg
                     <?php foreach($pages as $page): ?>
                         <div>
                             <a href="{{ $page->url() }}">{{ $page->title}}</a>

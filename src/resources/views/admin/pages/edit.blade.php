@@ -71,7 +71,7 @@
                                 name="slug_category" 
                                 class="form-control" 
                                 placeholder="e.g red-alert" 
-                                value="{{ $page->slug_category }}" 
+                                value="{{ $page->category()->slug }}" 
                                 required 
                                 disabled
                             />

@@ -12,10 +12,10 @@ class Page extends Model
         
     }
 
-    public static function createPage($title, $description, $slugCategory, $slug, $templateId)
+    public static function createPage($title, $description, $categoryId, $slug, $templateId)
     {        
-        $exists = Page::checkPageExistsWithSlugs($slugCategory, $slug);
-        if ($exists != null)
+        $page = Page::where("slug", $slug)->where("category_id", $categoryId)->first();
+        if ($page != null)
         {
             return null;
         }
@@ -23,7 +23,7 @@ class Page extends Model
         $page = new Page();
         $page->title= $title;
         $page->description = $description;
-        $page->slug_category= $slugCategory;
+        $page->category_id = $categoryId;
         $page->slug = $slug;
         $page->template_id = $templateId;
         $page->save();
@@ -41,9 +41,9 @@ class Page extends Model
 
     public static function checkPageExistsWithSlugs($slugCategory, $slug)
     {
-        return Page::where("slug_category", "=", $slugCategory)
-            ->where("slug", "=", $slug)
-            ->first();
+        $category = PageCategory::where("slug", $slugCategory)->first();
+        $page = Page::where("slug", $slug)->where("category_id", $category->id)->first();
+        return $page;
     }
     
     public static function getPagesByCategory($categoryId)
@@ -54,6 +54,11 @@ class Page extends Model
     public function category()
     {
         return PageCategory::find($this->category_id);
+    }
+
+    public static function getPageCategories()
+    {
+        return PageCategory::all();
     }
 
     public function bladeTemplate()

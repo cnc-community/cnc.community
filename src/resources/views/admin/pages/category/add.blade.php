@@ -9,7 +9,7 @@
                     <a href="/admin/pages">View all pages</a>
                 </div>
                 <div class="card-header">
-                    Add page
+                    Add Page Category
                 </div>
 
                 <div class="card-body">
@@ -27,16 +27,20 @@
 
                     <form method="post">
                         {{csrf_field()}}
-                        <input type="hidden" name="content" id="content" required />
 
                         <div class="form-group">
-                            <label for="title">Page Title</label>
-                            <input id="title" type="text" name="title" class="form-control"  required/>
+                            <label for="title">Page Category Title</label>
+                            <input id="title" type="text" name="title" class="form-control" placeholder="E.g Red Alert" required/>
                         </div>
 
                         <div class="form-group">
-                            <label for="description">Page description</label>
-                            <input id="description" type="text" name="description" class="form-control" required/>
+                            <label for="description">Page Category Title</label>
+                            <input id="description" type="text" name="description" class="form-control" placeholder="E.g Red Alert Category Page" required/>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="slug">Slug</label>
+                            <input id="slug" type="text" name="slug" class="form-control" placeholder="E.g red-alert" required/>
                         </div>
 
                         <div class="form-group">
@@ -48,20 +52,6 @@
                             </select>
                         </div>
                         
-                        <div class="form-group">
-                            <label for="category">Page category</label>
-                            <select id="category" name="category" class="form-control" required>
-                                @foreach($categories as $category)
-                                <option value="{{ $category->id}}">{{$category->title}}</option>
-                                @endforeach
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="slug">Slug</label>
-                            <input id="slug" type="text" name="slug" class="form-control" placeholder="e.g how-to-play" required/>
-                        </div>
-                        
                         <button type="submit" class="btn btn-primary">Save</button>
                     </form>
                 </div>
@@ -70,5 +60,3 @@
     </div>
 </div>
 @endsection
-
-

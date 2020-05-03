@@ -38,8 +38,13 @@ Route::post('/admin/queue/edit/{id}', 'QueuedNewsController@save')->name('admin.
 
 // Admin Page management
 Route::get('/admin/pages', 'PageController@listPages')->name('admin.pages.listing')->middleware('role:admin');
+
 Route::get('/admin/pages/add', 'PageController@addPage')->name('admin.pages.add')->middleware('role:admin');
 Route::post('/admin/pages/add', 'PageController@createPage')->name('admin.pages.add')->middleware('role:admin');
+
+Route::get('/admin/pages/category/add', 'PageController@addPageCategory')->name('admin.pages.category.add')->middleware('role:admin');
+Route::post('/admin/pages/category/add', 'PageController@savePageCategory')->name('admin.pages.category.add')->middleware('role:admin');
+
 Route::get('/admin/pages/edit/{id}', 'PageController@editPage')->name('admin.pages.edit')->middleware('role:admin');
 Route::post('/admin/pages/edit/{id}', 'PageController@savePage')->name('admin.pages.edit')->middleware('role:admin');
 

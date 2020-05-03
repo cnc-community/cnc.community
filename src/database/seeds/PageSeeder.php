@@ -18,13 +18,13 @@ class PageSeeder extends Seeder
     public function run()
     {
         $gameTemplate = new PageTemplate();
-        $gameTemplate->name = "Generic - How to Guide for games";
-        $gameTemplate->blade_name = "games.detail";
+        $gameTemplate->name = "Game Detail - How to Play";
+        $gameTemplate->blade_name = "games.detail-how-to-play";
         $gameTemplate->save();
 
         $categoryTemplate = new PageTemplate();
-        $categoryTemplate->name = "Generic Category Template - Games";
-        $categoryTemplate->blade_name = "games.category";
+        $categoryTemplate->name = "Category Template - Games Listing";
+        $categoryTemplate->blade_name = "games.category-listing";
         $categoryTemplate->save();
 
         $pageCategory = new PageCategory();

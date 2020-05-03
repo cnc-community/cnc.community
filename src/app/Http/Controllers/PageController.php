@@ -26,7 +26,7 @@ class PageController extends Controller
      */
     public function showPageByCategory($category)
     {
-        $category = PageCategory::where("slug", $category)->first();
+        $category = PageCategory::categoryBySlug($category);
         $pages = Page::getPagesByCategory($category->id);
         $template = $category->bladeTemplate();
         
@@ -42,9 +42,7 @@ class PageController extends Controller
      */
     public function showPageBySlug($slugCategory, $slug)
     {
-        $category = PageCategory::where("slug", $slugCategory)->first();
-        $page = Page::where("slug", $slug)->where("category_id", $category->id)->first();
-
+        $page = Page::checkPageExistsWithSlugs($slugCategory, $slug);
         if ($page == null) abort(404);
         
         if ($page->bladeTemplate() == null)
@@ -84,7 +82,9 @@ class PageController extends Controller
     public function addPage(Request $request)
     {
         $templates = PageTemplate::all();
-        return view('admin.pages.add', ['templates' => $templates]);
+        $pageCategories = Page::getPageCategories();
+
+        return view('admin.pages.add', ['templates' => $templates, 'categories' => $pageCategories]);
     }
 
     /**
@@ -93,11 +93,12 @@ class PageController extends Controller
     public function createPage(Request $request) 
     {
         $pageTemplate = PageTemplate::find($request->template);
+        $pageCategory = PageCategory::find($request->category);
 
         $page = Page::createPage(
             $request->title, 
             $request->description, 
-            $request->slug_category, 
+            $pageCategory->id, 
             $request->slug, 
             $pageTemplate->id
         );
@@ -143,6 +144,33 @@ class PageController extends Controller
 
         $request->session()->flash('status', 'Page saved');
         return redirect("/admin/pages/edit/" . $request->id);
+    }
+
+    /**
+     * Admin add page category
+     */
+    public function addPageCategory(Request $request)
+    {
+        $templates = PageTemplate::all();
+        return view('admin.pages.category.add', ['templates' => $templates]);
+    }
+
+    /**
+     * Admin save page category
+     */
+    public function savePageCategory(Request $request)
+    {
+        $pageTemplate = PageTemplate::find($request->template);
+
+        $category = PageCategory::createCategory(
+            $request->title, 
+            $request->description, 
+            $request->slug, 
+            $pageTemplate->id
+        );
+
+        $request->session()->flash('status', 'Page saved');
+        return redirect("/admin/pages/");
     }
 
 

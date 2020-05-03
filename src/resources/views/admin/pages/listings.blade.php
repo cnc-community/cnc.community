@@ -15,6 +15,7 @@
                     @endif
                     <div>
                         <a href="{{ route('admin.pages.add', '') }}" class="btn btn-primary" title="Add page">Add page</a>
+                        <a href="{{ route('admin.pages.category.add', '') }}" class="btn btn-primary" title="Add page">Add page category</a>
                     </div>
                     <?php foreach($pages as $page): ?>
                         <div>
