@@ -42,9 +42,16 @@ Route::get('/admin/pages', 'PageController@listPages')->name('admin.pages.listin
 Route::get('/admin/pages/add', 'PageController@addPage')->name('admin.pages.add')->middleware('role:admin');
 Route::post('/admin/pages/add', 'PageController@createPage')->name('admin.pages.add')->middleware('role:admin');
 
+// Page categories and custom fields
 Route::get('/admin/pages/category/add', 'PageController@addPageCategory')->name('admin.pages.category.add')->middleware('role:admin');
+Route::get('/admin/pages/category/edit/{id}', 'PageController@editPageCategory')->name('admin.pages.category.edit')->middleware('role:admin');
+Route::post('/admin/pages/category/edit/{id}', 'PageController@savePageCategory')->name('admin.pages.category.edit')->middleware('role:admin');
 Route::post('/admin/pages/category/add', 'PageController@savePageCategory')->name('admin.pages.category.add')->middleware('role:admin');
+Route::get('/admin/pages/category/{id}/custom-fields', 'PageController@addPageCategoryCustomField')->name('admin.pages.category.fields.add')->middleware('role:admin');
+Route::post('/admin/pages/category/{id}/custom-fields', 'PageController@createPageCategoryCustomField')->name('admin.pages.category.fields.add')->middleware('role:admin');
 
+
+// Pages and custom fields
 Route::get('/admin/pages/edit/{id}', 'PageController@editPage')->name('admin.pages.edit')->middleware('role:admin');
 Route::post('/admin/pages/edit/{id}', 'PageController@savePage')->name('admin.pages.edit')->middleware('role:admin');
 

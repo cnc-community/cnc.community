@@ -34,6 +34,8 @@ class PageSeeder extends Seeder
         $pageCategory->description = "Command & Conquer: Red Alert";
         $pageCategory->save();
 
+        $this->createDemoCustomFieldsForPageCategories($pageCategory->id);
+
         $this->create("Red Alert - Campaign", "Red Alert - Single Player", "campaign", $gameTemplate->id, $pageCategory->id);
         $this->create("Red Alert - Online", "Red Alert - Online", "online", $gameTemplate->id, $pageCategory->id);
     }
@@ -57,18 +59,21 @@ class PageSeeder extends Seeder
         $name = "How to play";
         $body = "<div><ul><li>Step 1 - Kane</li><li>Step 2 - Yuri</li></ul></div>";
         $content = PageContent::createPageContent($body);
-        PageCustomField::createCustomField($key, $name, $pageId, $content->id);
+        PageCustomField::createCustomField($key, $name, $pageId, $content->id, null);
 
         $key = CustomFieldNames::HOW_TO_PLAY_VIDEO;
         $name = "Video Tutorial";
         $body = '<iframe width="560" height="315" src="https://www.youtube.com/embed/9iMfypQj3k0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
         $content = PageContent::createPageContent($body);
-        PageCustomField::createCustomField($key, $name, $pageId, $content->id);
+        PageCustomField::createCustomField($key, $name, $pageId, $content->id, null);
+    }
 
-        $key = CustomFieldNames::HOW_TO_PLAY_HELP;
-        $name = "Help & Support";
-        $body = 'Links to discord etc';
+    private function createDemoCustomFieldsForPageCategories($categoryId)
+    {
+        $key = CustomFieldNames::WHERE_TO_GET_GAMES;
+        $name = "Where to get the games";
+        $body = 'CnCNet, Origin, Physical etc';
         $content = PageContent::createPageContent($body);
-        PageCustomField::createCustomField($key, $name, $pageId, $content->id);
+        PageCustomField::createCustomField($key, $name, null, $content->id, $categoryId);
     }
 }

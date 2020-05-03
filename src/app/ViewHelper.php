@@ -15,4 +15,14 @@ class ViewHelper
         }
         return null;
     }
+
+    public static function getCategoryCustomFieldContents($categoryId, $key)
+    {
+        $customField = PageCustomField::getCustomFieldsByPageCategoryIdAndKey($categoryId, $key);
+        if ($customField)
+        {
+            return $customField->getContent();
+        }
+        return null;
+    }
 }

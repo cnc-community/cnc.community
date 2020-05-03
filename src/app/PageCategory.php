@@ -21,12 +21,24 @@ class PageCategory extends Model
     public static function createCategory($title, $description, $slug, $templateId)
     {
         $category = new PageCategory();
-        $category->title = $title;
-        $category->description = $description;
-        $category->slug = $slug;
-        $category->template_id = $templateId;
         $category->save();
+        $category->saveCategory($title, $description, $slug, $templateId);
         return $category;
+    }
+
+    public function updateCategory($title, $description, $slug, $templateId)
+    {
+        return $this->saveCategory($title, $description, $slug, $templateId);
+    }
+
+    private function saveCategory($title, $description, $slug, $templateId)
+    {
+        $this->title = $title;
+        $this->description = $description;
+        $this->slug = $slug;
+        $this->template_id = $templateId;
+        $this->save();
+        return $this;
     }
 
     public function bladeTemplate()

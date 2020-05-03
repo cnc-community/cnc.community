@@ -18,7 +18,8 @@ class CreatePagesCustomFieldsTable extends Migration
             $table->id();
             $table->string("key");
             $table->string("name");
-            $table->unsignedInteger("page_id");
+            $table->unsignedInteger("page_id")->nullable();
+            $table->unsignedInteger("category_id")->nullable();
             $table->unsignedInteger("content_id")->nullable();
             $table->timestamps();
         });

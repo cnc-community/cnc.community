@@ -32,9 +32,9 @@ class PageController extends Controller
         
         if ($template == null)
         {
-            return view('pages.category', ["pages" => $pages]);
+            return view('pages.category', ["pages" => $pages, "category" => $category]);
         }
-        return view($template, ["pages" => $pages]);
+        return view($template, ["pages" => $pages, "category" => $category]);
     }
 
     /**
@@ -59,7 +59,9 @@ class PageController extends Controller
     public function listPages()
     {
         $pages = Page::all();
-        return view('admin.pages.listings', ["pages" => $pages]);
+        $categories = PageCategory::all();
+
+        return view('admin.pages.listings', ["pages" => $pages, "categories" => $categories]);
     }
 
     /**
@@ -156,21 +158,72 @@ class PageController extends Controller
     }
 
     /**
+     * Admin edit page category
+     */
+    public function editPageCategory($id)
+    {
+        $templates = PageTemplate::all();
+        $category = PageCategory::find($id);
+        if ($category == null) abort(404);
+
+        $customFields = PageCustomField::getCustomFieldsByPageCategoryId($category->id);
+        return view('admin.pages.category.edit', ['templates' => $templates, 'category' => $category, 'customFields' => $customFields]);
+    }
+
+    /**
+     * Admin add custom page category fields 
+     */
+    public function addPageCategoryCustomField($id)
+    {
+        $category = PageCategory::find($id);
+        return view('admin.pages.category.fields.add', ['category' => $category]);
+    }
+
+    /**
+     * Admin save custom page category fields 
+     */
+    public function createPageCategoryCustomField(Request $request)
+    {
+        $category = PageCategory::find($request->id);
+        if ($category == null)
+        {
+            $request->session()->flash('error', 'Page does not exist.');
+            return redirect("/admin/pages/");
+        }
+
+        $pageContent = PageContent::createPageContent("");
+
+        PageCustomField::createCustomField($request->key, $request->name,null, $pageContent->id, $category->id);
+        return redirect("/admin/pages/category/edit/" . $request->id);
+    }
+
+    /**
      * Admin save page category
      */
     public function savePageCategory(Request $request)
     {
         $pageTemplate = PageTemplate::find($request->template);
 
-        $category = PageCategory::createCategory(
+        $inputs = $request->all();
+        foreach($inputs as $inputName => $inputValue)
+        {
+            if (strpos($inputName, 'custom_field_') !== false) 
+            {
+                $customFieldId = str_replace("custom_field_", "", $inputName);
+                PageCustomField::updateContent($customFieldId, $inputValue);
+            }
+        }
+
+        $category = PageCategory::find($request->id);
+        $category->updateCategory(
             $request->title, 
             $request->description, 
             $request->slug, 
             $pageTemplate->id
         );
 
-        $request->session()->flash('status', 'Page saved');
-        return redirect("/admin/pages/");
+        $request->session()->flash('status', 'Category saved');
+        return redirect("/admin/pages/category/edit/". $category->id);
     }
 
 
@@ -189,8 +242,6 @@ class PageController extends Controller
      */
     public function createCustomField(Request $request, $id) 
     {
-        $pageTemplate = PageTemplate::find($request->template);
-
         $page = Page::find($id);
         if ($page == null)
         {
@@ -200,7 +251,7 @@ class PageController extends Controller
 
         $pageContent = PageContent::createPageContent("");
 
-        PageCustomField::createCustomField($request->key, $request->name, $page->id, $pageContent->id);
+        PageCustomField::createCustomField($request->key, $request->name, $page->id, $pageContent->id, null);
         return redirect("/admin/pages/edit/" . $page->id);
     }
 }

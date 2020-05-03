@@ -27,7 +27,7 @@
 
                     <form method="post">
                         {{csrf_field()}}
-
+                        <input type="hidden" value="{{ $category->id }}" name="id"/>
                         <div class="form-group">
                             <label for="key">Key that will be used to identify in templates</label>
                             <input id="key" type="text" name="key" class="form-control" placeholder="E.g how_to_play_video" required/>

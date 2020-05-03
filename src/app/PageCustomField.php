@@ -35,16 +35,33 @@ class PageCustomField extends Model
 
     public static function getCustomFieldsByPageId($pageId)
     {
-        return PageCustomField::where("page_id", $pageId)->get();
+        return PageCustomField::where("page_id", $pageId)->where("category_id", NULL)->get();
     }
 
-    public static function createCustomField($key, $name, $pageId, $contentId)
+    /**
+     * Get custom field by category id and key
+     */
+    public static function getCustomFieldsByPageCategoryIdAndKey($pageCategoryId, $key)
+    {
+        return PageCustomField::where("category_id", $pageCategoryId)->where("key", $key)->first();
+    }
+
+    /**
+     * Get all custom fields by category id
+     */
+    public static function getCustomFieldsByPageCategoryId($pageCategoryId)
+    {
+        return PageCustomField::where("category_id", $pageCategoryId)->where("page_id", NULL)->get();
+    }
+
+    public static function createCustomField($key, $name, $pageId, $contentId, $pageCategoryId)
     {
         $field = new PageCustomField();
         $field->key = $key;
         $field->name = $name;
         $field->page_id = $pageId;
         $field->content_id = $contentId;
+        $field->category_id = $pageCategoryId;
         $field->save();
     }
 }

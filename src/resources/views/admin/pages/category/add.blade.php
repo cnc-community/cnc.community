@@ -34,7 +34,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="description">Page Category Title</label>
+                            <label for="description">Page Category Description</label>
                             <input id="description" type="text" name="description" class="form-control" placeholder="E.g Red Alert Category Page" required/>
                         </div>
 

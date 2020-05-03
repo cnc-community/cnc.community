@@ -9,7 +9,7 @@
                     <a href="/admin/pages">View all pages</a>
                 </div>
                 <div class="card-header">
-                    Add custom field
+                    Add Page Template
                 </div>
 
                 <div class="card-body">
@@ -29,13 +29,13 @@
                         {{csrf_field()}}
 
                         <div class="form-group">
-                            <label for="key">Key that will be used to identify in templates</label>
-                            <input id="key" type="text" name="key" class="form-control" placeholder="E.g how_to_play_video" required/>
+                            <label for="title">Page Category Title</label>
+                            <input id="title" type="text" name="title" class="form-control" placeholder="E.g Red Alert" required/>
                         </div>
 
                         <div class="form-group">
-                            <label for="name">Name of Custom Field</label>
-                            <input id="name" type="text" name="name" class="form-control" placeholder="E.g Video" required/>
+                            <label for="description">Page Category Title</label>
+                            <input id="description" type="text" name="description" class="form-control" placeholder="E.g Red Alert Category Page" required/>
                         </div>
                         
                         <button type="submit" class="btn btn-primary">Save</button>
