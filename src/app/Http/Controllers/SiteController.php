@@ -33,17 +33,17 @@ class SiteController extends Controller
     {
         $key = "cache_";
 
-        $pageCategoriesCache = Cache::remember($key."home.index.pageCategories", Constants::CACHE_SECONDS, function () 
+        $pageCategoriesCache = Cache::remember($key."home.index.pageCategories", Constants::getCacheSeconds(), function () 
         {
             return PageCategory::all();
         });
 
-        $communityNewsCache = Cache::remember($key."home.index.communityNews", Constants::CACHE_SECONDS, function () 
+        $communityNewsCache = Cache::remember($key."home.index.communityNews", Constants::getCacheSeconds(), function () 
         {
             return News::communityNewsPaginated();
         });
 
-        $officialNewsCache = Cache::remember($key."home.index.officialNews", Constants::CACHE_SECONDS, function () 
+        $officialNewsCache = Cache::remember($key."home.index.officialNews", Constants::getCacheSeconds(), function () 
         {
             return News::officialNewsPaginated();
         });
@@ -64,13 +64,13 @@ class SiteController extends Controller
     {
         $key = "cache_";
 
-        $categoryCache = Cache::remember($key."news.listing.category", Constants::CACHE_SECONDS, function () use ($categorySlug)
+        $categoryCache = Cache::remember($key."news.listing.category", Constants::getCacheSeconds(), function () use ($categorySlug)
         {
             return Category::where("slug", $categorySlug)->first();
         });
         if ($categoryCache == null) abort(404);
 
-        $newsByCategoryCache = Cache::remember($key."news.listing.newsByCategory", Constants::CACHE_SECONDS, function () use ($categoryCache)
+        $newsByCategoryCache = Cache::remember($key."news.listing.newsByCategory", Constants::getCacheSeconds(), function () use ($categoryCache)
         {
             return News::newsPaginatedByCategory($categoryCache->id);
         });

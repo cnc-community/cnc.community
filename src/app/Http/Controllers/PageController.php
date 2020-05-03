@@ -30,12 +30,12 @@ class PageController extends Controller
     {
         $key = "cache_" . $category;
 
-        $categoryCache = Cache::remember($key."category", Constants::CACHE_SECONDS, function () use ($category) 
+        $categoryCache = Cache::remember($key."category", Constants::getCacheSeconds(), function () use ($category) 
         {
             return PageCategory::categoryBySlug($category);
         });
         
-        $pagesCache = Cache::remember($key."pages", Constants::CACHE_SECONDS, function ()  use ($categoryCache) 
+        $pagesCache = Cache::remember($key."pages", Constants::getCacheSeconds(), function ()  use ($categoryCache) 
         {
             return Page::getPagesByCategory($categoryCache->id);
         });
@@ -55,7 +55,7 @@ class PageController extends Controller
     public function showPageBySlug($slugCategory, $slug)
     {
         $key = "cache_" . $slugCategory . "_" . $slug;
-        $pageCache = Cache::remember($key, Constants::CACHE_SECONDS, function ()  use ($slugCategory, $slug) 
+        $pageCache = Cache::remember($key, Constants::getCacheSeconds(), function ()  use ($slugCategory, $slug) 
         {
             return Page::checkPageExistsWithSlugs($slugCategory, $slug);
         });
