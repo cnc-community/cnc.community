@@ -8,6 +8,8 @@ use App\PageTemplate;
 use \Illuminate\Http\Request;
 use App\PageContent;
 use App\PageCustomField;
+use Illuminate\Support\Facades\Cache;
+use App\Constants;
 
 class PageController extends Controller
 {
@@ -26,15 +28,25 @@ class PageController extends Controller
      */
     public function showPageByCategory($category)
     {
-        $category = PageCategory::categoryBySlug($category);
-        $pages = Page::getPagesByCategory($category->id);
-        $template = $category->bladeTemplate();
+        $key = "cache_" . $category;
+
+        $categoryCache = Cache::remember($key."category", Constants::CACHE_SECONDS, function () use ($category) 
+        {
+            return PageCategory::categoryBySlug($category);
+        });
         
+        $pagesCache = Cache::remember($key."pages", Constants::CACHE_SECONDS, function ()  use ($categoryCache) 
+        {
+            return Page::getPagesByCategory($categoryCache->id);
+        });
+        
+        $template = $categoryCache->bladeTemplate();
+
         if ($template == null)
         {
-            return view('pages.category', ["pages" => $pages, "category" => $category]);
+            return view('pages.category', ["pages" => $pagesCache, "category" => $categoryCache]);
         }
-        return view($template, ["pages" => $pages, "category" => $category]);
+        return view($template, ["pages" => $pagesCache, "category" => $categoryCache]);
     }
 
     /**
@@ -42,15 +54,18 @@ class PageController extends Controller
      */
     public function showPageBySlug($slugCategory, $slug)
     {
-        $page = Page::checkPageExistsWithSlugs($slugCategory, $slug);
-        if ($page == null) abort(404);
-        
-        if ($page->bladeTemplate() == null)
+        $key = "cache_" . $slugCategory . "_" . $slug;
+        $pageCache = Cache::remember($key, Constants::CACHE_SECONDS, function ()  use ($slugCategory, $slug) 
         {
-            return view('pages.detail', array("page" => $page));
+            return Page::checkPageExistsWithSlugs($slugCategory, $slug);
+        });
+        if ($pageCache == null) abort(404);
+        
+        if ($pageCache->bladeTemplate() == null)
+        {
+            return view('pages.detail', array("page" => $pageCache));
         }
-
-        return view($page->bladeTemplate(), array("page" => $page));
+        return view($pageCache->bladeTemplate(), array("page" => $pageCache));
     }
 
     /**
