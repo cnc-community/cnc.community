@@ -6,8 +6,9 @@
         <div class="col-md-12">
             <div>
             <h3>Pages</h3>
-            @foreach($pages as $page)
-                <a href="{{ $page->url() }}">{{ $page->title }}</a> <br/>
+            @foreach($pageCategories as $category)
+
+                <a href="{{ $category->url() }}">{{ $category->title }}</a> <br/>
             @endforeach
             </div>
         </div>

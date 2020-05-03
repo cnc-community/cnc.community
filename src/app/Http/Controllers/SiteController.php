@@ -8,6 +8,7 @@ use App\Http\Sites\DTAFeed;
 use App\Http\Services\XMLFeedParser;
 use App\News;
 use App\Page;
+use App\PageCategory;
 
 class SiteController extends Controller
 {
@@ -30,7 +31,7 @@ class SiteController extends Controller
     {
         return view('home.index', 
             [
-                "pages" => Page::all(),
+                "pageCategories" => PageCategory::all(),
                 "communityNews" => News::communityNewsPaginated(),
                 "officialNews" =>  News::officialNewsPaginated()
             ]

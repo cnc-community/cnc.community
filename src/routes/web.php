@@ -46,7 +46,7 @@ Route::post('/admin/pages/add', 'PageController@createPage')->name('admin.pages.
 Route::get('/admin/pages/category/add', 'PageController@addPageCategory')->name('admin.pages.category.add')->middleware('role:admin');
 Route::get('/admin/pages/category/edit/{id}', 'PageController@editPageCategory')->name('admin.pages.category.edit')->middleware('role:admin');
 Route::post('/admin/pages/category/edit/{id}', 'PageController@savePageCategory')->name('admin.pages.category.edit')->middleware('role:admin');
-Route::post('/admin/pages/category/add', 'PageController@savePageCategory')->name('admin.pages.category.add')->middleware('role:admin');
+Route::post('/admin/pages/category/add', 'PageController@createPageCategory')->name('admin.pages.category.add')->middleware('role:admin');
 Route::get('/admin/pages/category/{id}/custom-fields', 'PageController@addPageCategoryCustomField')->name('admin.pages.category.fields.add')->middleware('role:admin');
 Route::post('/admin/pages/category/{id}/custom-fields', 'PageController@createPageCategoryCustomField')->name('admin.pages.category.fields.add')->middleware('role:admin');
 

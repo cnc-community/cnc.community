@@ -227,6 +227,22 @@ class PageController extends Controller
     }
 
 
+    public function createPageCategory(Request $request)
+    {
+        $pageTemplate = PageTemplate::find($request->template);
+
+        $category = PageCategory::createCategory(
+            $request->title, 
+            $request->description, 
+            $request->slug, 
+            $pageTemplate->id
+        );
+
+        $request->session()->flash('status', 'Category saved');
+        return redirect("/admin/pages/category/edit/". $category->id);
+    }
+
+
     /**
      * Admin add custom field
      */

@@ -13,6 +13,11 @@ class PageCategory extends Model
         
     }
 
+    public function url()
+    {
+        return "/". $this->slug;
+    }
+
     public static function categoryBySlug($slug)
     {
         return PageCategory::where("slug", $slug)->first();
@@ -21,7 +26,6 @@ class PageCategory extends Model
     public static function createCategory($title, $description, $slug, $templateId)
     {
         $category = new PageCategory();
-        $category->save();
         $category->saveCategory($title, $description, $slug, $templateId);
         return $category;
     }

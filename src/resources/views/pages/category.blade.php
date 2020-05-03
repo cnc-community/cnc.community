@@ -16,6 +16,7 @@
 
                     <?php foreach($pages as $page): ?>
                         <div>
+                            Category: {{ $page->category() }}
                             <a href="{{ $page->url() }}">{{ $page->title}}</a>
                         </div>
                     <?php endforeach; ?>
