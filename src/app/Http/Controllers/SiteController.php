@@ -12,6 +12,7 @@ use App\Constants;
 use App\PageCategory;
 use Illuminate\Support\Facades\Cache;
 
+
 class SiteController extends Controller
 {
     /**
@@ -76,5 +77,10 @@ class SiteController extends Controller
         });
 
         return view('news.listing', ["news" => $newsByCategoryCache]);
+    }
+
+    public function clearCache()
+    {
+        Cache::flush();
     }
 }
