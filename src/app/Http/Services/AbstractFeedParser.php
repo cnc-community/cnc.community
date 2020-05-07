@@ -2,6 +2,8 @@
 
 namespace App\Http\Services;
 
+use Log;
+
 abstract class AbstractFeedParser
 {
     private $_feedParser;
@@ -13,6 +15,13 @@ abstract class AbstractFeedParser
 
     public function run()
     {
-        $this->_feedParser->run();
+        try 
+        {
+            $this->_feedParser->run();
+        }
+        catch (\Exception $exception) 
+        {
+            Log::error($exception);
+        }
     }
 }
