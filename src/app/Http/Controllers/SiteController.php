@@ -90,6 +90,23 @@ class SiteController extends Controller
         return view('news.detail', ["newsItem" => $newsItem]);
     }
 
+    public function showFunnyListings()
+    {
+        $key = "cache_";
+
+        $categoryCache = Cache::remember($key."funny.listing.showFunnyListings", Constants::getCacheSeconds(), function ()
+        {
+            return Category::where("name", "Funny")->first();
+        });
+
+        $funnyCategoryCache = Cache::remember($key."funny.listing.showFunnyListings", Constants::getCacheSeconds(), function () use ($categoryCache)
+        {
+            return News::newsPaginatedByCategory($categoryCache->id);
+        });
+
+        return view('pages.funny.listing', ["funnyItems" => $funnyCategoryCache]);
+    }
+
     public function clearCache()
     {
         Cache::flush();

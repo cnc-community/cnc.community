@@ -25,7 +25,7 @@ class News extends Model
             return $this->url;
         }
         
-        return "/news/" . $this->category()->slug . "/" . $this->url;
+        return $this->category()->slug . "/" . $this->url;
     }
 
     public function category()
