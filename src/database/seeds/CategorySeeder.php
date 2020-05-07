@@ -14,6 +14,7 @@ class CategorySeeder extends Seeder
     {
         $this->create("Official News", "official-news");
         $this->create("Community News", "community-news");
+        $this->create("Funny", "funny");
     }
 
     private function create($name, $slug)
