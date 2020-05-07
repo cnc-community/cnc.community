@@ -14,6 +14,10 @@
                         </div>
                     @endif
 
+                    <div style="padding-bottom: 15px">
+                        <a href="{{ route('admin.news.add', '') }}" class="btn btn-primary" title="Add new news item">Add new</a>
+                    </div>
+
                     <?php foreach($news as $newsItem): ?>
                         <div>
                             <a href="{{ route('admin.news.edit', ['id' => $newsItem->id ]) }}">{{ $newsItem->title}}</a>

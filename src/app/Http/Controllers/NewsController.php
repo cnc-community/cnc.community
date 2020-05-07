@@ -43,8 +43,13 @@ class NewsController extends Controller
 
     public function create(Request $request)
     {
-        $path = $request->file('image');
-        $image = FeedHelper::createImageFromUrl($path);
+        $path = $request->file("image");
+        $image = null;
+        if ($path)
+        {
+            $image = FeedHelper::createImageFromUrl($path);
+        }
+
         $newsItem = News::createNewsItem($request->title, $request->post, null, $image, $request->category_id);
         return redirect('/admin/news/edit/' . $newsItem->id);
     }
@@ -62,6 +67,13 @@ class NewsController extends Controller
         {
             $newsItem->rejectQueuedItem();
             return redirect("admin/news");
+        }
+        
+        $path = $request->file("image");
+        if ($path)
+        {
+            $image = FeedHelper::createImageFromUrl($path);
+            $newsItem->image = $image;
         }
 
         $newsItem->title = $request->title;

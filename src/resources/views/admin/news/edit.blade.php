@@ -19,7 +19,7 @@
                         </div>
                     @endif
 
-                    <form method="post">
+                    <form method="post" enctype="multipart/form-data">
                         {{csrf_field()}}
                         <input type="hidden" name="post" id="post" />
 

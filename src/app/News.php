@@ -60,7 +60,10 @@ class News extends Model
         }
         $news->type = News::NEWS_INTERNAL;
         $news->url = Str::of($title)->slug('-');
-        $news->image = $image;
+        if ($image)
+        {
+            $news->image = $image;
+        }
         $news->category_id = $categoryId;
         $news->save();
         return $news;
