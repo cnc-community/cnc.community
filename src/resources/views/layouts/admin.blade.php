@@ -9,25 +9,13 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
-    <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
-    <!-- Include stylesheet -->
     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
-
     <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
-    
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jodit/3.3.1/jodit.min.css"/>
-    
-    <link href="{{ asset('css/admin/editor/jodit.min.css') }}" rel="stylesheet">
-    <script src="{{ asset('js/admin/editor/jodit.min.js') }}"></script>
-
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('admin/css/jodit.min.css') }}" rel="stylesheet">
+    <script src="{{ asset('admin/js/jodit.min.js') }}"></script>
+    <link href="{{ asset('admin/css/app.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
