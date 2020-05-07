@@ -14,11 +14,16 @@
     }
 }
 
+.article-item .buttons
+{
+    display: flex;
+}
+
 @media(min-width: $lg-width)
 {
     .articles .article-item 
     {
-        width: 30%;
+        width: 28vw;
         margin: 0 15px 0 0;
     }
     

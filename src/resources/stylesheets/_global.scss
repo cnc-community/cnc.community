@@ -14,7 +14,6 @@ html, body
 
 a {
     color: $color-white;
-    @extend .default-transition;
 }
 
 .default-transition 
@@ -272,10 +271,16 @@ p > code
     font-weight: 800;
 }
 
-
 .coming-soon 
 {
     padding: 150px 0;
     text-align: center;
     text-transform: uppercase;
+}
+
+.main-content 
+{
+    width: 90vw;
+    max-width: 1900px;
+    margin: 0 auto;
 }

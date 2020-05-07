@@ -1,79 +1,49 @@
-@extends('layouts.admin')
+@extends('layouts.app')
+
+@section('title', 'Home')
+@section('page-class', 'homepage')
+
+@section('hero')
+<div class="content center">
+    <h1 class="text-uppercase">
+        C&amp;C Community Headline
+    </h1>
+    <p class="lead">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+        Lorem ipsum dolor sit amet, consi.
+    </p>
+    <button class="btn btn-primary">Primary CTA</button>
+</div>
+@endsection
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-12">
-            <div>
-            <h3>Pages</h3>
-            @foreach($pageCategories as $category)
+<section class="news-listings">
+    <div class="main-content">
+        <h2 class="section-title">Official Intel</h2>
+        <p class="section-description">
+            Consectetur adipiscing elit, sed do eiusmod tempor incidid unt ut laborDuisrem ipsum dolod unt ut laborDuisrem ipsum dolod...
+            iusmod tempor incidid unt ut laborDuisrem ipsum dolod...
+        </p>
 
-                <a href="{{ $category->url() }}">{{ $category->title }}</a> <br/>
-            @endforeach
-            </div>
+        <?php new App\Http\CustomView\Components\NewsListing($officialNews); ?>
+        <div class="view-all">
+            <a href="news/official-news" title="Official News" class="btn btn-primary">View all Official News</a>
         </div>
     </div>
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-header">Official News</div>
+</section>
 
-                <div class="card-body">
-                    @foreach($officialNews as $newsItem)
-                        <div>
-                            <a href="{{ $newsItem->url }}" rel="nofollow" title="{{ $newsItem->title }}" target="_blank">{{ $newsItem->title}}</a>
-                            <a href="{{ $newsItem->url }}" rel="nofollow" title="{{ $newsItem->title }}" target="_blank">
-                                <img src="{{ asset($newsItem->image) }}" style="max-width: 100%" alt="{{ $newsItem->title}}"/>
-                            </a>
-                            <div>
-                            {!! $newsItem->post !!}
-                            </div>
-                            <div>
-                                <ul class="list-unstyled">
-                                    <li>
-                                        <small>Updated</small> <small>- {{ $newsItem->updated_at->diffForHumans() }}</small> 
-                                    </li>
-                                    <li>
-                                        <small>Category</small> <small>- {{ $newsItem->category()->name }}</small>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    @endforeach
-                    <a href="news/official-news" title="Official News" class="btn btn-primary">View all Official News</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-header">Community News</div>
+<section class="news-listings community-listings">
+    <div class="main-content">
+        <h2 class="section-title">Community Intel</h2>
+        <p class="section-description">
+            Consectetur adipiscing elit, sed do eiusmod tempor incidid unt ut laborDuisrem ipsum dolod unt ut laborDuisrem ipsum dolod...
+            iusmod tempor incidid unt ut laborDuisrem ipsum dolod...
+        </p>
 
-                <div class="card-body">
-                    @foreach($communityNews as $newsItem)
-                        <div>
-                            <a href="{{ $newsItem->url }}" rel="nofollow" title="{{ $newsItem->title }}" target="_blank">{{ $newsItem->title}}</a>
-                            <a href="{{ $newsItem->url }}" rel="nofollow" title="{{ $newsItem->title }}" target="_blank">
-                                <img src="{{ asset($newsItem->image) }}" style="max-width: 100%" alt="{{ $newsItem->title}}"/>
-                            </a>
-                            <div>
-                            {!! $newsItem->post !!}
-                            </div>
-                            <div>
-                                <ul class="list-unstyled">
-                                    <li>
-                                        <small>Updated</small> <small>- {{ $newsItem->updated_at->diffForHumans() }}</small> 
-                                    </li>
-                                    <li>
-                                        <small>Category</small> <small>- {{ $newsItem->category()->name }}</small>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    @endforeach
-                    <a href="news/community-news" title="Community News" class="btn btn-primary">View all Community News</a>
-                </div>
-            </div>
+        <?php new App\Http\CustomView\Components\NewsListing($communityNews); ?>
+        <div class="view-all">
+            <a href="news/community-news" title="Community News" class="btn btn-primary">View all Community News</a>
         </div>
     </div>
-</div>
+</section>
 @endsection

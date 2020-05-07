@@ -18,6 +18,21 @@ class News extends Model
         
     }
 
+    public function readTime()
+    {
+        // https://gist.github.com/mynameispj/3170442
+        $word = str_word_count(strip_tags($this->post));
+        $m = floor($word / 200);
+        $s = floor($word % 200 / (200 / 60));
+        $est = $m . ' minute' . ($m == 1 ? '' : 's');
+        return $est;
+    }
+
+    public function excerpt()
+    {
+        return Str::limit($this->post, 450);
+    }
+
     public function url()
     {
         if ($this->type == News::NEWS_EXTERNAL)
