@@ -40,7 +40,10 @@ class News extends Model
     {
         $news = new News();
         $news->title = $queuedItem->title;
-        $news->post = strip_tags($queuedItem->post, ["<p><a>"]);
+        if ($queuedItem->post)
+        {
+            $news->post = strip_tags($queuedItem->post, "<p><a>");
+        }
         $news->url = $queuedItem->url;
         $news->feed_uuid = $queuedItem->feed_uuid;
         $news->image = $queuedItem->image;

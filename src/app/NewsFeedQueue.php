@@ -97,17 +97,21 @@ class NewsFeedQueue extends Model
             return;
         }
 
-        NewsFeedQueue::create($title, $url, "", $uuid, $category, $imageUrl);
+        NewsFeedQueue::create($title, $url, null, $uuid, $category, $imageUrl);
     }
 
     private static function create($title, $url, $postHtml, $uuid, $category, $imageUrl)
     {
         $newsQueue = new NewsFeedQueue();
         $newsQueue->title = html_entity_decode($title);
-        $newsQueue->post = strip_tags(html_entity_decode($postHtml), ["<p><a>"]);
         $newsQueue->url = $url;
         $newsQueue->feed_uuid = $uuid;
         $newsQueue->category_id = $category->id;
+
+        if ($postHtml)
+        {
+            $newsQueue->post = strip_tags(html_entity_decode($postHtml), "<p><a>");
+        }
 
         if ($imageUrl) 
         {

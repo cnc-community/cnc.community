@@ -30,17 +30,17 @@ class FeedController extends Controller
         $ppmFeed = new PPMFeed(
             new XMLFeedParser("https://www.ppmsite.com/news/rss/ppm_all.xml")
         );
+        $ppmFeed->run();
 
+        /*
         $dtaFeed = new DTAFeed(
             new XMLFeedParser("https://rss.moddb.com/mods/the-dawn-of-the-tiberium-age/articles/feed/rss.xml")
         );
-
-        $ppmFeed->run();
         $dtaFeed->run();
- 
+        */
 
-        $test = new RedditFeedParser("https://www.reddit.com/r/commandandconquer.json");
-        return $test->run();
+        $reddit = new RedditFeedParser("https://www.reddit.com/r/commandandconquer.json");
+        $reddit->run();
 
         return redirect("/admin/queue");
     }

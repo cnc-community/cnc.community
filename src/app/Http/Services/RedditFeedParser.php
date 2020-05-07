@@ -31,7 +31,7 @@ class RedditFeedParser extends AbstractFeedParser
                 {
                     NewsFeedQueue::createFromRedditItem(
                         $redditFeedItem->title(), 
-                        "https://www.reddit.com/". $redditFeedItem->permalink(), 
+                        "https://www.reddit.com". $redditFeedItem->permalink(), 
                         $redditFeedItem->url()
                     );
                 }
