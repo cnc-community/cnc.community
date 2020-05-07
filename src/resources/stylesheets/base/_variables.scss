@@ -1,0 +1,113 @@
+//
+// Variables
+// lowercase hyphen-delimited
+
+
+// 
+// Families 
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&family=Oswald:wght@300;500;700&display=swap');
+
+$font-open-sans: 'Open Sans', sans-serif;
+$font-oswald: 'Oswald', sans-serif;
+
+
+.font-primary-light
+{
+    font-family: $font-open-sans;
+    font-weight: 300;
+}
+
+.font-primary
+{
+    font-family: $font-open-sans;
+    font-weight: 500;
+}
+
+.font-primary-bold
+{
+    font-family: $font-open-sans;
+    font-weight: 700;
+}
+
+.font-secondary-light
+{
+    font-family: $font-oswald;
+    font-weight: 500;
+}
+
+.font-secondary 
+{
+    font-family: $font-oswald;
+    font-weight: 500;
+}
+
+.font-secondary-bold
+{
+    font-family: $font-oswald;
+    font-weight: 700;
+}
+
+
+//
+// Font sizings
+
+$font-size-base: 1rem; 
+
+$font-size-xs: ($font-size-base * 0.8);
+$font-size-sm: ($font-size-base * 0.9);
+$font-size-md: ($font-size-base * 1.15);
+$font-size-lg: ($font-size-base * 1.25);
+$font-size-xl: ($font-size-base * 1.5);
+
+
+$icon-xs-size: $font-size-xs * 1.5;
+$icon-sm-size: $font-size-sm * 2;
+$icon-md-size: $font-size-md * 3;
+$icon-lg-size: $font-size-lg * 4;
+$icon-xl-size: $font-size-xl * 5;
+
+
+
+// Generic 
+$color-white: #fff;
+$color-secondary: #adadad;
+$color-gold: #e6b044;
+$color-gold-400: #f4c973;
+
+$color-green: #5ee644;
+$color-green-400: #7bf264;
+
+
+//
+// Breakpoints
+// Example use
+// @media (min-width: $sm-width) { }
+
+$sm-width: 567px;
+$sm-max-width: 540px;
+
+$md-width: 768px;
+$md-max-width: 720px;
+
+$lg-width: 992px;
+$lg-max-width: 960px;
+
+$xl-width: 1200px;
+$xl-max-width: 1150px;
+
+$xxl-width: 1400px;
+$xxl-max-width: 1350px;
+
+
+//
+// Animations
+
+@keyframes spin {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
+}

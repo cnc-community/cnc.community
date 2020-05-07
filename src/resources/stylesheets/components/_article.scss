@@ -1,0 +1,35 @@
+.article .title h2 
+{
+    font-weight: 600;
+    margin-bottom: 24px;
+    width: $md-width;
+    max-width: 100%;
+}
+
+.article .title a 
+{ 
+    color: #eddaff;
+    
+    &:hover, &:focus {
+        color: $color-secondary;
+    }
+}
+
+.article .excerpt
+{
+    width: $md-width;
+    max-width: 100%;
+}
+
+.article .excerpt p 
+{
+    margin-top: 0;
+}
+
+.article .post-body
+{
+    padding-top: 42px;
+    width: 700px;
+    margin: 0 auto;
+    max-width: 100%;
+}

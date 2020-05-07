@@ -1,0 +1,281 @@
+html, body
+{   
+    background: #000;
+    color: $color-white;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+
+a {
+    color: $color-white;
+    @extend .default-transition;
+}
+
+.default-transition 
+{
+    transition: ease-in all 300ms;
+}
+
+main
+{
+    width: 100%;
+    margin: 0 auto 60px auto;
+}
+
+.page:before 
+{
+    content: "";
+    background: linear-gradient(180deg, black, transparent);
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 200px;
+    left: 0;
+    right: 0;
+    z-index: 1;
+}
+
+p {
+    color: $color-secondary;
+}
+
+a {
+    text-decoration: none;
+    &:hover { 
+        // transition: color ease 250ms;
+    }
+}
+
+.section-title 
+{
+    text-transform: uppercase;
+    margin-bottom: 0;
+    line-height: 1.3;
+}
+
+.section-description 
+{
+    margin: 10px auto 10px;
+}
+
+.clearfix::after
+{
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.text-lowercase { text-transform: lowercase; }
+.text-uppercase { text-transform: uppercase; }
+.text-capitalize { text-transform: capitalize; }
+
+.text-left { text-align: left; }
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+
+ol li,
+ul li 
+{
+    padding: 8px 6px;
+    word-break: break-word;
+}
+
+ol, 
+ul {
+    padding-left: 20px;
+}
+
+img 
+{
+    max-width: 100%;
+}
+
+.hidden 
+{
+    display: none;
+}
+
+@media(max-width: $md-width)
+{
+    .hidden-xs 
+    {
+        display: none;        
+    }
+}
+
+.content 
+{
+    position: relative;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+footer 
+{
+    text-align: center;
+    padding-bottom: 15px;
+    padding-top: 15px;
+}
+
+footer p 
+{
+    color: #ccc6d4;
+    font-size: 1.2rem;
+    margin-bottom: 0;
+}
+
+footer a 
+{
+    color: #9e9e9e;
+    padding-right: 15px;
+    font-size: 0.8rem;
+
+    &:hover { color: $color-white;}
+}
+
+canvas { display:block; }
+
+@media (min-width: $sm-width)
+{
+    .content 
+    {
+        max-width: $sm-max-width;
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+@media (min-width: $md-width)
+{
+    .content 
+    {
+        max-width: $md-max-width;
+    }
+}
+
+@media (min-width: $lg-width)
+{
+    .content 
+    {
+        max-width: $lg-max-width;
+    }
+}
+
+@media (min-width: $xl-width)
+{
+    .content
+    {
+        max-width: $xl-width;
+    }
+}
+
+.content-fluid { width: 100%; }
+.page 
+{
+    width: 100%;
+    height: 100%;
+}
+
+.button-group
+{
+    display: flex;
+    button { margin-left: 15px; margin-right: 15px;}
+    
+    @media(min-width: $sm-width)
+    {
+        button:first-child { margin-left: 0;}
+        button:last-child { margin-right: 0;}
+    }
+}
+
+.slant
+{
+    content: "";
+    position: absolute;
+    border-bottom: 50px solid $color-white;
+    width: 100%;
+    height: 150px;
+
+    @media(min-width: $md-width)
+    {
+        border-bottom: 100px solid $color-white;
+    }
+}
+
+.slant-left
+{
+    border-right: 0 solid transparent;
+    border-left: 100vw solid transparent;
+}
+
+.slant-right
+{
+    border-left: 0 solid transparent;
+    border-right: 100vw solid transparent;
+}
+
+.content-container
+{
+    width: 600px;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.animate-fade-in 
+{
+    animation: fade-in 1.2s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fade-in 
+{
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+li > pre,
+p > pre
+{
+    padding: 16px;
+    overflow: auto;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #2a0067;
+    color: $color-white;
+    border-radius: 5px;
+    font-weight: 800;
+}
+
+li > code,
+p > code
+{
+    padding: 5px 10px;
+    overflow: auto;
+    font-size: 85%;
+    line-height: 1.45;
+    border-radius: 5px;
+    background-color: #2a0067;
+    color: $color-white;
+    font-weight: 800;
+}
+
+
+.coming-soon 
+{
+    padding: 150px 0;
+    text-align: center;
+    text-transform: uppercase;
+}

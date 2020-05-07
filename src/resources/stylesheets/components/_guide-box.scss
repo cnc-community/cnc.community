@@ -1,0 +1,80 @@
+.guide-box 
+{
+    width: 400px;
+    max-width: 100%;
+    background: #0e0e0e;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 25px;
+}
+
+.guide-box .btn
+{
+    margin: 0 auto 20px;
+}
+
+.guide-box .guide-title 
+{
+    font-size: 1.5rem;
+    margin-bottom: 0;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.guide-box .guide-description
+{
+    margin-top: 0;
+    font-size: 1rem;
+    padding: 15px;
+    width: 350px;
+    max-width: 100%;
+    margin: 0 auto 20px;   
+    text-align: center;
+    text-transform: uppercase;
+
+    @extend .font-primary;
+}
+
+// Colours
+
+// Gold
+.guide-box.color-gold .guide-title
+{
+    color: $color-gold;
+}
+
+.guide-box.color-gold .guide-description
+{
+    color: $color-gold-400;
+}
+
+.guide-box.color-gold .btn-outline
+{
+    border-color: $color-gold-400;
+    color: $color-gold-400;
+}
+
+// Green
+.guide-box.color-green .guide-title
+{
+    color: $color-green;
+}
+
+.guide-box.color-green .guide-description
+{
+    color: $color-green-400;
+}
+
+.guide-box.color-green .btn-outline
+{
+    border-color: $color-green-400;
+    color: $color-green-400;
+}
+
+.guide-box .btn-outline:hover,
+.guide-box .btn-outline:focus
+{
+    background: transparent;
+    color: $color-white;
+    border-color: $color-white;
+}

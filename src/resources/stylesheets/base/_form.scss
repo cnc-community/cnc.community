@@ -1,0 +1,115 @@
+﻿//
+// Form and related styles
+// These are not be customised to style components.
+// If a component needs to extend this, override it in a specific component file.
+
+.form-group
+{
+    padding: 10px 0;
+    margin-bottom: 15px;
+}
+
+.form-group label,
+.form-group input,
+.form-group textarea,
+.form-group select
+{
+    @extend .font-primary;
+
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select
+{
+    font-size: 15px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select
+{
+    padding: 15px;
+    font-size: 15px;
+    width: 100%;
+    border: 1px solid #e2e2e2;
+    resize: none;
+    border-radius: 2px;
+}
+
+.form-group label
+{
+    display: block;
+    margin: 5px 0;
+    padding: 5px 0;
+}
+
+.form-group .form-input
+{
+    padding: 15px;
+}
+
+.form-group input
+{
+    height: 45px;
+    width: 100%;
+}
+
+.form-group .form-input
+{
+    border: 1px solid #e6e6e6;
+}
+
+.radio
+{
+    display: block;
+    position: relative;
+    cursor: pointer;
+    user-select: none;
+}
+
+.form-group .radio
+{
+    padding-top: 0;
+    padding-left: 35px;
+}
+
+.radio input
+{
+    position: absolute;
+    display: none;
+    cursor: pointer;
+}
+
+.radio .checkmark
+{
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #fff;
+    border: 1px solid #dedede;
+}
+
+.radio input:checked ~ .checkmark
+{
+    background-color: #ff4700;
+}
+
+.radio .title
+{
+    display: block;
+    padding-bottom: 5px;
+}
+
+.radio small
+{
+    display: block;
+    font-size: 14px;
+}
+
+.form .checkbox 
+{
+    margin: 15px 10px 0 0;
+}

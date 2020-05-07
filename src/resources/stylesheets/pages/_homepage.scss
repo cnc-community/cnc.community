@@ -1,0 +1,136 @@
+
+//
+// Homepage Hero
+.page-homepage .hero 
+{
+    background: url("../images/homepage-header-mobile.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.page-homepage .hero::before
+{
+    content: "";
+    position: absolute;
+    background: #0000007a;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+}
+
+@media(min-width: $xl-width)
+{
+    .page-homepage .hero 
+    {
+        background: url("../images/homepage-header.jpg");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    .page-homepage .hero::before
+    {
+        content: "";
+        position: absolute;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        background: url("../images/head-right.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: right;
+    }
+
+    .page-homepage .hero::after
+    {
+        content: "";
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url("../images/head-left.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: left;
+    }
+}
+
+
+// 
+// How to play
+.page-homepage .how-to-play 
+{
+    background: #1d1d1d;
+    padding: 50px 0;
+}
+
+.page-homepage .section-title 
+{
+    line-height: 1.3;
+
+    & .highlight { font-size: 2.8rem; }
+}
+
+.page-homepage .how-to-play .content 
+{
+    max-width: 100%;
+}
+
+.page-homepage .how-to-play .section-description 
+{
+    width: $md-width;
+    max-width: 100%;
+}
+
+
+//
+// Guide boxes
+.guide-boxes 
+{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 960px;
+    max-width: 100%;
+    margin: 50px auto;
+
+    @media(min-width: $lg-width)
+    {
+        flex-direction: row;
+    }
+}
+
+
+//
+// Official news 
+.page-homepage .news-listings 
+{
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.page-homepage .news-listings .section-description
+{
+    width: $md-width;
+    max-width: 100%;
+    margin-left: 0;
+}
+
+.page-homepage .news-listings .view-all
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 25px auto;
+}
+
+.page-homepage .community-listings 
+{
+    background: #080808;
+}

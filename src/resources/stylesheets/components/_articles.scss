@@ -1,0 +1,30 @@
+.articles
+{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.articles .article-item
+{
+    width: 100%;
+    @media(min-width: $md-width)
+    {
+        width: 50%;
+    }
+}
+
+@media(min-width: $lg-width)
+{
+    .articles .article-item 
+    {
+        width: 30%;
+        margin: 0 15px 0 0;
+    }
+    
+    .articles .article-item:nth-child(1),
+    .articles .article-item:nth-child(2)
+    {
+        width: 45%;
+    }
+}
