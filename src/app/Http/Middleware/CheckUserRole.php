@@ -14,7 +14,11 @@ class CheckUserRole
      * @return mixed
      */
     public function handle($request, Closure $next, ...$role)
-    {
+    {   
+        if ($request->user() == null) { 
+            return redirect("/");
+        }
+        
         if (! $request->user()->hasRole($role)) {
             return redirect("/");
         }
