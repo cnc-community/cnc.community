@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\News;
-use \Illuminate\Http\Request;
+use App\Http\Services\FeedHelper;
+use Illuminate\Http\Request;
 
 class NewsController extends Controller
 {
@@ -33,6 +34,19 @@ class NewsController extends Controller
         $newsItem = News::find($id);
         if ($newsItem == null) abort(404);
         return view('admin.news.edit', ["newsItem" => $newsItem]);
+    }
+    
+    public function getCreate(Request $request)
+    {
+        return view('admin.news.add');
+    }
+
+    public function create(Request $request)
+    {
+        $path = $request->file('image');
+        $image = FeedHelper::createImageFromUrl($path);
+        $newsItem = News::createNewsItem($request->title, $request->post, null, $image, $request->category_id);
+        return redirect('/admin/news/edit/' . $newsItem->id);
     }
 
     public function save(Request $request)

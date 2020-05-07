@@ -25,7 +25,7 @@ class FeedHelper
     /**
      * Creates image and returns path relative to storage dir
      */
-    public static function createImageFromUrl(string $url)
+    public static function createImageFromUrl($url)
     {
         $image = Image::make($url)
             ->resize(600, null, function ($constraint) 

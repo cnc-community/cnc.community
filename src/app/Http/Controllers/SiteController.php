@@ -79,6 +79,17 @@ class SiteController extends Controller
         return view('news.listing', ["news" => $newsByCategoryCache]);
     }
 
+    public function showNewsBySlug($categorySlug, $newsSlug)
+    {
+        $category = Category::where("slug", $categorySlug)->first();
+        if ($category == null) abort(404);
+
+        $newsItem = News::where("url", $newsSlug)->where("category_id", $category->id)->first();
+        if ($newsItem == null) abort(404);
+        
+        return view('news.detail', ["newsItem" => $newsItem]);
+    }
+
     public function clearCache()
     {
         Cache::flush();

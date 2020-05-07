@@ -9,7 +9,7 @@
                     <a href="/admin/news">View all news</a>
                 </div>
                 <div class="card-header">
-                    Live - {{ $newsItem->title }}
+                    Create news item
                 </div>
 
                 <div class="card-body">
@@ -19,28 +19,20 @@
                         </div>
                     @endif
 
-                    <form method="post">
+                    <form method="post" enctype="multipart/form-data">
                         {{csrf_field()}}
                         <input type="hidden" name="post" id="post" />
 
                         <div class="form-group">
                             <label for="title">Post Title</label>
-                            <input id="title" type="text" name="title" class="form-control" value="{{ $newsItem->title }}" />
-                        </div>
-
-                        <div class="form-group">
-                            <label for="status">Status</label>
-                            <select id="status" class="form-control" name="status">
-                                <option value="{{ \App\News::APPROVED }}">Approve</option>
-                                <option value="{{ \App\News::DELETE }}">Permanently delete</option>
-                            </select>
+                            <input id="title" type="text" name="title" class="form-control" />
                         </div>
 
                         <div class="form-group">
                             <label for="category">Category</label>
                             <select id="category" class="form-control" name="category_id">
                             @foreach(\App\Category::all() as $category)
-                                <option value="{{ $category->id}}" {{ $category->id == $newsItem->category_id ? "selected": ""}}>
+                                <option value="{{ $category->id}}">
                                 {{ $category->name }}
                                 </option>
                             @endforeach
@@ -48,12 +40,6 @@
                         </div>
 
                         <div class="form-group">
-                            @if($newsItem->image)
-                            <div style="margin-bottom: 15px">
-                                <img src="{{ asset($newsItem->image) }}" />
-                            </div>
-                            @endif
-                            
                             <label for="image">Choose a new image</label>
                             <input id="image" type="file" name="image" class="form-control" />
                         </div>
@@ -62,7 +48,7 @@
                             <label for="content">Post</label>
 
                             <div id="editor">
-                                {!! $newsItem->post !!}
+                    
                             </div>
                         </div>
                         <button type="submit" class="btn btn-primary">Save</button>

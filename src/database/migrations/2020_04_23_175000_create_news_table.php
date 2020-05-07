@@ -19,9 +19,10 @@ class CreateNewsTable extends Migration
             $table->string('title');
             $table->text('post')->nullable();
             $table->string('image')->nullable();
-            $table->string('url');
+            $table->string('url')->nullable();
+            $table->enum('type', ['internal', 'external']);
             $table->unsignedInteger('category_id');
-            $table->string('feed_uuid')->unique();
+            $table->string('feed_uuid')->unique()->nullable();
             $table->timestamps();
         });
     }

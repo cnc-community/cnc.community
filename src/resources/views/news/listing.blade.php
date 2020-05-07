@@ -10,7 +10,11 @@
                 <div class="card-body">
                     @foreach($news as $newsItem)
                         <div>
-                            <a href="{{ $newsItem->url }}" rel="nofollow" title="{{ $newsItem->title }}" target="_blank">{{ $newsItem->title}}</a>
+                            @if ($newsItem->type == \App\News::NEWS_EXTERNAL)
+                            <a href="{{ $newsItem->url() }}" rel="nofollow" title="{{ $newsItem->title }}" target="_blank">{{ $newsItem->title}}</a>
+                            @else
+                            <a href="{{ $newsItem->url() }}" title="{{ $newsItem->title }}">{{ $newsItem->title}}</a>
+                            @endif
                             <div>
                                 <ul class="list-unstyled">
                                     <li>

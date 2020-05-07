@@ -29,6 +29,8 @@ Route::post('/admin/users/edit/{id}', 'UsersController@save')->middleware('role:
 
 // Admin News management 
 Route::get('/admin/news', 'NewsController@index')->name('admin.news.listing')->middleware('role:admin,editor');
+Route::get('/admin/news/add', 'NewsController@getCreate')->name('admin.news.add')->middleware('role:admin,editor');
+Route::post('/admin/news/add', 'NewsController@create')->name('admin.news.add')->middleware('role:admin,editor');
 Route::get('/admin/news/edit/{id}', 'NewsController@edit')->name('admin.news.edit')->middleware('role:admin,editor');
 Route::post('/admin/news/edit/{id}', 'NewsController@save')->middleware('role:admin,editor');
 
@@ -70,6 +72,7 @@ Route::get('/admin/cache/clear', 'SiteController@clearCache')->middleware('role:
 // Public routes
 Route::get('/', 'SiteController@index')->name('home');
 Route::get('/news/{categorySlug}', 'SiteController@showNewsByCategorySlug')->name('news.listing');
+Route::get('/news/{categorySlug?}/{newsSlug}', 'SiteController@showNewsBySlug')->name('news.detail');
 
 // Pages by category + slug
 Route::get('/{category?}', 'PageController@showPageByCategory');
