@@ -13,7 +13,8 @@
 
 //
 // Vendors
-@import "vendor/prism";
+@import "vendor/prism",
+        "vendor/swiper";
 
 //
 // Global
@@ -33,7 +34,8 @@
         "components/articles",
         "components/article-meta",
         "components/article-item",
-        "components/post-body";
+        "components/post-body",
+        "components/boxes";
 
 
 //

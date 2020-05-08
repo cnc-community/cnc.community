@@ -17,6 +17,19 @@
 @endsection
 
 @section('content')
+<section class="how-to-guides">
+    <div class="main-content">
+        <h2 class="section-title">How to play <br class="hide-for-xs"/>Command &amp; Conquer</h2>
+        <p class="section-description">
+            Consectetur adipiscing elit, sed do eiusmod tempor incidid unt
+        </p>
+    </div>
+        
+    <div class="guides">
+        <?php new App\Http\CustomView\Components\Swiper($__env); ?>
+    </div>
+</section>
+
 <section class="news-listings">
     <div class="main-content">
         <h2 class="section-title">Official Intel</h2>

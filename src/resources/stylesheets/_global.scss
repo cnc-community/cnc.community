@@ -285,3 +285,10 @@ p > code
     margin: 0 auto;
     position: relative;
 }
+
+.swiper-button-prev:after,
+.swiper-button-next:after
+{
+    font-size: 3.5rem;
+    color: #bdbdbd;
+}

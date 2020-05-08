@@ -28,7 +28,7 @@ function cssTask()
         .pipe(autoprefixer({
             browsers: ["last 2 versions"]
         }))
-        .pipe(gulp.dest("./public/css/"));
+        .pipe(gulp.dest("./public/assets/css/"));
 }
 
 
@@ -47,7 +47,7 @@ function compileJsTask()
                 drop_console: true,
             },
         }))
-        .pipe(gulp.dest('./public/js'));
+        .pipe(gulp.dest('./public/assets/js'));
 }
 
 const defaultTask = gulp.series(

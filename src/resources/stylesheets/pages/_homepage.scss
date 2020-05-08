@@ -89,21 +89,36 @@
 
 //
 // Guide boxes
-.guide-boxes 
+.how-to-guides 
 {
     display: flex;
     justify-content: space-around;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    width: 960px;
     max-width: 100%;
     margin: 50px auto;
+}
 
-    @media(min-width: $lg-width)
-    {
-        flex-direction: row;
-    }
+.how-to-guides .guides 
+{
+    display: flex;
+    padding: 36px 0;
+    margin-top: 20px;
+    margin-bottom: 20px
+}
+
+.how-to-guides .guides
+{
+    position: relative;
+    width: 96vw;
+    overflow: hidden;
+}
+
+.how-to-guides .swiper-container 
+{
+    width: 93%;
+    height: 100%;
 }
 
 
@@ -112,6 +127,7 @@
 .page-homepage .news-listings 
 {
     @extend %background-green;
+    background-color: #080808;
     padding-top: 50px;
     padding-bottom: 50px;
     position: relative;
@@ -160,7 +176,6 @@
     }
 }
 
-
 .page-homepage .news-listings .view-all
 {
     display: flex;
@@ -171,5 +186,7 @@
 
 .page-homepage .community-listings 
 {
-    background: #080808;
+    background: #121212;
+
+    &:before { content: none; }
 }

@@ -1,0 +1,70 @@
+.box 
+{
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+
+    position: relative;
+    background-size: 300px;
+    background-repeat: no-repeat;
+    height: 600px;
+    background-position: top;
+
+    &:after {
+        content: "";
+        background: linear-gradient(0deg, black, transparent);
+        position: absolute;
+        bottom: 0;
+        height: 100px;
+        width: 100%;
+    }
+}
+
+.box .logo 
+{
+    position: relative;
+    z-index: 1;
+    height: 100px;
+    display: flex;
+    align-items: center;
+}
+
+.box.tiberian-dawn
+{
+
+}
+
+.box.red-alert
+{
+    background-image: url("../images/boxes/red-alert.jpg");
+}
+
+.box.tiberian-sun
+{
+    background-image: url("../images/boxes/tiberian-sun.jpg");
+}
+
+.box.red-alert-2
+{
+    background-image: url("../images/boxes/red-alert-2.jpg");
+}
+
+.box.renegade
+{
+    background-image: url("../images/boxes/renegade.jpg");
+}
+
+.box.generals
+{
+    background-image: url("../images/boxes/generals.jpg");
+}
+
+.box.red-alert-3
+{
+    background-image: url("../images/boxes/red-alert-3.jpg");
+}
+
+.box.cnc-3
+{
+    background-image: url("../images/boxes/cnc-3.jpg");
+}
