@@ -15,14 +15,15 @@
         Lorem ipsum dolor sit amet, consectetur adipiscing elit,
     </p>
     <div class="buttons">
-
+        <a href="#where-to-get" class="btn btn-primary">Where to get</a>
+        <a href="#how-to-play" class="btn btn-primary">How to play</a>
     </div>
 </div>
 @endsection
 
 @section('content')
 <?php if($whereToGetGames): ?>
-<section class="section where-to-get">
+<section id="where-to-get" class="section where-to-get">
     <div class="main-content">
         <h2 class="section-title">Where to get {{ $category->title }} ?</h2>
         <p class="section-description">
@@ -58,7 +59,7 @@
 <?php endif; ?>
 
 <?php if($howToPlay): ?>
-<section class="section how-to-play">
+<section id="how-to-play" class="section how-to-play">
     <div class="main-content">
         <h2 class="section-title">How to play {{ $category->title }} ?</h2>
         <p class="section-description">
