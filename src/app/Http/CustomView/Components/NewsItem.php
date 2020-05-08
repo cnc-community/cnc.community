@@ -36,30 +36,55 @@ class NewsItem extends AbstractCustomView
          <article class="article-item">
                 <?php if($this->image):?>
                     <div class="image">
-                        <img src="<?php echo $this->image ?>" alt="<?php echo $this->title ?>" />
+                        <a href="<?php echo $this->url; ?>" title="<?php echo $this->title; ?>" rel="nofollow" target="_blank">
+                            <img src="<?php echo $this->image ?>" alt="<?php echo $this->title ?>" />
+                        </a>
                     </div>
                 <?php endif; ?>
 
                 <div class="article-info">
+                    <?php if($this->type == News::NEWS_EXTERNAL):?>
                     <a href="<?php echo $this->url; ?>" title="<?php echo $this->title; ?>" class="article-type" rel="nofollow" target="_blank">
                         <i class="icon-link"></i>
                     </a>
+                    <?php else: ?>
+                    <a href="<?php echo $this->url; ?>" title="<?php echo $this->title; ?>" class="article-type" target="self">
+                        <i class="icon-article"></i>
+                    </a>
+                    <?php endif; ?>
 
                     <h3 class="title">
-                        <?php echo $this->title ?>
+                        <?php if($this->type == News::NEWS_EXTERNAL):?>
+                        <a href="<?php echo $this->url; ?>" title="<?php echo $this->title; ?>" rel="nofollow" target="_blank">
+                            <?php echo $this->title ?>
+                        </a>
+                        <?php else: ?>
+                        <a href="<?php echo $this->url; ?>" title="<?php echo $this->title; ?>">
+                            <?php echo $this->title ?>
+                        </a>
+                        <?php endif; ?>
                     </h3>
 
                     <div class="article-meta">
                         <div class="meta">
                             <div class="tags">
                                 <div class="tag">
-                                    <?php echo $this->category ?>
+                                    <a href="/news/<?php echo $this->category->slug; ?>" title="<?php echo $this->category->name;?>">
+                                        <?php echo $this->category->name; ?>
+                                    </a>
                                 </div>
                             </div>
                             <div class="date">
-                                <p class="published">Posted <?php echo $this->publishedDate ?></p>
+                                <p class="published">
+                                    <?php if($this->type == News::NEWS_INTERNAL) : ?>
+                                        Article published
+                                    <?php else: ?>
+                                        Link posted
+                                    <?php endif; ?>
+                                    <?php echo $this->publishedDate ?>
+                                </p>
                                 <?php if($this->type == News::NEWS_INTERNAL) : ?>
-                                <p class="read-time"><?php echo $this->readTime ?></p>
+                                <p class="read-time"><?php echo $this->readTime ?> read</p>
                                 <?php endif; ?>
                             </div>
                         </div>
@@ -70,13 +95,21 @@ class NewsItem extends AbstractCustomView
                     </div>
 
                     <div class="buttons">
+                        <?php if($this->type == News::NEWS_EXTERNAL):?>
                         <a href="<?php echo $this->url; ?>"
                             title="<?php echo $this->title; ?>"
                             target="_blank"
                             rel="nofollow"
                             class="btn btn-readmore">
-                            View Article
+                            Go to Link 
                         </a>
+                        <?php else: ?>
+                        <a href="<?php echo $this->url; ?>"
+                            title="<?php echo $this->title; ?>"
+                            class="btn btn-readmore">
+                            Go to Article
+                        </a>
+                        <?php endif; ?>
                     </div>
                 </div>
             </article>

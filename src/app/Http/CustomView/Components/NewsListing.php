@@ -7,7 +7,6 @@ use App\Http\CustomView\AbstractCustomView;
 class NewsListing extends AbstractCustomView
 {
     private $_newsItems;
-    private $url;
 
     public function __construct($newsItems)
     {
@@ -21,16 +20,18 @@ class NewsListing extends AbstractCustomView
 
          <section class="articles">
             <?php foreach($this->_newsItems as $newsItem):?>
-                <?php new NewsItem(
-                    $newsItem->title, 
-                    $newsItem->url, 
-                    $newsItem->excerpt(), 
-                    $newsItem->image, 
-                    $newsItem->category()->name,
-                    $newsItem->created_at->diffForHumans(),
-                    $newsItem->readTime(),
-                    $newsItem->type
-            ); ?>
+                <?php 
+                    new NewsItem(
+                        $newsItem->title, 
+                        $newsItem->url(), 
+                        $newsItem->excerpt(), 
+                        $newsItem->image, 
+                        $newsItem->category(),
+                        $newsItem->created_at->diffForHumans(),
+                        $newsItem->readTime(),
+                        $newsItem->type
+                    ); 
+                ?>
             <?php endforeach; ?>
         </section>
 

@@ -15,6 +15,7 @@
     <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
     <link href="{{ asset('admin/css/jodit.min.css') }}" rel="stylesheet">
     <script src="{{ asset('admin/js/jodit.min.js') }}"></script>
+    <script src="{{ asset('admin/js/app.js') }}"></script>
     <link href="{{ asset('admin/css/app.css') }}" rel="stylesheet">
 </head>
 <body>

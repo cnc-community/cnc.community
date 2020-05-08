@@ -24,13 +24,13 @@ class News extends Model
         $word = str_word_count(strip_tags($this->post));
         $m = floor($word / 200);
         $s = floor($word % 200 / (200 / 60));
-        $est = $m . ' minute' . ($m == 1 ? '' : 's');
+        $est = $m . ' minute';
         return $est;
     }
 
     public function excerpt()
     {
-        return Str::limit($this->post, 450);
+        return Str::limit(strip_tags($this->post, "<p>"), 450);
     }
 
     public function url()
@@ -40,7 +40,7 @@ class News extends Model
             return $this->url;
         }
         
-        return $this->category()->slug . "/" . $this->url;
+        return "/news/" . $this->category()->slug . "/" . $this->url;
     }
 
     public function category()

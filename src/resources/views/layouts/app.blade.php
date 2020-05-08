@@ -11,7 +11,7 @@
 <main>
     <div class="page page-@yield('page-class')">
         <header class="site-header">
-            <div class="content">
+            <div class="main-content">
                 <div class="logo">
                     <a href="/" title="C&C Community">
                         <img src="/images/logo.svg" alt="C&C Community Logo" />

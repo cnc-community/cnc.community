@@ -111,8 +111,28 @@
 // Official news 
 .page-homepage .news-listings 
 {
+    @extend %background-green;
     padding-top: 50px;
     padding-bottom: 50px;
+    position: relative;
+}
+
+.page-homepage .news-listings::before
+{
+    content: "";
+    background: linear-gradient(180deg, black, transparent);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 150px;
+    z-index: 0;
+}
+
+.page-homepage .news-listings .articles 
+{
+    padding-top: 50px;
 }
 
 .page-homepage .news-listings .section-description
@@ -120,7 +140,21 @@
     width: $md-width;
     max-width: 100%;
     margin-left: 0;
+
+    @media(min-width: $md-width)
+    {
+        padding-left: 35px;
+    }
 }
+
+.page-homepage .news-listings .section-title 
+{
+    @media(min-width: $md-width)
+    {
+        padding-left: 35px;
+    }
+}
+
 
 .page-homepage .news-listings .view-all
 {

@@ -13,7 +13,7 @@
     z-index: 2;
 }
 
-.site-header .content
+.site-header .main-content
 {
     display: flex;
     align-items: center;
@@ -155,7 +155,7 @@
 
 @media(min-width: $sm-width)
 {
-    .site-header .content
+    .site-header .main-content
     {
         flex-direction: row;
     }

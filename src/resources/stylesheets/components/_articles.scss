@@ -8,10 +8,6 @@
 .articles .article-item
 {
     width: 100%;
-    @media(min-width: $md-width)
-    {
-        width: 50%;
-    }
 }
 
 .article-item .buttons
@@ -19,17 +15,30 @@
     display: flex;
 }
 
-@media(min-width: $lg-width)
+.articles .article-item 
 {
-    .articles .article-item 
+    width: 90vw;
+    margin-top: 35px;
+
+    @media(min-width: $sm-width)
     {
-        width: 28vw;
-        margin: 0 15px 0 0;
+        width: 70vw;
     }
-    
-    .articles .article-item:nth-child(1),
-    .articles .article-item:nth-child(2)
+
+    @media(min-width: $md-width)
     {
-        width: 45%;
+        width: 42vw;
+        margin-top: 0;
+    }
+
+    @media(min-width: $xl-width)
+    {
+        width: 40vw;
+    }
+
+    @media(min-width: $xxl-width)
+    {
+        width: 27vw;
     }
 }
+

@@ -72,7 +72,7 @@ $icon-xl-size: $font-size-xl * 5;
 // Generic 
 $color-white: #fff;
 $color-secondary: #adadad;
-$color-gold: #e6b044;
+$color-gold: #dd9c00;
 $color-gold-400: #f4c973;
 
 $color-green: #5ee644;
@@ -99,6 +99,17 @@ $xl-max-width: 1150px;
 $xxl-width: 1400px;
 $xxl-max-width: 1350px;
 
+
+%background-green {
+    background: url("../images/bg-green.jpg");
+    background-repeat: repeat-x;
+    background-position: top center;
+
+    @media(min-width: $xl-width)
+    {
+        background-position: top right;
+    }
+}
 
 //
 // Animations
