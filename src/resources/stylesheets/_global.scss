@@ -88,6 +88,8 @@ ul li
 ol, 
 ul {
     padding-left: 20px;
+    margin-left: 25px;
+    margin-right: 25px;
 }
 
 img 
@@ -326,4 +328,24 @@ p > code
     align-items: center;
     justify-content: center;
     height: 100%;
+}
+
+.page-content 
+{
+    text-align: left;
+}
+
+.page-content.center 
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+}
+
+.page-content a
+{
+    color: $color-gold;
+    text-decoration: underline;
 }
