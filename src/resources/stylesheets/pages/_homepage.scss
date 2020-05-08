@@ -132,7 +132,12 @@
 
 .page-homepage .news-listings .articles 
 {
-    padding-top: 50px;
+    padding-top: 15px;
+
+    @media(min-width: $md-width)
+    {
+        padding-top: 50px;
+    }
 }
 
 .page-homepage .news-listings .section-description

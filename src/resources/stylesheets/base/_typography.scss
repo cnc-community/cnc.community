@@ -19,7 +19,7 @@ h1
 
 h2
 {
-    font-size: ($font-size-base * 1.85);
+    font-size: ($font-size-base * 2);
 }
 
 h3 
@@ -39,13 +39,13 @@ h5
 
 p, ul, ol
 {
-    font-size: ($font-size-base * 1.35);
+    font-size: ($font-size-base * 1.15);
     line-height: 1.65;
 }
 
 p.lead 
 {
-    font-size: ($font-size-base * 1.65);
+    font-size: ($font-size-base * 1.25);
     line-height: 1.6;
 }
 
@@ -59,7 +59,48 @@ p.lead
     }
 }
 
-@media(min-width: $sm-width)
+@media(min-width: $lg-width)
+{
+    h1
+    {
+        font-size: ($font-size-base * 2.5);
+    }
+    
+    h2
+    {
+        font-size: ($font-size-base * 2.4);
+    }
+    
+    h3 
+    {
+        font-size: ($font-size-base * 1.8);
+    }
+    
+    h4 
+    {
+        font-size: ($font-size-base * 1.55);
+    }
+    
+    h5
+    {
+        font-size: ($font-size-base * 1.45);
+    }
+
+    p, ul, ol
+    {
+        font-size: ($font-size-base * 1.15);
+    }
+
+    p.lead 
+    {
+        font-size: ($font-size-base * 1.45);
+        line-height: 1.6;
+    }
+}
+
+
+
+@media(min-width: $xl-width)
 {
     h1
     {
@@ -68,7 +109,7 @@ p.lead
     
     h2
     {
-        font-size: ($font-size-base * 2.3);
+        font-size: ($font-size-base * 2.8);
     }
     
     h3 
