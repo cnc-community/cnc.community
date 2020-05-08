@@ -79,27 +79,27 @@ class Swiper extends AbstractCustomView
                         autoplay: true,
                         pagination: false,
                         navigation: {
-                            nextEl: '.swiper-button-next',
-                            prevEl: '.swiper-button-prev',
+                            nextEl: ".swiper-button-next",
+                            prevEl: ".swiper-button-prev",
                         },
                         breakpoints: {
-                        340: {
-                            slidesPerView: 2,
-                            spaceBetween: 10,
-                        },
-                        768: {
-                            slidesPerView: 5,
-                            spaceBetween: 10,
-                        },
-                        1024: {
-                            slidesPerView: 7,
-                            spaceBetween: 10,
-                        },
-                        1280: {
-                            slidesPerView: 8,
-                            spaceBetween: 10,
-                        },
-                    }
+                            340: {
+                                slidesPerView: 2,
+                                spaceBetween: 10,
+                            },
+                            768: {
+                                slidesPerView: 5,
+                                spaceBetween: 10,
+                            },
+                            1024: {
+                                slidesPerView: 7,
+                                spaceBetween: 10,
+                            },
+                            1280: {
+                                slidesPerView: 8,
+                                spaceBetween: 10,
+                            },
+                        }
                     });
                 })();
             </script>

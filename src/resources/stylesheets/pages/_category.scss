@@ -1,0 +1,42 @@
+
+.page-category .hero
+{
+    @extend %background-generic;
+}
+
+.page-category .boxes 
+{
+    display: flex;
+    justify-content: center;
+    width: 75vw;
+    margin: 0 auto;
+}
+
+.page-category .box
+{
+    width: 300px;    
+    margin: 0 15px;
+}
+
+.page-category .box::after
+{
+    height: 100%;
+}
+
+.page-category .section.where-to-get
+{
+    text-align: center;
+    padding: 35px 0;
+}
+
+.page-category .section.how-to-play 
+{
+    background: #000;
+    text-align: center;
+    padding: 35px 0;
+}
+
+.page-category .section .boxes
+{
+    padding: 35px 0;    
+}

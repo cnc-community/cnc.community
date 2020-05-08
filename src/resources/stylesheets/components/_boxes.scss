@@ -29,6 +29,18 @@
     align-items: center;
 }
 
+.box .description 
+{
+    position: relative;
+    z-index: 1;
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+// 
+// Game themed boxes
+
 .box.tiberian-dawn
 {
 
