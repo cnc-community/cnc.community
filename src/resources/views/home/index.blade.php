@@ -17,7 +17,7 @@
 @endsection
 
 @section('content')
-<section class="how-to-guides">
+<section id="games" class="how-to-guides">
     <div class="main-content">
         <h2 class="section-title">How to play <br class="hide-for-xs"/>Command &amp; Conquer</h2>
         <p class="section-description">

@@ -36,7 +36,7 @@ class NewsItem extends AbstractCustomView
          <article class="article-item">
                 <?php if($this->image):?>
                     <div class="image">
-                        <a href="<?php echo $this->url; ?>" title="<?php echo $this->title; ?>" rel="nofollow" target="_blank">
+                        <a href="<?php echo $this->url; ?>" title="<?php echo $this->title; ?>" rel="nofollow noreferrer" target="_blank">
                             <img src="<?php echo $this->image ?>" alt="<?php echo $this->title ?>" />
                         </a>
                     </div>
@@ -44,7 +44,7 @@ class NewsItem extends AbstractCustomView
 
                 <div class="article-info">
                     <?php if($this->type == News::NEWS_EXTERNAL):?>
-                    <a href="<?php echo $this->url; ?>" title="<?php echo $this->title; ?>" class="article-type" rel="nofollow" target="_blank">
+                    <a href="<?php echo $this->url; ?>" title="<?php echo $this->title; ?>" class="article-type"  rel="nofollow noreferrer" target="_blank">
                         <i class="icon-link"></i>
                     </a>
                     <?php else: ?>
@@ -55,7 +55,7 @@ class NewsItem extends AbstractCustomView
 
                     <h3 class="title">
                         <?php if($this->type == News::NEWS_EXTERNAL):?>
-                        <a href="<?php echo $this->url; ?>" title="<?php echo $this->title; ?>" rel="nofollow" target="_blank">
+                        <a href="<?php echo $this->url; ?>" title="<?php echo $this->title; ?>" rel="nofollow noreferrer" target="_blank">
                             <?php echo $this->title ?>
                         </a>
                         <?php else: ?>
@@ -99,7 +99,7 @@ class NewsItem extends AbstractCustomView
                         <a href="<?php echo $this->url; ?>"
                             title="<?php echo $this->title; ?>"
                             target="_blank"
-                            rel="nofollow"
+                             rel="nofollow noreferrer"
                             class="btn btn-readmore">
                             Go to Link 
                         </a>
