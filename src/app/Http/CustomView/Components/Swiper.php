@@ -20,11 +20,11 @@ class Swiper extends AbstractCustomView
         ?>
             <div class="swiper-container">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide box red-alert">
+                    <a href="red-alert" class="swiper-slide box red-alert" title="How to play Red Alert">
                         <div class="logo">
                             <img src="assets/images/boxes/logos/red-alert-logo.png" alt="Red Alert logo" />
                         </div>
-                    </div>
+                    </a>
 
                     <div class="swiper-slide box tiberian-sun">
                         <div class="logo">
