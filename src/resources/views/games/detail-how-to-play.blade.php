@@ -12,8 +12,9 @@
         {{ $page->description }}
     </p>
     <div class="buttons">
-        <a href="#where-to-get" class="btn btn-primary">Where to get</a>
-        <a href="#how-to-play" class="btn btn-primary">How to play</a>
+        <a href="{{ $page->category()->url() }}" class="btn btn-primary" title="Go to {{ $page->category()->title }}">
+            View other {{ $page->category()->title }} tutorials
+        </a>
     </div>
 </div>
 @endsection
@@ -28,7 +29,9 @@
             Consectetur adipiscing elit, sed do eiusmod
             tempor incidid unt
         </p>
-        <?php print $howToPlaySteps; ?>
+        <div class="page-content">
+            <?php print $howToPlaySteps; ?>
+        </div>
     </div>
 </section>
 <?php endif; ?>
@@ -42,7 +45,9 @@
             Consectetur adipiscing elit, sed do eiusmod
             tempor incidid unt
         </p>
-        <?php print $howToPlayVideo; ?>
+        <div class="page-content">
+            <?php print $howToPlayVideo; ?>
+        </div>
     </div>
 </section>
 <?php endif; ?>
@@ -56,7 +61,9 @@
             Consectetur adipiscing elit, sed do eiusmod
             tempor incidid unt
         </p>
-        <?php print $howToPlayHelp; ?>
+        <div class="page-content">
+            <?php print $howToPlayHelp; ?>
+        </div>
     </div>
 </section>
 <?php endif; ?>
