@@ -1,0 +1,23 @@
+
+.page-game-detail .hero
+{
+    @extend %background-generic;
+}
+
+.page-game-detail .section.how-to-play-steps
+{
+    text-align: center;
+    padding: 35px 0;
+}
+
+.page-game-detail .section.video-tutorial
+{
+    background: #000;
+    text-align: center;
+    padding: 35px 0;
+}
+
+.page-game-detail .section .boxes
+{
+    padding: 35px 0;    
+}
