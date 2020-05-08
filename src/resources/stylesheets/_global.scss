@@ -297,3 +297,33 @@ p > code
 {
     background: #121212;
 }
+
+// Temp 
+.admin-nav 
+{
+    display: block;
+    color: white;
+    height: 150px;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background: #000000cc;
+    bottom: 0;
+}
+
+.admin-nav h5, 
+.admin-nav p 
+ { margin: 0 ; }
+ 
+.admin-nav .logged-in 
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
