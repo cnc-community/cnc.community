@@ -55,6 +55,7 @@
                         {{-- <a href="#">Communities</a> --}}
                         <a href="#">Creators</a>
                         <a href="#">Remasters</a>
+                        <a href="/funny">Funny/Cool</a>
                         {{-- <a href="#">Modding</a> --}}
                     </div>
                 </nav>
@@ -62,11 +63,13 @@
         </header>
 
         <main role="main">
+         @if(View::hasSection('hero'))
             <section class="hero">
                 <div class="hero-content">
                     @yield('hero')
                 </div>
             </section>
+            @endif
 
             @yield('content')
         </main>

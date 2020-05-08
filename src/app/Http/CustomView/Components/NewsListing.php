@@ -17,7 +17,7 @@ class NewsListing extends AbstractCustomView
     public function render()
     {
         ?>
-
+    
          <section class="articles">
             <?php foreach($this->_newsItems as $newsItem):?>
                 <?php 
