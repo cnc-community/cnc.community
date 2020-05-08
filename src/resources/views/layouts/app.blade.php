@@ -52,9 +52,10 @@
                 <nav>
                     <div>
                         <a href="/#games">Games</a>
-                        <a href="#">Communities</a>
+                        {{-- <a href="#">Communities</a> --}}
                         <a href="#">Creators</a>
-                        <a href="#">Modding</a>
+                        <a href="#">Remasters</a>
+                        {{-- <a href="#">Modding</a> --}}
                     </div>
                 </nav>
             </div>

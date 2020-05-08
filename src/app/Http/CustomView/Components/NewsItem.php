@@ -37,7 +37,7 @@ class NewsItem extends AbstractCustomView
                 <?php if($this->image):?>
                     <div class="image">
                         <a href="<?php echo $this->url; ?>" title="<?php echo $this->title; ?>" rel="nofollow noreferrer" target="_blank">
-                            <img src="<?php echo $this->image ?>" alt="<?php echo $this->title ?>" />
+                            <img src="<?php echo $this->image ?>" alt="<?php echo $this->title ?>" loading="lazy" />
                         </a>
                     </div>
                 <?php endif; ?>

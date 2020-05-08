@@ -45,7 +45,7 @@
             Consectetur adipiscing elit, sed do eiusmod
             tempor incidid unt
         </p>
-        <div class="page-content">
+        <div class="page-content center">
             <?php print $howToPlayVideo; ?>
         </div>
     </div>

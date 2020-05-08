@@ -22,43 +22,43 @@ class Swiper extends AbstractCustomView
                 <div class="swiper-wrapper">
                     <a href="red-alert" class="swiper-slide box red-alert" title="How to play Red Alert">
                         <div class="logo">
-                            <img src="assets/images/boxes/logos/red-alert-logo.png" alt="Red Alert logo" />
+                            <img src="assets/images/boxes/logos/red-alert-logo.png" loading="lazy" alt="Red Alert logo" />
                         </div>
                     </a>
 
                     <div class="swiper-slide box tiberian-sun">
                         <div class="logo">
-                            <img src="assets/images/boxes/logos/tiberian-sun-logo.png" alt="Tiberian Sun logo" />
+                            <img src="assets/images/boxes/logos/tiberian-sun-logo.png" loading="lazy"  alt="Tiberian Sun logo" />
                         </div>
                     </div>
 
                     <div class="swiper-slide box red-alert-2">
                         <div class="logo">
-                            <img src="assets/images/boxes/logos/red-alert-logo.png" alt="Red Alert logo" />
+                            <img src="assets/images/boxes/logos/red-alert-logo.png" loading="lazy"  alt="Red Alert logo" />
                         </div>
                     </div>
 
                     <div class="swiper-slide box renegade">
                         <div class="logo">
-                            <img src="assets/images/boxes/logos/renegade-logo.png" alt="Renegade logo" />
+                            <img src="assets/images/boxes/logos/renegade-logo.png" loading="lazy"  alt="Renegade logo" />
                         </div>
                     </div>
 
                     <div class="swiper-slide box generals">
                         <div class="logo">
-                            <img src="assets/images/boxes/logos/generals-logo.png" alt="Generals logo" />
+                            <img src="assets/images/boxes/logos/generals-logo.png" loading="lazy"  alt="Generals logo" />
                         </div>
                     </div>
 
                     <div class="swiper-slide box red-alert-3">
                         <div class="logo">
-                            <img src="assets/images/boxes/logos/red-alert-3-logo.png" alt="Red Alert 3 logo" />
+                            <img src="assets/images/boxes/logos/red-alert-3-logo.png" loading="lazy"  alt="Red Alert 3 logo" />
                         </div>
                     </div>
 
                     <div class="swiper-slide box cnc-3">
                         <div class="logo">
-                            <img src="assets/images/boxes/logos/cnc-3-logo.png" alt="C&C 3 logo" />
+                            <img src="assets/images/boxes/logos/cnc-3-logo.png" loading="lazy" alt="C&C 3 logo" />
                         </div>
                     </div>
                 </div>
