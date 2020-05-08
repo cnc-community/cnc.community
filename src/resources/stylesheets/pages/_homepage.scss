@@ -133,19 +133,6 @@
     position: relative;
 }
 
-.page-homepage .news-listings::before
-{
-    content: "";
-    background: linear-gradient(180deg, black, transparent);
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-    height: 150px;
-    z-index: 0;
-}
-
 .page-homepage .news-listings .articles 
 {
     padding-top: 15px;
