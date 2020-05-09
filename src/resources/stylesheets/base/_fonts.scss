@@ -1,0 +1,85 @@
+
+$fontPath: "../fonts/";
+
+@font-face {
+    font-family: "cnc-community";
+    src:  url($fontPath + "cnc-community.eot?ug6p5n");
+    src:  url($fontPath + "cnc-community.eot?ug6p5n#iefix") format("embedded-opentype"),
+    url($fontPath + "cnc-community.ttf?ug6p5n") format("truetype"),
+    url($fontPath + "cnc-community.woff?ug6p5n") format("woff"),
+    url($fontPath + "cnc-community.svg?ug6p5n#cnc-community") format("svg");
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+i {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'cnc-community' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    font-size: $icon-sm-size;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-article:before 
+{
+    content: "\e900";
+}
+
+.icon-link:before 
+{
+    content: "\e901";
+}
+
+.icon-twitter:before 
+{
+    content: "\e902";
+}
+
+.icon-steam:before 
+{
+    content: "\e903";
+}
+
+.icon-reddit:before 
+{
+    content: "\e904";
+}
+
+.icon-discord:before 
+{
+    content: "\e905";
+}
+
+.icon-facebook:before 
+{
+    content: "\e906";
+}
+
+// Icon sizes
+.icon-xs
+{
+    font-size: $icon-xs-size;
+}
+
+.icon-sm
+{
+    font-size: $icon-sm-size;
+}
+
+.icon-md
+{
+    font-size: $icon-md-size;
+}
+
+.icon-lg
+{
+    font-size: $icon-lg-size;
+}

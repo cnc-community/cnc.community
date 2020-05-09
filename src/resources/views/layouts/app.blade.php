@@ -58,6 +58,13 @@
                         <a href="/funny">Funny/Cool</a>
                         {{-- <a href="#">Modding</a> --}}
                     </div>
+                    <div class="social-links">
+                        <a href="#"><i class="icon-discord"></i></a>
+                        <a href="#"><i class="icon-facebook"></i></a>
+                        <a href="#"><i class="icon-twitter"></i></a>
+                        <a href="#"><i class="icon-steam"></i></a>
+                        <a href="#"><i class="icon-reddit"></i></a>
+                    </div>
                 </nav>
             </div>
         </header>
