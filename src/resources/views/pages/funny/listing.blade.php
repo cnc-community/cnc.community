@@ -6,7 +6,7 @@
 @section('content')
 <section class="funny-listings">
     <div class="main-content">
-    <h3>Funny/Cool</h3>
+    <h1>Funny/Cool</h1>
     <p>Funny or cool Command &amp; Conquer things</p>
         <?php new App\Http\CustomView\Components\NewsListing($funnyItems); ?>
     </div>

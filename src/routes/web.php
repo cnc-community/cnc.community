@@ -72,6 +72,8 @@ Route::get('/admin/cache/clear', 'SiteController@clearCache')->middleware('role:
 // Public routes
 Route::get('/', 'SiteController@index')->name('home');
 Route::get('/funny', 'SiteController@showFunnyListings')->name('pages.funny.listing');
+Route::get('/creators', 'SiteController@showCreatorsListings')->name('pages.creators.listing');
+Route::get('/remasters', 'SiteController@showRemastersListings')->name('pages.remasters.listing');
 
 Route::get('/news/{categorySlug}', 'SiteController@showNewsByCategorySlug')->name('news.listing');
 Route::get('/news/{categorySlug?}/{newsSlug}', 'SiteController@showNewsBySlug')->name('news.detail');

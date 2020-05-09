@@ -107,6 +107,16 @@ class SiteController extends Controller
         return view('pages.funny.listing', ["funnyItems" => $funnyCategoryCache]);
     }
 
+    public function showCreatorsListings()
+    {
+        return view('pages.creators.listing');
+    }
+
+    public function showRemastersListings()
+    {
+        return view('pages.remasters.listing');
+    }
+
     public function clearCache()
     {
         Cache::flush();
