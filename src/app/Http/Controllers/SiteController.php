@@ -96,7 +96,7 @@ class SiteController extends Controller
 
         $categoryCache = Cache::remember($key."funny.listing.showFunnyListings", Constants::getCacheSeconds(), function ()
         {
-            return Category::where("name", "Funny")->first();
+            return Category::where("name", Category::CATEGORY_FUNNY)->first();
         });
 
         $funnyCategoryCache = Cache::remember($key."funny.listing.showFunnyListings", Constants::getCacheSeconds(), function () use ($categoryCache)
