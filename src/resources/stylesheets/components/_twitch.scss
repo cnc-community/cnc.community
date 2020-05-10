@@ -1,0 +1,96 @@
+.twitch-streams 
+{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.twitch-games-navbar
+{
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    padding: 15px 0;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.twitch-games-navbar .twitch-game-link
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    background: #0e0e0e;
+    color: #545454;
+    border-radius: 10px;
+    margin: 8px;
+    position: relative;
+    @extend .font-secondary;
+    text-transform: uppercase;
+}
+
+.twitch-games-navbar .count 
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background: #3f423e;
+    color: #868686;
+    @extend .font-secondary;
+    font-size: 1rem;
+    border-radius: 50px;
+    margin-left: 15px;
+    padding: 12px;
+    top: -5px;
+    right: -5px;
+}
+
+.twitch-games-navbar .twitch-game-link.live 
+{
+    background: #151515;
+    color: $color-white;
+    transition: color ease-in-out 300ms;
+}
+
+.twitch-games-navbar .twitch-game-link.live .count 
+{
+    background: #099800;
+    color: $color-white;
+}
+
+.twitch-games-navbar .twitch-game-link.active
+{
+    background: #076f00;
+    color: $color-white;
+}
+
+.twitch-streams .twitch-embed 
+{
+    width: 80vw;
+    margin-bottom: 50px;
+    padding-bottom: 550px;
+
+    @media(min-width: $sm-width)
+    {
+        width: 70vw;
+        margin-bottom: 0;
+    }
+
+    @media(min-width: $xl-width)
+    {
+        width: 40vw;
+    }
+
+    @media(min-width: $xxl-width)
+    {
+        width: 27vw;
+    }
+}
+
+.twitch-streams .twitch-embed iframe 
+{
+    max-height: 500px;
+}

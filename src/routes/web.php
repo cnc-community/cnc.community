@@ -70,9 +70,6 @@ Route::get('/admin/cache/clear', 'SiteController@clearCache')->middleware('role:
 
 //
 // Public routes
-Route::get('/twitch/stream{gameId}', 'APIController@streamByGameId');
-Route::get('/twitch/streams', 'APIController@streamByGames');
-
 Route::get('/', 'SiteController@index')->name('home');
 Route::get('/funny', 'SiteController@showFunnyListings')->name('pages.funny.listing');
 Route::get('/creators', 'SiteController@showCreatorsListings')->name('pages.creators.listing');

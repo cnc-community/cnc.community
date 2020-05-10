@@ -41,13 +41,28 @@ class TwitchStreamsAPI extends AbstractTwitchAPI
             }
             $queryString .= "&game_id=" . $game;
         }
-       
+
         return Cache::remember('getStreamByGames'.$queryString, 300, function () use($queryString)
         {
             $response = Http::withHeaders(["Client-ID" => $this->_clientId])
                 ->get($this->_apiUrl . TwitchStreamsAPI::STREAMS_URL . $queryString . '&first=100');
-
             return $response["data"];
+        });
+    }
+
+    public function getCounts($data)
+    {
+        return Cache::remember('getCounts', 300, function () use($data)
+        {
+            $games = [];
+            foreach($data as $twitchUser)
+            {
+                if (!in_array($twitchUser["user_name"], $games))
+                {
+                    $games[$twitchUser["game_id"]][]= $twitchUser["user_name"];
+                }
+            }
+            return $games;
         });
     }
 }

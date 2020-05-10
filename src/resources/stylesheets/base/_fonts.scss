@@ -1,6 +1,45 @@
 
 $fontPath: "../fonts/";
 
+$font-open-sans: 'Open Sans', sans-serif;
+$font-oswald: 'Oswald', sans-serif;
+
+.font-primary-light
+{
+    font-family: $font-open-sans;
+    font-weight: 300;
+}
+
+.font-primary
+{
+    font-family: $font-open-sans;
+    font-weight: 500;
+}
+
+.font-primary-bold
+{
+    font-family: $font-open-sans;
+    font-weight: 700;
+}
+
+.font-secondary-light
+{
+    font-family: $font-oswald;
+    font-weight: 500;
+}
+
+.font-secondary 
+{
+    font-family: $font-oswald;
+    font-weight: 500;
+}
+
+.font-secondary-bold
+{
+    font-family: $font-oswald;
+    font-weight: 700;
+}
+
 @font-face {
     font-family: "cnc-community";
     src:  url($fontPath + "cnc-community.eot?ug6p5n");

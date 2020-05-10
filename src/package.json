@@ -1,7 +1,9 @@
 {
     "private": true,
     "scripts": {
-        "dev": "gulp"
+        "dev:css": "gulp",
+        "dev:ts": "parcel watch resources/typescript/*.ts --out-dir public/js/ --no-source-maps",
+        "build:ts": "parcel build resources/typescript/*.ts --out-dir public/js/ --no-source-maps"
     },
     "devDependencies": {
         "gulp": "^4.0.2",
@@ -10,6 +12,7 @@
         "gulp-copy": "^4.0.1",
         "gulp-nw-builder": "^1.4.0",
         "gulp-sass": "^3.1.0",
-        "gulp-terser": "^1.2.0"
+        "gulp-terser": "^1.2.0",
+        "typescript": "^3.8.3"
     }
 }

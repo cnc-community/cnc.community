@@ -20,3 +20,4 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/twitch/stream/{gameId}', 'APIController@streamByGameId');
 Route::get('/twitch/streams', 'APIController@streamByGames');
+Route::get('/twitch/streams/count', 'APIController@streamCount');

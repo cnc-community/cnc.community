@@ -1,8 +1,5 @@
 @charset "UTF-8";
 
-@import url('https://fonts.googleapis.com/css?family=Kaushan+Script|Open+Sans:300,400,600&display=swap');
-
-
 //
 // Core styles, fonts and variables
 @import "base/variables",
@@ -18,8 +15,7 @@
 
 //
 // Global
-@import "global",
-        "page";
+@import "global";
 
 
 //
@@ -35,7 +31,8 @@
         "components/article-meta",
         "components/article-item",
         "components/post-body",
-        "components/boxes";
+        "components/boxes",
+        "components/twitch";
 
 
 //
@@ -45,4 +42,5 @@
         "pages/news-detail",
         "pages/category",
         "pages/game-detail",
-        "pages/funny";
+        "pages/funny",
+        "pages/creators";

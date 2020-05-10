@@ -15,7 +15,6 @@ function watchFiles()
     gulp.watch(["./resources/stylesheets/**/*.scss"], cssTask);
 }
 
-
 // 
 // Compile SCSS to CSS
 function cssTask()
