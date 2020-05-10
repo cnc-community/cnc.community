@@ -2,8 +2,8 @@
     "private": true,
     "scripts": {
         "dev:css": "gulp",
-        "dev:ts": "parcel watch resources/typescript/*.ts --out-dir public/js/ --no-source-maps",
-        "build:ts": "parcel build resources/typescript/*.ts --out-dir public/js/ --no-source-maps"
+        "dev:ts": "parcel watch resources/typescript/*.ts --out-dir public/assets/js/ --no-source-maps",
+        "build:ts": "parcel build resources/typescript/*.ts --out-dir public/assets/js/ --no-source-maps"
     },
     "devDependencies": {
         "gulp": "^4.0.2",

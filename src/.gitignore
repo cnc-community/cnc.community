@@ -13,3 +13,4 @@ yarn-error.log
 
 public/css
 public/assets/css
+.cache/

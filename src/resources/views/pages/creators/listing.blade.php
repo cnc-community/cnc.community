@@ -36,6 +36,6 @@
 @endsection
 
 @section("scripts")
-<script src="/js/TwitchStreamByGameId.js" defer></script>
-<script src="/js/TwitchCountNav.js" defer></script>
+<script src="/assets/js/TwitchStreamByGameId.js" defer></script>
+<script src="/assets/js/TwitchCountNav.js" defer></script>
 @endsection
