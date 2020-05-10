@@ -35,8 +35,19 @@
 <section class="stream-listings">
     <div class="main-content">
         <h2 class="section-title">Command &amp; Conquer streamers</h2>
+
         <div id="streams" class="twitch-streams">
             <h3>No streams online for this game.</h3>
+        </div>
+    </div>
+</section>
+
+<section class="video-listings">
+    <div class="main-content">
+        <h2 class="section-title">Recent Command &amp; Conquer videos</h2>
+
+        <div id="videos" class="twitch-streams">
+            <h3>No videos found online for this game.</h3>
         </div>
     </div>
 </section>
@@ -45,5 +56,6 @@
 
 @section("scripts")
 <script src="/assets/js/TwitchStreamByGameId.js" defer></script>
+<script src="/assets/js/TwitchVideoByGameId.js" defer></script>
 <script src="/assets/js/TwitchCountNav.js" defer></script>
 @endsection

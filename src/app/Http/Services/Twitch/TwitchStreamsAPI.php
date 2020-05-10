@@ -19,6 +19,18 @@ class TwitchStreamsAPI extends AbstractTwitchAPI
         $this->_clientId = $clientId;
     }
 
+    public function getVideosByGame($gameId)
+    {   
+        return Cache::remember('getVideosByGame'.$gameId, 86400, function () use($gameId) // 1 day cache
+        {
+            $response = Http::withHeaders(["Client-ID" => $this->_clientId])
+                ->get($this->_apiUrl . TwitchStreamsAPI::VIDEOS_URL . '?game_id='. $gameId . '&first=3');
+
+            return $response["data"];
+        });
+    }
+
+
     public function getStreamByGame($gameId)
     {   
         return Cache::remember('getStreamByGames'.$gameId, 300, function () use($gameId)

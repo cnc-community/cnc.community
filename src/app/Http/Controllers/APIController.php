@@ -42,4 +42,9 @@ class APIController extends Controller
     {
         return $this->twitchStreamsAPI->getStreamByGames(["235","10393","14999","1421","4012","1900","20015","16580","5090","3813"]);
     }
+
+    public function videosByGameId($gameId)
+    {
+        return $this->twitchStreamsAPI->getVideosByGame($gameId);
+    }
 }

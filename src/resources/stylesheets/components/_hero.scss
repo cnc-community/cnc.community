@@ -45,13 +45,6 @@
     margin-top: 0;
 }
 
-.hero-slant-right:after 
-{
-    @extend .slant;
-    bottom: 0;
-    right: 0;
-}
-
 .hero-content
 {
     width: 100%;

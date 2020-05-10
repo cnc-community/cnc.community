@@ -21,11 +21,22 @@
     
     @media(min-width: $xl-width)
     {
-        justify-content: space-between;
+        justify-content: flex-start;
     }
 }
 
-.page-creators .twitch-streams  .stream-embed 
+@media(min-width: $xl-width)
 {
-    padding: 15px 0;
+    .page-creators .twitch-streams .twitch-embed 
+    {
+        margin-right: 15px;
+    }
+}
+
+.page-creators .video-listings 
+{
+    background: #000;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    position: relative;
 }
