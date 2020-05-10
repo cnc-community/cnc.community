@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Sites\PPMFeed;
-use App\Http\Sites\DTAFeed;
 use App\Http\Services\XMLFeedParser;
 use App\Http\Services\RedditFeedParser;
 use App\Http\Services\SteamFeedParser;

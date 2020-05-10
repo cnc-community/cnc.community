@@ -6,7 +6,7 @@
 @section('content')
 <section class="funny-listings">
     <div class="main-content">
-    <h3>Creators</h3>
+    <h1>Creators</h1>
     <p>Page for creators</p>
     </div>
 </section>
