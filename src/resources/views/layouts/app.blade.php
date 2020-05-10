@@ -51,11 +51,11 @@
                 </div>
                 <nav>
                     <div>
-                        <a href="/#games">Games</a>
+                        <a href="/#games" title="Games">Games</a>
                         {{-- <a href="#">Communities</a> --}}
-                        <a href="/creators" id="navCreators">Creators <span class="online">0</span></a>
-                        <a href="/remasters">Remasters</a>
-                        <a href="/funny">Funny/Cool</a>
+                        <a href="/creators" id="navCreators" title="Creators">Creators <span class="online">0</span></a>
+                        <a href="/remasters" title="Remasters">Remasters</a>
+                        <a href="/funny" title="Funny/Cool">Funny/Cool</a>
                         {{-- <a href="#">Modding</a> --}}
                     </div>
                     <div class="social-links">
