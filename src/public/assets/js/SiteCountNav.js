@@ -232,7 +232,7 @@ function () {
 }();
 
 exports.WebRequestHandler = WebRequestHandler;
-},{"./WebRequest":"twitch/src/WebRequest/WebRequest.ts"}],"twitch/src/Twitch/GetStreamCount.ts":[function(require,module,exports) {
+},{"./WebRequest":"twitch/src/WebRequest/WebRequest.ts"}],"twitch/src/Twitch/GetTotalStreamCount.ts":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -241,86 +241,63 @@ Object.defineProperty(exports, "__esModule", {
 
 var WebRequestHandler_1 = require("../WebRequest/WebRequestHandler");
 
-var GetStreamCount =
+var GetTotalStreamCount =
 /** @class */
 function () {
-  function GetStreamCount(onComplete) {
+  function GetTotalStreamCount(onComplete) {
     this.onComplete = onComplete;
   }
 
-  GetStreamCount.prototype.get = function () {
-    this.webRequest = new WebRequestHandler_1.WebRequestHandler("/api/twitch/streams/count", null, this.onRequestComplete.bind(this));
+  GetTotalStreamCount.prototype.get = function () {
+    this.webRequest = new WebRequestHandler_1.WebRequestHandler("/api/twitch/streams/total-count", null, this.onRequestComplete.bind(this));
     this.webRequest.get();
   };
 
-  GetStreamCount.prototype.onRequestComplete = function (response, error) {
+  GetTotalStreamCount.prototype.onRequestComplete = function (response, error) {
     if (error != null) {
       console.log("Error fetching streams");
       return;
     }
 
-    this.onComplete(JSON.parse(response));
+    this.onComplete(response);
   };
 
-  return GetStreamCount;
+  return GetTotalStreamCount;
 }();
 
-exports.GetStreamCount = GetStreamCount;
-},{"../WebRequest/WebRequestHandler":"twitch/src/WebRequest/WebRequestHandler.ts"}],"TwitchCountNav.ts":[function(require,module,exports) {
+exports.GetTotalStreamCount = GetTotalStreamCount;
+},{"../WebRequest/WebRequestHandler":"twitch/src/WebRequest/WebRequestHandler.ts"}],"SiteCountNav.ts":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var GetStreamCount_1 = require("./twitch/src/Twitch/GetStreamCount");
+var GetTotalStreamCount_1 = require("./twitch/src/Twitch/GetTotalStreamCount");
 
-var TwitchCountNav =
+var SiteCountNav =
 /** @class */
 function () {
-  function TwitchCountNav() {
-    var twitch = new GetStreamCount_1.GetStreamCount(this.onComplete.bind(this));
+  function SiteCountNav() {
+    var twitch = new GetTotalStreamCount_1.GetTotalStreamCount(this.onComplete.bind(this));
     twitch.get();
-
-    if (window["URLSearchParams"] != null) {
-      var searchParam = new URLSearchParams(window.location.search);
-      var gameId = searchParam.get("game_id");
-      this.markActive(gameId);
-    }
   }
 
-  TwitchCountNav.prototype.markActive = function (gameId) {
-    var gameEl = document.getElementById("game-id-" + gameId);
+  SiteCountNav.prototype.onComplete = function (count) {
+    console.log(count);
+    var navCreators = document.getElementById("navCreators");
 
-    if (gameEl) {
-      gameEl.classList.add("active");
+    if (navCreators) {
+      navCreators.querySelector("span").innerHTML = count;
     }
   };
 
-  TwitchCountNav.prototype.onComplete = function (counts) {
-    for (var gameId in counts) {
-      var gameEl = document.getElementById("game-id-" + gameId);
-
-      if (gameEl == null) {
-        continue;
-      }
-
-      var count = gameEl.querySelector("span");
-      var total = counts[gameId].length;
-      count.innerText = total;
-
-      if (total > 0) {
-        gameEl.classList.add("live");
-      }
-    }
-  };
-
-  return TwitchCountNav;
+  return SiteCountNav;
 }();
 
-exports.TwitchCountNav = TwitchCountNav;
-new TwitchCountNav();
-},{"./twitch/src/Twitch/GetStreamCount":"twitch/src/Twitch/GetStreamCount.ts"}],"C:/Users/Grant/AppData/Local/Yarn/Data/global/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+exports.SiteCountNav = SiteCountNav;
+new SiteCountNav();
+},{"./twitch/src/Twitch/GetTotalStreamCount":"twitch/src/Twitch/GetTotalStreamCount.ts"}],"C:/Users/Grant/AppData/Local/Yarn/Data/global/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -524,4 +501,4 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["C:/Users/Grant/AppData/Local/Yarn/Data/global/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","TwitchCountNav.ts"], null)
+},{}]},{},["C:/Users/Grant/AppData/Local/Yarn/Data/global/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","SiteCountNav.ts"], null)

@@ -53,7 +53,7 @@
                     <div>
                         <a href="/#games">Games</a>
                         {{-- <a href="#">Communities</a> --}}
-                        <a href="/creators">Creators</a>
+                        <a href="/creators" id="navCreators">Creators <span class="online"></span></a>
                         <a href="/remasters">Remasters</a>
                         <a href="/funny">Funny/Cool</a>
                         {{-- <a href="#">Modding</a> --}}
@@ -86,5 +86,6 @@
     </div>
 
     @yield('scripts')
+    <script defer src="/assets/js/SiteCountNav.js"></script>
 </body>
 </html>

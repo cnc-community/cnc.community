@@ -151,3 +151,19 @@
 {
     color: $color-gold;
 }
+
+.site-header a#navCreators .online 
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #00ab15;
+    position: absolute;
+    top: 0;
+    right: -20px;
+    border-radius: 100%;
+    padding: 10px;
+    width: 24px;
+    height: 24px;
+    font-size: 13px;
+}
