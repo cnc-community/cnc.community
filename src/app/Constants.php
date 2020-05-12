@@ -14,12 +14,12 @@ class Constants
         return config('app.cache_period');
     }
 
-    public static function getTwitchSecret(): string
+    public static function getTwitchSecret()
     {
         return config('app.twitch_secret');
     }
 
-    public static function getTwitchClient(): string
+    public static function getTwitchClient()
     {
         return config('app.twitch_client');
     }

@@ -43,6 +43,11 @@ class TwitchStreamsAPI extends AbstractTwitchAPI
 
     public function getVideosByGame($gameId)
     {   
+        if (!in_array($gameId, Constants::getTwitchGames()))
+        {
+            return [];
+        }
+
         return Cache::remember('getVideosByGame'.$gameId, 86400, function () use($gameId) // 1 day cache
         {
             $response = Http::withHeaders(
