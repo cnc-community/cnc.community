@@ -2,9 +2,10 @@
 
 namespace App\Http\Services\Twitch;
 
+use App\Constants;
 use Illuminate\Support\Facades\Http;
 use App\Http\Services\Twitch\AbstractTwitchAPI;
-Use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Cache;
 
 class TwitchStreamsAPI extends AbstractTwitchAPI
 {
@@ -12,18 +13,43 @@ class TwitchStreamsAPI extends AbstractTwitchAPI
     public const VIDEOS_URL = "videos";
 
     private $_apiUrl = "https://api.twitch.tv/helix/";
+    private $_oauth2Url = "https://id.twitch.tv/oauth2/token";
+    
     private $_clientId;
+    private $_clientSecret;
+    private $_token;
 
-    public function __construct($clientId)
+    public function __construct()
     {
-        $this->_clientId = $clientId;
+        $this->_clientId = Constants::getTwitchClient();
+        $this->_clientSecret = Constants::getTwitchSecret();
+        $this->_token = $this->getToken();
+    }
+
+    public function getToken()
+    {
+        // 7 day cache of token
+        return Cache::remember('twitchToken', 604800, function ()
+        {
+            $response = Http::post($this->_oauth2Url, [
+                "client_id" => $this->_clientId, 
+                "client_secret" => $this->_clientSecret,
+                "grant_type" => "client_credentials"
+            ]);
+
+            return $response["access_token"];
+        });
     }
 
     public function getVideosByGame($gameId)
     {   
         return Cache::remember('getVideosByGame'.$gameId, 86400, function () use($gameId) // 1 day cache
         {
-            $response = Http::withHeaders(["Client-ID" => $this->_clientId])
+            $response = Http::withHeaders(
+                [
+                    "Client-ID" => $this->_clientId, 
+                    "Authorization" => "Bearer " . $this->_token
+                ])
                 ->get($this->_apiUrl . TwitchStreamsAPI::VIDEOS_URL . '?game_id='. $gameId . '&first=3');
 
             return $response["data"];
@@ -35,7 +61,11 @@ class TwitchStreamsAPI extends AbstractTwitchAPI
     {   
         return Cache::remember('getStreamByGames'.$gameId, 300, function () use($gameId)
         {
-            $response = Http::withHeaders(["Client-ID" => $this->_clientId])
+            $response = Http::withHeaders(
+                [
+                    "Client-ID" => $this->_clientId, 
+                    "Authorization" => "Bearer " . $this->_token
+                ])
                 ->get($this->_apiUrl . TwitchStreamsAPI::STREAMS_URL . '?game_id='. $gameId . '&first=100');
 
             return $response["data"];
@@ -53,11 +83,16 @@ class TwitchStreamsAPI extends AbstractTwitchAPI
             }
             $queryString .= "&game_id=" . $game;
         }
-
+    
         return Cache::remember('getStreamByGames'.$queryString, 300, function () use($queryString)
         {
-            $response = Http::withHeaders(["Client-ID" => $this->_clientId])
+            $response = Http::withHeaders(
+                [
+                    "Client-ID" => $this->_clientId, 
+                    "Authorization" => "Bearer " . $this->_token
+                ])
                 ->get($this->_apiUrl . TwitchStreamsAPI::STREAMS_URL . $queryString . '&first=100');
+
             return $response["data"];
         });
     }

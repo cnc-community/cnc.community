@@ -17,6 +17,10 @@ return [
     
     'cache_period' => env('CACHE_PERIOD', 7200), // seconds
 
+    'twitch_secret' => env('TWITCH_SECRET', null),
+
+    'twitch_client' => env('TWITCH_CLIENT', null),
+
     /*
     |--------------------------------------------------------------------------
     | Application Environment

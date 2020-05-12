@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Constants;
 use App\Http\Services\Twitch\TwitchStreamsAPI;
+use Illuminate\Support\Facades\Cache;
 
 class APIController extends Controller
 {
@@ -11,7 +12,12 @@ class APIController extends Controller
 
     public function __construct()
     {
-        $this->twitchStreamsAPI = new TwitchStreamsAPI("cds8o89o71q4a4us2desr58fo3tyizd");
+        $this->twitchStreamsAPI = new TwitchStreamsAPI();
+    }
+
+    public function runTask()
+    {
+        $this->twitchStreamsAPI->getToken();
     }
 
     public function streamCount()
