@@ -94,3 +94,33 @@
 {
     max-height: 500px;
 }
+
+.twitch-streams .stream-header 
+{
+    padding: 21px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background: #101010;
+    padding: 15px 20px;
+}
+
+.stream-header .stream-title > h3
+{
+    font-size: 1.3rem;
+    margin: 0;
+}
+
+.stream-header .viewer-count 
+{
+    padding: 5px;
+    background: green;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 0.9rem;
+    font-weight: bold;
+}

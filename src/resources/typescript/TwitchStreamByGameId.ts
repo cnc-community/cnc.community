@@ -5,6 +5,8 @@ export interface IStream
     game_id: string;
     user_id: string;
     user_name: string;
+    viewer_count: number;
+    title: string;
 }
 
 export class TwitchStreamByGameId
@@ -33,22 +35,36 @@ export class TwitchStreamByGameId
 
         for (let i = 0; i < streams.length; i++)
         {
-            this.container.appendChild(this.createResult(streams[i].user_name));
+            const stream = streams[i];
+            this.container.appendChild(this.createResult(stream.title, stream.user_name, stream.viewer_count));
         }
     }
 
-    private createResult(username: string): HTMLDivElement
+    private createResult(streamTitle: string, username: string, viewerCount: number): HTMLDivElement
     {
         let resultItem = document.createElement("div");
-        resultItem.classList.add("twitch-embed", "embed-responsive", "embed-responsive-4by3");
+        resultItem.classList.add("twitch-embed");
+
         resultItem.innerHTML += `
-            <iframe
-                src="https://player.twitch.tv/?channel=${username}&muted=true&autoplay=false"
-                frameborder="0"
-                scrolling="no"
-                allowfullscreen="true"
-                class="embed-responsive-item">
-            </iframe>
+            <div class="stream-header">
+                <div class="stream-title">
+                    ${username}
+                </div>
+                <div class="viewer-count">
+                    ${viewerCount} viewers
+                </div>
+            </div>
+        `;
+        resultItem.innerHTML += `
+            <div class="embed-responsive embed-responsive-4by3">
+                <iframe
+                    src="https://player.twitch.tv/?channel=${username}&muted=true&autoplay=false"
+                    frameborder="0"
+                    scrolling="no"
+                    allowfullscreen="true"
+                    class="embed-responsive-item">
+                </iframe>
+            </div>
         `;
         return resultItem;
     }
