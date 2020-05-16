@@ -26,7 +26,7 @@
     </div>
         
     <div class="guides">
-        <?php new App\Http\CustomView\Components\Swiper($__env); ?>
+        <?php new App\Http\CustomView\Components\GameSlider($__env); ?>
     </div>
 </section>
 

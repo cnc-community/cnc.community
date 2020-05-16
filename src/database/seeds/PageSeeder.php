@@ -31,10 +31,18 @@ class PageSeeder extends Seeder
         $this->createGameCategoryPage("Red Alert", "red-alert", "Command & Conquer: Red Alert", $gameTemplate, $categoryTemplate);
         $this->createGameCategoryPage("Tiberian Sun", "tiberian-sun", "Command & Conquer: Tiberian Sun", $gameTemplate, $categoryTemplate);
         $this->createGameCategoryPage("Red Alert 2", "red-alert-2", "Command & Conquer: Red Alert 2", $gameTemplate, $categoryTemplate);
+        $this->createGameCategoryPage("Red Alert 3", "red-alert-3", "Command & Conquer: Red Alert 3", $gameTemplate, $categoryTemplate);
         $this->createGameCategoryPage("Renegade", "renegade", "Command & Conquer: Renegade", $gameTemplate, $categoryTemplate);
         $this->createGameCategoryPage("Generals", "generals", "Command & Conquer: Generals", $gameTemplate, $categoryTemplate);
-        $this->createGameCategoryPage("Red Alert 3", "red-alert-3", "Command & Conquer: Red Alert 3", $gameTemplate, $categoryTemplate);
-        $this->createGameCategoryPage("Command & Conquer 3", "command-and-conquer-3", "Command & Conquer: Tiberium Wars", $gameTemplate, $categoryTemplate);
+        $this->createGameCategoryPage("Command & Conquer 3", "command-and-conquer-3,", "Command & Conquer 3: Tiberium Wars", $gameTemplate, $categoryTemplate);
+
+        // For the C&C 4s, rivals etc
+        $pageCategory = new PageCategory();
+        $pageCategory->title = "Other C&C Games";
+        $pageCategory->slug = "other-cnc-games";
+        $pageCategory->template_id = $categoryTemplate->id;
+        $pageCategory->description = "Other C&C Games";
+        $pageCategory->save();
     }
 
     private function createGameCategoryPage($title, $slug, $description, $gameTemplate, $categoryTemplate)
