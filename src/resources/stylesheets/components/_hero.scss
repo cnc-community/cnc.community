@@ -159,3 +159,13 @@
         flex-direction: row;
     }
 }
+
+.hero.hero-red
+{
+    @extend %background-red;
+}
+
+.hero.hero-generic 
+{
+    @extend %background-generic;
+}

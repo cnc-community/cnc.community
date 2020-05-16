@@ -70,8 +70,8 @@
         </header>
 
         <main role="main">
-         @if(View::hasSection('hero'))
-            <section class="hero">
+            @if(View::hasSection('hero'))
+            <section class="hero @yield('hero-class')">
                 <div class="hero-content">
                     @yield('hero')
                 </div>

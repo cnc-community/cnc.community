@@ -54,8 +54,6 @@ export class TwitchStreamByGameId
                     ${viewerCount} viewers
                 </div>
             </div>
-        `;
-        resultItem.innerHTML += `
             <div class="embed-responsive embed-responsive-4by3">
                 <iframe
                     src="https://player.twitch.tv/?channel=${username}&muted=true&autoplay=false"

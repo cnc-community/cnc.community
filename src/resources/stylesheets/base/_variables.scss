@@ -76,6 +76,13 @@ $xxl-max-width: 1350px;
     }
 }
 
+%background-red {
+    background: url("../images/bg-generic-red.jpg");
+    background-repeat: repeat-x;
+    background-position: top center;
+    background-size: cover;
+}
+
 
 //
 // Animations
