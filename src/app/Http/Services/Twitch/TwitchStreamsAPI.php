@@ -81,12 +81,14 @@ class TwitchStreamsAPI extends AbstractTwitchAPI
     {
         $queryString = "";
 
+        $i = 0;
         foreach($games as $k => $game)
         {
-            if ($k == 0){
+            if ($i == 0){
                 $queryString .= "?game_id=" . $game;
             }
             $queryString .= "&game_id=" . $game;
+            $i++;
         }
     
         return Cache::remember('getStreamByGames'.$queryString, 300, function () use($queryString)

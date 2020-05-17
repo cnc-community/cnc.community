@@ -26,7 +26,6 @@ class PageController extends Controller
         $this->twitchHelper = new TwitchHelper();
     }
 
-
     /**
      * Get page category and 
      */

@@ -9,12 +9,14 @@ use App\Http\Services\XMLFeedParser;
 use App\News;
 use App\Page;
 use App\Constants;
+use App\Http\Services\TwitchHelper;
 use App\PageCategory;
+use Symfony\Component\HttpFoundation\Request;
 use Illuminate\Support\Facades\Cache;
-
 
 class SiteController extends Controller
 {
+    private $twitchHelper;
     /**
      * Create a new controller instance.
      *
@@ -22,7 +24,7 @@ class SiteController extends Controller
      */
     public function __construct()
     {
-        // $this->middleware('auth');
+        $this->twitchHelper = new TwitchHelper();
     }
 
     /**
@@ -95,9 +97,12 @@ class SiteController extends Controller
         return view('pages.funny.listing', ["funnyItems" => $funnyCategoryCache]);
     }
 
-    public function showCreatorsListings()
+    public function showCreatorsListings(Request $request)
     {
-        return view('pages.creators.listing');
+        $streams = $this->twitchHelper->getTwitchGamesBySlug($request->gameName);
+        $videos = $this->twitchHelper->getTwitchVideosBySlug($request->gameName);
+        
+        return view('pages.creators.listing', ["streams" => $streams, "videos" => $videos]);
     }
 
     public function showRemastersListings()

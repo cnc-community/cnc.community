@@ -16,6 +16,18 @@ class TwitchHelper
 
     public function getTwitchGamesBySlug($slug)
     {
+        $gameId = $this->getGameIdBySlug($slug);
+        return $this->twitchStreamsAPI->getStreamByGame($gameId);
+    }
+
+    public function getTwitchVideosBySlug($slug)
+    {
+        $gameId = $this->getGameIdBySlug($slug);
+        return $this->twitchStreamsAPI->getVideosByGame($gameId);
+    }
+
+    private function getGameIdBySlug($slug)
+    {
         $games = Constants::getTwitchGames();
         $gameId = -1;
 
@@ -26,15 +38,14 @@ class TwitchHelper
                 $gameId = $value;
             }
         }
-
-        return $this->twitchStreamsAPI->getStreamByGame($gameId);
+        return $gameId;
     }
 
     public static function getTwitchThumbnailUrl($url, $width, $height)
     {
         return str_replace(
-            array("{width}","{height}"),
-            array($width, $height),
+            array("{width}","{height}", "%"),
+            array($width, $height, ""),
             $url
         );
     }

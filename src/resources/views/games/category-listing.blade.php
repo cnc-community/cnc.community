@@ -38,40 +38,11 @@
 
 <section id="streams" class="section stream-listings">
     <div class="main-content">
-        <h2 class="section-title">Streams</h2>
+        <h2 class="section-title">{{ $category->title }} Streams</h2>
         <p class="section-description">
-            Streams listed here
+            Find the latest streams
         </p>
-
-        <div class="twitch-streams">
-            <?php foreach($streams as $stream): ?>
-            <div class="twitch-embed">
-                <div class="stream-header">
-                    <div class="stream-title">
-                        <h3>
-                            <a href="https://www.twitch.tv/{{ $stream["user_name"]}}" rel="nofollow" target="_blank" title="{{ $stream["user_name"] }}">
-                                {{ $stream["user_name"]}}
-                            </a>
-                        </h3>
-                    </div>
-                    <div class="viewer-count">
-                        <?php echo $stream["viewer_count"]; ?> viewers
-                    </div>
-                </div>
-                <div class="description">
-                    <p>
-                        {{ $stream["title"]}}
-                    </p>
-                </div>
-                <div class="preview">
-                    <?php $thumbImage = \App\Http\Services\TwitchHelper::getTwitchThumbnailUrl($stream["thumbnail_url"], 960, 540); ?>
-                    <a href="https://www.twitch.tv/{{ $stream["user_name"]}}" rel="nofollow" target="_blank" title="{{ $stream["user_name"] }}">
-                        <img src="{{ str_replace("1920", "{width}", $thumbImage ) }}" />
-                    </a>
-                </div>
-            </div>
-            <?php endforeach; ?>
-        </div>
+        <?php new App\Http\CustomView\Components\TwitchListing($streams); ?>
     </div>
 </section>
 
