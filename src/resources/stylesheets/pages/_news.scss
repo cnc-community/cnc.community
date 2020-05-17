@@ -1,3 +1,56 @@
-.page-news-listings 
+
+//
+// Official news 
+.news-listings 
 {
+    @extend %background-green;
+    background-color: #080808;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    position: relative;
+}
+
+.news-listings .articles 
+{
+    padding-top: 15px;
+
+    @media(min-width: $md-width)
+    {
+        padding-top: 50px;
+    }
+}
+
+.news-listings .section-description
+{
+    width: $md-width;
+    max-width: 100%;
+    margin-left: 0;
+
+    @media(min-width: $md-width)
+    {
+        padding-left: 35px;
+    }
+}
+
+.news-listings .section-title 
+{
+    @media(min-width: $md-width)
+    {
+        padding-left: 35px;
+    }
+}
+
+.news-listings .view-all
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 25px auto;
+}
+
+.community-listings 
+{
+    background: #121212;
+
+    &:before { content: none; }
 }

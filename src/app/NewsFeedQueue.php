@@ -75,7 +75,7 @@ class NewsFeedQueue extends Model
     {
         $uuid = NewsFeedQueue::createUuid($url);
         $exists = NewsFeedQueue::checkForDuplicateByUuid($uuid);
-        $category = Category::where("name", "=", "Community News")->first();
+        $category = Category::where("name", "=", "Other")->first();
         $imageUrl = FeedHelper::getImageUrlFromString($postHtml);
 
         if ($exists == true)
@@ -90,7 +90,7 @@ class NewsFeedQueue extends Model
     {
         $uuid = NewsFeedQueue::createUuid($url);
         $exists = NewsFeedQueue::checkForDuplicateByUuid($uuid);
-        $category = Category::where("name", "=", "Community News")->first();
+        $category = Category::where("name", "=", "Other")->first();
 
         if ($exists == true)
         {

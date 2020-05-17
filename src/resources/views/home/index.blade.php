@@ -44,19 +44,4 @@
         </div>
     </div>
 </section>
-
-<section class="news-listings community-listings">
-    <div class="main-content">
-        <h2 class="section-title">Community Intel</h2>
-        <p class="section-description">
-            Consectetur adipiscing elit, sed do eiusmod tempor incidid unt ut laborDuisrem ipsum dolod unt ut laborDuisrem ipsum dolod...
-            iusmod tempor incidid unt ut laborDuisrem ipsum dolod...
-        </p>
-
-        <?php new App\Http\CustomView\Components\NewsListing($communityNews); ?>
-        <div class="view-all">
-            <a href="news/community-news" title="Community News" class="btn btn-primary">View all Community News</a>
-        </div>
-    </div>
-</section>
 @endsection

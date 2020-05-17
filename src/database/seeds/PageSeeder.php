@@ -1,5 +1,6 @@
 <?php
 
+use App\Category;
 use App\CustomFieldNames;
 use Illuminate\Database\Seeder;
 use App\Page;
@@ -34,27 +35,32 @@ class PageSeeder extends Seeder
         $this->createGameCategoryPage("Red Alert 3", "red-alert-3", "Command & Conquer: Red Alert 3", $gameTemplate, $categoryTemplate);
         $this->createGameCategoryPage("Renegade", "renegade", "Command & Conquer: Renegade", $gameTemplate, $categoryTemplate);
         $this->createGameCategoryPage("Generals", "generals", "Command & Conquer: Generals", $gameTemplate, $categoryTemplate);
-        $this->createGameCategoryPage("Command & Conquer 3", "command-and-conquer-3,", "Command & Conquer 3: Tiberium Wars", $gameTemplate, $categoryTemplate);
+        $this->createGameCategoryPage("Command & Conquer 3", "command-and-conquer-3", "Command & Conquer 3: Tiberium Wars", $gameTemplate, $categoryTemplate);
+        $this->createGameCategoryPage("Command & Conquer 4", "command-and-conquer-4", "Command & Conquer 4: Tiberian Twilight", $gameTemplate, $categoryTemplate);
+    }
 
-        // For the C&C 4s, rivals etc
-        $pageCategory = new PageCategory();
-        $pageCategory->title = "Other C&C Games";
-        $pageCategory->slug = "other-cnc-games";
-        $pageCategory->template_id = $categoryTemplate->id;
-        $pageCategory->description = "Other C&C Games";
-        $pageCategory->save();
+    private function createNewsCategory($name, $slug)
+    {
+        $category = new Category();
+        $category->name = $name;
+        $category->slug = $slug;
+        $category->save();
+        return $category;
     }
 
     private function createGameCategoryPage($title, $slug, $description, $gameTemplate, $categoryTemplate)
     {
+        $newsCategory = $this->createNewsCategory($title . " News", $slug . "-news");
+        
         $pageCategory = new PageCategory();
         $pageCategory->title = $title;
         $pageCategory->slug = $slug;
         $pageCategory->template_id = $categoryTemplate->id;
         $pageCategory->description = $description;
+        $pageCategory->news_category_id = $newsCategory->id;
         $pageCategory->save();
 
-        $this->createDemoCustomFieldsForPageCategories($pageCategory);
+        // $this->createDemoCustomFieldsForPageCategories($pageCategory);
 
         $this->create($title ." - Campaign", $title ." - Single Player", "campaign", $gameTemplate->id, $pageCategory->id);
         $this->create($title ." - Online", $title ." - Online", "online", $gameTemplate->id, $pageCategory->id);

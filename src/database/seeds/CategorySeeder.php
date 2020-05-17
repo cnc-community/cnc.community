@@ -13,8 +13,8 @@ class CategorySeeder extends Seeder
     public function run()
     {
         $this->create("Official News", "official-news");
-        $this->create("Community News", "community-news");
         $this->create("Funny/Cool", "funny");
+        $this->create("Other", "other");
     }
 
     private function create($name, $slug)

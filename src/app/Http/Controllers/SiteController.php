@@ -34,16 +34,6 @@ class SiteController extends Controller
     {
         $key = "cache_";
 
-        $pageCategoriesCache = Cache::remember($key."home.index.pageCategories", Constants::getCacheSeconds(), function () 
-        {
-            return PageCategory::all();
-        });
-
-        $communityNewsCache = Cache::remember($key."home.index.communityNews", Constants::getCacheSeconds(), function () 
-        {
-            return News::communityNewsPaginated();
-        });
-
         $officialNewsCache = Cache::remember($key."home.index.officialNews", Constants::getCacheSeconds(), function () 
         {
             return News::officialNewsPaginated();
@@ -51,8 +41,6 @@ class SiteController extends Controller
 
         return view('home.index', 
             [
-                "pageCategories" => $pageCategoriesCache,
-                "communityNews" => $communityNewsCache,
                 "officialNews" => $officialNewsCache
             ]
         );

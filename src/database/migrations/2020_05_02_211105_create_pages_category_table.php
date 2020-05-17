@@ -20,6 +20,7 @@ class CreatePagesCategoryTable extends Migration
             $table->string("description");
             $table->string("slug");
             $table->unsignedInteger("template_id")->nullable();
+            $table->unsignedInteger("news_category_id")->nullable();
             $table->timestamps();
         });
     }

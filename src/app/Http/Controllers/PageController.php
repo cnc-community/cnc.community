@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Page;
 use App\PageCategory;
 use App\PageTemplate;
+use App\News;
 use \Illuminate\Http\Request;
 use App\PageContent;
 use App\PageCustomField;
@@ -26,27 +27,37 @@ class PageController extends Controller
     /**
      * Get page category and 
      */
-    public function showPageByCategory($category)
+    public function showPageByCategory($categorySlug)
     {
-        $key = "cache_" . $category;
+        $key = "cache_" . $categorySlug;
 
-        $categoryCache = Cache::remember($key."category", Constants::getCacheSeconds(), function () use ($category) 
+        $categoryCache = Cache::remember($key."category", Constants::getCacheSeconds(), function () use ($categorySlug) 
         {
-            return PageCategory::categoryBySlug($category);
+            return PageCategory::categoryBySlug($categorySlug);
         });
+        
+        if ($categoryCache == null)
+        {
+            abort(404);
+        }
         
         $pagesCache = Cache::remember($key."pages", Constants::getCacheSeconds(), function ()  use ($categoryCache) 
         {
             return Page::getPagesByCategory($categoryCache->id);
         });
-        
+
+        $newsByCategoryCache = Cache::remember($key."home.index.communityNews", Constants::getCacheSeconds(), function () use($categoryCache)
+        {
+            return News::newsByCategoryId($categoryCache->news_category_id);
+        });
+
         $template = $categoryCache->bladeTemplate();
 
         if ($template == null)
         {
-            return view('pages.category', ["pages" => $pagesCache, "category" => $categoryCache]);
+            return view('pages.category', ["pages" => $pagesCache, "category" => $categoryCache, "news" => $newsByCategoryCache]);
         }
-        return view($template, ["pages" => $pagesCache, "category" => $categoryCache]);
+        return view($template, ["pages" => $pagesCache, "category" => $categoryCache, "news" => $newsByCategoryCache]);
     }
 
     /**
