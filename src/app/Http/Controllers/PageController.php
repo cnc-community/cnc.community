@@ -54,22 +54,17 @@ class PageController extends Controller
         });
 
         $streams = $this->twitchHelper->getTwitchGamesBySlug($categorySlug);
+        $videos = $this->twitchHelper->getTwitchVideosBySlug($categorySlug);
 
         $template = $categoryCache->bladeTemplate();
-        if ($template == null)
-        {
-            return view('pages.category', [
-                "pages" => $pagesCache, 
-                "category" => $categoryCache, 
-                "news" => $newsByCategoryCache,
-                "streams" => $streams
-            ]);
-        }
+        $template == null ? "pages.category": $template;
+        
         return view($template, [
             "pages" => $pagesCache, 
             "category" => $categoryCache, 
             "news" => $newsByCategoryCache,
-            "streams" => $streams
+            "streams" => $streams,
+            "videos" => $videos
         ]);
     }
 

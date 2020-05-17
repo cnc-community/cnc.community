@@ -38,11 +38,13 @@
 
 <section id="streams" class="section stream-listings">
     <div class="main-content">
-        <h2 class="section-title">{{ $category->title }} Streams</h2>
-        <p class="section-description">
-            Find the latest streams
-        </p>
-        <?php new App\Http\CustomView\Components\TwitchListing($streams); ?>
+        <?php if (count($streams) == 0): ?>
+            <h2 class="section-title">Latest {{ $category->title }} videos</h2>
+            <?php new App\Http\CustomView\Components\TwitchVideoListing($videos); ?>
+        <?php else: ?>
+            <h2 class="section-title">{{ $category->title }} streamers</h2>
+            <?php new App\Http\CustomView\Components\TwitchListing($streams); ?>
+        <?php endif; ?>
     </div>
 </section>
 
