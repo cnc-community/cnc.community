@@ -6,11 +6,18 @@
     background-position: top center;
 
     display: flex;
+    overflow: hidden;
 
     @media(min-width: $md-width)
     {
         min-height: 400px;
     }
+    &:before { z-index: 2; }
+}
+
+.hero .video 
+{
+    position: absolute;
 }
 
 .hero .buttons 

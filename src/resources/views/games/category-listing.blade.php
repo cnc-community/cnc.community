@@ -7,6 +7,10 @@
 @section('hero-class', 'hero-'. $category->slug)
 
 @section('hero')
+<div class="video">
+<video autoplay="true" muted src="https://media.contentapi.ea.com/content/dam/ea/command-conquer/remastered/videos/2020/03/ccrem-section-bg-video-deep-dive-trailer-darkened.mp4
+"></video>
+</div>
 <div class="content center">
     <h1 class="text-uppercase">
         {{ $category->title }}

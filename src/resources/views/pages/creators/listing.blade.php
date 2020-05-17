@@ -40,9 +40,7 @@
 <section class="video-listings">
     <div class="main-content">
         <h2 class="section-title">Recent Command &amp; Conquer videos</h2>
-
         <?php new App\Http\CustomView\Components\TwitchVideoListing($videos); ?>
-
     </div>
 </section>
 
