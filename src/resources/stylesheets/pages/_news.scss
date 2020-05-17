@@ -25,19 +25,6 @@
     width: $md-width;
     max-width: 100%;
     margin-left: 0;
-
-    @media(min-width: $md-width)
-    {
-        padding-left: 35px;
-    }
-}
-
-.news-listings .section-title 
-{
-    @media(min-width: $md-width)
-    {
-        padding-left: 35px;
-    }
 }
 
 .news-listings .view-all

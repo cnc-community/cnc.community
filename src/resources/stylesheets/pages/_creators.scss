@@ -4,35 +4,6 @@
     @extend %background-generic;
 }
 
-.page-creators .stream-listings 
-{
-    @extend %background-green;
-    background-color: #080808;
-    padding-top: 50px;
-    padding-bottom: 50px;
-    position: relative;
-}
-
-.page-creators .twitch-streams 
-{
-    margin-top: 50px;
-    align-items: center;
-    justify-content: center;
-    
-    @media(min-width: $xl-width)
-    {
-        justify-content: flex-start;
-    }
-}
-
-@media(min-width: $xl-width)
-{
-    .page-creators .twitch-streams .twitch-embed 
-    {
-        margin-right: 15px;
-    }
-}
-
 .page-creators .video-listings 
 {
     background: #000;

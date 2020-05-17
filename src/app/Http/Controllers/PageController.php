@@ -11,9 +11,11 @@ use App\PageContent;
 use App\PageCustomField;
 use Illuminate\Support\Facades\Cache;
 use App\Constants;
+use App\Http\Services\TwitchHelper;
 
 class PageController extends Controller
 {
+    private $twitchHelper;
     /**
      * Create a new controller instance.
      *
@@ -21,6 +23,7 @@ class PageController extends Controller
      */
     public function __construct()
     {
+        $this->twitchHelper = new TwitchHelper();
     }
 
 
@@ -51,13 +54,24 @@ class PageController extends Controller
             return News::newsByCategoryId($categoryCache->news_category_id);
         });
 
-        $template = $categoryCache->bladeTemplate();
+        $streams = $this->twitchHelper->getTwitchGamesBySlug($categorySlug);
 
+        $template = $categoryCache->bladeTemplate();
         if ($template == null)
         {
-            return view('pages.category', ["pages" => $pagesCache, "category" => $categoryCache, "news" => $newsByCategoryCache]);
+            return view('pages.category', [
+                "pages" => $pagesCache, 
+                "category" => $categoryCache, 
+                "news" => $newsByCategoryCache,
+                "streams" => $streams
+            ]);
         }
-        return view($template, ["pages" => $pagesCache, "category" => $categoryCache, "news" => $newsByCategoryCache]);
+        return view($template, [
+            "pages" => $pagesCache, 
+            "category" => $categoryCache, 
+            "news" => $newsByCategoryCache,
+            "streams" => $streams
+        ]);
     }
 
     /**

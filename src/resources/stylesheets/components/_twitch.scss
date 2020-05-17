@@ -67,11 +67,39 @@
     color: $color-white;
 }
 
+.stream-listings 
+{
+    @extend %background-green;
+    background-color: #080808;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    position: relative;
+}
+
+.twitch-streams 
+{
+    margin-top: 50px;
+    align-items: center;
+    justify-content: center;
+    
+    @media(min-width: $xl-width)
+    {
+        justify-content: flex-start;
+    }
+}
+
+@media(min-width: $xl-width)
+{
+    .twitch-streams .twitch-embed 
+    {
+        margin-right: 15px;
+    }
+}
+
 .twitch-streams .twitch-embed 
 {
     width: 80vw;
     margin-bottom: 50px;
-    padding-bottom: 550px;
 
     @media(min-width: $sm-width)
     {
@@ -95,15 +123,26 @@
     max-height: 500px;
 }
 
-.twitch-streams .stream-header 
+.twitch-streams .stream-header
 {
-    padding: 21px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     background: #101010;
     padding: 15px 20px;
+}
+
+.twitch-streams .description 
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    background: #101010;
+    padding: 15px 20px;
+
+    & p { margin: 0; font-size: 1.1rem; }
 }
 
 .stream-header .stream-title > h3

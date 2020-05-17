@@ -28,21 +28,20 @@ class Constants
     {
         return
         [
-            "235", // Command & Conquer: Red Alert
-            "10393", // Command & Conquer: Red Alert - Counterstrike
-            "14999", // Command & Conquer: Red Alert - The Aftermath
-            "4012", // Command & Conquer
-            "1900", // Command & Conquer: Tiberian Sun
-            "20015", // Command & Conquer: Tiberian Sun Firestorm
-            "16580", // Command & Conquer: Red Alert 2
-            "5090", // Command & Conquer: Yuri's Revenge
-            "3813", // Command & Conquer: Renegade
-            "18881", // Command & Conquer: Red Alert 3
-            "18733", // Command & Conquer 3: Kane's Wrath
-            "16106", // Command & Conquer 3: Tiberium Wars
-            "10070", // Command & Conquer: Generals
-            "16487", // Command & Conquer: Zero hour
-            "16487", // Command & Conquer: Zero hour
+            "red-alert" => "235", // Command & Conquer: Red Alert
+            "red-alert-cs" => "10393", // Command & Conquer: Red Alert - Counterstrike
+            "red-alert-am" => "14999", // Command & Conquer: Red Alert - The Aftermath
+            "command-and-conquer" => "4012", // Command & Conquer
+            "tiberian-sun" => "1900", // Command & Conquer: Tiberian Sun
+            "tiberian-sun-firestorm" => "20015", // Command & Conquer: Tiberian Sun Firestorm
+            "red-alert-2" => "16580", // Command & Conquer: Red Alert 2
+            "red-alert-2-yuris-revenge" => "5090", // Command & Conquer: Yuri's Revenge
+            "renegade" => "3813", // Command & Conquer: Renegade
+            "red-alert-3" => "18881", // Command & Conquer: Red Alert 3
+            "red-alert-3-kanes-wrath" => "18733", // Command & Conquer 3: Kane's Wrath
+            "tiberium-wars" => "16106", // Command & Conquer 3: Tiberium Wars
+            "generals" => "10070", // Command & Conquer: Generals
+            "zero-hour" => "16487", // Command & Conquer: Zero hour
         ];
     }
 }
