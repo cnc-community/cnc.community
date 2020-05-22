@@ -10,38 +10,29 @@
 <body>
 
 <main>
-    <div class="page page-@yield('page-class')">
+    @guest
+    @else
+    <div class="admin-nav">
+        <div class="logged-in">
+            <p>
+                Hi {{ Auth::user()->name }},
 
-        <div class="admin-nav">
-            @guest
-            <div class="logged-in">
-                <h5>Temp admin bar</h5>
-                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-            </div>
-            @else
-            <div class="logged-in">
-                <p>
-                    Hi {{ Auth::user()->name }},
+                <a href="{{ route('logout') }}"
+                    onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">
+                    {{ __('Logout?') }}
+                </a>
+                <a href="{{ route('admin.index') }}" style="margin-left: 20px">{{ __('Admin Dashboard') }}</a>
 
-                    <a href="{{ route('logout') }}"
-                        onclick="event.preventDefault();
-                                        document.getElementById('logout-form').submit();">
-                        {{ __('Logout?') }}
-                    </a>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                        @csrf
-                    </form>
-                </p>
-            </div>
-
-            <a href="{{ route('admin.pages.listing') }}">{{ __('Manage Pages') }}</a>
-            <a href="{{ route('admin.users.listing') }}">{{ __('Manage Users') }}</a>
-            <a href="{{ route('admin.news.listing') }}">{{ __('Manage News') }}</a>
-            <a href="{{ route('admin.queue.listing') }}">{{ __('News Feed') }}</a>
-            <a href="{{ route('admin.feed') }}">{{ __('Run Task') }}</a>
-            @endguest
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
+            </p>
         </div>
+    </div>
+    @endguest
 
+    <div class="page page-@yield('page-class')">
         <header class="site-header">
             <div class="main-content">
                 <div class="logo">

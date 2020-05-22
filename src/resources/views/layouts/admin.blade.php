@@ -32,7 +32,6 @@
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <a class="navbar-brand" href="/admin/dashboard">
             @guest
-            
             @else
             C&C Admin
             @endguest
@@ -80,6 +79,10 @@
                             <a class="nav-link" href="/admin/dashboard">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Dashboard
+                            </a>
+                            <a class="nav-link" href="/">
+                                <div class="sb-nav-link-icon"><i class="fas fa-link"></i></div>
+                                Main Site
                             </a>
                             <div class="sb-sidenav-menu-heading">News</div>
                             <a class="nav-link collapsed" href="/admin/news">
