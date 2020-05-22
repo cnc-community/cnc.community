@@ -9,6 +9,16 @@
     background-position: center;
 }
 
+.page-homepage .hero-content 
+{
+    padding-top: calc(20vh + 25px);
+}
+
+.page-homepage .hero-content .title
+{
+    margin-top: 25px;
+}
+
 .page-homepage .hero::before
 {
     content: "";

@@ -5,14 +5,19 @@
 
 @section('hero')
 <div class="content center">
-    <h1 class="text-uppercase">
-        C&amp;C Community Headline
-    </h1>
+
+    <div class="title">
+        <img src="assets/images/logos/cnc-community-logo.png" alt="C&C Community Logo" />
+    </div>
+    {{-- <h1 class="title">Welcome to C&amp;C Community</h1> --}}
     <p class="lead">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-        Lorem ipsum dolor sit amet, consi.
+        C&C Community details how to play all of the C&amp;C Games,
+        shows the latest streams and news from all around the community.
     </p>
-    <button class="btn btn-primary">Primary CTA</button>
+    <div class="buttons">
+        <a class="btn btn-primary" href="#games">View Games</a>
+        <a class="btn btn-primary" href="#news">View News</a>
+    </div>
 </div>
 @endsection
 

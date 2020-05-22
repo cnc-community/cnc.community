@@ -366,3 +366,11 @@ p > code
     margin: 0 auto;
     max-width: 100%;  
 }
+
+@media(max-width: $lg-width)
+{
+    .hide-md 
+    {
+        display: none;
+    }
+}
