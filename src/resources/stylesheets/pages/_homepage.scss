@@ -140,10 +140,27 @@
     }
 }
 
-.how-to-guides .pagination 
+@media(min-width: $md-width)
 {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 15px;
-} 
+    .how-to-guides .box 
+    {
+        transition: transform saturate ease-in-out 250ms;
+    }
+
+    .how-to-guides .box .logo
+    {
+        transition: transform ease-in-out 250ms;
+        transform: translateY(-25px);
+    }
+
+    .how-to-guides .box:hover 
+    {
+        transform: translateY(-20px);
+        filter: saturate(1.5);
+    }
+
+    .how-to-guides .box:hover .logo
+    {
+        transform: translateY(20px);
+    }
+}

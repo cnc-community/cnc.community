@@ -96,12 +96,6 @@ class GameSlider extends AbstractCustomView
                             nextEl: ".swiper-button-next",
                             prevEl: ".swiper-button-prev",
                         },
-                        pagination: {
-                            // el: ".swiper-pagination",
-                            // renderBullet: function (index, className) {
-                            //     return '<span class="' + className + '">' + (index + 1) + '</span>';
-                            // },
-                        },
                         breakpoints: {
                             340: {
                                 slidesPerView: 4,
