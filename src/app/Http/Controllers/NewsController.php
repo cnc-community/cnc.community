@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\News;
 use App\Http\Services\FeedHelper;
+use App\NewsFeedQueue;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\View;
 
 class NewsController extends Controller
 {
@@ -16,6 +18,7 @@ class NewsController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        View::share('queue_count', NewsFeedQueue::count());
     }
 
     /**

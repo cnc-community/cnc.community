@@ -84,5 +84,5 @@ Route::get('/news/{categorySlug}', 'SiteController@showNewsByCategorySlug')->nam
 Route::get('/news/{categorySlug?}/{newsSlug}', 'SiteController@showNewsBySlug')->name('news.detail');
 
 // Pages by category + slug
-Route::get('/{category?}', 'PageController@showPageByCategory');
-Route::get('/{category?}/{pageSlug?}', 'PageController@showPageBySlug')->name('pages.detail');
+Route::get('/{category?}', 'SiteController@showPageByCategory');
+Route::get('/{category?}/{pageSlug?}', 'SiteController@showPageBySlug')->name('pages.detail');

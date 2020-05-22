@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\NewsFeedQueue;
 use \Illuminate\Http\Request;
+use Illuminate\Support\Facades\View as FacadesView;
 
 class QueuedNewsController extends Controller
 {
@@ -15,6 +16,7 @@ class QueuedNewsController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        FacadesView::share('queue_count', NewsFeedQueue::count());
     }
 
     /**

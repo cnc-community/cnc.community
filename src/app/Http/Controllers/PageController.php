@@ -12,6 +12,8 @@ use App\PageCustomField;
 use Illuminate\Support\Facades\Cache;
 use App\Constants;
 use App\Http\Services\TwitchHelper;
+use App\NewsFeedQueue;
+use Illuminate\Support\Facades\View as FacadesView;
 
 class PageController extends Controller
 {
@@ -23,68 +25,9 @@ class PageController extends Controller
      */
     public function __construct()
     {
+        $this->middleware('auth');
+        FacadesView::share('queue_count', NewsFeedQueue::count());
         $this->twitchHelper = new TwitchHelper();
-    }
-
-    /**
-     * Get page category and 
-     */
-    public function showPageByCategory($categorySlug)
-    {
-        $key = "cache_" . $categorySlug;
-
-        $categoryCache = Cache::remember($key."category", Constants::getCacheSeconds(), function () use ($categorySlug) 
-        {
-            return PageCategory::categoryBySlug($categorySlug);
-        });
-        
-        if ($categoryCache == null)
-        {
-            abort(404);
-        }
-        
-        $pagesCache = Cache::remember($key."pages", Constants::getCacheSeconds(), function ()  use ($categoryCache) 
-        {
-            return Page::getPagesByCategory($categoryCache->id);
-        });
-
-        $newsByCategoryCache = Cache::remember($key."home.index.communityNews", Constants::getCacheSeconds(), function () use($categoryCache)
-        {
-            return News::newsByCategoryId($categoryCache->news_category_id);
-        });
-
-        $streams = $this->twitchHelper->getTwitchGamesBySlug($categorySlug);
-        $videos = $this->twitchHelper->getTwitchVideosBySlug($categorySlug);
-
-        $template = $categoryCache->bladeTemplate();
-        $template == null ? "pages.category": $template;
-        
-        return view($template, [
-            "pages" => $pagesCache, 
-            "category" => $categoryCache, 
-            "news" => $newsByCategoryCache,
-            "streams" => $streams,
-            "videos" => $videos
-        ]);
-    }
-
-    /**
-     * Show page by category and slug
-     */
-    public function showPageBySlug($slugCategory, $slug)
-    {
-        $key = "cache_" . $slugCategory . "_" . $slug;
-        $pageCache = Cache::remember($key, Constants::getCacheSeconds(), function ()  use ($slugCategory, $slug) 
-        {
-            return Page::checkPageExistsWithSlugs($slugCategory, $slug);
-        });
-        if ($pageCache == null) abort(404);
-        
-        if ($pageCache->bladeTemplate() == null)
-        {
-            return view('pages.detail', array("page" => $pageCache));
-        }
-        return view($pageCache->bladeTemplate(), array("page" => $pageCache));
     }
 
     /**

@@ -16,6 +16,11 @@ class NewsFeedQueue extends Model
     {
     }
 
+    public static function count()
+    {
+        return NewsFeedQueue::all()->count();
+    }
+
     public function category()
     {
         return Category::where("id", $this->category_id)->first();

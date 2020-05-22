@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\NewsFeedQueue;
 use App\User;
 use \Illuminate\Http\Request;
+use Illuminate\Support\Facades\View;
 
 class UsersController extends Controller
 {
@@ -15,6 +17,7 @@ class UsersController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        View::share('queue_count', NewsFeedQueue::count());
     }
 
     /**

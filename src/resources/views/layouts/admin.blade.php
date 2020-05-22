@@ -23,6 +23,20 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
     <style>
     .page-title{ margin-top: 15px;margin-bottom: 15px; padding-bottom: 20px; }
+    .bg-primary {
+        background-color: #272b2f !important;
+    }   
+    .queue-count {
+        background: #008aff;
+        color: white;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        font-size: 13px;
+        font-weight: bold;
+        text-align: center;
+        margin-left: 15px;
+    }
     </style>
 </head>
 
@@ -32,14 +46,14 @@
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <a class="navbar-brand" href="/admin/dashboard">
             @guest
+            C&C Community
             @else
             C&C Admin
             @endguest
-            </a>
-            @guest
-            @else
-            <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button>
-            @endguest            
+            </a><button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button
+            ><!-- Navbar Search-->
+            <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+            </form>
             @guest
             @else
             <!-- Navbar-->
@@ -80,10 +94,6 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Dashboard
                             </a>
-                            <a class="nav-link" href="/">
-                                <div class="sb-nav-link-icon"><i class="fas fa-link"></i></div>
-                                Main Site
-                            </a>
                             <div class="sb-sidenav-menu-heading">News</div>
                             <a class="nav-link collapsed" href="/admin/news">
                                 <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
@@ -92,7 +102,7 @@
                             </a>
                             <a class="nav-link collapsed" href="/admin/queue">
                                 <div class="sb-nav-link-icon"><i class="fas fa-newspaper"></i></div>
-                                Queued News
+                                Pending News <span class="queue-count">{{ $queue_count }}</span>
                                 <div class="sb-sidenav-collapse-arrow"></div>
                             </a>
 

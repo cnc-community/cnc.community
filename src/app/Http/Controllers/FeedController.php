@@ -6,6 +6,8 @@ use App\Http\Services\XMLFeedParser;
 use App\Http\Services\RedditFeedParser;
 use App\Http\Services\SteamFeedParser;
 use App\Constants;
+use App\NewsFeedQueue;
+use Illuminate\View\View;
 
 class FeedController extends Controller
 {
@@ -17,6 +19,7 @@ class FeedController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        View::share('queue_count', NewsFeedQueue::count());
     }
 
     /**
