@@ -65,7 +65,7 @@ class GameSlider extends AbstractCustomView
                         </div>
                     </a>
 
-                    <a href="other-cnc-games" class="swiper-slide box other" title="Other C&C Games">
+                    <a href="command-and-conquer-4" class="swiper-slide box other" title="Other C&C Games">
                         <div class="logo">
                             <img src="assets/images/boxes/logos/cnc-4-logo.png" loading="lazy" alt="Other C&C Games" />
                         </div>
