@@ -24,7 +24,7 @@
 .hero .buttons 
 {
     display: flex;
-    width: 35vw;
+    width: 100vw;
     justify-content: center;
     align-items: center;
     flex-direction: column;    
@@ -34,6 +34,11 @@
         align-items: center;
         justify-content: center;
         flex-direction: row;    
+    }
+
+    @media(min-width: $xxl-width)
+    {
+        width: 35vw;
     }
 
     .btn 
