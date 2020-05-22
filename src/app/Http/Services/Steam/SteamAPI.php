@@ -24,6 +24,9 @@ class SteamAPI extends AbstractSteamAPI
     {
         return Cache::remember('getWorkshopItemsByAppId'.$appId, 86400, function () use($appId) // 1 day cache
         {
+            // Http::withOptions([
+            //     'debug' => true
+            //     ]
             $response = Http::get(
                     $this->_apiUrl . SteamAPI::WORKSHOP_ITEMS_URL . 
                     '?appid='. $appId . 
@@ -32,7 +35,7 @@ class SteamAPI extends AbstractSteamAPI
                     '&required_flags=file_url,title,time_created,tags,favorited,views'
                 );
 
-            return $response["response"];
+            return $response->json()["response"];
         });
     }
 }

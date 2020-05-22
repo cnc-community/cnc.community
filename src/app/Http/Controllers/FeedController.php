@@ -7,7 +7,7 @@ use App\Http\Services\RedditFeedParser;
 use App\Http\Services\SteamFeedParser;
 use App\Constants;
 use App\NewsFeedQueue;
-use Illuminate\View\View;
+use Illuminate\Support\Facades\View as FacadesView;
 
 class FeedController extends Controller
 {
@@ -19,7 +19,7 @@ class FeedController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        View::share('queue_count', NewsFeedQueue::count());
+        FacadesView::share('queue_count', NewsFeedQueue::count());
     }
 
     /**
