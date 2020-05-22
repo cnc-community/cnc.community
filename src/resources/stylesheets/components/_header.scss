@@ -133,18 +133,15 @@
     margin-right: 16px;
 
     position: relative;
+    transition: color ease-in-out 250ms;
+}
+.site-header nav a .online { color: $color-white; }
 
-    @media(max-width: $md-width)
-    {
-        transition: none;
-    }
+.site-header nav a:hover 
+{
+    color: $color-gold-600;
 
-    @media(min-width: $md-width)
-    {
-        &:hover,&:focus { 
-            color: #ffffff;
-        }
-    }
+    .online { color: $color-white; }
 }
 
 .site-header nav a.active

@@ -89,10 +89,10 @@
     align-items: center;   
     justify-content: space-evenly;
 
-    // padding-top: calc(20vh + 80px); // + height of header
-    // padding-bottom: calc(20vh + 80px);
-    padding-top: calc(12vh + 80px);
-    padding-bottom: calc(12vh + 80px);
+
+
+    padding-top: calc(7vh + 80px);
+    padding-bottom: calc(0vh + 80px);
 
     @media(min-width: $sm-width)
     {
@@ -107,6 +107,8 @@
     @media(min-width: $xl-width)
     {
         max-width: 50vw;
+        padding-top: calc(12vh + 80px);
+        padding-bottom: calc(12vh + 80px);
     }
 }
 
