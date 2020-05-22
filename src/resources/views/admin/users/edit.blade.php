@@ -1,19 +1,21 @@
 @extends('layouts.admin')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">
-                    <a href="/admin/users">View all users</a>
-                </div>
-                <div class="card-header">
-                    Editing - {{ $userItem->name }}
-                </div>
+<div class="container-fluid">
 
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+
+            <div class="page-title">
+                <h3 class="mt-4">
+                    Users
+                </h3>
+                <a href="{{ route('admin.news.add', '') }}" class="btn btn-primary" title="Add new news item">Add new</a>
+            </div>
+
+            <div class="card">
                 <div class="card-body">
-                    @if (session('status'))
+                  @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
                         </div>
@@ -53,5 +55,4 @@
     </div>
 </div>
 @endsection
-
 
