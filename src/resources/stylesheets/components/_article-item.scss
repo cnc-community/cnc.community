@@ -1,3 +1,14 @@
+.article-item 
+{
+    transition: transform ease-in-out 250ms;
+}
+
+.article-item:hover 
+{
+    transition: transform ease-in-out 250ms;
+    transform: translateY(-10px);
+}
+
 .article-item .article-info 
 {
     position: relative;
