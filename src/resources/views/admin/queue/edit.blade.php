@@ -1,17 +1,16 @@
 @extends('layouts.admin')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">
-                    <a href="/admin/queue">View all queued news items</a>
-                </div>
-                <div class="card-header">
-                    Queued - {{ $newsItem->title }}
-                </div>
+<div class="container-fluid">
+    <div class="page-title">
+        <h3 class="mt-4">
+            Queued - {{ $newsItem->title }}
+        </h3>
+    </div>
 
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+            <div class="card">
                 <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
@@ -97,7 +96,6 @@
         updatePost();
     }());
 </script>
-
 @endsection
 
 

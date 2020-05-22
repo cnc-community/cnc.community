@@ -1,23 +1,20 @@
 @extends('layouts.admin')
 
 @section('content')
-<div class="container">
+<div class="container-fluid">
+
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
+
+            <div class="page-title">
+                <h3 class="mt-4">
+                    News
+                </h3>
+                <a href="{{ route('admin.news.add', '') }}" class="btn btn-primary" title="Add new news item">Add new</a>
+            </div>
+
             <div class="card">
-                <div class="card-header">News</div>
-
                 <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    <div style="padding-bottom: 15px">
-                        <a href="{{ route('admin.news.add', '') }}" class="btn btn-primary" title="Add new news item">Add new</a>
-                    </div>
-
                     <?php foreach($news as $newsItem): ?>
                         <div>
                             <a href="{{ route('admin.news.edit', ['id' => $newsItem->id ]) }}">{{ $newsItem->title}}</a>

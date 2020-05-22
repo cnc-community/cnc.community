@@ -1,16 +1,18 @@
 @extends('layouts.admin')
 
 @section('content')
-<div class="container">
+
+<div class="container-fluid">
     <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">
-                    <a href="/admin/pages">View all pages</a>
-                </div>
-                <div class="card-header">
+        <div class="col-md-12">
+
+            <div class="page-title">
+                <h3 class="mt-4">
                     Edit Page Category - {{$category->title}}
-                </div>
+                </h3>
+            </div>
+
+            <div class="card">
 
                 <div class="card-body">
                     @if (session('status'))
@@ -57,7 +59,7 @@
                         </div>
 
                         <div class="custom-fields">
-                            <h4>Custom Fields</h4>
+                            <h5>Custom Fields</h5>
                             <p>
                                 Create a custom html element to render in the page template.
                             </p>
@@ -72,7 +74,7 @@
                                     <div class="details">
                                         <ul class="list-unstyled">
                                             <li><strong>Name:</strong> {{ $field->name }}</li>
-                                            <li><strong>Key:</strong> {{ $field->key }}</li>
+                                            <li><strong>Page Template Key:</strong> {{ $field->key }}</li>
                                         </ul>
                                     </div>
                                     <textarea id="editor_{{ $field->id }}" name="custom_field_{{ $field->id }}">

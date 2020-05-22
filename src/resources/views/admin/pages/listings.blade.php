@@ -1,19 +1,24 @@
 @extends('layouts.admin')
 
 @section('content')
-<div class="container">
+<div class="container-fluid">
     <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Pages</div>
+        <div class="col-md-12">
 
+            <div class="page-title">
+                <h3 class="mt-4">
+                    Pages
+                </h3>
+            </div>
+
+            <div class="card">
                 <div class="card-body">
                     <div style="padding-bottom: 15px">
                         <a href="{{ route('admin.pages.add', '') }}" class="btn btn-primary" title="Add page">Add page</a>
                         <a href="{{ route('admin.pages.category.add', '') }}" class="btn btn-primary" title="Add page">Add page category</a>
                     </div>
                     
-                    <h4>Pages</h4>
+                    <h5>Pages</h5>
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
@@ -37,7 +42,7 @@
                 </div>
 
                 <div class="card-body">
-                    <h4>Page Categories</h4>
+                    <h5>Page Categories</h5>
                     <?php foreach($categories as $category): ?>
                     <div>
                         <a href="{{ route('admin.pages.category.edit', ['id' => $category->id ]) }}">{{ $category->title}}</a>

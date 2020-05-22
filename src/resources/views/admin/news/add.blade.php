@@ -1,19 +1,20 @@
 @extends('layouts.admin')
 
 @section('content')
-<div class="container">
+<div class="container-fluid">
     <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">
-                    <a href="/admin/news">View all news</a>
-                </div>
-                <div class="card-header">
-                    Create news item
-                </div>
+        <div class="col-md-12">
 
+            <div class="page-title">
+                <h3 class="mt-4">
+                    Add News Item
+                </h3>
+                <a href="/admin/news">Back to all news</a>
+            </div>
+
+            <div class="card">
                 <div class="card-body">
-                    @if (session('status'))
+                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
                         </div>
@@ -58,6 +59,7 @@
         </div>
     </div>
 </div>
+
 
 <!-- Initialize Quill editor -->
 <script>
