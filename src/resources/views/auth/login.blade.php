@@ -2,6 +2,13 @@
 
 @section('content')
 <div class="container">
+    <div class="page-title">
+        <h3 class="mt-4">Login</h3>
+        <p>
+            If you've lost your way, <a href="/">go home</a>. 
+        </p>
+    </div>
+
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -56,12 +63,6 @@
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Login') }}
                                 </button>
-
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
                             </div>
                         </div>
                     </form>

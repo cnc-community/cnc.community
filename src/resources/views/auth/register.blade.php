@@ -2,6 +2,13 @@
 
 @section('content')
 <div class="container">
+    <div class="page-title">
+        <h3 class="mt-4">Register</h3>
+        <p>
+            If you've lost your way, <a href="/">go home</a>. 
+        </p>
+    </div>
+
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
