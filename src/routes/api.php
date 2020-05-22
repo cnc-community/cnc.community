@@ -19,3 +19,5 @@ Route::get('/twitch/video/{gameId}', 'APIController@videosByGameId');
 Route::get('/twitch/streams', 'APIController@streamByGames');
 Route::get('/twitch/streams/count', 'APIController@streamCount');
 Route::get('/twitch/streams/total-count', 'APIController@totalStreamCount');
+
+Route::get('/steam/workshop/{appId}', 'APIController@getWorkshopItemsByAppId');

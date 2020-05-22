@@ -3,16 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Constants;
+use App\Http\Services\Steam\SteamAPI;
+use App\Http\Services\SteamHelper;
+use App\Http\Services\SteamWorkShopItem;
 use App\Http\Services\Twitch\TwitchStreamsAPI;
 use Illuminate\Support\Facades\Cache;
 
 class APIController extends Controller
 {
     private $twitchStreamsAPI;
+    private $steamAPI;
 
     public function __construct()
     {
         $this->twitchStreamsAPI = new TwitchStreamsAPI();
+        $this->steamAPI = new SteamAPI();
     }
 
     public function runTask()

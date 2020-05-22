@@ -21,6 +21,8 @@ return [
 
     'twitch_client' => env('TWITCH_CLIENT', null),
 
+    'steam_api_key' => env('STEAM_API_KEY', null),
+
     /*
     |--------------------------------------------------------------------------
     | Application Environment

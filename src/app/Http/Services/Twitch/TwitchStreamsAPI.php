@@ -61,7 +61,6 @@ class TwitchStreamsAPI extends AbstractTwitchAPI
         });
     }
 
-
     public function getStreamByGame($gameId)
     {   
         return Cache::remember('getStreamByGames'.$gameId, 300, function () use($gameId)

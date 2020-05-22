@@ -9,6 +9,7 @@ use App\Http\Services\XMLFeedParser;
 use App\News;
 use App\Page;
 use App\Constants;
+use App\Http\Services\SteamHelper;
 use App\Http\Services\TwitchHelper;
 use App\PageCategory;
 use Symfony\Component\HttpFoundation\Request;
@@ -25,6 +26,7 @@ class SiteController extends Controller
     public function __construct()
     {
         $this->twitchHelper = new TwitchHelper();
+        $this->steamHelper = new SteamHelper();
     }
 
     /**
@@ -107,7 +109,8 @@ class SiteController extends Controller
 
     public function showRemastersListings()
     {
-        return view('pages.remasters.listing');
+        $workShopItems= $this->steamHelper->getWorkshopItemsByAppId(730);
+        return view('pages.remasters.listing', ["workShopItems" => $workShopItems]);
     }
 
     public function clearCache()

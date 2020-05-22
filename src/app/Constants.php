@@ -24,6 +24,11 @@ class Constants
         return config('app.twitch_client');
     }
 
+    public static function getSteamAPIKey()
+    {
+        return config('app.steam_api_key');
+    }
+
     public static function getTwitchGames()
     {
         return
