@@ -8,15 +8,16 @@
 
 @section('hero')
 <div class="video">
-<video autoplay="true" loop muted src="https://media.contentapi.ea.com/content/dam/ea/command-conquer/remastered/videos/2020/03/ccrem-section-bg-video-deep-dive-trailer-darkened.mp4
-"></video>
+    <video autoplay="true" loop muted src="https://media.contentapi.ea.com/content/dam/ea/command-conquer/remastered/videos/2020/03/ccrem-section-bg-video-deep-dive-trailer-darkened.mp4
+    "></video>
 </div>
 <div class="content center">
-    <h1 class="text-uppercase">
-        {{ $category->title }}
-    </h1>
+    <div class="title">
+        <img src="{{ \App\ViewHelper::getGameLogoPathByName($category->slug) }}" alt="Game logo" />
+    </div>
     <p class="lead">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+        How to play {{ $category->title }}. <br class="visible-md" />
+        Find the latest Live Streams and news.
     </p>
     <div class="buttons">
         <a href="#how-to-play" class="btn btn-primary">How to play</a>

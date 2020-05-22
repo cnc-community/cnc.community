@@ -6,17 +6,16 @@
 @section('hero')
 <div class="content center">
 
-    <div class="title">
+    {{-- <div class="title">
         <img src="assets/images/logos/cnc-community-logo.png" alt="C&C Community Logo" />
-    </div>
-    {{-- <h1 class="title">Welcome to C&amp;C Community</h1> --}}
+    </div> --}}
+    <h1>Welcome to C&amp;C Community</h1>
     <p class="lead">
-        C&C Community details how to play all of the C&amp;C Games,
-        shows the latest streams and news from all around the community.
+        Stay current with C&amp;C Games and their communities. 
     </p>
     <div class="buttons">
-        <a class="btn btn-primary" href="#games">View Games</a>
-        <a class="btn btn-primary" href="#news">View News</a>
+        <a class="btn btn-primary" href="#games">How to Play C&C</a>
+        <a class="btn btn-outline" href="#mission">Our Mission</a>
     </div>
 </div>
 @endsection
@@ -26,7 +25,7 @@
     <div class="main-content">
         <h2 class="section-title">How to play <br class="hide-for-xs"/>Command &amp; Conquer</h2>
         <p class="section-description">
-            Consectetur adipiscing elit, sed do eiusmod tempor incidid unt
+            Each game has it's own designated page of the latest news, live streams and a tutorial on how to play.
         </p>
     </div>
         
@@ -39,14 +38,23 @@
     <div class="main-content">
         <h2 class="section-title">Official Intel</h2>
         <p class="section-description">
-            Consectetur adipiscing elit, sed do eiusmod tempor incidid unt ut laborDuisrem ipsum dolod unt ut laborDuisrem ipsum dolod...
-            iusmod tempor incidid unt ut laborDuisrem ipsum dolod...
+            C&C Community updates - stay up to date with our latest developments.
         </p>
 
         <?php new App\Http\CustomView\Components\NewsListing($officialNews); ?>
         <div class="view-all">
             <a href="news/official-news" title="Official News" class="btn btn-primary">View all Official News</a>
         </div>
+    </div>
+</section>
+
+<section id="mission" class="section news-listings">
+    <div class="main-content center">
+        <h2 class="section-title">Our Mission</h2>
+        <p class="section-description">
+            Consectetur adipiscing elit, sed do eiusmod tempor incidid unt ut laborDuisrem ipsum dolod unt ut laborDuisrem ipsum dolod...
+            iusmod tempor incidid unt ut laborDuisrem ipsum dolod...
+        </p>
     </div>
 </section>
 @endsection

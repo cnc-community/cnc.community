@@ -25,4 +25,10 @@ class ViewHelper
         }
         return null;
     }
+
+    public static function getGameLogoPathByName($slug)
+    {
+        $logoPath = "/assets/images/logos/";
+        return $logoPath . $slug . "-logo.png";
+    }
 }

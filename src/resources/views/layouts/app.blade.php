@@ -10,28 +10,6 @@
 <body>
 
 <main>
-    @guest
-    @else
-    <div class="admin-nav">
-        <div class="logged-in">
-            <p>
-                Hi {{ Auth::user()->name }},
-
-                <a href="{{ route('logout') }}"
-                    onclick="event.preventDefault();
-                                    document.getElementById('logout-form').submit();">
-                    {{ __('Logout?') }}
-                </a>
-                <a href="{{ route('admin.index') }}" style="margin-left: 20px">{{ __('Admin Dashboard') }}</a>
-
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                    @csrf
-                </form>
-            </p>
-        </div>
-    </div>
-    @endguest
-
     <div class="page page-@yield('page-class')">
         <header class="site-header">
             <div class="main-content">
@@ -73,6 +51,20 @@
         </main>
         
         <footer role="contentinfo">
+           <div class="main-content center">
+                <div class="logo">
+                    <img src="/assets/images/logo.svg" alt="C&C Community Logo" />
+                </div>
+
+                <div class="copyright-notice">
+                    <small>Copyright C&C Community &copy; <?php echo date("Y"); ?></small>
+
+                    <div class="copyright-links">
+                        <a href="#">Privacy Policy</a> 
+                        <a href="#">Terms</a> 
+                    </div>
+                </div>
+            </div>
         </footer>
     </div>
 
