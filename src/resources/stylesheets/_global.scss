@@ -358,3 +358,11 @@ p > code
 {
     padding-bottom: 75%;
 }
+
+.page-content
+{
+    padding: 35px 0;  
+    width: $md-width;
+    margin: 0 auto;
+    max-width: 100%;  
+}

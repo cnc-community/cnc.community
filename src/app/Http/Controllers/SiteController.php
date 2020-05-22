@@ -109,8 +109,29 @@ class SiteController extends Controller
 
     public function showRemastersListings()
     {
+        $key = "cache_";
         $workShopItems= $this->steamHelper->getWorkshopItemsByAppId(730);
-        return view('pages.remasters.listing', ["workShopItems" => $workShopItems]);
+        
+        $streams = $this->twitchHelper->getTwitchGamesBySlug("remasters");
+        $videos = $this->twitchHelper->getTwitchVideosBySlug("remasters");
+
+        $categoryCache = Cache::remember($key."pages.remasters.listing.categoryCache", Constants::getCacheSeconds(), function ()
+        {
+            return Category::where("name", Category::CATEGORY_REMASTERS)->first();
+        });
+
+        $newsByCategoryCache = Cache::remember($key."pages.remasters.listing.showRemastersListings", 
+            Constants::getCacheSeconds(), function () use ($categoryCache)
+        {
+            return News::newsPaginatedByCategory($categoryCache->id);
+        });
+
+        return view('pages.remasters.listing', [
+            "workShopItems" => $workShopItems, 
+            "news" => $newsByCategoryCache,
+            "streams" => $streams,
+            "videos" => $videos
+        ]);
     }
 
     public function clearCache()

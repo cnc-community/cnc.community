@@ -37,6 +37,8 @@ class PageSeeder extends Seeder
         $this->createGameCategoryPage("Generals", "generals", "Command & Conquer: Generals", $gameTemplate, $categoryTemplate);
         $this->createGameCategoryPage("Command & Conquer 3", "command-and-conquer-3", "Command & Conquer 3: Tiberium Wars", $gameTemplate, $categoryTemplate);
         $this->createGameCategoryPage("Command & Conquer 4", "command-and-conquer-4", "Command & Conquer 4: Tiberian Twilight", $gameTemplate, $categoryTemplate);
+    
+        $this->createNewsCategory("Command & Conquer Remastered News", "command-and-conquer-remastered-news");
     }
 
     private function createNewsCategory($name, $slug)
@@ -60,10 +62,10 @@ class PageSeeder extends Seeder
         $pageCategory->news_category_id = $newsCategory->id;
         $pageCategory->save();
 
-        // $this->createDemoCustomFieldsForPageCategories($pageCategory);
+        $this->createDemoCustomFieldsForPageCategories($pageCategory);
 
-        $this->create($title ." - Campaign", $title ." - Single Player", "campaign", $gameTemplate->id, $pageCategory->id);
-        $this->create($title ." - Online", $title ." - Online", "online", $gameTemplate->id, $pageCategory->id);
+        // $this->create($title ." - Campaign", $title ." - Single Player", "campaign", $gameTemplate->id, $pageCategory->id);
+        // $this->create($title ." - Online", $title ." - Online", "online", $gameTemplate->id, $pageCategory->id);
     }
 
     private function create($title, $description, $slug, $templateId, $categoryId)
@@ -87,64 +89,44 @@ class PageSeeder extends Seeder
         $content = PageContent::createPageContent($body);
         PageCustomField::createCustomField($key, $name, $pageId, $content->id, null);
 
-        $key = CustomFieldNames::HOW_TO_PLAY_VIDEO;
-        $name = "Video Tutorial";
-        $body = '<iframe width="560" height="315" src="https://www.youtube.com/embed/9iMfypQj3k0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
-        $content = PageContent::createPageContent($body);
-        PageCustomField::createCustomField($key, $name, $pageId, $content->id, null);
+        // $key = CustomFieldNames::HOW_TO_PLAY_VIDEO;
+        // $name = "Video Tutorial";
+        // $body = '<iframe width="560" height="315" src="https://www.youtube.com/embed/9iMfypQj3k0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+        // $content = PageContent::createPageContent($body);
+        // PageCustomField::createCustomField($key, $name, $pageId, $content->id, null);
     }
 
     private function createDemoCustomFieldsForPageCategories($category)
     {
-        // $key = CustomFieldNames::WHERE_TO_GET_GAMES;
-        // $name = "Where to get the games";
-        // $body = 'CnCNet, Origin, Physical etc';
-        // $content = PageContent::createPageContent($body);
-        // PageCustomField::createCustomField($key, $name, null, $content->id, $categoryId);
-
-        $key = CustomFieldNames::HOW_TO_PLAY_LISTINGS;
-        $name = "How to play Red Alert ". $category->title;
+        $key = CustomFieldNames::HOW_TO_PLAY_STEPS;
+        $name = "How to play ". $category->title;
         $body = '
-            <div class="boxes">
-                <a href="#" class="box '.$category->slug.'-campaign">
-                    <div class="description">
-                        <h3 class="text-uppercase">
-                            Singleplayer
-                        </h3>
-                        <p>
-                            Consectetur adipiscing elit, sed do eiusmod
-                            tempor incidid unt
-                        </p>
-                    </div>
-                </a>
-                <a href="#" class="box '.$category->slug.'-multiplayer">
-                    <div class="description">
-                        <h3 class="text-uppercase">
-                            Multiplayer
-                        </h3>
-                        <p>
-                            Consectetur adipiscing elit, sed do eiusmod
-                            tempor incidid unt
-                        </p>
-                    </div>
-                </a>
-                <a href="#" class="box '.$category->slug.'-download">
-                    <div class="description">
-                        <h3 class="text-uppercase">
-                            Where to buy
-                        </h3>
-                        <p>
-                            Consectetur adipiscing elit, sed do eiusmod
-                            tempor incidid unt
-                        </p>
-                    </div>
-                </a>
+            <div class="step">
+                <h3>Step 1: Title of step</h3>
+                <ul>
+                    <li>Additional steps if needed.</li>
+                    <li>Additional steps if needed.</li>
+                </ul>
+            </div>
+        
+            <div class="step">
+                <h3>Step 2: Title of step</h3>
+                <ul>
+                    <li>Additional steps if needed.</li>
+                    <li>Additional steps if needed.</li>
+                </ul>
+            </div>
+
+            <div class="step">
+                <h3>Step 3: Title of step</h3>
+                <ul>
+                    <li>Additional steps if needed.</li>
+                    <li>Additional steps if needed.</li>
+                </ul>
             </div>
         ';
 
         $content = PageContent::createPageContent($body);
         PageCustomField::createCustomField($key, $name, null, $content->id, $category->id);
-
-        
     }
 }

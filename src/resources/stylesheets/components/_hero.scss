@@ -26,9 +26,17 @@
     display: flex;
     width: 50vw;
     justify-content: center;
+    align-items: center;
+    flex-direction: column;    
 
-    .btn {  margin: 0 15px; }
+    @media(min-width: $md-width)
+    {
+        flex-direction: row;    
+    }
+
+    .btn {  margin: 0 15px }
 }
+
 
 .hero-sub-page
 {

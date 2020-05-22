@@ -46,7 +46,8 @@ class Constants
             "red-alert-3-kanes-wrath" => "18733", // Command & Conquer 3: Kane's Wrath
             "tiberium-wars" => "16106", // Command & Conquer 3: Tiberium Wars
             "generals" => "10070", // Command & Conquer: Generals
-            "zero-hour" => "16487", // Command & Conquer: Zero hour
+            "zero-hour" => "16487", // Command & Conquer: Zero hour,
+            "remasters" => "235" // TODO - Remasters
         ];
     }
 }

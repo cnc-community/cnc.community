@@ -1,4 +1,4 @@
-<?php $howToPlay = App\ViewHelper::getCategoryCustomFieldContents($category->id, App\CustomFieldNames::HOW_TO_PLAY_LISTINGS); ?>
+<?php $howToPlaySteps = App\ViewHelper::getCategoryCustomFieldContents($category->id, App\CustomFieldNames::HOW_TO_PLAY_STEPS); ?>
 
 @extends('layouts.app')
 
@@ -27,15 +27,16 @@
 @endsection
 
 @section('content')
-<?php if($howToPlay): ?>
+<?php if($howToPlaySteps): ?>
 <section id="how-to-play" class="section how-to-play">
     <div class="main-content">
         <h2 class="section-title">How to play {{ $category->title }}?</h2>
         <p class="section-description">
             Consectetur adipiscing elit, sed do eiusmod tempor incidid unt
         </p>
-
-        <?php print $howToPlay; ?>
+        <div class="page-content">
+            <?php print $howToPlaySteps; ?>
+        </div>
     </div>
 </section>
 <?php endif; ?>
