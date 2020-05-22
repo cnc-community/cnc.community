@@ -73,6 +73,12 @@ class GameSlider extends AbstractCustomView
                 </div>
             </div>
 
+            <?php /*
+            <div class="pagination">
+            <div class="swiper-pagination"></div>
+            </div>
+            */?>
+
             <div class="swiper-button-prev"></div>
             <div class="swiper-button-next"></div>
 
@@ -82,31 +88,48 @@ class GameSlider extends AbstractCustomView
                 (function(){
                     let swiper = new Swiper(".swiper-container", {
                         slidesPerView: 1,
-                        loop: true, 
+                        loop: false, 
                         spaceBetween: 30,
-                        freeMode: true,
-                        autoplay: true,
-                        pagination: false,
+                        freeMode: false,
+                        autoplay: false,
                         navigation: {
                             nextEl: ".swiper-button-next",
                             prevEl: ".swiper-button-prev",
                         },
+                        pagination: {
+                            // el: ".swiper-pagination",
+                            // renderBullet: function (index, className) {
+                            //     return '<span class="' + className + '">' + (index + 1) + '</span>';
+                            // },
+                        },
                         breakpoints: {
                             340: {
-                                slidesPerView: 2,
+                                slidesPerView: 4,
                                 spaceBetween: 10,
+                                noSwiping: false,
+                                allowSlidePrev: true,
+                                allowSlideNext: true,
                             },
                             768: {
                                 slidesPerView: 5,
                                 spaceBetween: 10,
+                                noSwiping: false,
+                                allowSlidePrev: true,
+                                allowSlideNext: true,
                             },
                             1024: {
                                 slidesPerView: 7,
                                 spaceBetween: 10,
+                                noSwiping: false,
+                                allowSlidePrev: true,
+                                allowSlideNext: true,
                             },
                             1280: {
-                                slidesPerView: 8,
+                                slidesPerView: 9,
                                 spaceBetween: 10,
+                                noSwiping: true,
+                                allowSlidePrev: false,
+                                allowSlideNext: false,
                             },
                         }
                     });

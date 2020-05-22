@@ -103,10 +103,15 @@
 .how-to-guides .guides 
 {
     display: flex;
+    flex-direction: column;
+    // flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
     padding: 36px 0;
     margin-top: 20px;
-    margin-bottom: 20px
+    margin-bottom: 20px;
 }
+    
 
 .how-to-guides .guides
 {
@@ -117,6 +122,28 @@
 
 .how-to-guides .swiper-container 
 {
-    width: 93%;
+    width: 90%;
+
+    @media(min-width: $xl-width)
+    {
+        width: 93%;
+    }
+
     height: 100%;
 }
+
+.how-to-guides .swiper-button-disabled
+{
+    @media(min-width: $xl-width)
+    {
+        display: none;
+    }
+}
+
+.how-to-guides .pagination 
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+} 
