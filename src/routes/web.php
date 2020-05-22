@@ -22,6 +22,8 @@ Route::get('/', function () {
 // Admin routes
 Auth::routes();
 
+Route::get('/admin/dashboard', 'AdminController@index')->name('admin.index')->middleware('role:admin,editor');
+
 // Admin Users management
 Route::get('/admin/users', 'UsersController@index')->name('admin.users.listing')->middleware('role:admin');
 Route::get('/admin/users/edit/{id}', 'UsersController@edit')->name('admin.users.edit')->middleware('role:admin');
