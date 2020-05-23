@@ -2,9 +2,9 @@
 .site-header 
 {
     height: 80px;
+    overflow: visible;
     display: flex;
     align-items: center;
-    overflow: hidden;
     background: #0000001c;
     position: absolute;
     top: 0;
@@ -120,33 +120,6 @@
         margin: 0;
         margin-left: 40px;
     }
-}
-
-.site-header nav a 
-{
-    display: inline-block;
-    font-size: 1.1rem;
-    color: $color-white;
-    text-transform: uppercase;
-    padding: 10px; 
-    margin-left: 16px;
-    margin-right: 16px;
-
-    position: relative;
-    transition: color ease-in-out 250ms;
-}
-.site-header nav a .online { color: $color-white; }
-
-.site-header nav a:hover 
-{
-    color: $color-gold-600;
-
-    .online { color: $color-white; }
-}
-
-.site-header nav a.active
-{
-    color: $color-gold;
 }
 
 .site-header a#navCreators .online 

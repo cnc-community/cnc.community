@@ -102,6 +102,23 @@ i {
     content: "\e906";
 }
 
+.icon-chevron-up-solid
+{
+    &:before
+    {
+        content: "\e907";
+    } 
+}
+
+.icon-chevron-down-solid
+{
+    &:before
+    {
+        content: "\e908";
+    } 
+}
+
+
 // Icon sizes
 .icon-xs
 {
