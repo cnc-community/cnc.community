@@ -33,14 +33,37 @@
     width: 355px;
     top: 0;
     left: 0;
-    visibility: hidden;
+    display: none;
+    opacity: 0;
+    transition: all ease-in 350ms;
+    transform-origin: top;
+    opacity: 0;
 }
 
 // Make visible when nav link is made open
 .nav-item.open .nav-dropdown-contents
 {
-    visibility: visible;
+    display: flex;
+    z-index: 1;
 }
+
+@keyframes animateIn 
+{
+    0%{ 
+        transform: scaleY(0); 
+        opacity: 0; 
+    }
+    100% { 
+        transform: scaleY(1);
+        opacity: 1; 
+    }
+}
+
+.nav-item.open .nav-dropdown-contents
+{
+    animation: animateIn 350ms forwards;
+}
+
 
 // Category title within dropdown items
 .nav-item .nav-dropdown-contents .category

@@ -11,7 +11,7 @@ export class NavBarJs
 
             navItem.addEventListener("mouseenter", this.onNavItemMouseEnter.bind(this, navItem), false);
 
-            if (navItemChildren == null) 
+            if (navItemChildren == null)
             {
                 continue;
             }
@@ -21,6 +21,13 @@ export class NavBarJs
 
     private onNavItemMouseEnter(navItem: HTMLDivElement): void
     {
+        const navItemChildren = navItem.querySelector(".nav-dropdown-contents");
+
+        if (navItemChildren == null) 
+        {
+            this.closeDropDown(navItem);
+        }
+
         if (navItem.classList.contains("open"))
         {
             return;
