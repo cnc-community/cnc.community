@@ -21,7 +21,9 @@
                 <nav>
                     <div class="navbar-items">
                         <div class="nav-item nav-item-dropdown">
-                            <a href="/#games" title="Games" class="nav-link">Games <i class="icon icon-dropdown"></i></a>
+                            <a href="/#games" title="Games" class="nav-link">Games 
+                            </a>
+                            <i class="icon icon-dropdown"></i>
 
                             <div class="nav-dropdown-contents">
                                 <div class="dropdown-container">

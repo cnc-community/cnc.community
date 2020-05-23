@@ -7,13 +7,16 @@
 // Div container for each link (nav item)
 .navbar-items .nav-item
 {
-    position: relative
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-around
 }
 
 // Links within the nav item
 .navbar-items .nav-link
 {
-    display: inline-block;
+    display: flex;
     font-size: 1.1rem;
     color: #fff;
     text-transform: uppercase;
@@ -22,6 +25,11 @@
     margin-right: 16px;
     position: relative;
     z-index: 10;
+}
+
+.nav-item-dropdown .nav-link 
+{
+    margin-right: 0;
 }
 
 // Dropdown container
@@ -131,7 +139,6 @@
 
 .nav-item-dropdown .icon-dropdown 
 {
-    position: absolute;
     font-size: 1rem;
     padding: 5px 12px;
     opacity: 1;
