@@ -58,11 +58,11 @@
                         </div>
                     </div>
                     <div class="social-links">
-                        <a href="https://www.facebook.com/groups/commandandconquer" title="C&C Facebook Group"><i class="icon-facebook"></i></a>
-                        <a href="#" title="C&C Twitter"><i class="icon-twitter"></i></a>
-                        <a href="https://discord.gg/zktcZQY" title="C&C Discord"><i class="icon-discord"></i></a>
-                        <a href="https://store.steampowered.com/app/1213210" title="C&C Steam"><i class="icon-steam"></i></a>
-                        <a href="https://www.reddit.com/r/commandandconquer" title="C&C Reddit" rel="nofollow"><i class="icon-reddit"></i></a>
+                        <a href="https://www.facebook.com/groups/commandandconquer" title="C&C Facebook Group" rel="nofollow" target="_blank"><i class="icon-facebook"></i></a>
+                        <a href="https://twitter.com/OfficialCnC" title="C&C Twitter" rel="nofollow"  target="_blank"><i class="icon-twitter"></i></a>
+                        <a href="https://discord.gg/zktcZQY" title="C&C Discord" rel="nofollow"  target="_blank"><i class="icon-discord"></i></a>
+                        <a href="https://store.steampowered.com/app/1213210" title="C&C Steam" rel="nofollow"  target="_blank"><i class="icon-steam"></i></a>
+                        <a href="https://www.reddit.com/r/commandandconquer" title="C&C Reddit" rel="nofollow" target="_blank"><i class="icon-reddit"></i></a>
                     </div>
                 </nav>
             </div>
