@@ -98,36 +98,6 @@
 
     @yield('scripts')
     <script defer src="/assets/js/SiteCountNav.js"></script>
-    <script>
-        let navitems = document.querySelectorAll(".nav-item");
-        console.log(navitems);
-        for(let i = 0; i < navitems.length; i++)
-        {
-            let navItem = navitems[i];
-            let navItemChildren = navItem.querySelector(".nav-dropdown-contents");
-
-            navItem.addEventListener("mouseenter", function()
-            {   
-                if (navItem.classList.contains("open"))
-                {
-                    console.log(navItem.classList.contains("open"));
-                    return;
-                }
-                navItem.classList.add("open");
-                navItem.classList.remove("close");
-                navItemChildren.style.display = "flex";
-            }, false);  
-
-            if(navItemChildren == null) continue;
-            navItemChildren.addEventListener("mouseenter", function()
-            {
-                navItem.addEventListener("mouseleave", function()
-                {
-                    navItem.classList.remove("open");
-                    navItem.classList.add("close");
-                }, false);
-            }, false);
-        }
-    </script>
+    <script defer src="/assets/js/NavBarJs.js"></script>
 </body>
 </html>
