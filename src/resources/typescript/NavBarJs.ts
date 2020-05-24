@@ -13,6 +13,7 @@ export class NavBarJs
 
             navItem.addEventListener("mouseenter", (e) => this.onNavItemMouseEnter(e, navItem), false);
             navItem.addEventListener("click", (e) => this.onNavItemMouseClicked(e, navItem), false);
+            navItem.addEventListener("touchstart", (e) => this.onNavItemMouseClicked(e, navItem), false);
 
             if (navItemChildren == null)
             {
