@@ -5,11 +5,6 @@
     justify-content: center;
     flex-wrap: wrap;
     margin-top: 50px;
-    
-    @media(min-width: $xl-width)
-    {
-        justify-content: flex-start;
-    }
 }
 
 @media(min-width: $xl-width)

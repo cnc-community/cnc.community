@@ -40,7 +40,7 @@
                                         <a href="/command-and-conquer-4" title="C&C 4">C&amp;C 4</a>
                                     </div>
                                     <div class="category">
-                                        <div class="title">2020 Games</div>
+                                        <div class="title">Remasters</div>
                                         <a href="/remasters" title="Remasters Collection">C&amp;C Remaster Collection </a>
                                     </div>
                                 </div>

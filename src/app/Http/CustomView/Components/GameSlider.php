@@ -53,15 +53,15 @@ class GameSlider extends AbstractCustomView
                         </div>
                     </a>
 
-                    <a href="red-alert-3" class="swiper-slide box red-alert-3" title="How to play Red Alert 3">
-                        <div class="logo">
-                            <img src="assets/images/boxes/logos/red-alert-3-logo.png" loading="lazy" alt="Red Alert 3 logo" />
-                        </div>
-                    </a>
-
                     <a href="command-and-conquer-3"  class="swiper-slide box cnc-3" title="How to play C&C 3">
                         <div class="logo">
                             <img src="assets/images/boxes/logos/cnc-3-logo.png" loading="lazy" alt="C&C 3 logo" />
+                        </div>
+                    </a>
+
+                    <a href="red-alert-3" class="swiper-slide box red-alert-3" title="How to play Red Alert 3">
+                        <div class="logo">
+                            <img src="assets/images/boxes/logos/red-alert-3-logo.png" loading="lazy" alt="Red Alert 3 logo" />
                         </div>
                     </a>
 
