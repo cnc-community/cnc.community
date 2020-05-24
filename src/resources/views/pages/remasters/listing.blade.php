@@ -12,9 +12,9 @@
     <div class="title">
         <img src="assets/images/logos/cnc-remastered-logo.png" alt="C&C Remaster Logo" />
     </div>
-    <p class="lead">
-        Welcome back, Commander. 
-    </p>
+    <h1 class="small-h1">
+        Find the latest streams, mods and maps for the C&amp;C Remastered Collection.
+    </h1>
     <div class="buttons">
         <a href="#streams" class="btn btn-primary" title="View Streams">Streams</a>
         <a href="#news" class="btn btn-primary" title="View News">News</a>
@@ -50,7 +50,7 @@
 
 <section id="workshop-items" class="news-listings">
     <div class="main-content">
-        <h2 class="section-title">Workshop Items</h2>
+        <h2 class="section-title">Latest C&amp;C Remasters Workshop Mods</h2>
         <p class="section-description">
             Consectetur adipiscing elit, sed do eiusmod tempor incidid unt ut laborDuisrem ipsum dolod unt ut laborDuisrem ipsum dolod...
             iusmod tempor incidid unt ut laborDuisrem ipsum dolod...

@@ -90,21 +90,20 @@
 
 .twitch-games-navbar .count 
 {
+    background: #3f423e;
+
     display: flex;
     align-items: center;
     justify-content: center;
     position: absolute;
-    width: 15px;
-    height: 15px;
-    background: #3f423e;
-    color: #868686;
-    @extend .font-secondary;
-    font-size: 1rem;
-    border-radius: 50px;
-    margin-left: 15px;
-    padding: 12px;
-    top: -5px;
-    right: -5px;
+    top: 4px;
+    right: -9px;
+    border-radius: 100%;
+    padding: 9px;
+    width: 5px;
+    height: 5px;
+    font-size: 10px;
+    color: #fff;
 }
 
 .twitch-games-navbar .twitch-game-link.live 
@@ -116,13 +115,13 @@
 
 .twitch-games-navbar .twitch-game-link.live .count 
 {
-    background: #099800;
+    background: #00c156;
     color: $color-white;
 }
 
 .twitch-games-navbar .twitch-game-link.active
 {
-    background: #076f00;
+    background: #00c156;
     color: $color-white;
 }
 

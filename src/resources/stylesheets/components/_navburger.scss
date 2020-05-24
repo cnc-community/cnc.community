@@ -1,0 +1,112 @@
+.navburger
+{
+	padding: 15px 15px;
+	display: inline-block;
+	cursor: pointer;
+	transition-property: opacity, filter;
+	transition-duration: 0.15s;
+	transition-timing-function: linear;
+	font: inherit;
+	color: inherit;
+	text-transform: none;
+	background-color: transparent;
+	border: 0;
+	margin: 0;
+    overflow: visible;
+    background: transparent;
+    border: none;
+
+    &:focus {  outline: 1px solid #2b2b2b; }
+}
+
+
+.navburger.is-active .navburger-inner,
+.navburger.is-active .navburger-inner::before,
+.navburger.is-active .navburger-inner::after 
+{
+	background-color: #fff;
+}
+
+.navburger-box 
+{
+    width: 36px;
+	height: 24px;
+	display: inline-block;
+	position: relative;
+}
+
+.navburger-inner 
+{
+	display: block;
+	top: 50%;
+	margin-top: -2px;
+}
+
+.navburger-inner,
+.navburger-inner::before,
+.navburger-inner::after 
+{
+    width: 36px;
+    height: 3px;
+	background-color: #fff;
+	border-radius: 4px;
+	position: absolute;
+	transition-property: transform;
+	transition-duration: 0.15s;
+	transition-timing-function: ease;
+}
+
+.navburger-inner::before,
+.navburger-inner::after 
+{
+	content: "";
+	display: block;
+}
+
+.navburger-inner::before 
+{
+	top: -10px;
+}
+
+.navburger-inner::after 
+{
+	bottom: -10px;
+}
+
+
+.navburger--elastic .navburger-inner 
+{
+	top: 2px;
+	transition-duration: 0.275s;
+	transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.navburger--elastic .navburger-inner::before 
+{
+	top: 10px;
+	transition: opacity 0.125s 0.275s ease;
+}
+
+.navburger--elastic .navburger-inner::after 
+{
+	top: 20px;
+	transition: transform 0.275s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.navburger--elastic.is-active .navburger-inner 
+{
+	transform: translate3d(0, 10px, 0) rotate(135deg);
+	transition-delay: 0.075s;
+}
+
+.navburger--elastic.is-active .navburger-inner::before 
+{
+	transition-delay: 0s;
+	opacity: 0;
+}
+
+.navburger--elastic.is-active .navburger-inner::after 
+{
+	transform: translate3d(0, -20px, 0) rotate(-270deg);
+	transition-delay: 0.075s;
+}

@@ -1,5 +1,7 @@
 export class NavBarJs 
 {
+    private cachedNavItem: HTMLDivElement = null;
+
     constructor()
     {
         let navItems = document.querySelectorAll(".nav-item") as NodeListOf<HTMLDivElement>;
@@ -9,7 +11,8 @@ export class NavBarJs
             const navItem = navItems[i];
             const navItemChildren = navItem.querySelector(".nav-dropdown-contents");
 
-            navItem.addEventListener("mouseenter", this.onNavItemMouseEnter.bind(this, navItem), false);
+            navItem.addEventListener("mouseenter", (e) => this.onNavItemMouseEnter(e, navItem), false);
+            navItem.addEventListener("click", (e) => this.onNavItemMouseClicked(e, navItem), false);
 
             if (navItemChildren == null)
             {
@@ -19,16 +22,34 @@ export class NavBarJs
         }
     }
 
-    private onNavItemMouseEnter(navItem: HTMLDivElement): void
+    private onNavItemMouseEnter(event: Event, navItem: HTMLDivElement): void
     {
-        const navItemChildren = navItem.querySelector(".nav-dropdown-contents");
+        this.handleDropdownMenu(navItem);
+    }
 
-        if (navItemChildren == null) 
+    private onNavItemMouseClicked(event: Event, navItem: HTMLDivElement): void
+    {
+        event.preventDefault();
+
+        if (this.dropdownOpen == true)
+        {
+            this.closeDropDown(this.cachedNavItem);
+            return;
+        }
+
+        this.handleDropdownMenu(navItem);
+    }
+
+    private handleDropdownMenu(navItem: HTMLDivElement): void
+    {
+        this.cachedNavItem = navItem;
+        const navItemChildren = navItem.querySelector(".nav-dropdown-contents");
+        if (navItemChildren == null)
         {
             this.closeDropDown(navItem);
         }
 
-        if (navItem.classList.contains("open"))
+        if (navItem.classList.contains("open") === true)
         {
             return;
         }
@@ -44,12 +65,19 @@ export class NavBarJs
     {
         navItem.classList.remove("open");
         navItem.classList.add("close");
+        this.cachedNavItem = null;
     }
 
     private openDropDown(navItem: HTMLDivElement): void
     {
         navItem.classList.add("open");
         navItem.classList.remove("close");
+    }
+
+    private get dropdownOpen(): boolean 
+    {
+        if (this.cachedNavItem == null) return false;
+        return this.cachedNavItem.classList.contains("open");
     }
 }
 

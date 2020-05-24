@@ -19,6 +19,7 @@
 .hero .video 
 {
     position: absolute;
+    top: 0;
 }
 
 .hero .buttons 
@@ -218,4 +219,15 @@
 {
     margin-top: 10px;
     margin-bottom: 30px;
+}
+
+.hero .title img 
+{
+    width: 350px;
+    max-width: 100%;
+
+    @media(min-width: $xl-width)
+    {
+        width: 400px;
+    }
 }
