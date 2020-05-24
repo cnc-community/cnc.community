@@ -10,11 +10,19 @@ export class SiteCountNav
 
     private onComplete(count): void
     {
-        console.log(count);
-        let navCreators = document.getElementById("navCreators");
-        if (navCreators)
+        let navCreators = document.querySelectorAll(".nav-creators-count");
+        for (let i = 0; i < navCreators.length; i++)
         {
-            navCreators.querySelector("span").innerHTML = count;
+            let notification = navCreators[i];
+            if (notification)
+            {
+                let notificationEl = notification.querySelector("span");
+                if (count > 0)
+                {
+                    notificationEl.classList.add("pop-in");
+                    notificationEl.innerText = count;
+                }
+            }
         }
     }
 }

@@ -4,7 +4,7 @@ export class NavBarJs
 
     constructor()
     {
-        let navItems = document.querySelectorAll(".nav-item") as NodeListOf<HTMLDivElement>;
+        let navItems = document.querySelectorAll(".nav-item-dropdown") as NodeListOf<HTMLDivElement>;
 
         for (let i = 0; i < navItems.length; i++)
         {

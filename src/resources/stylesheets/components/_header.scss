@@ -62,6 +62,29 @@
     height: 5px;
     font-size: 10px;
     color: #fff;
+    opacity: 0;
+}
+
+@keyframes scaleNotificationPop 
+{
+    0%{ 
+        transform: scale(0); 
+        opacity: 0; 
+    }
+    50% {
+        transform: scale(1.5) rotate(40deg);
+    }
+    100% { 
+        transform: scale(1) rotate(0deg);
+        opacity: 1; 
+    }
+}
+
+.site-header .notification.pop-in 
+{
+    animation-delay: 400ms;
+    transform-origin: center;
+    animation: scaleNotificationPop 500ms forwards; 
 }
 
 .site-header .main-content

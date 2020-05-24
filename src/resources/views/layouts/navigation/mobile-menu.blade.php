@@ -23,7 +23,7 @@
 
     <div class="category">
         <div class="title">Other</div>
-        <a href="/creators" id="navCreators" title="Creators" class="nav-link">Creators <span class="notification">0</span></a>
+        <a href="/creators" title="Creators" class="nav-link nav-creators-count">Creators <span class="notification">0</span></a>
         <a href="/funny" title="Funny/Cool" class="nav-link">Funny/Cool</a>
     </div>
 
