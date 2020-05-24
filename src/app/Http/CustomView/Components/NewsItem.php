@@ -101,13 +101,13 @@ class NewsItem extends AbstractCustomView
                             target="_blank"
                              rel="nofollow noreferrer"
                             class="btn btn-readmore">
-                            Go to Link 
+                            Read More
                         </a>
                         <?php else: ?>
                         <a href="<?php echo $this->url; ?>"
                             title="<?php echo $this->title; ?>"
                             class="btn btn-readmore">
-                            Go to Article
+                            Read Article
                         </a>
                         <?php endif; ?>
                     </div>

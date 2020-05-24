@@ -29,15 +29,15 @@
                                 <div class="dropdown-container">
                                     <div class="category">
                                         <div class="title">C&amp;C Games</div>
-                                        <a href="/tiberian-dawn" title="Tiberian Dawn">Tiberian Dawn</a>
+                                        <a href="/tiberian-dawn" title="Command & Conquer (Tiberian Dawn)">Tiberian Dawn</a>
                                         <a href="/red-alert" title="Red Alert">Red Alert</a>
                                         <a href="/tiberian-sun" title="Tiberian Sun">Tiberian Sun</a>
                                         <a href="/red-alert-2" title="Red Alert 2">Red Alert 2</a>
                                         <a href="/renegade" title="Renegade">Renegade</a>
                                         <a href="/generals" title="Generals">Generals</a>
-                                        <a href="/red-alert-3" title="Renegade">Red Alert 3</a>
-                                        <a href="/command-and-conquer-3" title="C&C 3">C&amp;C 3</a>
-                                        <a href="/command-and-conquer-4" title="C&C 4">C&amp;C 4</a>
+                                        <a href="/command-and-conquer-3" title="Command & Conquer 3">C&amp;C 3</a>
+                                        <a href="/red-alert-3" title="Red Alert 3">Red Alert 3</a>
+                                        <a href="/command-and-conquer-4" title="Command & Conquer 4">C&amp;C 4</a>
                                     </div>
                                     <div class="category">
                                         <div class="title">Remasters</div>
@@ -50,8 +50,26 @@
                         <div class="nav-item">
                             <a href="/creators" id="navCreators" title="Creators" class="nav-link">Creators <span class="online">0</span></a>
                         </div>
-                        <div class="nav-item">
+
+                        <div class="nav-item nav-item-dropdown">
                             <a href="/remasters" title="Remasters" class="nav-link">Remasters</a>
+                            <i class="icon icon-dropdown"></i>
+
+                            <div class="nav-dropdown-contents">
+                                <div class="dropdown-container">
+                                    <div class="category">
+                                        <div class="title">C&amp;C Remasters</div>
+                                        <a href="/remasters#buy" title="Buy the Remasters">Where to buy</a>
+                                        <a href="/remasters#news" title="C&C Remasters News">News</a>
+                                        <a href="/remasters#streams" title="Command & Conquer 4">Streams</a>
+                                        <a href="/remasters#mods" title="Command & Conquer 4">Mod Workshop</a>
+                                    </div>
+                                    <div class="category">
+                                        <div class="title">Community</div>
+                                        <a href="/command-and-conquer-4" title="Command & Conquer 4">Tournaments</a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="nav-item">
                             <a href="/funny" title="Funny/Cool" class="nav-link">Funny/Cool</a>
