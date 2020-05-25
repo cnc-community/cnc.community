@@ -2,32 +2,19 @@
 .page.theme-red-alert-2 .btn-primary,
 .page.theme-red-alert-3 .btn-primary
 {
-    border-color: #ff0000;
-    color: #ffffff;
-    background: #5f00007a;
-
+    border-color: red;
+    background: #a90000e6;
+    text-shadow: none;
+    color: #fff;
     &:hover { 
-        border-color: transparent;
-        background: #fff;
-        text-shadow: none;
-        color: #000;
-    }
-}
-
-.page.theme-renegade .btn-primary
-{
-    background: #000000b8;
-    border-color: #ffb358;
-    color: #ffb358;
-
-    &:hover { 
-        background: #fff;
-        border-color: transparent;
-        color: #000;
+        border-color: #ff0000;
+        color: #ff0000;
+        background: #2700007a;
     }
 }
 
 .page.theme-tiberian-sun .btn-primary,
+.page.theme-renegade .btn-primary,
 .page.theme-generals .btn-primary
 {
     background: #000000b8;
@@ -35,9 +22,9 @@
     color: #f6941e;
 
     &:hover { 
-        background: #fff;
-        border-color: transparent;
-        color: #000;
+        background: #9c550075;
+        border-color: #ff8b00;
+        color: #ffffff;
     }
 }
 
@@ -47,8 +34,9 @@
     color: #06f300;
 
     &:hover { 
-        border-color: transparent;
-        color: #000;
+        border-color: #06ff00;
+        color: #ffffff;
+        background: #012700d9;
     }
 }
 
@@ -58,82 +46,8 @@
     border-color: #00b9da;
 
     &:hover { 
-        border-color: transparent;
-        color: #000;
+        color: #ffffff;
+        border-color: #00b9da;
+        background: #006a7dc7;
     }
 }
-
-
-/*
-.hero.hero-tiberian-dawn
-{
-    @extend %background-grey;
-
-    &:before
-    {
-        content: "";
-        position: absolute;
-        right: 0;
-        width: 100%;
-        height: 100%;
-        background: url(../images/head-right.png);
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: right;
-    }
-}
-
-.hero.hero-red-alert
-{
-    @extend %background-red;
-
-    &:before
-    {
-        content: "";
-        position: absolute;
-        right: 0;
-        width: 100%;
-        height: 100%;
-        background: url(../images/ra-head-right.png);
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: right;
-    }
-}
-
-.hero.hero-tiberian-sun
-{
-    @extend %background-yellow;
-
-    &:before
-    {
-        content: "";
-        position: absolute;
-        right: 0;
-        width: 100%;
-        height: 100%;
-        background: url(../images/head-right-ts.png);
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: right;
-    }
-}
-
-.hero.hero-red-alert-2
-{
-    @extend %background-red;
-
-    &:before
-    {
-        content: "";
-        position: absolute;
-        right: 0;
-        width: 100%;
-        height: 100%;
-        background: url(../images/head-right-ra2.png);
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: right;
-    }
-}
-*/
