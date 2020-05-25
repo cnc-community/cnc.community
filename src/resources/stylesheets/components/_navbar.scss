@@ -7,6 +7,11 @@
 .nav-item .nav-dropdown-contents .category .title 
 {
     @extend .font-primary-bold;
+    & a { 
+        @extend .font-primary-bold;
+        padding: 0;
+        margin: 0;
+    }
 }
 
 @media(min-width: $lg-width)

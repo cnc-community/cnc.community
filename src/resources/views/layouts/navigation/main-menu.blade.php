@@ -8,7 +8,9 @@
         <div class="nav-dropdown-contents nav-drop-col-1">
             <div class="dropdown-container">
                 <div class="category">
-                    <div class="title">C&amp;C Games</div>
+                    <div class="title">
+                        <a href="/tiberian-dawn" title="Command & Conquer Games">C&amp;C Games</a>
+                    </div>
                     <a href="/tiberian-dawn" title="Command & Conquer (Tiberian Dawn)">Tiberian Dawn</a>
                     <a href="/red-alert" title="Red Alert">Red Alert</a>
                     <a href="/tiberian-sun" title="Tiberian Sun">Tiberian Sun</a>
@@ -35,7 +37,9 @@
         <div class="nav-dropdown-contents nav-drop-col-2">
             <div class="dropdown-container">
                 <div class="category">
-                    <div class="title">C&amp;C Remastered</div>
+                    <div class="title">
+                        <a href="/command-and-conquer-remastered" title="C&C Remastered Collection">C&amp;C Remastered</a>
+                    </div>
                     <a href="/command-and-conquer-remastered#buy" title="Buy the Remastered Collection">Where to buy</a>
                     <a href="/command-and-conquer-remastered#news" title="C&C News">News</a>
                     <a href="/command-and-conquer-remastered#streams" title="C&C Streams">Streams</a>
@@ -43,7 +47,6 @@
                 </div>
                 <div class="category">
                     <div class="title">Community</div>
-                    <a href="/command-and-conquer-4" title="Command & Conquer 4">Tournaments</a>
                 </div>
             </div>
         </div>
