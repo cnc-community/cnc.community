@@ -9,11 +9,12 @@ export class NavBarJs
         for (let i = 0; i < navItems.length; i++)
         {
             const navItem = navItems[i];
-            const navItemChildren = navItem.querySelector(".nav-dropdown-contents");
+            const navLink = navItem.querySelector(".nav-link");
+            const navItemChildren = navItem.querySelector(".dropdown-container");
 
-            navItem.addEventListener("mouseenter", (e) => this.onNavItemMouseEnter(e, navItem), false);
-            navItem.addEventListener("click", (e) => this.onNavItemMouseClicked(e, navItem), false);
-            navItem.addEventListener("touchstart", (e) => this.onNavItemMouseClicked(e, navItem), false);
+            navLink.addEventListener("mouseenter", (e) => this.onNavItemMouseEnter(e, navItem), false);
+            navLink.addEventListener("click", (e) => this.onNavItemMouseClicked(e, navItem), false);
+            navLink.addEventListener("touchstart", (e) => this.onNavItemMouseClicked(e, navItem), true);
 
             if (navItemChildren == null)
             {
@@ -31,7 +32,6 @@ export class NavBarJs
     private onNavItemMouseClicked(event: Event, navItem: HTMLDivElement): void
     {
         event.preventDefault();
-
         if (this.dropdownOpen == true)
         {
             this.closeDropDown(this.cachedNavItem);
