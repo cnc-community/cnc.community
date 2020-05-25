@@ -9,7 +9,7 @@
             <div class="dropdown-container">
                 <div class="category">
                     <div class="title">
-                        <a href="/tiberian-dawn" title="Command & Conquer Games">C&amp;C Games</a>
+                        <a href="/#games" title="Command & Conquer Games">C&amp;C Games</a>
                     </div>
                     <a href="/tiberian-dawn" title="Command & Conquer (Tiberian Dawn)">Tiberian Dawn</a>
                     <a href="/red-alert" title="Red Alert">Red Alert</a>
