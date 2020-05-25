@@ -50,11 +50,13 @@
 .btn-secondary
 {
     background: $color-white;
+    color: #000;
+    border:  2px solid #fff;
 
     &:focus,
     &:hover
     {
-        color: $color-white;
+        @extend .btn-solid;
     }
 }
 
@@ -62,14 +64,14 @@
 {
     background: $color-white;
     color: #000;
-    border: 1px solid transparent;
+    border: 2px solid transparent;
 
     &:focus,
     &:hover
     {
         background: transparent;
         color: $color-white;
-        border: 1px solid $color-white;
+        border: 2px solid $color-white;
     }
 }
 
@@ -147,7 +149,7 @@
     border-radius: 10px;
 
     &:hover {
-        background: $color-green;
+        background: #efc634;
         color: #fff;
     }
 

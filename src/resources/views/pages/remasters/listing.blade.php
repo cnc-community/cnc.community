@@ -18,9 +18,9 @@
         Find the latest streams, mods and maps for the C&amp;C Remastered Collection.
     </h1>
     <div class="buttons">
+        <a href="#workshop-items" class="btn btn-primary" title="View Mods">Steam Mods</a>
         <a href="#streams" class="btn btn-primary" title="View Streams">Streams</a>
         <a href="#news" class="btn btn-primary" title="View News">News</a>
-        <a href="#workshop-items" class="btn btn-primary" title="View Mods">Workshop Mods</a>
     </div>
 </div>
 @endsection
@@ -37,22 +37,10 @@
             </div>
 
             <div class="buttons">
-                <a class="btn btn-primary btn-icon" title="Buy on EA Origin" rel="nofollow" href="https://www.origin.com/gbr/en-us/store/command-and-conquer/command-and-conquer-remastered">Buy on Origin <i class="icon-origin"></i></a>
-                <a class="btn btn-primary btn-icon" title="Buy on Steam" rel="nofollow" href="https://store.steampowered.com/agecheck/app/1213210/">Buy on Steam <i class="icon-steam"></i></a>
+                <a class="btn btn-secondary btn-icon" title="Buy on EA Origin" rel="nofollow" href="https://www.origin.com/gbr/en-us/store/command-and-conquer/command-and-conquer-remastered">Buy on Origin <i class="icon-origin"></i></a>
+                <a class="btn btn-secondary btn-icon" title="Buy on Steam" rel="nofollow" href="https://store.steampowered.com/agecheck/app/1213210/">Buy on Steam <i class="icon-steam"></i></a>
             </div>
         </div>
-    </div>
-</section>
-
-<section id="news" class="section news-listings">
-    <div class="main-content">
-        <h2 class="section-title">Official Intel</h2>
-        <p class="section-description">
-            Consectetur adipiscing elit, sed do eiusmod tempor incidid unt ut laborDuisrem ipsum dolod unt ut laborDuisrem ipsum dolod...
-            iusmod tempor incidid unt ut laborDuisrem ipsum dolod...
-        </p>
-
-        <?php new App\Http\CustomView\Components\NewsListing($news); ?>
     </div>
 </section>
 
@@ -77,6 +65,18 @@
             <h2 class="section-title">Latest Remastered streams</h2>
             <?php new App\Http\CustomView\Components\TwitchListing($streams); ?>
         <?php endif; ?>
+    </div>
+</section>
+
+<section id="news" class="section news-listings">
+    <div class="main-content">
+        <h2 class="section-title">Official Intel</h2>
+        <p class="section-description">
+            Consectetur adipiscing elit, sed do eiusmod tempor incidid unt ut laborDuisrem ipsum dolod unt ut laborDuisrem ipsum dolod...
+            iusmod tempor incidid unt ut laborDuisrem ipsum dolod...
+        </p>
+
+        <?php new App\Http\CustomView\Components\NewsListing($news); ?>
     </div>
 </section>
 @endsection
