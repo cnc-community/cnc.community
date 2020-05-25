@@ -4,8 +4,10 @@
 @section('page-class', 'remasters')
 
 @section('hero')
-<div class="video">
-    <video autoplay="true" loop muted src="//cdn.jsdelivr.net/gh/cnc-community/files/cnc-remastered.mp4">
+<div class="video" style="background-image: url('/assets/images/posters/cnc-remastered.jpg')">
+    <video autoplay="true" loop muted 
+        poster="/assets/images/posters/cnc-remastered.jpg"
+        src="//cdn.jsdelivr.net/gh/cnc-community/files/cnc-remastered.mp4">
     </video>
 </div>
 <div class="content center">
