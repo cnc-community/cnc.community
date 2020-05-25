@@ -3,7 +3,7 @@
 @extends('layouts.app')
 
 @section('title', $category->title)
-@section('page-class', 'category')
+@section('page-class', 'category theme-'.$category->slug)
 @section('hero-class', 'hero-'. $category->slug)
 
 @section('hero')

@@ -87,6 +87,11 @@ i {
     content: "\e903";
 }
 
+.icon-origin:before 
+{
+    content: "\e907";
+}
+
 .icon-reddit:before 
 {
     content: "\e904";
@@ -106,18 +111,14 @@ i {
 {
     &:before
     {
-        content: "\e907";
-    } 
-}
-
-.icon-chevron-down-solid
-{
-    &:before
-    {
         content: "\e908";
     } 
 }
 
+.icon-play:before 
+{
+    content: "\e909";
+}
 
 // Icon sizes
 .icon-xs

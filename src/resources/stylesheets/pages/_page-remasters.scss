@@ -2,3 +2,28 @@
 {
     @extend %small-h1;
 }
+
+.page-remasters .feature-cta 
+{
+    position: relative;
+}
+
+.page-remasters .feature-cta:before
+{
+    content: "";
+    background: #00000045;
+    width: 100%;
+    position: absolute;
+    height: 100%;
+    top: 0;
+}
+
+.page-remasters .feature-cta .feature-text 
+{
+    @extend .font-primary-bold;
+
+    p { 
+        color: #fff;
+        text-transform: uppercase;
+    }
+}

@@ -32,12 +32,18 @@
 
 .btn-primary
 {
-    background: $color-white;
-    color: #000;
+    box-shadow: none;
+    background: #56480a40;
+    color: #efc634;
+    border-color: #efc634;
+    transition: ease-in-out 250ms all;
 
     &:hover,
     &:focus 
     {
+        background: $color-white;
+        border-color: $color-white;
+        color: #000;
     }
 }
 
@@ -111,6 +117,19 @@
     padding: 0 7px; 
 }
 
+.btn-icon 
+{
+    padding-left: 30px;
+    padding-right: 20px;
+}
+
+.btn-icon i 
+{ 
+    margin-left: 15px;
+    margin-right: 0;
+    padding-right: 0;
+}
+
 .btn-xs { font-size: $font-size-xs; }
 .btn-sm { 
     padding: 14px 22px;
@@ -119,6 +138,23 @@
 .btn-md { font-size: $font-size-md; }
 .btn-lg { font-size: $font-size-lg; }
 .btn-xl { font-size: $font-size-xl; }
+
+.btn-play 
+{
+    padding: 15px;
+    padding: 28px 50px;
+    background: #101010e0;
+    border-radius: 10px;
+
+    &:hover {
+        background: $color-green;
+        color: #fff;
+    }
+
+    .icon-play:before { 
+        font-size: 2.5rem;
+    }
+}
 
 .btn-menu
 {

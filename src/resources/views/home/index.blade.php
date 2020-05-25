@@ -14,7 +14,7 @@
         Stay current with C&amp;C Games and their communities. 
     </p>
     <div class="buttons">
-        <a class="btn btn-primary" href="#games">How to Play C&C</a>
+        <a class="btn btn-outline" href="#games">How to Play C&C</a>
         <a class="btn btn-outline" href="#mission">Our Mission</a>
     </div>
 </div>

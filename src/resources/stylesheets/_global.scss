@@ -388,3 +388,41 @@ p > code
         display: inline-block;
     }
 }
+
+.feature-cta 
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    padding-top: 150px;
+    padding-bottom: 150px;
+    background-size: cover;
+    background-position: center;
+}
+
+.feature-cta .feature-image 
+{
+    position: absolute;
+}
+
+.feature-cta .buttons 
+{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    & .btn { 
+        margin: 0 5px; 
+    }
+}
+
+.feature-cta .feature-text 
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}

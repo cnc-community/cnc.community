@@ -28,13 +28,19 @@
 @section('content')
 <section id="buy" class="section news-listings">
     <div class="main-content center">
-        <h2 class="section-title">Video + Buy links</h2>
-        <p class="section-description">
-            Consectetur adipiscing elit, sed do eiusmod tempor incidid unt ut laborDuisrem ipsum dolod unt ut laborDuisrem ipsum dolod...
-            iusmod tempor incidid unt ut laborDuisrem ipsum dolod...
-        </p>
+        <div class="feature-cta" style="background-image: url('/assets/images/command-and-conquer-remastered.jpg')">
+            <div class="feature-text">
+                <a class="btn btn-play" href="https://www.youtube.com/watch?v=9iMfypQj3k0&feature=emb_logo" target="_blank" rel="nofollow">
+                    <i class="icon-play"></i>
+                </a>
+                <p>Establishing battlefield control on June 5, 2020.</p>
+            </div>
 
-        <?php new App\Http\CustomView\Components\NewsListing($news); ?>
+            <div class="buttons">
+                <a class="btn btn-primary btn-icon" title="Buy on EA Origin" rel="nofollow" href="https://www.origin.com/gbr/en-us/store/command-and-conquer/command-and-conquer-remastered">Buy on Origin <i class="icon-origin"></i></a>
+                <a class="btn btn-primary btn-icon" title="Buy on Steam" rel="nofollow" href="https://store.steampowered.com/agecheck/app/1213210/">Buy on Steam <i class="icon-steam"></i></a>
+            </div>
+        </div>
     </div>
 </section>
 

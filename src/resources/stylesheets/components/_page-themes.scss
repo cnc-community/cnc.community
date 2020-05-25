@@ -1,3 +1,69 @@
+.page.theme-red-alert .btn-primary,
+.page.theme-red-alert-2 .btn-primary,
+.page.theme-red-alert-3 .btn-primary
+{
+    border-color: #ff0000;
+    color: #ffffff;
+    background: #5f00007a;
+
+    &:hover { 
+        border-color: transparent;
+        background: #fff;
+        text-shadow: none;
+        color: #000;
+    }
+}
+
+.page.theme-renegade .btn-primary
+{
+    background: #000000b8;
+    border-color: #ffb358;
+    color: #ffb358;
+
+    &:hover { 
+        background: #fff;
+        border-color: transparent;
+        color: #000;
+    }
+}
+
+.page.theme-tiberian-sun .btn-primary,
+.page.theme-generals .btn-primary
+{
+    background: #000000b8;
+    border-color: #f6941e;
+    color: #f6941e;
+
+    &:hover { 
+        background: #fff;
+        border-color: transparent;
+        color: #000;
+    }
+}
+
+.page.theme-command-and-conquer-3 .btn-primary
+{
+    border-color: #06f300;
+    color: #06f300;
+
+    &:hover { 
+        border-color: transparent;
+        color: #000;
+    }
+}
+
+.page.theme-command-and-conquer-4 .btn-primary
+{
+    color: #00b9da;
+    border-color: #00b9da;
+
+    &:hover { 
+        border-color: transparent;
+        color: #000;
+    }
+}
+
+
 /*
 .hero.hero-tiberian-dawn
 {
