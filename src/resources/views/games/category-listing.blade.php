@@ -7,10 +7,16 @@
 @section('hero-class', 'hero-'. $category->slug)
 
 @section('hero')
-<div class="video" style="background-image: url('/assets/images/posters/cnc-remastered.jpg')">
-    <video autoplay="true" loop muted 
-        poster="/assets/images/posters/cnc-remastered.jpg"
-        src="//cdn.jsdelivr.net/gh/cnc-community/files@1.0/cnc-remastered.mp4">
+
+<?php 
+    $videoSrc= $categoryVideo["src"]; 
+    $videoPoster = $categoryVideo["poster"]; 
+?>
+
+<div class="video" style="background-image: url('{{ $videoPoster }}')">
+    <video autoplay="true" loop muted preload="none"
+        poster="{{ $videoPoster }}"
+        src="{{ $videoSrc}} ">
     </video>
 </div>
 

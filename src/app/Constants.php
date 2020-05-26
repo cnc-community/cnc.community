@@ -50,4 +50,30 @@ class Constants
             "remasters" => "235" // TODO - Remasters
         ];
     }
+
+    public static function getVideoWithPoster()
+    {
+        $version = 1.1;
+        $cdnUrl = "//cdn.jsdelivr.net/gh/cnc-community/files@". $version . "/";
+        $posterSrc = "/assets/images/posters/";
+
+        return [
+            "command-and-conquer-remastered" => [ 
+                "src" => $cdnUrl . "cnc-remastered.mp4",
+                "poster" => $posterSrc . "cnc-remastered.jpg"
+            ],      
+            "red-alert" => [ 
+                "src" => $cdnUrl . "red-alert-1.mp4",
+                "poster" => $posterSrc . "red-alert-1.jpg"
+            ],
+            "tiberian-dawn" => [ 
+                "src" => $cdnUrl . "tiberian-dawn.mp4",
+                "poster" => $posterSrc . "tiberian-dawn.jpg"
+            ],
+            "tiberian-sun" => [ 
+                "src" => $cdnUrl . "tiberian-sun.mp4",
+                "poster" => $posterSrc . "tiberian-sun.jpg"
+            ],
+        ];
+    }
 }

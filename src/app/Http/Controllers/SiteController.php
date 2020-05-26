@@ -167,7 +167,10 @@ class SiteController extends Controller
         $template = $categoryCache->bladeTemplate();
         $template == null ? "pages.category": $template;
         
+        $categoryVideo = Constants::getVideoWithPoster()[$categorySlug];
+        
         return view($template, [
+            "categoryVideo" => $categoryVideo,
             "pages" => $pagesCache, 
             "category" => $categoryCache, 
             "news" => $newsByCategoryCache,
