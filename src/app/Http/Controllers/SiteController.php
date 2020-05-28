@@ -24,6 +24,9 @@ class SiteController extends Controller
     {
         $this->twitchHelper = new TwitchHelper();
         $this->steamHelper = new SteamHelper();
+        
+        // TEMP staging only access 
+        $this->middleware('auth');
     }
 
     /**
