@@ -88,8 +88,8 @@ class Constants
                 "poster" => $posterSrc . "generals.jpg"
             ],
             "command-and-conquer-3" => [ 
-                "src" => $cdnUrl . "command-and-conquer-3.mp4",
-                "poster" => $posterSrc . "command-and-conquer-3.jpg"
+                "src" => $cdnUrl . "tiberium-wars.mp4",
+                "poster" => $posterSrc . "tiberium-wars.jpg"
             ],
             "red-alert-3" => [ 
                 "src" => $cdnUrl . "red-alert-3",
