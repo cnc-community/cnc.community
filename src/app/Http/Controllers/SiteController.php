@@ -111,7 +111,7 @@ class SiteController extends Controller
     {
         $key = "cache_";
 
-        $workShopItems = $this->steamHelper->getTopWorkShopItems(Constants::remastersAppId(), 12);
+        $workShopItems = $this->steamHelper->getTopWorkShopItems(Constants::remastersAppId(), 16);
    
         $streams = $this->twitchHelper->getTwitchGamesBySlug("remasters");
         $videos = $this->twitchHelper->getTwitchVideosBySlug("remasters");
