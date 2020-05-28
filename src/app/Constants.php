@@ -58,7 +58,8 @@ class Constants
         $posterSrc = "/assets/images/posters/";
 
         return [
-            "command-and-conquer-remastered" => [ 
+            "command-and-conquer-remastered" => 
+            [ 
                 "src" => $cdnUrl . "cnc-remastered.mp4",
                 "poster" => $posterSrc . "cnc-remastered.jpg"
             ],      
@@ -73,6 +74,30 @@ class Constants
             "tiberian-sun" => [ 
                 "src" => $cdnUrl . "tiberian-sun.mp4",
                 "poster" => $posterSrc . "tiberian-sun.jpg"
+            ],
+            "red-alert-2" => [ 
+                "src" => $cdnUrl . "red-alert-2.mp4",
+                "poster" => $posterSrc . "red-alert-2.jpg"
+            ],
+            "renegade" => [ 
+                "src" => $cdnUrl . "renegade.mp4",
+                "poster" => $posterSrc . "renegade.jpg"
+            ],
+            "generals" => [ 
+                "src" => $cdnUrl . "generals.mp4",
+                "poster" => $posterSrc . "generals.jpg"
+            ],
+            "command-and-conquer-3" => [ 
+                "src" => $cdnUrl . "command-and-conquer-3.mp4",
+                "poster" => $posterSrc . "command-and-conquer-3.jpg"
+            ],
+            "red-alert-3" => [ 
+                "src" => $cdnUrl . "red-alert-3",
+                "poster" => $posterSrc . "red-alert-3.jpg"
+            ],
+            "command-and-conquer-4" => [ 
+                "src" => $cdnUrl . "red-alert-4",
+                "poster" => $posterSrc . "command-and-conquer-4.jpg"
             ],
         ];
     }

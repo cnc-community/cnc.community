@@ -64,8 +64,7 @@ class PageSeeder extends Seeder
 
         $this->createDemoCustomFieldsForPageCategories($pageCategory);
 
-        // $this->create($title ." - Campaign", $title ." - Single Player", "campaign", $gameTemplate->id, $pageCategory->id);
-        // $this->create($title ." - Online", $title ." - Online", "online", $gameTemplate->id, $pageCategory->id);
+        $this->create("How to play ". $title, $title ." - Play ". $title . " campaign and online with thousands of players", "how-to-play", $gameTemplate->id, $pageCategory->id);
     }
 
     private function create($title, $description, $slug, $templateId, $categoryId)

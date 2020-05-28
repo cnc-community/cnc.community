@@ -44,15 +44,21 @@
     </div>
 </section>
 
-<section id="workshop-items" class="news-listings">
+<section id="workshop-items" class="workshop-listings">
     <div class="main-content">
-        <h2 class="section-title">Latest C&amp;C Remasters Workshop Mods</h2>
+        <h2 class="section-title">Top C&amp;C Remastered Mods &amp; Maps </h2>
+
         <p class="section-description">
-            Consectetur adipiscing elit, sed do eiusmod tempor incidid unt ut laborDuisrem ipsum dolod unt ut laborDuisrem ipsum dolod...
-            iusmod tempor incidid unt ut laborDuisrem ipsum dolod...
+            Explore the latest from the Steam Workshop, showing the most popular Tiberian Dawn and Red Alert Mods, aswell as the latest Maps.
         </p>
 
-        <?php new App\Http\CustomView\Components\WorkShopListing($workShopItems); ?>
+        <div class="workshop-items">
+            <?php new App\Http\CustomView\Components\WorkShopListingSlider($__env, $workShopItems); ?>
+        </div>
+        
+        <div class="view-all">
+            <a href="command-and-conquer-remastered/mods-maps" title="Mods & Maps" class="btn btn-primary">View all Mods &amp; Maps</a>
+        </div>
     </div>
 </section>
 

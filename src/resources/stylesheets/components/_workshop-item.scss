@@ -1,0 +1,110 @@
+.workshop-item 
+{
+    transition: transform ease-in-out 250ms;
+}
+
+.workshop-item .file-data
+{
+    display: flex;
+}
+
+.workshop-item:hover 
+{
+    transition: transform ease-in-out 250ms;
+    // transform: translateY(-10px);
+}
+
+.workshop-item .workshop-info 
+{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background: #1b1b1b;
+    z-index: 10;
+    padding: 10px 20px;
+}
+
+.workshop-item .tags>div
+{
+    font-size: 0.85rem;
+}
+
+.workshop-item .description *
+{
+    font-size: 1rem;
+}
+
+.workshop-item .title
+{
+    font-size: 1.3rem;
+}
+
+.workshop-item .image 
+{
+    margin-bottom: -30px;
+    padding: 15px;
+    background: #1b1b1b85;
+}
+
+.workshop-item .image 
+{
+    transition: filter ease-in-out 300ms;
+}
+
+.workshop-item .image:hover 
+{
+    filter: contrast(120%);
+}
+
+.workshop-item .workshop-type 
+{
+    position: absolute;
+    right: 0;
+    top: -30px;
+
+    width: 48px;
+    height: 48px;
+    
+    background: $color-gold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background ease-in-out 300ms;
+
+    &:hover,&:focus {
+        background: darken($color-gold, 10%);
+    }
+}
+
+.workshop-item .workshop-type i 
+{
+    font-size: 1.2rem;
+}
+
+.workshop-item .workshop-meta .meta
+{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.workshop-item .favourites
+{
+    background: #1f1f1f;
+    color: silver;
+    padding: 10px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    & i { 
+        font-size: 1.1rem;
+        color: $color-gold;
+        padding-left: 5px;
+        padding-right: 10px;
+    }
+}

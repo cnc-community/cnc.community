@@ -17,7 +17,6 @@ class WorkShopListing extends AbstractCustomView
     public function render()
     {
         ?>
-        <section class="articles">
             <?php foreach($this->_workShopItems as $workShopItem ):?>
                 <?php 
                     new WorkShopItem(
@@ -25,13 +24,14 @@ class WorkShopListing extends AbstractCustomView
                         $workShopItem->preview_url,
                         $workShopItem->time_created,
                         $workShopItem->tags,
-                        $workShopItem->file_url,
                         $workShopItem->favorited,
-                        $workShopItem->views
+                        $workShopItem->views,
+                        $workShopItem->file_description,
+                        $workShopItem->steamUrl(),
+                        $workShopItem->lifetime_playtime_sessions
                     );
                 ?>
             <?php endforeach; ?>
-        </section>
         <?php 
     }
 }

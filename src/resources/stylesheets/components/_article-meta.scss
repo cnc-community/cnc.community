@@ -29,24 +29,3 @@
     margin-top: 0;
     font-size: 1rem;
 }
-
-.article-meta .tags
-{
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.article-meta .tags > div 
-{
-    display: flex;
-    align-items: center;
-    padding: 2px 13px;
-    background: #000;
-    color: $color-secondary;
-    font-size: 1rem;
-    font-weight: 600;
-    border-radius: 8px;
-    margin-right: 5px;
-    font-weight: 800;
-    margin-bottom: 8px;
-}

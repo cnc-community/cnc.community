@@ -58,6 +58,13 @@ a {
     line-height: 1.3;
 }
 
+.section-title > small > a
+{
+    font-size: 20px;
+    text-decoration: underline;
+    color: #efbb04;
+}
+
 .section-description 
 {
     margin: 10px auto 10px;
@@ -425,4 +432,38 @@ p > code
     align-items: center;
     justify-content: center;
     z-index: 1;
+}
+
+.flex 
+{
+    display: flex;
+}
+
+.tags
+{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.tags > div 
+{
+    display: flex;
+    align-items: center;
+    padding: 2px 13px;
+    background: #000;
+    color: $color-secondary;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    margin-right: 5px;
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+
+.view-all
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 25px auto;
 }

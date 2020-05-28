@@ -7,7 +7,7 @@ use App\Http\Services\Steam\SteamAPI;
 class SteamHelper
 {
     private $steamAPI;
-
+    
     public function __construct()
     {
         $this->steamAPI = new SteamAPI();
@@ -15,13 +15,21 @@ class SteamHelper
 
     public function getWorkshopItemsByAppId($appId)
     {
-        $response = $this->steamAPI->getWorkshopItemsByAppId($appId)["publishedfiledetails"];
-        
-        $workShopItems = [];
-        foreach($response as $k => $v) 
-        {
-            $workShopItems[] = new SteamWorkShopItem($v);
-        }
-        return $workShopItems;
+        return $this->steamAPI->getWorkshopItemsByAppId($appId);
     }
+
+    public function getTopWorkShopItems($appId, $limit)
+    {
+        return $this->steamAPI->getTopWorkShopItems($appId, $limit);
+    }
+
+    public function getTopWorkShopItemsByTagName($appId, $tagName, $limit)
+    {
+        return $this->steamAPI->getTopWorkShopItemsByTagName($appId, $tagName, $limit);
+    }
+
+    public static function RedAlertMod() { return "RedAlertMod"; }
+    public static function TiberianDawnMod() { return "TiberianDawnMod"; }
+    public static function RAMap() { return "RA"; }
+    public static function TDMap() { return "TD"; }
 }

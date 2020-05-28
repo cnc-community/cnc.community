@@ -3,9 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Category;
-use App\Http\Sites\PPMFeed;
-use App\Http\Sites\DTAFeed;
-use App\Http\Services\XMLFeedParser;
 use App\News;
 use App\Page;
 use App\Constants;
@@ -110,8 +107,9 @@ class SiteController extends Controller
     public function showRemastersListings()
     {
         $key = "cache_";
-        $workShopItems= $this->steamHelper->getWorkshopItemsByAppId(730);
-        
+
+        $workShopItems = $this->steamHelper->getTopWorkShopItems(Constants::remastersAppId(), 12);
+   
         $streams = $this->twitchHelper->getTwitchGamesBySlug("remasters");
         $videos = $this->twitchHelper->getTwitchVideosBySlug("remasters");
 
