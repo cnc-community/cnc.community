@@ -45,4 +45,5 @@ class SteamWorkShopItem implements SteamPublishedFileInterface
     public function tags(): array{ return $this->tags; }
     public function steamUrl(): string { return "https://steamcommunity.com/sharedfiles/filedetails/?id=". $this->publishedfileid; }
     public function lifetime_playtime_sessions(): string { return $this->lifetime_playtime_sessions; }
+    public function subscriptions(): int { return $this->subscriptions; }
 }

@@ -28,7 +28,8 @@ class WorkShopListing extends AbstractCustomView
                         $workShopItem->views,
                         $workShopItem->file_description,
                         $workShopItem->steamUrl(),
-                        $workShopItem->lifetime_playtime_sessions
+                        $workShopItem->lifetime_playtime_sessions,
+                        $workShopItem->subscriptions
                     );
                 ?>
             <?php endforeach; ?>

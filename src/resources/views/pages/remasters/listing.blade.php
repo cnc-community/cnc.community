@@ -18,7 +18,7 @@
         Find the latest streams, mods and maps for the C&amp;C Remastered Collection.
     </h1>
     <div class="buttons">
-        <a href="#workshop-items" class="btn btn-primary" title="View Mods">Steam Mods</a>
+        <a href="#workshop-items" class="btn btn-primary" title="View Mods">Mods &amp; Maps</a>
         <a href="#streams" class="btn btn-primary" title="View Streams">Streams</a>
         <a href="#news" class="btn btn-primary" title="View News">News</a>
     </div>
@@ -30,7 +30,10 @@
     <div class="main-content center">
         <div class="feature-cta" style="background-image: url('/assets/images/command-and-conquer-remastered.jpg')">
             <div class="feature-text">
-                <a class="btn btn-play" href="https://www.youtube.com/watch?v=9iMfypQj3k0&feature=emb_logo" target="_blank" rel="nofollow">
+                <h3>
+                    Command &amp; Conquer Remastered Collection <br/> Official Reveal Trailer
+                </h3>
+                <a class="btn btn-primary" href="https://www.youtube.com/watch?v=9iMfypQj3k0&feature=emb_logo" target="_blank" rel="nofollow">
                     <i class="icon-play"></i>
                 </a>
                 <p>Establishing battlefield control on June 5, 2020.</p>
@@ -41,10 +44,26 @@
                 <a class="btn btn-secondary btn-icon" title="Buy on Steam" rel="nofollow" href="https://store.steampowered.com/agecheck/app/1213210/">Buy on Steam <i class="icon-steam"></i></a>
             </div>
         </div>
+        
+        <div class="featured-logos">
+            <div>
+                <p class="produced-by text-center">
+                   C&amp;C Remastered Collection Produced by <br/> <a href="https://petroglyphgames.com/">Petroglyph Games</a> &amp; <a href="https://commandandconquer.com" title="EA - Command & Conquer" rel="nofollow">Electronic Arts</a>
+                </p>
+            </div>
+            <div class="logos">
+                <a href="https://petroglyphgames.com/" title="Petroglyph Games" rel="nofollow">
+                    <img src="/assets/images/logos/petroglyph-games.png" alt="Petroglyph Games" />
+                </a>
+                <a href="https://commandandconquer.com" title="EA - Command & Conquer" rel="nofollow">
+                    <img src="/assets/images/logos/ea.png" alt="" />
+                </a>
+            </div>
+        </div>
     </div>
 </section>
 
-<section id="workshop-items" class="workshop-listings">
+<section id="workshop-items" class="section section-green workshop-listings">
     <div class="main-content">
         <h2 class="section-title">Top C&amp;C Remastered Mods &amp; Maps </h2>
 
@@ -62,15 +81,16 @@
     </div>
 </section>
 
-<section id="streams" class="section stream-listings">
+<section id="streams" class="section section-purple stream-listings">
     <div class="main-content">
-        <?php if (count($streams) == 0): ?>
-            <h2 class="section-title">Latest Remastered videos</h2>
-            <?php new App\Http\CustomView\Components\TwitchVideoListing($videos); ?>
+        <h2 class="section-title">Latest Remastered streams</h2>
+        <?php if($streams == null): ?>
+            <p>There's no-one currently streaming the C&amp;C Remastered Collection, but check out the previous streams below.</p>
         <?php else: ?>
-            <h2 class="section-title">Latest Remastered streams</h2>
             <?php new App\Http\CustomView\Components\TwitchListing($streams); ?>
         <?php endif; ?>
+
+        <?php new App\Http\CustomView\Components\TwitchVideoListing($videos); ?>
     </div>
 </section>
 

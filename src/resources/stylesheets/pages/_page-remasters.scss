@@ -6,6 +6,32 @@
 .page-remasters .feature-cta 
 {
     position: relative;
+    padding: 15px;
+    text-align: center;
+
+    @media(min-width: $md-width)
+    {
+        padding: 45px 0;
+    }
+    
+    @media(min-width: $lg-width)
+    {
+        padding: 120px 25px;
+    }
+}
+
+.page-remasters .feature-cta .buttons 
+{
+    flex-direction: column;
+
+    @media(min-width: $md-width)
+    {
+        flex-direction: row;
+    }
+}
+.page-remasters .feature-cta .buttons .btn 
+{
+    margin: 5px;
 }
 
 .page-remasters .feature-cta:before
@@ -25,5 +51,41 @@
     p { 
         color: #fff;
         text-transform: uppercase;
+    }
+}
+
+.page-remasters .featured-logos
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 10px;
+}
+
+.page-remasters .featured-logos .produced-by
+{
+    font-size: 1rem;
+    color: #383838;
+    text-transform: uppercase;
+    font-weight: 600;
+
+    a {
+        color: #383838;
+    }
+}
+
+.page-remasters .featured-logos .logos
+{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 600px;
+    max-width: 100%;
+    margin: 15px auto;
+
+    & img  {
+        height: 80px;
+        max-width: 100%;
     }
 }

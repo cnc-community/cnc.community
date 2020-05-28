@@ -1,29 +1,18 @@
 .workshop-items
 {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
     padding-top: 25px;
     padding-bottom: 25px;
 }
 
-.workshop-items .workshop-item
+@media(min-width: $md-width)
 {
-    width: 100%;
-}
-
-.workshop-items .swiper-container 
-{
-    width: 80vw;
-    margin: 0 auto;
-}
-
-.workshop-items .swiper-button-prev 
-{
-    left: -20px;
-}
-
-.workshop-items .swiper-button-next 
-{
-    right: -20px;
+    .workshop-items .swiper-button-prev 
+    {
+        left: -50px;
+    }
+    
+    .workshop-items .swiper-button-next 
+    {
+        right: -50px;
+    }
 }

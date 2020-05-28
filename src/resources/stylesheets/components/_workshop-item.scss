@@ -6,12 +6,12 @@
 .workshop-item .file-data
 {
     display: flex;
+    justify-content: space-between;
 }
 
 .workshop-item:hover 
 {
     transition: transform ease-in-out 250ms;
-    // transform: translateY(-10px);
 }
 
 .workshop-item .workshop-info 
@@ -24,6 +24,12 @@
     padding: 10px 20px;
 }
 
+.workshop-item .tags
+{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
 .workshop-item .tags>div
 {
     font-size: 0.85rem;
@@ -34,16 +40,18 @@
     font-size: 1rem;
 }
 
-.workshop-item .title
+.workshop-item .title 
 {
-    font-size: 1.3rem;
+    font-size: 1.6rem;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    margin-left: 5px;
 }
 
 .workshop-item .image 
 {
-    margin-bottom: -30px;
     padding: 15px;
-    background: #1b1b1b85;
+    background: #131313c4;
 }
 
 .workshop-item .image 
@@ -59,11 +67,11 @@
 .workshop-item .workshop-type 
 {
     position: absolute;
-    right: 0;
-    top: -30px;
+    right: -10px;
+    top: -20px;
 
-    width: 48px;
-    height: 48px;
+    width: 60px;
+    height: 60px;
     
     background: $color-gold;
     display: flex;
@@ -79,7 +87,7 @@
 
 .workshop-item .workshop-type i 
 {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
 }
 
 .workshop-item .workshop-meta .meta
@@ -89,9 +97,9 @@
     justify-content: space-between;
 }
 
-.workshop-item .favourites
+.workshop-item .file-item
 {
-    background: #1f1f1f;
+    background: #232323;
     color: silver;
     padding: 10px;
     border-radius: 4px;
@@ -103,8 +111,25 @@
 
     & i { 
         font-size: 1.1rem;
-        color: $color-gold;
+        color: #969696;
         padding-left: 5px;
         padding-right: 10px;
     }
+}
+
+.workshop-item .file-item .icon-heart
+{
+    color: #ea0000;
+}
+
+.workshop-item .file-item .icon-check
+{
+    color: #49d630;
+}
+
+.workshop-item .image-link 
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

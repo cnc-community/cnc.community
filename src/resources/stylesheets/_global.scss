@@ -278,6 +278,13 @@ p > code
     position: relative;
 }
 
+.swiper-button-prev:focus,
+.swiper-button-next:focus
+{
+    color: #f1b838;
+    outline: 0;
+}
+
 .swiper-button-prev:after,
 .swiper-button-next:after
 {
@@ -287,7 +294,21 @@ p > code
 
 .section 
 {
-    background: #121212;
+    background-color: #121212;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    position: relative;
+}
+
+.section-green 
+{
+    background-color: #080808;
+    @extend %background-green;
+}
+
+.section-purple 
+{
+    @extend %background-purple;
 }
 
 // Temp 

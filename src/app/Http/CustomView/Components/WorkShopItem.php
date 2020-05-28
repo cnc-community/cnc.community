@@ -14,17 +14,19 @@ class WorkShopItem extends AbstractCustomView
     private $favourites;
     private $views;
     private $playCount;
+    private $subscriptions;
 
     public function __construct(
-        $title, 
-        $previewUrl, 
-        $timeCreated, 
-        $tags, 
-        $favourites, 
-        $views,
-        $description,
-        $url,
-        $playCount
+            $title, 
+            $previewUrl, 
+            $timeCreated, 
+            $tags, 
+            $favourites, 
+            $views,
+            $description,
+            $url,
+            $playCount,
+            $subscriptions
         )
     {
         $this->title = $title; 
@@ -36,6 +38,7 @@ class WorkShopItem extends AbstractCustomView
         $this->description = $description;
         $this->url = $url;
         $this->playCount = $playCount;
+        $this->subscriptions = $subscriptions;
 
         $this->renderContents();
     }
@@ -45,59 +48,54 @@ class WorkShopItem extends AbstractCustomView
         ?>
             <article class="workshop-item">
                 <?php if($this->previewUrl):?>
-                    <a href="<?php echo $this->url; ?>" target="_blank" rel="nofollow" title="<?php echo $this->title; ?>">
-                        <div class="image">
-                            <div>
-                                <div class="workshop-meta">
-                                    <div class="meta">
-                                        <div class="tags">
-                                            <?php foreach($this->tags as $tag ):?>
-                                                <div class="tag">
-                                                    <?php echo $tag["tag"]; ?>
-                                                </div>
-                                            <?php endforeach; ?>
-                                        </div>
-
-                                        <?php if($this->timeCreated): ?>
-                                        <div class="date-posted">
-                                            <?php echo date('F j, Y, g:i a',$this->timeCreated); ?>
-                                        </div>
-                                        <?php endif; ?>
-
-                                        <?php if($this->description): ?>
-                                        <div class="description">
-                                            <p>
-                                                <?php echo $this->description; ?>
-                                            </p>
-                                        </div>
-                                        <?php endif; ?>
-
-                                        <div class="file-data">
-                                            <!-- <div class="played">
-                                                <i class="icon-globe"></i> <?php echo $this->playCount;?>
-                                            </div> -->
-                                            <div class="favourites">
-                                                <i class="icon-heart"></i> <?php echo $this->favourites;?>
-                                            </div>
-                                            <!-- <div class="views">
-                                                <i class="icon-eye"></i> <?php echo $this->views;?>
-                                            </div> -->
-                                        </div>
+                    <div class="image">
+                        <a href="<?php echo $this->url; ?>" title="<?php echo $this->title; ?>" rel="nofollow noreferrer" target="_blank" class="image-link">
+                        <img src="<?php echo $this->previewUrl ?>" alt="<?php echo $this->title ?>" alt="<?php echo $this->title; ?>" loading="lazy" />
+                        </a>
+                        <div>
+                            <div class="tags">
+                                <?php foreach($this->tags as $tag ):?>
+                                    <div class="tag">
+                                        <?php echo $tag["tag"]; ?>
                                     </div>
-                                </div>
+                                <?php endforeach; ?>
                             </div>
-                            <img src="<?php echo $this->previewUrl ?>" alt="<?php echo $this->title ?>" loading="lazy" />
+
+                            <?php if($this->timeCreated): ?>
+                            <div class="date-posted">
+                                <?php echo date('F j, Y, g:i a',$this->timeCreated); ?>
+                            </div>
+                            <?php endif; ?>
+
+                            <?php if($this->description): ?>
+                            <div class="description">
+                                <p>
+                                    <?php echo $this->description; ?>
+                                </p>
+                            </div>
+                            <?php endif; ?>
+                            
+                            <h3 class="title">
+                                <a href="<?php echo $this->url; ?>" title="<?php echo $this->title; ?>" rel="nofollow noreferrer" target="_blank">
+                                <?php echo $this->title ;?>
+                                </a>
+                            </h3>
                         </div>
-                    </a>
+                    </div>
                 <?php endif; ?>
              
                 <div class="workshop-info">
-                    <a href="<?php echo $this->url; ?>" title="<?php echo $this->title; ?>" class="workshop-type"  rel="nofollow noreferrer" target="_blank">
-                        <i class="icon-link"></i>
-                    </a>
-                    <h3 class="title">
-                        <?php echo $this->title ;?>
-                    </h3>
+                    <div class="file-data">
+                        <div class="file-item played">
+                            <i class="icon-check"></i> <?php echo $this->subscriptions;?> subs
+                        </div>
+                        <div class="file-item favourites">
+                            <i class="icon-heart"></i> <?php echo $this->favourites;?> favs
+                        </div>
+                        <div class="file-item views">
+                            <i class="icon-eye"></i> <?php echo $this->views;?> views
+                        </div>
+                    </div>
                 </div>
             </article>
         <?php

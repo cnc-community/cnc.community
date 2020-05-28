@@ -34,7 +34,8 @@ class WorkShopListingSlider extends AbstractCustomView
                                     $workShopItem->views,
                                     null,
                                     $workShopItem->steamUrl(),
-                                    $workShopItem->lifetime_playtime_sessions
+                                    $workShopItem->lifetime_playtime_sessions,
+                                    $workShopItem->subscriptions
                                 );
                             ?>
                             </div>
@@ -65,7 +66,7 @@ class WorkShopListingSlider extends AbstractCustomView
                         },
                         breakpoints: {
                             340: {
-                                slidesPerView: 4,
+                                slidesPerView: 1,
                                 noSwiping: false,
                                 allowSlidePrev: true,
                                 allowSlideNext: true,
@@ -78,6 +79,7 @@ class WorkShopListingSlider extends AbstractCustomView
                             },
                             1024: {
                                 slidesPerView: 3,
+                                spaceBetween: 20,
                             },
                             1450: {
                                 slidesPerView: 4,
