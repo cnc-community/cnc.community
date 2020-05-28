@@ -12,7 +12,6 @@ export class NavBarJs
             const navLink = navItem.querySelector(".nav-link");
             const navItemChildren = navItem.querySelector(".dropdown-container");
 
-            navLink.addEventListener("mouseenter", (e) => this.onNavItemMouseEnter(e, navItem), false);
             navLink.addEventListener("click", (e) => this.onNavItemMouseClicked(e, navItem), false);
             navLink.addEventListener("touchstart", (e) => this.onNavItemMouseClicked(e, navItem), true);
 

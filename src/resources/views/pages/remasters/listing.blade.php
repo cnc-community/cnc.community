@@ -30,9 +30,9 @@
     <div class="main-content center">
         <div class="feature-cta" style="background-image: url('/assets/images/command-and-conquer-remastered.jpg')">
             <div class="feature-text">
-                <h3>
+                <h2>
                     Command &amp; Conquer Remastered Collection <br/> Official Reveal Trailer
-                </h3>
+                </h2>
                 <a class="btn btn-primary" href="https://www.youtube.com/watch?v=9iMfypQj3k0&feature=emb_logo" target="_blank" rel="nofollow">
                     <i class="icon-play"></i>
                 </a>
@@ -81,7 +81,7 @@
     </div>
 </section>
 
-<section id="streams" class="section section-purple stream-listings">
+<section id="streams" class="section stream-listings">
     <div class="main-content">
         <h2 class="section-title">Latest Remastered streams</h2>
         <?php if($streams == null): ?>

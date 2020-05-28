@@ -16,7 +16,7 @@
     
     @media(min-width: $lg-width)
     {
-        padding: 120px 25px;
+        padding: 75px 25px;
     }
 }
 
@@ -88,4 +88,9 @@
         height: 80px;
         max-width: 100%;
     }
+}
+
+.page-remasters .stream-listings 
+{
+    background-color: #000000;
 }

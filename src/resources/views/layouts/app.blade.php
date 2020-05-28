@@ -51,15 +51,21 @@
            <div class="main-content center">
                 <div class="logo">
                     <img src="/assets/images/logo.svg" alt="C&C Community Logo" />
+                                        <small>
+                        Copyright C&C Community &copy; <?php echo date("Y"); ?>
+                    </small>
                 </div>
 
-                <div class="copyright-notice">
-                    <small>Copyright C&C Community &copy; <?php echo date("Y"); ?></small>
-
-                    <div class="copyright-links">
+                <div class="copyright-notice text-uppercase">
+                    <div class="copyright-links text-uppercase">
                         <a href="#">Privacy Policy</a> 
                         <a href="#">Terms</a> 
+                        <a href="#">Contact</a> 
+                        <a href="#">Credits</a> 
                     </div>
+                    <p class="notice">
+                        C&amp;C Community has no official affiliation with Electronic Arts or PetroGlyph Games
+                    </p>
                 </div>
             </div>
         </footer>
