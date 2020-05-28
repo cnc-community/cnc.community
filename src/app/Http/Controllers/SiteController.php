@@ -124,11 +124,14 @@ class SiteController extends Controller
             return News::newsPaginatedByCategory($categoryCache->id);
         });
 
+        $heroVideo = Constants::getVideoWithPoster()["command-and-conquer-remastered"];
+
         return view('pages.remasters.listing', [
             "workShopItems" => $workShopItems, 
             "news" => $newsByCategoryCache,
             "streams" => $streams,
-            "videos" => $videos
+            "videos" => $videos,
+            "heroVideo" => $heroVideo
         ]);
     }
 
@@ -165,10 +168,10 @@ class SiteController extends Controller
         $template = $categoryCache->bladeTemplate();
         $template == null ? "pages.category": $template;
         
-        $categoryVideo = Constants::getVideoWithPoster()[$categorySlug];
+        $heroVideo = Constants::getVideoWithPoster()[$categorySlug];
         
         return view($template, [
-            "categoryVideo" => $categoryVideo,
+            "heroVideo" => $heroVideo,
             "pages" => $pagesCache, 
             "category" => $categoryCache, 
             "news" => $newsByCategoryCache,
@@ -195,7 +198,6 @@ class SiteController extends Controller
         }
         return view($pageCache->bladeTemplate(), array("page" => $pageCache));
     }
-
 
     public function clearCache()
     {

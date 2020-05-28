@@ -3,13 +3,21 @@
 @section('title', 'Remasters')
 @section('page-class', 'remasters')
 
-@section('hero')
-<div class="video" style="background-image: url('/assets/images/posters/cnc-remastered.jpg')">
-    <video autoplay="true" loop muted 
-        poster="/assets/images/posters/cnc-remastered.jpg"
-        src="//cdn.jsdelivr.net/gh/cnc-community/files/cnc-remastered.mp4">
+@section('hero-video')
+<?php 
+    $videoSrc= $heroVideo["src"]; 
+    $videoPoster = $heroVideo["poster"]; 
+?>
+
+<div class="video" style="background-image: url('{{ $videoPoster }}')">
+    <video autoplay="true" loop muted preload="none"
+        poster="{{ $videoPoster }}"
+        src="{{ $videoSrc}} ">
     </video>
 </div>
+@endsection
+
+@section('hero')
 <div class="content center">
     <div class="title">
         <img src="assets/images/logos/cnc-remastered-logo.png" alt="C&C Remaster Logo" />

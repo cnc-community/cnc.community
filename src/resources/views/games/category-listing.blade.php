@@ -6,11 +6,10 @@
 @section('page-class', 'category theme-'.$category->slug)
 @section('hero-class', 'hero-'. $category->slug)
 
-@section('hero')
-
+@section('hero-video')
 <?php 
-    $videoSrc= $categoryVideo["src"]; 
-    $videoPoster = $categoryVideo["poster"]; 
+    $videoSrc= $heroVideo["src"]; 
+    $videoPoster = $heroVideo["poster"]; 
 ?>
 
 <div class="video" style="background-image: url('{{ $videoPoster }}')">
@@ -19,7 +18,9 @@
         src="{{ $videoSrc}} ">
     </video>
 </div>
+@endsection
 
+@section('hero')
 <div class="content center">
     <div class="title">
         <img src="{{ \App\ViewHelper::getGameLogoPathByName($category->slug) }}" alt="Game logo" />

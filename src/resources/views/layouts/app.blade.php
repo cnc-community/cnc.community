@@ -38,6 +38,7 @@
         <main role="main">
             @if(View::hasSection('hero'))
             <section class="hero @yield('hero-class')">
+                @yield('hero-video')
                 <div class="hero-content">
                     @yield('hero')
                 </div>
