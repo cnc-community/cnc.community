@@ -79,6 +79,7 @@ Route::get('/', 'SiteController@index')->name('home');
 Route::get('/funny', 'SiteController@showFunnyListings')->name('pages.funny.listing');
 Route::get('/creators', 'SiteController@showCreatorsListings')->name('pages.creators.listing');
 Route::get('/command-and-conquer-remastered', 'SiteController@showRemastersListings')->name('pages.remasters.listing');
+Route::get('/command-and-conquer-remastered/workshop-mods', 'SiteController@showRemastersWorkshopMods')->name('pages.remasters.listing');
 
 Route::get('/news/{categorySlug}', 'SiteController@showNewsByCategorySlug')->name('news.listing');
 Route::get('/news/{categorySlug?}/{newsSlug}', 'SiteController@showNewsBySlug')->name('news.detail');

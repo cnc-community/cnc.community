@@ -138,6 +138,16 @@ class SiteController extends Controller
         ]);
     }
 
+    public function showRemastersWorkshopMods()
+    {
+        $heroVideo = Constants::getVideoWithPoster()["command-and-conquer-remastered"];
+
+        return view('pages.remasters.workshop.listings', [
+            "heroVideo" => $heroVideo
+        ]);
+    }
+
+
     /**
      * Get page category and 
      */

@@ -20,7 +20,7 @@
         <a href="?gameName=red-alert-2-yuris-revenge" id="game-id-5090" class="twitch-game-link">Yuri's Revenge <span class="count">0</span></a>
         <a href="?gameName=renegade" id="game-id-3813" class="twitch-game-link">Renegade <span class="count">0</span></a>
         <a href="?gameName=red-alert-3" id="game-id-18881" class="twitch-game-link">Red Alert 3 <span class="count">0</span></a>
-        <a href="?gameName=red-alert-3-kanes-wrath" id="game-id-18733" class="twitch-game-link">Red Alert 3 Kanes Wrath <span class="count">0</span></a>
+        <a href="?gameName=command-and-conquer-3-kanes-wrath" id="game-id-18733" class="twitch-game-link">Command & Conquer 3: Kane's Wrath <span class="count">0</span></a>
         <a href="?gameName=tiberium-wars" id="game-id-16106" class="twitch-game-link">C&C 3: Tiberium Wars <span class="count">0</span></a>
         <a href="?gameName=generals" id="game-id-10070" class="twitch-game-link">C&C: Generals <span class="count">0</span></a>
         <a href="?gameName=zero-hour" id="game-id-16487" class="twitch-game-link">C&C: Zero hour <span class="count">0</span></a>
