@@ -25,9 +25,11 @@ In the `src` directory is the standard Laravel files. Run the following commands
 Installing
 ```shell
     docker-compose run --rm composer install
-    docker-compose run --rm npm run dev
     docker-compose run --rm artisan migrate
+    docker-compose run artisan migrate:refresh --seed
     docker-compose run artisan storage:link
+    docker-compose run artisan key:generate
+    docker-compose run --rm npm run dev
 ```
 
 Commands 
