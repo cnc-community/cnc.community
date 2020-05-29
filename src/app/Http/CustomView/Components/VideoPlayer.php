@@ -17,7 +17,7 @@ class VideoPlayer extends AbstractCustomView
     public function render()
     {
         ?>
-            <div class="video" style="background-image: url("<?php echo $this->_video["poster"]; ?>")">
+            <div class="video" style="background-image: url('<?php echo $this->_video["poster"]; ?>')">
                 <video autoplay="true" loop muted preload="none"
                     poster="<?php echo $this->_video["poster"]; ?>"
                     src="<?php echo $this->_video["src"]; ?>">
@@ -26,4 +26,3 @@ class VideoPlayer extends AbstractCustomView
         <?php 
     }
 }
-

@@ -20,7 +20,7 @@
 @section('hero')
 <div class="content center">
     <div class="title">
-        <img src="assets/images/logos/cnc-remastered-logo.png" alt="C&C Remaster Logo" />
+        <img src="/assets/images/logos/cnc-remastered-logo.png" alt="C&C Remaster Logo" />
     </div>
     <h1 class="small-h1">
         Find the latest streams, mods and maps for the C&amp;C Remastered Collection.
@@ -79,12 +79,10 @@
             Explore the latest from the Steam Workshop, showing the most popular Tiberian Dawn and Red Alert Mods, aswell as the latest Maps.
         </p>
 
-        <div class="workshop-items">
-            <?php new App\Http\CustomView\Components\WorkShopListingSlider($__env, $workShopItems); ?>
-        </div>
+        <?php new App\Http\CustomView\Components\WorkShopListingSlider($__env, "workShopItems", $workShopItems); ?>
         
         <div class="view-all">
-            <a href="command-and-conquer-remastered/mods-maps" title="Mods & Maps" class="btn btn-primary">View all Mods &amp; Maps</a>
+            <a href="command-and-conquer-remastered/workshop-mods" title="Mods & Maps" class="btn btn-primary">View all Mods &amp; Maps</a>
         </div>
     </div>
 </section>

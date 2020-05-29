@@ -8,10 +8,12 @@ class WorkShopListingSlider extends AbstractCustomView
 {
     private $_workShopItems;
     private $env;
+    private $id;
 
-    public function __construct($env, $_workShopItems)
+    public function __construct($env, $id, $_workShopItems)
     {
         $this->env = $env;
+        $this->id = $id;
         $this->_workShopItems = $_workShopItems;
         $this->renderContents();
     }
@@ -19,8 +21,8 @@ class WorkShopListingSlider extends AbstractCustomView
     public function render()
     {
         ?>
-            <section class="workshop-items">
-                <div class="swiper-container">
+            <div class="workshop-items">
+                <div id="<?php echo $this->id; ?>" class="swiper-container">
                     <div class="swiper-wrapper">
                         <?php foreach($this->_workShopItems as $workShopItem ):?>
                             <div class="swiper-slide">
@@ -42,7 +44,7 @@ class WorkShopListingSlider extends AbstractCustomView
                         <?php endforeach; ?>
                     </div>
                 </div>
-            </section>
+            </div>
 
             <?php /*
             <div class="pagination">
@@ -54,10 +56,10 @@ class WorkShopListingSlider extends AbstractCustomView
             <div class="swiper-button-next"></div>
 
             <?php $this->env->startSection('scripts'); ?>
-            <script src="assets/vendor/swiper.min.js"></script>
+            <script src="/assets/vendor/swiper.min.js"></script>
             <script>
                 (function(){
-                    let swiper = new Swiper(".swiper-container", {
+                    let swiper = new Swiper("#<?php echo $this->id; ?>", {
                         slidesPerView: 4,
                         spaceBetween: 25,
                         navigation: {
@@ -67,13 +69,11 @@ class WorkShopListingSlider extends AbstractCustomView
                         breakpoints: {
                             340: {
                                 slidesPerView: 1,
-                                noSwiping: false,
                                 allowSlidePrev: true,
                                 allowSlideNext: true,
                             },
                             768: {
                                 slidesPerView: 2,
-                                noSwiping: false,
                                 allowSlidePrev: true,
                                 allowSlideNext: true,
                             },
@@ -86,6 +86,7 @@ class WorkShopListingSlider extends AbstractCustomView
                             },
                         }
                     });
+                    console.log(swiper);
                 })();
             </script>
             <?php $this->env->stopSection(); ?>
