@@ -43,9 +43,12 @@ class SiteController extends Controller
             return News::officialNewsPaginated();
         });
 
+        $workShopItems = $this->steamHelper->getTopWorkShopItems(Constants::remastersAppId(), 8);
+
         return view('home.index', 
             [
-                "officialNews" => $officialNewsCache
+                "officialNews" => $officialNewsCache,
+                "workShopItems" => $workShopItems
             ]
         );
     }
@@ -63,12 +66,18 @@ class SiteController extends Controller
         });
         if ($categoryCache == null) abort(404);
 
+
+        $pageCategoryCache = Cache::remember($key."news.listing.newsByCategory", Constants::getCacheSeconds(), function () use ($categoryCache)
+        {
+            return PageCategory::where("news_category_id", $categoryCache->id)->first();
+        });        
+        
         $newsByCategoryCache = Cache::remember($key."news.listing.newsByCategory", Constants::getCacheSeconds(), function () use ($categoryCache)
         {
             return News::newsPaginatedByCategory($categoryCache->id);
         });
 
-        return view('news.listing', ["news" => $newsByCategoryCache]);
+        return view('news.listing', ["news" => $newsByCategoryCache, "category" => $categoryCache, "pageCategory" => $pageCategoryCache]);
     }
 
     public function showNewsBySlug($categorySlug, $newsSlug)
@@ -223,6 +232,9 @@ class SiteController extends Controller
     public function showPageBySlug($slugCategory, $slug)
     {
         $key = "cache_" . $slugCategory . "_" . $slug;
+        
+        $heroVideo = Constants::getVideoWithPoster()[$slugCategory];
+
         $pageCache = Cache::remember($key, Constants::getCacheSeconds(), function ()  use ($slugCategory, $slug) 
         {
             return Page::checkPageExistsWithSlugs($slugCategory, $slug);
@@ -233,7 +245,7 @@ class SiteController extends Controller
         {
             return view('pages.detail', array("page" => $pageCache));
         }
-        return view($pageCache->bladeTemplate(), array("page" => $pageCache));
+        return view($pageCache->bladeTemplate(), array("page" => $pageCache, "heroVideo" => $heroVideo));
     }
 
     public function clearCache()

@@ -61,10 +61,6 @@
 <section class="section how-to-play-help">
     <div class="main-content">
         <h2 class="section-title">Need help? Ask in these support channels.</h2>
-        <p class="section-description">
-            Consectetur adipiscing elit, sed do eiusmod
-            tempor incidid unt
-        </p>
         <div class="page-content">
             <?php print $howToPlayHelp; ?>
         </div>

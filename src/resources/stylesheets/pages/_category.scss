@@ -44,3 +44,27 @@
 {
     padding: 35px 0;
 }
+
+.page-category .section-buy 
+{
+    padding-top: 50px;
+    padding-bottom: 130px;
+}
+
+.page-category .section-buy .section-title
+{
+    margin: 0;
+}
+
+.page-category .feature-box .buttons
+{
+    margin-top: 0;
+    padding-top: 10px;
+
+    & .btn { margin-left: 0;}
+}
+
+.page-category .feature-box .feature-text
+{
+    padding-left: 50px;
+}

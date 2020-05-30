@@ -141,10 +141,23 @@ $xxl-max-width: 1350px;
     @extend .btn-theme-blue;
 }
 
+.col-10,
+.col-20,
+.col-30,
+.col-40,
+.col-50,
+.col-60,
+.col-70,
+.col-80,
+.col-90,
+.col-10
+{
+    flex-basis: 100%;
+    width: 100%;
+}
 
 @media(min-width: $md-width)
 {
-
     .col-10
     {
         flex-basis: 10%;

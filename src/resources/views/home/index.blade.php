@@ -34,7 +34,37 @@
     </div>
 </section>
 
-<section class="news-listings">
+<section id="tiberiandawn" class="section section-grey workshop-introduction">
+    <div class="main-content center">
+        <div class="feature-box">
+            <div class="col-50 feature-text">
+                <h1 class="section-title"><span class="light">Trending C&amp;C Remastered</span> <br /> Maps &amp; Mods</h1>
+                <p>
+                    Find a map or mod you like below. <br class="hidden-xs" />
+                    Open the link and click the Subscribe button 
+                    for it to appear in game.
+                </p>
+            </div>
+            <div class="col-50 feature-logo">
+                <img src="/assets/images/logos/cnc-remastered-logo.png" alt="Tiberian Dawn Remastered" />
+                <div class="buttons">
+                    <a href="/command-and-conquer-remastered/workshop-mods" class="btn btn-primary" title="Maps">View Top Mods</a>
+                    <a href="/command-and-conquer-remastered/workshop-mods" class="btn btn-primary" title="Mods">View Top Maps</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="tdtop" class="main-content center workshop-listings">
+        <h2 class="section-title"><span class="grey">Trending this week</span></h2>
+        <div class="workshop-items-wrap">
+            <?php new App\Http\CustomView\Components\WorkShopListing($workShopItems); ?>
+        </div>
+    </div>
+</section>
+
+
+<section class="section section-green news-listings">
     <div class="main-content">
         <h2 class="section-title">Official Intel</h2>
         <p class="section-description">

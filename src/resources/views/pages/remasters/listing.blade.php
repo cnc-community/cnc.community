@@ -37,8 +37,8 @@
 <section id="buy" class="section section-buy">
     <div class="main-content center">
         <div class="feature-box">
-            <div class="col-50 feature-text">
 
+            <div class="col-50 feature-text">
                 <h1 class="section-title"><span class="light">Play now!</span> <br /> C&amp;C Remastered Collection</h1>
                 <p>
                     The Command &amp; Conquer Remastered Collection Delivers 4K Graphics, 
@@ -49,6 +49,7 @@
                     <a class="btn btn-secondary btn-icon" title="Buy on Steam" rel="nofollow" href="https://store.steampowered.com/agecheck/app/1213210/">Buy on Steam <i class="icon-steam"></i></a>
                 </div>
             </div>
+
             <div class="col-50 feature-text">
                 <div class="feature-video">
                     <div class="embed-iframe">
@@ -56,6 +57,7 @@
                         frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
                         </iframe>
                     </div>
+                </div>
                 <div class="featured-logos">
                     <div class="logos">
                         <a href="https://petroglyphgames.com/" title="Petroglyph Games" rel="nofollow">
@@ -70,7 +72,6 @@
         </div>
     </div>
 </section>
-
 
 <section id="tiberiandawn" class="section section-grey workshop-introduction">
     <div class="main-content center">

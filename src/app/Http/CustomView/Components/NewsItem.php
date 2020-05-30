@@ -35,7 +35,7 @@ class NewsItem extends AbstractCustomView
                 <div class="image">
                     <?php if($this->image): ?>
                         <a href="<?php echo $this->url; ?>" title="<?php echo $this->title; ?>" rel="nofollow noreferrer" target="_blank" class="image-link">
-                            <img src="<?php echo $this->image ?>" alt="<?php echo $this->title ?>" alt="<?php echo $this->title; ?>" loading="lazy" />
+                            <img src="/<?php echo $this->image ?>" alt="<?php echo $this->title ?>" alt="<?php echo $this->title; ?>" loading="lazy" />
                         </a>
                     <?php endif; ?>
                     <div>
@@ -47,9 +47,12 @@ class NewsItem extends AbstractCustomView
                         <?php if($this->publishedDate): ?>
                         <div class="meta-info">
                             <div class="date">
-                                <?php echo $this->publishedDate; ?>
+                                Posted <?php echo $this->publishedDate; ?>
                             </div>
-                            <div clacss="type">
+                            <div class="category">
+                                <?php echo $this->category->name; ?>
+                            </div>
+                            <div class="type">
                                 <?php if($this->type == News::NEWS_EXTERNAL): ?>
                                 Link
                                 <?php else: ?>
