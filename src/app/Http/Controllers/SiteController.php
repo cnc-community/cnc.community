@@ -111,7 +111,21 @@ class SiteController extends Controller
     {
         $key = "cache_";
 
-        $workShopItems = $this->steamHelper->getTopWorkShopItems(Constants::remastersAppId(), 16);
+        $raWorkShopItems = $this->steamHelper->getTopWorkShopItemsByTagNames(Constants::remastersAppId(),
+            [
+                SteamHelper::RedAlertMod(),
+                SteamHelper::RedAlertMap(),
+            ],
+            8
+        );
+
+        $tdWorkShopItems = $this->steamHelper->getTopWorkShopItemsByTagNames(Constants::remastersAppId(),
+            [
+                SteamHelper::TiberianDawnMod(),
+                SteamHelper::TiberianDawnMap(),
+            ],
+            8
+        );
    
         $streams = $this->twitchHelper->getTwitchGamesBySlug("remasters");
         $videos = $this->twitchHelper->getTwitchVideosBySlug("remasters");
@@ -130,7 +144,8 @@ class SiteController extends Controller
         $heroVideo = Constants::getVideoWithPoster()["command-and-conquer-remastered"];
 
         return view('pages.remasters.listing', [
-            "workShopItems" => $workShopItems, 
+            "raWorkShopItems" => $raWorkShopItems, 
+            "tdWorkShopItems" => $tdWorkShopItems, 
             "news" => $newsByCategoryCache,
             "streams" => $streams,
             "videos" => $videos,
@@ -142,15 +157,15 @@ class SiteController extends Controller
     {
         $heroVideo = Constants::getVideoWithPoster()["command-and-conquer-remastered"];
 
-        $topRAMaps = $this->steamHelper->getTopWorkShopItemsByTagName(Constants::remastersAppId(), SteamHelper::RAMap(), 16 );
-        $topTDMaps = $this->steamHelper->getTopWorkShopItemsByTagName(Constants::remastersAppId(), SteamHelper::TDMap(), 16 );
-        $topTDMods = $this->steamHelper->getTopWorkShopItemsByTagName(Constants::remastersAppId(), SteamHelper::TiberianDawnMod(), 16 );
-        $topRAMods = $this->steamHelper->getTopWorkShopItemsByTagName(Constants::remastersAppId(), SteamHelper::RedAlertMod(), 16 );
+        $topRedAlertMaps = $this->steamHelper->getTopWorkShopItemsByTagName(Constants::remastersAppId(), SteamHelper::RedAlertMap(), 20 );
+        $topTiberianDawnMaps = $this->steamHelper->getTopWorkShopItemsByTagName(Constants::remastersAppId(), SteamHelper::TiberianDawnMap(), 20 );
+        $topTDMods = $this->steamHelper->getTopWorkShopItemsByTagName(Constants::remastersAppId(), SteamHelper::TiberianDawnMod(), 20 );
+        $topRAMods = $this->steamHelper->getTopWorkShopItemsByTagName(Constants::remastersAppId(), SteamHelper::RedAlertMod(), 20 );
 
         return view('pages.remasters.workshop.listings', [
             "heroVideo" => $heroVideo,
-            "topRAMaps" => $topRAMaps,
-            "topTDMaps" => $topTDMaps,
+            "topRedAlertMaps" => $topRedAlertMaps,
+            "topTiberianDawnMaps" => $topTiberianDawnMaps,
             "topTDMods" => $topTDMods,
             "topRAMods" => $topRAMods,
         ]);

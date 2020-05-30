@@ -87,7 +87,7 @@
                 <img src="/assets/images/logos/tiberian-dawn-remastered.png" alt="Tiberian Dawn Remastered" />
                 <div class="buttons">
                     <a href="/command-and-conquer-remastered/workshop-mods#tdmods" class="btn btn-primary" title="Maps">View Top Mods</a>
-                    <a href="/command-and-conquer-remastered/workshop-mods#tdmaps" class="btn btn-primary" title="Mods">View Top Maps</a>
+                    <a href="/command-and-conquer-remastered/workshop-mods#TiberianDawnMaps" class="btn btn-primary" title="Mods">View Top Maps</a>
                 </div>
             </div>
         </div>
@@ -96,7 +96,7 @@
     <div id="tdtop" class="main-content center workshop-listings">
         <h2 class="section-title"><span class="grey">Trending this week</span></h2>
         <div class="workshop-items-wrap">
-            <?php new App\Http\CustomView\Components\WorkShopListing($workShopItems); ?>
+            <?php new App\Http\CustomView\Components\WorkShopListing($tdWorkShopItems); ?>
         </div>
     </div>
 </section>
@@ -116,7 +116,7 @@
                 <img src="/assets/images/logos/red-alert-remastered.png" alt="Red Alert Remastered" />
                 <div class="buttons">
                     <a href="/command-and-conquer-remastered/workshop-mods#ramods" class="btn btn-primary btn-theme-red" title="Maps">View Top Mods</a>
-                    <a href="/command-and-conquer-remastered/workshop-mods#ramaps" class="btn btn-primary btn-theme-red" title="Mods">View Top Maps</a>
+                    <a href="/command-and-conquer-remastered/workshop-mods#RedAlertMaps" class="btn btn-primary btn-theme-red" title="Mods">View Top Maps</a>
                 </div>
             </div>
         </div>
@@ -125,7 +125,7 @@
     <div id="tdtop" class="main-content center workshop-listings">
         <h2 class="section-title"><span class="grey">Trending this week</span></h2>
         <div class="workshop-items-wrap">
-            <?php new App\Http\CustomView\Components\WorkShopListing($workShopItems); ?>
+            <?php new App\Http\CustomView\Components\WorkShopListing($raWorkShopItems); ?>
         </div>
     </div>
 </section>

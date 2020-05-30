@@ -18,6 +18,7 @@ class TwitchListing extends AbstractCustomView
     {
         ?>
          <div class="twitch-streams">
+            <div class="items-wrap">
             <?php foreach($this->_twitchStreams as $twitchItem):?>
                 <?php 
                     $image = \App\Http\Services\TwitchHelper::getTwitchThumbnailUrl($twitchItem["thumbnail_url"], 960, 540);
@@ -32,6 +33,7 @@ class TwitchListing extends AbstractCustomView
                     ); 
                 ?>
             <?php endforeach; ?>
+            </div>
         </div>
         <?php 
     }

@@ -23,6 +23,11 @@ class SteamAPI extends AbstractSteamAPI
     private function buildResponse($response) 
     {
         $workShopItems = [];
+        if (!isset($response["publishedfiledetails"]))
+        {
+            return [];
+        }
+
         foreach($response["publishedfiledetails"] as $k => $v) 
         {
             $workShopItems[] = new SteamWorkShopItem($v);
@@ -42,6 +47,31 @@ class SteamAPI extends AbstractSteamAPI
                     '&required_flags=file_url,title,time_created,tags,favorited,views'
                 );
     
+            return $this->buildResponse($response->json()["response"]);
+        });
+    }
+
+    public function getTopWorkShopItemsByTagNames($appId, $tagNames, $limit)
+    {
+        $tagQuery = "";
+        foreach($tagNames as $k => $tag)
+        {   
+            $tagQuery .= "&requiredtags[".$k."]=". $tag;
+        }
+
+        return Cache::remember('getTopWorkShopItemsByTagNames'.$appId.$tagQuery.$limit, 43200, function () use($appId, $tagQuery, $limit) // 1/2 day cache
+        {
+            $response = Http::get(
+                $this->_apiUrl . SteamAPI::WORKSHOP_ITEMS_URL . 
+                '?appid='. $appId . 
+                '&key='. $this->_apiKey .
+                $tagQuery.
+                '&match_all_tags=false' .
+                '&numperpage='.$limit .
+                '&return_details=true' .
+                '&query_type='. SteamAPI::RankedByTotalUniqueSubscriptions() .
+                '&strip_description_bbcode=true'
+            );
             return $this->buildResponse($response->json()["response"]);
         });
     }

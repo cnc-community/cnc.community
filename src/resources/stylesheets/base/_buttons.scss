@@ -34,16 +34,16 @@
 {
     box-shadow: none;
     background: #56480a40;
-    color: #efc634;
-    border-color: #efc634;
+    color: $color-gold;
+    border-color: $color-gold;
     transition: ease-in-out 250ms all;
 
     &:hover,
     &:focus 
     {
-        background: #bf9e08c2;
+        background: lighten($color-gold, 1%);
         color: #ffffff;
-        border-color: #efc634;
+        border-color:lighten($color-gold, 1%);
     }
 }
 

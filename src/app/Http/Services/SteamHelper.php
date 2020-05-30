@@ -23,6 +23,11 @@ class SteamHelper
         return $this->steamAPI->getTopWorkShopItems($appId, $limit);
     }
 
+    public function getTopWorkShopItemsByTagNames($appId, $tags, $limit)
+    {
+        return $this->steamAPI->getTopWorkShopItemsByTagNames($appId, $tags, $limit);
+    }
+
     public function getTopWorkShopItemsByTagName($appId, $tagName, $limit)
     {
         return $this->steamAPI->getTopWorkShopItemsByTagName($appId, $tagName, $limit);
@@ -30,6 +35,6 @@ class SteamHelper
 
     public static function RedAlertMod() { return "RedAlertMod"; }
     public static function TiberianDawnMod() { return "TiberianDawnMod"; }
-    public static function RAMap() { return "RA"; }
-    public static function TDMap() { return "TD"; }
+    public static function RedAlertMap() { return "RA"; }
+    public static function TiberianDawnMap() { return "TD"; }
 }
