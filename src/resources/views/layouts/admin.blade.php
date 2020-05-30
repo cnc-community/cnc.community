@@ -104,7 +104,7 @@
                                 Pending News <span class="queue-count">{{ $queue_count }}</span>
                                 <div class="sb-sidenav-collapse-arrow"></div>
                             </a>
-
+                            <?php if(\Auth::user()->role == App\User::ROLE_ADMIN): ?>
                             <div class="sb-sidenav-menu-heading">Pages</div>
                             <a class="nav-link collapsed" href="/admin/pages">
                                 <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
@@ -117,6 +117,7 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
                                 Manage Users
                             </a>
+                            <?php endif; ?>
                             @endguest
                         </div>
                     </div>
