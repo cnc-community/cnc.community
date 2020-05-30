@@ -32,6 +32,15 @@ Installing
     docker-compose run --rm npm run dev
 ```
 
+Developing
+```shell
+    # run both of these in seperate terminal instances from the /src directory
+    npm run dev:ts
+    npm run dev:css
+    
+    # open up the docker dashboard, select the cnccommunity container and click play (top right)
+```
+
 Commands 
 ```shell
     docker-compose run --rm composer dump-autoload
