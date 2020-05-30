@@ -26,7 +26,7 @@
         Find the latest streams, mods and maps for the C&amp;C Remastered Collection.
     </h1>
     <div class="buttons">
-        <a href="#workshop-items" class="btn btn-primary" title="View Mods">Mods &amp; Maps</a>
+        <a href="/command-and-conquer-remastered/workshop-mods" class="btn btn-primary" title="View Mods">Mods &amp; Maps</a>
         <a href="#streams" class="btn btn-primary" title="View Streams">Streams</a>
         <a href="#news" class="btn btn-primary" title="View News">News</a>
     </div>
@@ -150,7 +150,9 @@
             News surrounding the Command &amp; Conquer Remastered Collection
         </p>
 
-        <?php new App\Http\CustomView\Components\NewsListing($news); ?>
+        <div class="items-wrap">
+            <?php new App\Http\CustomView\Components\NewsListing($news); ?>
+        </div>
     </div>
 </section>
 @endsection

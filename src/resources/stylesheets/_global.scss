@@ -500,3 +500,79 @@ footer .notice
     padding: 15px;
     color: #403f3f;
 }
+
+.items-wrap
+{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.items-wrap .item 
+{
+    display: flex;
+    flex-grow: 1;
+    flex-basis: 50%;
+    flex-direction: column;
+    align-content: stretch;
+    align-items: stretch;
+    justify-content: space-between;
+    align-self: stretch;
+    margin: 0 10px 25px;
+
+    @media(min-width: $lg-width)
+    {
+        flex-basis: 45%;
+    }
+
+    @media(min-width: $xl-width)
+    {
+        flex-basis: 35%;
+    }
+
+    @media(min-width: $xxl-width)
+    {
+        flex-basis: 22%;
+    }
+}
+
+.items-wrap .item .meta-info
+{
+    display: flex;
+}
+
+.items-wrap .item .meta-info > div 
+{
+    color: #ababab;
+    border-radius: 4px;
+    padding: 5px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.items-wrap .item 
+{
+    background: #131313c4;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.items-wrap .item .title
+{
+    font-size: 1.5rem;
+}
+
+.items-wrap .item .title,
+.items-wrap .item .description
+{
+    padding: 0 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.items-wrap .item .description *
+{
+    font-size: 1rem;
+    line-height: 1.8;
+}

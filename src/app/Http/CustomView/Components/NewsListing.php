@@ -17,24 +17,24 @@ class NewsListing extends AbstractCustomView
     public function render()
     {
         ?>
-    
-         <section class="articles">
-            <?php foreach($this->_newsItems as $newsItem):?>
-                <?php 
-                    new NewsItem(
-                        $newsItem->title, 
-                        $newsItem->url(), 
-                        $newsItem->excerpt(), 
-                        $newsItem->image, 
-                        $newsItem->category(),
-                        $newsItem->created_at->diffForHumans(),
-                        $newsItem->readTime(),
-                        $newsItem->type
-                    ); 
-                ?>
-            <?php endforeach; ?>
-        </section>
-
+            <div class="news-listings">
+                <div class="items-wrap">
+                    <?php foreach($this->_newsItems as $newsItem):?>
+                        <?php 
+                        new NewsItem(
+                            $newsItem->title, 
+                            $newsItem->url(), 
+                            $newsItem->excerpt(), 
+                            $newsItem->image, 
+                            $newsItem->category(),
+                            $newsItem->created_at->diffForHumans(),
+                            $newsItem->readTime(),
+                            $newsItem->type
+                        ); 
+                        ?>
+                <?php endforeach; ?>
+            </div>
+        </div>
         <?php 
     }
 }

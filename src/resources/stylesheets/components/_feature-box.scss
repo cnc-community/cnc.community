@@ -41,28 +41,30 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-
-    & img { 
-        max-height: 170px;
-    }
 }
 
 .feature-box .feature-video .embed-iframe 
 {
-    width: 70%;
+    width: 100%;
+    @media(min-width: $lg-width)
+    {
+        width: 70%;
+    }
 }
 
 
 .feature-box .buttons 
 {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     padding-top: 20px;
+    align-items: center;
     
     @media(min-width: $lg-width)
     {
         padding-top: 40px;
         flex-direction: row;
+        align-items: flex-start;
     }
 
     & .btn { margin: 5px 10px; }
