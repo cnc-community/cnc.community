@@ -9,7 +9,7 @@ class HowToContentSeed
         ob_start();
         ?>
 
-        <h2>Step 1: Download &amp; Install Renegade</h2>
+        <h3>Step 1: Download &amp; Install Renegade</h3>
         <p>
             You can now buy a digital copy of all 12 Command &amp; Conquer games from the EA Origin Store. If you have a
             physical copy of Renegade already, skip this step.
@@ -26,7 +26,7 @@ class HowToContentSeed
             </a>
         </p>
 
-        <h2>Step 2: Install the latest Patch</h2>
+        <h3>Step 2: Install the latest Patch</h3>
         <p>
             The Tiberian Technologies patch is the most popular community update for Renegade. It contains many bug fixes and
             makes the game compatible with the latest versions of Windows.
@@ -34,7 +34,7 @@ class HowToContentSeed
             <a href="http://www.tiberiantechnologies.org/files/scripts-4.6.exe" target="_blank">Click here to Download</a>
         </p>
                         
-        <h2>Step 3:&nbsp;Install W3D Hub Launcher</h2>
+        <h3>Step 3:&nbsp;Install W3D Hub Launcher</h3>
         <p>The W3D Hub launcher is an all-in-one solution for finding Renegade servers and mods.</p>
         <p>
             <a href="https://w3dhub.com/forum/files/file/10-w3d-hub-launcher/" title="W3D Hub Launcher">Click here to Download</a>
@@ -55,7 +55,7 @@ class HowToContentSeed
             is installed).
         </p>
             
-        <h2>Step 4: Play Single Player and Online!</h2>
+        <h3>Step 4: Play Single Player and Online!</h3>
         <p>
             Using the W3D Hub Launcher, you are now able to play Single Player or battle it out against others Online.
             To look for online games, go to the Server Browser and click the Join Server button.
