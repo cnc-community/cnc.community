@@ -500,3 +500,38 @@ footer .notice
     padding: 15px;
     color: #403f3f;
 }
+
+.items-wrap
+{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.items-wrap .item 
+{
+    display: flex;
+    flex-grow: 1;
+    flex-basis: 50%;
+    flex-direction: column;
+    align-content: stretch;
+    align-items: stretch;
+    justify-content: space-between;
+    align-self: stretch;
+    margin: 0 10px 25px;
+
+    @media(min-width: $lg-width)
+    {
+        flex-basis: 45%;
+    }
+
+    @media(min-width: $xl-width)
+    {
+        flex-basis: 35%;
+    }
+
+    @media(min-width: $xxl-width)
+    {
+        flex-basis: 22%;
+    }
+}

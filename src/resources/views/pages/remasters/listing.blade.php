@@ -150,7 +150,9 @@
             News surrounding the Command &amp; Conquer Remastered Collection
         </p>
 
-        <?php new App\Http\CustomView\Components\NewsListing($news); ?>
+        <div class="items-wrap">
+            <?php new App\Http\CustomView\Components\NewsListing($news); ?>
+        </div>
     </div>
 </section>
 @endsection
