@@ -39,6 +39,8 @@ Developing
     npm run dev:css
     
     # open up the docker dashboard, select the cnccommunity container and click play (top right)
+    
+    # visit localhost:8080 in a browser to view the site
 ```
 
 Commands 
