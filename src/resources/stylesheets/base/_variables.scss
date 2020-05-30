@@ -117,49 +117,85 @@ $xxl-max-width: 1350px;
     background-size: cover;
 }
 
-
-
-.col-10
+.page.theme-red-alert .btn-primary,
+.page.theme-red-alert-2 .btn-primary,
+.page.theme-red-alert-3 .btn-primary
 {
-    flex-basis: 10%;
-}
-.col-20
-{
-    flex-basis: 20%;
-}
-.col-30
-{
-    flex-basis: 30%;
-}
-.col-40
-{
-    flex-basis: 40%;
-}
-.col-50
-{
-    flex-basis: 50%;
-}
-.col-60
-{
-    flex-basis: 60%;
-}
-.col-70
-{
-    flex-basis: 70%;
-}
-.col-80
-{
-    flex-basis: 90%;
-}
-.col-90
-{
-    flex-basis: 90%;
-}
-.col-100
-{
-    flex-basis: 100%;
+    @extend .btn-theme-red;
 }
 
+.page.theme-tiberian-sun .btn-primary,
+.page.theme-renegade .btn-primary,
+.page.theme-generals .btn-primary
+{
+    @extend .btn-theme-yellow;
+}
+
+.page.theme-command-and-conquer-3 .btn-primary
+{
+    @extend .btn-theme-green;
+}
+
+.page.theme-command-and-conquer-4 .btn-primary
+{
+    @extend .btn-theme-blue;
+}
+
+
+@media(min-width: $md-width)
+{
+
+    .col-10
+    {
+        flex-basis: 10%;
+    }
+    
+    .col-20
+    {
+        flex-basis: 20%;
+    }
+    
+    .col-30
+    {
+        flex-basis: 30%;
+    }
+    
+    .col-40
+    {
+        flex-basis: 40%;
+    }
+    
+    .col-50
+    {
+        flex-basis: 50%;
+    }
+    
+    .col-60
+    {
+        flex-basis: 60%;
+    }
+    
+    .col-70
+    {
+        flex-basis: 70%;
+    }
+    
+    .col-80
+    {
+        flex-basis: 90%;
+    }
+    
+    .col-90
+    {
+        flex-basis: 90%;
+    }
+    
+    .col-100
+    {
+        flex-basis: 100%;
+    }
+}
+    
 
 //
 // Animations

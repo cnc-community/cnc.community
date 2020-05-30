@@ -56,7 +56,6 @@ class NewsItem extends AbstractCustomView
                                 Article
                                 <?php endif; ?>
                             </div>
-
                         </div>
                         <?php endif; ?>
                     

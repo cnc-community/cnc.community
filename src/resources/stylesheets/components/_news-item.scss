@@ -20,12 +20,6 @@
     padding: 15px 35px;
 }
 
-.news-item .description *
-{
-    font-size: 1rem;
-    line-height: 1.8;
-}
-
 .news-item .btn-readmore
 {
     @extend .btn-transparent;
@@ -47,23 +41,6 @@
         border: 1px solid $color-gold;
         color: $color-gold;
     }
-}
-
-.news-item .meta-info
-{
-    display: flex;
-}
-
-.news-item .meta-info > div 
-{
-    background: #2b2b2b;
-    color: #ababab;
-    margin: 0 7px;
-    border-radius: 4px;
-    padding: 5px;
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    font-weight: 600;
 }
 
 .news-item .title

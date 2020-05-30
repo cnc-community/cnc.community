@@ -35,16 +35,8 @@
     font-size: 0.85rem;
 }
 
-.workshop-item .title 
-{
-    font-size: 1.6rem;
-    margin-top: 5px;
-    margin-bottom: 10px;
-}
-
 .workshop-item 
 {
-    background: #131313c4;
 }
 
 .workshop-item .image 
@@ -101,7 +93,8 @@
     color: silver;
     padding: 10px;
     border-radius: 4px;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
+    font-weight: 600;
 
     display: flex;
     align-items: center;

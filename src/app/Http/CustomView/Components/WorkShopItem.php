@@ -46,13 +46,28 @@ class WorkShopItem extends AbstractCustomView
     public function render()
     {
         ?>
-            <article class="workshop-item">
+            <article class="item workshop-item">
                 <?php if($this->previewUrl):?>
                     <div class="image">
                         <a href="<?php echo $this->url; ?>" title="<?php echo $this->title; ?>" rel="nofollow noreferrer" target="_blank" class="image-link">
-                        <img src="<?php echo $this->previewUrl ?>" alt="<?php echo $this->title ?>" alt="<?php echo $this->title; ?>" loading="lazy" />
+                            <img src="<?php echo $this->previewUrl ?>" alt="<?php echo $this->title ?>" alt="<?php echo $this->title; ?>" loading="lazy" />
                         </a>
                         <div>
+                            
+                            <h3 class="title">
+                                <a href="<?php echo $this->url; ?>" title="<?php echo $this->title; ?>" rel="nofollow noreferrer" target="_blank">
+                                <?php echo $this->title ;?>
+                                </a>
+                            </h3>
+
+                            <?php if($this->timeCreated): ?>
+                            <div class="meta-info">
+                                <div class="date">
+                                    <?php echo date('F j, Y, g:i a',$this->timeCreated); ?>
+                                </div>
+                            </div>
+                            <?php endif; ?>
+                                                        
                             <div class="tags">
                                 <?php foreach($this->tags as $tag ):?>
                                     <div class="tag">
@@ -60,18 +75,7 @@ class WorkShopItem extends AbstractCustomView
                                     </div>
                                 <?php endforeach; ?>
                             </div>
-                            
-                            <h3 class="title">
-                                <a href="<?php echo $this->url; ?>" title="<?php echo $this->title; ?>" rel="nofollow noreferrer" target="_blank">
-                                <?php echo $this->title ;?>
-                                </a>
-                            </h3>
-                            <?php if($this->timeCreated): ?>
-                            <div class="date-posted">
-                                <?php echo date('F j, Y, g:i a',$this->timeCreated); ?>
-                            </div>
-                            <?php endif; ?>
-                        
+
                             <?php if($this->description): ?>
                             <div class="description">
                                 <p>

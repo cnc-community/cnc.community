@@ -17,8 +17,10 @@ class WorkShopListing extends AbstractCustomView
     public function render()
     {
         ?>
-            <?php foreach($this->_workShopItems as $workShopItem ):?>
-                <?php 
+        <div class="workshop-listings">
+            <div class="items-wrap">
+                <?php foreach($this->_workShopItems as $workShopItem ):?>
+                    <?php 
                     new WorkShopItem(
                         $workShopItem->title,
                         $workShopItem->preview_url,
@@ -31,8 +33,10 @@ class WorkShopListing extends AbstractCustomView
                         $workShopItem->lifetime_playtime_sessions,
                         $workShopItem->subscriptions
                     );
-                ?>
+                    ?>
             <?php endforeach; ?>
+            </div>
+        </div>
         <?php 
     }
 }
