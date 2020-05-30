@@ -1,6 +1,12 @@
-.workshop-items
+.workshop-listings
 {
-    padding-top: 25px;
+    padding-bottom: 50px;
+    padding-top: 50px;
+}
+
+.workshop-listings .section-title 
+{
+    padding-bottom: 15px;
 }
 
 .workshop-items-wrap
@@ -8,7 +14,6 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    padding-top: 25px;
 }
 
 .workshop-items-wrap .workshop-item
@@ -21,7 +26,7 @@
     align-items: stretch;
     justify-content: space-between;
     align-self: stretch;
-    margin: 25px;
+    margin: 0 10px 25px;
 }
 
 @media(min-width: $md-width)

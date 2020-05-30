@@ -2,52 +2,22 @@
 .page.theme-red-alert-2 .btn-primary,
 .page.theme-red-alert-3 .btn-primary
 {
-    border-color: red;
-    background: #a90000e6;
-    text-shadow: none;
-    color: #fff;
-    &:hover { 
-        border-color: #ff0000;
-        color: #ff0000;
-        background: #2700007a;
-    }
+    @extend .btn-theme-red;
 }
 
 .page.theme-tiberian-sun .btn-primary,
 .page.theme-renegade .btn-primary,
 .page.theme-generals .btn-primary
 {
-    background: #000000b8;
-    border-color: #f6941e;
-    color: #f6941e;
-
-    &:hover { 
-        background: #9c550075;
-        border-color: #ff8b00;
-        color: #ffffff;
-    }
+    @extend .btn-theme-yellow;
 }
 
 .page.theme-command-and-conquer-3 .btn-primary
 {
-    border-color: #06f300;
-    color: #06f300;
-
-    &:hover { 
-        border-color: #06ff00;
-        color: #ffffff;
-        background: #012700d9;
-    }
+    @extend .btn-theme-green;
 }
 
 .page.theme-command-and-conquer-4 .btn-primary
 {
-    color: #00b9da;
-    border-color: #00b9da;
-
-    &:hover { 
-        color: #ffffff;
-        border-color: #00b9da;
-        background: #006a7dc7;
-    }
+    @extend .btn-theme-blue;
 }
