@@ -5,13 +5,9 @@
 
 @section('hero')
 <div class="content center">
-
-    {{-- <div class="title">
-        <img src="assets/images/logos/cnc-community-logo.png" alt="C&C Community Logo" />
-    </div> --}}
-    <h1>Welcome to C&amp;C Community</h1>
+    <h1>Welcome Back Commander</h1>
     <p class="lead">
-        Stay current with C&amp;C Games and their communities. 
+        Play C&amp;C on Windows 10 and get all of the <br class="hide-for-xs"/>latest news and content from the community.
     </p>
     <div class="buttons">
         <a class="btn btn-outline" href="#games">How to Play C&C</a>
@@ -23,9 +19,9 @@
 @section('content')
 <section id="games" class="how-to-guides">
     <div class="main-content">
-        <h2 class="section-title">How to play <br class="hide-for-xs"/>Command &amp; Conquer</h2>
+        <h2 class="section-title">Discover <br class="hide-for-xs"/>Command &amp; Conquer</h2>
         <p class="section-description">
-            Each game has it's own designated page of the latest news, live streams and a tutorial on how to play.
+            Choose a game to find out how to play on Windows 10 and stay up to date with the latest news from around the community.
         </p>
     </div>
         
@@ -62,7 +58,6 @@
         </div>
     </div>
 </section>
-
 
 <section class="section section-green news-listings">
     <div class="main-content">
