@@ -54,35 +54,24 @@
     }
 }
 
-.page-remasters .featured-logos
+.page-remasters .feature-box .featured-logos
 {
     display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
-    padding-top: 10px;
+    padding-top: 30px;
 }
 
-.page-remasters .featured-logos .produced-by
+.page-remasters .feature-box .feature-text 
 {
-    font-size: 1rem;
-    color: #383838;
-    text-transform: uppercase;
-    font-weight: 600;
-
-    a {
-        color: #383838;
-    }
+    flex-basis: 50%;
 }
 
-.page-remasters .featured-logos .logos
+.page-remasters .feature-box  .featured-logos .logos
 {
     display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    width: 600px;
-    max-width: 100%;
-    margin: 15px auto;
+    justify-content: flex-start;
+    width: 265px;
+    justify-content: space-between;
 
     & img  {
         height: 80px;
@@ -93,4 +82,21 @@
 .page-remasters .stream-listings 
 {
     background-color: #000000;
+}
+
+.workshop-introduction .feature-box 
+{
+    padding-bottom: 50px;
+    padding-top: 20px;
+}
+
+.page-remasters .section-buy 
+{
+    padding-top: 50px;
+    padding-bottom: 130px;
+}
+
+.page-remasters .section-buy .section-title
+{
+    margin: 0;
 }

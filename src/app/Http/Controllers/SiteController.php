@@ -138,6 +138,25 @@ class SiteController extends Controller
         ]);
     }
 
+    public function showRemastersWorkshopMods()
+    {
+        $heroVideo = Constants::getVideoWithPoster()["command-and-conquer-remastered"];
+
+        $topRAMaps = $this->steamHelper->getTopWorkShopItemsByTagName(Constants::remastersAppId(), SteamHelper::RAMap(), 16 );
+        $topTDMaps = $this->steamHelper->getTopWorkShopItemsByTagName(Constants::remastersAppId(), SteamHelper::TDMap(), 16 );
+        $topTDMods = $this->steamHelper->getTopWorkShopItemsByTagName(Constants::remastersAppId(), SteamHelper::TiberianDawnMod(), 16 );
+        $topRAMods = $this->steamHelper->getTopWorkShopItemsByTagName(Constants::remastersAppId(), SteamHelper::RedAlertMod(), 16 );
+
+        return view('pages.remasters.workshop.listings', [
+            "heroVideo" => $heroVideo,
+            "topRAMaps" => $topRAMaps,
+            "topTDMaps" => $topTDMaps,
+            "topTDMods" => $topTDMods,
+            "topRAMods" => $topRAMods,
+        ]);
+    }
+
+
     /**
      * Get page category and 
      */

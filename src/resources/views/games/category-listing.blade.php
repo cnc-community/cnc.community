@@ -7,17 +7,7 @@
 @section('hero-class', 'hero-'. $category->slug)
 
 @section('hero-video')
-<?php 
-    $videoSrc= $heroVideo["src"]; 
-    $videoPoster = $heroVideo["poster"]; 
-?>
-
-<div class="video" style="background-image: url('{{ $videoPoster }}')">
-    <video autoplay="true" loop muted preload="none"
-        poster="{{ $videoPoster }}"
-        src="{{ $videoSrc}} ">
-    </video>
-</div>
+<?php new \App\Http\CustomView\Components\VideoPlayer($heroVideo); ?>
 @endsection
 
 @section('hero')
