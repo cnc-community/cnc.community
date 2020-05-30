@@ -529,13 +529,11 @@ footer .notice
     @media(min-width: $xl-width)
     {
         flex-basis: 29%;
-        max-width: 35%;
     }
 
     @media(min-width: $xxl-width)
     {
         flex-basis: 22%;
-        max-width: 22%;
     }
 }
 
