@@ -15,8 +15,8 @@
     <link href="{{ asset('admin/css/jodit.min.css') }}" rel="stylesheet">
     <link href="{{ asset('admin/css/styles.css') }}" rel="stylesheet">
 
-    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
-    <script src="{{ asset('admin/js/jodit.min.js') }}"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/19.0.0/classic/ckeditor.js"></script>
+
     <script src="{{ asset('admin/js/app.js') }}"></script>
 
     <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />

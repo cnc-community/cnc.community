@@ -48,9 +48,8 @@
                         <div class="form-group">
                             <label for="content">Post</label>
 
-                            <div id="editor">
-                    
-                            </div>
+                            <textarea id="editor" name="post">
+                            </textarea>
                         </div>
                         <button type="submit" class="btn btn-primary">Save</button>
                     </form>
@@ -60,29 +59,12 @@
     </div>
 </div>
 
-
-<!-- Initialize Quill editor -->
 <script>
-    (function()
-    {
-        var quill = new Quill('#editor', {
-            theme: 'snow'
-        });
-        
-        var editor = document.getElementById("editor");
-        var post = document.getElementById("post");
-        
-        quill.on('text-change', function (){
-            updatePost();
-        });
-
-        function updatePost()
-        {
-            post.value = editor.children[0].innerHTML;
-        }
-
-        updatePost();
-    }());
+ClassicEditor
+    .create( document.querySelector( '#editor' ) )
+    .catch( error => {
+        console.error( error );
+    } );
 </script>
 
 @endsection

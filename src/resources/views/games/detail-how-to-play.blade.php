@@ -30,12 +30,8 @@
 <?php if($howToPlaySteps): ?>
 <section class="section how-to-play-steps">
     <div class="main-content">
-        <h2 class="section-title">Step by step instructions</h2>
-        <p class="section-description">
-            Consectetur adipiscing elit, sed do eiusmod
-            tempor incidid unt
-        </p>
         <div class="page-content">
+            <h2 class="section-title">How to play {{ $page->category()->title }} </h2>
             <?php print $howToPlaySteps; ?>
         </div>
     </div>
@@ -48,8 +44,7 @@
     <div class="main-content">
         <h2 class="section-title">Watch the video tutorial</h2>
         <p class="section-description">
-            Consectetur adipiscing elit, sed do eiusmod
-            tempor incidid unt
+            Still having trouble with the guide? Try following the Video Tutorial below.
         </p>
         <div class="page-content center">
             <?php print $howToPlayVideo; ?>
@@ -62,7 +57,10 @@
 <?php if($howToPlayHelp): ?>
 <section class="section how-to-play-help">
     <div class="main-content">
-        <h2 class="section-title">Need help? Ask in these support channels.</h2>
+        <h2 class="section-title">Need help?</h2>
+        <p class="section-description">
+            Ask in these support channels for help from the community
+        </p>
         <div class="page-content">
             <?php print $howToPlayHelp; ?>
         </div>
