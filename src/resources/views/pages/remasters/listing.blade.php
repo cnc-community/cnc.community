@@ -64,7 +64,7 @@
                             <img src="/assets/images/logos/petroglyph-games.png" alt="Petroglyph Games" />
                         </a>
                         <a href="https://commandandconquer.com" title="EA - Command & Conquer" rel="nofollow">
-                            <img src="/assets/images/logos/ea.png" alt="" />
+                            <img src="/assets/images/logos/ea.png" alt="EA" />
                         </a>
                     </div>
                 </div>
@@ -131,7 +131,7 @@
     </div>
 </section>
 
-<section id="streams" class="section stream-listings">
+<section id="streams" class="section section-green stream-listings">
     <div class="main-content">
         <h2 class="section-title">C&amp;C Remastered Live Streams</h2>
         <?php if($streams == null): ?>

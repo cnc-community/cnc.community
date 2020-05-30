@@ -56,7 +56,7 @@
     </div>
 </section>
 
-<section id="streams" class="section stream-listings">
+<section id="streams" class="section section-green stream-listings">
     <div class="main-content">
         <?php if (count($streams) == 0): ?>
             <h2 class="section-title">Latest {{ $category->title }} videos</h2>
