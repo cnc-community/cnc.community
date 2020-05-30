@@ -17,6 +17,8 @@
     .twitch-streams .twitch-embed 
     {
         margin-right: 15px;
+        flex-grow: 1;
+        max-width: 100%;
     }
 }
 
