@@ -245,7 +245,7 @@ class SiteController extends Controller
         {
             return view('pages.detail', array("page" => $pageCache));
         }
-        return view($pageCache->bladeTemplate(), array("page" => $pageCache, "heroVideo" => $heroVideo));
+        return view($pageCache->bladeTemplate(), array("page" => $pageCache, "heroVideo" => $heroVideo, "slugCategory" => $slugCategory));
     }
 
     public function clearCache()

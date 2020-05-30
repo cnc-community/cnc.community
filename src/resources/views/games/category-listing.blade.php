@@ -44,7 +44,7 @@
 
             <div class="col-50 feature-text">
                 <div class="feature-video">
-                    <p>Watch the original {{ $category->title }} trailer...</p>
+                    <p>Commander, we are waiting on you. Get ready...</p>
                     <div class="embed-iframe">
                         <iframe width="560" height="315" src="<?php echo \App\Constants::getYouTubeTrailerByGameSlug()[$category->slug]; ?>" 
                         frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>

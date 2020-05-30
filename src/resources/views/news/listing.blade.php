@@ -5,7 +5,9 @@
     <h1>
         {{ $category->name }}
     </h1>
+    <?php if($pageCategory): ?>
     <a href="{{ $pageCategory->url() }}" class="btn btn-primary">Back to {{ $pageCategory->title }}</a>
+    <?php endif; ?>
 </div>
 @endsection
 
