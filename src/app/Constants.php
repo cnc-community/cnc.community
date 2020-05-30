@@ -56,7 +56,7 @@ class Constants
         return
         [
             "red-alert" => "https://www.youtube-nocookie.com/embed/lJnMaTx4yjI", 
-            "command-and-conquer" => "https://www.youtube-nocookie.com/embed/Aui392986EE", 
+            "tiberian-dawn" => "https://www.youtube-nocookie.com/embed/Aui392986EE", 
             "tiberian-sun" => "https://www.youtube-nocookie.com/embed/ykCUFtOZ2nM",
             "red-alert-2" => "https://www.youtube-nocookie.com/embed/K6DVoqMBERE",
             "renegade" => "https://www.youtube-nocookie.com/embed/Sj8yOJcsYTI",
