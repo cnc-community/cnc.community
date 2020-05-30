@@ -48,18 +48,20 @@ class UsersController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required',
-            'email' => 'required|unique:email',
+            'email' => 'required|unique:users',
             'password' => 'required|min:6',
             'role' => 'required'
         ]);
 
-        if ($validator->fails()) {
+        if ($validator->fails()) 
+        {
             return redirect('/admin/users/create')
                         ->withErrors($validator)
                         ->withInput();
         }
 
         User::createUser($request->name, $request->email, $request->password, $request->role);
+        $request->session()->flash('status', 'User created');
         return redirect('/admin/users/');
     }
 

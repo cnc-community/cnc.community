@@ -14,6 +14,13 @@
             </div>
 
             <div class="card">
+            
+                @if (session('status'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session('status') }}
+                    </div>
+                @endif
+                
                 <div class="card-body">
                       <form method="post" enctype="multipart/form-data">
                         {{csrf_field()}}
@@ -55,7 +62,9 @@
 
                         <div class="form-group">
                             <label for="content">Post</label>
-c
+                            <textarea id="editor_{{ $newsItem->id }}" name="post">
+                                {{ $newsItem->post  }}
+                            </textarea>
                         </div>
                         <button type="submit" class="btn btn-primary">Save</button>
                     </form>
