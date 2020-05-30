@@ -38,16 +38,16 @@
                 <img src="/assets/images/logos/tiberian-dawn-remastered.png" alt="Red Alert Remastered" />
                 <div class="buttons">
                     <a href="/command-and-conquer-remastered/workshop-mods#tdmods" class="btn btn-primary" title="Maps">Go to Mods</a>
-                    <a href="/command-and-conquer-remastered/workshop-mods#tdmaps" class="btn btn-primary" title="Mods">Go to Maps</a>
+                    <a href="/command-and-conquer-remastered/workshop-mods#TiberianDawnMaps" class="btn btn-primary" title="Mods">Go to Maps</a>
                 </div>
             </div>
         </div>
     </div>
 
-    <div id="tdmaps" class="main-content center workshop-listings">
+    <div id="TiberianDawnMaps" class="main-content center workshop-listings">
         <h2 class="section-title">Tiberian Dawn Maps <span class="grey">Trending this week</span></h2>
         <div class="workshop-items-wrap">
-            <?php new App\Http\CustomView\Components\WorkShopListing($topTDMaps); ?>
+            <?php new App\Http\CustomView\Components\WorkShopListing($topTiberianDawnMaps); ?>
         </div>
     </div>
 
@@ -75,16 +75,16 @@
                 <img src="/assets/images/logos/red-alert-remastered.png" alt="Red Alert Remastered" />
                 <div class="buttons">
                     <a href="/command-and-conquer-remastered/workshop-mods#ramods" class="btn btn-primary btn-theme-red" title="Maps">Go to Mods</a>
-                    <a href="/command-and-conquer-remastered/workshop-mods#ramaps" class="btn btn-primary btn-theme-red" title="Mods">Go to Maps</a>
+                    <a href="/command-and-conquer-remastered/workshop-mods#RedAlertMaps" class="btn btn-primary btn-theme-red" title="Mods">Go to Maps</a>
                 </div>
             </div>
         </div>
     </div>
 
-    <div id="ramaps" class="main-content center workshop-listings">
+    <div id="RedAlertMaps" class="main-content center workshop-listings">
         <h2 class="section-title">Red Alert Maps <span class="grey">Trending this week</span></h2>
         <div class="workshop-items-wrap">
-            <?php new App\Http\CustomView\Components\WorkShopListing($topRAMaps); ?>
+            <?php new App\Http\CustomView\Components\WorkShopListing($topRedAlertMaps); ?>
         </div>
     </div>
 

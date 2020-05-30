@@ -505,7 +505,7 @@ footer .notice
 {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: flex-start;
 }
 
 .items-wrap .item 
@@ -523,22 +523,26 @@ footer .notice
     @media(min-width: $lg-width)
     {
         flex-basis: 45%;
+        max-width: 45%;
     }
 
     @media(min-width: $xl-width)
     {
-        flex-basis: 35%;
+        flex-basis: 29%;
+        max-width: 35%;
     }
 
     @media(min-width: $xxl-width)
     {
         flex-basis: 22%;
+        max-width: 22%;
     }
 }
 
 .items-wrap .item .meta-info
 {
     display: flex;
+    flex-wrap: wrap;
 }
 
 .items-wrap .item .meta-info > div 
@@ -549,6 +553,9 @@ footer .notice
     font-size: 0.8rem;
     text-transform: uppercase;
     font-weight: 600;
+    background: #101010;
+    margin-right: 5px;
+    margin-bottom: 5px;
 }
 
 .items-wrap .item 
@@ -575,4 +582,32 @@ footer .notice
 {
     font-size: 1rem;
     line-height: 1.8;
+}
+
+ul.pagination 
+{
+    list-style: none;
+}
+
+.pagination li 
+{
+    list-style: none;
+    display: inline-block;
+}
+
+.pagination .page-link 
+{
+    background: #131313;
+    padding: 9px;
+    border-radius: 4px;
+}
+
+.pagination .page-item.active
+{
+    color: $color-gold;
+}
+
+.pagination  .page-item.disabled
+{
+    color: #3c3c3c;
 }

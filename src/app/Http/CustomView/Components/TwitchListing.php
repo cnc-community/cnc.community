@@ -18,9 +18,9 @@ class TwitchListing extends AbstractCustomView
     {
         ?>
          <div class="twitch-streams">
-             <? if (empty($this->_twitchStreams)): ?>
+             <?php if (empty($this->_twitchStreams)): ?>
                 No creators are currently streaming this game.
-            <? else: ?>
+            <?php else: ?>
                 <?php foreach($this->_twitchStreams as $twitchItem):?>
                     <?php 
                         $image = \App\Http\Services\TwitchHelper::getTwitchThumbnailUrl($twitchItem["thumbnail_url"], 960, 540);
@@ -35,7 +35,7 @@ class TwitchListing extends AbstractCustomView
                         ); 
                     ?>
                 <?php endforeach; ?>
-            <? endif; ?>
+            <?php endif; ?>
         </div>
         <?php 
     }

@@ -7,7 +7,11 @@
 .news-item .image-link 
 {
     margin-bottom: 15px;
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: black;
+    border-radius: 4px;
 }
 
 .news-item .article-info 

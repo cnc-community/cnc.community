@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('title', $page->title)
+@section('page-class', 'category theme-'.$slugCategory)
 @section('page-class', 'game-detail')
 
 @section('hero-video')
@@ -9,15 +10,16 @@
 
 @section('hero')
 <div class="content center">
-    <h1 class="text-uppercase">
-        {{ $page->title }}
-    </h1>
-    <p class="lead">
+    <div class="title">
+        <img src="{{ \App\ViewHelper::getGameLogoPathByName($slugCategory) }}" alt="Game logo" />
+    </div>
+
+    <h1 class="small-h1">
         {{ $page->description }}
     </p>
     <div class="buttons">
         <a href="{{ $page->category()->url() }}" class="btn btn-primary" title="Go to {{ $page->category()->title }}">
-            View other {{ $page->category()->title }} tutorials
+            Go back to {{ $page->category()->title }}
         </a>
     </div>
 </div>
@@ -61,10 +63,6 @@
 <section class="section how-to-play-help">
     <div class="main-content">
         <h2 class="section-title">Need help? Ask in these support channels.</h2>
-        <p class="section-description">
-            Consectetur adipiscing elit, sed do eiusmod
-            tempor incidid unt
-        </p>
         <div class="page-content">
             <?php print $howToPlayHelp; ?>
         </div>

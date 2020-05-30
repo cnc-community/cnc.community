@@ -43,9 +43,12 @@ class SiteController extends Controller
             return News::officialNewsPaginated();
         });
 
+        $workShopItems = $this->steamHelper->getTopWorkShopItems(Constants::remastersAppId(), 8);
+
         return view('home.index', 
             [
-                "officialNews" => $officialNewsCache
+                "officialNews" => $officialNewsCache,
+                "workShopItems" => $workShopItems
             ]
         );
     }
@@ -63,12 +66,18 @@ class SiteController extends Controller
         });
         if ($categoryCache == null) abort(404);
 
+
+        $pageCategoryCache = Cache::remember($key."news.listing.newsByCategory", Constants::getCacheSeconds(), function () use ($categoryCache)
+        {
+            return PageCategory::where("news_category_id", $categoryCache->id)->first();
+        });        
+        
         $newsByCategoryCache = Cache::remember($key."news.listing.newsByCategory", Constants::getCacheSeconds(), function () use ($categoryCache)
         {
             return News::newsPaginatedByCategory($categoryCache->id);
         });
 
-        return view('news.listing', ["news" => $newsByCategoryCache]);
+        return view('news.listing', ["news" => $newsByCategoryCache, "category" => $categoryCache, "pageCategory" => $pageCategoryCache]);
     }
 
     public function showNewsBySlug($categorySlug, $newsSlug)
@@ -111,7 +120,21 @@ class SiteController extends Controller
     {
         $key = "cache_";
 
-        $workShopItems = $this->steamHelper->getTopWorkShopItems(Constants::remastersAppId(), 16);
+        $raWorkShopItems = $this->steamHelper->getTopWorkShopItemsByTagNames(Constants::remastersAppId(),
+            [
+                SteamHelper::RedAlertMod(),
+                SteamHelper::RedAlertMap(),
+            ],
+            8
+        );
+
+        $tdWorkShopItems = $this->steamHelper->getTopWorkShopItemsByTagNames(Constants::remastersAppId(),
+            [
+                SteamHelper::TiberianDawnMod(),
+                SteamHelper::TiberianDawnMap(),
+            ],
+            8
+        );
    
         $streams = $this->twitchHelper->getTwitchGamesBySlug("remasters");
         $videos = $this->twitchHelper->getTwitchVideosBySlug("remasters");
@@ -130,7 +153,8 @@ class SiteController extends Controller
         $heroVideo = Constants::getVideoWithPoster()["command-and-conquer-remastered"];
 
         return view('pages.remasters.listing', [
-            "workShopItems" => $workShopItems, 
+            "raWorkShopItems" => $raWorkShopItems, 
+            "tdWorkShopItems" => $tdWorkShopItems, 
             "news" => $newsByCategoryCache,
             "streams" => $streams,
             "videos" => $videos,
@@ -142,15 +166,15 @@ class SiteController extends Controller
     {
         $heroVideo = Constants::getVideoWithPoster()["command-and-conquer-remastered"];
 
-        $topRAMaps = $this->steamHelper->getTopWorkShopItemsByTagName(Constants::remastersAppId(), SteamHelper::RAMap(), 16 );
-        $topTDMaps = $this->steamHelper->getTopWorkShopItemsByTagName(Constants::remastersAppId(), SteamHelper::TDMap(), 16 );
-        $topTDMods = $this->steamHelper->getTopWorkShopItemsByTagName(Constants::remastersAppId(), SteamHelper::TiberianDawnMod(), 16 );
-        $topRAMods = $this->steamHelper->getTopWorkShopItemsByTagName(Constants::remastersAppId(), SteamHelper::RedAlertMod(), 16 );
+        $topRedAlertMaps = $this->steamHelper->getTopWorkShopItemsByTagName(Constants::remastersAppId(), SteamHelper::RedAlertMap(), 20 );
+        $topTiberianDawnMaps = $this->steamHelper->getTopWorkShopItemsByTagName(Constants::remastersAppId(), SteamHelper::TiberianDawnMap(), 20 );
+        $topTDMods = $this->steamHelper->getTopWorkShopItemsByTagName(Constants::remastersAppId(), SteamHelper::TiberianDawnMod(), 20 );
+        $topRAMods = $this->steamHelper->getTopWorkShopItemsByTagName(Constants::remastersAppId(), SteamHelper::RedAlertMod(), 20 );
 
         return view('pages.remasters.workshop.listings', [
             "heroVideo" => $heroVideo,
-            "topRAMaps" => $topRAMaps,
-            "topTDMaps" => $topTDMaps,
+            "topRedAlertMaps" => $topRedAlertMaps,
+            "topTiberianDawnMaps" => $topTiberianDawnMaps,
             "topTDMods" => $topTDMods,
             "topRAMods" => $topRAMods,
         ]);
@@ -208,6 +232,9 @@ class SiteController extends Controller
     public function showPageBySlug($slugCategory, $slug)
     {
         $key = "cache_" . $slugCategory . "_" . $slug;
+        
+        $heroVideo = Constants::getVideoWithPoster()[$slugCategory];
+
         $pageCache = Cache::remember($key, Constants::getCacheSeconds(), function ()  use ($slugCategory, $slug) 
         {
             return Page::checkPageExistsWithSlugs($slugCategory, $slug);
@@ -218,7 +245,7 @@ class SiteController extends Controller
         {
             return view('pages.detail', array("page" => $pageCache));
         }
-        return view($pageCache->bladeTemplate(), array("page" => $pageCache));
+        return view($pageCache->bladeTemplate(), array("page" => $pageCache, "heroVideo" => $heroVideo, "slugCategory" => $slugCategory));
     }
 
     public function clearCache()

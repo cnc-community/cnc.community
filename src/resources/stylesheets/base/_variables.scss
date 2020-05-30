@@ -26,7 +26,7 @@ $icon-xl-size: $font-size-xl * 5;
 // Generic 
 $color-white: #fff;
 $color-secondary: #adadad;
-$color-gold: #efbb04;
+$color-gold: #ffb300;
 
 $color-green: #22d600;
 $color-green-400: #7bf264;
@@ -141,10 +141,23 @@ $xxl-max-width: 1350px;
     @extend .btn-theme-blue;
 }
 
+.col-10,
+.col-20,
+.col-30,
+.col-40,
+.col-50,
+.col-60,
+.col-70,
+.col-80,
+.col-90,
+.col-10
+{
+    flex-basis: 100%;
+    width: 100%;
+}
 
 @media(min-width: $md-width)
 {
-
     .col-10
     {
         flex-basis: 10%;

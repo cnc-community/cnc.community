@@ -51,6 +51,24 @@ class Constants
         ];
     }
 
+    public static function getYouTubeTrailerByGameSlug()
+    {
+        return
+        [
+            "red-alert" => "https://www.youtube-nocookie.com/embed/lJnMaTx4yjI", 
+            "tiberian-dawn" => "https://www.youtube-nocookie.com/embed/Aui392986EE", 
+            "tiberian-sun" => "https://www.youtube-nocookie.com/embed/ykCUFtOZ2nM",
+            "red-alert-2" => "https://www.youtube-nocookie.com/embed/K6DVoqMBERE",
+            "renegade" => "https://www.youtube-nocookie.com/embed/Sj8yOJcsYTI",
+            "red-alert-3" => "https://www.youtube-nocookie.com/embed/CwI7NMbAxw0", 
+            "command-and-conquer-3-kanes-wrath" => "https://www.youtube-nocookie.com/embed/gxqzo6x08z0",
+            "command-and-conquer-3" => "https://www.youtube-nocookie.com/embed/gCimGS7I1UQ",
+            "command-and-conquer-4" => "https://www.youtube-nocookie.com/embed/re4k8FmTxIQ",
+            "generals" => "https://www.youtube-nocookie.com/embed/sKj1aIpZ4HE", 
+            "zero-hour" => "https://www.youtube-nocookie.com/embed/LsRM1eEt3iU"
+        ];
+    }
+
     public static function getVideoWithPoster()
     {
         $version = 1.2;

@@ -4,8 +4,12 @@
     display: flex;
     justify-content: flex-start;
     flex-wrap: wrap;
-    justify-content: center;
     margin-top: 50px;
+}
+
+.twitch-streams .items-wrap
+{
+    width: 100%;
 }
 
 @media(min-width: $xl-width)
@@ -13,34 +17,9 @@
     .twitch-streams .twitch-embed 
     {
         margin-right: 15px;
+        flex-grow: 1;
+        max-width: 100%;
     }
-}
-
-.twitch-streams .twitch-embed 
-{
-    width: 80vw;
-    margin-bottom: 50px;
-
-    @media(min-width: $sm-width)
-    {
-        width: 70vw;
-        margin-bottom: 0;
-    }
-
-    @media(min-width: $xl-width)
-    {
-        width: 40vw;
-    }
-
-    @media(min-width: $xxl-width)
-    {
-        width: 27vw;
-    }
-}
-
-.twitch-streams .twitch-embed iframe 
-{
-    max-height: 500px;
 }
 
 .twitch-streams .stream-header

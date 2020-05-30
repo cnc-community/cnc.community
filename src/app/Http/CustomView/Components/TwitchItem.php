@@ -26,7 +26,7 @@ class TwitchItem extends AbstractCustomView
     public function render()
     {
         ?>
-         <div class="twitch-embed">
+            <div class="item twitch-embed">
                 <div class="stream-header">
                     <div class="stream-title">
                         <h3>

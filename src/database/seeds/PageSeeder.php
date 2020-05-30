@@ -88,11 +88,11 @@ class PageSeeder extends Seeder
         $content = PageContent::createPageContent($body);
         PageCustomField::createCustomField($key, $name, $pageId, $content->id, null);
 
-        // $key = CustomFieldNames::HOW_TO_PLAY_VIDEO;
-        // $name = "Video Tutorial";
-        // $body = '<iframe width="560" height="315" src="https://www.youtube.com/embed/9iMfypQj3k0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
-        // $content = PageContent::createPageContent($body);
-        // PageCustomField::createCustomField($key, $name, $pageId, $content->id, null);
+        $key = CustomFieldNames::HOW_TO_PLAY_VIDEO;
+        $name = "Video Tutorial";
+        $body = '';
+        $content = PageContent::createPageContent($body);
+        PageCustomField::createCustomField($key, $name, $pageId, $content->id, null);
     }
 
     private function createDemoCustomFieldsForPageCategories($category)

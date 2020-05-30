@@ -3,10 +3,15 @@
 // Official news 
 .news-listings 
 {
-    background-color: #080808;
     padding-top: 50px;
     padding-bottom: 50px;
     position: relative;
+}
+
+.news-listings .news-item 
+{
+    // background: #1b1b1b
+    box-shadow: 5px 2px 9px 3px #00000078;
 }
 
 .news-listings .articles 
