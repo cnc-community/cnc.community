@@ -2,6 +2,7 @@
 
 use App\Category;
 use App\CustomFieldNames;
+use App\HowToContentSeed;
 use Illuminate\Database\Seeder;
 use App\Page;
 use App\PageContent;
@@ -62,9 +63,7 @@ class PageSeeder extends Seeder
         $pageCategory->news_category_id = $newsCategory->id;
         $pageCategory->save();
 
-        $this->createDemoCustomFieldsForPageCategories($pageCategory);
-
-        $this->create("How to play ". $title, $title ." - Play ". $title . " campaign and online with thousands of players", "how-to-play", $gameTemplate->id, $pageCategory->id);
+        $this->create("How to play ". $title, "Play ". $title . " campaign and online with thousands of players", "how-to-play", $gameTemplate->id, $pageCategory->id);
     }
 
     private function create($title, $description, $slug, $templateId, $categoryId)
@@ -84,7 +83,7 @@ class PageSeeder extends Seeder
     {
         $key = CustomFieldNames::HOW_TO_PLAY_STEPS;
         $name = "How to play";
-        $body = "<div><ul><li>Step 1 - Kane</li><li>Step 2 - Yuri</li></ul></div>";
+        $body = HowToContentSeed::Renegade();
         $content = PageContent::createPageContent($body);
         PageCustomField::createCustomField($key, $name, $pageId, $content->id, null);
 
@@ -93,39 +92,5 @@ class PageSeeder extends Seeder
         $body = '';
         $content = PageContent::createPageContent($body);
         PageCustomField::createCustomField($key, $name, $pageId, $content->id, null);
-    }
-
-    private function createDemoCustomFieldsForPageCategories($category)
-    {
-        $key = CustomFieldNames::HOW_TO_PLAY_STEPS;
-        $name = "How to play ". $category->title;
-        $body = '
-            <div class="step">
-                <h3>Step 1: Title of step</h3>
-                <ul>
-                    <li>Additional steps if needed.</li>
-                    <li>Additional steps if needed.</li>
-                </ul>
-            </div>
-        
-            <div class="step">
-                <h3>Step 2: Title of step</h3>
-                <ul>
-                    <li>Additional steps if needed.</li>
-                    <li>Additional steps if needed.</li>
-                </ul>
-            </div>
-
-            <div class="step">
-                <h3>Step 3: Title of step</h3>
-                <ul>
-                    <li>Additional steps if needed.</li>
-                    <li>Additional steps if needed.</li>
-                </ul>
-            </div>
-        ';
-
-        $content = PageContent::createPageContent($body);
-        PageCustomField::createCustomField($key, $name, null, $content->id, $category->id);
     }
 }
