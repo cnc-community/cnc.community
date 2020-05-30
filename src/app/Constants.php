@@ -62,7 +62,8 @@ class Constants
             "renegade" => "https://www.youtube-nocookie.com/embed/Sj8yOJcsYTI",
             "red-alert-3" => "https://www.youtube-nocookie.com/embed/CwI7NMbAxw0", 
             "command-and-conquer-3-kanes-wrath" => "https://www.youtube-nocookie.com/embed/gxqzo6x08z0",
-            "tiberium-wars" => "https://www.youtube-nocookie.com/embed/gCimGS7I1UQ", // Command & Conquer 3: Tiberium Wars
+            "command-and-conquer-3" => "https://www.youtube-nocookie.com/embed/gCimGS7I1UQ",
+            "command-and-conquer-4" => "https://www.youtube-nocookie.com/embed/re4k8FmTxIQ",
             "generals" => "https://www.youtube-nocookie.com/embed/sKj1aIpZ4HE", 
             "zero-hour" => "https://www.youtube-nocookie.com/embed/LsRM1eEt3iU"
         ];
