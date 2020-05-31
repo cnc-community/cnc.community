@@ -5,12 +5,17 @@
     justify-content: center;
     width: 100%;
     margin-bottom: 20px;
-    
-    & img { width: 100%; }
 }
 
 .page-news-detail .page-content 
 {
     margin-top: 0;
     padding-top: 0;
+}
+
+.page-news-detail .meta-info
+{
+    padding-top: 15px;
+    align-items: center;
+    justify-content: center;
 }
