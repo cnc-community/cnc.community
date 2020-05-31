@@ -273,10 +273,9 @@
         justify-content: space-between;
     }
 
-    .site-header nav.main-navigation  .social-links a 
+    .site-header nav.main-navigation  .social-links a
     {
-        margin-left: 5px;
-        margin-right: 5px;
+        margin: 0 .5rem;
 
         &:hover { color: $color-gold; }
     }
