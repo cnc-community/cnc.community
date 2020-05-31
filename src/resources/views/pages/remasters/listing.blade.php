@@ -34,15 +34,14 @@
 @endsection
 
 @section('content')
-<section id="buy" class="section section-buy">
+<section id="buy" class="section section-grey-alt section-buy">
     <div class="main-content center">
         <div class="feature-box">
-
-            <div class="col-50 feature-text">
+            <div class="feature-text">
                 <h1 class="section-title"><span class="light">Play now!</span> <br /> C&amp;C Remastered Collection</h1>
-                <p>
+                <p class="section-description">
                     The Command &amp; Conquer Remastered Collection Delivers 4K Graphics, 
-                    Rebuilt Multiplayer, Enhanced UI, the Completely Remastered Legendary Soundtrack by Frank Klepacki and more.
+                    Rebuilt Multiplayer, Enhanced UI, and a complete remastered legendary soundtrack by Frank Klepacki and more.
                 </p>
                 <div class="buttons">
                     <a class="btn btn-secondary btn-icon" title="Buy on EA Origin" rel="nofollow" href="https://www.origin.com/gbr/en-us/store/command-and-conquer/command-and-conquer-remastered">Buy on Origin <i class="icon-origin"></i></a>
@@ -50,14 +49,13 @@
                 </div>
             </div>
 
-            <div class="col-50 feature-text">
-                <div class="feature-video">
-                    <div class="embed-iframe">
-                        <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/9iMfypQj3k0" 
-                        frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-                        </iframe>
-                    </div>
+            <div class="feature-banner">
+                <div class="embed-iframe">
+                    <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/9iMfypQj3k0" 
+                    frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+                    </iframe>
                 </div>
+
                 <div class="featured-logos">
                     <div class="logos">
                         <a href="https://petroglyphgames.com/" title="Petroglyph Games" rel="nofollow">

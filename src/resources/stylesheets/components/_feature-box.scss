@@ -76,17 +76,18 @@
     {
         width: 80%;
     }
-
-    @media(min-width: $xl-width)
-    {
-        width: auto;
-    }
 }
 
 .feature-box .section-description 
 {
     width: 550px;
     margin: 15px auto;
+
+    @media(min-width: $xl-width)
+    {
+        margin: 15px 0 auto;
+    }
+
     max-width: 100%;
 }
 
