@@ -33,20 +33,17 @@
 {
     display: flex;
     width: 80%;
+    max-width: 640px;
     justify-content: center;
     align-items: center;
-    flex-direction: column;   
+    flex-direction: column;
     
     @media(min-width: $lg-width)
     {
-        width: 100vw;
-    }
-
-    @media(min-width: $lg-width)
-    {
+        width: 100%;
         align-items: center;
         justify-content: center;
-        flex-direction: row;    
+        flex-direction: row;
     }
 
     .btn 
@@ -61,7 +58,7 @@
 
         @media(min-width: $lg-width)
         {
-            width: auto;
+            width: 50%;
         }
     }
 }
