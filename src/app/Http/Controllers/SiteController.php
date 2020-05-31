@@ -106,9 +106,19 @@ class SiteController extends Controller
     }
 
     public function showCreatorsListings(Request $request)
-    {
-        $streams = $this->twitchHelper->getTwitchGamesBySlug($request->gameName);
-        $videos = $this->twitchHelper->getTwitchVideosBySlug($request->gameName);
+    {   
+        $streams = [];
+        $videos = [];
+        
+        if ($request->gameName == null)
+        {
+            $streams = $this->twitchHelper->getStreamsByTwitchGames();
+        }
+        else
+        {
+            $streams = $this->twitchHelper->getTwitchGamesBySlug($request->gameName);
+            $videos = $this->twitchHelper->getTwitchVideosBySlug($request->gameName);
+        }
         
         return view('pages.creators.listing', ["streams" => $streams, "videos" => $videos]);
     }

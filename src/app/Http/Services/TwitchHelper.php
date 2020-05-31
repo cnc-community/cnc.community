@@ -26,6 +26,11 @@ class TwitchHelper
         return $this->twitchStreamsAPI->getVideosByGame($gameId);
     }
 
+    public function getStreamsByTwitchGames()
+    {
+        return $this->twitchStreamsAPI->getStreamByGames(Constants::getTwitchGames());
+    }
+
     private function getGameIdBySlug($slug)
     {
         $games = Constants::getTwitchGames();
