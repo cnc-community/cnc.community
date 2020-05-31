@@ -73,13 +73,25 @@
     </div>
 </section>
 
-<section id="mission" class="section news-listings">
+<section id="mission" class="section section-grey section-mission">
     <div class="main-content center">
-        <h2 class="section-title">Our Mission</h2>
-        <p class="section-description">
-            Consectetur adipiscing elit, sed do eiusmod tempor incidid unt ut laborDuisrem ipsum dolod unt ut laborDuisrem ipsum dolod...
-            iusmod tempor incidid unt ut laborDuisrem ipsum dolod...
-        </p>
+        <div class="feature-box">
+            <div class="feature-text">
+                <h1 class="section-title"><span class="light">Our Mission</span> <br /> What is C&amp;C Community?</h1>
+                <p class="section-description">
+                    C&amp;C Community is an ongoing project that aims to improve the accessibility of the Command &amp; Conquer 
+                    the franchise and celebrate the tireless efforts of the wider communities that keep the games alive with mods, 
+                    video content, streams and compatibility patches for moderns operating systems.
+                </p>
+                <div class="buttons">
+                    <a class="btn btn-primary" title="What is C&C Community?" href="/news/official-news/our-mission-what-is-cc-community">Read more</a>
+                </div>
+            </div>
+
+            <div class="feature-banner">
+                <img src="/assets/images/cnc-community.png" alt="Game logo" />
+            </div>
+        </div>
     </div>
 </section>
 @endsection
