@@ -37,7 +37,7 @@ class NewsItem extends AbstractCustomView
                         <?php if($this->type == News::NEWS_EXTERNAL): ?>
                             <a href="<?php echo $this->url; ?>" title="<?php echo $this->title; ?>" rel="nofollow noreferrer" target="_blank" class="image-link">
                         <?php else: ?>
-                            <a href="<?php echo $this->url; ?>" title="<?php echo $this->title; ?>" class="btn-link" target="self">
+                            <a href="<?php echo $this->url; ?>" title="<?php echo $this->title; ?>" class="btn-link">
                         <?php endif; ?>
                             <img src="/<?php echo $this->image ?>" alt="<?php echo $this->title ?>" alt="<?php echo $this->title; ?>" loading="lazy" />
                         </a>
@@ -49,7 +49,7 @@ class NewsItem extends AbstractCustomView
                             <i class="icon-link"></i>
                         </a>
                         <?php else: ?>
-                            <a href="<?php echo $this->url; ?>" title="<?php echo $this->title; ?>" class="btn-link" target="self">
+                            <a href="<?php echo $this->url; ?>" title="<?php echo $this->title; ?>" class="btn-link" >
                             <i class="icon-article"></i>
                         </a>
                         <?php endif; ?>
@@ -61,7 +61,7 @@ class NewsItem extends AbstractCustomView
                                 <?php echo $this->title ;?>
                             </a>
                             <?php else: ?>
-                            <a href="<?php echo $this->url; ?>" title="<?php echo $this->title; ?>" target="_self">
+                            <a href="<?php echo $this->url; ?>" title="<?php echo $this->title; ?>">
                                 <?php echo $this->title ;?>
                             </a>
                             <?php endif; ?>
