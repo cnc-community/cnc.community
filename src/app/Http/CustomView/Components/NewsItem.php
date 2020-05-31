@@ -74,13 +74,6 @@ class NewsItem extends AbstractCustomView
                             <div class="category">
                                 <?php echo $this->category->name; ?>
                             </div>
-                            <div class="type">
-                                <?php if($this->type == News::NEWS_EXTERNAL): ?>
-                                Link
-                                <?php else: ?>
-                                Article
-                                <?php endif; ?>
-                            </div>
                         </div>
                         <?php endif; ?>
                     
