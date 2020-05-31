@@ -16,11 +16,11 @@
         <img src="{{ \App\ViewHelper::getGameLogoPathByName($category->slug) }}" alt="Game logo" />
     </div>
     <h1 class="small-h1">
-        {{ $category->title }} lives on Commander. Will you join us? <br class="visible-md" />
+        Play {{ $category->title }} singleplayer and online. <br class="visible-md" />
         Discover the latest {{ $category->title }} livestreams, news, mods and more.
     </h1>
     <div class="buttons">
-        <a href="{{ $category->slug}}/how-to-play" class="btn btn-primary" title="How to play {{ $category->title }}">How to play guide</a>
+        <a href="{{ $category->slug}}/how-to-play" class="btn btn-primary" title="How to play {{ $category->title }}">How to play</a>
         <a href="#streams" class="btn btn-primary" title="{{ $category->title }} Streams">Streams</a>
         <a href="#news" class="btn btn-primary" title="{{ $category->title }} News">News</a>
     </div>
