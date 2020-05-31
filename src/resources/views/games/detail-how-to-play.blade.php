@@ -42,7 +42,11 @@
 <section class="section section-grey video-tutorial">
     <div class="main-content">
         <div class="page-content center">
-            <?php print $howToPlayVideo; ?>
+            <h2>YouTube how to play steps</h2>
+            <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/<?php print strip_tags($howToPlayVideo); ?>" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+            </iframe>
         </div>
     </div>
 </section>
