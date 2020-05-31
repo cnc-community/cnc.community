@@ -1,29 +1,47 @@
 @extends('layouts.app')
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">News</div>
+@section('title', $newsItem->title)
+@section('page-class')
+@section('page-class', 'news-detail')
 
-                <div class="card-body">
-                    <div>
-                        <a href="{{ $newsItem->url() }}" rel="nofollow" title="{{ $newsItem->title }}" target="_blank">{{ $newsItem->title}}</a>
-                        <div>
-                            <ul class="list-unstyled">
-                                <li>
-                                    <small>Updated</small> <small>- {{ $newsItem->updated_at->diffForHumans() }}</small> 
-                                </li>
-                                <li>
-                                    <small>Category</small> <small>- {{ $newsItem->category()->name }}</small>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
+@section('hero-video')
+<div class="video" style="background-image: url('/assets/images/bg-grey.jpg')">
+</div>
+@endsection
+
+@section('hero')
+<div class="content center">
+    <h1 class="small-h1">
+        {{ $newsItem->title }}
+    </h1>
+    <div class="meta-info">
+        <div class="date">
+            Posted <?php echo $newsItem->created_at->diffForHumans(); ?>
+        </div>
+        <div class="date">
+            <?php echo $newsItem->readTime(); ?> read 
+        </div>
+        <div class="category">
+            <?php echo $newsItem->category()->name; ?>
         </div>
     </div>
 </div>
+@endsection
+
+
+@section('content')
+<section class="section how-to-play-steps">
+    <div class="main-content">
+        <div class="page-content">
+            <?php if($newsItem->image): ?>
+            <div class="page-image">
+                <img src="/<?php echo $newsItem->image; ?>" alt="<?php echo $newsItem->title; ?>" />
+            </div>
+            <?php endif; ?>
+
+
+            <?php print $newsItem->post; ?>
+        </div>
+    </div>
+</section>
 @endsection

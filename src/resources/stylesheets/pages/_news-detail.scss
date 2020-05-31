@@ -1,2 +1,16 @@
-.page-news-detail
-{}
+.page-news-detail .page-image 
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 20px;
+    
+    & img { width: 100%; }
+}
+
+.page-news-detail .page-content 
+{
+    margin-top: 0;
+    padding-top: 0;
+}
