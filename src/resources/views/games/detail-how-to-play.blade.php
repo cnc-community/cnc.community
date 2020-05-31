@@ -30,11 +30,6 @@
 <?php if($howToPlaySteps): ?>
 <section class="section how-to-play-steps">
     <div class="main-content">
-        <h2 class="section-title">Step by step instructions</h2>
-        <p class="section-description">
-            Consectetur adipiscing elit, sed do eiusmod
-            tempor incidid unt
-        </p>
         <div class="page-content">
             <?php print $howToPlaySteps; ?>
         </div>
@@ -44,13 +39,8 @@
 
 <?php $howToPlayVideo = App\ViewHelper::getCustomFieldContents($page->id, App\CustomFieldNames::HOW_TO_PLAY_VIDEO); ?>
 <?php if($howToPlayVideo): ?>
-<section class="section video-tutorial">
+<section class="section section-grey video-tutorial">
     <div class="main-content">
-        <h2 class="section-title">Watch the video tutorial</h2>
-        <p class="section-description">
-            Consectetur adipiscing elit, sed do eiusmod
-            tempor incidid unt
-        </p>
         <div class="page-content center">
             <?php print $howToPlayVideo; ?>
         </div>
@@ -62,7 +52,6 @@
 <?php if($howToPlayHelp): ?>
 <section class="section how-to-play-help">
     <div class="main-content">
-        <h2 class="section-title">Need help? Ask in these support channels.</h2>
         <div class="page-content">
             <?php print $howToPlayHelp; ?>
         </div>

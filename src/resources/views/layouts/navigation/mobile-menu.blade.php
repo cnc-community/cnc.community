@@ -7,13 +7,13 @@
         <a href="/red-alert-2" title="Red Alert 2" class="nav-link">Red Alert 2</a>
         <a href="/renegade" title="Renegade" class="nav-link">Renegade</a>
         <a href="/generals" title="Generals" class="nav-link">Generals</a>
-        <a href="/command-and-conquer-3" title="Command & Conquer 3" class="nav-link">C&amp;C 3</a>
+        <a href="/command-and-conquer-3" title="Command & Conquer 3" class="nav-link">Tiberium Wars</a>
         <a href="/red-alert-3" title="Red Alert 3" class="nav-link">Red Alert 3</a>
-        <a href="/command-and-conquer-4" title="Command & Conquer 4" class="nav-link">C&amp;C 4</a>
+        <a href="/command-and-conquer-4" title="Command & Conquer 4" class="nav-link">Tiberian Twilight</a>
     </div>
 
     <div class="category">
-        <div class="title">C&amp;C Remastered</div>
+        <div class="title"><a href="/command-and-conquer-remastered"title="Remastered Collection">C&amp;C Remastered</a></div>
         <a href="/command-and-conquer-remastered#buy" title="Buy the Remastered Collection" class="nav-link">Where to buy</a>
         <a href="/command-and-conquer-remastered#news" title="C&C News" class="nav-link">News</a>
         <a href="/command-and-conquer-remastered#streams" title="C&C Streams" class="nav-link">Streams</a>

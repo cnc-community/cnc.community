@@ -74,19 +74,33 @@
     }
 }
 
-.workshop-introduction .feature-box 
+.page-remasters .feature-box 
 {
-    padding-bottom: 50px;
-    padding-top: 20px;
+    align-items: flex-start;
+}
+
+.page-remasters .feature-box .buttons 
+{
+    flex-direction: column;
+
+    @media(min-width: $md-width)
+    {
+        flex-direction: row;
+    }
+}
+
+.page-remasters .feature-box .feature-banner 
+{
+    margin: 50px auto;
+}
+
+.page-remasters .feature-box .feature-banner, 
+.page-remasters .feature-box .feature-text 
+{
+    margin: 0 auto;
 }
 
 .page-remasters .section-buy 
 {
     padding-top: 50px;
-    padding-bottom: 130px;
-}
-
-.page-remasters .section-buy .section-title
-{
-    margin: 0;
 }

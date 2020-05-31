@@ -16,11 +16,11 @@
         <img src="{{ \App\ViewHelper::getGameLogoPathByName($category->slug) }}" alt="Game logo" />
     </div>
     <h1 class="small-h1">
-        {{ $category->title }} lives on Commander. Will you join us? <br class="visible-md" />
+        Play {{ $category->title }} singleplayer and online. <br class="visible-md" />
         Discover the latest {{ $category->title }} livestreams, news, mods and more.
     </h1>
     <div class="buttons">
-        <a href="{{ $category->slug}}/how-to-play" class="btn btn-primary" title="How to play {{ $category->title }}">How to play guide</a>
+        <a href="{{ $category->slug}}/how-to-play" class="btn btn-primary" title="How to play {{ $category->title }}">How to play</a>
         <a href="#streams" class="btn btn-primary" title="{{ $category->title }} Streams">Streams</a>
         <a href="#news" class="btn btn-primary" title="{{ $category->title }} News">News</a>
     </div>
@@ -28,12 +28,12 @@
 @endsection
 
 @section('content')
-<section id="buy" class="section section-buy">
+<section id="buy" class="section section-grey-alt section-buy">
     <div class="main-content center">
         <div class="feature-box">
-            <div class="col-50 feature-text">
+            <div class="feature-text">
                 <h1 class="section-title"><span class="light">How to play</span> <br /> {{ $category->title }}</h1>
-                <p>
+                <p class="section-description">
                     Follow our simple how to play guide for {{ $category->title }}.
                     Experience the amazing campaign or dive into multiplayer with thousands of others still playing online.
                 </p>
@@ -42,21 +42,14 @@
                 </div>
             </div>
 
-            <div class="col-50 feature-text">
-                <div class="feature-video">
-                    <p>Commander, we are waiting on you. Get ready...</p>
-                    <div class="embed-iframe">
-                        <iframe width="560" height="315" src="<?php echo \App\Constants::getYouTubeTrailerByGameSlug()[$category->slug]; ?>" 
-                        frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-                        </iframe>
-                    </div>
-                </div>
+            <div class="feature-banner">
+                <img src="{{ \App\ViewHelper::getFeatureBannerByGameSlug($category->slug) }}" alt="Game logo" />
             </div>
         </div>
     </div>
 </section>
 
-<section id="streams" class="section section-green stream-listings">
+<section id="streams" class="section section-grey stream-listings">
     <div class="main-content">
         <?php if (count($streams) == 0): ?>
             <h2 class="section-title">Latest {{ $category->title }} videos</h2>
@@ -68,7 +61,7 @@
     </div>
 </section>
 
-<section id="news" class="news-listings community-listings">
+<section id="news" class="section section-black news-listings community-listings">
     <div class="main-content">
         <h2 class="section-title">{{ $category->title }} News</h2>
         <p class="section-description">

@@ -13,6 +13,12 @@
                 <a href="{{ route('admin.news.add', '') }}" class="btn btn-primary" title="Add new news item">Add new</a>
             </div>
 
+            @if (session('status'))
+                <div class="alert alert-success" role="alert">
+                    {{ session('status') }}
+                </div>
+            @endif
+
             <div class="card">
                 <div class="card-body">
                     <?php foreach($news as $newsItem): ?>

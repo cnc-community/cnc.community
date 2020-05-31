@@ -28,7 +28,11 @@ class ViewHelper
 
     public static function getGameLogoPathByName($slug)
     {
-        $logoPath = "/assets/images/logos/";
-        return $logoPath . $slug . "-logo.png";
+        return "/assets/images/logos/" . $slug . "-logo.png";
+    }
+    
+    public static function getFeatureBannerByGameSlug($slug)
+    {
+        return "/assets/images/banners/". $slug . ".jpg";
     }
 }

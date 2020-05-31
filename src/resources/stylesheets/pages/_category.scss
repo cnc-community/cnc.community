@@ -48,24 +48,28 @@
 .page-category .section-buy 
 {
     padding-top: 50px;
-    padding-bottom: 130px;
+    padding-bottom: 50px;
+    text-align: center;
+
+    @media(min-width: $xl-width)
+    {
+        text-align: left;
+        padding-top: 100px;
+        padding-bottom: 100px;
+    }
+}
+
+.page-category .feature-box .buttons
+{
+    justify-content: center;
+
+    @media(min-width: $xl-width)
+    {
+        justify-content: flex-start;
+    }
 }
 
 .page-category .section-buy .section-title
 {
     margin: 0;
-}
-
-.page-category .feature-box .buttons
-{
-    margin-top: 0;
-    padding-top: 10px;
-
-    & .btn { margin-left: 0;}
-}
-
-.page-category .feature-box .feature-text:first-child
-{
-    padding-left: 50px;
-    max-width: 600px;
 }

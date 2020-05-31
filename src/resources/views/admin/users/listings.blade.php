@@ -10,7 +10,7 @@
                 <h3 class="mt-4">
                     Users
                 </h3>
-                <a href="{{ route('admin.news.add', '') }}" class="btn btn-primary" title="Add new news item">Add new</a>
+                <a href="{{ route('admin.users.add', '') }}" class="btn btn-primary" title="Add new news item">Add new</a>
             </div>
 
             <div class="card">

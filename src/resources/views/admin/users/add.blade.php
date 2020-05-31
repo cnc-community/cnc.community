@@ -8,23 +8,27 @@
 
             <div class="card">
                 <div class="card-body">
-                  @if (session('status'))
+                    @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
                         </div>
                     @endif
+
+                    @foreach ($errors->all() as $error)
+                        <p>{{ $error }}</p>
+                    @endforeach
 
                     <form method="post">
                         {{csrf_field()}}
 
                         <div class="form-group">
                             <label for="name">Name</label>
-                            <input id="name" type="text" name="name" value="{{ $userItem->name}}" class="form-control" />
+                            <input id="name" type="text" name="name"  class="form-control" />
                         </div>
 
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input id="email" type="email" name="email" value="{{ $userItem->email}}" class="form-control" />
+                            <input id="email" type="email" name="email"  class="form-control" />
                         </div>
 
                         <div class="form-group">
@@ -35,8 +39,8 @@
                         <div class="form-group">
                             <label for="role">User Role</label>
                             <select id="role" name="role" class="form-control">
-                                <option value="{{ \App\User::ROLE_ADMIN }}" {{ \App\User::ROLE_ADMIN == $userItem->role ? "selected": ""}}>Admin</option>
-                                <option value="{{ \App\User::ROLE_EDITOR }}"  {{ \App\User::ROLE_EDITOR == $userItem->role ? "selected": ""}}>Editor</option>
+                                <option value="{{ \App\User::ROLE_ADMIN }}">Admin</option>
+                                <option value="{{ \App\User::ROLE_EDITOR }}">Editor</option>
                             </select>
                         </div>
                     

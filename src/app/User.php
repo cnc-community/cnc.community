@@ -40,6 +40,16 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public static function createUser($name, $email, $password, $role)
+    {
+        $user = new User();
+        $user->name = $name;
+        $user->email = $email;
+        $user->password = bcrypt($password);
+        $user->role = $role;
+        $user->save();
+    }
+
     
     public function hasRole($role)
     {

@@ -35,7 +35,7 @@
                 </p>
             </div>
             <div class="col-50 feature-logo">
-                <img src="/assets/images/logos/tiberian-dawn-remastered.png" alt="Red Alert Remastered" />
+                <img src="/assets/images/logos/tiberian-dawn-remastered.png" alt="Tiberian Dawn Remastered" />
                 <div class="buttons">
                     <a href="/command-and-conquer-remastered/workshop-mods#tdmods" class="btn btn-primary" title="Maps">Go to Mods</a>
                     <a href="/command-and-conquer-remastered/workshop-mods#TiberianDawnMaps" class="btn btn-primary" title="Mods">Go to Maps</a>
@@ -44,14 +44,14 @@
         </div>
     </div>
 
-    <div id="TiberianDawnMaps" class="main-content center workshop-listings">
+    <div id="TiberianDawnMaps" class="main-content center">
         <h2 class="section-title">Tiberian Dawn Maps <span class="grey">Trending this week</span></h2>
         <div class="workshop-items-wrap">
             <?php new App\Http\CustomView\Components\WorkShopListing($topTiberianDawnMaps); ?>
         </div>
     </div>
 
-    <div id="tdmods" class="main-content center  workshop-listings">
+    <div id="tdmods" class="main-content center">
         <h2 class="section-title">Tiberian Dawn Mods  <span class="grey">Trending this week</span></h2>
         <div class="workshop-items-wrap">
             <?php new App\Http\CustomView\Components\WorkShopListing($topTDMods); ?>
@@ -81,14 +81,14 @@
         </div>
     </div>
 
-    <div id="RedAlertMaps" class="main-content center workshop-listings">
+    <div id="RedAlertMaps" class="main-content center">
         <h2 class="section-title">Red Alert Maps <span class="grey">Trending this week</span></h2>
         <div class="workshop-items-wrap">
             <?php new App\Http\CustomView\Components\WorkShopListing($topRedAlertMaps); ?>
         </div>
     </div>
 
-    <div id="ramods" class="main-content center  workshop-listings">
+    <div id="ramods" class="main-content center">
         <h2 class="section-title">Red Alert Mods  <span class="grey">Trending this week</span></h2>
         <div class="workshop-items-wrap">
             <?php new App\Http\CustomView\Components\WorkShopListing($topRAMods); ?>

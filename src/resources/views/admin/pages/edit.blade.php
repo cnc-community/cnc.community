@@ -113,12 +113,15 @@
                                 </div>
 
                                 <script>
-                                        new Jodit('#editor_{{ $field->id }}');
+                                ClassicEditor
+                                    .create( document.querySelector( '#editor_{{ $field->id }}' ) )
+                                    .catch( error => {
+                                        console.error( error );
+                                    } );
                                 </script>
                             </div>
                             @endforeach
                         </div>
-
                         <button type="submit" class="btn btn-primary">Save</button>
                     </form>
                 </div>

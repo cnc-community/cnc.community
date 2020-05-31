@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\NewsFeedQueue;
 use App\User;
+use Illuminate\Support\Facades\Validator;
 use \Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 
@@ -36,6 +37,32 @@ class UsersController extends Controller
         $userItem = User::find($id);
         if ($userItem == null) abort(404);
         return view('admin.users.edit', ["userItem" => $userItem]);
+    }
+
+    public function getCreate(Request $request)
+    {
+        return view('admin.users.add');
+    }
+
+    public function create(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'email' => 'required|unique:users',
+            'password' => 'required|min:6',
+            'role' => 'required'
+        ]);
+
+        if ($validator->fails()) 
+        {
+            return redirect('/admin/users/create')
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+
+        User::createUser($request->name, $request->email, $request->password, $request->role);
+        $request->session()->flash('status', 'User created');
+        return redirect('/admin/users/');
     }
 
     public function save(Request $request)

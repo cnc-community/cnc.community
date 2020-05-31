@@ -30,6 +30,8 @@ Route::group(['prefix' => 'admin'], function ()
     Route::get('/users', 'UsersController@index')->name('admin.users.listing')->middleware('role:admin');
     Route::get('/users/edit/{id}', 'UsersController@edit')->name('admin.users.edit')->middleware('role:admin');
     Route::post('/users/edit/{id}', 'UsersController@save')->middleware('role:admin');
+    Route::get('/users/create', 'UsersController@getCreate')->name('admin.users.add')->middleware('role:admin');
+    Route::post('/users/create', 'UsersController@create')->name('admin.users.add')->middleware('role:admin');
     
     // Admin News management 
     Route::get('/news', 'NewsController@index')->name('admin.news.listing')->middleware('role:admin,editor');

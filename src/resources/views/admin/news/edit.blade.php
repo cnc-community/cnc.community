@@ -14,10 +14,16 @@
             </div>
 
             <div class="card">
+            
+                @if (session('status'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session('status') }}
+                    </div>
+                @endif
+                
                 <div class="card-body">
                       <form method="post" enctype="multipart/form-data">
                         {{csrf_field()}}
-                        <input type="hidden" name="post" id="post" />
 
                         <div class="form-group">
                             <label for="title">Post Title</label>
@@ -56,10 +62,9 @@
 
                         <div class="form-group">
                             <label for="content">Post</label>
-
-                            <div id="editor">
-                                {!! $newsItem->post !!}
-                            </div>
+                            <textarea id="editor_{{ $newsItem->id }}" name="post">
+                                {{ $newsItem->post  }}
+                            </textarea>
                         </div>
                         <button type="submit" class="btn btn-primary">Save</button>
                     </form>
@@ -69,30 +74,13 @@
     </div>
 </div>
 
-<!-- Initialize Quill editor -->
 <script>
-    (function()
-    {
-        var quill = new Quill('#editor', {
-            theme: 'snow'
-        });
-        
-        var editor = document.getElementById("editor");
-        var post = document.getElementById("post");
-        
-        quill.on('text-change', function (){
-            updatePost();
-        });
-
-        function updatePost()
-        {
-            post.value = editor.children[0].innerHTML;
-        }
-
-        updatePost();
-    }());
+ClassicEditor
+    .create( document.querySelector( '#editor_{{ $newsItem->id }}' ) )
+    .catch( error => {
+        console.error( error );
+    } );
 </script>
-
 @endsection
 
 

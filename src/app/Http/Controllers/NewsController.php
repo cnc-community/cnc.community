@@ -54,6 +54,8 @@ class NewsController extends Controller
         }
 
         $newsItem = News::createNewsItem($request->title, $request->post, null, $image, $request->category_id);
+
+        $request->session()->flash('status', 'News created');
         return redirect('/admin/news/edit/' . $newsItem->id);
     }
 
@@ -68,7 +70,9 @@ class NewsController extends Controller
         // Reject news, marks as rejected and deletes
         if ($request->status === News::DELETE)
         {
-            $newsItem->rejectQueuedItem();
+            $request->session()->flash('status', 'Post Deleted');
+
+            $newsItem->delete();
             return redirect("admin/news");
         }
         
@@ -83,6 +87,8 @@ class NewsController extends Controller
         $newsItem->post = $request->post;
         $newsItem->category_id = $request->category_id;
         $newsItem->save();
+
+        $request->session()->flash('status', 'Post saved');
         
         return redirect()->back();
     }
