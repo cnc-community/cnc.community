@@ -21,7 +21,6 @@
     flex-direction: column;
     background: #1b1b1b;
     z-index: 10;
-    padding: 10px 20px;
 }
 
 .workshop-item .tags
@@ -99,6 +98,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-grow: 1;
 
     & i { 
         font-size: 1.1rem;

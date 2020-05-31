@@ -92,7 +92,7 @@
         </div>
     </div>
 
-    <div id="tdtop" class="main-content center workshop-listings">
+    <div id="tdtop" class="main-content center">
         <h2 class="section-title"><span class="grey">Trending this week</span></h2>
         <div class="workshop-items-wrap">
             <?php new App\Http\CustomView\Components\WorkShopListing($tdWorkShopItems); ?>
@@ -121,7 +121,7 @@
         </div>
     </div>
 
-    <div id="tdtop" class="main-content center workshop-listings">
+    <div id="tdtop" class="main-content center">
         <h2 class="section-title"><span class="grey">Trending this week</span></h2>
         <div class="workshop-items-wrap">
             <?php new App\Http\CustomView\Components\WorkShopListing($raWorkShopItems); ?>
@@ -134,11 +134,10 @@
         <h2 class="section-title">C&amp;C Remastered Live Streams</h2>
         <?php if($streams == null): ?>
             <p>Nobody is streaming right now, check out the previous streams below.</p>
+            <?php new App\Http\CustomView\Components\TwitchVideoListing($videos); ?>
         <?php else: ?>
             <?php new App\Http\CustomView\Components\TwitchListing($streams); ?>
         <?php endif; ?>
-
-        <?php new App\Http\CustomView\Components\TwitchVideoListing($videos); ?>
     </div>
 </section>
 

@@ -51,7 +51,7 @@
         </div>
     </div>
 
-    <div id="tdtop" class="main-content center workshop-listings">
+    <div id="tdtop" class="main-content center">
         <h2 class="section-title"><span class="grey">Trending this week</span></h2>
         <div class="workshop-items-wrap">
             <?php new App\Http\CustomView\Components\WorkShopListing($workShopItems); ?>

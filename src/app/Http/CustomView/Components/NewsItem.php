@@ -34,15 +34,37 @@ class NewsItem extends AbstractCustomView
             <article class="item news-item <?php if(!$this->image): ?>no-image<?php endif; ?>">
                 <div class="image">
                     <?php if($this->image): ?>
-                        <a href="<?php echo $this->url; ?>" title="<?php echo $this->title; ?>" rel="nofollow noreferrer" target="_blank" class="image-link">
+                        <?php if($this->type == News::NEWS_EXTERNAL): ?>
+                            <a href="<?php echo $this->url; ?>" title="<?php echo $this->title; ?>" rel="nofollow noreferrer" target="_blank" class="image-link">
+                        <?php else: ?>
+                            <a href="<?php echo $this->url; ?>" title="<?php echo $this->title; ?>" class="btn-link" target="self">
+                        <?php endif; ?>
                             <img src="/<?php echo $this->image ?>" alt="<?php echo $this->title ?>" alt="<?php echo $this->title; ?>" loading="lazy" />
                         </a>
+                        
                     <?php endif; ?>
+                    <div class="button">
+                        <?php if($this->type == News::NEWS_EXTERNAL): ?>
+                            <a href="<?php echo $this->url; ?>" title="<?php echo $this->title; ?>" class="btn-link"  rel="nofollow noreferrer" target="_blank">
+                            <i class="icon-link"></i>
+                        </a>
+                        <?php else: ?>
+                            <a href="<?php echo $this->url; ?>" title="<?php echo $this->title; ?>" class="btn-link" target="self">
+                            <i class="icon-article"></i>
+                        </a>
+                        <?php endif; ?>
+                    </div>
                     <div>
                         <h3 class="title">
+                            <?php if($this->type == News::NEWS_EXTERNAL): ?>
                             <a href="<?php echo $this->url; ?>" title="<?php echo $this->title; ?>" rel="nofollow noreferrer" target="_blank">
                                 <?php echo $this->title ;?>
                             </a>
+                            <?php else: ?>
+                            <a href="<?php echo $this->url; ?>" title="<?php echo $this->title; ?>" target="_self">
+                                <?php echo $this->title ;?>
+                            </a>
+                            <?php endif; ?>
                         </h3>
                         <?php if($this->publishedDate): ?>
                         <div class="meta-info">
@@ -67,17 +89,6 @@ class NewsItem extends AbstractCustomView
                             <?php echo $this->post; ?>
                         </div>
                         <?php endif; ?>
-                        <div class="buttons flex">
-                            <?php if($this->type == News::NEWS_EXTERNAL): ?>
-                            <a href="<?php echo $this->url; ?>" title="<?php echo $this->title; ?>" class="btn btn-icon btn-readmore"  rel="nofollow noreferrer" target="_blank">
-                                Go to link <i class="icon-link"></i>
-                            </a>
-                            <?php else: ?>
-                            <a href="<?php echo $this->url; ?>" title="<?php echo $this->title; ?>" class="btn btn-icon btn-readmore" target="self">
-                                Read article <i class="icon-article"></i>
-                            </a>
-                            <?php endif; ?>
-                        </div>
                     </div>
                 </div>
             </article>
