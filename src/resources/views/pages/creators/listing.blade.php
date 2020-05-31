@@ -3,6 +3,10 @@
 @section('title', 'Creators')
 @section('page-class', 'creators')
 
+@section('hero-video')
+<div class="video" style="background-image: url('/assets/images/creators.jpg')">
+</div>
+@endsection
 @section('hero')
 <div class="content center">
     <h1 class="text-uppercase">
