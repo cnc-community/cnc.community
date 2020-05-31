@@ -34,11 +34,13 @@
     <div class="main-content center">
         <div class="feature-box">
             <div class="col-50 feature-text">
-                <h1 class="section-title"><span class="light">Trending C&amp;C Remastered</span> <br /> Maps &amp; Mods</h1>
+                <h1 class="section-title"><span class="light">Steam Workshop Content</span> <br /> Maps &amp; Mods</h1>
                 <p>
-                    Find a map or mod you like below. <br class="hidden-xs" />
-                    Open the link and click the Subscribe button 
-                    for it to appear in game.
+                    Discover custom maps and game modifications via the Steam Workshop! 
+                    Follow the links for the Workshop content below and click the Subscribe button to install!
+                    <br class="hidden-xs" />
+                    To find out more about Mod Support for the C&C Remastered Collection <br class="hidden-xs" /> head 
+                    <a target="_blank" rel="nofollow" href="https://www.ea.com/games/command-and-conquer/command-and-conquer-remastered/news/remaster-update-modding?isLocalized=true">over here.</a>
                 </p>
             </div>
             <div class="col-50 feature-logo">
@@ -61,9 +63,9 @@
 
 <section class="section section-green news-listings">
     <div class="main-content">
-        <h2 class="section-title">Official Intel</h2>
+        <h2 class="section-title">C&amp;C Community News</h2>
         <p class="section-description">
-            C&C Community updates - stay up to date with our latest developments.
+            Discover the latest News from the C&amp;C Community Team.
         </p>
 
         <?php new App\Http\CustomView\Components\NewsListing($officialNews); ?>

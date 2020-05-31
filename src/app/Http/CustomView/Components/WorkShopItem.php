@@ -49,9 +49,9 @@ class WorkShopItem extends AbstractCustomView
             <article class="item workshop-item">
                 <?php if($this->previewUrl):?>
                     <div class="image">
-                        <a href="<?php echo $this->url; ?>" title="<?php echo $this->title; ?>" rel="nofollow noreferrer" target="_blank" class="image-link">
-                            <img src="<?php echo $this->previewUrl ?>" alt="<?php echo $this->title ?>" alt="<?php echo $this->title; ?>" loading="lazy" />
-                        </a>
+                            <a href="<?php echo $this->url; ?>" title="<?php echo $this->title; ?>" rel="nofollow noreferrer" target="_blank" class="image-link">
+                                <img src="<?php echo $this->previewUrl ?>" alt="<?php echo $this->title ?>" alt="<?php echo $this->title; ?>" loading="lazy" />
+                            </a>
                         <div>
                             
                             <h3 class="title">

@@ -29,9 +29,11 @@
             <div class="col-50 feature-text">
                 <h1 class="section-title"><span class="light">Play Remastered</span> <br /> Tiberian Dawn Maps &amp; Mods</h1>
                 <p>
-                    Find a map or mod you like below. <br class="hidden-xs" />
-                    Open the link and click the Subscribe button 
-                    for it to appear in game.
+                    Discover custom maps and game modifications via the Steam Workshop! 
+                    Follow the links for the Workshop content below and click the Subscribe button to install!
+                    <br class="hidden-xs" />
+                    To find out more about Mod Support for the C&C Remastered Collection <br class="hidden-xs" /> head 
+                    <a target="_blank" rel="nofollow" href="https://www.ea.com/games/command-and-conquer/command-and-conquer-remastered/news/remaster-update-modding?isLocalized=true">over here.</a>
                 </p>
             </div>
             <div class="col-50 feature-logo">
@@ -66,9 +68,11 @@
             <div class="col-50 feature-text">
                 <h1 class="section-title"><span class="light">Play Remastered</span> <br /> Red Alert Maps &amp; Mods</h1>
                 <p>
-                    Find a map or mod you like below. <br class="hidden-xs" />
-                    Open the link and click the Subscribe button 
-                    for it to appear in game.
+                    Discover custom maps and game modifications via the Steam Workshop! 
+                    Follow the links for the Workshop content below and click the Subscribe button to install!
+                    <br class="hidden-xs" />
+                    To find out more about Mod Support for the C&C Remastered Collection <br class="hidden-xs" /> head 
+                    <a target="_blank" rel="nofollow" href="https://www.ea.com/games/command-and-conquer/command-and-conquer-remastered/news/remaster-update-modding?isLocalized=true">over here.</a>
                 </p>
             </div>
             <div class="col-50 feature-logo">
