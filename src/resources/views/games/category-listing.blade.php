@@ -28,7 +28,7 @@
 @endsection
 
 @section('content')
-<section id="buy" class="section section-grey-alt section-buy">
+<section id="buy" class="section section-grey section-buy">
     <div class="main-content center">
         <div class="feature-box">
             <div class="feature-text">
@@ -49,7 +49,7 @@
     </div>
 </section>
 
-<section id="streams" class="section section-grey stream-listings">
+<section id="streams" class="section section-black stream-listings">
     <div class="main-content">
         <?php if (count($streams) == 0): ?>
             <h2 class="section-title">Latest {{ $category->title }} videos</h2>
@@ -61,7 +61,7 @@
     </div>
 </section>
 
-<section id="news" class="section section-black news-listings community-listings">
+<section id="news" class="section section-grey news-listings">
     <div class="main-content">
         <h2 class="section-title">{{ $category->title }} News</h2>
         <p class="section-description">

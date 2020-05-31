@@ -77,7 +77,7 @@
     <div class="main-content center">
         <div class="feature-box">
             <div class="feature-text">
-                <h1 class="section-title"><span class="light">Our Mission</span> <br /> What is C&amp;C Community?</h1>
+                <h1 class="section-title">Our Mission</h1>
                 <p class="section-description">
                     C&amp;C Community is an ongoing project that aims to improve the accessibility of the Command &amp; Conquer 
                     the franchise and celebrate the tireless efforts of the wider communities that keep the games alive with mods, 
@@ -89,7 +89,7 @@
             </div>
 
             <div class="feature-banner">
-                <img src="/assets/images/cnc-community.png" alt="Game logo" />
+                <img src="/assets/images/cnc-community.png" alt="C&C logo" />
             </div>
         </div>
     </div>
