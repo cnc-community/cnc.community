@@ -43,7 +43,7 @@
                     <a href="/command-and-conquer-remastered#buy" title="Buy the Remastered Collection">Where to buy</a>
                     <a href="/command-and-conquer-remastered#news" title="C&C News">News</a>
                     <a href="/command-and-conquer-remastered#streams" title="C&C Streams">Streams</a>
-                    <a href="/command-and-conquer-remastered#mods" title="C&C Mods ">Mod Workshop</a>
+                    <a href="/command-and-conquer-remastered/workshop-mods" title="C&C Mods ">Mod Workshop</a>
                 </div>
                 <div class="category">
                     <div class="title">Community</div>
