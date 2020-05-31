@@ -27,7 +27,13 @@
     height: 100%;
 }
 
-.hero .video > video { width: 100%; }
+.hero .video > video 
+{ 
+    @media(min-width: $xl-width)
+    {
+        width: 100%; 
+    }
+}
 
 .hero .buttons 
 {

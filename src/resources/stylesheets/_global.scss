@@ -334,6 +334,18 @@ p > code
     @extend %background-grey;
 }
 
+.section-grey-alt 
+{
+    background-color: #0a0505;
+    @extend %background-grey-alt;
+}
+
+.section-black 
+{
+    background-color: #000;
+}
+
+
 // Temp 
 .admin-nav 
 {
