@@ -520,7 +520,7 @@ footer .notice
     justify-content: flex-start;
 }
 
-.items-wrap .item 
+.items-wrap .item
 {
     display: flex;
     flex-grow: 1;
@@ -530,8 +530,9 @@ footer .notice
     align-items: stretch;
     justify-content: space-between;
     align-self: stretch;
-    margin: 0 10px 25px;
+    margin: 10px 25px;
     position: relative;
+    background: #1b1b1b;
 
     @media(min-width: $lg-width)
     {
@@ -597,13 +598,6 @@ footer .notice
     font-weight: 600;
     margin-right: 5px;
     margin-bottom: 5px;
-}
-
-.items-wrap .item 
-{
-    background: #131313c4;
-    margin-top: 10px;
-    margin-bottom: 10px;
 }
 
 .items-wrap .item .title
