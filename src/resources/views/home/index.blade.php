@@ -38,8 +38,7 @@
                 <p>
                     Discover custom maps and game modifications via the Steam Workshop! 
                     Follow the links for the Workshop content below and click the Subscribe button to install!
-                    <br class="hidden-xs" />
-                    To find out more about Mod Support for the C&C Remastered Collection <br class="hidden-xs" /> head 
+                    To find out more about Mod Support for the C&C Remastered Collection head 
                     <a target="_blank" rel="nofollow" href="https://www.ea.com/games/command-and-conquer/command-and-conquer-remastered/news/remaster-update-modding?isLocalized=true">over here.</a>
                 </p>
             </div>
