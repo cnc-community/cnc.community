@@ -28,7 +28,7 @@ class WorkShopListing extends AbstractCustomView
                         $workShopItem->tags,
                         $workShopItem->favorited,
                         $workShopItem->views,
-                        null,
+                        $workShopItem->file_description,
                         $workShopItem->steamUrl(),
                         $workShopItem->lifetime_playtime_sessions,
                         $workShopItem->subscriptions

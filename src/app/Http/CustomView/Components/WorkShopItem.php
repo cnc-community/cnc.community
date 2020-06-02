@@ -95,9 +95,9 @@ class WorkShopItem extends AbstractCustomView
                         <div class="file-item favourites">
                             <i class="icon-heart"></i> <?php echo $this->favourites;?> favs
                         </div>
-                        <div class="file-item views">
-                            <i class="icon-eye"></i> <?php echo $this->views;?> views
-                        </div>
+                    </div>
+                    <div class="file-item views">
+                        <i class="icon-eye"></i> <?php echo $this->views;?> views
                     </div>
                 </div>
             </article>

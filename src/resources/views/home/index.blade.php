@@ -32,32 +32,23 @@
     </div>
 </section>
 
-<section id="tiberiandawn" class="section section-grey workshop-introduction">
+<section id="tiberiandawn" class="section section-grey cnc-remastered-introduction">
     <div class="main-content center">
         <div class="feature-box">
             <div class="col-50 feature-text">
-                <h1 class="section-title"><span class="light">Steam Workshop Content</span> <br /> Maps &amp; Mods</h1>
+                <h1 class="section-title"><span class="light">C&amp;C Remastered </span> <br /> Has Launched!</h1>
                 <p>
-                    Discover custom maps and game modifications via the Steam Workshop! 
-                    Follow the links for the Workshop content below and click the Subscribe button to install!
-                    To find out more about Mod Support for the C&C Remastered Collection head 
-                    <a target="_blank" rel="nofollow" href="https://www.ea.com/games/command-and-conquer/command-and-conquer-remastered/news/remaster-update-modding?isLocalized=true">over here.</a>
+                    Developed alongside the C&amp;C Community, the Command & Conquer Remastered Collection Delivers 4K Graphics, 
+                    Rebuilt Multiplayer, Enhanced UI, the Completely Remastered Legendary Soundtrack by Frank Klepacki and more.
                 </p>
             </div>
             <div class="col-50 feature-logo">
                 <img src="/assets/images/logos/cnc-remastered-logo.png" alt="Tiberian Dawn Remastered" />
+
                 <div class="buttons">
-                    <a href="/command-and-conquer-remastered/workshop-mods" class="btn btn-primary" title="Maps">View Top Mods</a>
-                    <a href="/command-and-conquer-remastered/workshop-mods" class="btn btn-primary" title="Mods">View Top Maps</a>
+                    <a href="/command-and-conquer-remastered/" class="btn btn-primary" title="Maps">View C&amp;C Remastered</a>
                 </div>
             </div>
-        </div>
-    </div>
-
-    <div id="tdtop" class="main-content center">
-        <h2 class="section-title"><span class="grey">Trending this week</span></h2>
-        <div class="workshop-items-wrap">
-            <?php new App\Http\CustomView\Components\WorkShopListing($workShopItems); ?>
         </div>
     </div>
 </section>

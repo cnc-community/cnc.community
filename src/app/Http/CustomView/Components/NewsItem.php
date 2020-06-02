@@ -31,18 +31,21 @@ class NewsItem extends AbstractCustomView
     public function render()
     {
         ?>
-            <article class="item news-item <?php if(!$this->image): ?>no-image<?php endif; ?>">
+            <article class="item news-item">
                 <div class="image">
-                    <?php if($this->image): ?>
-                        <?php if($this->type == News::NEWS_EXTERNAL): ?>
-                            <a href="<?php echo $this->url; ?>" title="<?php echo $this->title; ?>" rel="nofollow noreferrer" target="_blank" class="image-link">
+                    <?php if($this->type == News::NEWS_EXTERNAL): ?>
+                        <a href="<?php echo $this->url; ?>" title="<?php echo $this->title; ?>" rel="nofollow noreferrer" target="_blank" class="image-link">
                         <?php else: ?>
                             <a href="<?php echo $this->url; ?>" title="<?php echo $this->title; ?>" class="btn-link">
                         <?php endif; ?>
-                            <img src="/<?php echo $this->image ?>" alt="<?php echo $this->title ?>" alt="<?php echo $this->title; ?>" loading="lazy" />
+
+                            <?php if($this->image): ?>
+                                <img src="/<?php echo $this->image ?>" alt="<?php echo $this->title ?>" alt="<?php echo $this->title; ?>" loading="lazy" />
+                                <?php else: ?>
+                                <img src="/assets/images/no-image.jpg" alt="<?php echo $this->title ?>" alt="<?php echo $this->title; ?>" loading="lazy" />
+                            <?php endif; ?>
                         </a>
-                        
-                    <?php endif; ?>
+
                     <div class="button">
                         <?php if($this->type == News::NEWS_EXTERNAL): ?>
                             <a href="<?php echo $this->url; ?>" title="<?php echo $this->title; ?>" class="btn-link"  rel="nofollow noreferrer" target="_blank">
