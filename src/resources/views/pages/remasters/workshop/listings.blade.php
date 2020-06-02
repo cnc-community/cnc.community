@@ -10,14 +10,16 @@
 @section('hero')
 <div class="content center">
     <div class="title">
+    <a href="/command-and-conquer-remastered" title="C&C Remastered">
         <img src="/assets/images/logos/cnc-remastered-logo.png" alt="C&C Remaster Logo" />
+    </a>
     </div>
     <h1 class="text-uppercase">
         Steam WorkShop, Mods and Maps
     </h1>
     <div class="buttons">
-        <a href="/command-and-conquer-remastered/workshop-mods#tiberiandawn" class="btn btn-primary">Tiberian Dawn Remastered</a>
-        <a href="/command-and-conquer-remastered/workshop-mods#redalert" class="btn btn-primary">Red Alert Remastered</a>
+        <a href="/command-and-conquer-remastered/workshop-mods#tiberiandawn" class="btn btn-primary">Tiberian Dawn Workshop</a>
+        <a href="/command-and-conquer-remastered/workshop-mods#redalert" class="btn btn-primary">Red Alert Workshop</a>
     </div>
 </div>
 @endsection

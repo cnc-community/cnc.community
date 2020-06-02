@@ -23,14 +23,14 @@ class SteamHelper
         return $this->steamAPI->getTopWorkShopItems($appId, $limit);
     }
 
-    public function getTopWorkShopItemsByTagNames($appId, $tags, $limit)
+    public function getTopWorkShopItemsByTagNames($cacheKey, $appId, $tags, $limit)
     {
-        return $this->steamAPI->getTopWorkShopItemsByTagNames($appId, $tags, $limit);
+        return $this->steamAPI->getTopWorkShopItemsByTagNames($cacheKey, $appId, $tags, $limit);
     }
 
-    public function getTopWorkShopItemsByTagName($appId, $tagName, $limit)
+    public function getTopWorkShopItemsByTagName($cacheKey, $appId, $tagName, $limit)
     {
-        return $this->steamAPI->getTopWorkShopItemsByTagName($appId, $tagName, $limit);
+        return $this->steamAPI->getTopWorkShopItemsByTagName($cacheKey, $appId, $tagName, $limit);
     }
 
     public static function RedAlertMod() { return "RedAlertMod"; }

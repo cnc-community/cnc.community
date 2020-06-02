@@ -51,7 +51,7 @@ class SteamAPI extends AbstractSteamAPI
         });
     }
 
-    public function getTopWorkShopItemsByTagNames($appId, $tagNames, $limit)
+    public function getTopWorkShopItemsByTagNames($cacheKey, $appId, $tagNames, $limit)
     {
         $tagQuery = "";
         foreach($tagNames as $k => $tag)
@@ -59,7 +59,8 @@ class SteamAPI extends AbstractSteamAPI
             $tagQuery .= "&requiredtags[".$k."]=". $tag;
         }
 
-        return Cache::remember('getTopWorkShopItemsByTagNames'.$appId.$tagQuery.$limit, 43200, function () use($appId, $tagQuery, $limit) // 1/2 day cache
+        return Cache::remember('getTopWorkShopItemsByTagNames'.$cacheKey.$appId.$tagQuery.$limit, 43200, 
+        function () use($appId, $tagQuery, $limit) // 1/2 day cache
         {
             $response = Http::get(
                 $this->_apiUrl . SteamAPI::WORKSHOP_ITEMS_URL . 
@@ -76,9 +77,9 @@ class SteamAPI extends AbstractSteamAPI
         });
     }
 
-    public function getTopWorkShopItemsByTagName($appId, $tagName, $limit)
+    public function getTopWorkShopItemsByTagName($cacheKey, $appId, $tagName, $limit)
     {
-        return Cache::remember('getTopWorkShopItemsByTagName'.$appId.$tagName.$limit, 43200, function () use($appId, $tagName, $limit) // 1/2 day cache
+        return Cache::remember('getTopWorkShopItemsByTagName'.$cacheKey.$appId.$tagName.$limit, 43200, function () use($appId, $tagName, $limit) // 1/2 day cache
         {
             $response = Http::get(
                     $this->_apiUrl . SteamAPI::WORKSHOP_ITEMS_URL . 
