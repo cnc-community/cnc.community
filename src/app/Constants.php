@@ -96,7 +96,7 @@ class Constants
                 "poster" => $posterSrc . "red-alert-3.jpg"
             ],
             "command-and-conquer-4" => [ 
-                "src" => $cdnUrl . "red-alert-4",
+                "src" => $cdnUrl . "command-and-conquer-4",
                 "poster" => $posterSrc . "command-and-conquer-4.jpg"
             ],
             "default" => [

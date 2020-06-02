@@ -132,6 +132,11 @@
     text-decoration: underline;
     margin-top: 20px;
     padding: 20px 0 0;
+    transition: ease-in 300ms all;
+
+    &:hover { 
+        color: silver;
+    }
 }
     
 

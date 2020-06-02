@@ -9,7 +9,7 @@
         <a href="/generals" title="Generals" class="nav-link">Generals</a>
         <a href="/command-and-conquer-3" title="Command & Conquer 3" class="nav-link">Tiberium Wars</a>
         <a href="/red-alert-3" title="Red Alert 3" class="nav-link">Red Alert 3</a>
-        <a href="/command-and-conquer-4" title="Command & Conquer 4" class="nav-link">Tiberian Twilight</a>
+        <a href="/more-cnc-games" title="More games">More C&amp;C Games</a>
     </div>
 
     <div class="category">

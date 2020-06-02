@@ -19,6 +19,7 @@
                     <a href="/generals" title="Generals">Generals</a>
                     <a href="/command-and-conquer-3" title="Command & Conquer 3">Tiberium Wars</a>
                     <a href="/red-alert-3" title="Red Alert 3">Red Alert 3</a>
+                    <a href="/more-cnc-games" title="More games">More C&amp;C Games</a>
                 </div>
             </div>
         </div>
@@ -58,7 +59,7 @@
             <a href="/command-and-conquer-remastered" title="Command & Conquer Remastered">C&amp;C Remastered</a>
             <i class="icon icon-dropdown"></i>
         </div>
-        <div class="nav-dropdown-contents nav-drop-col-2">
+        <div class="nav-dropdown-contents nav-drop-col-1">
             <div class="dropdown-container">
                 <div class="category">
                     <div class="title">
@@ -68,9 +69,6 @@
                     <a href="/command-and-conquer-remastered#news" title="C&C News">News</a>
                     <a href="/command-and-conquer-remastered#streams" title="C&C Streams">Streams</a>
                     <a href="/command-and-conquer-remastered/workshop-mods" title="C&C Mods ">Mod Workshop</a>
-                </div>
-                <div class="category">
-                    <div class="title">Community</div>
                 </div>
             </div>
         </div>
