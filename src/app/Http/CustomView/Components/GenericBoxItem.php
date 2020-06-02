@@ -33,6 +33,12 @@ class GenericBoxItem extends AbstractCustomView
                         <a href="<?php echo $this->url; ?>" title="<?php echo $this->title; ?>" rel="nofollow noreferrer" target="_blank" class="image-link">
                             <img src="<?php echo $this->image ?>" alt="<?php echo $this->title ?>" alt="<?php echo $this->title; ?>" loading="lazy" />
                         </a>
+
+                        <div class="button">
+                             <a href="<?php echo $this->url; ?>" title="<?php echo $this->title; ?>" rel="nofollow noreferrer" target="_blank" class="btn-link">
+                                <i class="icon-link"></i>
+                            </a>
+                        </div>
                     <div>
                             
                     <h3 class="title">

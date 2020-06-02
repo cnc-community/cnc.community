@@ -64,20 +64,8 @@ class GameSlider extends AbstractCustomView
                             <img src="assets/images/boxes/logos/red-alert-3-logo.png" loading="lazy" alt="Red Alert 3 logo" />
                         </div>
                     </a>
-
-                    <a href="command-and-conquer-4" class="swiper-slide box other" title="Other C&C Games">
-                        <div class="logo">
-                            <img src="assets/images/boxes/logos/cnc-4-logo.png" loading="lazy" alt="Other C&C Games" />
-                        </div>
-                    </a>
                 </div>
             </div>
-
-            <?php /*
-            <div class="pagination">
-            <div class="swiper-pagination"></div>
-            </div>
-            */?>
 
             <div class="swiper-button-prev"></div>
             <div class="swiper-button-next"></div>
@@ -98,7 +86,7 @@ class GameSlider extends AbstractCustomView
                         },
                         breakpoints: {
                             340: {
-                                slidesPerView: 4,
+                                slidesPerView: 3,
                                 spaceBetween: 10,
                                 noSwiping: false,
                                 allowSlidePrev: true,
@@ -119,7 +107,7 @@ class GameSlider extends AbstractCustomView
                                 allowSlideNext: true,
                             },
                             1280: {
-                                slidesPerView: 9,
+                                slidesPerView: 8,
                                 spaceBetween: 10,
                                 noSwiping: true,
                                 allowSlidePrev: false,

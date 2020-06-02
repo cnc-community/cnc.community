@@ -44,7 +44,7 @@
             ); ?>
 
              <?php new \App\Http\CustomView\Components\GenericBoxItem(
-                $image = "/assets/images/more-cnc-games/ta.jpg",
+                $image = "/assets/images/more-cnc-games/rivals.jpg",
                 $url = "https://www.tiberiumalliances.com/home",
                 $title = "Command &amp; Conquer: Rivals",
                 $description = "Command & Conquer: Rivals is a free-to-play real-time strategy mobile game. The game was released on Android and iOS on December 4, 2018"
