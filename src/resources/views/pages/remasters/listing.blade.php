@@ -133,7 +133,7 @@
     </div>
 </section>
 
-<section id="streams" class="section section-green stream-listings">
+<section id="streams" class="section stream-listings">
     <div class="main-content">
         <h2 class="section-title">C&amp;C Remastered Live Streams</h2>
         <?php if($streams == null): ?>
