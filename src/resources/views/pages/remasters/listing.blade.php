@@ -145,7 +145,7 @@
     </div>
 </section>
 
-<section id="news" class="section news-listings">
+<section id="news" class="section section-green news-listings">
     <div class="main-content">
         <h2 class="section-title">C&amp;C Remastered News</h2>
         <p class="section-description">

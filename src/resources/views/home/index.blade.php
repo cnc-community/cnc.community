@@ -32,7 +32,7 @@
     </div>
 </section>
 
-<section id="tiberiandawn" class="section section-grey cnc-remastered-introduction">
+<section id="tiberiandawn" class="section section-grey-alt cnc-remastered-introduction">
     <div class="main-content center">
         <div class="feature-box">
             <div class="col-50 feature-text">
@@ -53,7 +53,7 @@
     </div>
 </section>
 
-<section class="section section-green news-listings">
+<section class="section section-black news-listings">
     <div class="main-content">
         <h2 class="section-title">C&amp;C Community News</h2>
         <p class="section-description">

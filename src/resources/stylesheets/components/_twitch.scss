@@ -12,6 +12,11 @@
     width: 100%;
 }
 
+.twitch-streams .twitch-embed
+{
+    background: #101010;
+}
+
 @media(min-width: $xl-width)
 {
     .twitch-streams .twitch-embed 
