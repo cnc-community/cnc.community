@@ -157,7 +157,7 @@ class SiteController extends Controller
             return News::newsPaginatedByCategory($categoryCache->id);
         });
 
-        $heroVideo = Constants::getVideoWithPoster()["command-and-conquer-remastered"];
+        $heroVideo = Constants::getVideoWithPoster("command-and-conquer-remastered");
 
         return view('pages.remasters.listing', [
             "raWorkShopItems" => $raWorkShopItems, 
@@ -171,7 +171,7 @@ class SiteController extends Controller
 
     public function showRemastersWorkshopMods()
     {
-        $heroVideo = Constants::getVideoWithPoster()["command-and-conquer-remastered"];
+        $heroVideo = Constants::getVideoWithPoster("command-and-conquer-remastered");
 
         $topRedAlertMaps = $this->steamHelper->getTopWorkShopItemsByTagName(Constants::remastersAppId(), SteamHelper::RedAlertMap(), 20 );
         $topTiberianDawnMaps = $this->steamHelper->getTopWorkShopItemsByTagName(Constants::remastersAppId(), SteamHelper::TiberianDawnMap(), 20 );
@@ -221,7 +221,7 @@ class SiteController extends Controller
         $template = $categoryCache->bladeTemplate();
         $template == null ? "pages.category": $template;
         
-        $heroVideo = Constants::getVideoWithPoster()[$categorySlug];
+        $heroVideo = Constants::getVideoWithPoster($categorySlug);
         
         return view($template, [
             "heroVideo" => $heroVideo,
@@ -240,7 +240,7 @@ class SiteController extends Controller
     {
         $key = "cache_" . $slugCategory . "_" . $slug;
         
-        $heroVideo = Constants::getVideoWithPoster()[$slugCategory];
+        $heroVideo = Constants::getVideoWithPoster($slugCategory);
 
         $pageCache = Cache::remember($key, Constants::getCacheSeconds(), function ()  use ($slugCategory, $slug) 
         {

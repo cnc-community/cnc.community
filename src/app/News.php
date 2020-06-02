@@ -51,6 +51,10 @@ class News extends Model
     public static function newsByCategoryId($categoryId)
     {
         $category = Category::where("id", $categoryId)->first();
+        if ($category == null)
+        {
+            return [];
+        }
         return News::where("category_id", $category->id)->paginate(20);
     }
 

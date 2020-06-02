@@ -51,13 +51,13 @@ class Constants
         ];
     }
     
-    public static function getVideoWithPoster()
+    public static function getVideoWithPoster($slug)
     {
         $version = 1.2;
         $cdnUrl = "//cdn.jsdelivr.net/gh/cnc-community/files@". $version . "/";
         $posterSrc = "/assets/images/posters/";
 
-        return [
+        $videos = [
             "command-and-conquer-remastered" => 
             [ 
                 "src" => $cdnUrl . "cnc-remastered.mp4",
@@ -99,6 +99,16 @@ class Constants
                 "src" => $cdnUrl . "red-alert-4",
                 "poster" => $posterSrc . "command-and-conquer-4.jpg"
             ],
+            "default" => [
+                "src" => "",
+                "poster" => ""
+            ]
         ];
+
+        if (array_key_exists($slug, $videos))
+        {
+            return $videos[$slug];
+        }
+        return $videos["default"];
     }
 }
