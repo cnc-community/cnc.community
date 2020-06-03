@@ -17,7 +17,7 @@
                     <a href="/red-alert-2" title="Red Alert 2">Red Alert 2</a>
                     <a href="/renegade" title="Renegade">Renegade</a>
                     <a href="/generals" title="Generals">Generals</a>
-                    <a href="/command-and-conquer-3" title="Command & Conquer 3">Tiberium Wars</a>
+                    <a href="/command-and-conquer-3" title="Command & Conquer 3">C&amp;C3: Tiberium Wars</a>
                     <a href="/red-alert-3" title="Red Alert 3">Red Alert 3</a>
                     <a href="/more-cnc-games" title="More games">More C&amp;C Games</a>
                 </div>

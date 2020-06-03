@@ -1,4 +1,27 @@
-<?php $howToPlaySteps = App\ViewHelper::getCategoryCustomFieldContents($category->id, App\CustomFieldNames::HOW_TO_PLAY_STEPS); ?>
+<?php 
+$howToPlaySteps = App\ViewHelper::getCategoryCustomFieldContents(
+        $category->id, 
+        App\CustomFieldNames::HOW_TO_PLAY_STEPS
+    ); 
+?>
+<?php 
+    $heroDescription = App\ViewHelper::getCategoryCustomFieldContents(
+        $category->id, 
+        App\CustomFieldNames::HERO_DESCRIPTION
+    ); 
+?>
+<?php 
+    $howToPlayShortDescription = App\ViewHelper::getCategoryCustomFieldContents(
+        $category->id, 
+        App\CustomFieldNames::HOW_TO_PLAY_SHORT_DESCRIPTION
+    ); 
+?>
+<?php 
+    $quote = App\ViewHelper::getCategoryCustomFieldContents(
+        $category->id, 
+        App\CustomFieldNames::GAME_QUOTE
+    ); 
+?>
 
 @extends('layouts.app')
 
@@ -16,8 +39,9 @@
         <img src="{{ \App\ViewHelper::getGameLogoPathByName($category->slug) }}" alt="Game logo" />
     </div>
     <h1 class="small-h1">
-        Play {{ $category->title }} singleplayer and online. <br class="visible-md" />
-        Discover the latest {{ $category->title }} livestreams, news, mods and more.
+    <?php if($heroDescription): ?>
+        <?php print strip_tags($heroDescription, "<br>"); ?>
+    <?php endif; ?>
     </h1>
     <div class="buttons">
         <a href="{{ $category->slug}}/how-to-play" class="btn btn-primary" title="How to play {{ $category->title }}">How to play</a>
@@ -34,8 +58,9 @@
             <div class="feature-text">
                 <h1 class="section-title"><span class="light">How to play</span> <br /> {{ $category->title }}</h1>
                 <p class="section-description">
-                    Follow our simple how to play guide for {{ $category->title }}.
-                    Experience the amazing campaign or dive into multiplayer with thousands of others still playing online.
+                    <?php if($howToPlayShortDescription): ?>
+                        <?php print strip_tags($howToPlayShortDescription, "<br>"); ?>
+                    <?php endif; ?>
                 </p>
                 <div class="buttons">
                     <a class="btn btn-primary" title="How to play" href="{{ $category->slug}}/how-to-play">How to play guide</a>
@@ -44,6 +69,11 @@
 
             <div class="feature-banner">
                 <img src="{{ \App\ViewHelper::getFeatureBannerByGameSlug($category->slug) }}" alt="Game logo" />
+                <div class="quote">
+                    <?php if($quote): ?>
+                        <?php print strip_tags($quote, "<p>,<br>"); ?>
+                    <?php endif; ?>
+                </div>
             </div>
         </div>
     </div>
@@ -53,6 +83,9 @@
     <div class="main-content">
         <?php if (count($streams) == 0): ?>
             <h2 class="section-title">Latest {{ $category->title }} videos</h2>
+            <p>
+                Discover the latest {{ $category->title }} video content on Twitch
+            </p>
             <?php new App\Http\CustomView\Components\TwitchVideoListing($videos); ?>
         <?php else: ?>
             <h2 class="section-title">{{ $category->title }} streamers</h2>
@@ -65,9 +98,8 @@
     <div class="main-content">
         <h2 class="section-title">{{ $category->title }} News</h2>
         <p class="section-description">
-            Find the latest news from around the C&amp;C community for {{ $category->title }}, including mods, patches and much more.
+            Discover the latest {{ $category->title }} news from around the C&C community. Including patches, maps, mods and much more!
         </p>
-
         <?php new App\Http\CustomView\Components\NewsListing($news); ?>
     </div>
 </section>

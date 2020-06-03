@@ -13,7 +13,7 @@
         Creators
     </h1>
     <p class="lead">
-        Find all the C&C Twitch Streamers playing Command &amp; Conquer 
+        Discover Twitch Streamers who play Command &amp; Conquer
     </p>
 </div>
 @endsection
@@ -35,7 +35,7 @@
             <a href="?gameName=zero-hour" id="game-id-16487" class="twitch-game-link">C&C: Zero hour <span class="count">0</span></a>
         </div>
 
-        <h2 class="section-title">Command &amp; Conquer streamers</h2>
+        <h2 class="section-title">All streams</h2>
 
         <?php new App\Http\CustomView\Components\TwitchListing($streams); ?>
     </div>
