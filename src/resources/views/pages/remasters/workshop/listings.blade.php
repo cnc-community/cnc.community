@@ -41,8 +41,8 @@
             <div class="col-50 feature-logo">
                 <img src="/assets/images/logos/tiberian-dawn-remastered.png" alt="Tiberian Dawn Remastered" />
                 <div class="buttons">
-                    <a href="/command-and-conquer-remastered/workshop-mods#tdmods" class="btn btn-primary" title="Maps">Go to Mods</a>
-                    <a href="/command-and-conquer-remastered/workshop-mods#TiberianDawnMaps" class="btn btn-primary" title="Mods">Go to Maps</a>
+                    <a href="/command-and-conquer-remastered/workshop-mods#tdmods" class="btn btn-primary" title="Maps">Trending Mods</a>
+                    <a href="/command-and-conquer-remastered/workshop-mods#TiberianDawnMaps" class="btn btn-primary" title="Mods">Trending Maps</a>
                 </div>
             </div>
         </div>
@@ -80,8 +80,8 @@
             <div class="col-50 feature-logo">
                 <img src="/assets/images/logos/red-alert-remastered.png" alt="Red Alert Remastered" />
                 <div class="buttons">
-                    <a href="/command-and-conquer-remastered/workshop-mods#ramods" class="btn btn-primary btn-theme-red" title="Maps">Go to Mods</a>
-                    <a href="/command-and-conquer-remastered/workshop-mods#RedAlertMaps" class="btn btn-primary btn-theme-red" title="Mods">Go to Maps</a>
+                    <a href="/command-and-conquer-remastered/workshop-mods#ramods" class="btn btn-primary btn-theme-red" title="Maps">Trending Mods</a>
+                    <a href="/command-and-conquer-remastered/workshop-mods#RedAlertMaps" class="btn btn-primary btn-theme-red" title="Mods">Trending Maps</a>
                 </div>
             </div>
         </div>
