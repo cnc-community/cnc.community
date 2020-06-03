@@ -24,7 +24,7 @@
 
             <?php new \App\Http\CustomView\Components\GenericBoxItem(
                 $image = "/assets/images/more-cnc-games/ss.jpg",
-                $url = "https://cnc.fandom.com/wiki/Command_%26_Conquer:_Sole_Survivor",
+                $url = "https://cnc.gamepedia.com/Command_%26_Conquer:_Sole_Survivor",
                 $title = "Command &amp; Conquer: Sole Survivor",
                 $description = "Sole Survivor is the 3rd and a largely forgotten C&C game. The game was similar to a top down shooter, however unlike a top down shooter your character controls more like a unit from Command & Conquer, by pointing and clicking, rather than the more traditional keyboard for movement and mouse for aiming control scheme."
             ); ?>
