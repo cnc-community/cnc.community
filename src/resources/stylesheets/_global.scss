@@ -56,7 +56,11 @@ a {
     text-transform: uppercase;
     margin-bottom: 0;
     line-height: 1.3;
-    font-size: 3rem;
+
+    @media(min-width: $xl-width)
+    {
+        font-size: 3rem;
+    }
 }
 
 .section-title .light 

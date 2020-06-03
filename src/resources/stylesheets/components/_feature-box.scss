@@ -71,10 +71,15 @@
 {
     width: 100%;
     padding-bottom: 20px;
+    text-align: center;
 
     @media(min-width: $sm-width)
     {
         width: 80%;
+    }
+    @media(min-width: $xl-width)
+    {
+        text-align: left;
     }
 }
 
@@ -95,6 +100,11 @@
 {
     margin-left: 0;
     margin-right: 0;
+
+    @media(min-width: $xl-width)
+    {
+        padding-left: 80px;
+    }
 }
 
 .feature-box .feature-text,

@@ -104,3 +104,17 @@
 {
     padding-top: 50px;
 }
+
+.workshop-introduction .feature-box .feature-text
+{
+    padding-left: 0;
+}
+
+.workshop-introduction .feature-box .feature-logo
+{
+    @media(min-width: $md-width)
+    {
+        padding-top: 60px;
+    }
+    padding-bottom: 40px;
+}
