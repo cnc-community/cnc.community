@@ -6,6 +6,11 @@
 @section('page-class', 'category-more')
 @section('hero-class', 'hero-'. $category->slug)
 
+@section('hero-video')
+<?php $heroVideo = \App\Constants::getVideoWithPoster("command-and-conquer-4"); ?>
+<?php new \App\Http\CustomView\Components\VideoPlayer($heroVideo); ?>
+@endsection
+
 @section('hero')
 <div class="content center">
     <h1>

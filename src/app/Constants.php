@@ -53,7 +53,7 @@ class Constants
     
     public static function getVideoWithPoster($slug)
     {
-        $version = 1.2;
+        $version = 1.3;
         $cdnUrl = "//cdn.jsdelivr.net/gh/cnc-community/files@". $version . "/";
         $posterSrc = "/assets/images/posters/";
 
@@ -92,11 +92,11 @@ class Constants
                 "poster" => $posterSrc . "tiberium-wars.jpg"
             ],
             "red-alert-3" => [ 
-                "src" => $cdnUrl . "red-alert-3",
+                "src" => $cdnUrl . "red-alert-3.mp4",
                 "poster" => $posterSrc . "red-alert-3.jpg"
             ],
             "command-and-conquer-4" => [ 
-                "src" => $cdnUrl . "command-and-conquer-4",
+                "src" => $cdnUrl . "tiberium-twighlight.mp4",
                 "poster" => $posterSrc . "command-and-conquer-4.jpg"
             ],
             "default" => [
