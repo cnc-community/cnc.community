@@ -15,13 +15,16 @@
 .twitch-streams .twitch-embed
 {
     background: #101010;
-}
+    margin-bottom: 15px;
+    margin-right: 15px;
 
-@media(min-width: $xl-width)
-{
-    .twitch-streams .twitch-embed 
+    @media(min-width: $md-width)
     {
-        margin-right: 15px;
+        flex-basis: 45%;
+    }
+
+    @media(min-width: $xl-width)
+    {
         flex-basis: 20vw;
         max-width: 100%;
         flex-grow: 0;
@@ -46,7 +49,12 @@
     align-items: flex-start;
     padding: 15px 20px;
 
-    & p { margin: 0; font-size: 1.1rem; }
+    & p { 
+        margin: 0;
+        font-size: 0.9rem;
+        color: silver;
+        font-weight: 600;
+     }
 }
 
 .twitch-games-navbar
@@ -56,6 +64,17 @@
     flex-wrap: wrap;
     padding: 15px 0;
     justify-content: center;
+    margin: 0 auto;
+
+    @media(min-width: $lg-width)
+    {
+        width: 70vw;
+    }
+
+    @media(min-width: $xxl-width)
+    {
+        width: 50vw;
+    }
 }
 
 .twitch-games-navbar .twitch-game-link

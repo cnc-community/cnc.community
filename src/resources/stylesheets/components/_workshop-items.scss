@@ -9,6 +9,29 @@
     padding-bottom: 15px;
 }
 
+.workshop-items-wrap .items-wrap .workshop-item 
+{
+    width: 100%;
+    flex-grow: 1;
+
+    @media(min-width:$md-width)
+    {
+        width: 45%;
+    }
+    @media(min-width:$lg-width)
+    {
+        width: 47%;
+    }
+    @media(min-width:$xl-width)
+    {
+        width: 40%;
+    }
+    @media(min-width:$xxl-width)
+    {
+        width: 18%;
+    }
+}
+
 @media(min-width: $md-width)
 {
     .workshop-items .swiper-button-prev 
