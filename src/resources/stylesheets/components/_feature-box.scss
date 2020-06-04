@@ -52,8 +52,11 @@
         flex-direction: row;
         align-items: flex-start;
     }
+}
 
-    & .btn { margin: 5px 10px; }
+.feature-box .buttons .btn
+{
+    margin: 5px 10px 5px 0;
 }
 
 .feature-box
@@ -107,8 +110,11 @@
     }
 }
 
-.feature-box .feature-text,
- .feature-box .feature-banner
+@media(min-width: $md-width)
 {
-    padding-right: 30px;
+    .feature-box .feature-text,
+    .feature-box .feature-banner
+    {
+        padding-right: 30px;
+    }
 }
