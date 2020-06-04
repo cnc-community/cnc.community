@@ -36,7 +36,7 @@ class Constants
             "red-alert" => "235", // Command & Conquer: Red Alert
             "red-alert-cs" => "10393", // Command & Conquer: Red Alert - Counterstrike
             "red-alert-am" => "14999", // Command & Conquer: Red Alert - The Aftermath
-            "command-and-conquer" => "4012", // Command & Conquer
+            "tiberian-dawn" => "4012", // Command & Conquer
             "tiberian-sun" => "1900", // Command & Conquer: Tiberian Sun
             "tiberian-sun-firestorm" => "20015", // Command & Conquer: Tiberian Sun Firestorm
             "red-alert-2" => "16580", // Command & Conquer: Red Alert 2
@@ -47,7 +47,7 @@ class Constants
             "tiberium-wars" => "16106", // Command & Conquer 3: Tiberium Wars
             "generals" => "10070", // Command & Conquer: Generals
             "zero-hour" => "16487", // Command & Conquer: Zero hour,
-            "remasters" => "235" // TODO - Remasters
+            "remasters" => "517837" // C&C Remastered Collection
         ];
     }
     
