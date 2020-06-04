@@ -69,6 +69,7 @@
 
                 <div class="copyright-notice text-uppercase">
                     <div class="copyright-links text-uppercase">
+                        <a href="/terms-and-conditions" title="Contact">Terms</a> 
                         <a href="/privacy-policy" title="Privacy">Privacy Policy</a> 
                         <a href="/contact" title="Contact">Contact</a> 
                     </div>
