@@ -66,7 +66,7 @@ class News extends Model
 
     public static function newsPaginatedByCategory($categoryId)
     {
-        return News::where("category_id", $categoryId)->paginate(20);
+        return News::where("category_id", $categoryId)->orderByDesc("created_at")->paginate(20);
     }
 
     public static function createNewsItem($title, $post, $url, $image, $categoryId)
