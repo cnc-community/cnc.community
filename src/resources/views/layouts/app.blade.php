@@ -69,10 +69,8 @@
 
                 <div class="copyright-notice text-uppercase">
                     <div class="copyright-links text-uppercase">
-                        <a href="#">Privacy Policy</a> 
-                        <a href="#">Terms</a> 
-                        <a href="#">Contact</a> 
-                        <a href="#">Credits</a> 
+                        <a href="/privacy-policy" title="Privacy">Privacy Policy</a> 
+                        <a href="/contact" title="Contact">Contact</a> 
                     </div>
                     <p class="notice">
                         C&amp;C Community has no affiliation with Electronic Arts or PetroGlyph Games
