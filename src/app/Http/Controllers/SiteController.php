@@ -109,6 +109,7 @@ class SiteController extends Controller
     {   
         $streams = [];
         $videos = [];
+        $gameName = "";
         
         if ($request->gameName == null)
         {
@@ -116,6 +117,7 @@ class SiteController extends Controller
         }
         else
         {
+            $gameName = $request->gameName;
             $streams = $this->twitchHelper->getTwitchGamesBySlug($request->gameName);
             $videos = $this->twitchHelper->getTwitchVideosBySlug($request->gameName);
         }
@@ -124,7 +126,7 @@ class SiteController extends Controller
             "streams" => $streams, 
             "videos" => $videos,
             "gameFullName" => Constants::getTwitchGameBySlug($request->gameName),
-            "gameName" => $request->gameName
+            "gameName" => $gameName
         ]);
     }
 
