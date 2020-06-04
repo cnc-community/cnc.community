@@ -53,7 +53,7 @@ class Constants
     
     public static function getVideoWithPoster($slug)
     {
-        $version = 1.3;
+        $version = 1.4;
         $cdnUrl = "//cdn.jsdelivr.net/gh/cnc-community/files@". $version . "/";
         $posterSrc = "/assets/images/posters/";
 

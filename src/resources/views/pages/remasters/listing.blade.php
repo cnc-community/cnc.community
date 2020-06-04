@@ -116,8 +116,8 @@
             <div class="col-50 feature-logo">
                 <img src="/assets/images/logos/red-alert-remastered.png" alt="Red Alert Remastered" />
                 <div class="buttons">
-                    <a href="/command-and-conquer-remastered/workshop-mods#ramods" class="btn btn-primary btn-theme-red" title="Maps">View Top Mods</a>
-                    <a href="/command-and-conquer-remastered/workshop-mods#RedAlertMaps" class="btn btn-primary btn-theme-red" title="Mods">View Top Maps</a>
+                    <a href="/command-and-conquer-remastered/workshop-mods#ramods" class="btn btn-primary btn-theme-red" title="Maps">Trending Mods</a>
+                    <a href="/command-and-conquer-remastered/workshop-mods#RedAlertMaps" class="btn btn-primary btn-theme-red" title="Mods">Trending Maps</a>
                 </div>
             </div>
         </div>
