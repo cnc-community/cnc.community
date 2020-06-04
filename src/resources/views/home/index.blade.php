@@ -27,8 +27,6 @@
         
     <div class="guides">
         <?php new App\Http\CustomView\Components\GameSlider($__env); ?>
-
-        <a href="/more-cnc-games" class="more-cnc-games">View more C&amp;C Games</a>
     </div>
 </section>
 
