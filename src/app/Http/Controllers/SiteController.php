@@ -92,12 +92,12 @@ class SiteController extends Controller
     {
         $key = "cache_";
 
-        $categoryCache = Cache::remember($key."funny.listing.showFunnyListings", Constants::getCacheSeconds(), function ()
+        $categoryCache = Cache::remember($key."categoryCache.funny.listing.showFunnyListings", Constants::getCacheSeconds(), function ()
         {
             return Category::where("name", Category::CATEGORY_FUNNY)->first();
         });
 
-        $funnyCategoryCache = Cache::remember($key."funny.listing.showFunnyListings", Constants::getCacheSeconds(), function () use ($categoryCache)
+        $funnyCategoryCache = Cache::remember($key."funnyCategoryCache.funny.listing.showFunnyListings", Constants::getCacheSeconds(), function () use ($categoryCache)
         {
             return News::newsPaginatedByCategory($categoryCache->id);
         });
