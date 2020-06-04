@@ -26,6 +26,11 @@ $howToPlaySteps = App\ViewHelper::getCategoryCustomFieldContents(
 @extends('layouts.app')
 
 @section('title', $category->title)
+
+<?php if($heroDescription): ?>
+@section('description', strip_tags($heroDescription))
+<?php endif; ?>
+
 @section('page-class', 'category theme-'.$category->slug)
 @section('hero-class', 'hero-'. $category->slug)
 

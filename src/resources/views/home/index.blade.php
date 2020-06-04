@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
-@section('title', 'Home')
+@section('title', 'Command & Conquer Community')
+@section('description', 'Play C&C on Windows 10 and get all of the latest news and content from the community.')
+
 @section('page-class', 'homepage')
 
 @section('hero')

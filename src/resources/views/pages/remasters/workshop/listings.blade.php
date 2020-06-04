@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('title', 'Steam WorkShop - Mods - Maps - Command & Conquer Remastered Collection')
+@section('description', 'Steam WorkShop, Mods and Maps')
+
 @section('page-class', 'remasters remasters-mods')
 
 @section('hero-video')

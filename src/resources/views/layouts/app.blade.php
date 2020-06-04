@@ -4,6 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title') - C&C Community</title>
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="@yield('title') - C&amp;C Community">
+    <meta property="og:site_name" content="C&C Community">
+    <meta property="og:image" content="https://cnc.community/assets/images/meta.png">
+
+    @if(View::hasSection('description'))
+    <meta property="og:description" content="@yield('description')">
+    <meta name="description" content="@yield('description')">
+    @else
+    <meta name="description" content="Play Command & Conquer on Windows 10 and get all of the latest news and content from the community. ">
+    @endif
+    <meta name="author" content="C&C Community">
+    <meta name="keywords" content="C&amp;C, Command &amp; Conquer, C&amp;C95, C&mp;C1, RA, RA95, Tiberian, Sun, Tiberium, Red Alert, Red, Alert, Red Alert 3, Renegade, C&C Remastered, Command & Conquer Remasters, Red Alert 1 Remastered, 
+        Tiberian Dawn Remastered, Red Alert 2,Generals,C&amp;C3: Tiberium Wars, C&amp;C Mods, C&amp;C Mod Workshop" 
+    />
+
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&family=Oswald:wght@300;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/assets/css/app.css" />
 
