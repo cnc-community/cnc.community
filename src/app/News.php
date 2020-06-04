@@ -58,10 +58,10 @@ class News extends Model
         return News::where("category_id", $category->id)->orderByDesc("created_at")->paginate(20);
     }
 
-    public static function officialNewsPaginated()
+    public static function officialNewsPaginated($limit = 20)
     {
         $category = Category::where("name", "Official News")->first();
-        return News::where("category_id", $category->id)->orderByDesc("created_at")->paginate(20);
+        return News::where("category_id", $category->id)->orderByDesc("created_at")->paginate($limit);
     }
 
     public static function newsPaginatedByCategory($categoryId)

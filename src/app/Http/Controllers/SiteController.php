@@ -37,7 +37,7 @@ class SiteController extends Controller
 
         $officialNewsCache = Cache::remember($key."home.index.officialNews", Constants::getCacheSeconds(), function () 
         {
-            return News::officialNewsPaginated();
+            return News::officialNewsPaginated(9);
         });
 
         $workShopItems = $this->steamHelper->getTopWorkShopItems(Constants::remastersAppId(), 8);
