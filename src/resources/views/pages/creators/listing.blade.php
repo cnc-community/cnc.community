@@ -34,6 +34,7 @@
             <a href="?gameName=tiberium-wars" id="game-id-16106" class="twitch-game-link {{ $gameName == "tiberium-wars" ? " active": ""}}">C&C 3: Tiberium Wars <span class="count">0</span></a>
             <a href="?gameName=generals" id="game-id-10070" class="twitch-game-link {{ $gameName == "generals" ? " active": ""}}">C&C: Generals <span class="count">0</span></a>
             <a href="?gameName=zero-hour" id="game-id-16487" class="twitch-game-link {{ $gameName == "zero-hour" ? " active": ""}}">C&C: Zero hour <span class="count">0</span></a>
+            <a href="?gameName=remasters" id="game-id-517837" class="twitch-game-link {{ $gameName == "remasters" ? " active": ""}}">C&C: Remastered Collection <span class="count">0</span></a>
         </div>
 
         <h2 class="section-title">
