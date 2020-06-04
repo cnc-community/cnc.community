@@ -29,11 +29,11 @@
             <a href="?gameName=red-alert-2" id="game-id-16580" class="twitch-game-link {{ $gameName == "red-alert-2" ? " active": ""}}">Red Alert 2 <span class="count">0</span></a>
             <a href="?gameName=red-alert-2-yuris-revenge" id="game-id-5090" class="twitch-game-link {{ $gameName == "red-alert-2-yuris-revenge" ? " active": ""}}">Yuri's Revenge <span class="count">0</span></a>
             <a href="?gameName=renegade" id="game-id-3813" class="twitch-game-link {{ $gameName == "renegade" ? " active": ""}}">Renegade <span class="count">0</span></a>
-            <a href="?gameName=red-alert-3" id="game-id-18881" class="twitch-game-link {{ $gameName == "red-alert-3" ? " active": ""}}">Red Alert 3 <span class="count">0</span></a>
-            <a href="?gameName=command-and-conquer-3-kanes-wrath" id="game-id-18733 {{ $gameName == "command-and-conquer-3-kanes-wrath" ? " active": ""}}" class="twitch-game-link">Command & Conquer 3: Kane's Wrath <span class="count">0</span></a>
-            <a href="?gameName=tiberium-wars" id="game-id-16106" class="twitch-game-link {{ $gameName == "tiberium-wars" ? " active": ""}}">C&C 3: Tiberium Wars <span class="count">0</span></a>
             <a href="?gameName=generals" id="game-id-10070" class="twitch-game-link {{ $gameName == "generals" ? " active": ""}}">C&C: Generals <span class="count">0</span></a>
-            <a href="?gameName=zero-hour" id="game-id-16487" class="twitch-game-link {{ $gameName == "zero-hour" ? " active": ""}}">C&C: Zero hour <span class="count">0</span></a>
+            <a href="?gameName=zero-hour" id="game-id-16487" class="twitch-game-link {{ $gameName == "zero-hour" ? " active": ""}}">Zero hour <span class="count">0</span></a>
+            <a href="?gameName=tiberium-wars" id="game-id-16106" class="twitch-game-link {{ $gameName == "tiberium-wars" ? " active": ""}}">C&C 3: Tiberium Wars <span class="count">0</span></a>
+            <a href="?gameName=red-alert-3" id="game-id-18881" class="twitch-game-link {{ $gameName == "red-alert-3" ? " active": ""}}">Red Alert 3 <span class="count">0</span></a>
+            <a href="?gameName=command-and-conquer-3-kanes-wrath" id="game-id-18733 {{ $gameName == "command-and-conquer-3-kanes-wrath" ? " active": ""}}" class="twitch-game-link">C&amp;C 3: Kane's Wrath <span class="count">0</span></a>
             <a href="?gameName=remasters" id="game-id-517837" class="twitch-game-link {{ $gameName == "remasters" ? " active": ""}}">C&C: Remastered Collection <span class="count">0</span></a>
         </div>
 
