@@ -43,7 +43,7 @@
                 </p>
             </div>
             <div class="col-50 feature-logo">
-                <img src="/assets/images/logos/cnc-remastered-logo.png" alt="Tiberian Dawn Remastered" />
+                <img src="/assets/images/logos/cnc-remastered-logo.png" alt="Tiberian Dawn Remastered" loading="lazy" />
 
                 <div class="buttons">
                     <a href="/command-and-conquer-remastered/" class="btn btn-primary" title="Maps">View C&amp;C Remastered</a>
@@ -83,7 +83,7 @@
             </div>
 
             <div class="feature-banner">
-                <img src="/assets/images/cnc-community.png" alt="C&C logo" />
+                <img src="/assets/images/cnc-community.png" alt="C&C logo" loading="lazy" />
             </div>
         </div>
     </div>
