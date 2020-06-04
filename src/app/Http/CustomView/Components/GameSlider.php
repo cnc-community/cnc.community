@@ -64,9 +64,9 @@ class GameSlider extends AbstractCustomView
                             <img src="assets/images/boxes/logos/red-alert-3-logo.png" loading="lazy" alt="Red Alert 3 logo" />
                         </div>
                     </a>
-                    <a href="other-cnc-games" class="swiper-slide box more-cnc-games" title="More C&C Games">
+                    <a href="other-cnc-games" class="swiper-slide box more-cnc-games" title="Other C&C Games">
                         <div class="logo">
-                            <img src="assets/images/boxes/logos/more-cnc-games.png" loading="lazy" alt="More C&amp;C Games logo" />
+                            <img src="assets/images/boxes/logos/more-cnc-games.png" loading="lazy" alt="Other C&amp;C Games logo" />
                         </div>
                     </a>
                 </div>
