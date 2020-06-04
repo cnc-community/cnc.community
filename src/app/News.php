@@ -55,13 +55,13 @@ class News extends Model
         {
             return [];
         }
-        return News::where("category_id", $category->id)->paginate(20);
+        return News::where("category_id", $category->id)->orderByDesc("created_at")->paginate(20);
     }
 
     public static function officialNewsPaginated()
     {
         $category = Category::where("name", "Official News")->first();
-        return News::where("category_id", $category->id)->paginate(20);
+        return News::where("category_id", $category->id)->orderByDesc("created_at")->paginate(20);
     }
 
     public static function newsPaginatedByCategory($categoryId)
