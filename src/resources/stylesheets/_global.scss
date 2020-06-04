@@ -663,3 +663,17 @@ ul.pagination
 }
 
 .quote p { margin: 0; }
+
+.clear-filters 
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.clear-filters > a
+{ 
+    padding: 10px 15px; 
+    background-color: #171717;
+    color: #717070;
+}
