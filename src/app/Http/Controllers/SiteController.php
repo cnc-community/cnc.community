@@ -120,7 +120,12 @@ class SiteController extends Controller
             $videos = $this->twitchHelper->getTwitchVideosBySlug($request->gameName);
         }
         
-        return view('pages.creators.listing', ["streams" => $streams, "videos" => $videos]);
+        return view('pages.creators.listing', [
+            "streams" => $streams, 
+            "videos" => $videos,
+            "gameFullName" => Constants::getTwitchGameBySlug($request->gameName),
+            "gameName" => $request->gameName
+        ]);
     }
 
     public function showRemastersListings()

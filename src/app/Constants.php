@@ -50,6 +50,33 @@ class Constants
             "remasters" => "517837" // C&C Remastered Collection
         ];
     }
+
+    // Hacky but for getting live, quickest solution
+    public static function getTwitchGameBySlug($slug)
+    {
+        $twitchGames =
+        [
+            "red-alert" => "Red Alert", // Command & Conquer: Red Alert
+            "tiberian-dawn" => "Tiberian Dawn", // Command & Conquer
+            "tiberian-sun" => "Tiberian Sun", // Command & Conquer: Tiberian Sun
+            "red-alert-2" => "Red Alert 2", // Command & Conquer: Red Alert 2
+            "red-alert-2-yuris-revenge" => "Yuris' Revenge", // Command & Conquer: Red Alert 2
+            "renegade" => "Renegade", // Command & Conquer: Renegade
+            "red-alert-3" => "Red Alert 3", // Command & Conquer: Red Alert 3
+            "command-and-conquer-3-kanes-wrath" => "C&C 3: Kanes Wrath", // Command & Conquer 3: Kane's Wrath
+            "tiberium-wars" => "C&C 3: Tiberium Wars", // Command & Conquer 3: Tiberium Wars
+            "generals" => "Generals", // Command & Conquer: Generals
+            "zero-hour" => "Zero Hour", // Command & Conquer: Zero hour,
+            "remasters" => "C&C Remastered Collection", // C&C Remastered Collection,
+            "default" => ""
+        ];
+
+        if (array_key_exists($slug, $twitchGames))
+        {
+            return $twitchGames[$slug];
+        }
+        return $twitchGames["default"];
+    }
     
     public static function getVideoWithPoster($slug)
     {
