@@ -14,22 +14,20 @@
 
 .site-header .logo
 {
-    display: flex;
-    align-items: center;
     color: $color-white;
     margin-left: 0;
-    min-width: 80px;
     z-index: 1;
+    padding: 15px;
+
+    width: 110px;
 
     & a {
-        display: flex;
-        align-items: center;
-        padding: 15px;
+        display: block;
     }
 
     & img 
     {
-        height: 30px;
+        max-width: 100%;
     }
 
     position: absolute;
@@ -39,11 +37,7 @@
     @media(min-width: $xl-width)
     {
         position: relative;
-
-        & img 
-        {
-            height: 40px;
-        }
+        width: 130px;
     }
 }
 
