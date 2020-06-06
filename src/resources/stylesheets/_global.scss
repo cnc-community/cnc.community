@@ -510,23 +510,19 @@ footer .notice
 
     width: 100%;
     margin-bottom: 20px;
-    
-    flex-grow: 1;
-    flex-shrink: 0;
-    flex-basis: 100%;
 
     @media(min-width:$md-width)
     {
-        flex-basis: 45%;
+        width: 45%;
         margin-right: 20px;
     }
     @media(min-width:$lg-width)
     {
-        flex-basis: 47%;
+        width: 47%;
     }
     @media(min-width:$xl-width)
     {
-        flex-basis: 30%;
+        width: 30%;
     }
 }
 
