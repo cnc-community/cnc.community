@@ -26,7 +26,7 @@ class QueuedNewsController extends Controller
      */
     public function index()
     {
-        $news = NewsFeedQueue::all();
+        $news = NewsFeedQueue::orderByDesc("created_at")->paginate(20);
         return view('admin.queue.listings', ["news" => $news]);
     }
 

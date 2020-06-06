@@ -30,5 +30,5 @@ class RedditFeedItem implements RedditPostInterface
     public function permalink():string { return $this->permalink; }
     public function url():string { return $this->url; }
     public function commentCount():int { return $this->num_comments; }
-    public function postType() { return $this->post_hint; }
+    public function postType() { return isset($this->post_hint) ? $this->post_hint: ""; }
 }

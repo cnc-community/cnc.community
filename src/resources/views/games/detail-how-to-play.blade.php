@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('title', $page->title)
+@section('description', $page->description)
 @section('page-class', 'category theme-'.$slugCategory)
 @section('page-class', 'game-detail')
 
@@ -15,8 +16,8 @@
     </div>
 
     <h1 class="small-h1">
-        {{ $page->description }}
-    </p>
+        <?php print strip_tags($page->description, "<br>"); ?>
+    </h1>
     <div class="buttons">
         <a href="{{ $page->category()->url() }}" class="btn btn-primary" title="Go to {{ $page->category()->title }}">
             Go back to {{ $page->category()->title }}

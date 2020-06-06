@@ -21,18 +21,31 @@
 
             <div class="card">
                 <div class="card-body">
+                    {{ $news->links() }}
+                </div>
+                <div class="card-body admin-listings">
                     <?php foreach($news as $newsItem): ?>
-                        <div>
-                            <a href="{{ route('admin.news.edit', ['id' => $newsItem->id ]) }}">{{ $newsItem->title}}</a>
-                            <div>
+                        <div class="card admin-item col-md-6">
+                            <div class="card-body">
+                                <h4>
+                                    <a href="{{ route('admin.news.edit', ['id' => $newsItem->id ]) }}">{{ $newsItem->title}}</a>
+                                </h4>
                                 <ul class="list-unstyled">
                                     <li>
                                         <small>Updated</small> <small>- {{ $newsItem->updated_at->diffForHumans() }}</small> 
                                     </li>
                                     <li>
+                                        <small>Created</small> <small>- {{ $newsItem->created_at->diffForHumans() }}</small> 
+                                    </li>
+                                    <li>
                                         <small>Category</small> <small>- {{ $newsItem->category()->name }}</small>
                                     </li>
                                 </ul>
+                                <?php if($newsItem->image): ?>
+                                <div style="padding-top:5px; padding-bottom: 5px;">
+                                    <img src="/<?php echo $newsItem->image ?>" loading="lazy" style="max-width: 100%" />
+                                </div>
+                                <?php endif; ?>
                             </div>
                         </div>
                     <?php endforeach; ?>

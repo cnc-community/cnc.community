@@ -48,7 +48,8 @@ class TwitchStreamsAPI extends AbstractTwitchAPI
             return [];
         }
 
-        return Cache::remember('getVideosByGame'.$gameId, 86400, function () use($gameId) // 1 day cache
+        // 30 minute cache
+        return Cache::remember('getVideosByGame'.$gameId, 1800, function () use($gameId) 
         {
             $response = Http::withHeaders(
                 [
@@ -63,7 +64,8 @@ class TwitchStreamsAPI extends AbstractTwitchAPI
 
     public function getStreamByGame($gameId, $limit)
     {   
-        return Cache::remember('getStreamByGames'.$limit.$gameId, 300, function () use($gameId, $limit)
+        // 10 minute cache
+        return Cache::remember('getStreamByGames'.$limit.$gameId, 600, function () use($gameId, $limit)
         {
             $response = Http::withHeaders(
                 [
@@ -89,31 +91,62 @@ class TwitchStreamsAPI extends AbstractTwitchAPI
             $queryString .= "&game_id=" . $game;
             $i++;
         }
-    
-        return Cache::remember('getStreamByGames'.$queryString, 300, function () use($queryString)
-        {
-            $response = Http::withHeaders(
-                [
-                    "Client-ID" => $this->_clientId, 
-                    "Authorization" => "Bearer " . $this->_token
-                ])
-                ->get($this->_apiUrl . TwitchStreamsAPI::STREAMS_URL . $queryString . '&first=100');
 
-            return $response["data"];
+        $data = [];
+        
+        // 10 minute cache
+        return Cache::remember('getStreamByGames'.$queryString, 600, function () use($queryString, $data)
+        {
+            $count = 0;
+            $pagination = "";
+            $json = $this->fetchByQuery($queryString, $pagination);
+
+            while($json["pagination"] != null)
+            {
+                $json = $this->fetchByQuery($queryString, $json["pagination"]["cursor"]);
+                $count++;
+
+                foreach($json["data"] as $r)
+                {
+                    $data[] = $r;
+                }
+                
+                // safety
+                if ($count > 10)
+                {
+                    die("Safety kill");
+                }
+            }
+            return $data;
         });
+    }
+
+    private function fetchByQuery($queryString, $pagination = "")
+    {
+        return Http::withHeaders(
+            [
+                "Client-ID" => $this->_clientId, 
+                "Authorization" => "Bearer " . $this->_token
+            ])
+            ->get($this->_apiUrl . TwitchStreamsAPI::STREAMS_URL . $queryString . '&first=100&after='.$pagination)
+            ->json();
     }
 
     public function getCounts($data)
     {
-        return Cache::remember('getCounts', 300, function () use($data)
+        $games = [];
+        
+        // 10 minute cache
+        return Cache::remember('getCounts', 600, function () use($data, $games)
         {
-            $games = [];
             foreach($data as $twitchUser)
             {
-                if (!in_array($twitchUser["user_name"], $games))
-                {
-                    $games[$twitchUser["game_id"]][]= $twitchUser["user_name"];
-                }
+                // Late night thoughts why this is even needed
+                // Leaving incase it might be needed again :-o
+                // if (!in_array($twitchUser["user_name"], $games))
+                // {
+                // }
+                $games[$twitchUser["game_id"]][]= $twitchUser["user_name"];
             }
             return $games;
         });

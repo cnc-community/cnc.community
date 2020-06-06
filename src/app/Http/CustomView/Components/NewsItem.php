@@ -40,9 +40,9 @@ class NewsItem extends AbstractCustomView
                         <?php endif; ?>
 
                             <?php if($this->image): ?>
-                                <img src="/<?php echo $this->image ?>" alt="<?php echo $this->title ?>" alt="<?php echo $this->title; ?>" loading="lazy" />
+                                <img src="/<?php echo $this->image ?>" alt="<?php echo $this->title; ?>" loading="lazy" />
                                 <?php else: ?>
-                                <img src="/assets/images/no-image.jpg" alt="<?php echo $this->title ?>" alt="<?php echo $this->title; ?>" loading="lazy" />
+                                <img src="/assets/images/no-image.jpg" alt="<?php echo $this->title; ?>" loading="lazy" />
                             <?php endif; ?>
                         </a>
 
