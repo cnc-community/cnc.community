@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title', $newsItem->title)
-@section('page-class')
+@section('description', strip_tags($newsItem->excerpt()))
 @section('page-class', 'news-detail')
 
 @section('hero-video')
@@ -38,8 +38,6 @@
                 <img src="/<?php echo $newsItem->image; ?>" alt="<?php echo $newsItem->title; ?>" />
             </div>
             <?php endif; ?>
-
-
             <?php print $newsItem->post; ?>
         </div>
     </div>
