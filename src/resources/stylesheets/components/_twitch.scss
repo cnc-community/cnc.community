@@ -124,6 +124,13 @@
     position: relative;
 }
 
+.stream-listings .buttons 
+{
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+
 .stream-header .stream-title > h3
 {
     font-size: 1.3rem;

@@ -160,11 +160,12 @@
 <section id="streams" class="section stream-listings">
     <div class="main-content">
         <h2 class="section-title">C&amp;C Remastered Live Streams</h2>
-        <?php if($streams == null): ?>
-            <p>Nobody is streaming right now, check out the previous streams below.</p>
-            <?php new App\Http\CustomView\Components\TwitchVideoListing($videos); ?>
-        <?php else: ?>
-            <?php new App\Http\CustomView\Components\TwitchListing($streams); ?>
+        <?php new App\Http\CustomView\Components\TwitchListing($streams); ?>
+
+        <?php if($streams): ?>
+        <div class="buttons">
+            <a href="/creators?gameName=remasters" title="View all C&C Remastered Streams" class="btn btn-secondary">View all streams</a>
+        </div>
         <?php endif; ?>
     </div>
 </section>

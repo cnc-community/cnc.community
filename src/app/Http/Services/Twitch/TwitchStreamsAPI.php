@@ -61,16 +61,16 @@ class TwitchStreamsAPI extends AbstractTwitchAPI
         });
     }
 
-    public function getStreamByGame($gameId)
+    public function getStreamByGame($gameId, $limit)
     {   
-        return Cache::remember('getStreamByGames'.$gameId, 300, function () use($gameId)
+        return Cache::remember('getStreamByGames'.$limit.$gameId, 300, function () use($gameId, $limit)
         {
             $response = Http::withHeaders(
                 [
                     "Client-ID" => $this->_clientId, 
                     "Authorization" => "Bearer " . $this->_token
                 ])
-                ->get($this->_apiUrl . TwitchStreamsAPI::STREAMS_URL . '?game_id='. $gameId . '&first=100');
+                ->get($this->_apiUrl . TwitchStreamsAPI::STREAMS_URL . '?game_id='. $gameId . '&first='.$limit);
 
             return $response["data"];
         });

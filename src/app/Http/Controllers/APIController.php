@@ -44,9 +44,9 @@ class APIController extends Controller
         return $total;
     }
 
-    public function streamByGameId($gameId)
+    public function streamByGameId($gameId, $limit = 100)
     {
-        return $this->twitchStreamsAPI->getStreamByGame($gameId);
+        return $this->twitchStreamsAPI->getStreamByGame($gameId, $limit);
     }
 
     public function streamByGames()

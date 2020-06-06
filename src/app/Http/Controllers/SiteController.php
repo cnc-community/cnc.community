@@ -118,7 +118,7 @@ class SiteController extends Controller
         else
         {
             $gameName = $request->gameName;
-            $streams = $this->twitchHelper->getTwitchGamesBySlug($request->gameName);
+            $streams = $this->twitchHelper->getTwitchGamesBySlug($request->gameName, 100);
             $videos = $this->twitchHelper->getTwitchVideosBySlug($request->gameName);
         }
         
@@ -154,8 +154,7 @@ class SiteController extends Controller
             5
         );
    
-        $streams = $this->twitchHelper->getTwitchGamesBySlug("remasters");
-        $videos = $this->twitchHelper->getTwitchVideosBySlug("remasters");
+        $streams = $this->twitchHelper->getTwitchGamesBySlug("remasters", 8);
 
         $categoryCache = Cache::remember($key."pages.remasters.listing.categoryCache", Constants::getCacheSeconds(), function ()
         {
@@ -175,7 +174,6 @@ class SiteController extends Controller
             "tdWorkShopItems" => $tdWorkShopItems, 
             "news" => $newsByCategoryCache,
             "streams" => $streams,
-            "videos" => $videos,
             "heroVideo" => $heroVideo
         ]);
     }
