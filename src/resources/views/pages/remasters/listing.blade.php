@@ -83,8 +83,8 @@
                     of the original Command & Conquer development team from 1995. Be sure to support Petroglyph by joining their Discord server and visiting their website.
                 </p>
                 <div class="buttons">
-                    <a class="btn btn-secondary btn-icon" title="Visit Petroglyph Discord" rel="nofollow" href="https://discord.gg/ygGFZxz">Visit Discord <i class="icon-discord"></i></a>
-                    <a class="btn btn-secondary btn-icon" title="Visit Petroglpyh Website" rel="nofollow" href="https://petroglyphgames.com/">Visit Website <i class="icon-petroglyph"></i></a>
+                    <a class="btn btn-secondary btn-icon" target="_blank" title="Visit Petroglyph Discord" rel="nofollow" href="https://discord.gg/ygGFZxz">Visit Discord <i class="icon-discord"></i></a>
+                    <a class="btn btn-secondary btn-icon" target="_blank" title="Visit Petroglpyh Website" rel="nofollow" href="https://petroglyphgames.com/">Visit Website <i class="icon-petroglyph"></i></a>
                 </div>
             </div>
 
