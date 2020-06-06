@@ -201,12 +201,6 @@
     }
 }
 
-.site-header.nav-open .mobile-navigation 
-{
-    animation: animateIn 350ms forwards;
-    transform-origin: top center;
-}
-
 .site-header.nav-closed .mobile-navigation
 {
     display: none;
@@ -215,6 +209,9 @@
 .site-header.nav-open .mobile-navigation
 {
     display: flex;
+    max-width: 640px;
+    animation: animateIn 350ms forwards;
+    transform-origin: top center;
 }
 
 
