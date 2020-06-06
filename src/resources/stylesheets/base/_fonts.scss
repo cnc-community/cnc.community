@@ -107,9 +107,14 @@ i {
     content: "\e906";
 }
 
-.icon-petroglyph::before
+.icon-petroglyph:before
 {
     content: "\e90e";
+}
+
+.icon-ea:before
+{
+    content: "\e90f";
 }
 
 .icon-chevron-up-solid

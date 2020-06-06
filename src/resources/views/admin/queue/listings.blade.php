@@ -27,9 +27,11 @@
                                         <small>Category</small> <small>- {{ $newsItem->category()->name }}</small>
                                     </li>
                                 </ul>
+                                <?php if($newsItem->image): ?>
                                 <div style="padding-top:5px; padding-bottom: 5px;">
                                     <img src="/<?php echo $newsItem->image ?>" loading="lazy" style="max-width: 100%" />
                                 </div>
+                                <?php endif; ?>
                             </div>
                         </div>
                     <?php endforeach; ?>

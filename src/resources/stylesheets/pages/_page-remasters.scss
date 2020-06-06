@@ -156,3 +156,21 @@
 {
     padding-right: 0;
 }
+
+.page-remasters .section-help 
+{
+    @extend .section-about;
+}
+
+.page-remasters .section-help .feature-text 
+{
+    padding-left: 0;
+}
+
+.page-remasters .section-help .feature-banner 
+{
+    @media(min-width: $lg-width)
+    {
+        padding-left: 25px;
+    }
+}

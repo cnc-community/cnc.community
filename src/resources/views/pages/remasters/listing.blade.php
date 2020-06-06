@@ -31,6 +31,7 @@
         <a href="/command-and-conquer-remastered/workshop-mods" class="btn btn-primary" title="View Mods">Mods &amp; Maps</a>
         <a href="#streams" class="btn btn-primary" title="View Streams">Streams</a>
         <a href="#news" class="btn btn-primary" title="View News">News</a>
+        <a href="#support" class="btn btn-primary" title="View Help & Support">Support</a>
     </div>
 </div>
 @endsection
@@ -179,6 +180,29 @@
 
         <div class="items-wrap">
             <?php new App\Http\CustomView\Components\NewsListing($news); ?>
+        </div>
+    </div>
+</section>
+
+<section id="help" class="section section-dark-alt section-help">
+    <div class="main-content center">
+        <div class="feature-box">
+            <div class="feature-text">
+                <h1 class="section-title"><span class="light">Help &amp; Support</span> <br /> Get help or report a bug</h1>
+                <p class="section-description">
+                    Having a performance issue, experiencing a crash, freeze, or error with the C&amp;C Remastered Collection? Visit the relevant forums below.
+                </p>
+                <div class="buttons">
+                    <a class="btn btn-secondary btn-icon" target="_blank" title="Ask for help" rel="nofollow" href="https://answers.ea.com/t5/Technical-Issues/bd-p/cc-remastered-collection-technical-en">Ask for help <i class="icon-ea"></i></a>
+                    <a class="btn btn-secondary btn-icon" target="_blank" title="Report a bug" rel="nofollow" href="https://answers.ea.com/t5/Bug-Reports/bd-p/cc-remastered-collection-bug-reports-en">Report a bug <i class="icon-ea"></i></a>
+                </div>
+            </div>
+
+            <div class="feature-banner">
+                <a title="Answers HQ" rel="nofollow" href="https://answers.ea.com/t5/C-C-Remastered-Collection/ct-p/cc-remastered-collection-en">
+                    <img src="/assets/images/ea-answers-hq.jpg" alt="C&amp;C Remasters EA Answers HQ">
+                </a>
+            </div>
         </div>
     </div>
 </section>
