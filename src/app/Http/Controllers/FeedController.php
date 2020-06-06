@@ -42,6 +42,9 @@ class FeedController extends Controller
         $ppmFeed =  new XMLFeedParser("https://www.ppmsite.com/news/rss/ppm_all.xml");
         $ppmFeed->run();
 
+        // $w3dhubFeed = new XMLFeedParser("https://w3dhub.com/forum/rss/1-w3d-hub-news.xml/?member_id=1484&key=2dbafbb11199210b6b0d3b07ef4590ab");
+        // $w3dhubFeed->run();
+
         $reddit = new RedditFeedParser("https://www.reddit.com/r/commandandconquer.json");
         $reddit->run();
     }
