@@ -68,7 +68,7 @@ $howToPlaySteps = App\ViewHelper::getCategoryCustomFieldContents(
                     <?php endif; ?>
                 </p>
                 <div class="buttons">
-                    <a class="btn btn-primary" title="How to play" href="{{ $category->slug}}/how-to-play">How to play guide</a>
+                    <a class="btn btn-primary" title="How to play" href="/{{ $category->slug}}/how-to-play">How to play guide</a>
                 </div>
             </div>
 

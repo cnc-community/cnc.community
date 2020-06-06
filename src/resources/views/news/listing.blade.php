@@ -1,5 +1,8 @@
 @extends('layouts.app')
 
+@section('title', $category->name)
+@section('description', "Stay up to date with our latest developments with ". $category->name)
+
 @section('hero')
 <div class="content center">
     <h1>
