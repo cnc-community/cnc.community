@@ -107,12 +107,39 @@
     <script defer src="/assets/js/NavBarJs.js"></script>
     <script defer>
         var navToggleBtn = document.getElementById("mobileMenuToggle");
-        var navToggle = document.getElementById("nav");
+        var nav = document.getElementById("nav");
 
         navToggleBtn.addEventListener("click", function()
         {
             navToggleBtn.classList.toggle("is-active");
-            navToggle.classList.toggle("nav-open");
+            nav.classList.toggle("nav-open");
+        }, false);
+
+        var lastScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        window.addEventListener("scroll", function(){
+           var st = window.pageYOffset || document.documentElement.scrollTop;
+
+           if (st > lastScrollTop)
+           {
+               console.log('scroll down')
+               nav.setAttribute("hidden", "true");
+            }
+            else
+            {
+                console.log('scroll up')
+                nav.setAttribute("hidden", "false");
+           }
+
+           if (st === 0)
+           {
+               nav.setAttribute("isAtTopOfThePage", true);
+            }
+            else
+            {
+                nav.setAttribute("isAtTopOfThePage", false);
+           }
+
+           lastScrollTop = st <= 0 ? 0 : st;
         }, false);
     </script>
 </body>

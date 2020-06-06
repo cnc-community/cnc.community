@@ -9,6 +9,17 @@
     z-index: 20;
     padding-top: 20px;
     padding-bottom: 20px;
+    background: transparent;
+    transition: all 350ms ease-in-out;
+}
+
+.site-header[hidden="true"]
+{
+    transform: translateY(-100%);
+}
+
+.site-header[isAtTopOfThePage="false"]
+{
     background: #000;
 }
 
