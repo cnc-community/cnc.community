@@ -49,13 +49,18 @@
 
  .site-header .notification 
 {
+    @extend %notification-balloon;
+}
+
+%notification-balloon 
+{
     display: flex;
     align-items: center;
     justify-content: center;
     position: absolute;
     top: -6px;
     right: -12px;
-    background: #dc005c;
+    background: #008617;
     border-radius: 100%;
     padding: 12px;
     width: 8px;

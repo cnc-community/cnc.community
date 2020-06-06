@@ -94,20 +94,8 @@
 
 .twitch-games-navbar .count 
 {
-    background: #3f423e;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    top: 4px;
-    right: -9px;
-    border-radius: 100%;
-    padding: 9px;
-    width: 5px;
-    height: 5px;
-    font-size: 10px;
-    color: #fff;
+    @extend %notification-balloon;
+    opacity: 1;
 }
 
 .twitch-games-navbar .twitch-game-link.live 
@@ -119,7 +107,6 @@
 
 .twitch-games-navbar .twitch-game-link.live .count 
 {
-    background: #00c156;
     color: $color-white;
 }
 
