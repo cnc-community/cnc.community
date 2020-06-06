@@ -96,17 +96,18 @@
 {
     @extend %notification-balloon;
     opacity: 1;
+    background: #2f2f2f;
 }
 
 .twitch-games-navbar .twitch-game-link.live 
 {
-    background: #151515;
     color: $color-white;
     transition: color ease-in-out 300ms;
 }
 
 .twitch-games-navbar .twitch-game-link.live .count 
 {
+    background: #008617;
     color: $color-white;
 }
 
