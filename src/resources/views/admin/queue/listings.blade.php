@@ -14,7 +14,7 @@
                 </div>
                 <div class="card-body admin-listings">
                     <?php foreach($news as $newsItem): ?>
-                        <div class="card admin-item col-md-3">
+                        <div class="card admin-item col-md-6">
                             <div class="card-body">
                                 <h4>
                                     <a href="{{ route('admin.queue.edit', ['id' => $newsItem->id ]) }}">{{ $newsItem->title}}</a>
