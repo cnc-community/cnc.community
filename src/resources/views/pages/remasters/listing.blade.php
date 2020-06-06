@@ -31,7 +31,7 @@
         <a href="/command-and-conquer-remastered/workshop-mods" class="btn btn-primary" title="View Mods">Mods &amp; Maps</a>
         <a href="#streams" class="btn btn-primary" title="View Streams">Streams</a>
         <a href="#news" class="btn btn-primary" title="View News">News</a>
-        <a href="#support" class="btn btn-primary" title="View Help & Support">Support</a>
+        <a href="#help" class="btn btn-primary" title="View Help & Support">Support</a>
     </div>
 </div>
 @endsection

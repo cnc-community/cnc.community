@@ -70,6 +70,7 @@
                     <a href="/command-and-conquer-remastered#news" title="C&C News">News</a>
                     <a href="/command-and-conquer-remastered#streams" title="C&C Streams">Streams</a>
                     <a href="/command-and-conquer-remastered/workshop-mods" title="Steam Workshop">Steam Workshop</a>
+                    <a href="/command-and-conquer-remastered#help" title="Help & Support">Help &amp; Support</a>
                 </div>
             </div>
         </div>
