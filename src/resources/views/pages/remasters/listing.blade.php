@@ -53,7 +53,7 @@
 
             <div class="feature-banner">
                 <div class="embed-iframe">
-                    <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/9iMfypQj3k0" 
+                    <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/DrtodXOIeW8" 
                     frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
                     </iframe>
                 </div>
@@ -68,6 +68,30 @@
                         </a>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="buy" class="section section-dark-alt section-about">
+    <div class="main-content center">
+        <div class="feature-box">
+            <div class="feature-text">
+                <h1 class="section-title"><span class="light">EA Partners with</span> <br /> Petroglyph Games</h1>
+                <p class="section-description">
+                    Petroglyph Games includes many of the original developers from Westwood Studios, and some of the most influential members 
+                    of the original Command & Conquer development team from 1995. Be sure to support Petroglyph by joining their Discord server and website.
+                </p>
+                <div class="buttons">
+                    <a class="btn btn-secondary btn-icon" title="Visit Petroglyph Discord" rel="nofollow" href="https://discord.gg/ygGFZxz">Visit Discord <i class="icon-discord"></i></a>
+                    <a class="btn btn-secondary btn-icon" title="Visit Petroglpyh Website" rel="nofollow" href="https://petroglyphgames.com/">Visit Website <i class="icon-petroglyph"></i></a>
+                </div>
+            </div>
+
+            <div class="feature-banner">
+                <a title="Petroglyph Games Website" rel="nofollow" href="https://petroglyphgames.com/">
+                    <img src="/assets/images/petroglyph-games.png" alt="Petroglyph Games Logo">
+                </a>
             </div>
         </div>
     </div>

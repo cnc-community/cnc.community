@@ -350,6 +350,11 @@ p > code
     background-color: #000;
 }
 
+.section-dark-alt 
+{
+    background-color: #030304;
+    @extend %background-dark-alt;
+}
 
 // Temp 
 .admin-nav 

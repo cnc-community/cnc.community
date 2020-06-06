@@ -118,3 +118,41 @@
     }
     padding-bottom: 40px;
 }
+
+.page-remasters .feature-box .section-description
+{
+    width: auto;
+}
+
+.page-remasters .section-about .feature-banner
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    order: -1;
+
+    @media(min-width: $xl-width)
+    {
+        order: 1;
+    }
+
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-top: 25px;
+}
+
+.page-remasters .section-about .buttons
+{
+    justify-content: center;
+
+    @media(min-width: $xl-width)
+    {
+        justify-content: flex-start;
+    }
+}
+
+.page-remasters .section-about .feature-text 
+{
+    padding-right: 0;
+}
