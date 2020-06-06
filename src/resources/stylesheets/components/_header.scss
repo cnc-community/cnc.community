@@ -7,9 +7,10 @@
     top: 0;
     left: 0;
     right: 0;
-    z-index: 10;
+    z-index: 20;
     padding-top: 20px;
     padding-bottom: 20px;
+    background: #000;
 }
 
 .site-header .logo-burger-container
@@ -187,25 +188,9 @@
     }
 }
 
-.site-header.nav-closed 
+.site-header.nav-open
 { 
-    background: transparent; 
-
-    @media(min-width: $xl-width)
-    {
-        background: #0000006b;
-    }
-}
-
-.site-header.nav-open 
-{ 
-    background: #1b1b1b;
     box-shadow: 0px -1px 9px 14px #000000d9;
-
-    @media(min-width: $xl-width)
-    {
-        background: #0000006b;
-    }
 }
 
 .site-header.nav-closed .mobile-navigation
