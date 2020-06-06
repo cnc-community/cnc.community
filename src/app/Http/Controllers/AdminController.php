@@ -28,7 +28,6 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $news = News::all();
-        return view('admin.index', ["news" => $news]);
+        return view('admin.index');
     }
 }

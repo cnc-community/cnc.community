@@ -22,7 +22,7 @@
             <div class="card">
                 <div class="card-body admin-listings">
                     <?php foreach($news as $newsItem): ?>
-                        <div class="card admin-item col-md-4">
+                        <div class="card admin-item col-md-3">
                             <div class="card-body">
                                 <h4>
                                     <a href="{{ route('admin.news.edit', ['id' => $newsItem->id ]) }}">{{ $newsItem->title}}</a>
@@ -42,6 +42,7 @@
                         </div>
                     <?php endforeach; ?>
                 </div>
+                {{ $news->links() }}
             </div>
         </div>
     </div>
