@@ -42,10 +42,18 @@
     <div class="page page-@yield('page-class')">
         <header id="nav" class="site-header nav-closed">
             <div class="main-content">
-                <div class="logo">
-                    <a href="/" title="C&C Community">
-                        <img src="/assets/images/logo.svg" alt="C&C Community Logo" />
-                    </a>
+                <div class="logo-burger-container">
+                    <div class="logo">
+                        <a href="/" title="C&C Community">
+                            <img src="/assets/images/logo.svg" alt="C&C Community Logo" />
+                        </a>
+                    </div>
+
+                    <button id="mobileMenuToggle" class="navburger navburger--elastic " type="button">
+                        <span class="navburger-box">
+                            <span class="navburger-inner"></span>
+                        </span>
+                    </button>
                 </div>
 
                 <nav class="mobile-navigation">
@@ -55,12 +63,6 @@
                 <nav class="main-navigation">
                     @include("layouts.navigation.main-menu")
                 </nav>
-
-                <button id="mobileMenuToggle" class="navburger navburger--elastic " type="button">
-                    <span class="navburger-box">
-                        <span class="navburger-inner"></span>
-                    </span>
-                </button>
             </div>
         </header>
 
