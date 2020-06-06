@@ -28,7 +28,7 @@ class NewsController extends Controller
      */
     public function index()
     {
-        $news = News::all();
+        $news = News::orderByDesc("created_at")->limit(25)->get();
         return view('admin.news.listings', ["news" => $news]);
     }
 

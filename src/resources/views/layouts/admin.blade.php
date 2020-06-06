@@ -48,6 +48,11 @@
         text-align: center;
         margin-left: 15px;
     }
+    .admin-listings 
+    {
+        display: flex;
+        flex-wrap: wrap;
+    }
     </style>
 </head>
 
