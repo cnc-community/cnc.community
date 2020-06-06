@@ -80,7 +80,7 @@
                 <h1 class="section-title"><span class="light">EA Partners with</span> <br /> Petroglyph Games</h1>
                 <p class="section-description">
                     Petroglyph Games includes many of the original developers from Westwood Studios, and some of the most influential members 
-                    of the original Command & Conquer development team from 1995. Be sure to support Petroglyph by joining their Discord server and website.
+                    of the original Command & Conquer development team from 1995. Be sure to support Petroglyph by joining their Discord server and visiting their website.
                 </p>
                 <div class="buttons">
                     <a class="btn btn-secondary btn-icon" title="Visit Petroglyph Discord" rel="nofollow" href="https://discord.gg/ygGFZxz">Visit Discord <i class="icon-discord"></i></a>
