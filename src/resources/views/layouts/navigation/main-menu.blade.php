@@ -66,10 +66,10 @@
                         <a href="/command-and-conquer-remastered" title="C&C Remastered Collection">C&amp;C Remastered</a>
                     </div>
                     <a href="/command-and-conquer-remastered#buy" title="Buy the Remastered Collection">Where to buy</a>
-                    <a href="/command-and-conquer-remastered#about" title="About Remastered Collection">About Remasters</a>
+                    <a href="/command-and-conquer-remastered#about" title="Petroglyph Games">Petroglyph</a>
                     <a href="/command-and-conquer-remastered#news" title="C&C News">News</a>
                     <a href="/command-and-conquer-remastered#streams" title="C&C Streams">Streams</a>
-                    <a href="/command-and-conquer-remastered/workshop-mods" title="C&C Mods ">Mod Workshop</a>
+                    <a href="/command-and-conquer-remastered/workshop-mods" title="Steam Workshop">Steam Workshop</a>
                 </div>
             </div>
         </div>

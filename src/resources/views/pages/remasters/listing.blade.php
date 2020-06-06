@@ -164,7 +164,7 @@
 
         <?php if($streams): ?>
         <div class="buttons">
-            <a href="/creators?gameName=remasters" title="View all C&C Remastered Streams" class="btn btn-secondary">View all streams</a>
+            <a href="/creators?gameName=remasters" title="View all C&C Remastered Streams" class="btn btn-secondary">View all C&amp;C Remastered streams</a>
         </div>
         <?php endif; ?>
     </div>
