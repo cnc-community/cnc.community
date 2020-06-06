@@ -1,4 +1,4 @@
-.site-header 
+.site-header
 {
     display: flex;
     align-items: center;
@@ -12,11 +12,20 @@
     padding-bottom: 20px;
 }
 
+.site-header .logo-burger-container
+{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    @media(min-width: $xl-width)
+    {
+        width: unset;
+    }
+}
+
 .site-header .logo
 {
-    position: absolute;
-    top: 0;
-    left: 0;
     display: flex;
     align-items: center;
     color: $color-white;
@@ -89,10 +98,15 @@
 .site-header .main-content
 {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    flex-direction: row;
     width: 90vw;
+
+    @media(min-width: $xl-width)
+    {
+        flex-direction: row;
+    }
 }
 
 
@@ -159,13 +173,6 @@
     align-items: center;
     justify-content: space-around;
     max-width: 100%;
-}
-
-.site-header .navburger 
-{
-    position: absolute;
-    right: 0;
-    top: 0;
 }
 
 @keyframes animateIn 
