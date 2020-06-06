@@ -14,6 +14,9 @@
 
 .site-header .logo
 {
+    position: absolute;
+    top: 0;
+    left: 0;
     display: flex;
     align-items: center;
     color: $color-white;
@@ -31,10 +34,6 @@
     {
         height: 30px;
     }
-
-    position: absolute;
-    top: 0;
-    left: 0;
 
     @media(min-width: $xl-width)
     {
