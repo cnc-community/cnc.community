@@ -5,7 +5,7 @@ html, body
     margin: 0;
     padding: 0;
     width: 100%;
-    height: 100%;
+    min-height: 100vh;
 }
 
 *, ::after, ::before {
@@ -24,6 +24,7 @@ a {
 main
 {
     width: 100%;
+    flex-grow: 1;
     margin: 0 auto 60px auto;
 }
 
@@ -182,45 +183,11 @@ footer .logo img
     height: 50px;
 }
 
-// @media (min-width: $sm-width)
-// {
-//     .content 
-//     {
-//         max-width: $sm-max-width;
-//         padding-left: 0;
-//         padding-right: 0;
-//     }
-// }
-
-// @media (min-width: $md-width)
-// {
-//     .content 
-//     {
-//         max-width: $md-max-width;
-//     }
-// }
-
-// @media (min-width: $lg-width)
-// {
-//     .content 
-//     {
-//         max-width: $lg-max-width;
-//     }
-// }
-
-// @media (min-width: $xl-width)
-// {
-//     .content
-//     {
-//         max-width: $xl-width;
-//     }
-// }
-
 .content-fluid { width: 100%; }
 .page 
 {
     width: 100%;
-    height: 100%;
+    flex-grow: 1;
 }
 
 .button-group
@@ -544,18 +511,22 @@ footer .notice
     width: 100%;
     margin-bottom: 20px;
     
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-basis: 100%;
+
     @media(min-width:$md-width)
     {
-        width: 45%;
+        flex-basis: 45%;
         margin-right: 20px;
     }
     @media(min-width:$lg-width)
     {
-        width: 47%;
+        flex-basis: 47%;
     }
     @media(min-width:$xl-width)
     {
-        width: 30%;
+        flex-basis: 30%;
     }
 }
 

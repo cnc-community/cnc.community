@@ -12,6 +12,10 @@
     justify-content: center;
     background: black;
     border-radius: 4px;
+        
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-basis: 0;
 }
 
 .news-item .article-info 

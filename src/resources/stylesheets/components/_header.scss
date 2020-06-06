@@ -57,17 +57,21 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-grow: 1;
+    flex-shrink: 0;
+
     position: absolute;
+    width: 24px;
+    height: 24px;
     top: -6px;
     right: -12px;
+
     background: #008617;
     border-radius: 100%;
-    padding: 12px;
-    width: 8px;
-    height: 8px;
     font-size: 11px;
     color: #ffffff;
     opacity: 0;
+    text-align: center;
 }
 
 @keyframes scaleNotificationPop 
