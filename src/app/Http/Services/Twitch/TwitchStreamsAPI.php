@@ -62,19 +62,40 @@ class TwitchStreamsAPI extends AbstractTwitchAPI
         });
     }
 
-    public function getStreamByGame($gameId, $limit)
+    public function getStreamByGame($gameId)
     {   
-        // 10 minute cache
-        return Cache::remember('getStreamByGames'.$limit.$gameId, 600, function () use($gameId, $limit)
-        {
-            $response = Http::withHeaders(
-                [
-                    "Client-ID" => $this->_clientId, 
-                    "Authorization" => "Bearer " . $this->_token
-                ])
-                ->get($this->_apiUrl . TwitchStreamsAPI::STREAMS_URL . '?game_id='. $gameId . '&first='.$limit);
+        $data = [];
 
-            return $response["data"];
+        // 10 minute cache
+        return Cache::remember('getStreamByGame'.$gameId, 600, function () use($data, $gameId)
+        {
+            $count = 0;
+            $pagination = "";
+            $queryString = "?game_id=". $gameId;
+    
+            $json = $this->fetchByQuery($queryString, $pagination);
+            foreach($json["data"] as $r)
+            {
+                $data[] = $r;
+            }
+
+            while($json["pagination"] != null)
+            {
+                $count++;
+
+                $json = $this->fetchByQuery($queryString, $json["pagination"]["cursor"]);
+                foreach($json["data"] as $r)
+                {
+                    $data[] = $r;
+                }
+                
+                // safety
+                if ($count > 20)
+                {
+                    die("Safety kill");
+                }
+            }
+            return $data;
         });
     }
 
@@ -99,20 +120,25 @@ class TwitchStreamsAPI extends AbstractTwitchAPI
         {
             $count = 0;
             $pagination = "";
+
             $json = $this->fetchByQuery($queryString, $pagination);
+            foreach($json["data"] as $r)
+            {
+                $data[] = $r;
+            }
 
             while($json["pagination"] != null)
             {
-                $json = $this->fetchByQuery($queryString, $json["pagination"]["cursor"]);
                 $count++;
 
+                $json = $this->fetchByQuery($queryString, $json["pagination"]["cursor"]);
                 foreach($json["data"] as $r)
                 {
                     $data[] = $r;
                 }
                 
                 // safety
-                if ($count > 10)
+                if ($count > 20)
                 {
                     die("Safety kill");
                 }

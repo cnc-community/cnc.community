@@ -3,9 +3,20 @@
 namespace App;
 
 use App\PageCustomField;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Pagination\Paginator;
 
 class ViewHelper
 {
+    public static function createPaginationFromArray($arr, $perPage, $currentPage)
+    {
+        $currentPage = LengthAwarePaginator::resolveCurrentPage();
+        $collection = new Collection($arr);
+        $currentPageResults = $collection->slice(($currentPage-1) * $perPage, $perPage)->all();
+        return new LengthAwarePaginator($currentPageResults, count($collection), $perPage);
+    }
+
     public static function getCustomFieldContents($pageId, $key)
     {
         $customField = PageCustomField::getCustomFieldByPageAndKey($pageId, $key);

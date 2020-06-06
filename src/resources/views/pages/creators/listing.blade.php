@@ -48,7 +48,11 @@
         <?php endif; ?>
         </h2>
 
+        {{ $streams->withQueryString()->links() }}
+
         <?php new App\Http\CustomView\Components\TwitchListing($streams); ?>
+
+        {{ $streams->withQueryString()->links() }}
     </div>
 </section>
 

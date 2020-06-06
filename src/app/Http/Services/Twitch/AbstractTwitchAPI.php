@@ -11,9 +11,9 @@ abstract class AbstractTwitchAPI
         $this->_parser = $parser;
     }
 
-    public function getStreamByGame($gameId, $limit)
+    public function getStreamByGame($gameId)
     {
-        $this->_parser->getStreamByGame($gameId, $limit);
+        $this->_parser->getStreamByGame($gameId);
     }
 
     public function getStreamByGames($games)

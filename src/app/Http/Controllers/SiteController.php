@@ -9,6 +9,7 @@ use App\Constants;
 use App\Http\Services\SteamHelper;
 use App\Http\Services\TwitchHelper;
 use App\PageCategory;
+use App\ViewHelper;
 use Symfony\Component\HttpFoundation\Request;
 use Illuminate\Support\Facades\Cache;
 
@@ -118,12 +119,15 @@ class SiteController extends Controller
         else
         {
             $gameName = $request->gameName;
-            $streams = $this->twitchHelper->getTwitchGamesBySlug($request->gameName, 100);
+            $streams = $this->twitchHelper->getTwitchGamesBySlug($request->gameName);
             $videos = $this->twitchHelper->getTwitchVideosBySlug($request->gameName);
         }
-        
+
+        $streamsPaginated = ViewHelper::createPaginationFromArray($streams, 20, $request->page);
+        $streamsPaginated->withPath('/creators');
+
         return view('pages.creators.listing', [
-            "streams" => $streams, 
+            "streams" => $streamsPaginated, 
             "videos" => $videos,
             "gameFullName" => Constants::getTwitchGameBySlug($request->gameName),
             "gameName" => $gameName
