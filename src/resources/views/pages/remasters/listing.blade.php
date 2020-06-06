@@ -73,7 +73,7 @@
     </div>
 </section>
 
-<section id="buy" class="section section-dark-alt section-about">
+<section id="about" class="section section-dark-alt section-about">
     <div class="main-content center">
         <div class="feature-box">
             <div class="feature-text">
