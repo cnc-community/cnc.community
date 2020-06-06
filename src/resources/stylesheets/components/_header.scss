@@ -1,7 +1,6 @@
 .site-header
 {
-    display: flex;
-    align-items: center;
+    display: block;
     overflow: visible;
     position: fixed;
     top: 0;
@@ -115,25 +114,22 @@
 .site-header.nav-open
 {
     background: #1b1b1b;
+    height: 100%;
+    overflow-y: scroll;
 }
 
 .site-header .mobile-navigation 
 {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    background: #1b1b1b;
-    margin: 0 auto;
-    width: 100%;
-    padding: 60px 15px;
 }
 
 .site-header .mobile-navigation .navbar-items
 {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     align-items: center;
-    justify-content: center;
 }
 
 .site-header .mobile-navigation .title 
