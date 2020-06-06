@@ -20,6 +20,9 @@
             @endif
 
             <div class="card">
+                <div class="card-body">
+                    {{ $news->links() }}
+                </div>
                 <div class="card-body admin-listings">
                     <?php foreach($news as $newsItem): ?>
                         <div class="card admin-item col-md-3">
@@ -32,6 +35,9 @@
                                         <small>Updated</small> <small>- {{ $newsItem->updated_at->diffForHumans() }}</small> 
                                     </li>
                                     <li>
+                                        <small>Created</small> <small>- {{ $newsItem->created_at->diffForHumans() }}</small> 
+                                    </li>
+                                    <li>
                                         <small>Category</small> <small>- {{ $newsItem->category()->name }}</small>
                                     </li>
                                 </ul>
@@ -42,7 +48,6 @@
                         </div>
                     <?php endforeach; ?>
                 </div>
-                {{ $news->links() }}
             </div>
         </div>
     </div>

@@ -9,13 +9,15 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
+                <div class="card-body">
+                    {{ $news->links() }}
+                </div>
                 <div class="card-body admin-listings">
-
                     <?php foreach($news as $newsItem): ?>
                         <div class="card admin-item col-md-3">
                             <div class="card-body">
                                 <h4>
-                                    <a href="{{ route('admin.news.edit', ['id' => $newsItem->id ]) }}">{{ $newsItem->title}}</a>
+                                    <a href="{{ route('admin.queue.edit', ['id' => $newsItem->id ]) }}">{{ $newsItem->title}}</a>
                                 </h4>
                                 <ul class="list-unstyled">
                                     <li>
@@ -31,7 +33,9 @@
                             </div>
                         </div>
                     <?php endforeach; ?>
+                </div>
 
+                <div class="card-body">
                     {{ $news->links() }}
                 </div>
             </div>
