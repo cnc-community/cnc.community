@@ -48,12 +48,12 @@ class NewsItem extends AbstractCustomView
 
                     <div class="button">
                         <?php if($this->type == News::NEWS_EXTERNAL): ?>
-                            <a href="<?php echo $this->url; ?>" title="<?php echo $this->title; ?>" class="btn-link"  rel="nofollow noreferrer" target="_blank">
-                            <i class="icon-link"></i>
+                            <a href="<?php echo $this->url; ?>" title="<?php echo $this->title; ?>" class="btn-link" rel="nofollow noreferrer" target="_blank">
+                            <i class="icon-link" aria-label="Link Icon"></i>
                         </a>
                         <?php else: ?>
                             <a href="<?php echo $this->url; ?>" title="<?php echo $this->title; ?>" class="btn-link" >
-                            <i class="icon-article"></i>
+                            <i class="icon-article" aria-label="Article Icon"></i>
                         </a>
                         <?php endif; ?>
                     </div>
