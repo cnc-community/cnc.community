@@ -228,7 +228,7 @@ class SiteController extends Controller
             return News::newsByCategoryId($categoryCache->news_category_id);
         });
 
-        $streams = $this->twitchHelper->getTwitchGamesBySlug($categorySlug);
+        $streams = $this->twitchHelper->getTopTwitchStreamsBySlug($categorySlug, 8);
         $videos = $this->twitchHelper->getTwitchVideosBySlug($categorySlug);
 
         $template = $categoryCache->bladeTemplate();
@@ -254,17 +254,18 @@ class SiteController extends Controller
         $key = "cache_" . $slugCategory . "_" . $slug;
         
         $heroVideo = Constants::getVideoWithPoster($slugCategory);
-
         $pageCache = Cache::remember($key, Constants::getCacheSeconds(), function ()  use ($slugCategory, $slug) 
         {
             return Page::checkPageExistsWithSlugs($slugCategory, $slug);
         });
+
         if ($pageCache == null) abort(404);
         
         if ($pageCache->bladeTemplate() == null)
         {
             return view('pages.detail', array("page" => $pageCache));
         }
+
         return view($pageCache->bladeTemplate(), array("page" => $pageCache, "heroVideo" => $heroVideo, "slugCategory" => $slugCategory));
     }
 
