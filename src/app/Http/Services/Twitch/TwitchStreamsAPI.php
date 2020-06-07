@@ -67,7 +67,7 @@ class TwitchStreamsAPI extends AbstractTwitchAPI
         $data = [];
 
         // 10 minute cache
-        return Cache::remember('getStreamByGame'.$gameId, 600, function () use($data, $gameId)
+        return Cache::remember('getStreamByGame'.$gameId, Constants::getCacheSeconds(), function () use($data, $gameId)
         {
             $count = 0;
             $pagination = "";
@@ -116,7 +116,7 @@ class TwitchStreamsAPI extends AbstractTwitchAPI
         $data = [];
         
         // 10 minute cache
-        return Cache::remember('getStreamByGames'.$queryString, 600, function () use($queryString, $data)
+        return Cache::remember('getStreamByGames'.$queryString, Constants::getCacheSeconds(), function () use($queryString, $data)
         {
             $count = 0;
             $pagination = "";
@@ -163,16 +163,14 @@ class TwitchStreamsAPI extends AbstractTwitchAPI
         $games = [];
         
         // 10 minute cache
-        return Cache::remember('getCounts', 600, function () use($data, $games)
+        return Cache::remember('getCounts', Constants::getCacheSeconds(), function () use($data, $games)
         {
             foreach($data as $twitchUser)
             {
-                // Late night thoughts why this is even needed
-                // Leaving incase it might be needed again :-o
-                // if (!in_array($twitchUser["user_name"], $games))
-                // {
-                // }
-                $games[$twitchUser["game_id"]][]= $twitchUser["user_name"];
+                if (!in_array($twitchUser["user_name"], $games))
+                {
+                    $games[$twitchUser["game_id"]][]= $twitchUser["user_name"];
+                }
             }
             return $games;
         });
