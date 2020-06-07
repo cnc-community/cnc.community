@@ -61,6 +61,24 @@ class TwitchStreamsAPI extends AbstractTwitchAPI
             return $response["data"];
         });
     }
+    
+    /**
+     * Gets top streams with a limit
+     */
+    public function getTopStreamsByGame($gameId, $limit)
+    {
+        // 10 minute cache
+        $key = 'getTopStreamsByGame'.$gameId.$limit;
+        
+        return Cache::remember($key, Constants::getCacheSeconds(), function () use($gameId, $limit)
+        {
+            $pagination = "";
+            $queryString = "?game_id=". $gameId;
+    
+            $json = $this->fetchByQuery($queryString, $pagination, $limit);
+            return $json["data"];
+        });
+    }
 
     public function getStreamByGame($gameId)
     {   
@@ -147,14 +165,14 @@ class TwitchStreamsAPI extends AbstractTwitchAPI
         });
     }
 
-    private function fetchByQuery($queryString, $pagination = "")
+    private function fetchByQuery($queryString, $pagination = "", $limit = 100)
     {
         return Http::withHeaders(
             [
                 "Client-ID" => $this->_clientId, 
                 "Authorization" => "Bearer " . $this->_token
             ])
-            ->get($this->_apiUrl . TwitchStreamsAPI::STREAMS_URL . $queryString . '&first=100&after='.$pagination)
+            ->get($this->_apiUrl . TwitchStreamsAPI::STREAMS_URL . $queryString . '&first='. $limit . '&after='.$pagination)
             ->json();
     }
 

@@ -158,7 +158,7 @@ class SiteController extends Controller
             5
         );
    
-        $streams = $this->twitchHelper->getTwitchGamesBySlug("remasters", 8);
+        $streams = $this->twitchHelper->getTopTwitchStreamsBySlug("remasters", 8);
 
         $categoryCache = Cache::remember($key."pages.remasters.listing.categoryCache", Constants::getCacheSeconds(), function ()
         {

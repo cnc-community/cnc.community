@@ -14,6 +14,12 @@ class TwitchHelper
         $this->twitchStreamsAPI = new TwitchStreamsAPI();
     }
 
+    public function getTopTwitchStreamsBySlug($slug, $limit)
+    {
+        $gameId = $this->getGameIdBySlug($slug);
+        return $this->twitchStreamsAPI->getTopStreamsByGame($gameId, $limit);
+    }
+
     public function getTwitchGamesBySlug($slug)
     {
         $gameId = $this->getGameIdBySlug($slug);
