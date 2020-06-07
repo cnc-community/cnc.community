@@ -119,50 +119,59 @@ class TwitchStreamsAPI extends AbstractTwitchAPI
 
     public function getStreamByGames($games)
     {
-        $queryString = "";
-
-        $i = 0;
-        foreach($games as $k => $game)
-        {
-            if ($i == 0){
-                $queryString .= "?game_id=" . $game;
-            }
-            $queryString .= "&game_id=" . $game;
-            $i++;
-        }
+        $queryString = $this->buildGameQueryString($games);
 
         $data = [];
         
         // 10 minute cache
         return Cache::remember('getStreamByGames'.$queryString, Constants::getCacheSeconds(), function () use($queryString, $data)
         {
-            $count = 0;
+            $data = [];
+            $callCount = 0;
+
             $pagination = "";
 
-            $json = $this->fetchByQuery($queryString, $pagination);
-            foreach($json["data"] as $r)
-            {
-                $data[] = $r;
-            }
+            $jsonResponse = $this->fetchByQuery($queryString, $pagination, 100);
 
-            while($json["pagination"] != null)
+            // Otherwise loop over until we have everything
+            while($jsonResponse["pagination"] != null)
             {
-                $count++;
-
-                $json = $this->fetchByQuery($queryString, $json["pagination"]["cursor"]);
-                foreach($json["data"] as $r)
+                foreach($jsonResponse["data"] as $r)
                 {
                     $data[] = $r;
                 }
                 
-                // safety
-                if ($count > 20)
+                $jsonResponse = $this->fetchByQuery($queryString, $jsonResponse["pagination"]["cursor"], 100);
+
+                $callCount++;
+                if ($callCount > 20)
                 {
-                    die("Safety kill");
+                    return $data;
+                    die();
                 }
             }
+
             return $data;
         });
+    }
+    
+    private function buildGameQueryString($games)
+    {
+        $queryString = "";
+        $i = 0;
+        foreach($games as $k => $game)
+        {
+            if ($i == 0)
+            {
+                $queryString .= "?game_id=" . $game;
+            }
+            else
+            {
+                $queryString .= "&game_id=" . $game;
+            }
+            $i++;
+        }
+        return $queryString;
     }
 
     private function fetchByQuery($queryString, $pagination = "", $limit = 100)
