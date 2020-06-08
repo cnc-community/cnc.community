@@ -11,14 +11,16 @@ Check out [our mission](OURMISSION.MD)
 
 **Without docker**
 
-In the `src` directory is the standard Laravel files. Run the following commands
+* Create a database and rename `env.example` to `.env`, updating `DB_DATABASE`, `DB_USERNAME` and `DB_PASSWORD`
+* In the `src` directory is the standard Laravel files. Run the following commands:
+
 ```shell
     composer install
-    npm run dev
+    npm install
     php artisan migrate migrate:refresh --seed
     php artisan storage:link
+    php artisan serve --port=8080
 ```
-
 
 **Using docker**
 
