@@ -15,7 +15,7 @@ In the `src` directory is the standard Laravel files. Run the following commands
 ```shell
     composer install
     npm run dev
-    php artisan migrate
+    php artisan migrate migrate:refresh --seed
     php artisan storage:link
 ```
 
