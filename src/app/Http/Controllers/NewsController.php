@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\News;
 use App\Http\Services\FeedHelper;
+use App\NewsCategories;
+use App\NewsCategory;
 use App\NewsFeedQueue;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
@@ -85,11 +87,11 @@ class NewsController extends Controller
 
         $newsItem->title = $request->title;
         $newsItem->post = $request->post;
-        $newsItem->category_id = $request->category_id;
+
+        NewsCategory::addRemoveCategory($newsItem->id, $request->category_id);
         $newsItem->save();
 
         $request->session()->flash('status', 'Post saved');
-        
         return redirect()->back();
     }
 }

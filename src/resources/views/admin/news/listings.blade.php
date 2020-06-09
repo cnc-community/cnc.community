@@ -38,7 +38,13 @@
                                         <small>Created</small> <small>- {{ $newsItem->created_at->diffForHumans() }}</small> 
                                     </li>
                                     <li>
-                                        <small>Category</small> <small>- {{ $newsItem->category()->name }}</small>
+                                        <small>Categories</small> 
+                                        - 
+                                        <small>
+                                        @foreach($newsItem->categories() as $category)
+                                            {{ $category->name }},
+                                        @endforeach
+                                        </small>
                                     </li>
                                 </ul>
                                 <?php if($newsItem->image): ?>

@@ -40,7 +40,7 @@
 
                         <div class="form-group">
                             <label for="category">Category</label>
-                            <select id="category" class="form-control" name="category_id">
+                            <select id="category" class="form-control" name="category_id[]" multiple>
                             @foreach(\App\Category::all() as $category)
                                 <option value="{{ $category->id}}" {{ $category->id == $newsItem->category_id ? "selected": ""}}>
                                 {{ $category->name }}

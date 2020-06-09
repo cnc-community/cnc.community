@@ -43,30 +43,48 @@ class News extends Model
         return "/news/" . $this->category()->slug . "/" . $this->url;
     }
 
-    public function category()
+    public function categories()
     {
-        return Category::where("id", $this->category_id)->first();
+        return Category::leftJoin("news_categories", "categories.id", "=", "news_categories.category_id")
+            ->where("news_categories.news_id", $this->id)
+            ->get();
     }
 
-    public static function newsByCategoryId($categoryId)
+    public function category()
+    {
+        // no longer used, eventually remove references
+    }
+
+    public static function newsByCategoryId($categoryId, $limit = 20)
     {
         $category = Category::where("id", $categoryId)->first();
         if ($category == null)
         {
             return [];
         }
-        return News::where("category_id", $category->id)->orderByDesc("created_at")->paginate(20);
+
+        return News::leftJoin("news_categories", "news.id", "=", "news_categories.news_id")
+            ->where("category_id", $category->id)
+            ->orderByDesc("news.created_at")
+            ->paginate($limit);
     }
 
     public static function officialNewsPaginated($limit = 20)
     {
         $category = Category::where("name", "Official News")->first();
-        return News::where("category_id", $category->id)->orderByDesc("created_at")->paginate($limit);
+
+        return News::leftJoin("news_categories", "news.id", "=", "news_categories.news_id")
+            ->where("category_id", $category->id)
+            ->orderByDesc("news.created_at")
+            ->paginate($limit);
     }
 
-    public static function newsPaginatedByCategory($categoryId)
+    public static function newsPaginatedByCategory($categoryId, $limit = 20)
     {
-        return News::where("category_id", $categoryId)->orderByDesc("created_at")->paginate(20);
+        return News::leftJoin("news_categories", "news.id", "=", "news_categories.news_id")
+            ->where("category_id", $categoryId)
+            ->orderByDesc("news.created_at")
+            ->paginate($limit);
     }
 
     public static function createNewsItem($title, $post, $url, $image, $categoryId)
