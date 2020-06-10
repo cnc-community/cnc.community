@@ -13,14 +13,15 @@ class NewsItem extends AbstractCustomView
     private $image;
     private $publishedDate;
     private $type;
+    private $categories;
 
-    public function __construct($title, $url, $post, $image, $category, $publishedDate, $readTime, $type)
+    public function __construct($title, $url, $post, $image, $categories, $publishedDate, $readTime, $type)
     {
         $this->title = $title;
         $this->url = $url;
         $this->post = $post; 
         $this->image = $image;
-        $this->category = $category;
+        $this->categories = $categories;
         $this->publishedDate = $publishedDate;
         $this->readTime = $readTime;
         $this->type = $type;
@@ -74,9 +75,11 @@ class NewsItem extends AbstractCustomView
                             <div class="date">
                                 Posted <?php echo $this->publishedDate; ?>
                             </div>
+                            <?php foreach($this->categories as $category): ?>
                             <div class="category">
-                                <?php echo $this->category->name; ?>
+                            <?php echo $category->name ?>
                             </div>
+                            <?php endforeach; ?>
                         </div>
                         <?php endif; ?>
                     

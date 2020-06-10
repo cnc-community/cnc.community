@@ -15,7 +15,6 @@ class News extends Model
 
     public function __construct()
     {
-        
     }
 
     public function readTime()
@@ -40,19 +39,29 @@ class News extends Model
             return $this->url;
         }
         
-        return "/news/" . $this->category()->slug . "/" . $this->url;
+        return "/news/" . $this->primaryCategory()->slug . "/" . $this->url;
+    }
+
+    public function hasCategory($categoryId)
+    {
+        return NewsCategory::where("news_id", $this->id)->where("category_id", $categoryId)->first();
+    }
+
+    public static function categoriesExcludingPrimary($primaryId)
+    {
+        return Category::where("id", "!=", $primaryId)->get();
     }
 
     public function categories()
     {
         return Category::leftJoin("news_categories", "categories.id", "=", "news_categories.category_id")
-            ->where("news_categories.news_id", $this->id)
+            ->where("news_categories.news_id", "=", $this->id)
             ->get();
     }
 
-    public function category()
+    public function primaryCategory()
     {
-        // no longer used, eventually remove references
+        return Category::find($this->category_id);
     }
 
     public static function newsByCategoryId($categoryId, $limit = 20)
@@ -63,26 +72,29 @@ class News extends Model
             return [];
         }
 
-        return News::leftJoin("news_categories", "news.id", "=", "news_categories.news_id")
-            ->where("category_id", $category->id)
+        return NewsCategory::leftJoin("news", "news_categories.news_id", "=", "news.id")
+            ->where("news_categories.category_id", "=", $categoryId)
+            ->select("news.*")
             ->orderByDesc("news.created_at")
             ->paginate($limit);
     }
 
     public static function officialNewsPaginated($limit = 20)
     {
-        $category = Category::where("name", "Official News")->first();
+        $primaryCategory = Category::where("name", "Official News")->first();
 
-        return News::leftJoin("news_categories", "news.id", "=", "news_categories.news_id")
-            ->where("category_id", $category->id)
+        return NewsCategory::leftJoin("news", "news_categories.news_id", "=", "news.id")
+            ->where("news_categories.category_id", "=", $primaryCategory->id)
+            ->select("news.*")
             ->orderByDesc("news.created_at")
             ->paginate($limit);
     }
 
     public static function newsPaginatedByCategory($categoryId, $limit = 20)
     {
-        return News::leftJoin("news_categories", "news.id", "=", "news_categories.news_id")
-            ->where("category_id", $categoryId)
+        return NewsCategory::leftJoin("news", "news_categories.news_id", "=", "news.id")
+            ->where("news_categories.category_id", "=", $categoryId)
+            ->select("news.*")
             ->orderByDesc("news.created_at")
             ->paginate($limit);
     }
@@ -103,6 +115,8 @@ class News extends Model
         }
         $news->category_id = $categoryId;
         $news->save();
+
+        NewsCategory::addCategory($news->id, $news->category_id);
         return $news;
     }
 
@@ -120,5 +134,7 @@ class News extends Model
         $news->image = $queuedItem->image;
         $news->category_id = $queuedItem->category_id;
         $news->save();
+
+        NewsCategory::addCategory($news->id, $news->category_id);
     }
 }

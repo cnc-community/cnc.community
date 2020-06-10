@@ -32,6 +32,13 @@
                                 </h4>
                                 <ul class="list-unstyled">
                                     <li>
+                                        <?php if($newsItem->type == \App\News::NEWS_INTERNAL): ?>
+                                        <strong>Type: Article</strong>
+                                        <?php else: ?>
+                                        <strong>Type: Link</strong>
+                                        <?php endif; ?>
+                                    </li>
+                                    <li>
                                         <small>Updated</small> <small>- {{ $newsItem->updated_at->diffForHumans() }}</small> 
                                     </li>
                                     <li>

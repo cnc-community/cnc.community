@@ -13,6 +13,6 @@
         "gulp-nw-builder": "^1.4.0",
         "gulp-sass": "^3.1.0",
         "gulp-terser": "^1.2.0",
-        "typescript": "^3.8.3"
+        "typescript": "^3.9.5"
     }
 }

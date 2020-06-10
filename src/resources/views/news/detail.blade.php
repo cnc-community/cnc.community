@@ -22,7 +22,7 @@
             <?php echo $newsItem->readTime(); ?> read 
         </div>
         <div class="category">
-            <?php echo $newsItem->category()->name; ?>
+            <?php echo $newsItem->primaryCategory()->name; ?>
         </div>
     </div>
 </div>
