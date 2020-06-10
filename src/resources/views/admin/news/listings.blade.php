@@ -63,6 +63,9 @@
                         </div>
                     <?php endforeach; ?>
                 </div>
+                <div class="card-body">
+                    {{ $news->links() }}
+                </div>
             </div>
         </div>
     </div>
