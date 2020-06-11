@@ -31,7 +31,6 @@ class NewsController extends Controller
     public function index()
     {
         $news = News::orderByDesc("created_at")->paginate(20);
-        $this->updateExistingNewsCategories();
         return view('admin.news.listings', ["news" => $news]);
     }
 

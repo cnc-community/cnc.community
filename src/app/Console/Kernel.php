@@ -25,6 +25,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->call('App\Http\Controllers\FeedController@runTask')->hourly();
+        $schedule->call('App\Http\Controllers\FeedController@runTaskDaily')->daily();
         $schedule->call('App\Http\Controllers\APIController@runTask')->weekly();
     }
 
