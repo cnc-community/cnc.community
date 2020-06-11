@@ -48,12 +48,16 @@ class NewsController extends Controller
     {
         $newsItem = News::find($id);
         if ($newsItem == null) abort(404);
-        return view('admin.news.edit', ["newsItem" => $newsItem]);
+
+        $users = \App\User::all();
+        return view('admin.news.edit', ["newsItem" => $newsItem, "users" => $users]);
     }
     
     public function getCreate(Request $request)
     {
-        return view('admin.news.add');
+        $users = \App\User::all();
+
+        return view('admin.news.add', ["users" => $users]);
     }
 
     public function create(Request $request)
@@ -65,7 +69,7 @@ class NewsController extends Controller
             $image = FeedHelper::createImageFromUrl($path);
         }
 
-        $newsItem = News::createNewsItem($request->title, $request->post, null, $image, $request->category_id);
+        $newsItem = News::createNewsItem($request->title, $request->post, null, $image, $request->category_id, $request->author);
 
         $request->session()->flash('status', 'News created');
         return redirect('/admin/news/edit/' . $newsItem->id);
@@ -96,6 +100,8 @@ class NewsController extends Controller
         }
 
         $newsItem->title = $request->title;
+        $newsItem->user_id = $request->author;
+
         $newsItem->post = $request->post;
         $newsItem->category_id = $request->category_id;
 
@@ -109,7 +115,7 @@ class NewsController extends Controller
         {
             array_push($categories, $request->category_id);
         }
-
+        
         NewsCategory::addRemoveCategory($newsItem->id, $categories);
         
         $newsItem->save();

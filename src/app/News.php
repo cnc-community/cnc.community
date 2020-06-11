@@ -110,7 +110,7 @@ class News extends Model
             ->paginate($limit);
     }
 
-    public static function createNewsItem($title, $post, $url, $image, $categoryId)
+    public static function createNewsItem($title, $post, $url, $image, $categoryId, $userId)
     {
         $news = new News();
         $news->title = $title;
@@ -125,6 +125,7 @@ class News extends Model
             $news->image = $image;
         }
         $news->category_id = $categoryId;
+        $news->user_id = $userId;
         $news->save();
 
         NewsCategory::addCategory($news->id, $news->category_id);
