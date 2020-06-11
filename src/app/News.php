@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
+use App\User;
 
 class News extends Model
 {
@@ -25,6 +26,16 @@ class News extends Model
         $s = floor($word % 200 / (200 / 60));
         $est = $m . ' minute';
         return $est;
+    }
+
+    public function author()
+    {
+        $user = User::where("id", $this->user_id)->select("name")->first();
+        if ($user)
+        {
+            return $user;
+        }
+        return null;
     }
 
     public function excerpt()

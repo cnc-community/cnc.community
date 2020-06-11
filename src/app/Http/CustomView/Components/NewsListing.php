@@ -34,7 +34,9 @@ class NewsListing extends AbstractCustomView
                             $news->categories(),
                             $news->created_at->diffForHumans(),
                             $news->readTime(),
-                            $news->type
+                            $news->type,
+                            $news->feed_source,
+                            $news->author()
                         ); 
                         ?>
                 <?php endforeach; ?>

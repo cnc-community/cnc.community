@@ -39,6 +39,15 @@
                                         <?php endif; ?>
                                     </li>
                                     <li>
+                                        <small>Feed: {{ $newsItem->feed_source }}</small>
+                                    </li>
+                                    
+                                    <?php if($newsItem->author()): ?>
+                                    <li>
+                                        <small>Author: {{ $newsItem->author()->name }} </small>
+                                    </li>
+                                    <?php endif; ?>
+                                    <li>
                                         <small>Updated</small> <small>- {{ $newsItem->updated_at->diffForHumans() }}</small> 
                                     </li>
                                     <li>

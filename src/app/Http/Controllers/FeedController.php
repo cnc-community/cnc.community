@@ -46,13 +46,13 @@ class FeedController extends Controller
 
     public function runTaskDaily()
     {
-        $ppmFeed =  new XMLFeedParser("https://www.ppmsite.com/news/rss/ppm_all.xml");
+        $ppmFeed =  new XMLFeedParser("https://www.ppmsite.com/news/rss/ppm_all.xml", "PPMSite");
         $ppmFeed->run();
 
-        $w3dhubFeed = new XMLFeedParser("https://w3dhub.com/forum/rss/1-w3d-hub-news.xml/?member_id=1484&key=2dbafbb11199210b6b0d3b07ef4590ab");
+        $w3dhubFeed = new XMLFeedParser("https://w3dhub.com/forum/rss/1-w3d-hub-news.xml/?member_id=1484&key=2dbafbb11199210b6b0d3b07ef4590ab", "W3DHub");
         $w3dhubFeed->run();
 
-        $cncnzFeed =  new XMLFeedParser("https://forums.cncnz.com/forum/27-command-conquer-news.xml");
+        $cncnzFeed =  new XMLFeedParser("https://forums.cncnz.com/forum/27-command-conquer-news.xml", "CNCNZ");
         $cncnzFeed->run();
     }
 }

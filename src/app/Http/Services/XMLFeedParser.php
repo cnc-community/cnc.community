@@ -8,10 +8,12 @@ use Log;
 class XMLFeedParser extends AbstractFeedParser
 {
     private $_feedUrl;
+    private $_feedName;
 
-    public function __construct($feedUrl)
+    public function __construct($feedUrl, $feedName)
     {
         $this->_feedUrl = $feedUrl;
+        $this->_feedName = $feedName;
     }
 
     public function run()
@@ -38,7 +40,8 @@ class XMLFeedParser extends AbstractFeedParser
                     NewsFeedQueue::createFromNewsItem(
                         $newsItem->title, 
                         $newsItem->link, 
-                        $newsItem->description
+                        $newsItem->description,
+                        $this->_feedName
                     );
                 }
             }

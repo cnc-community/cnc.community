@@ -24,6 +24,9 @@
                                         <small>Updated</small> <small>- {{ $newsItem->updated_at->diffForHumans() }}</small> 
                                     </li>
                                     <li>
+                                        <small>Feed from - {{ $newsItem->feed_source }}</small>
+                                    </li>
+                                    <li>
                                         <small>Category</small> <small>- {{ $newsItem->category()->name }}</small>
                                     </li>
                                 </ul>

@@ -76,7 +76,7 @@ class NewsFeedQueue extends Model
         return false;
     }
 
-    public static function createFromNewsItem($title, $url, $postHtml): void
+    public static function createFromNewsItem($title, $url, $postHtml, $feedName): void
     {
         $uuid = NewsFeedQueue::createUuid($url);
         $exists = NewsFeedQueue::checkForDuplicateByUuid($uuid);
@@ -88,7 +88,7 @@ class NewsFeedQueue extends Model
             return;
         }
 
-        NewsFeedQueue::create($title, $url, $postHtml, $uuid, $category, $imageUrl);
+        NewsFeedQueue::create($title, $url, $postHtml, $uuid, $category, $imageUrl, $feedName);
     }
 
     public static function createFromRedditItem($title, $url, $imageUrl): void
@@ -102,15 +102,16 @@ class NewsFeedQueue extends Model
             return;
         }
 
-        NewsFeedQueue::create($title, $url, null, $uuid, $category, $imageUrl);
+        NewsFeedQueue::create($title, $url, null, $uuid, $category, $imageUrl, "Reddit");
     }
 
-    private static function create($title, $url, $postHtml, $uuid, $category, $imageUrl)
+    private static function create($title, $url, $postHtml, $uuid, $category, $imageUrl, $feedName)
     {
         $newsQueue = new NewsFeedQueue();
         $newsQueue->title = html_entity_decode($title);
         $newsQueue->url = $url;
         $newsQueue->feed_uuid = $uuid;
+        $newsQueue->feed_source = $feedName;
         $newsQueue->category_id = $category->id;
 
         if ($postHtml)
