@@ -145,6 +145,7 @@ class News extends Model
         $news->feed_uuid = $queuedItem->feed_uuid;
         $news->image = $queuedItem->image;
         $news->category_id = $queuedItem->category_id;
+        $news->feed_source = $queuedItem->feed_source;
         $news->save();
 
         NewsCategory::addCategory($news->id, $news->category_id);
