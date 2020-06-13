@@ -13,13 +13,13 @@ class AddFeedSource extends Migration
      */
     public function up()
     {
-        Schema::table('news', function (Blueprint $table) 
+        Schema::connection('mysql')->table('news', function (Blueprint $table) 
         {
             $table->string('feed_source')->nullable();
             $table->unsignedInteger('user_id')->nullable();
         });
         
-        Schema::table('news_feed_queues', function (Blueprint $table) 
+        Schema::connection('mysql')->table('news_feed_queues', function (Blueprint $table) 
         {
             $table->string('feed_source')->nullable();
         });

@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Schema;
 
 class CreatePagesCustomFieldsTable extends Migration
 {
+    
+
     /**
      * Run the migrations.
      *
@@ -13,7 +15,7 @@ class CreatePagesCustomFieldsTable extends Migration
      */
     public function up()
     {
-        Schema::create('page_custom_fields', function (Blueprint $table) 
+        Schema::connection('mysql')->create('page_custom_fields', function (Blueprint $table) 
         {
             $table->id();
             $table->string("key");
@@ -32,6 +34,6 @@ class CreatePagesCustomFieldsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('page_custom_fields');
+        Schema::connection('mysql')->dropIfExists('page_custom_fields');
     }
 }

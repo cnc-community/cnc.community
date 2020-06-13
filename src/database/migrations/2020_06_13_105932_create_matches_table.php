@@ -4,10 +4,8 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateNewsCategoriesTable extends Migration
+class CreateMatchesTable extends Migration
 {
-    
-
     /**
      * Run the migrations.
      *
@@ -15,11 +13,12 @@ class CreateNewsCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::connection('mysql')->create('news_categories', function (Blueprint $table) 
+        Schema::connection('mysql2')->create('matches', function (Blueprint $table) 
         {
             $table->id();
-            $table->unsignedInteger('news_id');
-            $table->unsignedInteger('category_id');
+            $table->string("mapname");
+            $table->unsignedInteger("matchid")->nullable();
+            $table->unsignedInteger("match_player_id")->nullable();
             $table->timestamps();
         });
     }
@@ -31,6 +30,6 @@ class CreateNewsCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::connection('mysql')->dropIfExists('news_categories');
+        Schema::connection('mysql2')->dropIfExists('matches');
     }
 }

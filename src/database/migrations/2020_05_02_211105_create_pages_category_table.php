@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Schema;
 
 class CreatePagesCategoryTable extends Migration
 {
+    
+
     /**
      * Run the migrations.
      *
@@ -13,7 +15,7 @@ class CreatePagesCategoryTable extends Migration
      */
     public function up()
     {
-        Schema::create('page_category', function (Blueprint $table) 
+        Schema::connection('mysql')->create('page_category', function (Blueprint $table) 
         {
             $table->id();
             $table->string("title");
@@ -32,6 +34,6 @@ class CreatePagesCategoryTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('page_category');
+        Schema::connection('mysql')->dropIfExists('page_category');
     }
 }
