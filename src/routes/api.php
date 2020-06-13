@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/petroglyph/leaderboard', 'APIController@tests');
+Route::get('/leaderboard/top/ra', 'LeaderboardController@getTopRALeadeboard1vs1');
+Route::get('/petroglyph/leaderboard', 'LeaderboardController@runTasks');
+
 Route::get('/twitch/streams/count', 'APIController@streamCount');
 Route::get('/twitch/streams/total-count', 'APIController@totalStreamCount');

@@ -18,6 +18,8 @@ services:
     - "8081:80"
     volumes:
     - /sessions
+    - ./uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
+    
     networks: 
     - laravel
 
