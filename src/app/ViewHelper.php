@@ -46,4 +46,12 @@ class ViewHelper
     {
         return "/assets/images/banners/". $slug . ".jpg";
     }
+
+    public static function renderSpecialOctal($string)
+    {
+        return preg_replace_callback('/\\\\([0-7]{1,3})/', function($octal)
+        { 
+            return chr(octdec($octal[1]));
+        }, $string);
+    }
 }

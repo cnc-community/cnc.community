@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Constants;
 use App\Http\Services\Petroglyph\PetroglyphAPI;
 use App\Leaderboard;
 use App\LeaderboardHistory;
@@ -16,10 +17,20 @@ class LeaderboardController extends Controller
         $this->petroglyphAPI = new PetroglyphAPI();
     }
 
-    public function getTopRALeadeboard1vs1()
+    public function getLeaderboardListings()
     {
-        $leaderboard = Leaderboard::where("type", "ra_1vs1")->first();
-        return $leaderboard->data();
+        $leaderboardRA = Leaderboard::where("type", "ra_1vs1")->first();
+        $leaderboardTD = Leaderboard::where("type", "td_1vs1")->first();
+        
+        $heroVideo = Constants::getVideoWithPoster("command-and-conquer-remastered");
+        
+        return view('pages.remasters.leaderboard.listings', 
+            [
+                "raLeaderboard" => $leaderboardRA->data(),
+                "tdLeaderboard" => $leaderboardTD->data(),
+                "heroVideo" => $heroVideo
+            ]
+        );
     }
 
     public function getTopTDLeadeboard1vs1()

@@ -11,6 +11,11 @@ class LeaderboardData extends Model
 
     public function player()
     {
-        return MatchPlayer::find($this->match_player_id);
+        $player = MatchPlayer::where("id", $this->match_player_id)->first();
+        if ($player)
+        {
+            return ViewHelper::renderSpecialOctal($player->player_name);
+        }
+        return "";
     }
 }
