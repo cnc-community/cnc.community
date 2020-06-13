@@ -16,8 +16,8 @@ class CreateMatchPlayersTable extends Migration
         Schema::connection('mysql2')->create('match_players', function (Blueprint $table) 
         {
             $table->id();
-            $table->unsignedInteger("player_id");
-            $table->string("player_name");
+            $table->bigInteger("player_id")->unique(); // steam or origin id
+            $table->string("player_name"); // string player name
             $table->timestamps();
         });
     }

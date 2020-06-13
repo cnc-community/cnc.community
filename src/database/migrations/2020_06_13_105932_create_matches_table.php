@@ -16,9 +16,9 @@ class CreateMatchesTable extends Migration
         Schema::connection('mysql2')->create('matches', function (Blueprint $table) 
         {
             $table->id();
+            $table->integer("matchid")->unique();
             $table->string("mapname");
-            $table->unsignedInteger("matchid")->nullable();
-            $table->unsignedInteger("match_player_id")->nullable();
+            $table->text("raw");
             $table->timestamps();
         });
     }

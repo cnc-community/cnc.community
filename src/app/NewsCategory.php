@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class NewsCategory extends Model
 {
+    protected $connection= 'mysql';
+
     protected $table = 'news_categories';
 
     public static function addCategory($newsId, $categoryId)

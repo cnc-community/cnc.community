@@ -8,6 +8,8 @@ use App\User;
 
 class News extends Model
 {
+    protected $connection= 'mysql';
+
     public const APPROVED = "approved";
     public const DELETE = "delete";
 

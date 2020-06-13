@@ -8,6 +8,8 @@ use App\News;
 
 class NewsFeedQueue extends Model
 {
+    protected $connection= 'mysql';
+
     public const PENDING = "pending";
     public const APPROVED = "approved";
     public const REJECTED = "rejected";
