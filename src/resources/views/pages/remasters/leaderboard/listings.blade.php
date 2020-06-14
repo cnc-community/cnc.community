@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Command & Conquer Remastered')
-@section('description', 'Find the latest streams, mods and maps for the C&amp;C Remastered Collection.')
+@section('title', 'Command & Conquer Remastered Leaderboards')
+@section('description', 'Find the latest leaderboard rankings for Command & Conquer Remastered Collection.')
 
 @section('page-class', 'leaderboard-listings')
 
