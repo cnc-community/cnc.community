@@ -1,46 +1,54 @@
 @extends('layouts.app')
 
-@section('title', 'Online Leaderboard - Command & Conquer Remastered Collection')
-@section('description', 'C&C Remastered Leaderboard, 1vs1')
+@section('title', 'Command & Conquer Remastered')
+@section('description', 'Find the latest streams, mods and maps for the C&amp;C Remastered Collection.')
 
-@section('page-class', 'remasters remasters-leadeboard')
+@section('page-class', 'remasters-leaderboard-listings')
 
 @section('hero-video')
-<?php new \App\Http\CustomView\Components\VideoPlayer($heroVideo); ?>
+<?php 
+    $videoSrc= $heroVideo["src"]; 
+    $videoPoster = $heroVideo["poster"]; 
+?>
+
+<div class="video" style="background-image: url('{{ $videoPoster }}')">
+    <video autoplay="true" loop muted preload="none"
+        poster="{{ $videoPoster }}"
+        src="{{ $videoSrc}} ">
+    </video>
+</div>
 @endsection
 
 @section('hero')
 <div class="content center">
-    <div class="title">
-    <a href="/command-and-conquer-remastered" title="C&C Remastered">
-        <img src="/assets/images/logos/cnc-remastered-logo.png" alt="C&C Remaster Logo" />
-    </a>
+    <h1>C&amp;C Remastered Leaderboards</h1>
+    <p class="lead">
+        Find the elite in our C&amp;C Remastered Leaderboards
+    </p>
+    <div class="buttons">
+        <a class="btn btn-secondary" href="/command-and-conquer-remastered/leaderboard/tiberian-dawn" title="Tiberian Dawn Leaderboard">Tiberian Dawn Leaderboard</a>
+        <a class="btn btn-secondary" href="/command-and-conquer-remastered/leaderboard/red-alert" title="Red Alert Remastered Leaderboard">Red Alert Leaderboard</a>
     </div>
-    <h1 class="text-uppercase">
-        C&amp;C Remastered Leaderboard for Tiberian Dawn &amp; Red Alert
-    </h1>
 </div>
 @endsection
 
 @section('content')
-<section class="section section-black news-listings">
-    <div class="main-content">
-        <h2 class="section-title">Test</h2>
-        <p class="section-description">
-        </p>
+<section id="about" class="section section-dark-alt section-about">
+    <div class="main-content center">
+        <div class="center-box">
+            <h1 class="section-title">Web Leaderboards <span class="light">have arrived</span></h1>
+            <p class="section-description">
+                We're currently in the early stages of developing a web leaderboard for the C&amp;C Remastered Collection.
+                If you have suggestions or would like to keep up to date with our proposed updates, come join our website discord.
+            </p>
 
-        <?php foreach($raLeaderboard as $data): ?>
-        <div>
-            <h5 style="margin: 0;">
-            Rank {{ $data->rank }} - {{ $data->player() }}
-            </h5>
-            <ul>
-                <li>Wins {{ $data->wins }}</li>
-                <li>Lost {{ $data->losses }}</li>
-                <li>Points {{ $data->points }}</li>
-            </ul>
+            <div class="buttons">
+                <a class="btn btn-secondary btn-icon" href="/contact" title="Chat on our discord">
+                    Join our Website Discord 
+                    <i class="icon-discord"></i>
+                </a>
+            </div>
         </div>
-        <?php endforeach; ?>
     </div>
 </section>
 

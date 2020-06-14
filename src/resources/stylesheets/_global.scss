@@ -656,3 +656,21 @@ ul.pagination
     background-color: #171717;
     color: #717070;
 }
+
+.center-box
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: $md-width;
+    max-width: 100%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.center-box .buttons 
+{
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
