@@ -59,7 +59,7 @@
             <a href="/command-and-conquer-remastered" title="Command & Conquer Remastered">C&amp;C Remastered</a>
             <i class="icon icon-dropdown"></i>
         </div>
-        <div class="nav-dropdown-contents nav-drop-col-1">
+        <div class="nav-dropdown-contents nav-drop-col-2">
             <div class="dropdown-container">
                 <div class="category">
                     <div class="title">
@@ -71,6 +71,13 @@
                     <a href="/command-and-conquer-remastered#streams" title="C&C Streams">Streams</a>
                     <a href="/command-and-conquer-remastered/workshop-mods" title="Steam Workshop">Steam Workshop</a>
                     <a href="/command-and-conquer-remastered#help" title="Help & Support">Help &amp; Support</a>
+                </div>
+                <div class="category">
+                    <div class="title">
+                        <a href="/command-and-conquer-remastered/leaderboard" title="C&C Remastered Collection">Leaderboards (1vs1)</a>
+                    </div>
+                    <a href="/command-and-conquer-remastered/leaderboard/tiberian-dawn" title="Tiberian Dawn Leaderboard">Tiberian Dawn</a>
+                    <a href="/command-and-conquer-remastered/leaderboard/red-alert" title="Red Alert Leaderboard">Red Alert</a>
                 </div>
             </div>
         </div>
