@@ -31,6 +31,7 @@ class LeaderboardController extends Controller
 
     public function getLeaderboardListingsByGame(Request $request, $game)
     {
+        $pageNumber = $request->page == null ? 0: $request->page;
         $gameName = "";
         $gameLogo = "";
         $heroVideo = Constants::getVideoWithPoster("command-and-conquer-remastered");
@@ -39,27 +40,27 @@ class LeaderboardController extends Controller
         switch($game)
         {
             case "tiberian-dawn":
+                $cacheKey = "td".$pageNumber;
                 $leaderboardTD = Leaderboard::where("type", "td_1vs1")->first();
-                $top15Data = $leaderboardTD->data(15,0);
-                $data = $leaderboardTD->dataPaginated(50, 200);
+                $top15Data = $leaderboardTD->data($cacheKey,15,0);
+                $data = $leaderboardTD->dataPaginated($cacheKey,50, 200);
                 $gameName = "Tiberian Dawn";
                 $gameLogo = "/assets/images/logos/tiberian-dawn-remastered.png";
                 break;
 
             case "red-alert":
+                $cacheKey = "ra".$pageNumber;
                 $leaderboardRA = Leaderboard::where("type", "ra_1vs1")->first();
-                $data = $leaderboardRA->dataPaginated(50, 200);
-                $top15Data = $leaderboardRA->data(15,0);
+                $top15Data = $leaderboardRA->data($cacheKey,15,0);
+                $data = $leaderboardRA->dataPaginated($cacheKey,50, 200);
                 $gameName = "Red Alert";
                 $gameLogo = "/assets/images/logos/red-alert-remastered.png";
-
                 break;
 
             default: 
                 abort(404);
         }
 
-        $pageNumber = $request->page == null ? 0: $request->page;
         return view('pages.remasters.leaderboard.detail', 
             [
                 "top15Data" => $top15Data,

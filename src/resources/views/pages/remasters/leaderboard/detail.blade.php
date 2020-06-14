@@ -23,7 +23,7 @@
                             All Leaderboards
                         </a>
 
-                        <a href="/command-and-conquer-remastered/leaderboard/" class="btn btn-secondary btn-icon" title="Join our discord">
+                        <a href="https://discord.gg/g8gaKkY" class="btn btn-secondary btn-icon" title="Join our discord" target="_blank">
                             Join our Discord 
                             <i class="icon-discord"></i>
                         </a>

@@ -43,7 +43,7 @@
             </p>
 
             <div class="buttons">
-                <a class="btn btn-secondary btn-icon" href="/contact" title="Chat on our discord">
+                <a class="btn btn-secondary btn-icon" href="https://discord.gg/g8gaKkY" title="Chat on our discord" target="_blank">
                     Join our Website Discord 
                     <i class="icon-discord"></i>
                 </a>

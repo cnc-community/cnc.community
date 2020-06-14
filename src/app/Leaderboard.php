@@ -17,10 +17,10 @@ class Leaderboard extends Model
         return LeaderboardHistory::where("leaderboard_id", $this->id)->first();
     }
 
-    public function data($limit = 200, $offset = 0)
+    public function data($cacheKey, $limit = 200, $offset = 0)
     {
         // 20 minutes cache
-        return Cache::remember("Leaderboard.data".$limit.$offset, 1200, function () use($limit, $offset)
+        return Cache::remember("Leaderboard.data".$limit.$offset.$cacheKey, 1200, function () use($limit, $offset)
         {
             return LeaderboardData::where("leaderboard_history_id", $this->history()->id)
                 ->offset($offset)
@@ -29,10 +29,10 @@ class Leaderboard extends Model
         });
     }
 
-    public function dataPaginated($paginate, $limit)
+    public function dataPaginated($cacheKey, $paginate, $limit)
     {
         // 20 minutes cache
-        return Cache::remember("Leaderboard.dataPaginated".$paginate.$limit, 1200, function () use($paginate, $limit)
+        return Cache::remember("Leaderboard.dataPaginated".$paginate.$limit.$cacheKey, 1200, function () use($paginate, $limit)
         {
             return LeaderboardData::where("leaderboard_history_id", $this->history()->id)
                 ->limit($limit)
