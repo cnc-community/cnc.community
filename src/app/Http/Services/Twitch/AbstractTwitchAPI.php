@@ -11,6 +11,11 @@ abstract class AbstractTwitchAPI
         $this->_parser = $parser;
     }
 
+    public function getTopStreamsByGame($gameId, $limit)
+    {
+        $this->_parser->getTopStreamsByGame($gameId, $limit);
+    }
+
     public function getStreamByGame($gameId)
     {
         $this->_parser->getStreamByGame($gameId);

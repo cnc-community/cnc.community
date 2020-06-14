@@ -21,15 +21,20 @@ class NewsListing extends AbstractCustomView
                 <div class="items-wrap">
                     <?php foreach($this->_newsItems as $newsItem):?>
                         <?php 
+                        $news = \App\News::find($newsItem->id);
+                        if ($news == null) 
+                        {
+                            continue;
+                        }
                         new NewsItem(
-                            $newsItem->title, 
-                            $newsItem->url(), 
-                            $newsItem->excerpt(), 
-                            $newsItem->image, 
-                            $newsItem->category(),
-                            $newsItem->created_at->diffForHumans(),
-                            $newsItem->readTime(),
-                            $newsItem->type
+                            $news->title, 
+                            $news->url(), 
+                            $news->excerpt(), 
+                            $news->image, 
+                            $news->categories(),
+                            $news->created_at->diffForHumans(),
+                            $news->readTime(),
+                            $news->type
                         ); 
                         ?>
                 <?php endforeach; ?>

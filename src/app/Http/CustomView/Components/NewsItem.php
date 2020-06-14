@@ -13,14 +13,15 @@ class NewsItem extends AbstractCustomView
     private $image;
     private $publishedDate;
     private $type;
+    private $categories;
 
-    public function __construct($title, $url, $post, $image, $category, $publishedDate, $readTime, $type)
+    public function __construct($title, $url, $post, $image, $categories, $publishedDate, $readTime, $type)
     {
         $this->title = $title;
         $this->url = $url;
         $this->post = $post; 
         $this->image = $image;
-        $this->category = $category;
+        $this->categories = $categories;
         $this->publishedDate = $publishedDate;
         $this->readTime = $readTime;
         $this->type = $type;
@@ -40,20 +41,20 @@ class NewsItem extends AbstractCustomView
                         <?php endif; ?>
 
                             <?php if($this->image): ?>
-                                <img src="/<?php echo $this->image ?>" alt="<?php echo $this->title ?>" alt="<?php echo $this->title; ?>" loading="lazy" />
+                                <img src="/<?php echo $this->image ?>" alt="<?php echo $this->title; ?>" loading="lazy" />
                                 <?php else: ?>
-                                <img src="/assets/images/no-image.jpg" alt="<?php echo $this->title ?>" alt="<?php echo $this->title; ?>" loading="lazy" />
+                                <img src="/assets/images/no-image.jpg" alt="<?php echo $this->title; ?>" loading="lazy" />
                             <?php endif; ?>
                         </a>
 
                     <div class="button">
                         <?php if($this->type == News::NEWS_EXTERNAL): ?>
-                            <a href="<?php echo $this->url; ?>" title="<?php echo $this->title; ?>" class="btn-link"  rel="nofollow noreferrer" target="_blank">
-                            <i class="icon-link"></i>
+                            <a href="<?php echo $this->url; ?>" title="<?php echo $this->title; ?>" class="btn-link" rel="nofollow noreferrer" target="_blank">
+                            <i class="icon-link" aria-label="Link Icon"></i>
                         </a>
                         <?php else: ?>
                             <a href="<?php echo $this->url; ?>" title="<?php echo $this->title; ?>" class="btn-link" >
-                            <i class="icon-article"></i>
+                            <i class="icon-article" aria-label="Article Icon"></i>
                         </a>
                         <?php endif; ?>
                     </div>
@@ -74,9 +75,11 @@ class NewsItem extends AbstractCustomView
                             <div class="date">
                                 Posted <?php echo $this->publishedDate; ?>
                             </div>
+                            <?php foreach($this->categories as $category): ?>
                             <div class="category">
-                                <?php echo $this->category->name; ?>
+                            <?php echo $category->name ?>
                             </div>
+                            <?php endforeach; ?>
                         </div>
                         <?php endif; ?>
                     

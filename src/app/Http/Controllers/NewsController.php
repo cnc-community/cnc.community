@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\News;
 use App\Http\Services\FeedHelper;
+use App\NewsCategories;
+use App\NewsCategory;
 use App\NewsFeedQueue;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
@@ -28,8 +30,19 @@ class NewsController extends Controller
      */
     public function index()
     {
-        $news = News::all();
+        $news = News::orderByDesc("created_at")->paginate(20);
+        $this->updateExistingNewsCategories();
         return view('admin.news.listings', ["news" => $news]);
+    }
+
+    public function updateExistingNewsCategories()
+    {
+        $news = News::all();
+        foreach($news as $n)
+        {
+            $category = \App\Category::find($n->category_id);
+            NewsCategory::addCategory($n->id, $category->id);
+        }
     }
 
     public function edit($id)
@@ -86,10 +99,23 @@ class NewsController extends Controller
         $newsItem->title = $request->title;
         $newsItem->post = $request->post;
         $newsItem->category_id = $request->category_id;
+
+        $categories = $request->categories;
+        if ($categories == null)
+        {
+            $categories[] = $request->category_id;
+
+        }
+        else if (!in_array($request->category_id, $categories))
+        {
+            array_push($categories, $request->category_id);
+        }
+
+        NewsCategory::addRemoveCategory($newsItem->id, $categories);
+        
         $newsItem->save();
 
         $request->session()->flash('status', 'Post saved');
-        
         return redirect()->back();
     }
 }

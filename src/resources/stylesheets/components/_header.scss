@@ -37,51 +37,54 @@
 
 .site-header .logo
 {
-    display: flex;
-    align-items: center;
     color: $color-white;
     margin-left: 0;
-    min-width: 80px;
     z-index: 1;
+    padding: 15px;
+
+    width: 110px;
 
     & a {
-        display: flex;
-        align-items: center;
-        padding: 15px;
+        display: block;
     }
 
     & img 
     {
-        height: 30px;
+        max-width: 100%;
     }
 
     @media(min-width: $xl-width)
     {
         position: relative;
-
-        & img 
-        {
-            height: 40px;
-        }
+        width: 130px;
     }
 }
 
  .site-header .notification 
 {
+    @extend %notification-balloon;
+}
+
+%notification-balloon 
+{
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #00c156;
+    flex-grow: 1;
+    flex-shrink: 0;
+
     position: absolute;
-    top: 4px;
-    right: -9px;
+    width: 24px;
+    height: 24px;
+    top: -6px;
+    right: -12px;
+
+    background: #008617;
     border-radius: 100%;
-    padding: 9px;
-    width: 5px;
-    height: 5px;
     font-size: 11px;
-    color: #fff;
+    color: #ffffff;
     opacity: 0;
+    text-align: center;
 }
 
 @keyframes scaleNotificationPop 

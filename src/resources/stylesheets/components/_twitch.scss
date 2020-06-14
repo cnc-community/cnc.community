@@ -94,32 +94,20 @@
 
 .twitch-games-navbar .count 
 {
-    background: #3f423e;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    top: 4px;
-    right: -9px;
-    border-radius: 100%;
-    padding: 9px;
-    width: 5px;
-    height: 5px;
-    font-size: 10px;
-    color: #fff;
+    @extend %notification-balloon;
+    opacity: 1;
+    background: #2f2f2f;
 }
 
 .twitch-games-navbar .twitch-game-link.live 
 {
-    background: #151515;
     color: $color-white;
     transition: color ease-in-out 300ms;
 }
 
 .twitch-games-navbar .twitch-game-link.live .count 
 {
-    background: #00c156;
+    background: #008617;
     color: $color-white;
 }
 
@@ -135,6 +123,13 @@
     padding-top: 50px;
     padding-bottom: 50px;
     position: relative;
+}
+
+.stream-listings .buttons 
+{
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
 }
 
 .stream-header .stream-title > h3

@@ -17,7 +17,8 @@
         <a href="/command-and-conquer-remastered#buy" title="Buy the Remastered Collection" class="nav-link">Where to buy</a>
         <a href="/command-and-conquer-remastered#news" title="C&C News" class="nav-link">News</a>
         <a href="/command-and-conquer-remastered#streams" title="C&C Streams" class="nav-link">Streams</a>
-        <a href="/command-and-conquer-remastered/workshop-mods" title="C&C Mods" class="nav-link">Mod Workshop</a>
+        <a href="/command-and-conquer-remastered/workshop-mods" title="C&C Mods" class="nav-link">Steam Workshop</a>
+        <a href="/command-and-conquer-remastered#help" title="Help & Support" class="nav-link">Help &amp; Support</a>
     </div>
 
     <div class="category">

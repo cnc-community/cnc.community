@@ -9,6 +9,7 @@ use App\Constants;
 use App\Http\Services\SteamHelper;
 use App\Http\Services\TwitchHelper;
 use App\PageCategory;
+use App\ViewHelper;
 use Symfony\Component\HttpFoundation\Request;
 use Illuminate\Support\Facades\Cache;
 
@@ -57,19 +58,19 @@ class SiteController extends Controller
     {
         $key = "cache_";
 
-        $categoryCache = Cache::remember($key."news.listing.category", Constants::getCacheSeconds(), function () use ($categorySlug)
+        $categoryCache = Cache::remember($key.$categorySlug."news.listing.category", Constants::getCacheSeconds(), function () use ($categorySlug)
         {
             return Category::where("slug", $categorySlug)->first();
         });
         if ($categoryCache == null) abort(404);
 
 
-        $pageCategoryCache = Cache::remember($key."news.listing.newsByCategory", Constants::getCacheSeconds(), function () use ($categoryCache)
+        $pageCategoryCache = Cache::remember($key.$categorySlug."news.listing.pageCategory", Constants::getCacheSeconds(), function () use ($categoryCache)
         {
             return PageCategory::where("news_category_id", $categoryCache->id)->first();
         });        
         
-        $newsByCategoryCache = Cache::remember($key."news.listing.newsByCategory", Constants::getCacheSeconds(), function () use ($categoryCache)
+        $newsByCategoryCache = Cache::remember($key.$categorySlug."news.listing.newsByCategory", Constants::getCacheSeconds(), function () use ($categoryCache)
         {
             return News::newsPaginatedByCategory($categoryCache->id);
         });
@@ -121,9 +122,12 @@ class SiteController extends Controller
             $streams = $this->twitchHelper->getTwitchGamesBySlug($request->gameName);
             $videos = $this->twitchHelper->getTwitchVideosBySlug($request->gameName);
         }
-        
+
+        $streamsPaginated = ViewHelper::createPaginationFromArray($streams, 20, $request->page);
+        $streamsPaginated->withPath('/creators');
+
         return view('pages.creators.listing', [
-            "streams" => $streams, 
+            "streams" => $streamsPaginated, 
             "videos" => $videos,
             "gameFullName" => Constants::getTwitchGameBySlug($request->gameName),
             "gameName" => $gameName
@@ -154,8 +158,7 @@ class SiteController extends Controller
             5
         );
    
-        $streams = $this->twitchHelper->getTwitchGamesBySlug("remasters");
-        $videos = $this->twitchHelper->getTwitchVideosBySlug("remasters");
+        $streams = $this->twitchHelper->getTopTwitchStreamsBySlug("remasters", 8);
 
         $categoryCache = Cache::remember($key."pages.remasters.listing.categoryCache", Constants::getCacheSeconds(), function ()
         {
@@ -175,7 +178,6 @@ class SiteController extends Controller
             "tdWorkShopItems" => $tdWorkShopItems, 
             "news" => $newsByCategoryCache,
             "streams" => $streams,
-            "videos" => $videos,
             "heroVideo" => $heroVideo
         ]);
     }
@@ -226,7 +228,7 @@ class SiteController extends Controller
             return News::newsByCategoryId($categoryCache->news_category_id);
         });
 
-        $streams = $this->twitchHelper->getTwitchGamesBySlug($categorySlug);
+        $streams = $this->twitchHelper->getTopTwitchStreamsBySlug($categorySlug, 8);
         $videos = $this->twitchHelper->getTwitchVideosBySlug($categorySlug);
 
         $template = $categoryCache->bladeTemplate();
@@ -252,17 +254,18 @@ class SiteController extends Controller
         $key = "cache_" . $slugCategory . "_" . $slug;
         
         $heroVideo = Constants::getVideoWithPoster($slugCategory);
-
         $pageCache = Cache::remember($key, Constants::getCacheSeconds(), function ()  use ($slugCategory, $slug) 
         {
             return Page::checkPageExistsWithSlugs($slugCategory, $slug);
         });
+
         if ($pageCache == null) abort(404);
         
         if ($pageCache->bladeTemplate() == null)
         {
             return view('pages.detail', array("page" => $pageCache));
         }
+
         return view($pageCache->bladeTemplate(), array("page" => $pageCache, "heroVideo" => $heroVideo, "slugCategory" => $slugCategory));
     }
 

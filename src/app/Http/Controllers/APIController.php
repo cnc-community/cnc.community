@@ -7,6 +7,7 @@ use App\Http\Services\Steam\SteamAPI;
 use App\Http\Services\SteamHelper;
 use App\Http\Services\SteamWorkShopItem;
 use App\Http\Services\Twitch\TwitchStreamsAPI;
+use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\Cache;
 
 class APIController extends Controller
@@ -28,7 +29,13 @@ class APIController extends Controller
     public function streamCount()
     {
         $data = $this->twitchStreamsAPI->getStreamByGames(Constants::getTwitchGames());
-        return $this->twitchStreamsAPI->getCounts($data);
+        $counts = $this->twitchStreamsAPI->getCounts($data);
+
+        return response($counts)
+            ->withHeaders([
+                "max-age" => Constants::getCacheSeconds()
+            ]
+        );
     }
 
     public function totalStreamCount()
@@ -41,21 +48,33 @@ class APIController extends Controller
         {
             $total += count($arr);
         }
-        return $total;
+
+        return response($total)
+            ->withHeaders([
+                "max-age" => Constants::getCacheSeconds()
+            ]
+        );
     }
 
-    public function streamByGameId($gameId)
+    public function streamByGameId($gameId, $limit = 100)
     {
-        return $this->twitchStreamsAPI->getStreamByGame($gameId);
-    }
+        $data = $this->twitchStreamsAPI->getStreamByGame($gameId, $limit);
 
-    public function streamByGames()
-    {
-        return $this->twitchStreamsAPI->getStreamByGames(["235","10393","14999","1421","4012","1900","20015","16580","5090","3813"]);
+        return response($data)
+            ->withHeaders([
+                "max-age" => Constants::getCacheSeconds()
+            ]
+        );
     }
 
     public function videosByGameId($gameId)
     {
-        return $this->twitchStreamsAPI->getVideosByGame($gameId);
+        $data = $this->twitchStreamsAPI->getVideosByGame($gameId);
+
+        return response($data)
+            ->withHeaders([
+                "max-age" => Constants::getCacheSeconds()
+            ]
+        );
     }
 }

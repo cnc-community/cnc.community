@@ -20,7 +20,7 @@ Route::get('/', function () {
 
 //
 // Admin routes
-Route::group(['prefix' => 'admin'], function () 
+Route::group(['prefix' => 'admin', 'middleware' => ['admin']], function () 
 {
     Auth::routes();
     

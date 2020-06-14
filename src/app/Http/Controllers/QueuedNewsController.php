@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\NewsCategory;
 use App\NewsFeedQueue;
 use \Illuminate\Http\Request;
 use Illuminate\Support\Facades\View as FacadesView;
@@ -26,7 +27,7 @@ class QueuedNewsController extends Controller
      */
     public function index()
     {
-        $news = NewsFeedQueue::all();
+        $news = NewsFeedQueue::orderByDesc("created_at")->paginate(20);
         return view('admin.queue.listings', ["news" => $news]);
     }
 

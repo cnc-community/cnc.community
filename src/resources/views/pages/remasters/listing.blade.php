@@ -31,6 +31,7 @@
         <a href="/command-and-conquer-remastered/workshop-mods" class="btn btn-primary" title="View Mods">Mods &amp; Maps</a>
         <a href="#streams" class="btn btn-primary" title="View Streams">Streams</a>
         <a href="#news" class="btn btn-primary" title="View News">News</a>
+        <a href="#help" class="btn btn-primary" title="View Help & Support">Support</a>
     </div>
 </div>
 @endsection
@@ -73,18 +74,18 @@
     </div>
 </section>
 
-<section id="buy" class="section section-dark-alt section-about">
+<section id="about" class="section section-dark-alt section-about">
     <div class="main-content center">
         <div class="feature-box">
             <div class="feature-text">
                 <h1 class="section-title"><span class="light">EA Partners with</span> <br /> Petroglyph Games</h1>
                 <p class="section-description">
                     Petroglyph Games includes many of the original developers from Westwood Studios, and some of the most influential members 
-                    of the original Command & Conquer development team from 1995. Be sure to support Petroglyph by joining their Discord server and website.
+                    of the original Command & Conquer development team from 1995. Be sure to support Petroglyph by joining their Discord server and visiting their website.
                 </p>
                 <div class="buttons">
-                    <a class="btn btn-secondary btn-icon" title="Visit Petroglyph Discord" rel="nofollow" href="https://discord.gg/ygGFZxz">Visit Discord <i class="icon-discord"></i></a>
-                    <a class="btn btn-secondary btn-icon" title="Visit Petroglpyh Website" rel="nofollow" href="https://petroglyphgames.com/">Visit Website <i class="icon-petroglyph"></i></a>
+                    <a class="btn btn-secondary btn-icon" target="_blank" title="Visit Petroglyph Discord" rel="nofollow" href="https://discord.gg/ygGFZxz">Visit Discord <i class="icon-discord"></i></a>
+                    <a class="btn btn-secondary btn-icon" target="_blank" title="Visit Petroglpyh Website" rel="nofollow" href="https://petroglyphgames.com/">Visit Website <i class="icon-petroglyph"></i></a>
                 </div>
             </div>
 
@@ -160,11 +161,12 @@
 <section id="streams" class="section stream-listings">
     <div class="main-content">
         <h2 class="section-title">C&amp;C Remastered Live Streams</h2>
-        <?php if($streams == null): ?>
-            <p>Nobody is streaming right now, check out the previous streams below.</p>
-            <?php new App\Http\CustomView\Components\TwitchVideoListing($videos); ?>
-        <?php else: ?>
-            <?php new App\Http\CustomView\Components\TwitchListing($streams); ?>
+        <?php new App\Http\CustomView\Components\TwitchListing($streams); ?>
+
+        <?php if($streams): ?>
+        <div class="buttons">
+            <a href="/creators?gameName=remasters" title="View all C&C Remastered Streams" class="btn btn-secondary">View all C&amp;C Remastered streams</a>
+        </div>
         <?php endif; ?>
     </div>
 </section>
@@ -178,6 +180,29 @@
 
         <div class="items-wrap">
             <?php new App\Http\CustomView\Components\NewsListing($news); ?>
+        </div>
+    </div>
+</section>
+
+<section id="help" class="section section-dark-alt section-help">
+    <div class="main-content center">
+        <div class="feature-box">
+            <div class="feature-text">
+                <h1 class="section-title"><span class="light">Help &amp; Support</span> <br /> Get help or report a bug</h1>
+                <p class="section-description">
+                    Having a performance issue, experiencing a crash, freeze, or error with the C&amp;C Remastered Collection? Visit the relevant forums below.
+                </p>
+                <div class="buttons">
+                    <a class="btn btn-secondary btn-icon" target="_blank" title="Ask for help" rel="nofollow" href="https://answers.ea.com/t5/Technical-Issues/bd-p/cc-remastered-collection-technical-en">Ask for help <i class="icon-ea"></i></a>
+                    <a class="btn btn-secondary btn-icon" target="_blank" title="Report a bug" rel="nofollow" href="https://answers.ea.com/t5/Bug-Reports/bd-p/cc-remastered-collection-bug-reports-en">Report a bug <i class="icon-ea"></i></a>
+                </div>
+            </div>
+
+            <div class="feature-banner">
+                <a title="Answers HQ" rel="nofollow" href="https://answers.ea.com/t5/C-C-Remastered-Collection/ct-p/cc-remastered-collection-en">
+                    <img src="/assets/images/ea-answers-hq.jpg" alt="C&amp;C Remasters EA Answers HQ">
+                </a>
+            </div>
         </div>
     </div>
 </section>

@@ -39,10 +39,39 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="category">Category</label>
-                            <select id="category" class="form-control" name="category_id">
+                            <?php $disableCategory = false; ?>
+
+                            <?php if($newsItem->type == \App\News::NEWS_INTERNAL): ?>
+                            <?php 
+                                $date = \Carbon\Carbon::parse($newsItem->created_at);
+                                $now = \Carbon\Carbon::now();
+                                $disableCategory = $date->diffInHours($now) > 1;
+                            ?>
+                            <div class="form-group">
+                                <small>
+                                    <em>
+                                        <strong>Warning:</strong> Articles (not links) use a primary category to create a place to read the news post.<br/> 
+                                        The primary category will be locked from being changed 1 hour after its published date to prevent 404's.<br/>
+                                        If it's a major problem, we can create rules to redirect the old article to the new category. Contact Grant to update.
+                                    </em>
+                                </small>
+                            </div>
+                            <?php endif; ?>
+                            <label for="category">Primary Category</label>
+                            <select id="category" class="form-control" name="category_id" {{ $disableCategory == true ? "disabled": ""}}>
                             @foreach(\App\Category::all() as $category)
                                 <option value="{{ $category->id}}" {{ $category->id == $newsItem->category_id ? "selected": ""}}>
+                                {{ $category->name }}
+                                </option>
+                            @endforeach
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="categories">Other Categories</label>
+                            <select id="categories" class="form-control" name="categories[]" multiple>
+                            @foreach(\App\News::categoriesExcludingPrimary($newsItem->category_id) as $category)
+                                <option value="{{ $category->id}}" {{ $newsItem->hasCategory($category->id) ? "selected": ""}}>
                                 {{ $category->name }}
                                 </option>
                             @endforeach

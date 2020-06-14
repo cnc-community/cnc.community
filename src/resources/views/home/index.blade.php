@@ -12,8 +12,8 @@
         Play C&amp;C on Windows 10 and get all of the <br class="hide-for-xs"/>latest news and content from the community.
     </p>
     <div class="buttons">
-        <a class="btn btn-outline" href="#games">Discover C&amp;C</a>
-        <a class="btn btn-outline" href="#mission">Our Mission</a>
+        <a class="btn btn-secondary" href="#games" title="Discover C&C">Discover C&amp;C</a>
+        <a class="btn btn-secondary" href="#mission" title="Our Mission">Our Mission</a>
     </div>
 </div>
 @endsection

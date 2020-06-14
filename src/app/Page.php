@@ -42,6 +42,10 @@ class Page extends Model
     public static function checkPageExistsWithSlugs($slugCategory, $slug)
     {
         $category = PageCategory::where("slug", $slugCategory)->first();
+        if ($category == null)
+        {
+            abort(404);
+        }
         $page = Page::where("slug", $slug)->where("category_id", $category->id)->first();
         return $page;
     }
