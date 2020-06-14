@@ -46,7 +46,9 @@ class PetroglyphAPI
         
         $client = new Client();
         
-        $r = $client->request('PUT', $this->_apiUrl . PetroglyphAPI::LEADERBOARD_URL, [
+        $url = $this->_apiUrl . PetroglyphAPI::LEADERBOARD_URL;
+
+        $r = $client->request('PUT',$url, [
             'headers' => [
                 'Accept' => 'application/json',
                 'Content-Type' => 'application/json;charset=utf-8'
@@ -54,11 +56,9 @@ class PetroglyphAPI
             'body' => $request
             ]);
             
-        return json_decode($r->getBody(), true);
+        Log::debug("Requested ".$url);
 
-        return Cache::remember('PetroglyphAPI.getLeaderboard.'.$type .$limit . $offset, 86400, function () use($limit, $offset)
-        {
-        });
+        return json_decode($r->getBody(), true);
     }
 
     public function getMatches($limit, $offset)
@@ -76,12 +76,8 @@ class PetroglyphAPI
             
         $response = json_decode($r->getBody(), true);
 
-        Log::debug($response);
+        Log::debug("Requested ".$url);
 
         return $response;
-
-        // return Cache::remember('PetroglyphAPI.getMatches'.$limit.$offset, 86400, function () use ($limit, $offset)
-        // {
-        // });  
     }
 }

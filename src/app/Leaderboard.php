@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use App\LeaderboardHistory;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\Cache;
 
 class Leaderboard extends Model
 {
@@ -18,17 +19,25 @@ class Leaderboard extends Model
 
     public function data($limit = 200, $offset = 0)
     {
-        return LeaderboardData::where("leaderboard_history_id", $this->history()->id)
-            ->offset($offset)
-            ->limit($limit)
-            ->get();
+        // 20 minutes cache
+        return Cache::remember("Leaderboard.data".$limit.$offset, 1200, function () use($limit, $offset)
+        {
+            return LeaderboardData::where("leaderboard_history_id", $this->history()->id)
+                ->offset($offset)
+                ->limit($limit)
+                ->get();
+        });
     }
 
     public function dataPaginated($paginate, $limit)
     {
-        return LeaderboardData::where("leaderboard_history_id", $this->history()->id)
-            ->limit($limit)
-            ->paginate($paginate);
+        // 20 minutes cache
+        return Cache::remember("Leaderboard.dataPaginated".$paginate.$limit, 1200, function () use($paginate, $limit)
+        {
+            return LeaderboardData::where("leaderboard_history_id", $this->history()->id)
+                ->limit($limit)
+                ->paginate($paginate);
+        });
     }
 
     public static function saveRA1vs1Data($result)
