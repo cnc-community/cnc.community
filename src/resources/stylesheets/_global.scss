@@ -674,3 +674,15 @@ ul.pagination
     padding-top: 15px;
     padding-bottom: 15px;
 }
+
+.custom-pagination 
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.custom-pagination .btn
+{
+    margin: 5px;
+}

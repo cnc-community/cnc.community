@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use App\LeaderboardHistory;
+use Illuminate\Pagination\Paginator;
 
 class Leaderboard extends Model
 {
@@ -15,9 +16,19 @@ class Leaderboard extends Model
         return LeaderboardHistory::where("leaderboard_id", $this->id)->first();
     }
 
-    public function data()
+    public function data($limit = 200, $offset = 0)
     {
-        return LeaderboardData::where("leaderboard_history_id", $this->history()->id)->get();
+        return LeaderboardData::where("leaderboard_history_id", $this->history()->id)
+            ->offset($offset)
+            ->limit($limit)
+            ->get();
+    }
+
+    public function dataPaginated($paginate, $limit)
+    {
+        return LeaderboardData::where("leaderboard_history_id", $this->history()->id)
+            ->limit($limit)
+            ->paginate($paginate);
     }
 
     public static function saveRA1vs1Data($result)

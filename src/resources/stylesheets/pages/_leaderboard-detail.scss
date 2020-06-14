@@ -1,0 +1,206 @@
+.leaderboard-detail .top-ranks 
+{
+    padding-top: 180px;
+}
+
+.leaderboard-detail.red-alert .page-background
+{
+    background: url('../images/leaderboard/background-ra.jpg');
+    background-repeat: repeat-x;
+    background-position: top;
+}
+
+.leaderboard-header 
+{
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 120px;
+    text-align: center;
+    
+    @media(min-width: $lg-width)
+    {
+        text-align: left;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
+.leaderboard-header .section-description 
+{
+    color: white;
+}
+
+.leaderboard-header .buttons 
+{
+    display: flex;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.leaderboard-header .buttons .btn 
+{
+    margin: 5px;
+    align-items: center;
+}
+
+.leaderboard-header .title 
+{
+    width: 100%;
+
+    @media(min-width: $lg-width)
+    {
+        width: 60%;
+    }
+
+    @media(min-width: $xl-width)
+    {
+        width: 50%;
+    }
+}
+
+.leaderboard-header .logo 
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    order: -1;
+
+    @media(min-width: $lg-width)
+    {
+        width: 40%;
+        order: 1;
+    }
+    
+    @media(min-width: $xxl-width)
+    {
+        width: 50%;
+        align-items: center;
+        justify-content: flex-end;
+    }
+}
+
+.leaderboard-header .section-title 
+{
+    @media(min-width: $xxl-width)
+    {
+        font-size: 3.5rem;
+    }
+}
+
+.leaderboard-detail .ranks-top-15 
+{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    @media(min-width:$xl-width)
+    {
+        flex-direction: row;
+    }
+}
+
+.top-rank-box 
+{
+    background: rgba(0, 0, 0, 0.17);
+    padding: 15px;
+    flex-grow: 1;
+    margin: 5px;
+    border-radius: 4px;
+}
+
+.top-rank-box.rank-type-2 .player-rank,
+.top-rank-box.rank-type-3 .player-rank 
+{
+    background: #1f0000bf;
+}
+
+.top-rank-box .title 
+{
+    padding: 0px 0 15px;
+}
+
+.top-rank-box .title h3 
+{
+    margin: 0;
+    text-transform: uppercase;
+    @media(min-width:$md-width)
+    {
+        font-size: 2rem;
+    }
+}
+
+.top-rank-box .results 
+{
+    background: url('../images/leaderboard/background-box.jpg');
+    background-size: cover;
+    position: relative;
+}
+
+.top-rank-box .results::before
+{
+    content: "";
+    width: 100%;
+    height: 100%;
+    display: block;
+    background: linear-gradient(0deg, black, transparent);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+}
+
+.top-ranks .rank-type-1 .player-rank:first-child
+{
+    border: 1px solid #ffb300;
+    background: #ffc8005e;
+
+    .rank { 
+        color: #ffffff;
+        position: absolute;
+        right: 10px;
+        font-size: 3rem;
+    }
+}
+
+.top-rank-box .results .player-rank 
+{
+    position: relative;
+    border: 1px solid rgba(255, 0, 0, 0.63);
+    padding: 10px;
+}
+
+.other-rank-box 
+{
+    @extend .top-rank-box;
+}
+
+.leaderboard-detail .ranks-more 
+{
+    flex-wrap: wrap;
+    @extend .ranks-top-15;
+
+    @media(min-width: $sm-width)
+    {
+        display: flex;
+        flex-direction: row;
+    }
+}
+
+.other-rank-box .results
+{
+    background: none;
+}
+
+.other-rank-box .results .player-rank
+{
+    background: #0e0203;
+    border: 1px solid #400d0d;
+}
+
+.leaderboard-detail .pagination .page-link 
+{
+    background: rgba(19, 19, 19, 0.2);
+}

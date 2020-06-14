@@ -7,6 +7,7 @@ use App\Http\Services\Petroglyph\PetroglyphAPI;
 use App\Leaderboard;
 use App\LeaderboardHistory;
 use App\Match;
+use Illuminate\Http\Request;
 
 class LeaderboardController extends Controller
 {
@@ -19,16 +20,55 @@ class LeaderboardController extends Controller
 
     public function getLeaderboardListings()
     {
-        $leaderboardRA = Leaderboard::where("type", "ra_1vs1")->first();
-        $leaderboardTD = Leaderboard::where("type", "td_1vs1")->first();
-        
         $heroVideo = Constants::getVideoWithPoster("command-and-conquer-remastered");
         
         return view('pages.remasters.leaderboard.listings', 
             [
-                "raLeaderboard" => $leaderboardRA->data(),
-                "tdLeaderboard" => $leaderboardTD->data(),
                 "heroVideo" => $heroVideo
+            ]
+        );
+    }
+
+    public function getLeaderboardListingsByGame(Request $request, $game)
+    {
+        $gameName = "";
+        $gameLogo = "";
+        $heroVideo = Constants::getVideoWithPoster("command-and-conquer-remastered");
+        $data = [];
+
+        switch($game)
+        {
+            case "tiberian-dawn":
+                $leaderboardTD = Leaderboard::where("type", "td_1vs1")->first();
+                $top15Data = $leaderboardTD->data(15,0);
+                $data = $leaderboardTD->dataPaginated(50, 200);
+                $gameName = "Tiberian Dawn";
+                $gameLogo = "/assets/images/logos/tiberian-dawn-remastered.png";
+                break;
+
+            case "red-alert":
+                $leaderboardRA = Leaderboard::where("type", "ra_1vs1")->first();
+                $data = $leaderboardRA->dataPaginated(50, 200);
+                $top15Data = $leaderboardRA->data(15,0);
+                $gameName = "Red Alert";
+                $gameLogo = "/assets/images/logos/red-alert-remastered.png";
+
+                break;
+
+            default: 
+                abort(404);
+        }
+
+        $pageNumber = $request->page == null ? 0: $request->page;
+        return view('pages.remasters.leaderboard.detail', 
+            [
+                "top15Data" => $top15Data,
+                "data" => $data,
+                "gameLogo" => $gameLogo,
+                "gameName" => $gameName,
+                "heroVideo" => $heroVideo,
+                "gameSlug" => $game,
+                "pageNumber" => $pageNumber
             ]
         );
     }
