@@ -10,6 +10,13 @@
     background-position: top;
 }
 
+.leaderboard-detail.tiberian-dawn .page-background
+{
+    background: url('../images/leaderboard/background-td.jpg');
+    background-repeat: repeat-x;
+    background-position: top;
+}
+
 .leaderboard-header 
 {
     display: flex;
@@ -100,6 +107,16 @@
     }
 }
 
+.leaderboard-detail.tiberian-dawn .btn-theme 
+{
+    @extend .btn-primary;
+}
+
+.leaderboard-detail.red-alert .btn-theme 
+{
+    @extend .btn-primary;
+}
+
 .top-rank-box 
 {
     background: rgba(0, 0, 0, 0.17);
@@ -113,6 +130,12 @@
 .top-rank-box.rank-type-3 .player-rank 
 {
     background: #1f0000bf;
+}
+
+.leaderboard-detail.tiberian-dawn .top-rank-box.rank-type-2 .player-rank,
+.leaderboard-detail.tiberian-dawn .top-rank-box.rank-type-3 .player-rank 
+{
+    background: #020202bf;
 }
 
 .top-rank-box .title 
@@ -135,6 +158,11 @@
     background: url('../images/leaderboard/background-box.jpg');
     background-size: cover;
     position: relative;
+}
+
+.leaderboard-detail.tiberian-dawn .top-rank-box .results 
+{
+    background: url('../images/leaderboard/background-box-td.jpg');
 }
 
 .top-rank-box .results::before
@@ -189,19 +217,31 @@
     }
 }
 
-.other-rank-box .results
+.leaderboard-detail.red-alert .other-rank-box .results,
+.leaderboard-detail.tiberian-dawn .other-rank-box .results
 {
     background: none;
 }
 
-.other-rank-box .results .player-rank
+.leaderboard-detail.red-alert .other-rank-box .results .player-rank
 {
     background: #0e0203;
     border: 1px solid #400d0d;
+}
+
+.leaderboard-detail.tiberian-dawn .other-rank-box .results .player-rank
+{
+    background: #000000;
+    border: 1px solid rgba(39, 39, 39, 0.63);
 }
 
 .leaderboard-detail .pagination .page-link 
 {
     background: rgba(19, 19, 19, 0.2);
     font-weight: 600;
+}
+
+.leaderboard-detail.red-alert .note 
+{
+    color: #ff7600;
 }

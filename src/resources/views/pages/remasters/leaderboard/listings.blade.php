@@ -23,7 +23,7 @@
 <div class="content center">
     <h1 class="text-uppercase">C&amp;C Remastered Leaderboards</h1>
     <p class="lead">
-        Find the elite in our C&amp;C new Remastered Leaderboards
+        Find the elite in our new C&amp;C Remastered Leaderboards
     </p>
     <div class="buttons">
         <a class="btn btn-secondary" href="/command-and-conquer-remastered/leaderboard/tiberian-dawn" title="Tiberian Dawn Leaderboard">Tiberian Dawn Leaderboard</a>

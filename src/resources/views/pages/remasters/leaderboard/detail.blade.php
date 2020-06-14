@@ -16,7 +16,7 @@
                         Our leaderboards are still under development, join our discord to leave suggestions and feedback. 
                     </p>
                     <div class="buttons">
-                        <a href="/command-and-conquer-remastered/leaderboard/" class="btn btn-theme-red" title="Back to all leaderboards">
+                        <a href="/command-and-conquer-remastered/leaderboard/" class="btn btn-theme" title="Back to all leaderboards">
                             All Leaderboards
                         </a>
 
@@ -34,6 +34,7 @@
 
         <?php if($pageNumber == 1 || $pageNumber == 0): ?>
         <div class="main-content">
+            <p class="note"><small>Note: Ranks are synced every 30 minutes</small></p>
             <div class="ranks-top-15">
                 <?php $i = 0; ?>
                 <?php foreach($top15Data->chunk(5) as $chunk): ?>
