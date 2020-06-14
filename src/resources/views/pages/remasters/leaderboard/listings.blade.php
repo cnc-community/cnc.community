@@ -3,7 +3,7 @@
 @section('title', 'Command & Conquer Remastered')
 @section('description', 'Find the latest streams, mods and maps for the C&amp;C Remastered Collection.')
 
-@section('page-class', 'remasters-leaderboard-listings')
+@section('page-class', 'leaderboard-listings')
 
 @section('hero-video')
 <?php 
@@ -21,9 +21,9 @@
 
 @section('hero')
 <div class="content center">
-    <h1>C&amp;C Remastered Leaderboards</h1>
+    <h1 class="text-uppercase">C&amp;C Remastered Leaderboards</h1>
     <p class="lead">
-        Find the elite in our C&amp;C Remastered Leaderboards
+        Find the elite in our C&amp;C new Remastered Leaderboards
     </p>
     <div class="buttons">
         <a class="btn btn-secondary" href="/command-and-conquer-remastered/leaderboard/tiberian-dawn" title="Tiberian Dawn Leaderboard">Tiberian Dawn Leaderboard</a>
@@ -38,7 +38,7 @@
         <div class="center-box">
             <h1 class="section-title">Web Leaderboards <span class="light">have arrived</span></h1>
             <p class="section-description">
-                We're currently in the early stages of developing a web leaderboard for the C&amp;C Remastered Collection.
+                We're currently in the early stages of building a web leaderboard for the C&amp;C Remastered Collection.
                 If you have suggestions or would like to keep up to date with our proposed updates, come join our website discord.
             </p>
 
