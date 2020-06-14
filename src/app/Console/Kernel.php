@@ -27,6 +27,8 @@ class Kernel extends ConsoleKernel
         $schedule->call('App\Http\Controllers\FeedController@runTask')->hourly();
         $schedule->call('App\Http\Controllers\FeedController@runTaskDaily')->daily();
         $schedule->call('App\Http\Controllers\APIController@runTask')->weekly();
+
+        $schedule->call('App\Http\Controllers\LeaderboardController@runTasks')->everyThirtyMinutes();
     }
 
     /**

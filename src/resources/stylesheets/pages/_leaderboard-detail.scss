@@ -42,6 +42,12 @@
     display: flex;
     margin-top: 15px;
     margin-bottom: 15px;
+    justify-content: center;
+
+    @media(min-width: $lg-width)
+    {
+        justify-content: flex-start;
+    }
 }
 
 .leaderboard-header .buttons .btn 
