@@ -250,13 +250,38 @@
     background-position: 0 41%;
 }
 
-.page-homepage .leaderboard-introduction  .feature-image 
+.page-homepage .leaderboard-introduction .feature-banner
 {
-    padding: 25px;
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
     text-align: center;
+    justify-content: center;
+    padding-right: 0;
+    order: 0;
 }
 
-.page-homepage .leaderboard-introduction .feature-image > img
+.page-homepage .leaderboard-introduction .feature-text 
 {
-    max-width: 80%;
+    padding-left: 50px;
+    padding-right: 50px;
+
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @media(min-width: $xl-width)
+    {
+        align-items: flex-start;
+        justify-content: flex-start;
+        text-align: left;
+    }
 }
+
+.page-homepage .leaderboard-introduction .feature-banner img 
+{
+    max-width: 100%;
+}
+

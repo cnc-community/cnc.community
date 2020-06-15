@@ -57,16 +57,16 @@
     <div class="main-content center">
         <div class="feature-box">
             <div class="col-50 feature-text">
-                <h1 class="section-title"><span class="light">C&amp;C Remastered</span> Leadeboards<br/> have arrived!</h1>
+                <h1 class="section-title"><span class="light">C&amp;C Remastered</span> Leaderboards<br/> have arrived!</h1>
                 <p class="section-description">
-                    Find the elite in our new C&amp;C Remastered Leaderboards for Tiberian Dawn and Red Alert. 
+                    Find the elite in our new C&amp;C Remastered Leaderboards for Tiberian Dawn and Red Alert.
                 </p>
                 <div class="buttons">
-                    <a href="/command-and-conquer-remastered/leaderboard" class="btn btn-secondary" title="Maps">View Leaderboards</a>
+                    <a href="/command-and-conquer-remastered/leaderboard" class="btn btn-secondary" title="View All Leaderboards">View Leaderboards</a>
                 </div>
             </div>
 
-            <div class="col-50">
+            <div class="col-50 feature-banner">
                 <img src="/assets/images/leaderboard-promo.jpg" alt="Leaderboard" loading="lazy" />
             </div>
         </div>
