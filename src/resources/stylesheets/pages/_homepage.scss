@@ -242,3 +242,21 @@
         height: 130px;
     }
 }
+
+.page-homepage .leaderboard-introduction 
+{
+    background: url('../images/leaderboard/background-ra.jpg');
+    background-repeat: repeat-x;
+    background-position: 0 41%;
+}
+
+.page-homepage .leaderboard-introduction  .feature-image 
+{
+    padding: 25px;
+    text-align: center;
+}
+
+.page-homepage .leaderboard-introduction .feature-image > img
+{
+    max-width: 80%;
+}
