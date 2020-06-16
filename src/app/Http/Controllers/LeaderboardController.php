@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Constants;
 use App\Http\Services\Petroglyph\PetroglyphAPIService;
 use App\Leaderboard;
+use App\LeaderboardData;
+use App\Match;
+use App\MatchData;
+use App\MatchPlayer;
 use Illuminate\Http\Request;
 
 class LeaderboardController extends Controller
@@ -28,6 +32,27 @@ class LeaderboardController extends Controller
         return view('pages.remasters.leaderboard.listings', 
             [
                 "heroVideo" => $heroVideo
+            ]
+        );
+    }
+
+    public function getPlayerLeaderboardProfile($gameSlug, $playerId)
+    {
+        $player = MatchPlayer::find($playerId);
+        if ($player == null)
+        {
+            abort(404);
+        }
+
+        $matches = Match::getPlayerMatches($player);
+
+        $playerData = LeaderboardData::findPlayerData($player->id);
+
+        return view('pages.remasters.leaderboard.player-detail', 
+            [
+                "matches" => $matches,
+                "player" => $player,
+                "playerData" => $playerData
             ]
         );
     }

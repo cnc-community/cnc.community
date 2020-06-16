@@ -9,6 +9,21 @@ class Match extends Model
     protected $connection = 'mysql2';
     protected $table = 'matches';
 
+    public static function getPlayerMatches($player)
+    {
+        $matches = [];
+        $matchDataArr= $player->matches();
+        foreach($matchDataArr as $match)
+        {
+            if ($match->raw == null)
+            {
+                continue;
+            }
+            $matches[] = new MatchData(json_decode($match->raw));
+        }
+        return $matches;
+    }
+
     public static function checkMatchExists($matchId)
     {
         return Match::where("matchid", $matchId)->first();
