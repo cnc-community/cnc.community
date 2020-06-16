@@ -75,6 +75,13 @@ class Leaderboard extends Model
         if ($player)
         {
             $leaderResult->match_player_id = $player->id;
+
+            // Map recent games this player has played
+            $matches = $result["matchhistory"];
+            foreach($matches as $matchId)
+            {
+                LeaderboardMatchHistory::saveGame($matchId, $player->id);
+            }
         }
 
         $leaderResult->save();

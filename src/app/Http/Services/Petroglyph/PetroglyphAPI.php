@@ -58,7 +58,13 @@ class PetroglyphAPI
             
         Log::debug("Requested ".$url);
 
-        return json_decode($r->getBody(), true);
+        if ($r->getStatusCode() == 200)
+        {
+            return json_decode($r->getBody(), true);
+        }
+
+        Log::debug("Request returned an error: ".$url . " - Error code: " . $r->getStatusCode());
+        return [];
     }
 
     public function getMatches($limit, $offset)
@@ -73,11 +79,16 @@ class PetroglyphAPI
                 'Content-Type' => 'application/json;charset=utf-8'
             ]
             ]);
-            
-        $response = json_decode($r->getBody(), true);
 
         Log::debug("Requested ".$url);
-
-        return $response;
+        
+        if ($r->getStatusCode() == 200)
+        {
+            $response = json_decode($r->getBody(), true);
+            return $response;
+        }
+        
+        Log::debug("Request returned an error: ".$url . " - Error code: " . $r->getStatusCode());
+        return [];
     }
 }
