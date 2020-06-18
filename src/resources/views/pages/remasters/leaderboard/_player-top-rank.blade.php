@@ -1,0 +1,14 @@
+ <div class="player-rank">
+    <div class="details">
+        <div class="player-name"><h3>{{ $result->playerName() }}</h3></div>
+        <div class="player-stats">
+            <div>Wins {{ $result->wins }}</div>
+            <div>Lost {{ $result->losses }}</div>
+            <div>Points {{ round($result->points) }}</div>
+            <div>W/L Ratio: {{ round($result->wins/$result->losses) }} %</div>
+        </div>
+    </div>
+    <div class="rank">
+        #{{ $result->rank }} 
+    </div>
+</div>

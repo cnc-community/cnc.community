@@ -14,6 +14,17 @@ class LeaderboardData extends Model
         return MatchPlayer::where("id", $this->match_player_id)->first();
     }
 
+    public function playerBadge()
+    {
+        $path = "/assets/images/leaderboard/";
+        $image = "captain.png";
+
+        return array(
+            "image" => $path.$image,
+            "rank" => "Test"
+        );
+    }
+
     public static function findPlayerData($playerId)
     {
         return LeaderboardData::where("match_player_id", $playerId)->first();

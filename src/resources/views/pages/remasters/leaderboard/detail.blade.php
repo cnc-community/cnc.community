@@ -39,7 +39,7 @@
             <form>
                 <div class="form-group player-search">
                     <label class="label" for="search">Search by player name</label>
-                    <input id="search" type="text" name="search" class="form-input" placeholder="Search by username" value="{{ $searchRequest }}" />
+                    <input id="search" type="text" name="search" class="form-input" placeholder="Enter a player name.." value="{{ $searchRequest }}" />
                 </div>
             </form>
         </div>
@@ -67,20 +67,9 @@
                         </div>
                         <div class="results">
                             @foreach($chunk as $result)
+
                             {{-- <a class="player-rank" href="{{ $gameSlug }}/player/{{ $result->player()->id}}"> --}}
-                            <div class="player-rank">
-                                <div class="details">
-                                    <div class="player-name"><h3>{{ $result->playerName() }}</h3></div>
-                                    <div class="player-stats">
-                                        <div>Wins {{ $result->wins }}</div>
-                                        <div>Lost {{ $result->losses }}</div>
-                                        <div>Points {{ round($result->points) }}</div>
-                                    </div>
-                                </div>
-                                <div class="rank">
-                                    #{{ $result->rank }} 
-                                </div>
-                            </div>
+                            @include("pages.remasters.leaderboard._player-top-rank")
                             {{-- </a> --}}
                             @endforeach 
                         </div>

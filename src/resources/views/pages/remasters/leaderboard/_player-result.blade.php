@@ -1,6 +1,9 @@
 <div class="other-rank-box">
     <div class="results">
         <div class="player-rank">
+            <div class="player-badge">
+            <img src="{{ $result->playerBadge()["image"] }}" alt="Rank" />
+            </div>
             <div class="details">
                 <div class="player-name"><h3>{{ $result->playerName() }}</h3></div>
                 <div class="player-stats">
@@ -10,7 +13,7 @@
                 </div>
             </div>
             <div class="rank">
-                #{{ $result->rank }} 
+                #{{ $result->rank }}
             </div>
         </div>
     </div>

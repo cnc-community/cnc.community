@@ -8,7 +8,7 @@ class MatchPlayer extends Model
 {
     protected $connection = 'mysql2';
     protected $table = 'match_players';
-    
+
     public function playerName()
     {
         return $this->player_name;
@@ -30,6 +30,24 @@ class MatchPlayer extends Model
         $player->player_name = $playerName;
         $player->save();
         return $player;
+    }
+
+    public static function playerTopFaction($playerId)
+    {
+        $player = MatchPlayer::findPlayer($playerId);
+        $matches = $player->matches();
+        
+        $factions = [];
+        foreach($matches as $match)
+        {
+            $raw = json_decode($match->raw);
+            foreach($raw->factions as $f)
+            {
+                $factions[] = $f;
+            }
+        }
+
+        dd($factions);
     }
 
     public function matches()
