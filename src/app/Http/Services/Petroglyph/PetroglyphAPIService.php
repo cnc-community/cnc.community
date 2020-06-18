@@ -17,7 +17,7 @@ class PetroglyphAPIService
        
     public function runTasks()
     {
-        // $this->getMatchesTask();
+        $this->getMatchesTask();
         $this->getLeaderboardTask();
     }
 
@@ -33,28 +33,28 @@ class PetroglyphAPIService
 
         sleep(5);
 
-        // $leaderboardResult = $this->petroglyphAPI->getRALeaderboard(200, 200)["ranks"];
-        // foreach($leaderboardResult as $result)
-        // {
-        //     Leaderboard::saveRA1vs1Data($result);
-        // }
+        $leaderboardResult = $this->petroglyphAPI->getRALeaderboard(200, 200)["ranks"];
+        foreach($leaderboardResult as $result)
+        {
+            Leaderboard::saveRA1vs1Data($result);
+        }
 
-        // sleep(5);
+        sleep(5);
 
-        // // TD
-        // $leaderboardResult = $this->petroglyphAPI->getTDLeaderboard(200, 0)["ranks"];
-        // foreach($leaderboardResult as $result)
-        // {
-        //     Leaderboard::saveTDvs1Data($result);
-        // }
+        // TD
+        $leaderboardResult = $this->petroglyphAPI->getTDLeaderboard(200, 0)["ranks"];
+        foreach($leaderboardResult as $result)
+        {
+            Leaderboard::saveTDvs1Data($result);
+        }
 
-        // sleep(5);
+        sleep(5);
         
-        // $leaderboardResult = $this->petroglyphAPI->getTDLeaderboard(200, 200)["ranks"];
-        // foreach($leaderboardResult as $result)
-        // {
-        //     Leaderboard::saveTDvs1Data($result);
-        // }
+        $leaderboardResult = $this->petroglyphAPI->getTDLeaderboard(200, 200)["ranks"];
+        foreach($leaderboardResult as $result)
+        {
+            Leaderboard::saveTDvs1Data($result);
+        }
     }
 
     private function getMatchesTask()
