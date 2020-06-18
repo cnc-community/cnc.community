@@ -125,6 +125,24 @@ i {
     } 
 }
 
+.icon-right
+{
+    transform: rotate(-90deg);
+    &:before
+    {
+        content: "\e908";
+    } 
+}
+
+.icon-left
+{
+    transform: rotate(90deg);
+    &:before
+    {
+        content: "\e908";
+    } 
+}
+
 .icon-play:before 
 {
     content: "\e909";

@@ -9,7 +9,9 @@ use App\LeaderboardData;
 use App\Match;
 use App\MatchData;
 use App\MatchPlayer;
+use App\ViewHelper;
 use Illuminate\Http\Request;
+use Symfony\Component\VarDumper\Caster\ConstStub;
 
 class LeaderboardController extends Controller
 {
@@ -45,35 +47,37 @@ class LeaderboardController extends Controller
         }
 
         $matches = Match::getPlayerMatches($player);
-
         $playerData = LeaderboardData::findPlayerData($player->id);
+        $gameName = Constants::getTwitchGameBySlug($gameSlug);
+        $gameLogo = ViewHelper::getGameLogoPathByName($gameSlug);
 
         return view('pages.remasters.leaderboard.player-detail', 
             [
                 "matches" => $matches,
                 "player" => $player,
-                "playerData" => $playerData
+                "playerData" => $playerData,
+                "gameSlug" => $gameSlug,
+                "gameName" => $gameName,
+                "gameLogo" => $gameLogo
             ]
         );
     }
 
-    public function getLeaderboardListingsByGame(Request $request, $game)
+    public function getLeaderboardListingsByGame(Request $request, $gameSlug)
     {
         $pageNumber = $request->page == null ? 0: $request->page;
         $heroVideo = Constants::getVideoWithPoster("command-and-conquer-remastered");
-        $gameName = "";
-        $gameLogo = "";
+        $gameLogo = ViewHelper::getGameLogoPathByName($gameSlug);
+        $gameName = Constants::getTwitchGameBySlug($gameSlug);
         $data = [];
 
-        switch($game)
+        switch($gameSlug)
         {
             case "tiberian-dawn":
                 $cacheKey = "td".$pageNumber;
                 $leaderboardTD = Leaderboard::where("type", "td_1vs1")->first();
                 $top15Data = $leaderboardTD->data($cacheKey,15,0);
                 $data = $leaderboardTD->dataPaginated($cacheKey,50, 200);
-                $gameName = "Tiberian Dawn";
-                $gameLogo = "/assets/images/logos/tiberian-dawn-remastered.png";
                 break;
 
             case "red-alert":
@@ -81,8 +85,6 @@ class LeaderboardController extends Controller
                 $leaderboardRA = Leaderboard::where("type", "ra_1vs1")->first();
                 $top15Data = $leaderboardRA->data($cacheKey,15,0);
                 $data = $leaderboardRA->dataPaginated($cacheKey,50, 200);
-                $gameName = "Red Alert";
-                $gameLogo = "/assets/images/logos/red-alert-remastered.png";
                 break;
 
             default: 
@@ -96,7 +98,7 @@ class LeaderboardController extends Controller
                 "gameLogo" => $gameLogo,
                 "gameName" => $gameName,
                 "heroVideo" => $heroVideo,
-                "gameSlug" => $game,
+                "gameSlug" => $gameSlug,
                 "pageNumber" => $pageNumber
             ]
         );

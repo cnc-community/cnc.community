@@ -55,7 +55,8 @@
                     </div>
                     <div class="results">
                         @foreach($chunk as $result)
-                        <a class="player-rank" href="{{ $gameSlug }}/player/{{ $result->player()->id}}">
+                        {{-- <a class="player-rank" href="{{ $gameSlug }}/player/{{ $result->player()->id}}"> --}}
+                        <div class="player-rank">
                             <div class="details">
                                 <div class="player-name"><h3>{{ $result->playerName() }}</h3></div>
                                 <div class="player-stats">
@@ -67,7 +68,8 @@
                             <div class="rank">
                                 #{{ $result->rank }} 
                             </div>
-                        </a>
+                        </div>
+                        {{-- </a> --}}
                         @endforeach 
                     </div>
                 </div>
@@ -86,7 +88,7 @@
                     <div class="results">
                         <div class="player-rank">
                             <div class="details">
-                                <div class="player-name"><h3>{{ $result->player() }}</h3></div>
+                                <div class="player-name"><h3>{{ $result->playerName() }}</h3></div>
                                 <div class="player-stats">
                                     <div>Wins {{ $result->wins }}</div>
                                     <div>Lost {{ $result->losses }}</div>

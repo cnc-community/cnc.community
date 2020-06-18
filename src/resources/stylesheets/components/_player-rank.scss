@@ -16,7 +16,14 @@
     color: #ffffff;
 }
 
-.player-rank .player-stats 
+.player-rank .player-name > h3 
+{
+    @extend .font-secondary-bold;
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+.player-stats 
 {
     display: flex;
     align-content: space-around;
@@ -25,24 +32,12 @@
     font-size: 0.8rem;
 }
 
-.player-rank .player-name > h3 
-{
-    @extend .font-secondary-bold;
-    font-size: 1.5rem;
-    margin: 0;
-}
-
-.player-rank .player-stats > div:first-child
-{
-    margin-left: 0;
-} 
-
-.player-rank .player-stats > div 
+.player-stats > div 
 {
     margin: 0 5px;
 }
 
-.tiberian-dawn .player-rank .player-stats
+.tiberian-dawn .player-stats
 {
     color: #e8deb5;
 }
