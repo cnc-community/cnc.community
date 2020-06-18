@@ -69,6 +69,8 @@ class LeaderboardController extends Controller
         $heroVideo = Constants::getVideoWithPoster("command-and-conquer-remastered");
         $gameLogo = ViewHelper::getGameLogoPathByName($gameSlug);
         $gameName = Constants::getTwitchGameBySlug($gameSlug);
+        $searchRequest = filter_var($request->search, FILTER_SANITIZE_STRING);
+
         $data = [];
 
         switch($gameSlug)
@@ -76,15 +78,15 @@ class LeaderboardController extends Controller
             case "tiberian-dawn":
                 $cacheKey = "td".$pageNumber;
                 $leaderboardTD = Leaderboard::where("type", "td_1vs1")->first();
-                $top15Data = $leaderboardTD->data($cacheKey,15,0);
-                $data = $leaderboardTD->dataPaginated($cacheKey,50, 200);
+                $top15Data = $leaderboardTD->data($cacheKey, $searchRequest, $limit=15, $offset=0 );
+                $data = $leaderboardTD->dataPaginated($cacheKey, $searchRequest, $paginate=50, $limit=400);
                 break;
 
             case "red-alert":
                 $cacheKey = "ra".$pageNumber;
                 $leaderboardRA = Leaderboard::where("type", "ra_1vs1")->first();
-                $top15Data = $leaderboardRA->data($cacheKey,15,0);
-                $data = $leaderboardRA->dataPaginated($cacheKey,50, 200);
+                $top15Data = $leaderboardRA->data($cacheKey, $searchRequest, $limit=15, $offset=0 );
+                $data = $leaderboardRA->dataPaginated($cacheKey, $searchRequest, $paginate=50, $limit=400);
                 break;
 
             default: 
@@ -99,7 +101,8 @@ class LeaderboardController extends Controller
                 "gameName" => $gameName,
                 "heroVideo" => $heroVideo,
                 "gameSlug" => $gameSlug,
-                "pageNumber" => $pageNumber
+                "pageNumber" => $pageNumber,
+                "searchRequest" => $searchRequest
             ]
         );
     }

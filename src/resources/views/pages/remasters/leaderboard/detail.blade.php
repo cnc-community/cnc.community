@@ -35,73 +35,87 @@
             </div>
         </div>
 
-        <?php if($pageNumber == 1 || $pageNumber == 0): ?>
         <div class="main-content">
-            <p class="note"><small>Note: Ranks are synced every 30 minutes</small></p>
-            <div class="ranks-top-15">
-                <?php $i = 0; ?>
-                <?php foreach($top15Data->chunk(5) as $chunk): ?>
-                <?php $i++; ?>
+            <form>
+                <div class="form-group player-search">
+                    <label class="label" for="search">Search by player name</label>
+                    <input id="search" type="text" name="search" class="form-input" placeholder="Search by username" value="{{ $searchRequest }}" />
+                </div>
+            </form>
+        </div>
 
-                <div class="top-rank-box rank-type-{{ $i }}">
-                    <div class="title">
-                    <?php if($i == 1): ?>
-                    <h3>{{ $gameName }}'s Elite </h3>
-                    <?php elseif ($i == 2): ?>
-                    <h3>{{ $gameName }}'s Pro</h3>
-                    <?php else: ?>
-                    <h3>{{ $gameName }}'s Upcoming</h3>
-                    <?php endif; ?>
-                    </div>
-                    <div class="results">
-                        @foreach($chunk as $result)
-                        {{-- <a class="player-rank" href="{{ $gameSlug }}/player/{{ $result->player()->id}}"> --}}
-                        <div class="player-rank">
-                            <div class="details">
-                                <div class="player-name"><h3>{{ $result->playerName() }}</h3></div>
-                                <div class="player-stats">
-                                    <div>Wins {{ $result->wins }}</div>
-                                    <div>Lost {{ $result->losses }}</div>
-                                    <div>Points {{ round($result->points) }}</div>
+        <?php $searching = strlen($searchRequest) > 0; ?>
+
+        <?php if(!$searching): ?>
+            <?php if($pageNumber == 1 || $pageNumber == 0): ?>
+            <div class="main-content">
+                <p class="note"><small>Note: Ranks are synced every 30 minutes</small></p>
+                <div class="ranks-top-15">
+                    <?php $i = 0; ?>
+                    <?php foreach($top15Data->chunk(5) as $chunk): ?>
+                    <?php $i++; ?>
+
+                    <div class="top-rank-box rank-type-{{ $i }}">
+                        <div class="title">
+                        <?php if($i == 1): ?>
+                        <h3>{{ $gameName }}'s Elite </h3>
+                        <?php elseif ($i == 2): ?>
+                        <h3>{{ $gameName }}'s Pro</h3>
+                        <?php else: ?>
+                        <h3>{{ $gameName }}'s Upcoming</h3>
+                        <?php endif; ?>
+                        </div>
+                        <div class="results">
+                            @foreach($chunk as $result)
+                            {{-- <a class="player-rank" href="{{ $gameSlug }}/player/{{ $result->player()->id}}"> --}}
+                            <div class="player-rank">
+                                <div class="details">
+                                    <div class="player-name"><h3>{{ $result->playerName() }}</h3></div>
+                                    <div class="player-stats">
+                                        <div>Wins {{ $result->wins }}</div>
+                                        <div>Lost {{ $result->losses }}</div>
+                                        <div>Points {{ round($result->points) }}</div>
+                                    </div>
+                                </div>
+                                <div class="rank">
+                                    #{{ $result->rank }} 
                                 </div>
                             </div>
-                            <div class="rank">
-                                #{{ $result->rank }} 
-                            </div>
+                            {{-- </a> --}}
+                            @endforeach 
                         </div>
-                        {{-- </a> --}}
-                        @endforeach 
                     </div>
+                    <?php endforeach; ?>
                 </div>
-                <?php endforeach; ?>
             </div>
-        </div>
+            <?php endif; ?>
         <?php endif; ?>
 
         <div class="main-content">
             {{ $data->links() }}
 
+            <?php if($searching): ?>
+            <div class="search-results">
+                <h3>Search results</h3>
+                <p>
+                    {{ count($data) }} results for "<strong>{{ $searchRequest }}</strong>". <br/>
+                    <a href="?search=" title="Clear Search">Clear search?</a>
+                </p>
+            </div>
+            <?php endif; ?>
+
             <div class="ranks-more">
                 <?php foreach($data as $result): ?>
-                <?php if($result->rank > 15): ?>
-                <div class="other-rank-box">
-                    <div class="results">
-                        <div class="player-rank">
-                            <div class="details">
-                                <div class="player-name"><h3>{{ $result->playerName() }}</h3></div>
-                                <div class="player-stats">
-                                    <div>Wins {{ $result->wins }}</div>
-                                    <div>Lost {{ $result->losses }}</div>
-                                    <div>Points {{ round($result->points) }}</div>
-                                </div>
-                            </div>
-                            <div class="rank">
-                                #{{ $result->rank }} 
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
+                <?php if(!$searching): ?>
+                    <?php if($result->rank > 15): ?>
+                        @include("pages.remasters.leaderboard._player-result")
+                    <?php endif; ?>
+
+                <?php else: ?>
+                    @include("pages.remasters.leaderboard._player-result")
                 <?php endif; ?>
+
                 <?php endforeach; ?>
             </div>
             {{ $data->links() }}

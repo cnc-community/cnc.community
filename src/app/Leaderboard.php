@@ -17,24 +17,32 @@ class Leaderboard extends Model
         return LeaderboardHistory::where("leaderboard_id", $this->id)->first();
     }
 
-    public function data($cacheKey, $limit = 200, $offset = 0)
+    public function data($cacheKey, $searchQuery, $limit = 200, $offset = 0)
     {
-        // 20 minutes cache
-        return Cache::remember("Leaderboard.data".$limit.$offset.$cacheKey, 1200, function () use($limit, $offset)
+        return Cache::remember("Leaderboard.data".$limit.$offset.$cacheKey.$searchQuery, 1200, 
+        function () use($limit, $offset, $searchQuery)
         {
+            // 20 minutes cache
             return LeaderboardData::where("leaderboard_history_id", $this->history()->id)
+                ->leftJoin("match_players as mp", "mp.id", "leaderboard_data.match_player_id")
+                ->where("mp.player_name", "LIKE", "%$searchQuery%")
+                ->select("mp.player_name", "mp.player_id", "leaderboard_data.*")
                 ->offset($offset)
                 ->limit($limit)
                 ->get();
         });
     }
 
-    public function dataPaginated($cacheKey, $paginate, $limit)
+    public function dataPaginated($cacheKey, $searchQuery, $paginate, $limit)
     {
-        // 20 minutes cache
-        return Cache::remember("Leaderboard.dataPaginated".$paginate.$limit.$cacheKey, 1200, function () use($paginate, $limit)
+        return Cache::remember("Leaderboard.dataPaginated".$paginate.$limit.$cacheKey.$searchQuery, 1200, 
+        function () use($paginate, $limit, $searchQuery)
         {
+            // 20 minutes cache
             return LeaderboardData::where("leaderboard_history_id", $this->history()->id)
+                ->leftJoin("match_players as mp", "mp.id", "leaderboard_data.match_player_id")
+                ->where("mp.player_name", "LIKE", "%$searchQuery%")
+                ->select("mp.player_name", "mp.player_id", "leaderboard_data.*")
                 ->limit($limit)
                 ->paginate($paginate);
         });

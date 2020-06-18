@@ -1,0 +1,135 @@
+
+//
+// Form and related styles
+// These are not be customised to style components.
+// If a component needs to extend this, override it in a specific component file.
+
+.form-group
+{
+    font-family: $font-open-sans;
+    padding: 10px 0;
+}
+
+.form-group label,
+.form-group input,
+.form-group textarea
+{
+    font-family: $font-open-sans;
+    border-radius: 4px;
+    border: 2px solid transparent;
+}
+
+.form-group label
+{
+    margin: 5px 0;
+    padding: 5px 0;
+    display: block;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.form-group .form-input
+{
+    padding: 25px;
+    border: 1px solid transparent;
+}
+
+.form-group .form-input:focus
+{
+    border: 1px solid #9d5007;
+    outline: 0;
+}
+
+.form-group input
+{
+    width: 100%;
+    padding: 10px;
+    height: 20px;
+}
+
+.form-group .form-input
+{
+    border: 1px solid #e6e6e6;
+}
+
+.form-group.form-inline 
+{
+    display: flex;
+}
+
+.form-group select
+{
+    width: 100%;
+    padding: 5px;
+}
+
+.radio
+{
+    display: block;
+    position: relative;
+    cursor: pointer;
+    user-select: none;
+}
+
+.radio input
+{
+    position: absolute;
+    display: none;
+    cursor: pointer;
+}
+
+.radio .checkmark
+{
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 20px;
+    width: 20px;
+    background-color: transparent;
+    border: 1px solid #dedede;
+    border-radius: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.radio input:checked ~ .checkmark
+{
+    background-color: transparent;
+}
+
+.radio input:checked ~ .checkmark:before
+{
+    content: "";
+    width: 10px;
+    height: 10px;
+    background: #ffffff;
+    border-radius: 100%;
+}
+
+.form-group .radio
+{
+    padding-top: 5px;
+    padding-left: 35px;
+    padding-bottom: 10px;
+}
+
+.radio input
+{
+    position: absolute;
+    display: none;
+    cursor: pointer;
+}
+
+.radio .title
+{
+    display: block;
+    padding-bottom: 5px;
+}
+
+.radio small
+{
+    display: block;
+    font-size: 14px;
+}
