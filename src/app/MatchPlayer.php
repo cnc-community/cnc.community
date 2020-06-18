@@ -26,9 +26,9 @@ class MatchPlayer extends Model
         {
             $player = new MatchPlayer();
             $player->player_id = $playerId;
-            $player->player_name = $playerName;
-            $player->save();
         }
+        $player->player_name = $playerName;
+        $player->save();
         return $player;
     }
 
