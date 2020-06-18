@@ -21,36 +21,33 @@ class PetroglyphAPIService
         $this->getLeaderboardTask();
     }
 
-    // TODO - handle properly but for now it works and does the job
     private function getLeaderboardTask()
     {
-        // Ra
-        $leaderboardResult = $this->petroglyphAPI->getRALeaderboard(200, 0)["ranks"];
+        $this->getRALeaderboard(200, 0);
+        $this->getRALeaderboard(200, 200);
+        $this->getRALeaderboard(200, 400);
+
+        $this->getTDLeaderboard(200, 0);
+        $this->getTDLeaderboard(200, 200);
+        $this->getTDLeaderboard(200, 400);
+    }
+
+    private function getRALeaderboard($limit, $offset)
+    {
+        sleep(5);
+
+        $leaderboardResult = $this->petroglyphAPI->getRALeaderboard($limit, $offset)["ranks"];
         foreach($leaderboardResult as $result)
         {
             Leaderboard::saveRA1vs1Data($result);
         }
+    }
 
+    private function getTDLeaderboard($limit, $offset)
+    {
         sleep(5);
 
-        $leaderboardResult = $this->petroglyphAPI->getRALeaderboard(200, 200)["ranks"];
-        foreach($leaderboardResult as $result)
-        {
-            Leaderboard::saveRA1vs1Data($result);
-        }
-
-        sleep(5);
-
-        // TD
-        $leaderboardResult = $this->petroglyphAPI->getTDLeaderboard(200, 0)["ranks"];
-        foreach($leaderboardResult as $result)
-        {
-            Leaderboard::saveTDvs1Data($result);
-        }
-
-        sleep(5);
-        
-        $leaderboardResult = $this->petroglyphAPI->getTDLeaderboard(200, 200)["ranks"];
+        $leaderboardResult = $this->petroglyphAPI->getTDLeaderboard($limit, $offset)["ranks"];
         foreach($leaderboardResult as $result)
         {
             Leaderboard::saveTDvs1Data($result);
