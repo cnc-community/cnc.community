@@ -77,6 +77,22 @@ class Constants
         }
         return $twitchGames["default"];
     }
+
+    public static function getRemasterGameBySlug($slug)
+    {
+        $remasterGames =
+        [
+            "red-alert" => "Red Alert Remastered", 
+            "tiberian-dawn" => "Tiberian Dawn Remastered", 
+            "default" => ""
+        ];
+
+        if (array_key_exists($slug, $remasterGames))
+        {
+            return $remasterGames[$slug];
+        }
+        return $remasterGames["default"];
+    }
     
     public static function getVideoWithPoster($slug)
     {

@@ -67,8 +67,8 @@ class LeaderboardController extends Controller
     {
         $pageNumber = $request->page == null ? 0: $request->page;
         $heroVideo = Constants::getVideoWithPoster("command-and-conquer-remastered");
-        $gameLogo = ViewHelper::getGameLogoPathByName($gameSlug);
-        $gameName = Constants::getTwitchGameBySlug($gameSlug);
+        $gameLogo = "";
+        $gameName = Constants::getRemasterGameBySlug($gameSlug);
         $searchRequest = filter_var($request->search, FILTER_SANITIZE_STRING);
 
         $data = [];
@@ -78,6 +78,7 @@ class LeaderboardController extends Controller
             case "tiberian-dawn":
                 $cacheKey = "td".$pageNumber;
                 $leaderboardTD = Leaderboard::where("type", "td_1vs1")->first();
+                $gameLogo = ViewHelper::getTDRemasterLogo();
                 $top15Data = $leaderboardTD->data($cacheKey, $searchRequest, $limit=15, $offset=0 );
                 $data = $leaderboardTD->dataPaginated($cacheKey, $searchRequest, $paginate=50, $limit=400);
                 break;
@@ -85,6 +86,7 @@ class LeaderboardController extends Controller
             case "red-alert":
                 $cacheKey = "ra".$pageNumber;
                 $leaderboardRA = Leaderboard::where("type", "ra_1vs1")->first();
+                $gameLogo = ViewHelper::getRARemasterLogo();
                 $top15Data = $leaderboardRA->data($cacheKey, $searchRequest, $limit=15, $offset=0 );
                 $data = $leaderboardRA->dataPaginated($cacheKey, $searchRequest, $paginate=50, $limit=400);
                 break;

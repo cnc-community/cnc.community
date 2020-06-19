@@ -41,6 +41,16 @@ class ViewHelper
     {
         return "/assets/images/logos/" . $slug . "-logo.png";
     }
+
+    public static function getRARemasterLogo()
+    {
+        return "/assets/images/logos/red-alert-remastered.png";
+    }
+
+    public static function getTDRemasterLogo()
+    {
+        return "/assets/images/logos/tiberian-dawn-remastered.png";
+    }
     
     public static function getFeatureBannerByGameSlug($slug)
     {
