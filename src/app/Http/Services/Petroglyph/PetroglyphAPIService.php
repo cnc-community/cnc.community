@@ -34,7 +34,7 @@ class PetroglyphAPIService
 
     private function getRALeaderboard($limit, $offset)
     {
-        sleep(5);
+        sleep(4);
 
         $leaderboardResult = $this->petroglyphAPI->getRALeaderboard($limit, $offset)["ranks"];
         foreach($leaderboardResult as $result)
@@ -45,7 +45,7 @@ class PetroglyphAPIService
 
     private function getTDLeaderboard($limit, $offset)
     {
-        sleep(5);
+        sleep(4);
 
         $leaderboardResult = $this->petroglyphAPI->getTDLeaderboard($limit, $offset)["ranks"];
         foreach($leaderboardResult as $result)
