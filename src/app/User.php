@@ -51,7 +51,6 @@ class User extends Authenticatable
         $user->save();
     }
 
-    
     public function hasRole($role)
     {
         return in_array($this->role, $role);
