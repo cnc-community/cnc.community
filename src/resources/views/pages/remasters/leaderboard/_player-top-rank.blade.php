@@ -5,7 +5,6 @@
             <div>Wins {{ $result->wins }}</div>
             <div>Lost {{ $result->losses }}</div>
             <div>Points {{ round($result->points) }}</div>
-            <div>W/L Ratio: {{ round($result->wins/$result->losses) }} %</div>
         </div>
     </div>
     <div class="rank">
