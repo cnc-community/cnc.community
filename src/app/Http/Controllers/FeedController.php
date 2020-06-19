@@ -37,16 +37,19 @@ class FeedController extends Controller
 
     public function runTask()
     {
-        $steamFeed = new SteamFeedParser("https://api.steampowered.com/ISteamNews/GetNewsForApp/v2/", Constants::remastersAppId());
-        $steamFeed->run();
-
         $reddit = new RedditFeedParser("https://www.reddit.com/r/commandandconquer.json");
         $reddit->run();
     }
 
     public function runTaskDaily()
     {
-        $ppmFeed =  new XMLFeedParser("https://www.ppmsite.com/news/rss/ppm_all.xml", "PPMSite");
+        $steamFeed = new SteamFeedParser("https://api.steampowered.com/ISteamNews/GetNewsForApp/v2/", Constants::remastersAppId());
+        $steamFeed->run();
+
+        $ppmFeed =  new XMLFeedParser("https://www.ppmsite.com/news/rss/ppm_cnc.xml", "PPM");
+        $ppmFeed->run();
+
+        $ppmFeed =  new XMLFeedParser("https://www.ppmsite.com/news/rss/ppm_cncnews.xml", "PPM");
         $ppmFeed->run();
 
         $w3dhubFeed = new XMLFeedParser("https://w3dhub.com/forum/rss/1-w3d-hub-news.xml/?member_id=1484&key=2dbafbb11199210b6b0d3b07ef4590ab", "W3DHub");
