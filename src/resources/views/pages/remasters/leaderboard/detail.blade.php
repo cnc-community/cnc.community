@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', ''.$gameName.' Online Leaderboard - Command & Conquer Remastered Collection')
-@section('description', ''.$gameName.' Leaderboard rankings, 1vs1')
+@section('title', ''.$gameName["long_name"].' Online Leaderboard - Command & Conquer Remastered Collection')
+@section('description', ''.$gameName["long_name"].' Leaderboard rankings, 1vs1')
 
 @section('title', 'Command & Conquer Remastered Leaderboards')
 @section('description', 'Find the latest leaderboard rankings for Command & Conquer Remastered Collection.')
@@ -14,7 +14,7 @@
         <div class="main-content">
             <div class="leaderboard-header">
                 <div class="title">
-                    <h1 class="section-title">{{ $gameName }}<br/> <span class="light">Leaderboard Rankings</span></h1>
+                    <h1 class="section-title">{{ $gameName["long_name"] }}<br/> <span class="light">Leaderboard Rankings</span></h1>
                     <p class="section-description">
                         Our leaderboards are still under development, join our discord to leave suggestions and feedback. 
                     </p>
@@ -30,7 +30,7 @@
                     </div>
                 </div>
                 <div class="logo">
-                    <img src="{{ $gameLogo }}" alt="{{ $gameName }} logo" />
+                    <img src="{{ $gameLogo }}" alt="{{ $gameName["long_name"] }} logo" />
                 </div>
             </div>
         </div>
@@ -58,11 +58,11 @@
                     <div class="top-rank-box rank-type-{{ $i }}">
                         <div class="title">
                         <?php if($i == 1): ?>
-                        <h3>{{ $gameName }}'s Elite </h3>
+                        <h3>{{ $gameName["short_name"] }}'s Elite </h3>
                         <?php elseif ($i == 2): ?>
-                        <h3>{{ $gameName }}'s Pro</h3>
+                        <h3>{{ $gameName["short_name"] }}'s Pro</h3>
                         <?php else: ?>
-                        <h3>{{ $gameName }}'s Upcoming</h3>
+                        <h3>{{ $gameName["short_name"] }}'s Upcoming</h3>
                         <?php endif; ?>
                         </div>
                         <div class="results">

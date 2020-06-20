@@ -82,9 +82,18 @@ class Constants
     {
         $remasterGames =
         [
-            "red-alert" => "Red Alert Remastered", 
-            "tiberian-dawn" => "Tiberian Dawn Remastered", 
-            "default" => ""
+            "red-alert" => [ 
+                "long_name" => "Red Alert Remastered",
+                "short_name" => "Red Alert" 
+            ], 
+            "tiberian-dawn" => [ 
+                "long_name" => "Tiberian Dawn Remastered",
+                "short_name" => "Tiberian Dawn"
+            ], 
+            "default"   => [ 
+                "long_name" => "",
+                "short_name" => ""
+            ], 
         ];
 
         if (array_key_exists($slug, $remasterGames))
