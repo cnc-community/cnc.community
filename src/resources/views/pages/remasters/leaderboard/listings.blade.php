@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Command & Conquer Remastered Leaderboards')
-@section('description', 'Find the latest leaderboard rankings for Command & Conquer Remastered Collection.')
+@section('title', 'Leaderboards - Command & Conquer Remastered')
+@section('description', 'Quick Match Leaderboard player rankings for Command & Conquer Remastered Collection, Tiberian Dawn and Red Alert.')
 
 @section('page-class', 'leaderboard-listings')
 
@@ -23,7 +23,7 @@
 <div class="content center">
     <h1 class="text-uppercase">C&amp;C Remastered Leaderboards</h1>
     <p class="lead">
-        Find the elite in our new C&amp;C Remastered Leaderboards
+        Search the top 600 in our C&amp;C Remastered Leaderboards for Tiberian Dawn Remastered, and Red Alert Remastered.
     </p>
     <div class="buttons">
         <a class="btn btn-secondary" href="/command-and-conquer-remastered/leaderboard/tiberian-dawn" title="Tiberian Dawn Leaderboard">Tiberian Dawn Leaderboard</a>
@@ -36,9 +36,10 @@
 <section id="about" class="section section-dark-alt section-about">
     <div class="main-content center">
         <div class="center-box">
-            <h1 class="section-title">Web Leaderboards <span class="light">have arrived</span></h1>
+            <h1 class="section-title">C&amp;C Remastered <br/>Web Leaderboards <span class="light">have arrived</span></h1>
             <p class="section-description">
                 We're currently in the early stages of building a web leaderboard for the C&amp;C Remastered Collection.
+                You will be able to search the top 600 player quick match rankings for Tiberian Dawn Remastered and Red Alert Remastered. 
                 If you have suggestions or would like to keep up to date with our proposed updates, come join our website discord.
             </p>
 

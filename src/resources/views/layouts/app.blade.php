@@ -6,7 +6,7 @@
     <title>@yield('title') - C&C Community</title>
 
     <meta property="og:type" content="website">
-    <meta property="og:title" content="@yield('title') - C&amp;C Community">
+    <meta property="og:title" content="@yield('title') - Command &amp; Conquer">
     <meta property="og:site_name" content="C&C Community">
     <meta property="og:image" content="https://cnc.community/assets/images/meta.png">
 
@@ -14,7 +14,7 @@
     <meta property="og:description" content="@yield('description')">
     <meta name="description" content="@yield('description')">
     @else
-    <meta name="description" content="Play Command & Conquer on Windows 10 and get all of the latest news and content from the community. ">
+    <meta name="description" content="Find how to play guides for Command & Conquer games. Find C&C news and C&C mods from the C&C community, including C&C Remastered Leaderboards">
     @endif
     <meta name="author" content="C&C Community">
     <meta name="keywords" content="cnc tdra map editor, cnc tdra, cnc tdra ladder, C&amp;C Leaderboard, C&amp;C Remastered Leaderboard, tiberian dawn remastered ladder, red alert remastered ladder, C&amp;C, Command &amp; Conquer, C&amp;C95, C&mp;C1, RA, RA95, Tiberian, Sun, Tiberium, Red Alert, Red, Alert, Red Alert 3, Renegade, C&C Remastered, Command & Conquer Remasters, Red Alert 1 Remastered, 

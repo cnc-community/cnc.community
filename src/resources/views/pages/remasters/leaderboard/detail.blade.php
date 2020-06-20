@@ -1,10 +1,7 @@
 @extends('layouts.app')
 
 @section('title', ''.$gameName["long_name"].' Online Leaderboard - Command & Conquer Remastered Collection')
-@section('description', ''.$gameName["long_name"].' Leaderboard rankings, 1vs1')
-
-@section('title', 'Command & Conquer Remastered Leaderboards')
-@section('description', 'Find the latest leaderboard rankings for Command & Conquer Remastered Collection.')
+@section('description', ''.$gameName["long_name"].' Leaderboard Player Rankings, 1vs1')
 
 @section('page-class', 'remasters leaderboard-detail '.  $gameSlug)
 

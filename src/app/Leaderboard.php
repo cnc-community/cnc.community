@@ -62,7 +62,7 @@ class Leaderboard extends Model
         Leaderboard::saveData($history->id, $result);
     }
 
-    private static function saveData($historyId, $result)
+    public static function saveData($historyId, $result)
     {
         $leaderResult = LeaderboardData::where("rank", $result["rank"])
             ->where("leaderboard_history_id", $historyId)
@@ -85,11 +85,15 @@ class Leaderboard extends Model
             $leaderResult->match_player_id = $player->id;
 
             // Map recent games this player has played
+            /*
+            // TODO
+            // We can probably map these games out of this in a separate task
             $matches = $result["matchhistory"];
             foreach($matches as $matchId)
             {
                 LeaderboardMatchHistory::saveGame($matchId, $player->id);
             }
+            */
         }
 
         $leaderResult->save();

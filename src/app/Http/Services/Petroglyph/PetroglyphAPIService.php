@@ -22,37 +22,43 @@ class PetroglyphAPIService
 
     public function runRALeaderboardTasks()
     {
-        $this->getRALeaderboard(200, 0);
-        $this->getRALeaderboard(200, 200);
-        $this->getRALeaderboard(200, 400);
+        $leaderboard = Leaderboard::where("type", "ra_1vs1")->first();
+        $history = $leaderboard->history();
+
+        $this->getRALeaderboard($history, 200, 0);
+        $this->getRALeaderboard($history, 200, 200);
+        $this->getRALeaderboard($history, 200, 400);
     }
 
-    public function runTDLeaderboardTasks()
-    {
-        $this->getTDLeaderboard(200, 0);
-        $this->getTDLeaderboard(200, 200);
-        $this->getTDLeaderboard(200, 400);
-    }
-
-    private function getRALeaderboard($limit, $offset)
+    private function getRALeaderboard($history, $limit, $offset)
     {
         sleep(4);
 
         $leaderboardResult = $this->petroglyphAPI->getRALeaderboard($limit, $offset)["ranks"];
         foreach($leaderboardResult as $result)
         {
-            Leaderboard::saveRA1vs1Data($result);
+            Leaderboard::saveData($history->id, $result);
         }
     }
 
-    private function getTDLeaderboard($limit, $offset)
+    public function runTDLeaderboardTasks()
+    {
+        $leaderboard = Leaderboard::where("type", "td_1vs1")->first();
+        $history = $leaderboard->history();
+
+        $this->getTDLeaderboard($history, 200, 0);
+        $this->getTDLeaderboard($history, 200, 200);
+        $this->getTDLeaderboard($history, 200, 400);
+    }
+
+    private function getTDLeaderboard($history, $limit, $offset)
     {
         sleep(4);
 
         $leaderboardResult = $this->petroglyphAPI->getTDLeaderboard($limit, $offset)["ranks"];
         foreach($leaderboardResult as $result)
         {
-            Leaderboard::saveTDvs1Data($result);
+            Leaderboard::saveData($history->id, $result);
         }
     }
 
