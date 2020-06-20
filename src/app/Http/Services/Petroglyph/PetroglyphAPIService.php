@@ -28,11 +28,13 @@ class PetroglyphAPIService
         $this->getRALeaderboard($history, 200, 0);
         $this->getRALeaderboard($history, 200, 200);
         $this->getRALeaderboard($history, 200, 400);
+        $this->getRALeaderboard($history, 200, 600);
+        $this->getRALeaderboard($history, 200, 800);
     }
 
     private function getRALeaderboard($history, $limit, $offset)
     {
-        sleep(4);
+        sleep(6);
 
         $leaderboardResult = $this->petroglyphAPI->getRALeaderboard($limit, $offset)["ranks"];
         foreach($leaderboardResult as $result)
@@ -49,11 +51,13 @@ class PetroglyphAPIService
         $this->getTDLeaderboard($history, 200, 0);
         $this->getTDLeaderboard($history, 200, 200);
         $this->getTDLeaderboard($history, 200, 400);
+        $this->getTDLeaderboard($history, 200, 600);
+        $this->getTDLeaderboard($history, 200, 800);
     }
 
     private function getTDLeaderboard($history, $limit, $offset)
     {
-        sleep(4);
+        sleep(6);
 
         $leaderboardResult = $this->petroglyphAPI->getTDLeaderboard($limit, $offset)["ranks"];
         foreach($leaderboardResult as $result)
