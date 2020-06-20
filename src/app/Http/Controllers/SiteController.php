@@ -168,7 +168,7 @@ class SiteController extends Controller
         $newsByCategoryCache = Cache::remember($key."pages.remasters.listing.showRemastersListings", 
             Constants::getCacheSeconds(), function () use ($categoryCache)
         {
-            return News::newsPaginatedByCategory($categoryCache->id);
+            return News::newsPaginatedByCategory($categoryCache->id, 6);
         });
 
         $heroVideo = Constants::getVideoWithPoster("command-and-conquer-remastered");

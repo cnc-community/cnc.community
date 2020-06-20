@@ -181,6 +181,12 @@
         <div class="items-wrap">
             <?php new App\Http\CustomView\Components\NewsListing($news); ?>
         </div>
+
+        <div class="buttons">
+            <a href="/news/command-and-conquer-remastered-news" title="View all C&C Remastered News" class="btn btn-secondary">
+            View all C&amp;C Remastered news
+            </a>
+        </div>
     </div>
 </section>
 
