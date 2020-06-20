@@ -128,7 +128,6 @@
 .top-rank-box 
 {
     background: rgba(0, 0, 0, 0.17);
-    padding: 15px;
     flex-grow: 1;
     margin: 5px;
     border-radius: 4px;
@@ -155,7 +154,8 @@
 {
     margin: 0;
     text-transform: uppercase;
-    @media(min-width:$md-width)
+
+    @media(min-width:$xxl-width)
     {
         font-size: 2rem;
     }
@@ -249,7 +249,9 @@
     font-weight: 600;
 }
 
-.leaderboard-detail.red-alert .note 
+.leaderboard-detail .note 
 {
-    color: #ff7600;
+    color: #8c8c8c;
+    font-size: 1rem;
+    font-weight: 600;
 }
