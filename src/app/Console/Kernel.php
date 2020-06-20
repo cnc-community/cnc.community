@@ -30,7 +30,7 @@ class Kernel extends ConsoleKernel
         $schedule->call('App\Http\Controllers\APIController@runTask')->weekly();
 
         $schedule->call('App\Http\Controllers\LeaderboardController@runMatchesTask')
-            ->hourly()
+            ->everyFifteenMinutes()
             ->runInBackground();
 
         $schedule->call('App\Http\Controllers\LeaderboardController@runRALeaderboardTasks')
