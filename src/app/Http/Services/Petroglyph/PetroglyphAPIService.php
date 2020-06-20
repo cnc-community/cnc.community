@@ -15,18 +15,20 @@ class PetroglyphAPIService
         $this->petroglyphAPI = new PetroglyphAPI();
     }
        
-    public function runTasks()
+    public function runMatchesTask()
     {
         $this->getMatchesTask();
-        $this->getLeaderboardTask();
     }
 
-    private function getLeaderboardTask()
+    public function runRALeaderboardTasks()
     {
         $this->getRALeaderboard(200, 0);
         $this->getRALeaderboard(200, 200);
         $this->getRALeaderboard(200, 400);
+    }
 
+    public function runTDLeaderboardTasks()
+    {
         $this->getTDLeaderboard(200, 0);
         $this->getTDLeaderboard(200, 200);
         $this->getTDLeaderboard(200, 400);

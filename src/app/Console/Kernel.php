@@ -4,6 +4,7 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use Illuminate\Support\Facades\Log;
 
 class Kernel extends ConsoleKernel
 {
@@ -28,7 +29,17 @@ class Kernel extends ConsoleKernel
         $schedule->call('App\Http\Controllers\FeedController@runTaskDaily')->daily();
         $schedule->call('App\Http\Controllers\APIController@runTask')->weekly();
 
-        $schedule->call('App\Http\Controllers\LeaderboardController@runTasks')->everyThirtyMinutes();
+        $schedule->call('App\Http\Controllers\LeaderboardController@runMatchesTask')
+            ->hourly()
+            ->runInBackground();
+
+        $schedule->call('App\Http\Controllers\LeaderboardController@runRALeaderboardTasks')
+            ->cron('*/30 * * * *')
+            ->runInBackground();
+            
+        $schedule->call('App\Http\Controllers\LeaderboardController@runTDLeaderboardTasks')
+            ->cron('*/35 * * * *')
+            ->runInBackground();
     }
 
     /**
