@@ -23,14 +23,19 @@ class LeaderboardController extends Controller
         $this->petroglyphAPIService = new PetroglyphAPIService();
     }
 
-    public function runGetMatchTasks()
+    public function runMatchesTask()
     {
-        $this->petroglyphAPIService->runGetMatchTasks();
+        $this->petroglyphAPIService->runMatchesTask();
     }
     
-    public function runGetLeaderboardTasks()
+    public function runRALeaderboardTasks()
     {
-        $this->petroglyphAPIService->runGetLeaderboardTasks();
+        $this->petroglyphAPIService->runRALeaderboardTasks();
+    }
+
+    public function runTDLeaderboardTasks()
+    {
+        $this->petroglyphAPIService->runTDLeaderboardTasks();
     }
 
     public function getLeaderboardListings()
