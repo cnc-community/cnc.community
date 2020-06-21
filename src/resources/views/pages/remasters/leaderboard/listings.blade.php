@@ -3,6 +3,10 @@
 @section('title', 'Leaderboards - Command & Conquer Remastered')
 @section('description', 'Quick Match Leaderboard player rankings for Command & Conquer Remastered Collection, Tiberian Dawn and Red Alert.')
 
+@section('meta')
+<meta property="og:image" content="https://cnc.community/assets/images/meta2.png?v=1.0">
+@endsection
+
 @section('page-class', 'leaderboard-listings')
 
 @section('hero-video')

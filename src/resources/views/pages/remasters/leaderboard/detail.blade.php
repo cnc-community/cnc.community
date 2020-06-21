@@ -2,7 +2,9 @@
 
 @section('title', ''.$gameName["long_name"].' Online Leaderboard - Command & Conquer Remastered Collection')
 @section('description', ''.$gameName["long_name"].' Leaderboard Player Rankings, 1vs1')
-
+@section('meta')
+<meta property="og:image" content="https://cnc.community/assets/images/meta2.png?v=1.0">
+@endsection
 @section('page-class', 'remasters leaderboard-detail '.  $gameSlug)
 
 @section('content')
