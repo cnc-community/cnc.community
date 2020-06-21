@@ -245,9 +245,12 @@
 
 .page-homepage .leaderboard-introduction 
 {
-    background: url('../images/leaderboard/background-ra.jpg');
-    background-repeat: repeat-x;
-    background-position: 0 41%;
+    background: #000;
+}
+
+.page-homepage .news-listings
+{
+    background: #131313;
 }
 
 .page-homepage .leaderboard-introduction .feature-banner

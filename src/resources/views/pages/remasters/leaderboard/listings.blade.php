@@ -23,7 +23,7 @@
 <div class="content center">
     <h1 class="text-uppercase">C&amp;C Remastered Leaderboards</h1>
     <p class="lead">
-        Search the top 600 in our C&amp;C Remastered Leaderboards for Tiberian Dawn Remastered, and Red Alert Remastered.
+        Search the top 1000 in our C&amp;C Remastered Leaderboards for Tiberian Dawn Remastered, and Red Alert Remastered.
     </p>
     <div class="buttons">
         <a class="btn btn-secondary" href="/command-and-conquer-remastered/leaderboard/tiberian-dawn" title="Tiberian Dawn Leaderboard">Tiberian Dawn Leaderboard</a>
@@ -39,7 +39,10 @@
             <h1 class="section-title">C&amp;C Remastered <br/>Web Leaderboards <span class="light">have arrived</span></h1>
             <p class="section-description">
                 We're currently in the early stages of building a web leaderboard for the C&amp;C Remastered Collection.
-                You will be able to search the top 600 player quick match rankings for Tiberian Dawn Remastered and Red Alert Remastered. 
+                You will be able to search the top 1000 player quick match rankings for Tiberian Dawn Remastered and Red Alert Remastered. 
+
+            </p>
+            <p>
                 If you have suggestions or would like to keep up to date with our proposed updates, come join our website discord.
             </p>
 

@@ -1,8 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Command & Conquer Community')
-@section('description', 'Play C&C on Windows 10 and get all of the latest news and content from the community.')
-
+@section('title', 'How to play C&C guides, C&C News, C&C Remastered Leaderboards')
+Find how to play guides for Command & Conquer games. Find C&C news and C&C mods from the C&C community, including C&C Remastered Leaderboards
 @section('page-class', 'homepage')
 
 @section('hero')
@@ -46,7 +45,7 @@
                 <img src="/assets/images/logos/cnc-remastered-logo.png" alt="Tiberian Dawn Remastered" loading="lazy" />
 
                 <div class="buttons">
-                    <a href="/command-and-conquer-remastered/" class="btn btn-primary" title="Maps">View C&amp;C Remastered</a>
+                    <a href="/command-and-conquer-remastered/" class="btn btn-primary" title="Maps">View C&amp;C Remastered Collection</a>
                 </div>
             </div>
         </div>
