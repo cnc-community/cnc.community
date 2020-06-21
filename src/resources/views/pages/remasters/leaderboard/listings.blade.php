@@ -44,7 +44,6 @@
             <p class="section-description">
                 We're currently in the early stages of building a web leaderboard for the C&amp;C Remastered Collection.
                 You will be able to search the top 1000 player quick match rankings for Tiberian Dawn Remastered and Red Alert Remastered. 
-
             </p>
             <p>
                 If you have suggestions or would like to keep up to date with our proposed updates, come join our website discord.

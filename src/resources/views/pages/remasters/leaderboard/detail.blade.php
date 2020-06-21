@@ -66,10 +66,7 @@
                         </div>
                         <div class="results">
                             @foreach($chunk as $result)
-
-                            {{-- <a class="player-rank" href="{{ $gameSlug }}/player/{{ $result->player()->id}}"> --}}
-                            @include("pages.remasters.leaderboard._player-top-rank")
-                            {{-- </a> --}}
+                                @include("pages.remasters.leaderboard._player-top-rank")
                             @endforeach 
                         </div>
                     </div>
@@ -110,5 +107,4 @@
         </div>
     </section>
 </div>
-
 @endsection

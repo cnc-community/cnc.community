@@ -37,10 +37,15 @@
             <div>
                 @foreach($matches as $match)
                 <strong>Map Name</strong>: {{ $match->mapName() }}
+                {{-- <img src="{{ $match->mapInternalName() }}" alt="{{ $match->mapName() }}" /> --}}
+                <br/>
+                <strong>Colours</strong>: 
+                <div>Player 1: {{ $match->player1Colour()}}</div>
+                <div>Player 2: {{ $match->player2Colour()}}</div>
                 <br>
-                <strong>Colours</strong>: {{ var_dump($match->colors) }}
-                <br>
-                <strong>Factions</strong>: {{ var_dump($match->factions) }}
+                <strong>Factions</strong>:
+                <div>Player 1: {{ $match->player1Faction()}}</div>
+                <div>Player 2: {{ $match->player2Faction()}}</div>
                 <br>
                 <strong>Teams</strong>: {{ var_dump($match->teams) }}
                 <br>

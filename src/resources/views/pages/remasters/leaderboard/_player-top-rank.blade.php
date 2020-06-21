@@ -1,4 +1,4 @@
- <div class="player-rank">
+ <a class="player-rank" href="{{ $gameSlug }}/player/{{ $result->player()->id}}" title="View {{ $result->playerName()}} stats">
     <?php $badge = $result->playerBadge(); ?>
     <?php if($badge != null): ?>
     <div class="player-badge">
@@ -17,4 +17,4 @@
     <div class="rank">
         #{{ $result->rank }} 
     </div>
-</div>
+</a>

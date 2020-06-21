@@ -56,7 +56,9 @@ class LeaderboardController extends Controller
             abort(404);
         }
 
-        $matches = Match::getPlayerMatches($player);
+        $game = $gameSlug == "red-alert" ? MatchData::RA_1vs1 : MatchData::TD_1vs1;
+
+        $matches = Match::getPlayerMatches($player, $game);
         $playerData = LeaderboardData::findPlayerData($player->id);
         $gameName = Constants::getTwitchGameBySlug($gameSlug);
         $gameLogo = ViewHelper::getGameLogoPathByName($gameSlug);

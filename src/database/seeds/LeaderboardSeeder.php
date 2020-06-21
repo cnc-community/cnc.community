@@ -15,7 +15,15 @@ class LeaderboardSeeder extends Seeder
      */
     public function run()
     {
-        $this->createMap("Mobius_Red_Alert_Multiplayer_13_Map", "Raraku");
+        $this->createMap("Mobius_Tiberian_Dawn_Multiplayer_71_Map", "One Pass Fits All");
+        $this->createMap("Mobius_Tiberian_Dawn_Multiplayer_60_Map", "Monkey in the Middle");
+        $this->createMap("Mobius_Tiberian_Dawn_Multiplayer_74_Map", "Nowhere to Hide");
+        $this->createMap("Mobius_Tiberian_Dawn_Multiplayer_10_Map", "Red Sands");
+        $this->createMap("Mobius_Tiberian_Dawn_Multiplayer_1_Map", "Green Acres");
+        $this->createMap("Mobius_Tiberian_Dawn_Multiplayer_96_Map", "Tiberium Garden");
+        $this->createMap("Mobius_Red_Alert_Multiplayer_22_Map", "Path Beyond");
+        $this->createMap("Mobius_Red_Alert_Multiplayer_D9_Map", "Snow Garden");
+        $this->createMap("Mobius_Red_Alert_Multiplayer_E3_Map", "Warlords Lake");
         $this->createMap("Mobius_Red_Alert_Multiplayer_12_Map", "Raraku");
         $this->createMap("Mobius_Red_Alert_Multiplayer_11_Map", "Island Hoppers");
         $this->createMap("Mobius_Red_Alert_Multiplayer_10_Map", "First Come First Serve");
