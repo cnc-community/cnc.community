@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title', 'How to play C&C guides, C&C News, C&C Remastered Leaderboards')
-Find how to play guides for Command & Conquer games. Find C&C news and C&C mods from the C&C community, including C&C Remastered Leaderboards
+
 @section('page-class', 'homepage')
 
 @section('hero')
