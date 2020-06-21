@@ -6,13 +6,12 @@ use App\Constants;
 use App\Http\Services\Petroglyph\PetroglyphAPIService;
 use App\Leaderboard;
 use App\LeaderboardData;
+use App\LeaderboardMatchHistory;
 use App\Match;
 use App\MatchData;
 use App\MatchPlayer;
 use App\ViewHelper;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
-use Symfony\Component\VarDumper\Caster\ConstStub;
 
 class LeaderboardController extends Controller
 {
