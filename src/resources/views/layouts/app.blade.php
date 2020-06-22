@@ -122,12 +122,10 @@
 
            if (st > lastScrollTop)
            {
-               console.log('scroll down')
                nav.setAttribute("hidden", "true");
             }
             else
             {
-                console.log('scroll up')
                 nav.setAttribute("hidden", "false");
            }
 
