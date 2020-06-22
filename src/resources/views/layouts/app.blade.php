@@ -120,6 +120,8 @@
         window.addEventListener("scroll", function(){
            var st = window.pageYOffset || document.documentElement.scrollTop;
 
+           if (nav.classList.contains("nav-open")) return;
+
            if (st > lastScrollTop)
            {
                nav.setAttribute("hidden", "true");
