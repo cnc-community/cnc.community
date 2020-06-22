@@ -113,6 +113,7 @@
         {
             navToggleBtn.classList.toggle("is-active");
             nav.classList.toggle("nav-open");
+            document.body.classList.toggle("nav-open");
         }, false);
 
         var lastScrollTop = window.pageYOffset || document.documentElement.scrollTop;
