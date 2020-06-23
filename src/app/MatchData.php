@@ -73,6 +73,26 @@ class MatchData
         return $this->getFactionById($this->factions[1]);
     }
 
+    public function player1Name(): string 
+    {
+        return $this->playerNameBySteamId($this->players[0]);
+    }
+
+    public function player2Name(): string 
+    {
+        return $this->playerNameBySteamId($this->players[1]);
+    }
+
+    private function playerNameBySteamId($steamId)
+    {
+        $player = MatchPlayer::findPlayer($steamId);
+        if ($player)
+        {
+            return ViewHelper::renderSpecialOctal($player->player_name);
+        }
+        return "NOTFOUND";
+    }
+
     private function getColourById($id): string
     {
         switch($id)

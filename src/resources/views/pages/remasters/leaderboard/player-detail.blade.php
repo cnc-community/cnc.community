@@ -36,28 +36,41 @@
             <h3>Recent games</h3>
             <div>
                 @foreach($matches as $match)
-                <strong>Map Name</strong>: {{ $match->mapName() }}
-                {{-- <img src="{{ $match->mapInternalName() }}" alt="{{ $match->mapName() }}" /> --}}
-                <br/>
-                <strong>Colours</strong>: 
-                <div>Player 1: {{ $match->player1Colour()}}</div>
-                <div>Player 2: {{ $match->player2Colour()}}</div>
-                <br>
-                <strong>Factions</strong>:
-                <div>Player 1: {{ $match->player1Faction()}}</div>
-                <div>Player 2: {{ $match->player2Faction()}}</div>
-                <br>
-                <strong>Teams</strong>: {{ var_dump($match->teams) }}
-                <br>
-                <strong>Locations</strong>: {{ var_dump($match->locations) }}
-                <br>              
-                <strong>Match Duration</strong>: {{ $match->matchduration() }}
-                <br>                
-                <strong>Winning Team Id</strong>: {{ $match->winningteamid }}
-                <br>               
-                <strong>Player Ids</strong>: {{ var_dump($match->players) }}
-                <br>
-                <hr>
+                <div class="player-versus" style="background:url(/assets/images/leaderboard/maps/{{ $match->mapInternalName() }}.png)">
+                    <div class="player">
+                        <div class="faction">
+                            <img src="/assets/images/leaderboard/{{ $match->player1Faction()}}.png"/>
+                        </div>
+
+                        <div class="colour-box game-colour-{{ $match->player1Colour()}}">
+                        </div>
+
+                        <h3 class="player-name">
+                            {{ $match->player1Name()}}
+                        </h3>
+                    </div>
+
+                    <div class="versus">
+                        <h4>Vs.</h4>
+                    </div>
+
+                    <div class="player">
+                        <h3 class="player-name">
+                            {{ $match->player2Name()}}
+                        </h3>
+                        <div class="colour-box game-colour-{{ $match->player2Colour()}}">
+                        </div>
+                        <div class="faction">
+                            <img src="/assets/images/leaderboard/{{ $match->player2Faction()}}.png"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <strong>Map Name</strong>: {{ $match->mapName() }}
+                    <strong>Match Duration</strong>: {{ $match->matchduration() }}
+                    <strong>Winning Team Id</strong>: {{ $match->winningteamid }}
+                </div>
                 @endforeach
 
             </div>

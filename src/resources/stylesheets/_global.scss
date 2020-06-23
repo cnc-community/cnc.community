@@ -697,3 +697,55 @@ ul.pagination
     width: 400px;
     max-width: 100%;
 }
+
+.colour-box 
+{
+    display: block;
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+    transform: skewX(-10deg);
+}
+
+.game-colour-yellow 
+{
+    background: linear-gradient(0deg, #eaf100, $color-game-yellow);
+    border: 1px solid #eaf100;
+}
+
+.game-colour-blue 
+{
+    background: linear-gradient(0deg, #000d52, $color-game-blue);
+    border: 1px solid #001db6;
+}
+
+.game-colour-red 
+{
+    background: linear-gradient(0deg, #000d52, $color-game-red);
+    border: 1px solid #001db6;
+}
+   
+.game-colour-green 
+{
+    background-color: $color-game-green;
+}
+
+.game-colour-orange 
+{
+    background-color: $color-game-orange;
+}
+
+.game-colour-teal 
+{
+    background-color: $color-game-teal;
+}
+    
+.game-colour-purple 
+{
+    background-color: $color-game-purple;
+}
+    
+.game-colour-pink 
+{
+    background-color: $color-game-pink;
+}
