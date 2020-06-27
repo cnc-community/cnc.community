@@ -10,7 +10,11 @@
     padding-top: 20px;
     padding-bottom: 20px;
     background: transparent;
-    transition: all 350ms ease-in-out;
+    transition-property: background, transform;
+    transition-duration: 350ms;
+    transition-timing-function: ease-in-out;
+
+    // transition: all ease-in-out 350ms;
 }
 
 .site-header[hidden="true"]
