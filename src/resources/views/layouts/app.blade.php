@@ -29,7 +29,7 @@
     <meta name="google-site-verification" content="xrCaa-F6MyCOiXD6KvugZJtt80qKj8uPbmoU74lxAPE" />
 
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&family=Oswald:wght@300;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/assets/css/app.css?v=2.4" />
+    <link rel="stylesheet" href="/assets/css/app.css?v=2.6" />
 
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon/favicon-32x32.png">
@@ -108,7 +108,7 @@
     </div>
 
     @yield('scripts')
-    <script defer src="/assets/js/SiteCountNav.js"></script>
-    <script defer src="/assets/js/NavBarJs.js"></script>
+    <script defer src="/assets/js/SiteCountNav.js?v=2.6"></script>
+    <script defer src="/assets/js/NavBarJs.js?v=2.6"></script>
 </body>
 </html>
