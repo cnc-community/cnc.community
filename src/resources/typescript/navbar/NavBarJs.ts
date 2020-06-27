@@ -1,9 +1,13 @@
+import { StickyNav } from "./StickyNav";
+import { NavBarHamburger } from "./NavBarHamburger";
+
 export class NavBarJs 
 {
     private cachedNavItem: HTMLDivElement = null;
 
     constructor()
     {
+        var nav = document.getElementById("nav");
         let navItems = document.querySelectorAll(".nav-item-dropdown") as NodeListOf<HTMLDivElement>;
 
         for (let i = 0; i < navItems.length; i++)
@@ -21,11 +25,9 @@ export class NavBarJs
             }
             navItemChildren.addEventListener("mouseenter", this.onNavDropDownMouseEnter.bind(this, navItem), false);
         }
-    }
 
-    private onNavItemMouseEnter(event: Event, navItem: HTMLDivElement): void
-    {
-        this.handleDropdownMenu(navItem);
+        new StickyNav(nav);
+        new NavBarHamburger(nav);
     }
 
     private onNavItemMouseClicked(event: Event, navItem: HTMLDivElement): void
