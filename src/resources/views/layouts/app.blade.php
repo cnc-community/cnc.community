@@ -47,10 +47,18 @@
     <div class="page page-@yield('page-class')">
         <header id="nav" class="site-header nav-closed">
             <div class="main-content">
-                <div class="logo">
-                    <a href="/" title="C&C Community">
-                        <img src="/assets/images/logo.svg" alt="C&C Community Logo" />
-                    </a>
+                <div class="logo-burger-container">
+                    <div class="logo">
+                        <a href="/" title="C&C Community">
+                            <img src="/assets/images/logo.svg" alt="C&C Community Logo" />
+                        </a>
+                    </div>
+
+                    <button id="mobileMenuToggle" class="navburger navburger--elastic " type="button">
+                        <span class="navburger-box">
+                            <span class="navburger-inner"></span>
+                        </span>
+                    </button>
                 </div>
 
                 <nav class="mobile-navigation">
@@ -60,12 +68,6 @@
                 <nav class="main-navigation">
                     @include("layouts.navigation.main-menu")
                 </nav>
-
-                <button id="mobileMenuToggle" class="navburger navburger--elastic " type="button">
-                    <span class="navburger-box">
-                        <span class="navburger-inner"></span>
-                    </span>
-                </button>
             </div>
         </header>
 
@@ -110,12 +112,40 @@
     <script defer src="/assets/js/NavBarJs.js"></script>
     <script defer>
         var navToggleBtn = document.getElementById("mobileMenuToggle");
-        var navToggle = document.getElementById("nav");
+        var nav = document.getElementById("nav");
 
         navToggleBtn.addEventListener("click", function()
         {
             navToggleBtn.classList.toggle("is-active");
-            navToggle.classList.toggle("nav-open");
+            nav.classList.toggle("nav-open");
+            document.body.classList.toggle("nav-open");
+        }, false);
+
+        var lastScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        window.addEventListener("scroll", function(){
+           var st = window.pageYOffset || document.documentElement.scrollTop;
+
+           if (nav.classList.contains("nav-open")) return;
+
+           if (st > lastScrollTop)
+           {
+               nav.setAttribute("hidden", "true");
+            }
+            else
+            {
+                nav.setAttribute("hidden", "false");
+           }
+
+           if (st === 0)
+           {
+               nav.setAttribute("isAtTopOfThePage", true);
+            }
+            else
+            {
+                nav.setAttribute("isAtTopOfThePage", false);
+           }
+
+           lastScrollTop = st <= 0 ? 0 : st;
         }, false);
     </script>
 </body>
