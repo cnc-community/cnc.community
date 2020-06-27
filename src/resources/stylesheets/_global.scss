@@ -326,6 +326,11 @@ p > code
     background-color: #000;
 }
 
+.section-black-alt 
+{
+    background: #080505;
+}
+
 .section-dark-alt 
 {
     background-color: #030304;
@@ -584,6 +589,11 @@ footer .notice
     margin-bottom: 5px;
 }
 
+.meta-info > div.category 
+{
+    background: #131313;
+}
+
 .items-wrap .item .title
 {
     font-size: 1.5rem;
@@ -659,4 +669,40 @@ ul.pagination
     padding: 10px 15px; 
     background-color: #171717;
     color: #717070;
+}
+
+.center-box
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: $md-width;
+    max-width: 100%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.center-box .buttons 
+{
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.custom-pagination 
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.custom-pagination .btn
+{
+    margin: 5px;
+}
+
+.player-search .form-input 
+{
+    width: 400px;
+    max-width: 100%;
 }

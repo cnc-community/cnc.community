@@ -10,7 +10,7 @@
 
 @section('hero')
 <div class="content center">
-    <h1>
+    <h1 class="text-uppercase">
         {{ $category->name }}
     </h1>
 

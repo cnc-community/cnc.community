@@ -1,0 +1,94 @@
+.player-rank 
+{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    border-radius: 4px;
+    padding: 5px;
+    margin-bottom: 5px;
+    border: 1px solid transparent;
+}
+
+.player-rank .rank 
+{
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    font-size: 1.6rem;
+    color: #ffffff;
+    @extend .font-secondary-bold;
+}
+
+.player-rank .player-name 
+{
+    width: 90%;
+    @media(min-width:$lg-width)
+    {
+        width: 200px;
+    }
+
+    @media(min-width: 1500px)
+    {
+        width: 250px;
+    }
+
+    max-width: 100%;
+    padding-bottom: 7px;
+}
+
+.player-rank .player-name > h3 
+{
+    @extend .font-secondary-bold;
+
+    font-size: 1.3rem;
+    margin: 0;
+    word-break: break-word;
+}
+
+.player-rank .player-badge 
+{
+    width: 65px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #fca720;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 12px;
+    margin-right: 20px;
+}
+
+.player-rank .player-badge .rank-title 
+{
+    padding: 5px;
+}
+
+.player-stats 
+{
+    display: flex;
+    align-content: space-around;
+    @extend .font-secondary-bold;
+    color: #ff8d00;
+    font-size: 0.8rem;
+}
+
+.player-stats > div 
+{
+    margin: 0 5px;
+}
+
+.player-stats > div:first-child
+{
+    margin-left: 0;
+}
+
+.tiberian-dawn .player-stats
+{
+    color: #e8deb5;
+}
+
+.tiberian-dawn .top-rank-box .results .player-rank
+{
+    border: 1px solid rgba(107, 107, 107, 0.63);
+}

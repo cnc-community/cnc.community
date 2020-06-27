@@ -82,6 +82,9 @@ Route::get('/funny', 'SiteController@showFunnyListings')->name('pages.funny.list
 Route::get('/creators', 'SiteController@showCreatorsListings')->name('pages.creators.listing');
 Route::get('/command-and-conquer-remastered', 'SiteController@showRemastersListings')->name('pages.remasters.listing');
 Route::get('/command-and-conquer-remastered/workshop-mods', 'SiteController@showRemastersWorkshopMods')->name('pages.remasters.workshop.listings');
+Route::get('/command-and-conquer-remastered/leaderboard', 'LeaderboardController@getLeaderboardListings')->name('pages.remasters.leaderboard.listings');
+Route::get('/command-and-conquer-remastered/leaderboard/{game}', 'LeaderboardController@getLeaderboardListingsByGame')->name('pages.remasters.leaderboard.detail');
+Route::get('/command-and-conquer-remastered/leaderboard/{game}/player/{playerId}', 'LeaderboardController@getPlayerLeaderboardProfile')->name('pages.remasters.leaderboard.player-detail');
 
 Route::get('/news/{categorySlug}', 'SiteController@showNewsByCategorySlug')->name('news.listing');
 Route::get('/news/{categorySlug?}/{newsSlug}', 'SiteController@showNewsBySlug')->name('news.detail');

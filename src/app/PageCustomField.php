@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class PageCustomField extends Model
 {
+    protected $connection= 'mysql';
     protected $table = 'page_custom_fields';
 
     public function __construct()

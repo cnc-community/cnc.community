@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class PageContent extends Model
 {
+    protected $connection= 'mysql';
     protected $table = 'page_content';
 
     public function __construct()

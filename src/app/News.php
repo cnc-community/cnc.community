@@ -4,9 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
+use App\User;
 
 class News extends Model
 {
+    protected $connection= 'mysql';
+
     public const APPROVED = "approved";
     public const DELETE = "delete";
 
@@ -25,6 +28,16 @@ class News extends Model
         $s = floor($word % 200 / (200 / 60));
         $est = $m . ' minute';
         return $est;
+    }
+
+    public function author()
+    {
+        $user = User::where("id", $this->user_id)->select("name")->first();
+        if ($user)
+        {
+            return $user;
+        }
+        return null;
     }
 
     public function excerpt()
@@ -99,7 +112,7 @@ class News extends Model
             ->paginate($limit);
     }
 
-    public static function createNewsItem($title, $post, $url, $image, $categoryId)
+    public static function createNewsItem($title, $post, $url, $image, $categoryId, $userId)
     {
         $news = new News();
         $news->title = $title;
@@ -114,6 +127,7 @@ class News extends Model
             $news->image = $image;
         }
         $news->category_id = $categoryId;
+        $news->user_id = $userId;
         $news->save();
 
         NewsCategory::addCategory($news->id, $news->category_id);
@@ -133,6 +147,7 @@ class News extends Model
         $news->feed_uuid = $queuedItem->feed_uuid;
         $news->image = $queuedItem->image;
         $news->category_id = $queuedItem->category_id;
+        $news->feed_source = $queuedItem->feed_source;
         $news->save();
 
         NewsCategory::addCategory($news->id, $news->category_id);

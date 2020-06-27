@@ -57,8 +57,13 @@ class TwitchStreamsAPI extends AbstractTwitchAPI
                     "Authorization" => "Bearer " . $this->_token
                 ])
                 ->get($this->_apiUrl . TwitchStreamsAPI::VIDEOS_URL . '?game_id='. $gameId . '&first=3');
-
-            return $response["data"];
+            
+            if ($response->successful())
+            {
+                return $response["data"];
+            }
+            
+            return [];
         });
     }
     

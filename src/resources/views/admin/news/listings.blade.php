@@ -25,7 +25,7 @@
                 </div>
                 <div class="card-body admin-listings">
                     <?php foreach($news as $newsItem): ?>
-                        <div class="card admin-item col-md-6">
+                        <div class="card admin-item col-md-3">
                             <div class="card-body">
                                 <h4>
                                     <a href="{{ route('admin.news.edit', ['id' => $newsItem->id ]) }}">{{ $newsItem->title}}</a>
@@ -33,11 +33,22 @@
                                 <ul class="list-unstyled">
                                     <li>
                                         <?php if($newsItem->type == \App\News::NEWS_INTERNAL): ?>
-                                        <strong>Type: Article</strong>
+                                        <small>Type: Article</small>
                                         <?php else: ?>
-                                        <strong>Type: Link</strong>
+                                        <small>Type: Link</small>
                                         <?php endif; ?>
                                     </li>
+                                    <?php if($newsItem->feed_source): ?>
+                                    <li>
+                                        <small>News source: {{ $newsItem->feed_source }}</small>
+                                    </li>
+                                    <?php endif; ?>
+                                    
+                                    <?php if($newsItem->author()): ?>
+                                    <li>
+                                        <small>Author: {{ $newsItem->author()->name }} </small>
+                                    </li>
+                                    <?php endif; ?>
                                     <li>
                                         <small>Updated</small> <small>- {{ $newsItem->updated_at->diffForHumans() }}</small> 
                                     </li>

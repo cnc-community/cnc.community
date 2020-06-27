@@ -15,7 +15,7 @@ class CreatePagesContentTable extends Migration
      */
     public function up()
     {
-        Schema::create('page_content', function (Blueprint $table)
+        Schema::connection('mysql')->create('page_content', function (Blueprint $table)
         {
             $table->id();
             $table->text("body")->nullable();
@@ -30,6 +30,6 @@ class CreatePagesContentTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('page_content');
+        Schema::connection('mysql')->dropIfExists('page_content');
     }
 }

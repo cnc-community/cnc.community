@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateFeedsTable extends Migration
 {
+    
+
     /**
      * Run the migrations.
      *
@@ -13,7 +15,7 @@ class CreateFeedsTable extends Migration
      */
     public function up()
     {
-        Schema::create('news_feed_queues', function (Blueprint $table) 
+        Schema::connection('mysql')->create('news_feed_queues', function (Blueprint $table) 
         {
             $table->id();
             $table->string('title');
@@ -33,6 +35,6 @@ class CreateFeedsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('news_feed_queues');
+        Schema::connection('mysql')->dropIfExists('news_feed_queues');
     }
 }

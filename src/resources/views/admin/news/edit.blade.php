@@ -30,6 +30,18 @@
                             <input id="title" type="text" name="title" class="form-control" value="{{ $newsItem->title }}" />
                         </div>
 
+                        <?php if($newsItem->type == \App\News::NEWS_INTERNAL): ?>
+                        <div class="form-group">
+                            <label for="author">Author</label>
+                            <select id="author" class="form-control" name="author">
+                            <option>- Select Author -</option>
+                            <?php foreach($users as $user): ?>
+                            <option value="{{ $user->id }}" {{ $user->id == $newsItem->user_id ? "selected": ""}}>{{ $user->name }}</option>
+                            <?php endforeach; ?>
+                            </select>
+                        </div>
+                        <?php endif; ?>
+
                         <div class="form-group">
                             <label for="status">Status</label>
                             <select id="status" class="form-control" name="status">

@@ -41,9 +41,27 @@ class ViewHelper
     {
         return "/assets/images/logos/" . $slug . "-logo.png";
     }
+
+    public static function getRARemasterLogo()
+    {
+        return "/assets/images/logos/red-alert-remastered.png";
+    }
+
+    public static function getTDRemasterLogo()
+    {
+        return "/assets/images/logos/tiberian-dawn-remastered.png";
+    }
     
     public static function getFeatureBannerByGameSlug($slug)
     {
         return "/assets/images/banners/". $slug . ".jpg";
+    }
+
+    public static function renderSpecialOctal($string)
+    {
+        return preg_replace_callback('/\\\\([0-7]{1,3})/', function($octal)
+        { 
+            return chr(octdec($octal[1]));
+        }, $string);
     }
 }

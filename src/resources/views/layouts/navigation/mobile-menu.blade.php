@@ -19,6 +19,9 @@
         <a href="/command-and-conquer-remastered#streams" title="C&C Streams" class="nav-link">Streams</a>
         <a href="/command-and-conquer-remastered/workshop-mods" title="C&C Mods" class="nav-link">Steam Workshop</a>
         <a href="/command-and-conquer-remastered#help" title="Help & Support" class="nav-link">Help &amp; Support</a>
+        <div class="title"><a href="/command-and-conquer-remastered/leaderboard"title="C&C Remastered Leaderboard">C&amp;C Remastered Leaderboard</a></div>
+        <a href="/command-and-conquer-remastered/leaderboard/tiberian-dawn" title="Tiberian Dawn Leaderboard" class="nav-link">Tiberian Dawn</a>
+        <a href="/command-and-conquer-remastered/leaderboard/red-alert" title="Tiberian Dawn Leaderboard" class="nav-link">Red Alert</a>
     </div>
 
     <div class="category">
@@ -29,7 +32,7 @@
 
     <div class="social-links">
         <a href="https://www.facebook.com/groups/commandandconquer" title="C&C Facebook Group" rel="nofollow noreferrer" target="_blank"><i class="icon-facebook"></i></a>
-        <a href="https://twitter.com/OfficialCnC" title="C&C Twitter" rel="nofollow noreferrer"  target="_blank"><i class="icon-twitter"></i></a>
+        <a href="https://twitter.com/cnccomofficial" title="C&C Community Twitter" rel="nofollow noreferrer"  target="_blank"><i class="icon-twitter"></i></a>
         <a href="https://discord.gg/zktcZQY" title="C&C Discord" rel="nofollow noreferrer"  target="_blank"><i class="icon-discord"></i></a>
         <a href="https://store.steampowered.com/app/1213210" title="C&C Steam" rel="nofollow noreferrer"  target="_blank"><i class="icon-steam"></i></a>
         <a href="https://www.reddit.com/r/commandandconquer" title="C&C Reddit" rel="nofollow noreferrer" target="_blank"><i class="icon-reddit"></i></a>

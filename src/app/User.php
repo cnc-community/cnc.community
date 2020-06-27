@@ -10,6 +10,7 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    protected $connection= 'mysql';
     public const ROLE_ADMIN = "admin";
     public const ROLE_EDITOR = "editor";
 
@@ -50,7 +51,6 @@ class User extends Authenticatable
         $user->save();
     }
 
-    
     public function hasRole($role)
     {
         return in_array($this->role, $role);

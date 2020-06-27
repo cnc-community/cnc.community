@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateNewsCategoriesTable extends Migration
 {
+    
+
     /**
      * Run the migrations.
      *
@@ -13,7 +15,7 @@ class CreateNewsCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('news_categories', function (Blueprint $table) 
+        Schema::connection('mysql')->create('news_categories', function (Blueprint $table) 
         {
             $table->id();
             $table->unsignedInteger('news_id');
@@ -29,6 +31,6 @@ class CreateNewsCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('news_categories');
+        Schema::connection('mysql')->dropIfExists('news_categories');
     }
 }

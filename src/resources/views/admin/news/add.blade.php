@@ -30,6 +30,16 @@
                         </div>
 
                         <div class="form-group">
+                            <label for="author">Author</label>
+                            <select id="author" class="form-control" name="author">
+                            <option>- Select Author -</option>
+                            <?php foreach($users as $user): ?>
+                            <option value="{{ $user->id }}">{{ $user->name }}</option>
+                            <?php endforeach; ?>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
                             <label for="category">Category</label>
                             <select id="category" class="form-control" name="category_id">
                             @foreach(\App\Category::all() as $category)

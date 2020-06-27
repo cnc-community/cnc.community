@@ -19,15 +19,23 @@
             Posted <?php echo $newsItem->created_at->diffForHumans(); ?>
         </div>
         <div class="date">
+            <?php if($newsItem->author()): ?>
+                by <?php echo $newsItem->author()->name ?>
+            <?php endif; ?>
+        </div>
+        <div class="date">
             <?php echo $newsItem->readTime(); ?> read 
         </div>
+    </div>
+    <div class="meta-info">
+        <?php foreach($newsItem->categories() as $category): ?>
         <div class="category">
-            <?php echo $newsItem->primaryCategory()->name; ?>
+        <?php echo $category->name ?>
         </div>
+        <?php endforeach; ?>
     </div>
 </div>
 @endsection
-
 
 @section('content')
 <section class="section how-to-play-steps">

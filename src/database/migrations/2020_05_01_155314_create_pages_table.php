@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Schema;
 
 class CreatePagesTable extends Migration
 {
+    
+
     /**
      * Run the migrations.
      *
@@ -13,7 +15,7 @@ class CreatePagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('pages', function (Blueprint $table) 
+        Schema::connection('mysql')->create('pages', function (Blueprint $table) 
         {
             $table->id();
             $table->string("title");
@@ -32,6 +34,6 @@ class CreatePagesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pages');
+        Schema::connection('mysql')->dropIfExists('pages');
     }
 }

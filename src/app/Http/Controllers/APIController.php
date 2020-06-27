@@ -7,13 +7,17 @@ use App\Http\Services\Steam\SteamAPI;
 use App\Http\Services\SteamHelper;
 use App\Http\Services\SteamWorkShopItem;
 use App\Http\Services\Twitch\TwitchStreamsAPI;
+use App\Leaderboard;
+use App\Match;
 use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Log;
 
 class APIController extends Controller
 {
     private $twitchStreamsAPI;
     private $steamAPI;
+    private $petroglyphAPI;
 
     public function __construct()
     {

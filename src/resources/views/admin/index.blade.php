@@ -17,6 +17,7 @@
             </div>
         </div>
 
+        <?php if(auth()->user()->role == \App\User::ROLE_ADMIN): ?>
         <div class="col-xl-3 col-md-6">
             <div class="card bg-primary text-white mb-4">
                 <div class="card-body">Pages</div>
@@ -36,6 +37,8 @@
                 </div>
             </div>
         </div>
+        <?php endif; ?>
+
     </div>
 </div>
 @endsection

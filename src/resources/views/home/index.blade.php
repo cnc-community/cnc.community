@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Command & Conquer Community')
-@section('description', 'Play C&C on Windows 10 and get all of the latest news and content from the community.')
+@section('title', 'How to play C&C guides, C&C News, C&C Remastered Leaderboards')
 
 @section('page-class', 'homepage')
 
@@ -46,8 +45,28 @@
                 <img src="/assets/images/logos/cnc-remastered-logo.png" alt="Tiberian Dawn Remastered" loading="lazy" />
 
                 <div class="buttons">
-                    <a href="/command-and-conquer-remastered/" class="btn btn-primary" title="Maps">View C&amp;C Remastered</a>
+                    <a href="/command-and-conquer-remastered/" class="btn btn-primary" title="Maps">View C&amp;C Remastered Collection</a>
                 </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="leaderboards" class="section section-black-alt leaderboard-introduction">
+    <div class="main-content center">
+        <div class="feature-box">
+            <div class="col-50 feature-text">
+                <h1 class="section-title"><span class="light">C&amp;C Remastered</span> Leaderboards<br/> have arrived!</h1>
+                <p class="section-description">
+                    Find the elite in our new C&amp;C Remastered Leaderboards for Tiberian Dawn and Red Alert.
+                </p>
+                <div class="buttons">
+                    <a href="/command-and-conquer-remastered/leaderboard" class="btn btn-secondary" title="View All Leaderboards">View Leaderboards</a>
+                </div>
+            </div>
+
+            <div class="col-50 feature-banner">
+                <img src="/assets/images/leaderboard-promo.jpg" alt="Leaderboard" loading="lazy" />
             </div>
         </div>
     </div>

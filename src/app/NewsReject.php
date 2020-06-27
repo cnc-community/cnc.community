@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class NewsReject extends Model
 {
+    protected $connection= 'mysql';
+
     public static function rejectNews($uuid, $url)
     {
         $reject = new NewsReject();

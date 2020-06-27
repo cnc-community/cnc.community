@@ -6,25 +6,30 @@
     <title>@yield('title') - C&C Community</title>
 
     <meta property="og:type" content="website">
-    <meta property="og:title" content="@yield('title') - C&amp;C Community">
+    <meta property="og:title" content="@yield('title') - Command &amp; Conquer">
     <meta property="og:site_name" content="C&C Community">
+
+    @if(View::hasSection('meta'))
+    @yield('meta')
+    @else
     <meta property="og:image" content="https://cnc.community/assets/images/meta.png">
+    @endif
 
     @if(View::hasSection('description'))
     <meta property="og:description" content="@yield('description')">
     <meta name="description" content="@yield('description')">
     @else
-    <meta name="description" content="Play Command & Conquer on Windows 10 and get all of the latest news and content from the community. ">
+    <meta name="description" content="Find how to play guides for Command & Conquer games. Find C&C news and C&C mods from the C&C community, including C&C Remastered Leaderboards">
     @endif
     <meta name="author" content="C&C Community">
-    <meta name="keywords" content="C&amp;C, Command &amp; Conquer, C&amp;C95, C&mp;C1, RA, RA95, Tiberian, Sun, Tiberium, Red Alert, Red, Alert, Red Alert 3, Renegade, C&C Remastered, Command & Conquer Remasters, Red Alert 1 Remastered, 
+    <meta name="keywords" content="cnc tdra map editor, cnc tdra, cnc tdra ladder, C&amp;C Leaderboard, C&amp;C Remastered Leaderboard, tiberian dawn remastered ladder, red alert remastered ladder, C&amp;C, Command &amp; Conquer, C&amp;C95, C&mp;C1, RA, RA95, Tiberian, Sun, Tiberium, Red Alert, Red, Alert, Red Alert 3, Renegade, C&C Remastered, Command & Conquer Remasters, Red Alert 1 Remastered, 
         Tiberian Dawn Remastered, Red Alert 2,Generals,C&amp;C3: Tiberium Wars, C&amp;C Mods, C&amp;C Mod Workshop, C&amp;C Steam Workshop" 
     />
 
     <meta name="google-site-verification" content="xrCaa-F6MyCOiXD6KvugZJtt80qKj8uPbmoU74lxAPE" />
 
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&family=Oswald:wght@300;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/assets/css/app.css?v=1.4" />
+    <link rel="stylesheet" href="/assets/css/app.css?v=2.4" />
 
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon/favicon-32x32.png">
@@ -84,7 +89,7 @@
                 <div class="logo">
                     <img src="/assets/images/logo.svg" alt="C&C Community Logo" />
                     <small>
-                        Copyright C&C Community &copy; <?php echo date("Y"); ?>
+                        Copyright C&amp;C Community &copy; <?php echo date("Y"); ?>
                     </small>
                 </div>
 

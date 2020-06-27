@@ -32,7 +32,8 @@ class SteamFeedParser extends AbstractFeedParser
             NewsFeedQueue::createFromNewsItem(
                 $steamFeedItem->title(),
                 $steamFeedItem->url(),
-                $steamFeedItem->contents()
+                $steamFeedItem->contents(),
+                "Steam"
             );
         }
     }

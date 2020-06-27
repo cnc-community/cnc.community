@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateNewsRejectsTable extends Migration
 {
+    
+
     /**
      * Run the migrations.
      *
@@ -13,7 +15,7 @@ class CreateNewsRejectsTable extends Migration
      */
     public function up()
     {
-        Schema::create('news_rejects', function (Blueprint $table) {
+        Schema::connection('mysql')->create('news_rejects', function (Blueprint $table) {
             $table->id();
             $table->string('feed_uuid');
             $table->string('url');
@@ -28,6 +30,6 @@ class CreateNewsRejectsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('news_rejects');
+        Schema::connection('mysql')->dropIfExists('news_rejects');
     }
 }

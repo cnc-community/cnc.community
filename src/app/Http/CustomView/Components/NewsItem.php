@@ -14,8 +14,10 @@ class NewsItem extends AbstractCustomView
     private $publishedDate;
     private $type;
     private $categories;
+    private $feedSource;
+    private $author;
 
-    public function __construct($title, $url, $post, $image, $categories, $publishedDate, $readTime, $type)
+    public function __construct($title, $url, $post, $image, $categories, $publishedDate, $readTime, $type, $feedSource, $author)
     {
         $this->title = $title;
         $this->url = $url;
@@ -25,6 +27,8 @@ class NewsItem extends AbstractCustomView
         $this->publishedDate = $publishedDate;
         $this->readTime = $readTime;
         $this->type = $type;
+        $this->feedSource = $feedSource;
+        $this->author = $author;
 
         $this->renderContents();
     }
@@ -53,11 +57,12 @@ class NewsItem extends AbstractCustomView
                             <i class="icon-link" aria-label="Link Icon"></i>
                         </a>
                         <?php else: ?>
-                            <a href="<?php echo $this->url; ?>" title="<?php echo $this->title; ?>" class="btn-link" >
+                            <a href="<?php echo $this->url; ?>" title="<?php echo $this->title; ?>" class="btn-link">
                             <i class="icon-article" aria-label="Article Icon"></i>
-                        </a>
+                            </a>
                         <?php endif; ?>
                     </div>
+
                     <div>
                         <h3 class="title">
                             <?php if($this->type == News::NEWS_EXTERNAL): ?>
@@ -73,8 +78,19 @@ class NewsItem extends AbstractCustomView
                         <?php if($this->publishedDate): ?>
                         <div class="meta-info">
                             <div class="date">
-                                Posted <?php echo $this->publishedDate; ?>
+                                <?php if ($this->feedSource): ?>
+                                News from <?php echo $this->feedSource; ?>, posted
+                                <?php else: ?>
+                                    Posted
+                                <?php endif; ?>
+
+                                <?php if($this->author): ?>
+                                    by <?php echo $this->author->name ?>,
+                                <?php endif; ?>
+                                <?php echo $this->publishedDate; ?>
                             </div>
+                        </div>
+                        <div class="meta-info">
                             <?php foreach($this->categories as $category): ?>
                             <div class="category">
                             <?php echo $category->name ?>

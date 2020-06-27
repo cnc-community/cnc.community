@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class PageCategory extends Model
 {
+    protected $connection= 'mysql';
     protected $table = 'page_category';
 
     public function __construct()
