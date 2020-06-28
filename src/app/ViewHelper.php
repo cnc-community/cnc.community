@@ -64,4 +64,16 @@ class ViewHelper
             return chr(octdec($octal[1]));
         }, $string);
     }
+
+    public static function paginate($items, $perPage = 15, $page = null)
+    {
+        $page = $page ?: (Paginator::resolveCurrentPage() ?: 1);
+
+        $items = $items instanceof Collection ? $items : Collection::make($items);
+        $options = [
+            'path' => LengthAwarePaginator::resolveCurrentPath()
+        ];
+
+        return new LengthAwarePaginator($items->forPage($page, $perPage), $items->count(), $perPage, $page, $options);
+    }
 }

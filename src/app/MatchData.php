@@ -100,6 +100,6 @@ class MatchData
             case 7:
                 return "turkey";
         }
-        return "";
+        return "random";
     }
 }

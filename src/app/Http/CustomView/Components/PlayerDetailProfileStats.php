@@ -27,7 +27,6 @@ class PlayerDetailProfileStats extends AbstractCustomView
         $this->faction = $faction;
         $this->wonGame = $wonGame;
         $this->url = $url;
-
         $this->renderContents();
     }
 

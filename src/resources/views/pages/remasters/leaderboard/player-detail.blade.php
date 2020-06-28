@@ -36,6 +36,7 @@
         <div class="main-content">
             <div class="recent-games">
             <h3>Recent games</h3>
+            {{ $matches->links() }}
             @foreach($matches as $match)
             <div class="recent-game">
                 <div class="players">
@@ -92,6 +93,7 @@
                 </div>
             </div>
             @endforeach
+            {{ $matches->links() }}
             </div>
         </div>
     </section>

@@ -12,7 +12,7 @@
     
     @media(min-width: $lg-width)
     {
-        width: 60%;
+        width: 65vw;
     }
 }
 
@@ -199,6 +199,11 @@
     background: #300405e8;
 }
 
+.tiberian-dawn .game-details 
+{
+    background: #0000009e;
+}
+
 .map-preview .game-details 
 {
     display: flex;
@@ -227,8 +232,7 @@
     font-size: 1.4rem;
 }
 
-.leaderboard-profile-detail .leaderboard-header
+.leaderboard-profile-detail .leaderboard-header 
 {
-    max-width: 80%;
-    margin: 0 auto;
+    padding-bottom: 50px;
 }

@@ -49,7 +49,7 @@ class LeaderboardController extends Controller
         );
     }
 
-    public function getPlayerLeaderboardProfile($gameSlug, $playerId)
+    public function getPlayerLeaderboardProfile(Request $request, $gameSlug, $playerId)
     {
         $player = MatchPlayer::find($playerId);
         if ($player == null)
@@ -70,13 +70,14 @@ class LeaderboardController extends Controller
         }
 
         $matches = Match::getPlayerMatches($player, $game);
+        $matchesPaginated = ViewHelper::paginate($matches, 15, $request->page);
         $playerData = LeaderboardData::findPlayerData($player->id);
         $gameName = Constants::getTwitchGameBySlug($gameSlug);
         $leaderboard = Leaderboard::where("type", $game)->first();
 
         return view('pages.remasters.leaderboard.player-detail', 
             [
-                "matches" => $matches,
+                "matches" => $matchesPaginated,
                 "player" => $player,
                 "playerData" => $playerData,
                 "gameSlug" => $gameSlug,

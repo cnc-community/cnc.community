@@ -104,12 +104,16 @@
 {
     border: 1px solid rgb(255, 0, 0);
     background: #ff000063;
+
+    .game-status h3 { transition: color 250ms ease-in; color: white; }
 }
 
 .leaderboard-detail.tiberian-dawn .other-rank-box .results .player-rank:hover,
 .leaderboard-detail.tiberian-dawn .top-rank-box .results .player-rank:hover,
 .leaderboard-detail.tiberian-dawn .player-rank:hover 
 {
-    border: 1px solid rgb(255, 0, 0);
-    background: #ff000063;
+    border: 1px solid #ffb505;
+    background: #ff9900a6;
+
+    .game-status h3 { transition: color 250ms ease-in; color: white; }
 } 
