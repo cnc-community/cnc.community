@@ -12,7 +12,9 @@ use App\Match;
 use App\MatchData;
 use App\MatchPlayer;
 use App\ViewHelper;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class LeaderboardController extends Controller
 {
@@ -69,9 +71,19 @@ class LeaderboardController extends Controller
              $gameLogo = ViewHelper::getTDRemasterLogo();
         }
 
-        $matches = Match::getPlayerMatches($player, $game);
-        $matchesPaginated = ViewHelper::paginate($matches, 15, $request->page);
-        $playerData = LeaderboardData::findPlayerData($player->id);
+        $matches = Cache::remember("playerMatches".$gameSlug.$playerId.$request->page, Constants::getCacheSeconds(), function () use ($player, $game)
+        {
+            return Match::getPlayerMatches($player, $game);
+        });
+
+        $matchesCollection = collect($matches);
+        $matchesPaginated = ViewHelper::paginate($matchesCollection->sortDesc(), 15, $request->page);
+
+        $playerData = Cache::remember("playerData".$gameSlug.$playerId, Constants::getCacheSeconds(), function () use ($player)
+        {
+            return LeaderboardData::findPlayerData($player->id);
+        });
+
         $gameName = Constants::getTwitchGameBySlug($gameSlug);
         $leaderboard = Leaderboard::where("type", $game)->first();
 
