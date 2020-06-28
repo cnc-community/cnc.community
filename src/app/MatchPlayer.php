@@ -11,7 +11,7 @@ class MatchPlayer extends Model
 
     public function playerName()
     {
-        return $this->player_name;
+        return ViewHelper::renderSpecialOctal($this->player_name);
     }
 
     public static function findPlayer($playerId)
@@ -61,6 +61,7 @@ class MatchPlayer extends Model
     {
         return LeaderboardMatchHistory::where("match_player_id", $this->id)
             ->leftJoin("matches", "matches.matchid", "=", "leaderboard_match_history.match_id")
+            ->orderBy("match_id", "DESC")
             ->get();
     }
 }

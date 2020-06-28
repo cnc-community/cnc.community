@@ -13,6 +13,7 @@ class Match extends Model
     {
         $matches = [];
         $matchDataArr= $player->matches();
+
         foreach($matchDataArr as $match)
         {
             if ($match->raw == null)
