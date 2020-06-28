@@ -16,7 +16,7 @@
             <div class="leaderboard-header">
                 <div class="title">
                     <h1 class="section-title">
-                        {{ $player->playerName() }}
+                        #{{ $playerData->rank }} {{ $player->playerName() }}
                     </h1>
                     <div class="player-stats">
                         <div>Wins {{ $playerData->wins }}</div>
