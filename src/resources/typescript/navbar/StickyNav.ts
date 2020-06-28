@@ -6,6 +6,7 @@ export class StickyNav
     {
         this.lastScrollTopPosition = window.pageYOffset || document.documentElement.scrollTop;
         window.addEventListener("scroll", this.onWindowScrolled.bind(this), false);
+        this.onWindowScrolled();
     }
 
     private onWindowScrolled(): void
