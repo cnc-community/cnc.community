@@ -107,4 +107,14 @@
         </div>
     </div>
 </section>
+
+<section id="partners" class="section section-black section-sites">
+    <div class="main-content text-center">
+        <h2 class="section-title">Trusted Partners</h2>
+    </div>
+        
+    <div class="sites">
+        <?php new App\Http\CustomView\Components\Sites($__env); ?>
+    </div>
+</section>
 @endsection
