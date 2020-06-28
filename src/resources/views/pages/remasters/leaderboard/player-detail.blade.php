@@ -5,6 +5,7 @@
 @section('meta')
 <meta property="og:image" content="https://cnc.community/assets/images/meta2.png?v=1.0">
 @endsection
+
 @section('page-class', 'remasters leaderboard-detail leaderboard-profile-detail '.  $gameSlug)
 
 @section('content')
@@ -34,45 +35,54 @@
         </div>
         <div class="main-content">
             <h3>Recent games</h3>
-            <div>
-                @foreach($matches as $match)
-                <div class="player-versus" style="background:url(/assets/images/leaderboard/maps/{{ $match->mapInternalName() }}.png)">
-                    <div class="player">
-                        <div class="faction">
-                            <img src="/assets/images/leaderboard/{{ $match->player1Faction()}}.png"/>
-                        </div>
+            <div class="recent-games">
+            @foreach($matches as $match)
+                <div class="recent-game">
 
-                        <div class="colour-box game-colour-{{ $match->player1Colour()}}">
-                        </div>
+                <div class="players">
+                    {{-- <strong>Winning Team Id</strong>: {{ $match->winningteamid }} --}}
 
-                        <h3 class="player-name">
-                            {{ $match->player1Name()}}
-                        </h3>
-                    </div>
+                    <?php $player1 = $match->player1(); ?>
+                    <?php $player1Stats = $match->player1()->leaderboardStats($leaderboardHistory); ?>
 
-                    <div class="versus">
-                        <h4>Vs.</h4>
-                    </div>
+                    <?php new \App\Http\CustomView\Components\PlayerDetailProfileStats
+                        (
+                            $player1Stats->playerName(),
+                            $player1Stats->wins,
+                            $player1Stats->losses,
+                            $player1Stats->playerBadge(),
+                            $player1Stats->points,
+                            $player1Stats->rank,
+                            $match->player1Faction(),
+                            $wonGame = ($match->winningTeamId() == 0)
+                        ); 
+                    ?>                    
 
-                    <div class="player">
-                        <h3 class="player-name">
-                            {{ $match->player2Name()}}
-                        </h3>
-                        <div class="colour-box game-colour-{{ $match->player2Colour()}}">
-                        </div>
-                        <div class="faction">
-                            <img src="/assets/images/leaderboard/{{ $match->player2Faction()}}.png"/>
-                        </div>
-                    </div>
+                    <?php $player2 = $match->player2(); ?>
+                    <?php $player2Stats = $match->player2()->leaderboardStats($leaderboardHistory); ?>
+
+                    <?php new \App\Http\CustomView\Components\PlayerDetailProfileStats
+                        (
+                            $player2Stats->playerName(),
+                            $player2Stats->wins,
+                            $player2Stats->losses,
+                            $player2Stats->playerBadge(),
+                            $player2Stats->points,
+                            $player2Stats->rank,
+                            $match->player2Faction(),
+                            $wonGame = ($match->winningTeamId() == 1)
+                        ); 
+                    ?>                    
                 </div>
 
-                <div>
-                    <strong>Map Name</strong>: {{ $match->mapName() }}
-                    <strong>Match Duration</strong>: {{ $match->matchduration() }}
-                    <strong>Winning Team Id</strong>: {{ $match->winningteamid }}
+                <div class="map-preview" style="background-image:url(/assets/images/leaderboard/maps/{{ $match->mapInternalName() }}.png)">
+                    <div class="game-details">
+                        <div>{{ $match->mapName() }}</div>
+                        <div>{{ $match->matchduration() }}</div>
+                    </div>
                 </div>
-                @endforeach
-
+            </div>
+            @endforeach
             </div>
         </div>
     </section>

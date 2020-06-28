@@ -14,6 +14,7 @@ class MatchData
             $this->{$k} = $v;
         }
     }
+
     public function matchType(): string 
     {
         switch($this->matchtype)
@@ -37,7 +38,7 @@ class MatchData
     { 
         return gmdate("H:i:s", $this->matchduration); 
     }
-    public function winningteamid(): int { return $this->winningteamid; }
+    public function winningTeamId(): int { return $this->winningteamid; }
     public function mapName(): string 
     {
         $map = Map::where("internal_name", $this->mapname)->first();
@@ -48,50 +49,11 @@ class MatchData
         return $this->mapname;
     }
 
-    public function mapInternalName(): string 
-    {
-        return $this->mapname;
-    }
-
-    public function player1Colour(): string 
-    {
-        return $this->getColourById($this->colors[0]);
-    }
-
-    public function player2Colour(): string 
-    {
-        return $this->getColourById($this->colors[1]);
-    }
-
-    public function player1Faction(): string 
-    {
-        return $this->getFactionById($this->factions[0]);
-    }
-
-    public function player2Faction(): string 
-    {
-        return $this->getFactionById($this->factions[1]);
-    }
-
-    public function player1Name(): string 
-    {
-        return $this->playerNameBySteamId($this->players[0]);
-    }
-
-    public function player2Name(): string 
-    {
-        return $this->playerNameBySteamId($this->players[1]);
-    }
-
-    private function playerNameBySteamId($steamId)
-    {
-        $player = MatchPlayer::findPlayer($steamId);
-        if ($player)
-        {
-            return ViewHelper::renderSpecialOctal($player->player_name);
-        }
-        return "NOTFOUND";
-    }
+    public function player1() { return MatchPlayer::findPlayer($this->players[0]); }
+    public function player2() { return MatchPlayer::findPlayer($this->players[1]); }
+    public function player1Faction(): string { return $this->getFactionById($this->factions[0]); }
+    public function player2Faction(): string { return $this->getFactionById($this->factions[1]); }
+    public function mapInternalName(): string { return $this->mapname; }
 
     private function getColourById($id): string
     {

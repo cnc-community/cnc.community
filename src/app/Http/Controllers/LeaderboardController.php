@@ -6,6 +6,7 @@ use App\Constants;
 use App\Http\Services\Petroglyph\PetroglyphAPIService;
 use App\Leaderboard;
 use App\LeaderboardData;
+use App\LeaderboardHistory;
 use App\LeaderboardMatchHistory;
 use App\Match;
 use App\MatchData;
@@ -57,11 +58,21 @@ class LeaderboardController extends Controller
         }
 
         $game = $gameSlug == "red-alert" ? MatchData::RA_1vs1 : MatchData::TD_1vs1;
+        $gameLogo = "";
+
+        if ($game == MatchData::RA_1vs1)
+        {
+             $gameLogo = ViewHelper::getRARemasterLogo();
+        }
+        else
+        {
+             $gameLogo = ViewHelper::getTDRemasterLogo();
+        }
 
         $matches = Match::getPlayerMatches($player, $game);
         $playerData = LeaderboardData::findPlayerData($player->id);
         $gameName = Constants::getTwitchGameBySlug($gameSlug);
-        $gameLogo = ViewHelper::getGameLogoPathByName($gameSlug);
+        $leaderboard = Leaderboard::where("type", $game)->first();
 
         return view('pages.remasters.leaderboard.player-detail', 
             [
@@ -70,7 +81,8 @@ class LeaderboardController extends Controller
                 "playerData" => $playerData,
                 "gameSlug" => $gameSlug,
                 "gameName" => $gameName,
-                "gameLogo" => $gameLogo
+                "gameLogo" => $gameLogo,
+                "leaderboardHistory" => $leaderboard->history()
             ]
         );
     }

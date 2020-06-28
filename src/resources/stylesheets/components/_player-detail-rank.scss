@@ -1,0 +1,227 @@
+.players 
+{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.recent-games 
+{
+    width: 100%;
+    @media(min-width: $lg-width)
+    {
+        width: 80%;
+    }
+}
+
+.player-detail-rank 
+{
+    @extend .player-rank;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.player-detail-rank .player-name > h3
+{
+    @media(min-width: $lg-width)
+    {
+        font-size: 1.6rem;
+    }
+    line-height: 1;
+}
+
+.player-detail-rank .rank
+{
+    position: static;
+    right: auto;
+    top: auto;
+    padding: 0 20px 0 0;
+    font-size: 2rem;
+
+    @media(min-width: $lg-width)
+    {
+        font-size: 2.5rem;
+        width: 110px;
+    }
+}
+
+.player-detail-rank .player-badge 
+{
+    width: 35px;
+    @media(min-width: $xl-width)
+    {
+        width: 65px;
+    }
+}
+
+.player-detail-rank .faction
+{
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    @media(min-width: $xl-width)
+    {
+        position: relative;
+    }
+}
+
+.player-detail-rank .faction > img 
+{
+    height: 15px;
+    @media(min-width: $xl-width)
+    {
+        height: 50px;
+    }
+}
+
+.game-status
+{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 5px;
+
+    @media(min-width:$lg-width)
+    {
+        position: relative;
+        padding: 0;
+    }
+}
+
+.game-status h3 
+{
+    font-size: 1rem;
+    margin: 0;
+
+    @media(min-width: $lg-width)
+    {
+        font-size: 1.6rem;
+    }
+}
+
+.game-status.lost-game h3 
+{
+    color: #c70000;
+}
+
+.game-status.won-game h3 
+{
+    color: #ffb400; 
+}
+
+.tiberian-dawn .player-detail-rank
+{
+    background: #292929;
+    border: 1px solid #777777;
+}
+
+.red-alert .player-detail-rank
+{
+    background: #300405;
+    border: 1px solid #570708;
+}
+
+.player-detail-rank
+{
+    border-radius: 4px;
+    padding: 15px;
+    height: 100px;
+}
+
+.player-detail-rank .details 
+{
+    width: 80%;
+    @media(min-width: $lg-width)
+    {
+        width: auto;
+    }
+}
+
+.map-preview 
+{
+    position: relative;
+    border-radius: 8px;
+    width: 100%;
+    height: 220px;
+
+    background-size: cover;
+    background-position: center;
+    margin: 0;
+
+    @media(min-width:$lg-width)
+    {
+        width: 220px;
+        height: auto;
+        margin-left: 15px;
+        background-size: 110%;
+    }
+
+}
+
+.tiberian-dawn .map-preview
+{
+    border: 1px solid #0c0c0c;
+}
+
+.red-alert .map-preview
+{
+    border: 1px solid #630002;
+}
+
+.player 
+{
+    position: relative;
+    display: flex;
+    flex-grow: 1;
+    width: 100%;
+    height: 100%;
+}
+
+.recent-game 
+{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    flex-direction: column;
+
+    @media(min-width: $lg-width)
+    {
+        flex-direction: row;
+    }
+}
+
+.red-alert .game-details 
+{
+    background: #300405e8;
+}
+
+.map-preview .game-details 
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100px;
+    margin-top: auto;
+    margin-bottom: auto;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+}
+
+.player.won-game .player-detail-rank 
+{
+    border: 1px solid #ffb300;
+    background: #ff9900a6;
+}
+
+.leaderboard-profile-detail .leaderboard-header .player-stats
+{
+    margin-top: 10px;
+    font-size: 1.4rem;
+}
+

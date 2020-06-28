@@ -19,6 +19,13 @@ class MatchPlayer extends Model
         return MatchPlayer::where("player_id", $playerId)->first();
     }
 
+    public function leaderboardStats($leaderboardHistory)
+    {
+        return LeaderboardData::where("match_player_id", "=", $this->id)
+            ->where("leaderboard_history_id", $leaderboardHistory->id)
+            ->first();
+    }
+
     public static function savePlayer($playerId, $playerName)
     {
         $player = MatchPlayer::where("player_id", $playerId)->first();
