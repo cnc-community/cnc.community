@@ -14,8 +14,9 @@ class PlayerDetailProfileStats extends AbstractCustomView
     private $rank;
     private $faction;
     private $wonGame;
+    private $url;
 
-    public function __construct($name, $wins, $losses, $badge, $points, $rank, $faction, $wonGame)
+    public function __construct($name, $wins, $losses, $badge, $points, $rank, $faction, $wonGame, $url)
     {
         $this->name = $name;
         $this->wins = $wins;
@@ -25,6 +26,7 @@ class PlayerDetailProfileStats extends AbstractCustomView
         $this->rank = $rank;
         $this->faction = $faction;
         $this->wonGame = $wonGame;
+        $this->url = $url;
 
         $this->renderContents();
     }
@@ -32,7 +34,7 @@ class PlayerDetailProfileStats extends AbstractCustomView
     public function render()
     {
         ?>
-            <div class="player <?php echo $this->wonGame == true ? "won-game" : "lost-game" ?>">
+            <a class="player <?php echo $this->wonGame == true ? "won-game" : "lost-game" ?>" href="<?php echo $this->url; ?>" title="View <?php echo $this->name; ?> stats">
                 <div class="player-detail-rank">
                     <div class="player-badge">
                         <img src="<?php echo $this->badge["image"]; ?>" alt="Rank" />
@@ -58,7 +60,7 @@ class PlayerDetailProfileStats extends AbstractCustomView
                         </h3>
                     </div>
                 </div>
-            </div>
+            </a>
         <?php 
     }
 }

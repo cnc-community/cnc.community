@@ -34,45 +34,54 @@
             </div>
         </div>
         <div class="main-content">
-            <h3>Recent games</h3>
             <div class="recent-games">
+            <h3>Recent games</h3>
             @foreach($matches as $match)
-                <div class="recent-game">
-
+            <div class="recent-game">
                 <div class="players">
-                    {{-- <strong>Winning Team Id</strong>: {{ $match->winningteamid }} --}}
-
                     <?php $player1 = $match->player1(); ?>
                     <?php $player1Stats = $match->player1()->leaderboardStats($leaderboardHistory); ?>
 
-                    <?php new \App\Http\CustomView\Components\PlayerDetailProfileStats
-                        (
-                            $player1Stats->playerName(),
-                            $player1Stats->wins,
-                            $player1Stats->losses,
-                            $player1Stats->playerBadge(),
-                            $player1Stats->points,
-                            $player1Stats->rank,
-                            $match->player1Faction(),
-                            $wonGame = ($match->winningTeamId() == 0)
-                        ); 
-                    ?>                    
+                    <?php if($player1Stats): ?>
+                        <?php $player1Url = "/command-and-conquer-remastered/leaderboard/" . $gameSlug . "/player/" . $match->player1()->id; ?>
+                        <?php new \App\Http\CustomView\Components\PlayerDetailProfileStats
+                            (
+                                $player1Stats->playerName(),
+                                $player1Stats->wins,
+                                $player1Stats->losses,
+                                $player1Stats->playerBadge(),
+                                $player1Stats->points,
+                                $player1Stats->rank,
+                                $match->player1Faction(),
+                                $wonGame = ($match->winningTeamId() == 0),
+                                $player1Url
+                            ); 
+                        ?>          
+                    <?php else: ?>
+                        Player {{ $match->player2()->player_name }} games data was not found
+                    <?php endif; ?>
 
                     <?php $player2 = $match->player2(); ?>
                     <?php $player2Stats = $match->player2()->leaderboardStats($leaderboardHistory); ?>
 
-                    <?php new \App\Http\CustomView\Components\PlayerDetailProfileStats
-                        (
-                            $player2Stats->playerName(),
-                            $player2Stats->wins,
-                            $player2Stats->losses,
-                            $player2Stats->playerBadge(),
-                            $player2Stats->points,
-                            $player2Stats->rank,
-                            $match->player2Faction(),
-                            $wonGame = ($match->winningTeamId() == 1)
-                        ); 
-                    ?>                    
+                    <?php if($player2Stats): ?>
+                        <?php $player2Url = "/command-and-conquer-remastered/leaderboard/" . $gameSlug . "/player/" . $match->player2()->id; ?>
+                        <?php new \App\Http\CustomView\Components\PlayerDetailProfileStats
+                            (
+                                $player2Stats->playerName(),
+                                $player2Stats->wins,
+                                $player2Stats->losses,
+                                $player2Stats->playerBadge(),
+                                $player2Stats->points,
+                                $player2Stats->rank,
+                                $match->player2Faction(),
+                                $wonGame = ($match->winningTeamId() == 1),
+                                $player2Url
+                            ); 
+                        ?>
+                    <?php else: ?>
+                        Player {{ $match->player2()->player_name }} game data was not found
+                    <?php endif; ?>
                 </div>
 
                 <div class="map-preview" style="background-image:url(/assets/images/leaderboard/maps/{{ $match->mapInternalName() }}.png)">

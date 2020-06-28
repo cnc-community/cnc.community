@@ -92,3 +92,24 @@
 {
     border: 1px solid rgba(107, 107, 107, 0.63);
 }
+
+.player-rank:hover
+{
+    transition: ease-in 200ms all;
+}
+
+.leaderboard-detail.red-alert .other-rank-box .results .player-rank:hover,
+.leaderboard-detail.red-alert .top-rank-box .results .player-rank:hover,
+.leaderboard-detail.red-alert .player-rank:hover 
+{
+    border: 1px solid rgb(255, 0, 0);
+    background: #ff000063;
+}
+
+.leaderboard-detail.tiberian-dawn .other-rank-box .results .player-rank:hover,
+.leaderboard-detail.tiberian-dawn .top-rank-box .results .player-rank:hover,
+.leaderboard-detail.tiberian-dawn .player-rank:hover 
+{
+    border: 1px solid rgb(255, 0, 0);
+    background: #ff000063;
+} 
