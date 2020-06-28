@@ -25,12 +25,9 @@
     <meta name="keywords" content="cnc tdra map editor, cnc tdra, cnc tdra ladder, C&amp;C Leaderboard, C&amp;C Remastered Leaderboard, tiberian dawn remastered ladder, red alert remastered ladder, C&amp;C, Command &amp; Conquer, C&amp;C95, C&mp;C1, RA, RA95, Tiberian, Sun, Tiberium, Red Alert, Red, Alert, Red Alert 3, Renegade, C&C Remastered, Command & Conquer Remasters, Red Alert 1 Remastered, 
         Tiberian Dawn Remastered, Red Alert 2,Generals,C&amp;C3: Tiberium Wars, C&amp;C Mods, C&amp;C Mod Workshop, C&amp;C Steam Workshop" 
     />
-
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;500;700&display=optional" rel="stylesheet">
     <meta name="google-site-verification" content="xrCaa-F6MyCOiXD6KvugZJtt80qKj8uPbmoU74lxAPE" />
-
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&family=Oswald:wght@300;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/assets/css/app.css?v=2.4" />
-
+    <link rel="stylesheet" href="/assets/css/app.css?v=2.6" />
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon/favicon-16x16.png">
@@ -47,10 +44,18 @@
     <div class="page page-@yield('page-class')">
         <header id="nav" class="site-header nav-closed">
             <div class="main-content">
-                <div class="logo">
-                    <a href="/" title="C&C Community">
-                        <img src="/assets/images/logo.svg" alt="C&C Community Logo" />
-                    </a>
+                <div class="logo-burger-container">
+                    <div class="logo">
+                        <a href="/" title="C&C Community">
+                            <img src="/assets/images/logo.svg" alt="C&C Community Logo" />
+                        </a>
+                    </div>
+
+                    <button id="mobileMenuToggle" class="navburger navburger--elastic " type="button">
+                        <span class="navburger-box">
+                            <span class="navburger-inner"></span>
+                        </span>
+                    </button>
                 </div>
 
                 <nav class="mobile-navigation">
@@ -60,12 +65,6 @@
                 <nav class="main-navigation">
                     @include("layouts.navigation.main-menu")
                 </nav>
-
-                <button id="mobileMenuToggle" class="navburger navburger--elastic " type="button">
-                    <span class="navburger-box">
-                        <span class="navburger-inner"></span>
-                    </span>
-                </button>
             </div>
         </header>
 
@@ -96,6 +95,7 @@
                         <a href="/terms-and-conditions" title="Contact">Terms</a> 
                         <a href="/privacy-policy" title="Privacy">Privacy Policy</a> 
                         <a href="/contact" title="Contact">Contact</a> 
+                        <a href="/legal" title="Legal">Legal</a> 
                     </div>
                     <p class="notice">
                         C&amp;C Community has no affiliation with Electronic Arts or PetroGlyph Games
@@ -106,17 +106,7 @@
     </div>
 
     @yield('scripts')
-    <script defer src="/assets/js/SiteCountNav.js"></script>
-    <script defer src="/assets/js/NavBarJs.js"></script>
-    <script defer>
-        var navToggleBtn = document.getElementById("mobileMenuToggle");
-        var navToggle = document.getElementById("nav");
-
-        navToggleBtn.addEventListener("click", function()
-        {
-            navToggleBtn.classList.toggle("is-active");
-            navToggle.classList.toggle("nav-open");
-        }, false);
-    </script>
+    <script defer src="/assets/js/SiteCountNav.js?v=2.6"></script>
+    <script defer src="/assets/js/NavBarJs.js?v=2.6"></script>
 </body>
 </html>

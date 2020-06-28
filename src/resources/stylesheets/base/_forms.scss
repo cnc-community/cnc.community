@@ -6,7 +6,7 @@
 
 .form-group
 {
-    font-family: $font-open-sans;
+    @extend .font-primary;
     padding: 10px 0;
 }
 
@@ -14,7 +14,7 @@
 .form-group input,
 .form-group textarea
 {
-    font-family: $font-open-sans;
+    @extend .font-primary;
     border-radius: 4px;
     border: 2px solid transparent;
 }

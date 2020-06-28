@@ -8,11 +8,18 @@ html, body
     min-height: 100vh;
 }
 
-*, ::after, ::before {
+body.nav-open
+{
+    overflow: hidden;
+}
+
+*, ::after, ::before
+{
     box-sizing: border-box;
 }
 
-a {
+a
+{
     color: $color-white;
 }
 
@@ -41,13 +48,15 @@ main
     z-index: 1;
 }
 
-p, ul, li {
+p, ul, li
+{
     color: $color-secondary;
 }
 
 a {
     text-decoration: none;
-    &:hover { 
+    &:hover
+    { 
         // transition: color ease 250ms;
     }
 }
