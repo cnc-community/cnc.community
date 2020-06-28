@@ -32,11 +32,11 @@ class MatchData
     public function factions(): array { return $this->factions; }
     public function startTime() 
     { 
-        return gmdate("H:i:s", $this->starttime); 
+        return date("M d Y H:i:s", $this->starttime); 
     }
     public function matchDuration() 
     { 
-        return gmdate("H:i:s", $this->matchduration); 
+        return date("H:i:s", $this->matchduration); 
     }
     public function winningTeamId(): int { return $this->winningteamid; }
     public function mapName(): string 

@@ -11,6 +11,7 @@
 @section('content')
 <div class="page-background">
     <section class="top-ranks">
+
         <div class="main-content">
             <div class="leaderboard-header">
                 <div class="title">
@@ -33,6 +34,7 @@
                 </div>
             </div>
         </div>
+
         <div class="main-content">
             <div class="recent-games">
             <h3>Recent games</h3>
@@ -87,8 +89,9 @@
 
                 <div class="map-preview" style="background-image:url(/assets/images/leaderboard/maps/{{ $match->mapInternalName() }}.png)">
                     <div class="game-details">
-                        <div>{{ $match->mapName() }}</div>
-                        <div>{{ $match->matchduration() }}</div>
+                        <div><strong>Map:</strong> {{ $match->mapName() }}</div>
+                        <div><strong>Duration:</strong> {{ $match->matchduration() }}</div>
+                        <div class="date-played">{{ $match->startTime() }}</div>
                     </div>
                 </div>
             </div>
