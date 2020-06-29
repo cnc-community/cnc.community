@@ -24,27 +24,27 @@ class Sites extends AbstractCustomView
                 </a>
                 <a href="https://w3dhub.org" target="_blank" class="site-item" title="W3DHub" rel="nofollow noreferrer">
                     <div class="logo">
-                        <img src="assets/images/sites/w3d.png" loading="lazy" alt="CnCNet Logo" />
+                        <img src="assets/images/sites/w3d.png" loading="lazy" alt="W3DHub Logo" />
                     </div>
                 </a>
-                <a href="https://w3dhub.org" target="_blank" class="site-item" title="W3DHub" rel="nofollow noreferrer">
+                <a href="https://cncnz.com" target="_blank" class="site-item" title="CNCNZ" rel="nofollow noreferrer">
                     <div class="logo">
-                        <img src="assets/images/sites/cncnz.png" loading="lazy" alt="CnCNet Logo" />
+                        <img src="assets/images/sites/cncnz.png" loading="lazy" alt="CNCNZ Logo" />
                     </div>
                 </a>
-                <a href="https://w3dhub.org" target="_blank" class="site-item" title="CNCRemaster" rel="nofollow noreferrer">
+                <a href="https://cncremaster.com/" target="_blank" class="site-item" title="CNCRemaster" rel="nofollow noreferrer">
                     <div class="logo">
-                        <img src="assets/images/sites/cncremaster.png" loading="lazy" alt="CnCNet Logo" />
+                        <img src="assets/images/sites/cncremaster.png" loading="lazy" alt="CNCRemaster Site Logo" />
                     </div>
                 </a>
-                <a href="https://w3dhub.org" target="_blank" class="site-item" title="CNCRemaster" rel="nofollow noreferrer">
+                <a href="https://cnc-online.net/en/" target="_blank" class="site-item" title="C&C Online" rel="nofollow noreferrer">
                     <div class="logo">
-                        <img src="assets/images/sites/cnconline.png" loading="lazy" alt="CnCNet Logo" />
+                        <img src="assets/images/sites/cnconline.png" loading="lazy" alt="C&C Online Logo" />
                     </div>
                 </a>
-                <a href="https://w3dhub.org" target="_blank" class="site-item" title="CNCRemaster" rel="nofollow noreferrer">
+                <a href="https://www.ppmsite.com/" target="_blank" class="site-item" title="PPMsite" rel="nofollow noreferrer">
                     <div class="logo">
-                        <img src="assets/images/sites/ppm.png" loading="lazy" alt="CnCNet Logo" />
+                        <img src="assets/images/sites/ppm.png" loading="lazy" alt="PPMSite Logo" />
                     </div>
                 </a>
             </div>

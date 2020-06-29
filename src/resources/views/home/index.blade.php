@@ -110,7 +110,7 @@
 
 <section id="partners" class="section section-black section-sites">
     <div class="main-content text-center">
-        <h2 class="section-title">Trusted Partners</h2>
+        <h2 class="section-title">Affiliates</h2>
     </div>
         
     <div class="sites">

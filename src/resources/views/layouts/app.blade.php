@@ -107,6 +107,6 @@
 
     @yield('scripts')
     <script defer src="/assets/js/SiteCountNav.js?v=2.7"></script>
-    <script defer src="/assets/js/NavBarJs.js?v=2.7"></script>
+    <script defer src="/assets/js/navbar/NavBarJs.js?v=2.7"></script>
 </body>
 </html>
