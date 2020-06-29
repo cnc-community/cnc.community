@@ -51,7 +51,7 @@
                         </a>
                     </div>
 
-                    <button id="mobileMenuToggle" class="navburger navburger--elastic " type="button">
+                    <button id="mobileMenuToggle" class="navburger navburger--elastic" type="button" title="Mobile Menu">
                         <span class="navburger-box">
                             <span class="navburger-inner"></span>
                         </span>
