@@ -15,7 +15,7 @@ class LeaderboardMatchHistory extends Model
         // Fucking sql #dontknowshit
         // Someone with an actual brain please fix this when you see it. Thanks!
 
-        $start = microtime(true);
+        // $start = microtime(true);
 
         // Get the ids we know exist in the fast way possible
         $matchExists = LeaderboardMatchHistory::whereIntegerInRaw("match_id", $matchIds)
@@ -45,7 +45,7 @@ class LeaderboardMatchHistory extends Model
 
         LeaderboardMatchHistory::insert($query);
 
-        $time = microtime(true) - $start;
-        Log::debug("Save Match History Time Taken: ". $time);
+        // $time = microtime(true) - $start;
+        // Log::debug("Save Match History Time Taken: ". $time);
     }
 }
