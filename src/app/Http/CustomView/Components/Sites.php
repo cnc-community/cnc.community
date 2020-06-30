@@ -22,7 +22,7 @@ class Sites extends AbstractCustomView
                         <img src="assets/images/sites/cncnet.png" loading="lazy" alt="CnCNet Logo" />
                     </div>
                 </a>
-                <a href="https://w3dhub.org" target="_blank" class="site-item" title="W3DHub" rel="nofollow noreferrer">
+                <a href="https://w3dhub.com" target="_blank" class="site-item" title="W3DHub" rel="nofollow noreferrer">
                     <div class="logo">
                         <img src="assets/images/sites/w3d.png" loading="lazy" alt="W3DHub Logo" />
                     </div>

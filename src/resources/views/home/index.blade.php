@@ -108,7 +108,7 @@
     </div>
 </section>
 
-<section id="partners" class="section section-black section-sites">
+<section id="partners" class="section section-dark-grey section-sites">
     <div class="main-content text-center">
         <h2 class="section-title">Affiliates</h2>
     </div>

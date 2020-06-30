@@ -48,9 +48,15 @@ class MatchData
         } 
         return $this->mapname;
     }
-
     public function player1() { return MatchPlayer::findPlayer($this->players[0]); }
     public function player2() { return MatchPlayer::findPlayer($this->players[1]); }
+
+    public function winningPlayer() 
+    {
+        $playerIndex = $this->teams[$this->winningteamid];
+        return MatchPlayer::findPlayer($this->players[$playerIndex]);
+    }
+
     public function player1Faction(): string { return $this->getFactionById($this->factions[0]); }
     public function player2Faction(): string { return $this->getFactionById($this->factions[1]); }
     public function mapInternalName(): string { return $this->mapname; }

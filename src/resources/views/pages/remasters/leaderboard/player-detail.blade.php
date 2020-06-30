@@ -56,7 +56,7 @@
                                 $player1Stats->points,
                                 $player1Stats->rank,
                                 $match->player1Faction(),
-                                $wonGame = ($match->winningTeamId() == 0),
+                                $match->winningPlayer()->id == $player1->id,
                                 $player1Url
                             ); 
                         ?>          
@@ -78,7 +78,7 @@
                                 $player2Stats->points,
                                 $player2Stats->rank,
                                 $match->player2Faction(),
-                                $wonGame = ($match->winningTeamId() == 1),
+                                $match->winningPlayer()->id == $player2->id,
                                 $player2Url
                             ); 
                         ?>
