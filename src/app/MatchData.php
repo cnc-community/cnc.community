@@ -61,50 +61,61 @@ class MatchData
     public function player2Faction(): string { return $this->getFactionById($this->factions[1]); }
     public function mapInternalName(): string { return $this->mapname; }
 
-    private function getColourById($id): string
+    /*
+    Just dumping here for now ignore
+    ```
+    enum FactionType
     {
-        switch($id)
-        {
-            case 0:
-                return "yellow";
-            case 1:
-                return "blue";
-            case 2: 
-                return "red";
-            case 3:
-                return "green";
-            case 4:
-                return "orange";
-            case 5:
-                return "teal";
-            case 6:
-                return "purple";
-            case 7:
-                return "pink";
-        }
-        return "";
-    }
-
+        FT_INVALID = -1,                    //:const text("Invalid")
+        FT_FACTION_1 = 0,                    //:const text("Faction1")  // Tiberian Dawn GDI
+        FT_FACTION_2,                        //:const text("Faction2")  // Tiberian Dawn NOD
+        FT_FACTION_3,                        //:const text("Faction3")    // Red Alert Spain 
+        FT_FACTION_4,                        //:const text("Faction4")    // Red Alert Greece
+        FT_FACTION_5,                        //:const text("Faction5")    // Red Alert USSR
+        FT_FACTION_6,                        //:const text("Faction6")    // Red Alert England
+        FT_FACTION_7,                        //:const text("Faction7")    // Red Alert Ukraine
+        FT_FACTION_8,                        //:const text("Faction8")    // Red Alert Germany
+        FT_FACTION_9,                        //:const text("Faction9")    // Red Alert France
+        FT_FACTION_10,                        //:const text("Faction10")    // Red Alert Turkey
+        FT_FACTION_11,                        //:const text("Faction11") // Tiberian Dawn Jurassic Funpark 
+        FT_FACTION_LAST = FT_FACTION_11,
+        FT_RANDOM = 42,                    //:const text("Random")
+        FT_REPLAY,                            //:const text("Replay")
+        FT_DUMMY,                            //:const text("Dummy")
+        FT_UNSPECIFIED                        //:const text("Unspecified")
+    };
+    [11:12 PM]
+    So GDI=0, NOD=1, spain=2, ....
+    ```
+    */
     private function getFactionById($id): string 
     {
         switch($id)
         {
+            case -1:
+                return "invalid";
             case 0:
-                return "spain";
+                return "gdi";
             case 1:
-                return "greece";
+                return "nod";
             case 2:
-                return "ussr";
+                return "spain";
             case 3:
-                return "england";
+                return "greece";
             case 4:
-                return "ukraine";
+                return "ussr";
             case 5:
-                return "germany";
+                return "england";
             case 6:
-                return "france";
+                return "ukraine";
             case 7:
+                return "germany";
+            case 8:
+                return "france";
+            case 9:
                 return "turkey";
+            case 42:
+                return "random";
         }
         return "random";
     }

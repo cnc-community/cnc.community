@@ -51,7 +51,7 @@ class PlayerDetailProfileStats extends AbstractCustomView
                         </div>
                     </div>
                     <div class="faction">
-                        <!-- <img src="/assets/images/leaderboard/<?php echo $this->faction; ?>.png" /> -->
+                        <img src="/assets/images/leaderboard/<?php echo $this->faction; ?>.png" />
                     </div>
                     <div class="game-status <?php echo $this->wonGame == true ? "won-game": "lost-game"?>">
                         <h3>
