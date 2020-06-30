@@ -44,4 +44,19 @@ class FeedHelper
         
         return "storage/" . $newImagePath;
     }
+
+    public static function storeImage($file)
+    {
+        $fileWithoutExtension = $file->getClientOriginalName();
+    
+        //get filename without extension
+        $filename = pathinfo($fileWithoutExtension, PATHINFO_FILENAME);
+        
+        //Upload File
+        $path = $file->store(
+            $filename, 'public'
+        );
+
+        return "storage/" . $path;
+    }
 }

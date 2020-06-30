@@ -21,6 +21,20 @@ class AdminController extends Controller
         View::share('queue_count', NewsFeedQueue::count());
     }
 
+    public function uploadImageViaCKEditor(Request $request)
+    {
+        if ($request->hasFile("upload"))
+        {
+            $path = $request->file("upload");
+            $image = null;
+            if ($path)
+            {
+                return asset(FeedHelper::storeImage($path));
+            }
+        }
+        return "";
+    }
+
     /**
      * Show the application dashboard.
      *

@@ -11,12 +11,7 @@
 
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
-    <link href="{{ asset('admin/css/jodit.min.css') }}" rel="stylesheet">
     <link href="{{ asset('admin/css/styles.css') }}" rel="stylesheet">
-
-    <script src="https://cdn.ckeditor.com/ckeditor5/19.0.0/classic/ckeditor.js"></script>
-
     <script src="{{ asset('admin/js/app.js') }}"></script>
 
     <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
@@ -31,6 +26,10 @@
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="msapplication-config" content="/assets/images/favicon/browserconfig.xml">
     <meta name="theme-color" content="#000000">
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"  crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 
     <style>
     .page-title{ margin-top: 15px;margin-bottom: 15px; padding-bottom: 20px; }
