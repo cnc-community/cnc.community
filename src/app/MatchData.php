@@ -61,30 +61,6 @@ class MatchData
     public function player2Faction(): string { return $this->getFactionById($this->factions[1]); }
     public function mapInternalName(): string { return $this->mapname; }
 
-    private function getColourById($id): string
-    {
-        switch($id)
-        {
-            case 0:
-                return "yellow";
-            case 1:
-                return "blue";
-            case 2: 
-                return "red";
-            case 3:
-                return "green";
-            case 4:
-                return "orange";
-            case 5:
-                return "teal";
-            case 6:
-                return "purple";
-            case 7:
-                return "pink";
-        }
-        return "";
-    }
-
     private function getFactionById($id): string 
     {
         switch($id)
