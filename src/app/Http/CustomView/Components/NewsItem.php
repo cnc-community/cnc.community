@@ -93,7 +93,9 @@ class NewsItem extends AbstractCustomView
                         <div class="meta-info">
                             <?php foreach($this->categories as $category): ?>
                             <div class="category">
-                            <?php echo $category->name ?>
+                                <a href="/news/<?php echo $category->slug; ?>" title="<?php echo $category->name; ?>">
+                                    <?php echo $category->name; ?>
+                                </a>
                             </div>
                             <?php endforeach; ?>
                         </div>

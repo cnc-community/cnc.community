@@ -30,6 +30,16 @@
                             <input id="title" type="text" name="title" class="form-control" value="{{ $newsItem->title }}" />
                         </div>
 
+                        <div class="form-group">
+                            <label for="content">Excerpt</label>
+                            <textarea id="excerpt" name="excerpt" class="form-control">{!! $newsItem->excerpt  !!}</textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="content">Post</label>
+                            <textarea id="editor_{{ $newsItem->id }}" name="post">{!! $newsItem->post  !!}</textarea>
+                        </div>
+
                         <?php if($newsItem->type == \App\News::NEWS_INTERNAL): ?>
                         <div class="form-group">
                             <label for="author">Author</label>
@@ -62,9 +72,7 @@
                             <div class="form-group">
                                 <small>
                                     <em>
-                                        <strong>Warning:</strong> Articles (not links) use a primary category to create a place to read the news post.<br/> 
-                                        The primary category will be locked from being changed 1 hour after its published date to prevent 404's.<br/>
-                                        If it's a major problem, we can create rules to redirect the old article to the new category. Contact Grant to update.
+                                        <strong>Note:</strong> A primary category should not be changed once set, it will be locked after an hour from publishing to prevent 404's. 
                                     </em>
                                 </small>
                             </div>
@@ -101,12 +109,6 @@
                             <input id="image" type="file" name="image" class="form-control" />
                         </div>
 
-                        <div class="form-group">
-                            <label for="content">Post</label>
-                            <textarea id="editor_{{ $newsItem->id }}" name="post">
-                                {{ $newsItem->post  }}
-                            </textarea>
-                        </div>
                         <button type="submit" class="btn btn-primary">Save</button>
                     </form>
                 </div>
@@ -115,17 +117,7 @@
     </div>
 </div>
 
-
-{{-- $('#editor_{{ $newsItem->id }}').summernote({
-        onImageUpload: function(files, editor, welEditable) 
-        {
-            uploadImage(files[0], editor, welEditable);
-        }
-}); --}}
-
 <script>
-
-// onImageUpload callback
 var editor = $('#editor_{{ $newsItem->id }}');
 
 $(editor).summernote
@@ -140,7 +132,6 @@ $(editor).summernote
 
 function onUploadSuccess(url)
 {
-    
     var image = document.createElement("img");
     image.src = url;
     
@@ -170,19 +161,7 @@ function uploadImage(file)
         }
     });
 }
-
-
-
 </script>
-{{-- <script>
-    var options = {
-        filebrowserUploadUrl: '{{route('upload', ['_token' => csrf_token() ])}}',
-        filebrowserUploadMethod: 'form'
-    };
-
-    CKEDITOR.replace("editor_{{ $newsItem->id }}", options);
-    CKEDITOR.config.image_previewText = "";
-</script> --}}
 @endsection
 
 

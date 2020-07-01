@@ -14,6 +14,9 @@
     <h1 class="small-h1">
         {{ $newsItem->title }}
     </h1>
+    <p>
+        {{ $newsItem->excerpt() }}
+    </p>
     <div class="meta-info">
         <div class="date">
             Posted <?php echo $newsItem->created_at->diffForHumans(); ?>
@@ -30,7 +33,9 @@
     <div class="meta-info">
         <?php foreach($newsItem->categories() as $category): ?>
         <div class="category">
-        <?php echo $category->name ?>
+        <a href="/news/{{ $category->slug }}" title="{{ $category->name }}">
+            {{ $category->name }}
+        </a>
         </div>
         <?php endforeach; ?>
     </div>

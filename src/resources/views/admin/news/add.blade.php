@@ -30,6 +30,18 @@
                         </div>
 
                         <div class="form-group">
+                            <label for="content">Excerpt</label>
+                            <textarea id="excerpt" name="excerpt">
+                            </textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="content">Post</label>
+                            <textarea id="editor" name="post">
+                            </textarea>
+                        </div>
+
+                        <div class="form-group">
                             <label for="author">Author</label>
                             <select id="author" class="form-control" name="author">
                             <option>- Select Author -</option>
@@ -40,7 +52,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="category">Category</label>
+                            <label for="category">Primary Category</label>
                             <select id="category" class="form-control" name="category_id">
                             @foreach(\App\Category::all() as $category)
                                 <option value="{{ $category->id}}">
@@ -51,16 +63,21 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="image">Choose a new image</label>
-                            <input id="image" type="file" name="image" class="form-control" />
+                            <label for="categories">Other Categories</label>
+                            <select id="categories" class="form-control" name="categories[]" multiple>
+                            @foreach(\App\Category::all() as $category)
+                                <option value="{{ $category->id}}">
+                                {{ $category->name }}
+                                </option>
+                            @endforeach
+                            </select>
                         </div>
 
                         <div class="form-group">
-                            <label for="content">Post</label>
-
-                            <textarea id="editor" name="post">
-                            </textarea>
+                            <label for="image">Thumbnail Image</label>
+                            <input id="image" type="file" name="image" class="form-control" />
                         </div>
+
                         <button type="submit" class="btn btn-primary">Save</button>
                     </form>
                 </div>
@@ -69,12 +86,51 @@
     </div>
 </div>
 
-<script>
-ClassicEditor
-    .create( document.querySelector( '#editor' ) )
-    .catch( error => {
-        console.error( error );
-    } );
+
+<script type="text/javascript">
+var editor = $('#editor');
+
+$(editor).summernote
+({
+    callbacks: {
+    onImageUpload: function(files) 
+        {
+            uploadImage(files[0]);
+        }
+    }
+});
+
+function onUploadSuccess(url)
+{
+    var image = document.createElement("img");
+    image.src = url;
+    
+    editor.summernote('insertNode', image);
+}
+
+function uploadImage(file)
+{
+    var formData = new FormData();
+    formData.append("upload", file)
+    
+    $.ajax({
+        url: '{{ route('upload') }}',
+        data: formData,
+        contentType: false,
+        processData: false,
+        type: "POST",
+        headers: {
+            "X-CSRF-TOKEN": "{{ csrf_token() }}"
+        },
+        success: function(url) 
+        {
+            onUploadSuccess(url);
+        },
+        error: function(data) {
+            alert("Error uploading file");
+        }
+    });
+}
 </script>
 
 @endsection
