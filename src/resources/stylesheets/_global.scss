@@ -586,7 +586,6 @@ footer .notice
 {
     color: #8c8c8c;
     border-radius: 4px;
-    padding: 0 5px;
     font-size: 0.8rem;//i know...
     text-transform: uppercase;
     font-weight: 600;
@@ -722,4 +721,9 @@ ul.pagination
 .avatar.w3dhub
 {
     background-image: url("../images/sites/thumbnails/w3dhub.png");
+}
+
+.avatar.steam
+{
+    background-image: url("../images/sites/thumbnails/steam.png");
 }

@@ -156,3 +156,36 @@
 {
     order: 1;
 }
+
+.news-item .file-data 
+{
+    display: flex;
+    justify-content: space-between;
+}
+
+.news-item .file-item 
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-size: 0.8rem;
+    color: #bfbfbf;
+    font-weight: bold;
+}
+
+.news-item .file-item i 
+{
+    font-size: 1.3rem;
+    padding-bottom: 10px;
+}
+
+.file-item .icon-heart
+{
+    color: #ea0000;
+}
+
+.file-item .icon-check
+{
+    color: #49d630;
+}
