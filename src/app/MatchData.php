@@ -61,33 +61,6 @@ class MatchData
     public function player2Faction(): string { return $this->getFactionById($this->factions[1]); }
     public function mapInternalName(): string { return $this->mapname; }
 
-    /*
-    Just dumping here for now ignore
-    ```
-    enum FactionType
-    {
-        FT_INVALID = -1,                    //:const text("Invalid")
-        FT_FACTION_1 = 0,                    //:const text("Faction1")  // Tiberian Dawn GDI
-        FT_FACTION_2,                        //:const text("Faction2")  // Tiberian Dawn NOD
-        FT_FACTION_3,                        //:const text("Faction3")    // Red Alert Spain 
-        FT_FACTION_4,                        //:const text("Faction4")    // Red Alert Greece
-        FT_FACTION_5,                        //:const text("Faction5")    // Red Alert USSR
-        FT_FACTION_6,                        //:const text("Faction6")    // Red Alert England
-        FT_FACTION_7,                        //:const text("Faction7")    // Red Alert Ukraine
-        FT_FACTION_8,                        //:const text("Faction8")    // Red Alert Germany
-        FT_FACTION_9,                        //:const text("Faction9")    // Red Alert France
-        FT_FACTION_10,                        //:const text("Faction10")    // Red Alert Turkey
-        FT_FACTION_11,                        //:const text("Faction11") // Tiberian Dawn Jurassic Funpark 
-        FT_FACTION_LAST = FT_FACTION_11,
-        FT_RANDOM = 42,                    //:const text("Random")
-        FT_REPLAY,                            //:const text("Replay")
-        FT_DUMMY,                            //:const text("Dummy")
-        FT_UNSPECIFIED                        //:const text("Unspecified")
-    };
-    [11:12 PM]
-    So GDI=0, NOD=1, spain=2, ....
-    ```
-    */
     private function getFactionById($id): string 
     {
         switch($id)

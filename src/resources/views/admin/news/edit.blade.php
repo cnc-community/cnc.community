@@ -30,7 +30,16 @@
                             <input id="title" type="text" name="title" class="form-control" value="{{ $newsItem->title }}" />
                         </div>
 
-                        <?php if($newsItem->type == \App\News::NEWS_INTERNAL): ?>
+                        <div class="form-group">
+                            <label for="content">Excerpt</label>
+                            <textarea id="excerpt" name="excerpt" class="form-control">{!! $newsItem->excerpt  !!}</textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="content">Post</label>
+                            <textarea id="editor_{{ $newsItem->id }}" name="post">{!! $newsItem->post  !!}</textarea>
+                        </div>
+
                         <div class="form-group">
                             <label for="author">Author</label>
                             <select id="author" class="form-control" name="author">
@@ -40,7 +49,6 @@
                             <?php endforeach; ?>
                             </select>
                         </div>
-                        <?php endif; ?>
 
                         <div class="form-group">
                             <label for="status">Status</label>
@@ -62,9 +70,7 @@
                             <div class="form-group">
                                 <small>
                                     <em>
-                                        <strong>Warning:</strong> Articles (not links) use a primary category to create a place to read the news post.<br/> 
-                                        The primary category will be locked from being changed 1 hour after its published date to prevent 404's.<br/>
-                                        If it's a major problem, we can create rules to redirect the old article to the new category. Contact Grant to update.
+                                        <strong>Note:</strong> A primary category should not be changed once set, it will be locked after an hour from publishing to prevent 404's. 
                                     </em>
                                 </small>
                             </div>
@@ -101,12 +107,6 @@
                             <input id="image" type="file" name="image" class="form-control" />
                         </div>
 
-                        <div class="form-group">
-                            <label for="content">Post</label>
-                            <textarea id="editor_{{ $newsItem->id }}" name="post">
-                                {{ $newsItem->post  }}
-                            </textarea>
-                        </div>
                         <button type="submit" class="btn btn-primary">Save</button>
                     </form>
                 </div>
@@ -116,11 +116,49 @@
 </div>
 
 <script>
-ClassicEditor
-    .create( document.querySelector( '#editor_{{ $newsItem->id }}' ) )
-    .catch( error => {
-        console.error( error );
-    } );
+var editor = $('#editor_{{ $newsItem->id }}');
+
+$(editor).summernote
+({
+    callbacks: {
+    onImageUpload: function(files) 
+        {
+            uploadImage(files[0]);
+        }
+    }
+});
+
+function onUploadSuccess(url)
+{
+    var image = document.createElement("img");
+    image.src = url;
+    
+    editor.summernote('insertNode', image);
+}
+
+function uploadImage(file)
+{
+    var formData = new FormData();
+    formData.append("upload", file)
+    
+    $.ajax({
+        url: '{{ route('upload') }}',
+        data: formData,
+        contentType: false,
+        processData: false,
+        type: "POST",
+        headers: {
+            "X-CSRF-TOKEN": "{{ csrf_token() }}"
+        },
+        success: function(url) 
+        {
+            onUploadSuccess(url);
+        },
+        error: function(data) {
+            alert("Error uploading file");
+        }
+    });
+}
 </script>
 @endsection
 

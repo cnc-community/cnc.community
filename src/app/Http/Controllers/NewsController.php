@@ -34,16 +34,6 @@ class NewsController extends Controller
         return view('admin.news.listings', ["news" => $news]);
     }
 
-    public function updateExistingNewsCategories()
-    {
-        $news = News::all();
-        foreach($news as $n)
-        {
-            $category = \App\Category::find($n->category_id);
-            NewsCategory::addCategory($n->id, $category->id);
-        }
-    }
-
     public function edit($id)
     {
         $newsItem = News::find($id);
@@ -62,65 +52,54 @@ class NewsController extends Controller
 
     public function create(Request $request)
     {
-        $path = $request->file("image");
-        $image = null;
-        if ($path)
-        {
-            $image = FeedHelper::createImageFromUrl($path);
-        }
+        $newsItemModel = new News();
 
-        $newsItem = News::createNewsItem($request->title, $request->post, null, $image, $request->category_id, $request->author);
+        News::updateNewsItem(
+            $newsItemModel, 
+            $request->title,
+            $request->category_id,
+            $request->categories,
+            $request->file("image"),
+            $request->author,
+            $request->post,
+            $request->excerpt,
+            $request->type,
+            $request->url
+        );
 
-        $request->session()->flash('status', 'News created');
-        return redirect('/admin/news/edit/' . $newsItem->id);
+        $request->session()->flash("status", "News created");
+        return redirect("/admin/news/edit/" . $newsItemModel->id);
     }
 
     public function save(Request $request)
     {
-        $newsItem = News::find($request->id);
-        if ($newsItem == null)
+        $newsItemModel = News::find($request->id);
+        if ($newsItemModel == null)
         {
             return redirect("admin/news");
         }
 
-        // Reject news, marks as rejected and deletes
         if ($request->status === News::DELETE)
         {
-            $request->session()->flash('status', 'Post Deleted');
-
-            $newsItem->delete();
+            $request->session()->flash("status", "Post Deleted");
+            $newsItemModel->delete();
             return redirect("admin/news");
         }
-        
-        $path = $request->file("image");
-        if ($path)
-        {
-            $image = FeedHelper::createImageFromUrl($path);
-            $newsItem->image = $image;
-        }
 
-        $newsItem->title = $request->title;
-        $newsItem->user_id = $request->author;
+        News::updateNewsItem(
+            $newsItemModel, 
+            $request->title,
+            $request->category_id == null ? $newsItemModel->category_id : $request->category_id,
+            $request->categories,
+            $request->file("image"),
+            $request->author,
+            $request->post,
+            $request->excerpt,
+            $newsItemModel->type,
+            $newsItemModel->url
+        );
 
-        $newsItem->post = $request->post;
-        $newsItem->category_id = $request->category_id;
-
-        $categories = $request->categories;
-        if ($categories == null)
-        {
-            $categories[] = $request->category_id;
-
-        }
-        else if (!in_array($request->category_id, $categories))
-        {
-            array_push($categories, $request->category_id);
-        }
-        
-        NewsCategory::addRemoveCategory($newsItem->id, $categories);
-        
-        $newsItem->save();
-
-        $request->session()->flash('status', 'Post saved');
+        $request->session()->flash("status", "Post saved");
         return redirect()->back();
     }
 }

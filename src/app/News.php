@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Http\Services\FeedHelper;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use App\User;
@@ -42,7 +43,11 @@ class News extends Model
 
     public function excerpt()
     {
-        return Str::limit(strip_tags($this->post, "<p>"), 450);
+        if ($this->excerpt == null)
+        {
+            return Str::limit(strip_tags($this->post), 450);
+        }
+        return $this->excerpt;
     }
 
     public function url()
@@ -112,26 +117,51 @@ class News extends Model
             ->paginate($limit);
     }
 
-    public static function createNewsItem($title, $post, $url, $image, $categoryId, $userId)
+    public static function updateNewsItem($newsItemModel, $title, $primaryCategoryId, $categories, $file, $author, $post, $excerpt, $type, $url)
     {
-        $news = new News();
-        $news->title = $title;
-        if ($post)
+        if ($file)
         {
-            $news->post = strip_tags($post, "<p><a>");
+            $image = FeedHelper::createImageFromUrl($file);
+            $newsItemModel->image = $image;
         }
-        $news->type = News::NEWS_INTERNAL;
-        $news->url = Str::of($title)->slug('-');
-        if ($image)
-        {
-            $news->image = $image;
-        }
-        $news->category_id = $categoryId;
-        $news->user_id = $userId;
-        $news->save();
 
-        NewsCategory::addCategory($news->id, $news->category_id);
-        return $news;
+        $newsItemModel->title = $title;
+
+        if ($type == News::NEWS_EXTERNAL)
+        {
+            $newsItemModel->url = $url;
+        }
+        else if ($type == News::NEWS_INTERNAL)
+        {
+            $newsItemModel->url = Str::of($title)->slug('-');
+        }
+        
+        $newsItemModel->type = $type;
+
+        // Primary Category
+        if ($primaryCategoryId)
+        {
+            $newsItemModel->category_id = $primaryCategoryId;
+        }
+        
+        // Secondary Categories
+        if ($categories == null)
+        {
+            $categories[] = $primaryCategoryId;
+        }
+        else if (!in_array($primaryCategoryId, $categories))
+        {
+            array_push($categories, $primaryCategoryId);
+        }
+        
+        $newsItemModel->user_id = $author;
+        $newsItemModel->post = $post;
+        $newsItemModel->excerpt = $excerpt;
+        $newsItemModel->save();
+        
+        NewsCategory::addRemoveCategory($newsItemModel->id, $categories);
+        
+        return $newsItemModel;
     }
 
     public static function createFromQueuedItem($queuedItem): void
