@@ -171,7 +171,7 @@ class News extends Model
         $news->type = News::NEWS_EXTERNAL;
         if ($queuedItem->post)
         {
-            $news->post = strip_tags($queuedItem->post, "<p><a>");
+            $news->excerpt = strip_tags($queuedItem->post);
         }
         $news->url = $queuedItem->url;
         $news->feed_uuid = $queuedItem->feed_uuid;
