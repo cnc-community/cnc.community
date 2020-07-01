@@ -113,11 +113,24 @@
                                 </div>
 
                                 <script>
-                                ClassicEditor
-                                    .create( document.querySelector( '#editor_{{ $field->id }}' ) )
-                                    .catch( error => {
-                                        console.error( error );
-                                    } );
+                                var editor_{{ $field->id }} = $('#editor_{{ $field->id }}');
+                                $(editor_{{ $field->id }}).summernote
+                                ({
+                                    callbacks: {
+                                    onImageUpload: function(files) 
+                                        {
+                                            uploadImage(files[0], onUpload{{ $field->id }}Success);
+                                        }
+                                    }
+                                });
+
+                                function onUpload{{ $field->id }}Success(url)
+                                {
+                                    var image = document.createElement("img");
+                                    image.src = url;
+                                    
+                                    editor_{{ $field->id }}.summernote('insertNode', image);
+                                }
                                 </script>
                             </div>
                             @endforeach
@@ -129,6 +142,32 @@
         </div>
     </div>
 </div>
+
+<script>
+function uploadImage(file, cb)
+{
+    var formData = new FormData();
+    formData.append("upload", file)
+    
+    $.ajax({
+        url: '{{ route('upload') }}',
+        data: formData,
+        contentType: false,
+        processData: false,
+        type: "POST",
+        headers: {
+            "X-CSRF-TOKEN": "{{ csrf_token() }}"
+        },
+        success: function(url) 
+        {
+            cb(url);
+        },
+        error: function(data) {
+            alert("Error uploading file");
+        }
+    });
+}
+</script>
 @endsection
 
 
