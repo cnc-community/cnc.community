@@ -117,7 +117,7 @@ class News extends Model
             ->paginate($limit);
     }
 
-    public static function updateNewsItem($newsItemModel, $title, $primaryCategoryId, $categories, $file, $author, $post, $excerpt)
+    public static function updateNewsItem($newsItemModel, $title, $primaryCategoryId, $categories, $file, $author, $post, $excerpt, $type, $url)
     {
         if ($file)
         {
@@ -126,8 +126,17 @@ class News extends Model
         }
 
         $newsItemModel->title = $title;
-        $newsItemModel->type = News::NEWS_INTERNAL;
-        $newsItemModel->url = Str::of($title)->slug('-');
+
+        if ($type == News::NEWS_EXTERNAL)
+        {
+            $newsItemModel->url = $url;
+        }
+        else if ($type == News::NEWS_INTERNAL)
+        {
+            $newsItemModel->url = Str::of($title)->slug('-');
+        }
+        
+        $newsItemModel->type = $type;
 
         // Primary Category
         if ($primaryCategoryId)

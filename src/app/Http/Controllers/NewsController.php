@@ -62,7 +62,9 @@ class NewsController extends Controller
             $request->file("image"),
             $request->author,
             $request->post,
-            $request->excerpt
+            $request->excerpt,
+            $request->type,
+            $request->url
         );
 
         $request->session()->flash("status", "News created");
@@ -92,7 +94,9 @@ class NewsController extends Controller
             $request->file("image"),
             $request->author,
             $request->post,
-            $request->excerpt
+            $request->excerpt,
+            $newsItemModel->type,
+            $newsItemModel->url
         );
 
         $request->session()->flash("status", "Post saved");

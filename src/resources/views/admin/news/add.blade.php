@@ -26,24 +26,39 @@
 
                         <div class="form-group">
                             <label for="title">Post Title</label>
-                            <input id="title" type="text" name="title" class="form-control" />
+                            <input id="title" type="text" name="title" class="form-control" required />
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label for="postType">Post Type</label>
+                                <select id="postType" class="form-control" name="type" required>
+                                    <option>- Select Post Type -</option>
+                                    <option value="<?php echo \App\News::NEWS_INTERNAL; ?>">Article</option>
+                                    <option value="<?php echo \App\News::NEWS_EXTERNAL; ?>">Link</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label for="url">Url (Only use with Post Type as Link)</label>
+                                <input id="url" type="text" name="url" class="form-control" required />
+                            </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="content">Excerpt</label>
-                            <textarea id="excerpt" name="excerpt">
-                            </textarea>
+                            <label for="excerpt">Excerpt</label>
+                            <textarea id="excerpt" name="excerpt" class="form-control" required></textarea>
                         </div>
 
                         <div class="form-group">
-                            <label for="content">Post</label>
+                            <label for="editor">Post</label>
                             <textarea id="editor" name="post">
                             </textarea>
                         </div>
 
                         <div class="form-group">
                             <label for="author">Author</label>
-                            <select id="author" class="form-control" name="author">
+                            <select id="author" class="form-control" name="author" required>
                             <option>- Select Author -</option>
                             <?php foreach($users as $user): ?>
                             <option value="{{ $user->id }}">{{ $user->name }}</option>
@@ -53,7 +68,7 @@
 
                         <div class="form-group">
                             <label for="category">Primary Category</label>
-                            <select id="category" class="form-control" name="category_id">
+                            <select id="category" class="form-control" name="category_id" required>
                             @foreach(\App\Category::all() as $category)
                                 <option value="{{ $category->id}}">
                                 {{ $category->name }}
@@ -64,7 +79,7 @@
 
                         <div class="form-group">
                             <label for="categories">Other Categories</label>
-                            <select id="categories" class="form-control" name="categories[]" multiple>
+                            <select id="categories" class="form-control" name="categories[]" multiple required>
                             @foreach(\App\Category::all() as $category)
                                 <option value="{{ $category->id}}">
                                 {{ $category->name }}
