@@ -73,12 +73,51 @@
     </div>
 </div>
 
+
 <script>
-ClassicEditor
-    .create( document.querySelector( '#editor_{{ $newsItem->id }}' ) )
-    .catch( error => {
-        console.error( error );
-    } );
+var editor = $('#editor_{{ $newsItem->id }}');
+
+$(editor).summernote
+({
+    callbacks: {
+    onImageUpload: function(files) 
+        {
+            uploadImage(files[0]);
+        }
+    }
+});
+
+function onUploadSuccess(url)
+{
+    var image = document.createElement("img");
+    image.src = url;
+    
+    editor.summernote('insertNode', image);
+}
+
+function uploadImage(file)
+{
+    var formData = new FormData();
+    formData.append("upload", file)
+    
+    $.ajax({
+        url: '{{ route('upload') }}',
+        data: formData,
+        contentType: false,
+        processData: false,
+        type: "POST",
+        headers: {
+            "X-CSRF-TOKEN": "{{ csrf_token() }}"
+        },
+        success: function(url) 
+        {
+            onUploadSuccess(url);
+        },
+        error: function(data) {
+            alert("Error uploading file");
+        }
+    });
+}
 </script>
 @endsection
 
