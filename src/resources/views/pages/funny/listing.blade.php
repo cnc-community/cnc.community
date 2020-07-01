@@ -9,7 +9,7 @@
     <div class="main-content">
     <h1>Funny/Cool</h1>
     <p>Today we will make history comrade! - Premier Romanov</p>
-        <?php new App\Http\CustomView\Components\NewsListing($funnyItems); ?>
+    <?php new App\Http\CustomView\Components\NewsListing($funnyItems); ?>
     </div>
 </section>
 @endsection

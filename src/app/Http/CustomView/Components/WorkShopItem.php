@@ -48,34 +48,40 @@ class WorkShopItem extends AbstractCustomView
         ?>
         <article class="item workshop-item">
             <div class="image">
-                    <a href="<?php echo $this->url; ?>" title="<?php echo $this->title; ?>" rel="nofollow noreferrer" target="_blank" class="image-link">
-                        <img src="<?php echo $this->previewUrl ?>" alt="<?php echo $this->title ?>" alt="<?php echo $this->title; ?>" loading="lazy" />
-                    </a>
-                    <div class="button">
-                        <a href="https://forums.cncnz.com/topic/21936-cc-remastered-collection-launch-update-and-patch-news/" title="C&amp;C Remastered Collection - Launch Update and Patch News" class="btn-link" rel="nofollow noreferrer" target="_blank">
-                            <i class="icon-link" aria-label="Link Icon"></i>
-                        </a>
-                    </div>
-                    <div>
-                        <div class="post-meta">
-                            <div class="meta-author">
-                                <div class="author">
-                                    <div class="avatar steam"></div>
-                                    <div class="author-data">
-                                        <div class="name"> 
-                                            Steam                                                                                    
-                                        </div>
-                                        <div class="date">
-                                        <?php if($this->timeCreated): ?>
-                                        <div class="meta-info">
-                                            <div class="date"><?php echo date('F j, Y, g:i a',$this->timeCreated); ?></div>
-                                        </div>
-                                        <?php endif; ?>
-                                        </div>
+                    <div class="post-meta">
+                        <div class="meta-author">
+                            <div class="author">
+                                <div class="avatar steam"></div>
+                                <div class="author-data">
+                                    <div class="name"> 
+                                        Steam                                                                                    
+                                    </div>
+                                    <div class="date">
+                                    <?php if($this->timeCreated): ?>
+                                    <div class="meta-info">
+                                        <div class="date"><?php echo date('F j, Y, g:i a',$this->timeCreated); ?></div>
+                                    </div>
+                                    <?php endif; ?>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <a href="<?php echo $this->url; ?>" title="<?php echo $this->title; ?>" rel="nofollow noreferrer" target="_blank" class="image-link">
+                        <img src="<?php echo $this->previewUrl ?>" alt="<?php echo $this->title ?>" alt="<?php echo $this->title; ?>" loading="lazy" />
+                        <div class="file-data">
+                            <div class="file-item played">
+                                <i class="icon-check"></i> <?php echo $this->subscriptions;?> subs
+                            </div>
+                            <div class="file-item favourites">
+                                <i class="icon-heart"></i> <?php echo $this->favourites;?> favs
+                            </div>
+                            <div class="file-item views">
+                                <i class="icon-eye"></i> <?php echo $this->views;?> views
+                            </div>
+                        </div>
+                    </a>
+                    <div>
                         <div class="post-preview">
                             <h3 class="title">
                                 <a href="<?php echo $this->url; ?>" title="<?php echo $this->title; ?>" rel="nofollow noreferrer" target="_blank">
@@ -90,25 +96,6 @@ class WorkShopItem extends AbstractCustomView
                                         </a>
                                     </div>
                                 <?php endforeach; ?>
-                            </div>
-                            <div class="description">
-                            <?php if($this->description): ?>
-                                <p>
-                                    <?php echo $this->description; ?>
-                                </p>
-                            <?php endif; ?>
-                            </div>
-                            
-                            <div class="file-data">
-                                <div class="file-item played">
-                                    <i class="icon-check"></i> <?php echo $this->subscriptions;?> subs
-                                </div>
-                                <div class="file-item favourites">
-                                    <i class="icon-heart"></i> <?php echo $this->favourites;?> favs
-                                </div>
-                                <div class="file-item views">
-                                    <i class="icon-eye"></i> <?php echo $this->views;?> views
-                                </div>
                             </div>
                         </div>
                     </div>

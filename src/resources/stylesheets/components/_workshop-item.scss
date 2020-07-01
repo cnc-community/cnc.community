@@ -10,6 +10,11 @@
 
 .workshop-item .file-data
 {
+    background: #1b1b1b;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
     display: flex;
     justify-content: space-between;
     padding: 1rem;
@@ -17,5 +22,23 @@
 
 .workshop-item .post-preview 
 {
-    padding: 15px;
+    padding: 0 15px;
+}
+
+.workshop-item .image-link 
+{
+    position: relative;
+    background: transparent;
+    height: 300px;
+    overflow: hidden;
+}
+
+.workshop-item .post-meta 
+{
+    padding: 10px 15px;
+}
+
+.workshop-item .title
+{
+    font-size: 1.3rem;
 }

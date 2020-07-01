@@ -37,6 +37,7 @@ class WorkShopListing extends AbstractCustomView
             <?php endforeach; ?>
             </div>
         </div>
+
         <?php 
     }
 }
