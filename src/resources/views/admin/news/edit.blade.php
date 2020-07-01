@@ -40,7 +40,6 @@
                             <textarea id="editor_{{ $newsItem->id }}" name="post">{!! $newsItem->post  !!}</textarea>
                         </div>
 
-                        <?php if($newsItem->type == \App\News::NEWS_INTERNAL): ?>
                         <div class="form-group">
                             <label for="author">Author</label>
                             <select id="author" class="form-control" name="author">
@@ -50,7 +49,6 @@
                             <?php endforeach; ?>
                             </select>
                         </div>
-                        <?php endif; ?>
 
                         <div class="form-group">
                             <label for="status">Status</label>

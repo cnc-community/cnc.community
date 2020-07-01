@@ -89,7 +89,7 @@ class NewsController extends Controller
         News::updateNewsItem(
             $newsItemModel, 
             $request->title,
-            $request->category_id,
+            $request->category_id == null ? $newsItemModel->category_id : $request->category_id,
             $request->categories,
             $request->file("image"),
             $request->author,
