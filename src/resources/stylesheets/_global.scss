@@ -594,23 +594,13 @@ footer .notice
     margin-bottom: 5px;
 }
 
-.meta-info > div.category 
-{
-    background: #131313;
-}
-
-.items-wrap .item .title
-{
-    font-size: 1.5rem;
-}
-
-.items-wrap .item .title,
-.items-wrap .item .description
-{
-    padding: 0 5px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
+// .items-wrap .item .title,
+// .items-wrap .item .description
+// {
+//     padding: 0 5px;
+//     margin-top: 10px;
+//     margin-bottom: 10px;
+// }
 
 .items-wrap .item.no-image ,title
 {
@@ -712,54 +702,24 @@ ul.pagination
     max-width: 100%;
 }
 
-.colour-box 
+.avatar
 {
-    display: block;
-    width: 50px;
-    height: 50px;
-    border-radius: 10px;
-    transform: skewX(-10deg);
+    border: 2px solid #484848;
 }
 
-.game-colour-yellow 
+.avatar.ppmsite
 {
-    background: linear-gradient(0deg, #929600, $color-game-yellow);
-    border: 1px solid #eaf100;
+    border: 2px solid #e5e0a0;
+    background-image: url("../images/sites/thumbnails/ppm.png");
 }
 
-.game-colour-blue 
+.avatar.cncnz
 {
-    background: linear-gradient(0deg, #000d52, $color-game-blue);
-    border: 1px solid #001db6;
+    border: 2px solid #ffc100;
+    background-image: url("../images/sites/thumbnails/cncnz.png");
 }
 
-.game-colour-red 
+.avatar.w3dhub
 {
-    background: linear-gradient(0deg, #000d52, $color-game-red);
-    border: 1px solid #001db6;
-}
-   
-.game-colour-green 
-{
-    background-color: $color-game-green;
-}
-
-.game-colour-orange 
-{
-    background-color: $color-game-orange;
-}
-
-.game-colour-teal 
-{
-    background-color: $color-game-teal;
-}
-    
-.game-colour-purple 
-{
-    background-color: $color-game-purple;
-}
-    
-.game-colour-pink 
-{
-    background-color: $color-game-pink;
+    background-image: url("../images/sites/thumbnails/w3dhub.png");
 }

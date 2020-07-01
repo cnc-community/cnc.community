@@ -45,7 +45,7 @@ class News extends Model
     {
         if ($this->excerpt == null)
         {
-            return Str::limit(strip_tags($this->post, "<p>"), 450);
+            return Str::limit(strip_tags($this->post), 450);
         }
         return $this->excerpt;
     }
