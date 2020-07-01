@@ -84,6 +84,13 @@ class NewsController extends Controller
             $request->session()->flash("status", "Post Deleted");
             $newsItemModel->delete();
             return redirect("admin/news");
+        }   
+
+        $author = $request->author;
+
+        if ($author == -1)
+        {
+            $author = $newsItemModel->user_id;
         }
 
         News::updateNewsItem(
@@ -92,7 +99,7 @@ class NewsController extends Controller
             $request->category_id == null ? $newsItemModel->category_id : $request->category_id,
             $request->categories,
             $request->file("image"),
-            $request->author,
+            $author,
             $request->post,
             $request->excerpt,
             $newsItemModel->type,
