@@ -20,45 +20,6 @@ class PetroglyphAPIService
         $this->getMatchesTask();
     }
 
-    /*
-    private function dataTests()
-    {
-        $this->checkDataExists('response0.json');
-        $this->checkDataExists('response1.json');
-        $this->checkDataExists('response2.json');
-        $this->checkDataExists('response3.json');
-        $this->checkDataExists('response4.json');
-        $this->checkDataExists('response5.json');
-        $this->checkDataExists('response6.json');
-        $this->checkDataExists('response7.json');
-        $this->checkDataExists('response8.json');
-        echo "<br>";
-        echo  Match::count() . "<br>";
-
-        echo "Id count: " . count($this->ids) . "<br>";
-
-        $dups = array();
-        foreach(array_count_values($this->ids) as $val => $c)
-        {
-            if($c > 1) $dups[] = $val;
-        }    
-
-        echo var_dump($dups) . "<BR>";
-        var_dump($this->ids);
-    }
-
-    private $ids = [];
-    private function checkDataExists($fileName)
-    {
-        $contents = json_decode(Storage::get($fileName), true);
-
-        foreach($contents as $match)
-        {
-            $this->ids[] = $match["matchid"];
-        }
-    }
-    */
-
     public function runRALeaderboardTasks()
     {
         $leaderboard = Leaderboard::where("type", "ra_1vs1")->first();
