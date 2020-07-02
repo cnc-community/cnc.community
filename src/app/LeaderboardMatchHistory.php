@@ -12,11 +12,6 @@ class LeaderboardMatchHistory extends Model
     
     public static function saveGame($matchIds, $matchPlayerId)
     {
-        // Fucking sql #dontknowshit
-        // Someone with an actual brain please fix this when you see it. Thanks!
-
-        // $start = microtime(true);
-
         // Get the ids we know exist in the fast way possible
         $matchExists = LeaderboardMatchHistory::whereIntegerInRaw("match_id", $matchIds)
             ->where("match_player_id", "=", $matchPlayerId)
@@ -44,8 +39,5 @@ class LeaderboardMatchHistory extends Model
         }
 
         LeaderboardMatchHistory::insert($query);
-
-        // $time = microtime(true) - $start;
-        // Log::debug("Save Match History Time Taken: ". $time);
     }
 }

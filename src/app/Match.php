@@ -14,6 +14,8 @@ class Match extends Model
         $matches = [];
         $matchDataArr= $player->matches();
 
+        return $matchDataArr;
+
         foreach($matchDataArr as $match)
         {
             if ($match->raw == null)
@@ -31,13 +33,6 @@ class Match extends Model
             }
         }
         return $matches;
-    }
-
-    public static function checkMatchExists($matchStartTime, $matchPlayers)
-    {
-        return Match::where("starttime", $matchStartTime)
-            ->whereJsonContains("players", $matchPlayers)
-            ->first();
     }
 
     public static function createMatch($matchResponse)

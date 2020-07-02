@@ -39,28 +39,10 @@ class MatchPlayer extends Model
         return $player;
     }
 
-    public static function playerTopFaction($playerId)
-    {
-        $player = MatchPlayer::findPlayer($playerId);
-        $matches = $player->matches();
-        
-        $factions = [];
-        foreach($matches as $match)
-        {
-            $raw = json_decode($match->raw);
-            foreach($raw->factions as $f)
-            {
-                $factions[] = $f;
-            }
-        }
-
-        dd($factions);
-    }
-
     public function matches()
     {
         return LeaderboardMatchHistory::where("match_player_id", $this->id)
-            ->leftJoin("matches", "matches.matchid", "=", "leaderboard_match_history.match_id")
+            ->join("matches", "matches.matchid", "=", "leaderboard_match_history.match_id")
             ->orderBy("match_id", "DESC")
             ->get();
     }

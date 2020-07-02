@@ -71,13 +71,7 @@ class LeaderboardController extends Controller
              $gameLogo = ViewHelper::getTDRemasterLogo();
         }
 
-        // $matches = Cache::remember("playerMatches".$gameSlug.$playerId.$request->page, Constants::getCacheSeconds(), function () use ($player, $game)
-        // {
-        //     return Match::getPlayerMatches($player, $game);
-        // });
-
         $matches = Match::getPlayerMatches($player, $game);
-
         $matchesCollection = collect($matches);
         $matchesPaginated = ViewHelper::paginate($matchesCollection, 15, $request->page);
 

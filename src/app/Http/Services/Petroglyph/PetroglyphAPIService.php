@@ -5,9 +5,6 @@ namespace App\Http\Services\Petroglyph;
 use App\Http\Services\Petroglyph\PetroglyphAPI;
 use App\Leaderboard;
 use App\Match;
-use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Storage;
 
 class PetroglyphAPIService
 {
@@ -20,8 +17,12 @@ class PetroglyphAPIService
        
     public function runMatchesTask()
     {
-        // $this->getMatchesTask();
+        $this->getMatchesTask();
+    }
 
+    /*
+    private function dataTests()
+    {
         $this->checkDataExists('response0.json');
         $this->checkDataExists('response1.json');
         $this->checkDataExists('response2.json');
@@ -43,13 +44,10 @@ class PetroglyphAPIService
         }    
 
         echo var_dump($dups) . "<BR>";
-
         var_dump($this->ids);
-
     }
 
     private $ids = [];
-
     private function checkDataExists($fileName)
     {
         $contents = json_decode(Storage::get($fileName), true);
@@ -57,13 +55,9 @@ class PetroglyphAPIService
         foreach($contents as $match)
         {
             $this->ids[] = $match["matchid"];
-            // $match = Match::where("matchid", $match->matchid)->first();
-            // if ($match == null)
-            // {
-            // }
         }
-
     }
+    */
 
     public function runRALeaderboardTasks()
     {
@@ -118,7 +112,6 @@ class PetroglyphAPIService
         $limit = 200;
         $offset = 0;
         $complete = false;
-        $debug = false;
 
         $response = $this->sendGetMatches($limit, $offset);
         $totalMatchCount = $response["totalmatches"];
@@ -152,12 +145,6 @@ class PetroglyphAPIService
                 // Safety - somethings gone wrong here
                 die("Safety kill switch");
             }
-            
-            if ($debug == true)
-            {
-                // Run once
-                $complete = true;
-            }
         }
     }
 
@@ -166,14 +153,8 @@ class PetroglyphAPIService
         return $this->petroglyphAPI->getMatches($limit, $offset);
     }
 
-    private $count = 0;
     private function saveMatchResponse($matches)
     {
-
-        $start = microtime(true);
-
-        Storage::put('response'.$this->count.'.json', json_encode($matches));
-
         $matchIds = [];
         foreach($matches as $matchResponse)
         {
@@ -202,19 +183,10 @@ class PetroglyphAPIService
             }
         }
 
-        $this->count++;
-
+        // Nothing more to do
         if (count($idsToInsert) == 0)
         {
             return false;
-        }
-
-        $time = microtime(true) - $start;
-        Log::debug("Sync Time Taken: ". $time);
-
-        if ($this->count > 8)
-        {
-            dd("10 times");
         }
 
         return true;
