@@ -5,6 +5,9 @@ namespace App\Http\Services\Petroglyph;
 use App\Http\Services\Petroglyph\PetroglyphAPI;
 use App\Leaderboard;
 use App\Match;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
 
 class PetroglyphAPIService
 {
@@ -17,7 +20,49 @@ class PetroglyphAPIService
        
     public function runMatchesTask()
     {
-        $this->getMatchesTask();
+        // $this->getMatchesTask();
+
+        $this->checkDataExists('response0.json');
+        $this->checkDataExists('response1.json');
+        $this->checkDataExists('response2.json');
+        $this->checkDataExists('response3.json');
+        $this->checkDataExists('response4.json');
+        $this->checkDataExists('response5.json');
+        $this->checkDataExists('response6.json');
+        $this->checkDataExists('response7.json');
+        $this->checkDataExists('response8.json');
+        echo "<br>";
+        echo  Match::count() . "<br>";
+
+        echo "Id count: " . count($this->ids) . "<br>";
+
+        $dups = array();
+        foreach(array_count_values($this->ids) as $val => $c)
+        {
+            if($c > 1) $dups[] = $val;
+        }    
+
+        echo var_dump($dups) . "<BR>";
+
+        var_dump($this->ids);
+
+    }
+
+    private $ids = [];
+
+    private function checkDataExists($fileName)
+    {
+        $contents = json_decode(Storage::get($fileName), true);
+
+        foreach($contents as $match)
+        {
+            $this->ids[] = $match["matchid"];
+            // $match = Match::where("matchid", $match->matchid)->first();
+            // if ($match == null)
+            // {
+            // }
+        }
+
     }
 
     public function runRALeaderboardTasks()
@@ -121,31 +166,57 @@ class PetroglyphAPIService
         return $this->petroglyphAPI->getMatches($limit, $offset);
     }
 
+    private $count = 0;
     private function saveMatchResponse($matches)
     {
-        $nextRequest = true;
 
-        // We get the results and go over them
+        $start = microtime(true);
+
+        Storage::put('response'.$this->count.'.json', json_encode($matches));
+
+        $matchIds = [];
         foreach($matches as $matchResponse)
         {
-            $matchExists = Match::checkMatchExists($matchResponse["matchid"]);
-            if ($matchExists == null)
-            {
-                $nextRequest = true;
+            $matchIds[] = $matchResponse["matchid"];
+        }
 
-                // Otherwise create a match record
+        // Find the ones that exist
+        $newMatches = Match::whereIntegerInRaw("matchid", $matchIds)->get()->toArray();
+        
+        $existingMatchIds = [];
+        foreach($newMatches as $match)
+        {
+            $existingMatchIds[] = $match["matchid"];
+        }
+
+        // Compare with with all match ids and get the ones we want to insert
+        $idsToInsert = array_merge(array_diff($matchIds, $existingMatchIds));
+
+        // Otherwise sync new matches
+        foreach($matches as $matchResponse)
+        {
+            if (in_array($matchResponse["matchid"], $idsToInsert))
+            {
                 Match::createMatch($matchResponse);
-                
-                // Update any new players
                 Match::savePlayersFromMatch($matchResponse);
             }
-            else
-            {
-                // If we know a match exists, blindly assume we're up to date and stop any further requests
-                $nextRequest = false;
-                break;
-            }
         }
-        return $nextRequest;
+
+        $this->count++;
+
+        if (count($idsToInsert) == 0)
+        {
+            return false;
+        }
+
+        $time = microtime(true) - $start;
+        Log::debug("Sync Time Taken: ". $time);
+
+        if ($this->count > 8)
+        {
+            dd("10 times");
+        }
+
+        return true;
     }
 }

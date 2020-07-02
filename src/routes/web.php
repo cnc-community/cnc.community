@@ -24,6 +24,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin']], function ()
 {
     Auth::routes();
     
+    // Debug
+    Route::get('/fetch-leaderboard', 'LeaderboardController@runMatchesTask');
+
     Route::get('/dashboard', 'AdminController@index')->name('admin.index')->middleware('role:admin,editor');
 
     Route::post('/upload/editor', 'AdminController@uploadImageViaEditor')->name('upload')->middleware('role:admin,editor');
