@@ -169,6 +169,26 @@ $xxxl-width: 1600px;
     @extend .btn-theme-blue;
 }
 
+
+.col-visible-lg
+{
+    display: none;
+    @media(min-width: $lg-width)
+    {
+        display: block;
+    }
+}
+
+.col-hidden-lg
+{
+    display: block;
+    @media(min-width: $lg-width)
+    {
+        display: none;
+    }
+}
+
+
 .col-10,
 .col-20,
 .col-30,

@@ -9,32 +9,6 @@ class Match extends Model
     protected $connection = 'mysql2';
     protected $table = 'matches';
 
-    public static function getPlayerMatches($player, $game)
-    {
-        $matches = [];
-        $matchDataArr= $player->matches();
-
-        return $matchDataArr;
-
-        foreach($matchDataArr as $match)
-        {
-            if ($match->raw == null)
-            {
-                continue;
-            }
-            $matchData = new MatchData(json_decode($match->raw));
-            if ($matchData->matchType() == MatchData::RA_1vs1 && $game == MatchData::RA_1vs1)
-            {
-                $matches[] = $matchData;
-            }
-            else if ($matchData->matchType() == MatchData::TD_1vs1 && $game == MatchData::TD_1vs1)
-            {
-                $matches[] = $matchData;
-            }
-        }
-        return $matches;
-    }
-
     public static function createMatch($matchResponse)
     {
         $match = new Match();

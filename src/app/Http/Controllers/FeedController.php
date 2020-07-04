@@ -7,6 +7,7 @@ use App\Http\Services\RedditFeedParser;
 use App\Http\Services\SteamFeedParser;
 use App\Constants;
 use App\NewsFeedQueue;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\View as FacadesView;
 
 class FeedController extends Controller
@@ -29,6 +30,8 @@ class FeedController extends Controller
      */
     public function index()
     {
+        Log::debug("Running feeds");
+        
         $this->runTask();
         $this->runTaskDaily();
 

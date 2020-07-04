@@ -1,0 +1,62 @@
+.leaderboard-item 
+{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background: #3e010461;
+    transition: background ease-in-out 250ms;
+    border: 1px solid #960000;
+    border-radius: 4px;
+    &:hover { background: #790006; }
+}
+
+.leaderboard-item:nth-child(odd) 
+{
+    background: #5d000591;
+    &:hover { background: #790006; }
+}
+
+.leaderboard-item.gold 
+{
+    border: 1px solid #ffb300;
+    background: #ffc8005e;
+    border-radius: 4px;
+}
+
+.leaderboard-item .player-badge 
+{
+    width: 50px;
+    margin: 0 15px;
+    padding: 5px 0;
+    color: #ff9900;
+}
+
+.leaderboard-item .player-name > h3
+{
+    font-size: 1.2rem;
+    padding: 0 5px;
+    margin: 0;
+}
+
+.leaderboard-item .rank 
+{
+    padding: 15px 25px;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.leaderboard-item .details 
+{
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.leaderboard-item.gold .wins,
+.leaderboard-item.gold .losses,
+.leaderboard-item.gold .points,
+.leaderboard-item.gold .played
+{
+    color: gold;
+    font-weight: 600;
+}

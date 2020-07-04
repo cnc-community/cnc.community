@@ -4,7 +4,11 @@ namespace App\Http\Services\Petroglyph;
 
 use App\Http\Services\Petroglyph\PetroglyphAPI;
 use App\Leaderboard;
+use App\LeaderboardMatchHistory;
 use App\Match;
+use App\MatchPlayer;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
 
 class PetroglyphAPIService
 {
@@ -17,7 +21,34 @@ class PetroglyphAPIService
        
     public function runMatchesTask()
     {
-        $this->getMatchesTask();
+        // $this->getMatchesTask();
+        // $this->runRALeaderboardTasks();
+
+        set_time_limit(0);
+
+        $this->syncPlayerMatches();
+
+    }
+
+    public function syncPlayerMatches()
+    {
+        $matchIdsProcessed = [];
+
+        Match::chunk(1000, function ($matches)
+        {
+            foreach ($matches as $match) 
+            {
+                $matchIdsProcessed[] = $match["matchid"];
+
+                $players = json_decode($match["players"]);
+                foreach($players as $playerId)
+                {
+                    MatchPlayer::syncPlayerHistory($playerId, $match["matchid"]);
+                }
+            }
+        });
+
+        Storage::put('matches'.$this->count.'.json', json_encode($matchIdsProcessed));
     }
 
     public function runRALeaderboardTasks()
@@ -87,7 +118,7 @@ class PetroglyphAPIService
         while(count($response["matches"]) > 0 && $complete == false)
         {
             // Timeout between requests
-            sleep(4);
+            sleep(8);
 
             // For our next request
             $offset += $limit;
@@ -104,6 +135,7 @@ class PetroglyphAPIService
             if ($offset > $totalMatchCount)
             {
                 // Safety - somethings gone wrong here
+                Log::debug("Error - Offset was more than total matches");
                 die("Safety kill switch");
             }
         }
@@ -141,6 +173,13 @@ class PetroglyphAPIService
             {
                 Match::createMatch($matchResponse);
                 Match::savePlayersFromMatch($matchResponse);
+
+                // Sync matches to player ids
+                $players = json_decode($matchResponse["players"]);
+                foreach($players as $playerId)
+                {
+                    MatchPlayer::syncPlayerHistory($playerId, $match["matchid"]);
+                }
             }
         }
 

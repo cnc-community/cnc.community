@@ -61,7 +61,6 @@ class LeaderboardController extends Controller
 
         $game = $gameSlug == "red-alert" ? MatchData::RA_1vs1 : MatchData::TD_1vs1;
         $gameLogo = "";
-
         if ($game == MatchData::RA_1vs1)
         {
              $gameLogo = ViewHelper::getRARemasterLogo();
@@ -71,21 +70,13 @@ class LeaderboardController extends Controller
              $gameLogo = ViewHelper::getTDRemasterLogo();
         }
 
-        $matches = Match::getPlayerMatches($player, $game);
-        $matchesCollection = collect($matches);
-        $matchesPaginated = ViewHelper::paginate($matchesCollection, 15, $request->page);
-
-        $playerData = Cache::remember("playerData".$gameSlug.$playerId, Constants::getCacheSeconds(), function () use ($player)
-        {
-            return LeaderboardData::findPlayerData($player->id);
-        });
-
+        $playerData = LeaderboardData::findPlayerData($player->id);
         $gameName = Constants::getTwitchGameBySlug($gameSlug);
         $leaderboard = Leaderboard::where("type", $game)->first();
 
         return view('pages.remasters.leaderboard.player-detail', 
             [
-                "matches" => $matchesPaginated,
+                "matches" => $player->matches(),
                 "player" => $player,
                 "playerData" => $playerData,
                 "gameSlug" => $gameSlug,
@@ -99,47 +90,46 @@ class LeaderboardController extends Controller
     public function getLeaderboardListingsByGame(Request $request, $gameSlug)
     {
         $pageNumber = $request->page == null ? 0: $request->page;
-        $heroVideo = Constants::getVideoWithPoster("command-and-conquer-remastered");
         $gameLogo = "";
         $gameName = Constants::getRemasterGameBySlug($gameSlug);
         $searchRequest = filter_var($request->search, FILTER_SANITIZE_STRING);
-
-        $data = [];
-
+    
         switch($gameSlug)
         {
             case "tiberian-dawn":
-                $cacheKey = "td".$pageNumber;
-                $leaderboardTD = Leaderboard::where("type", "td_1vs1")->first();
                 $gameLogo = ViewHelper::getTDRemasterLogo();
-                $top15Data = $leaderboardTD->data($cacheKey, $searchRequest, $limit=15, $offset=0 );
-                $data = $leaderboardTD->dataPaginated($cacheKey, $searchRequest, $paginate=50, $limit=400);
-                break;
+                $leaderboardTD = Leaderboard::where("type", "td_1vs1")->first();
+                $data = $leaderboardTD->dataPaginated("leaderboardTD_1vs1".$pageNumber, $searchRequest, $paginate=200, $limit=400);
+            break;
 
             case "red-alert":
-                $cacheKey = "ra".$pageNumber;
-                $leaderboardRA = Leaderboard::where("type", "ra_1vs1")->first();
                 $gameLogo = ViewHelper::getRARemasterLogo();
-                $top15Data = $leaderboardRA->data($cacheKey, $searchRequest, $limit=15, $offset=0 );
-                $data = $leaderboardRA->dataPaginated($cacheKey, $searchRequest, $paginate=50, $limit=400);
-                break;
+                $leaderboardRA = Leaderboard::where("type", "ra_1vs1")->first();
+                $data = $leaderboardRA->dataPaginated("leaderboardTD_1vs1".$pageNumber, $searchRequest, $paginate=200, $limit=400);
+            break;
 
-            default: 
+            default:
                 abort(404);
         }
 
+        $ranks = $this->getRankTypes($pageNumber);
+
         return view('pages.remasters.leaderboard.detail', 
             [
-                "top15Data" => $top15Data,
-                "data" => $data,
                 "gameLogo" => $gameLogo,
                 "gameName" => $gameName,
-                "heroVideo" => $heroVideo,
                 "gameSlug" => $gameSlug,
                 "pageNumber" => $pageNumber,
-                "searchRequest" => $searchRequest
+                "searchRequest" => $searchRequest,
+                "data" => $data,
+                "pageRanks" => $ranks
             ]
         );
+    }
+
+    private function getRankTypes($pageNumber)
+    {
+        return [];
     }
 
     public function getTopTDLeadeboard1vs1()

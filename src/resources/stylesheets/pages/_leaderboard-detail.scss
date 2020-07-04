@@ -145,85 +145,73 @@
     background: #020202bf;
 }
 
-.top-rank-box .title 
+.leaderboard-detail .listings 
 {
-    padding: 0px 0 15px;
-}
-
-.top-rank-box .title h3 
-{
-    margin: 0;
-    text-transform: uppercase;
-
-    @media(min-width:$xxl-width)
-    {
-        font-size: 2rem;
-    }
-}
-
-.top-rank-box .results 
-{
-    background: url('../images/leaderboard/background-box.jpg');
-    background-size: cover;
+    display: flex;
     position: relative;
 }
 
-.leaderboard-detail.tiberian-dawn .top-rank-box .results 
+.leaderboard-detail .rank.rank-type.general 
 {
-    background: url('../images/leaderboard/background-box-td.jpg');
-}
-
-.top-rank-box .results::before
-{
-    content: "";
-    width: 100%;
-    height: 100%;
-    display: block;
-    background: linear-gradient(0deg, black, transparent);
     position: absolute;
     top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 0;
 }
 
-.top-ranks .rank-type-1 .player-rank:first-child
+.leaderboard-detail .rank.rank-type.colonel 
 {
-    border: 1px solid #ffb300;
-    background: #ffc8005e;
-
-    .rank { 
-        color: #ffffff;
-        position: absolute;
-        right: 10px;
-        font-size: 3rem;
-    }
+    position: absolute;
+    top: calc(16 * 54px);
 }
 
-.top-rank-box .results .player-rank 
+.leaderboard-detail .rank.rank-type.colonel 
 {
+    position: absolute;
+    top: calc(16 * 54px);
+}
+
+.leaderboard-detail .rank.rank-type.major
+{
+    position: absolute;
+    top: calc(100 * 54px);
+}
+
+.leaderboard-detail .rank-type .player-badge 
+{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    width: 150px;
+    height: 200px;
+    border-radius: 4px;
+}
+
+/*
+.leaderboard-detail .rank-type.general
+{
+    background: url('../images/leaderboard/background-ra.jpg');
+    background-position: top center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 4px;
+}
+
+.leaderboard-detail .rank.rank-type.general .player-badge
+{
+    border: 1px solid #a20000;
+    background: #8603039e;
     position: relative;
-    border: 1px solid rgba(255, 0, 0, 0.63);
-    padding: 10px;
 }
 
-.other-rank-box 
+.leaderboard-detail .rank-title 
 {
-    @extend .top-rank-box;
+    font-weight: 600;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    color: #ffea59;
 }
+*/
 
-.leaderboard-detail .ranks-more 
-{
-    flex-wrap: wrap;
-    @extend .ranks-top-15;
-
-    @media(min-width: $sm-width)
-    {
-        display: flex;
-        flex-direction: row;
-    }
-}
 
 .leaderboard-detail.red-alert .other-rank-box .results,
 .leaderboard-detail.tiberian-dawn .other-rank-box .results

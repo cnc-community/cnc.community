@@ -2,6 +2,8 @@
 
 namespace App\Http\Services;
 
+use Exception;
+use Illuminate\Support\Facades\Log;
 use Image;
 use Illuminate\Support\Facades\Storage;
 
@@ -27,22 +29,28 @@ class FeedHelper
      */
     public static function createImageFromUrl($url)
     {
-        $image = Image::make($url)
-            ->resize(600, null, function ($constraint) 
-            {
-                $constraint->aspectRatio();
-            });
-
-        // 16:9
-        $newImage = Image::canvas(600, 337.50, "#000")
-            ->insert($image, 'center', 0, 0)
-            ->encode('jpg', 75);
-        
-        // Unique image name
-        $newImagePath = sha1($newImage) . ".jpg";
-        Storage::disk('public')->put($newImagePath, $newImage);
-        
-        return "storage/" . $newImagePath;
+        try{
+            $image = Image::make($url)
+                ->resize(600, null, function ($constraint) 
+                {
+                    $constraint->aspectRatio();
+                });
+    
+            // 16:9
+            $newImage = Image::canvas(600, 337.50, "#000")
+                ->insert($image, 'center', 0, 0)
+                ->encode('jpg', 75);
+            
+            // Unique image name
+            $newImagePath = sha1($newImage) . ".jpg";
+            Storage::disk('public')->put($newImagePath, $newImage);
+            
+            return "storage/" . $newImagePath;
+        }
+        catch(Exception $ex)
+        {
+            Log::debug("Error creating image");
+        }
     }
 
     public static function storeImage($file)

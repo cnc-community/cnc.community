@@ -38,47 +38,15 @@
             <form>
                 <div class="form-group player-search">
                     <label class="label" for="search">Search by player name</label>
-                    <input id="search" type="text" name="search" class="form-input" placeholder="Enter a player name.." value="{{ $searchRequest }}" />
+                    {{-- <input id="search" type="text" name="search" class="form-input" placeholder="Enter a player name.." value="{{ $searchRequest }}" /> --}}
                 </div>
             </form>
         </div>
 
-        <?php $searching = strlen($searchRequest) > 0; ?>
-
-        <?php if(!$searching): ?>
-            <?php if($pageNumber == 1 || $pageNumber == 0): ?>
-            <div class="main-content">
-                <p class="note"><small>Note: Ranks are synced every 30 minutes</small></p>
-                <div class="ranks-top-15">
-                    <?php $i = 0; ?>
-                    <?php foreach($top15Data->chunk(5) as $chunk): ?>
-                    <?php $i++; ?>
-
-                    <div class="top-rank-box rank-type-{{ $i }}">
-                        <div class="title">
-                        <?php if($i == 1): ?>
-                        <h3>{{ $gameName["short_name"] }}'s Elite </h3>
-                        <?php elseif ($i == 2): ?>
-                        <h3>{{ $gameName["short_name"] }}'s Pro</h3>
-                        <?php else: ?>
-                        <h3>{{ $gameName["short_name"] }}'s Upcoming</h3>
-                        <?php endif; ?>
-                        </div>
-                        <div class="results">
-                            @foreach($chunk as $result)
-                                @include("pages.remasters.leaderboard._player-top-rank")
-                            @endforeach 
-                        </div>
-                    </div>
-                    <?php endforeach; ?>
-                </div>
-            </div>
-            <?php endif; ?>
-        <?php endif; ?>
-
         <div class="main-content">
             {{ $data->links() }}
 
+            <?php /*
             <?php if($searching): ?>
             <div class="search-results">
                 <h3>Search results</h3>
@@ -88,22 +56,45 @@
                 </p>
             </div>
             <?php endif; ?>
+            */ ?>
 
-            <div class="ranks-more">
-                <?php foreach($data as $result): ?>
 
-                <?php if(!$searching): ?>
-                    <?php if($result->rank > 15): ?>
-                        @include("pages.remasters.leaderboard._player-result")
-                    <?php endif; ?>
-
-                <?php else: ?>
-                    @include("pages.remasters.leaderboard._player-result")
-                <?php endif; ?>
-
-                <?php endforeach; ?>
+                <div class="listings">
+                    <div class="ranks">
+                        <div class="top-16">
+                            @foreach($pageRanks as $rank)
+                                <?php $badge = \App\LeaderboardHelper::getBadgeByRank($rank); ?>
+                                @include("pages.remasters.leaderboard._rank", ["badge" => $badge, "tier" => $rank])
+                            @endforeach
+                        </div>
+                    </div>
+                    <div class="leaderboard-listings">
+                        <div class="headers">
+                            <div class="col col-10 rank">Rank</div>
+                            <div class="col col-50">Name</div>
+                            <div class="col col-10">Wins</div>
+                            <div class="col col-10">Lost</div>
+                            <div class="col col-10">Played</div>
+                            <div class="col col-10">Points</div>
+                        </div>
+                        <?php foreach($data as $result): ?>
+                            <?php 
+                                $url = $gameSlug ."/player/".$result->player()->id;
+                                new \App\Http\CustomView\Components\PlayerListingProfile
+                                (
+                                    $result->player_name,
+                                    $result->wins,
+                                    $result->losses,
+                                    $result->player()->playerBadge($result->rank),
+                                    $result->points,
+                                    $result->rank,
+                                    $url
+                                );
+                            ?>
+                        <?php endforeach; ?>
+                    </div>
             </div>
-            {{ $data->links() }}
+                {{ $data->links() }}
         </div>
     </section>
 </div>
