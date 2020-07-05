@@ -9,7 +9,6 @@ use App\LeaderboardData;
 use App\LeaderboardHistory;
 use App\LeaderboardMatchHistory;
 use App\Match;
-use App\MatchData;
 use App\MatchPlayer;
 use App\ViewHelper;
 use Illuminate\Database\Eloquent\Collection;
@@ -54,30 +53,34 @@ class LeaderboardController extends Controller
     public function getPlayerLeaderboardProfile(Request $request, $gameSlug, $playerId)
     {
         $player = MatchPlayer::find($playerId);
+        $page = $request->page;
+
         if ($player == null)
         {
             abort(404);
         }
-
-        $game = $gameSlug == "red-alert" ? MatchData::RA_1vs1 : MatchData::TD_1vs1;
+        
+        $game = Match::getMatchTypeByGameSlug($gameSlug);
+        
         $gameLogo = "";
-        if ($game == MatchData::RA_1vs1)
+        if ($game == Match::RA_1vs1)
         {
-             $gameLogo = ViewHelper::getRARemasterLogo();
+            $gameLogo = ViewHelper::getRARemasterLogo();
+            $leaderboard = Leaderboard::where("type", "ra_1vs1")->first();
         }
         else
         {
              $gameLogo = ViewHelper::getTDRemasterLogo();
+             $leaderboard = Leaderboard::where("type", "td_1vs1")->first();
         }
 
         $playerData = LeaderboardData::findPlayerData($player->id);
         $gameName = Constants::getTwitchGameBySlug($gameSlug);
-        $leaderboard = Leaderboard::where("type", $game)->first();
-        $cacheKey = "matches".$gameSlug.$player->id;
+        $matches = $player->matches($game, $page);
 
         return view('pages.remasters.leaderboard.player-detail', 
             [
-                "matches" => $player->matches($cacheKey),
+                "matches" => $matches,
                 "player" => $player,
                 "playerData" => $playerData,
                 "gameSlug" => $gameSlug,

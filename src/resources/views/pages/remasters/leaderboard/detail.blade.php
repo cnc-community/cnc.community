@@ -70,10 +70,10 @@
                         <div class="headers">
                             <div class="col col-10 rank">Rank</div>
                             <div class="col col-50">Name</div>
-                            <div class="col col-10">Wins</div>
-                            <div class="col col-10">Lost</div>
-                            <div class="col col-10">Played</div>
                             <div class="col col-10">Points</div>
+                            <div class="col col-10">Wins</div>
+                            <div class="col col-10">Losses</div>
+                            <div class="col col-10">Played</div>
                         </div>
                         <?php foreach($data as $result): ?>
                             <?php 

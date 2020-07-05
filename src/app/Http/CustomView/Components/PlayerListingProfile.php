@@ -58,6 +58,10 @@ class PlayerListingProfile extends AbstractCustomView
                 </div>
                 
                 <div class="col col-10 visible-lg">
+                    <div class="points"><?php echo round($this->points); ?></div>
+                </div>
+
+                <div class="col col-10 visible-lg">
                     <div class="wins"><?php echo $this->wins; ?></div>
                 </div>
                 
@@ -67,10 +71,6 @@ class PlayerListingProfile extends AbstractCustomView
                 
                 <div class="col col-10 visible-lg">
                     <div class="played"><?php echo $this->wins += $this->losses; ?></div>
-                </div>
-                
-                <div class="col col-10 visible-lg">
-                    <div class="points"><?php echo round($this->points); ?></div>
                 </div>
 
                 <div class="stats hidden-lg">

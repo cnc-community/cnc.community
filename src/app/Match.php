@@ -9,17 +9,19 @@ class Match extends Model
     protected $connection = 'mysql2';
     protected $table = 'matches';
 
-    public function matchType(): string 
-    {
-        switch($this->matchtype)
-        {
-            case 1:
-                return MatchData::TD_1vs1;
+    public const TD_1vs1 = 1;
+    public const RA_1vs1 = 2;
 
-            case 2: 
-                return MatchData::RA_1vs1;
+    public static function getMatchTypeByGameSlug($gameSlug)
+    {
+        if ($gameSlug == "red-alert")
+        {
+            return Match::RA_1vs1;
         }
-        return $this->matchtype;
+        else if ($gameSlug == "tiberian-dawn")
+        {
+            return Match::TD_1vs1;
+        }
     }
     
     public function startTime() { return date("M d Y H:i:s", $this->starttime); }
