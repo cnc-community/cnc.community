@@ -38,28 +38,25 @@
             <form>
                 <div class="form-group player-search">
                     <label class="label" for="search">Search by player name</label>
-                    {{-- <input id="search" type="text" name="search" class="form-input" placeholder="Enter a player name.." value="{{ $searchRequest }}" /> --}}
+                    <input id="search" type="text" name="search" class="form-input" placeholder="Enter a player name.." value="{{ $searchRequest }}" />
                 </div>
             </form>
         </div>
 
         <div class="main-content">
             {{ $data->links() }}
-
-            <?php /*
-            <?php if($searching): ?>
-            <div class="search-results">
-                <h3>Search results</h3>
-                <p>
-                    {{ count($data) }} results for "<strong>{{ $searchRequest }}</strong>". <br/>
-                    <a href="?search=" title="Clear Search">Clear search?</a>
-                </p>
-            </div>
-            <?php endif; ?>
-            */ ?>
-
+                <?php if($searchRequest): ?>
+                <div class="search-results">
+                    <h3 class="text-uppercase">Search results</h3>
+                    <p>
+                        {{ count($data) }} results for "<strong>{{ $searchRequest }}</strong>". <br/>
+                        <a href="?search=" title="Clear Search">Clear search?</a>
+                    </p>
+                </div>
+                <?php endif; ?>
 
                 <div class="listings">
+                    <?php if(!$searchRequest): ?>
                     <div class="ranks">
                         <div class="top-16">
                             @foreach($pageRanks as $rank)
@@ -68,6 +65,7 @@
                             @endforeach
                         </div>
                     </div>
+                    <?php endif; ?>
                     <div class="leaderboard-listings">
                         <div class="headers">
                             <div class="col col-10 rank">Rank</div>
@@ -94,7 +92,7 @@
                         <?php endforeach; ?>
                     </div>
             </div>
-                {{ $data->links() }}
+            {{ $data->links() }}
         </div>
     </section>
 </div>

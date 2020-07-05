@@ -168,9 +168,8 @@ $xxxl-width: 1600px;
 {
     @extend .btn-theme-blue;
 }
-
-
-.col-visible-lg
+        
+.visible-lg
 {
     display: none;
     @media(min-width: $lg-width)
@@ -179,7 +178,7 @@ $xxxl-width: 1600px;
     }
 }
 
-.col-hidden-lg
+.hidden-lg
 {
     display: block;
     @media(min-width: $lg-width)
@@ -187,7 +186,6 @@ $xxxl-width: 1600px;
         display: none;
     }
 }
-
 
 .col-10,
 .col-20,

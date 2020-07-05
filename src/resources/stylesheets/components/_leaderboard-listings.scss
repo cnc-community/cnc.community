@@ -1,16 +1,44 @@
 .leaderboard-listings
 {
-    width: 80%;
-    margin: 0 auto;
+    width: 100%;
+    @media(min-width: $lg-width)
+    {
+        width: calc(98% - 150px);
+    }
+    margin: 0 0 auto auto;
 }
 
 .leaderboard-listings .headers 
 {
-    display: flex;
-    padding: 15px 5px;
+    display: none;
+    @media(min-width: $lg-width)
+    {
+        display: flex;
+        padding: 15px 5px;
+        border-radius: 4px;
+    }
+}
+
+.leaderboard-listings .stats
+{
+    @media(max-width: $lg-width)
+    {
+        display: flex;
+    }
+}
+
+.red-alert .leaderboard-listings .headers
+{
     background: #1f0002;
-    border-radius: 4px;
     border: 1px solid #540005;
+    color: #ff1818;
+}
+
+.tiberian-dawn .leaderboard-listings .headers
+{
+    background: #0e0e0e;
+    border: 1px solid #565656;
+    color: silver;
 }
 
 .leaderboard-listings .headers div 
@@ -18,7 +46,6 @@
     text-transform: uppercase;
     font-size: 1rem;
     font-weight: 600;
-    color: #ff1818;
 }
 
 .leaderboard-listings .headers .rank 

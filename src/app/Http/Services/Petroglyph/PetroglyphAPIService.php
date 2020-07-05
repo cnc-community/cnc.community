@@ -21,34 +21,7 @@ class PetroglyphAPIService
        
     public function runMatchesTask()
     {
-        // $this->getMatchesTask();
-        // $this->runRALeaderboardTasks();
-
-        set_time_limit(0);
-
-        $this->syncPlayerMatches();
-
-    }
-
-    public function syncPlayerMatches()
-    {
-        $matchIdsProcessed = [];
-
-        Match::chunk(1000, function ($matches)
-        {
-            foreach ($matches as $match) 
-            {
-                $matchIdsProcessed[] = $match["matchid"];
-
-                $players = json_decode($match["players"]);
-                foreach($players as $playerId)
-                {
-                    MatchPlayer::syncPlayerHistory($playerId, $match["matchid"]);
-                }
-            }
-        });
-
-        Storage::put('matches'.$this->count.'.json', json_encode($matchIdsProcessed));
+        $this->getMatchesTask();
     }
 
     public function runRALeaderboardTasks()
@@ -173,13 +146,6 @@ class PetroglyphAPIService
             {
                 Match::createMatch($matchResponse);
                 Match::savePlayersFromMatch($matchResponse);
-
-                // Sync matches to player ids
-                $players = json_decode($matchResponse["players"]);
-                foreach($players as $playerId)
-                {
-                    MatchPlayer::syncPlayerHistory($playerId, $match["matchid"]);
-                }
             }
         }
 

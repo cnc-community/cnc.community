@@ -39,12 +39,13 @@ class PlayerListingProfile extends AbstractCustomView
     {
         ?>
              <a href="<?php echo $this->url; ?>" class="leaderboard-item <?php echo $this->rank == 1 ? "gold": ""; ?>" title="View <?php echo $this->name; ?> stats">
-
+                <?php /*
                 <div class="col col-10">
                     <div class="player-badge">
                         <img src="<?php echo $this->badge["image"]; ?>" alt="<?php echo $this->badge["rank"];?>" />
                     </div>
                 </div> 
+                */ ?>
 
                 <div class="col col-10">
                     <div class="rank">
@@ -56,23 +57,23 @@ class PlayerListingProfile extends AbstractCustomView
                     <div class="player-name"><h3><?php echo $this->name; ?></h3></div>
                 </div>
                 
-                <div class="col col-10 col-visible-lg">
+                <div class="col col-10 visible-lg">
                     <div class="wins"><?php echo $this->wins; ?></div>
                 </div>
                 
-                <div class="col col-10 col-visible-lg">
+                <div class="col col-10 visible-lg">
                     <div class="losses"><?php echo $this->losses; ?></div>
                 </div>       
                 
-                <div class="col col-10 col-visible-lg">
+                <div class="col col-10 visible-lg">
                     <div class="played"><?php echo $this->wins += $this->losses; ?></div>
                 </div>
                 
-                <div class="col col-10 col-visible-lg">
+                <div class="col col-10 visible-lg">
                     <div class="points"><?php echo round($this->points); ?></div>
                 </div>
 
-                <div class="stats col-hidden-lg">
+                <div class="stats hidden-lg">
                     <div class="wins"><?php echo $this->wins; ?> wins</div>
                     <div class="losses"><?php echo $this->losses; ?> losses</div>
                     <div class="played"><?php echo $this->wins += $this->losses; ?> played</div>

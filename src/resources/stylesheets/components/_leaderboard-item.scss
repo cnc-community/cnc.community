@@ -3,14 +3,64 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    background: #3e010461;
     transition: background ease-in-out 250ms;
+}
+
+@media(max-width: $lg-width)
+{
+    .leaderboard-item div
+    {
+        flex-basis: auto;
+        width: auto;
+    }
+
+    .leaderboard-item .stats
+    {
+        display: flex;
+        justify-content: space-around;
+        width: 60%;
+        margin-left: auto;
+        font-size: 0.9rem;
+    }
+
+    .leaderboard-item .player-name > h3
+    {
+        font-size: 1rem;
+        word-break: break-all;
+    }
+}
+
+@media(max-width: $sm-width)
+{
+    .leaderboard-item .played 
+    {
+        display: none;
+    }
+}
+
+.tiberian-dawn .leaderboard-item:nth-child(odd) 
+{
+    background: #2f2f2fba;
+    &:hover { background: #7d7d7dba; }
+}
+
+.tiberian-dawn .leaderboard-item
+{
+    background: #2d2d2d4f;
+    border: 1px solid #2b2b2bed;
+    border-radius: 4px;
+    &:hover {background: #96969666; }
+}
+
+.red-alert .leaderboard-item
+{
+    background: #3e010461;
     border: 1px solid #960000;
     border-radius: 4px;
     &:hover { background: #790006; }
 }
 
-.leaderboard-item:nth-child(odd) 
+.red-alert .leaderboard-item:nth-child(odd)
 {
     background: #5d000591;
     &:hover { background: #790006; }
@@ -23,6 +73,16 @@
     border-radius: 4px;
 }
 
+.red-alert .leaderboard-item.gold:hover 
+{
+    background: #963d01;
+}
+
+.tiberian-dawn .leaderboard-item.gold:hover 
+{
+    background: #da9008a6;
+}
+
 .leaderboard-item .player-badge 
 {
     width: 50px;
@@ -31,11 +91,14 @@
     color: #ff9900;
 }
 
-.leaderboard-item .player-name > h3
+@media(min-width: $lg-width)
 {
-    font-size: 1.2rem;
-    padding: 0 5px;
-    margin: 0;
+    .leaderboard-item .player-name > h3
+    {
+        font-size: 1.2rem;
+        padding: 0 5px;
+        margin: 0;
+    }
 }
 
 .leaderboard-item .rank 

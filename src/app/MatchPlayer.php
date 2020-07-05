@@ -125,23 +125,13 @@ class MatchPlayer extends Model
         return $player;
     }
 
-    public static function syncPlayerHistory($steamOriginId, $matchId)
+    public function matches($page)
     {
-        $player = MatchPlayer::findPlayer($steamOriginId);
-        if ($player)
+        $matches = Cache::remember("playerMatches".$this->player_id.$page, Constants::getCacheSeconds(), function () 
         {
-            LeaderboardMatchHistory::saveGame($matchId, $player->id);
-        }
-    }
-
-    public function matches()
-    {
-        $matches = Cache::remember("playerMatches".$this->id, Constants::getCacheSeconds(), function () 
-        {
-            return LeaderboardMatchHistory::where("match_player_id", $this->id)
-                ->join("matches", "matches.matchid", "=", "leaderboard_match_history.match_id")
-                ->orderBy("match_id", "DESC")
-                ->paginate(15);
+            return Match::whereJsonContains("players", [$this->player_id])
+                ->where("matchtype", 2)
+                ->paginate(10);
         });
         return $matches;
     }

@@ -73,10 +73,10 @@ class LeaderboardController extends Controller
         $playerData = LeaderboardData::findPlayerData($player->id);
         $gameName = Constants::getTwitchGameBySlug($gameSlug);
         $leaderboard = Leaderboard::where("type", $game)->first();
-
+        
         return view('pages.remasters.leaderboard.player-detail', 
             [
-                "matches" => $player->matches(),
+                "matches" => $player->matches($request->page),
                 "player" => $player,
                 "playerData" => $playerData,
                 "gameSlug" => $gameSlug,
@@ -122,13 +122,32 @@ class LeaderboardController extends Controller
                 "pageNumber" => $pageNumber,
                 "searchRequest" => $searchRequest,
                 "data" => $data,
-                "pageRanks" => $ranks
+                "pageRanks" => $ranks,
+                "searchRequest" => $searchRequest
             ]
         );
     }
 
     private function getRankTypes($pageNumber)
     {
+        switch($pageNumber)
+        {
+            case 5:
+                return [1000];
+
+            case 4:
+            case 3:
+                return [600];
+
+            case 2:
+                return [400];
+            break;
+            
+            case 1:
+            default:
+                return [16, 200];
+            break;
+        }
         return [];
     }
 

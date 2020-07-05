@@ -46,7 +46,6 @@
             <h3 class="text-uppercase">Games</h3>
 
             {{ $matches->links() }}
-
             @foreach($matches as $match)
             <div class="recent-game">
                 <div class="players">

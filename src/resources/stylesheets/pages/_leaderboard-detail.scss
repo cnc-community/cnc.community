@@ -1,6 +1,39 @@
-.leaderboard-detail .top-ranks 
+.leaderboard-detail .top-ranks
 {
-    padding-top: 180px;
+    padding-top: 150px;
+}
+
+.leaderboard-detail .player-search .form-input
+{
+    color: #fff;
+    font-weight: 600;
+
+    &::placeholder
+    {
+        color: $color-white;
+    }
+}
+
+.leaderboard-detail .ranks
+{
+    display: none;
+
+    @media(min-width: $lg-width)
+    {
+        display: block;
+    }
+}
+
+.leaderboard-detail.red-alert .player-search .form-input
+{
+    background: rgba(175, 0, 11, 0.2);
+    border: 1px solid #ff0010;
+}
+
+.leaderboard-detail.tiberian-dawn .player-search .form-input
+{
+    background: rgba(21, 14, 3, 0.4);
+    border: 1px solid #797979;
 }
 
 .leaderboard-detail.red-alert .page-background
@@ -157,61 +190,33 @@
     top: 0;
 }
 
-.leaderboard-detail .rank.rank-type.colonel 
+.leaderboard-detail .rank.rank-type
 {
     position: absolute;
+    top: 0;
+}
+
+.leaderboard-detail .rank.rank-type.colonel 
+{
     top: calc(16 * 54px);
 }
 
 .leaderboard-detail .rank.rank-type.colonel 
 {
-    position: absolute;
-    top: calc(16 * 54px);
+    top: calc(16 * 56px + 200px);
 }
 
 .leaderboard-detail .rank.rank-type.major
 {
-    position: absolute;
-    top: calc(100 * 54px);
+    top: calc(56px * 16);
 }
 
-.leaderboard-detail .rank-type .player-badge 
-{
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-    width: 150px;
-    height: 200px;
-    border-radius: 4px;
-}
+// Badge type
 
-/*
-.leaderboard-detail .rank-type.general
-{
-    background: url('../images/leaderboard/background-ra.jpg');
-    background-position: top center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    border-radius: 4px;
-}
 
-.leaderboard-detail .rank.rank-type.general .player-badge
-{
-    border: 1px solid #a20000;
-    background: #8603039e;
-    position: relative;
-}
 
-.leaderboard-detail .rank-title 
-{
-    font-weight: 600;
-    font-size: 1.5rem;
-    text-transform: uppercase;
-    color: #ffea59;
-}
-*/
 
+// End skins
 
 .leaderboard-detail.red-alert .other-rank-box .results,
 .leaderboard-detail.tiberian-dawn .other-rank-box .results

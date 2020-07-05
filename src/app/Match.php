@@ -9,10 +9,57 @@ class Match extends Model
     protected $connection = 'mysql2';
     protected $table = 'matches';
 
+    public function matchType(): string 
+    {
+        switch($this->matchtype)
+        {
+            case 1:
+                return MatchData::TD_1vs1;
+
+            case 2: 
+                return MatchData::RA_1vs1;
+        }
+        return $this->matchtype;
+    }
+    
+    public function startTime() { return date("M d Y H:i:s", $this->starttime); }
+    public function matchDuration() { return date("H:i:s", $this->matchduration); }
+    public function players()
+    { 
+        $players = json_decode($this->players);
+        return MatchPlayer::whereIn("player_id", $players)->get();
+    }
+
+    public function winningTeamId(){return $this->winningteamid;}
+    public function mapInternalName(): string { return $this->mapname; }
+    public function mapName(): string 
+    {
+        $map = Map::where("internal_name", $this->mapname)->first();
+        if ($map)
+        {
+            return $map->map_name;
+        } 
+        return $this->mapname;
+    }
+
+    public function factions(): array { return $this->factions; }
+    public function teams() 
+    {
+        $teamsArr = json_decode($this->teams);
+        $playersArr = json_decode($this->players);
+
+        $teams = [];
+        foreach($teamsArr as $k => $teamId)
+        {
+            $player = MatchPlayer::findPlayer($playersArr[$k]);
+            $teams[$teamId][] = $player;            
+        }
+        return $teams;
+    }
+
     public static function createMatch($matchResponse)
     {
         $match = new Match();
-
         $match->elos = json_encode($matchResponse["elos"]);
         $match->names = json_encode($matchResponse["names"]);
         $match->teams = json_encode($matchResponse["teams"]);
@@ -32,32 +79,7 @@ class Match extends Model
         $match->winningteamid = $matchResponse["winningteamid"];
         $match->extramatchsettings = json_encode($matchResponse["extramatchsettings"]);
         $match->extraperplayersettings = json_encode($matchResponse["extraperplayersettings"]);
-
         $match->save();
-
-        /*
-                Match::updateOrCreate(
-            ['elos' => json_encode($matchResponse["elos"])],
-            ['names'  =>  json_encode($matchResponse["names"])],
-            ['teams'  =>  json_encode($matchResponse["teams"])],
-            ['avgelo'  =>  $matchResponse["avgelo"]],
-            ['cdnurl'  =>  $matchResponse["cdnurl"]],
-            ['colors'  =>  json_encode($matchResponse["colors"])],
-            ['mapname'  =>  $matchResponse["mapname"]],
-            ['matchid' =>  $matchResponse["matchid"]],
-            ['matchtype' =>  $matchResponse["matchtype"]],
-            ['starttime'  =>  $matchResponse["starttime"]],
-            ['players' =>  json_encode($matchResponse["players"])],
-            ['factions'  =>  json_encode($matchResponse["factions"])],
-            ['locations'  =>  json_encode($matchResponse["locations"])],
-            ['wasrandom'  =>  json_encode($matchResponse["wasrandom"])],
-            ['aisettings'  =>  json_encode($matchResponse["aisettings"])],
-            ['matchduration'  =>  $matchResponse["matchduration"]],
-            ['winningteamid'  =>  $matchResponse["winningteamid"]],
-            ['extramatchsettings'  =>  json_encode($matchResponse["extramatchsettings"])],
-            ['extraperplayersettings'  =>  json_encode($matchResponse["extraperplayersettings"])]
-        );
-        */
     }
 
     public static function savePlayersFromMatch($matchResponse)
