@@ -35,8 +35,8 @@ class Leaderboard extends Model
 
     public function dataPaginated($cacheKey, $searchQuery, $paginate, $limit)
     {
-        return Cache::remember("Leaderboard.dataPaginated".$paginate.$limit.$cacheKey.$searchQuery, 1200, 
-        function () use($paginate, $limit, $searchQuery)
+        return Cache::remember("Leaderboard.dataPaginated".$paginate.$limit.$cacheKey.$searchQuery, 1200, function () 
+            use($paginate, $limit, $searchQuery)
         {
             // 20 minutes cache
             return LeaderboardData::where("leaderboard_history_id", $this->history()->id)

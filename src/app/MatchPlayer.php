@@ -130,7 +130,7 @@ class MatchPlayer extends Model
         $matches = Cache::remember("playerMatches".$this->player_id.$page, Constants::getCacheSeconds(), function () 
         {
             return Match::whereJsonContains("players", [$this->player_id])
-                ->where("matchtype", 2)
+                ->where("matchtype", 8)
                 ->paginate(10);
         });
         return $matches;

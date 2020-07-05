@@ -73,10 +73,11 @@ class LeaderboardController extends Controller
         $playerData = LeaderboardData::findPlayerData($player->id);
         $gameName = Constants::getTwitchGameBySlug($gameSlug);
         $leaderboard = Leaderboard::where("type", $game)->first();
-        
+        $cacheKey = "matches".$gameSlug.$player->id;
+
         return view('pages.remasters.leaderboard.player-detail', 
             [
-                "matches" => $player->matches($request->page),
+                "matches" => $player->matches($cacheKey),
                 "player" => $player,
                 "playerData" => $playerData,
                 "gameSlug" => $gameSlug,
@@ -89,7 +90,7 @@ class LeaderboardController extends Controller
 
     public function getLeaderboardListingsByGame(Request $request, $gameSlug)
     {
-        $pageNumber = $request->page == null ? 0: $request->page;
+        $pageNumber = $request->page == null ? 1: $request->page;
         $gameLogo = "";
         $gameName = Constants::getRemasterGameBySlug($gameSlug);
         $searchRequest = filter_var($request->search, FILTER_SANITIZE_STRING);
@@ -105,7 +106,7 @@ class LeaderboardController extends Controller
             case "red-alert":
                 $gameLogo = ViewHelper::getRARemasterLogo();
                 $leaderboardRA = Leaderboard::where("type", "ra_1vs1")->first();
-                $data = $leaderboardRA->dataPaginated("leaderboardTD_1vs1".$pageNumber, $searchRequest, $paginate=200, $limit=400);
+                $data = $leaderboardRA->dataPaginated("leaderboardRA_1vs1".$pageNumber, $searchRequest, $paginate=200, $limit=400);
             break;
 
             default:

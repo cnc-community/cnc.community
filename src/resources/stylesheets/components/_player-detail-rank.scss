@@ -154,7 +154,6 @@
     @media(min-width:$lg-width)
     {
         width: 220px;
-        height: auto;
         margin-left: 15px;
         background-size: 110%;
     }
@@ -219,6 +218,7 @@
     right: 0;
     flex-direction: column;
     font-size: 0.9rem;
+    word-break: break-all;
 }
 
 .player.won-game .player-detail-rank 
