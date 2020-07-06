@@ -695,10 +695,30 @@ ul.pagination
     margin: 5px;
 }
 
+.player-search 
+{
+    text-align: center;
+    @media(min-width: $lg-width)
+    {
+        text-align: left;
+    }
+}
+
 .player-search .form-input 
 {
     width: 400px;
     max-width: 100%;
+}
+
+.player-search .search-box 
+{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    @media(min-width: $lg-width)
+    {
+        flex-direction: row;
+    }
 }
 
 .avatar

@@ -57,7 +57,7 @@
                                 $teamPlayer->playerName(),
                                 "",//$teamPlayer->playerWins(),
                                 "",//$teamPlayer->playerLosses(),
-                                $teamPlayer->playerBadge($teamPlayer->playerPoints()),
+                                $teamPlayer->playerBadge($teamPlayer->playerRank()),
                                 "",//$teamPlayer->playerPoints(),
                                 $teamPlayer->playerRank(),
                                 $teamPlayer->playerFactionByMatchId($match->matchid),

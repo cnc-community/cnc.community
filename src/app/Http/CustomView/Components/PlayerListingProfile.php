@@ -14,6 +14,7 @@ class PlayerListingProfile extends AbstractCustomView
     private $points;
     private $rank;
     private $url;
+    private $totalGames;
 
     public function __construct(
         $name, 
@@ -32,6 +33,7 @@ class PlayerListingProfile extends AbstractCustomView
         $this->points = $points;
         $this->rank = $rank;
         $this->url = $url;
+        $this->totalGames = $wins + $losses;
         $this->renderContents();
     }
 
@@ -39,22 +41,23 @@ class PlayerListingProfile extends AbstractCustomView
     {
         ?>
              <a href="<?php echo $this->url; ?>" class="leaderboard-item <?php echo $this->rank == 1 ? "gold": ""; ?>" title="View <?php echo $this->name; ?> stats">
-                <?php /*
-                <div class="col col-10">
+         
+                <div class="col col-10 hidden-lg">
                     <div class="player-badge">
                         <img src="<?php echo $this->badge["image"]; ?>" alt="<?php echo $this->badge["rank"];?>" />
                     </div>
                 </div> 
-                */ ?>
 
-                <div class="col col-10">
+                <div class="col col-10 visible-lg">
                     <div class="rank">
                         <?php echo $this->rank; ?>
                     </div>
                 </div>
 
-                <div class="col col-50">
-                    <div class="player-name"><h3><?php echo $this->name; ?></h3></div>
+                <div class="col col-50 visible-lg">
+                    <div class="player-name">
+                        <h3><?php echo $this->name; ?></h3>
+                    </div>
                 </div>
                 
                 <div class="col col-10 visible-lg">
@@ -70,14 +73,25 @@ class PlayerListingProfile extends AbstractCustomView
                 </div>       
                 
                 <div class="col col-10 visible-lg">
-                    <div class="played"><?php echo $this->wins += $this->losses; ?></div>
+                    <div class="played"><?php echo $this->totalGames; ?></div>
                 </div>
 
                 <div class="stats hidden-lg">
-                    <div class="wins"><?php echo $this->wins; ?> wins</div>
-                    <div class="losses"><?php echo $this->losses; ?> losses</div>
-                    <div class="played"><?php echo $this->wins += $this->losses; ?> played</div>
-                    <div class="points"><?php echo round($this->points); ?> points</div>
+                    <div class="player-name">
+                        <div class="player-rank-name">
+                            <div class="rank">
+                                <?php echo $this->rank; ?>
+                            </div>
+                            <h3><?php echo $this->name; ?></h3>
+                        </div>
+
+                        <div class="detailed-stats">
+                            <div class="wins"><strong>Wins:</strong> <?php echo $this->wins; ?></div>
+                            <div class="losses"><strong>Losses:</strong> <?php echo $this->losses; ?></div>
+                            <div class="played"><strong>Played:</strong> <?php echo $this->totalGames; ?></div>
+                            <div class="points"><strong>Points:</strong> <?php echo round($this->points); ?></div>
+                        </div>
+                    </div>
                 </div>
             </a>
         <?php 

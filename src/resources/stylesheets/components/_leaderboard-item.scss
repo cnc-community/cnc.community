@@ -4,10 +4,52 @@
     flex-direction: row;
     align-items: center;
     transition: background ease-in-out 250ms;
+    @extend .font-secondary-bold;
+}
+
+.leaderboard-item .detailed-stats 
+{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.leaderboard-item .detailed-stats div 
+{
+    flex-basis: 100px;
+    font-size: 0.9rem;
+    color: #f1dedf;
+    @extend .font-secondary;
+}
+
+.tiberian-dawn .detailed-stats div 
+{
+    color: #d6d6d6;
+}
+
+.leaderboard-item .player-rank-name .rank 
+{
+    font-weight: 600;
+    font-size: 2rem;
+    @extend .font-secondary-bold;
+    width: auto;
+    padding: 0;
+    margin-right: 25px;
+}
+
+.player-rank-name 
+{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
 }
 
 @media(max-width: $lg-width)
 {
+    .leaderboard-item
+    {
+        position: relative;
+    }
+
     .leaderboard-item div
     {
         flex-basis: auto;
@@ -17,32 +59,30 @@
     .leaderboard-item .stats
     {
         display: flex;
-        justify-content: space-around;
-        width: 60%;
-        margin-left: auto;
         font-size: 0.9rem;
+        width: 100%;
+        border-radius: 4px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        font-weight: 600;
     }
 
-    .leaderboard-item .player-name > h3
+    .leaderboard-item .player-rank-name > h3,
+    .leaderboard-item .player-rank-name .rank
     {
-        font-size: 1rem;
+        font-size: 1.2rem;
         word-break: break-all;
     }
 
     .leaderboard-item .player-name 
     {
-        width: 120px;
         padding-right: 15px;
+        width: 100%;
     }
 }
 
 @media(max-width: $sm-width)
 {
-    .leaderboard-item .played
-    {
-        display: none;
-    }
-
     .leaderboard-item .stats
     {
         font-size: 0.8rem;
@@ -61,9 +101,8 @@
 
 .tiberian-dawn .leaderboard-item
 {
-    background: #2d2d2d4f;
-    border: 1px solid #2b2b2bed;
-    border-radius: 4px;
+    background: rgba(27, 27, 27, 0.7);
+    border: 1px solid rgba(43, 43, 43, 0.9);
     &:hover {background: #96969666; }
 }
 
@@ -71,7 +110,6 @@
 {
     background: #3e010461;
     border: 1px solid #960000;
-    border-radius: 4px;
     &:hover { background: #790006; }
 }
 
@@ -86,6 +124,8 @@
     border: 1px solid #ffb300;
     background: #ffc8005e;
     border-radius: 4px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .red-alert .leaderboard-item.gold:hover 
@@ -120,7 +160,12 @@
 {
     padding: 15px 25px;
     font-size: 1rem;
-    font-weight: bold;
+    text-align: center;
+
+    @media(min-width:$lg-width)
+    {
+        text-align: left;
+    }
 }
 
 .leaderboard-item .details 

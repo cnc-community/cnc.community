@@ -38,7 +38,12 @@
             <form>
                 <div class="form-group player-search">
                     <label class="label" for="search">Search by player name</label>
-                    <input id="search" type="text" name="search" class="form-input" placeholder="Enter a player name.." value="{{ $searchRequest }}" />
+                    <div class="search-box">
+                        <input id="search" type="text" name="search" class="form-input" placeholder="Enter a player name.." value="{{ $searchRequest }}" />
+                        <?php if($searchRequest): ?>
+                        <a href="?search=" title="Clear Search" class="btn">Clear search?</a>
+                        <?php endif; ?>
+                    </div>
                 </div>
             </form>
         </div>
@@ -47,15 +52,13 @@
             {{ $data->links() }}
                 <?php if($searchRequest): ?>
                 <div class="search-results">
-                    <h3 class="text-uppercase">Search results</h3>
                     <p>
                         {{ count($data) }} results for "<strong>{{ $searchRequest }}</strong>". <br/>
-                        <a href="?search=" title="Clear Search">Clear search?</a>
                     </p>
                 </div>
                 <?php endif; ?>
+                <div class="listings<?php if($searchRequest): ?> is-searching<?php endif; ?>">
 
-                <div class="listings">
                     <?php if(!$searchRequest): ?>
                     <div class="ranks">
                         <div class="top-16">
