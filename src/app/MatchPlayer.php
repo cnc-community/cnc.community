@@ -40,6 +40,7 @@ class MatchPlayer extends Model
         {
             return $player->losses;
         }   
+
         return null; 
     }
 
@@ -49,10 +50,12 @@ class MatchPlayer extends Model
         {
             return LeaderboardData::where("match_player_id", $this->id)->first();
         });
+
         if($player)
         {
             return $player->points;
         }   
+
         return null; 
     }
 
@@ -63,10 +66,11 @@ class MatchPlayer extends Model
             return LeaderboardData::where("match_player_id", $this->id)->first();
         });
         
-        if($player)
+        if ($player)
         {
             return $player->rank;
         }   
+        
         return null; 
     }
 

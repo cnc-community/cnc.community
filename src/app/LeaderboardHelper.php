@@ -50,7 +50,7 @@ class LeaderboardHelper
 
         $path = "/assets/images/leaderboard/";
 
-        if ($rank <= 16)
+        if ($rank > 0 && $rank <= 16)
         {
             return [
                 "image" => $path."general.png",
@@ -85,14 +85,10 @@ class LeaderboardHelper
                 "rank" => "Lieutenant"
             ];
         }
-        else if ($rank > 800)
-        {
-            return [
-                "image" => $path."sergeant.png",
-                "rank" => "Sergeant"
-            ];
-        }
-        
-        return null;
+
+        return [
+            "image" => $path."sergeant.png",
+            "rank" => "Sergeant"
+        ];
     }
 }
