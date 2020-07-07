@@ -14,7 +14,9 @@ class PlayerListingProfile extends AbstractCustomView
     private $points;
     private $rank;
     private $url;
+
     private $totalGames;
+    private $winRate;
 
     public function __construct(
         $name, 
@@ -34,6 +36,7 @@ class PlayerListingProfile extends AbstractCustomView
         $this->rank = $rank;
         $this->url = $url;
         $this->totalGames = $wins + $losses;
+        $this->winRate = round(($wins/$this->totalGames * 100));
         $this->renderContents();
     }
 
@@ -67,13 +70,17 @@ class PlayerListingProfile extends AbstractCustomView
                 <div class="col col-10 visible-lg">
                     <div class="wins"><?php echo $this->wins; ?></div>
                 </div>
-                
+
                 <div class="col col-10 visible-lg">
                     <div class="losses"><?php echo $this->losses; ?></div>
                 </div>       
                 
                 <div class="col col-10 visible-lg">
                     <div class="played"><?php echo $this->totalGames; ?></div>
+                </div>
+
+                <div class="col col-10 visible-lg">
+                    <div class="wins"><?php echo $this->winRate; ?>%</div>
                 </div>
 
                 <div class="stats hidden-lg">

@@ -77,6 +77,7 @@
                             <div class="col col-10">Wins</div>
                             <div class="col col-10">Losses</div>
                             <div class="col col-10">Played</div>
+                            <div class="col col-10">Win Rate</div>
                         </div>
                         <?php foreach($data as $result): ?>
                             <?php 
