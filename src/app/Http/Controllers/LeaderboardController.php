@@ -60,10 +60,10 @@ class LeaderboardController extends Controller
             abort(404);
         }
         
-        $game = Match::getMatchTypeByGameSlug($gameSlug);
+        $matchType = Match::getMatchTypeByGameSlug($gameSlug);
         
         $gameLogo = "";
-        if ($game == Match::RA_1vs1)
+        if ($matchType == Match::RA_1vs1)
         {
             $gameLogo = ViewHelper::getRARemasterLogo();
             $leaderboard = Leaderboard::where("type", "ra_1vs1")->first();
@@ -76,7 +76,7 @@ class LeaderboardController extends Controller
 
         $playerData = LeaderboardData::findPlayerData($player->id);
         $gameName = Constants::getTwitchGameBySlug($gameSlug);
-        $matches = $player->matches($game, $page);
+        $matches = $player->matches($matchType, $page);
 
         return view('pages.remasters.leaderboard.player-detail', 
             [
@@ -97,7 +97,10 @@ class LeaderboardController extends Controller
         $gameLogo = "";
         $gameName = Constants::getRemasterGameBySlug($gameSlug);
         $searchRequest = filter_var($request->search, FILTER_SANITIZE_STRING);
-    
+        $matchType = Match::getMatchTypeByGameSlug($gameSlug);
+        
+        // $longestMatches = Match::quickStats($matchType);
+
         switch($gameSlug)
         {
             case "tiberian-dawn":
@@ -127,7 +130,8 @@ class LeaderboardController extends Controller
                 "searchRequest" => $searchRequest,
                 "data" => $data,
                 "pageRanks" => $ranks,
-                "searchRequest" => $searchRequest
+                "searchRequest" => $searchRequest,
+                // "longestMatches" => $longestMatches
             ]
         );
     }
@@ -145,13 +149,12 @@ class LeaderboardController extends Controller
 
             case 2:
                 return [400];
-            break;
             
             case 1:
             default:
                 return [16, 200];
-            break;
         }
+
         return [];
     }
 

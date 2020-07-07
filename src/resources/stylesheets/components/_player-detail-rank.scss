@@ -230,7 +230,13 @@
 .leaderboard-profile-detail .leaderboard-header .player-stats
 {
     margin-top: 10px;
-    font-size: 1.4rem;
+    font-size: 1rem;
+    justify-content: center;
+    
+    @media(min-width:$lg-width)
+    {
+        justify-content: flex-start;
+    }
 }
 
 .leaderboard-profile-detail .leaderboard-header 

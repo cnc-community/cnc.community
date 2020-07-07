@@ -46,6 +46,21 @@
                     </div>
                 </div>
             </form>
+            <?php /*
+            <div>
+                <h4>Top 5 Longest Matches</h4>
+                @foreach($longestMatches as $match)
+                {{ $match->matchduration }}
+                <div class="map-preview" style="background-image:url({{ \App\LeaderboardHelper::mapPreviewByInternalName($match->mapInternalName()) }}">
+                    <div class="game-details">
+                        <div><strong>Map:</strong> {{ $match->mapName() }}</div>
+                        <div><strong>Duration:</strong> {{ $match->matchduration() }}</div>
+                        <div class="date-played">{{ $match->startTime() }}</div>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+            */ ?>
         </div>
 
         <div class="main-content">

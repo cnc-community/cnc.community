@@ -24,9 +24,11 @@
                         #{{ $playerData->rank }} {{ $player->playerName() }}
                     </h1>
                     <div class="player-stats">
-                        <div>Wins {{ $playerData->wins }}</div>
-                        <div>Lost {{ $playerData->losses }}</div>
-                        <div>Points {{ round($playerData->points) }}</div>
+                        <?php $gamesPlayed = ($playerData->wins + $playerData->losses); ?>
+                        <div>Wins: <span>{{ $playerData->wins }}</span></div>
+                        <div>Lost: {{ $playerData->losses }}</div>
+                        <div>Points: {{ round($playerData->points) }}</div>
+                        <div>Played: {{ $gamesPlayed }}</div>
                     </div>
                      @endif
                     <div class="buttons">

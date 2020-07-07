@@ -97,6 +97,7 @@ class PlayerListingProfile extends AbstractCustomView
                             <div class="losses"><strong>Losses:</strong> <?php echo $this->losses; ?></div>
                             <div class="played"><strong>Played:</strong> <?php echo $this->totalGames; ?></div>
                             <div class="points"><strong>Points:</strong> <?php echo round($this->points); ?></div>
+                            <div class="points"><strong>Win Rate:</strong> <?php echo $this->winRate; ?>%</div>
                         </div>
                     </div>
                 </div>

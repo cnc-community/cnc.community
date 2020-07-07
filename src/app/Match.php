@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Match extends Model
@@ -11,6 +12,13 @@ class Match extends Model
 
     public const TD_1vs1 = 1;
     public const RA_1vs1 = 2;
+
+    public static function quickStats($matchType)
+    {
+        return Match::orderBy("matchduration", "DESC")
+            ->limit(5)
+            ->get();
+    }
 
     public static function getMatchTypeByGameSlug($gameSlug)
     {
@@ -25,7 +33,10 @@ class Match extends Model
     }
     
     public function startTime() { return date("M d Y H:i:s", $this->starttime); }
-    public function matchDuration() { return date("H:i:s", $this->matchduration); }
+    public function matchDuration() 
+    { 
+        return date("H:i:s",$this->matchduration); 
+    }
     public function players()
     { 
         $players = json_decode($this->players);
