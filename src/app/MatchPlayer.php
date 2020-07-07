@@ -128,10 +128,11 @@ class MatchPlayer extends Model
     public function matches($matchType, $pageNumber)
     {
         $matches = Cache::remember("playerMatches".$this->player_id.$matchType.$pageNumber, Constants::getCacheSeconds(), function () 
-            use ($matchType)
+        use ($matchType)
         {
             return Match::whereJsonContains("players", [$this->player_id])
                 ->where("matchtype", $matchType)
+                ->orderBy("starttime", "DESC")
                 ->paginate(10);
         });
         return $matches;
