@@ -109,7 +109,12 @@
 
 .game-status.won-game h3 
 {
-    color: #ffb400; 
+    color: #ffffff;
+}
+
+.tiberian-dawn  .game-status.won-game h3 
+{
+    color: #08ea00;
 }
 
 .tiberian-dawn .player-detail-rank
@@ -223,8 +228,22 @@
 
 .player.won-game .player-detail-rank 
 {
-    border: 1px solid #ffb300;
-    background: #ff9900a6;
+    border: 1px solid #ad0004;
+    background: #860508;
+
+    &:hover{
+        background: lighten(#860508, 5%);
+    }
+}
+
+.tiberian-dawn .player.won-game .player-detail-rank 
+{
+    border: 1px solid #04b300;
+    background: #023e00;
+
+    &:hover{
+        background: lighten(#023e00, 5%);
+    }
 }
 
 .leaderboard-profile-detail .leaderboard-header .player-stats

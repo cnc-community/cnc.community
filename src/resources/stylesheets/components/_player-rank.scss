@@ -93,9 +93,9 @@
     border: 1px solid rgba(107, 107, 107, 0.63);
 }
 
-.player-rank:hover
+.player-detail-rank
 {
-    transition: ease-in 200ms all;
+    transition: ease-in 200ms background, color, opacity;
 }
 
 .leaderboard-detail.red-alert .other-rank-box .results .player-rank:hover,
@@ -104,16 +104,12 @@
 {
     border: 1px solid rgb(255, 0, 0);
     background: #ff000063;
-
-    .game-status h3 { transition: color 250ms ease-in; color: white; }
 }
 
 .leaderboard-detail.tiberian-dawn .other-rank-box .results .player-rank:hover,
 .leaderboard-detail.tiberian-dawn .top-rank-box .results .player-rank:hover,
 .leaderboard-detail.tiberian-dawn .player-rank:hover 
 {
-    border: 1px solid #ffb505;
-    background: #ff9900a6;
-
-    .game-status h3 { transition: color 250ms ease-in; color: white; }
+    border: 1px solid #ababab;
+    background: #505050;
 } 
