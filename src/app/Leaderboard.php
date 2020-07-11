@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use App\LeaderboardHistory;
+use Carbon\Carbon;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Cache;
 
@@ -12,9 +13,19 @@ class Leaderboard extends Model
     protected $connection = 'mysql2';
     protected $table = 'leaderboards';
 
-    public function history()
+    public function history($date = null)
     {
-        return LeaderboardHistory::where("leaderboard_id", $this->id)->first();
+        // $date = Carbon::create($year, $month, 1, 0);
+
+        $date = Carbon::now();
+        $start = $date->startOfMonth()->toDateTimeString();
+        $end = $date->endOfMonth()->toDateTimeString();
+
+        $h= LeaderboardHistory::where("leaderboard_id", $this->id)
+            ->where("start", ">=", $start)
+            ->first();
+
+        dd($h);
     }
 
     public function data($cacheKey, $searchQuery, $limit = 200, $offset = 0)

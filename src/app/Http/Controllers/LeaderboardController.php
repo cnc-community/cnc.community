@@ -14,6 +14,7 @@ use App\ViewHelper;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
 
 class LeaderboardController extends Controller
 {
@@ -75,9 +76,10 @@ class LeaderboardController extends Controller
              $leaderboard = Leaderboard::where("type", "td_1vs1")->first();
         }
 
+        $leaderboardHistory = $leaderboard->history();
         $playerData = LeaderboardData::findPlayerData($player->id);
         $gameName = Constants::getTwitchGameBySlug($gameSlug);
-        $matches = $player->matches($matchType, $page, $searchRequest);
+        $matches = $player->matches($matchType, $page, $searchRequest, $leaderboardHistory->id);
 
         return view('pages.remasters.leaderboard.player-detail', 
             [
@@ -87,7 +89,7 @@ class LeaderboardController extends Controller
                 "gameSlug" => $gameSlug,
                 "gameName" => $gameName,
                 "gameLogo" => $gameLogo,
-                "leaderboardHistory" => $leaderboard->history(),
+                "leaderboardHistory" => $leaderboardHistory,
                 "searchRequest" => $searchRequest
             ]
         );
