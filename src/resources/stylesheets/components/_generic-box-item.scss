@@ -2,3 +2,16 @@
 {
     @extend .workshop-item;
 }
+
+.generic-box-item .title
+{
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.generic-box-item .description
+{
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+}

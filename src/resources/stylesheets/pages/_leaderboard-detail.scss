@@ -1,6 +1,7 @@
 .leaderboard-detail .top-ranks
 {
     padding-top: 150px;
+    padding-bottom: 150px;
 }
 
 .leaderboard-detail .player-search .form-input
@@ -291,9 +292,19 @@
     font-weight: 600;
 }
 
+.red-alert.leaderboard-detail .note 
+{
+    color: #f50000;
+}
+
 .leaderboard-detail .note 
 {
     color: #8c8c8c;
     font-size: 1rem;
     font-weight: 600;
+}
+
+.search-results p 
+{
+    color: $color-white;
 }
