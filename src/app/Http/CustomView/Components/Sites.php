@@ -6,10 +6,8 @@ use App\Http\CustomView\AbstractCustomView;
 
 class Sites extends AbstractCustomView
 {
-    private $env;
-    public function __construct($env)
+    public function __construct()
     {
-        $this->env = $env;
         $this->renderContents();
     }
 
@@ -45,6 +43,11 @@ class Sites extends AbstractCustomView
                 <a href="https://www.ppmsite.com/" target="_blank" class="site-item" title="PPMsite" rel="nofollow noreferrer">
                     <div class="logo">
                         <img src="assets/images/sites/ppm.png" loading="lazy" alt="PPMSite Logo" />
+                    </div>
+                </a>
+                <a href="https://imperium-ww.pl/" target="_blank" class="site-item" title="PPMsite" rel="nofollow noreferrer">
+                    <div class="logo">
+                        <img src="assets/images/sites/iw.png" loading="lazy" alt="PPMSite Logo" />
                     </div>
                 </a>
             </div>

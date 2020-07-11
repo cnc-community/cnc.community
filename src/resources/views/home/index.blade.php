@@ -114,7 +114,7 @@
     </div>
         
     <div class="sites">
-        <?php new App\Http\CustomView\Components\Sites($__env); ?>
+        <?php new App\Http\CustomView\Components\Sites(); ?>
     </div>
 </section>
 @endsection
