@@ -738,9 +738,10 @@ ul.pagination
     background-image: url("../images/sites/thumbnails/cncnz.png");
 }
 
-.avatar.w3dhub
+.news-item .author .avatar.w3dhub
 {
-    background-image: url("../images/sites/thumbnails/w3dhub.png");
+    background-image: url("../images/sites/w3dhub.gif");
+    background-size: 100%;
 }
 
 .avatar.steam
