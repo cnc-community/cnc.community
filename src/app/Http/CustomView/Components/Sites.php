@@ -45,7 +45,7 @@ class Sites extends AbstractCustomView
                         <img src="assets/images/sites/ppm.png" loading="lazy" alt="PPMSite Logo" />
                     </div>
                 </a>
-                <a href="https://imperium-ww.pl/" target="_blank" class="site-item" title="PPMsite" rel="nofollow noreferrer">
+                <a href="https://imperium-ww.pl/" target="_blank" class="site-item" title="Imperium Westwood" rel="nofollow noreferrer">
                     <div class="logo">
                         <img src="assets/images/sites/iw.png" loading="lazy" alt="PPMSite Logo" />
                     </div>
