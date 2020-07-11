@@ -637,6 +637,11 @@ ul.pagination
     color: $color-gold;
 }
 
+.red-alert .pagination .page-item.active
+{
+    color: #ff0006;
+}
+
 .pagination  .page-item.disabled
 {
     color: #3c3c3c;

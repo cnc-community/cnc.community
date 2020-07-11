@@ -65,6 +65,7 @@
 
         <div class="main-content">
             {{ $data->links() }}
+            <p class="note">Hint: Click into a profile below to view further stats!</p>
                 <?php if($searchRequest): ?>
                 <div class="search-results">
                     <p>
@@ -73,7 +74,6 @@
                 </div>
                 <?php endif; ?>
                 <div class="listings<?php if($searchRequest): ?> is-searching<?php endif; ?>">
-
                     <?php if(!$searchRequest): ?>
                     <div class="ranks">
                         <div class="top-16">
