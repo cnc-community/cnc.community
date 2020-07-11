@@ -54,6 +54,7 @@ class LeaderboardController extends Controller
     {
         $player = MatchPlayer::find($playerId);
         $page = $request->page;
+        $searchRequest = filter_var($request->search, FILTER_SANITIZE_STRING);
 
         if ($player == null)
         {
@@ -76,7 +77,7 @@ class LeaderboardController extends Controller
 
         $playerData = LeaderboardData::findPlayerData($player->id);
         $gameName = Constants::getTwitchGameBySlug($gameSlug);
-        $matches = $player->matches($matchType, $page);
+        $matches = $player->matches($matchType, $page, $searchRequest);
 
         return view('pages.remasters.leaderboard.player-detail', 
             [
@@ -86,7 +87,8 @@ class LeaderboardController extends Controller
                 "gameSlug" => $gameSlug,
                 "gameName" => $gameName,
                 "gameLogo" => $gameLogo,
-                "leaderboardHistory" => $leaderboard->history()
+                "leaderboardHistory" => $leaderboard->history(),
+                "searchRequest" => $searchRequest
             ]
         );
     }

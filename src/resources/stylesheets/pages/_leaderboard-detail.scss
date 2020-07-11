@@ -9,6 +9,21 @@
     font-size: 1.1rem;
 }
 
+.leaderboard-detail.tiberian-dawn .player-search .btn-clear i
+{
+    color: $color-gold;
+}
+
+.leaderboard-detail.red-alert .player-search .btn-clear i
+{
+    color: red;
+}
+
+.leaderboard-detail .player-search .btn-clear:hover i
+{
+    color: white;
+}
+
 .leaderboard-detail.red-alert .player-search .form-input
 {
     color: red;

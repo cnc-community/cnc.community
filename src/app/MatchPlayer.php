@@ -129,13 +129,14 @@ class MatchPlayer extends Model
         return $player;
     }
 
-    public function matches($matchType, $pageNumber)
+    public function matches($matchType, $pageNumber, $searchQuery)
     {
-        $matches = Cache::remember("playerMatches".$this->player_id.$matchType.$pageNumber, Constants::getCacheSeconds(), function () 
-        use ($matchType)
+        $matches = Cache::remember("playerMatches".$this->player_id.$matchType.$pageNumber.$searchQuery, Constants::getCacheSeconds(), function () 
+        use ($matchType, $searchQuery)
         {
             return Match::whereJsonContains("players", [$this->player_id])
                 ->where("matchtype", $matchType)
+                ->where("names", "LIKE", "%$searchQuery%")
                 ->orderBy("starttime", "DESC")
                 ->paginate(10);
         });

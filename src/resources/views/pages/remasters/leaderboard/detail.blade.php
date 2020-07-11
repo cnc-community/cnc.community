@@ -39,10 +39,12 @@
                 <div class="form-group player-search">
                     <label class="label" for="search">Search by player name</label>
                     <div class="search-box">
-                        <input id="search" type="text" name="search" class="form-input" placeholder="Enter a player name.." value="{{ $searchRequest }}" />
-                        <?php if($searchRequest): ?>
-                        <a href="?search=" title="Clear Search" class="btn">Clear search?</a>
-                        <?php endif; ?>
+                        <div class="search-input">
+                            <input id="search" type="text" name="search" class="form-input" placeholder="Enter a player name.." value="{{ $searchRequest }}" />
+                            <?php if($searchRequest): ?>
+                            <a href="?search=" title="Clear Search" class="btn-clear"><i class="icon-close-alt"></i></a>
+                            <?php endif; ?>
+                        </div>
                     </div>
                 </div>
             </form>
