@@ -54,13 +54,19 @@ class NewsController extends Controller
     {
         $newsItemModel = new News();
 
+        $author = $request->author;
+        if ($author == -1)
+        {
+            $author = null;
+        }
+
         News::updateNewsItem(
             $newsItemModel, 
             $request->title,
             $request->category_id,
             $request->categories,
             $request->file("image"),
-            $request->author,
+            $author,
             $request->post,
             $request->excerpt,
             $request->type,
@@ -87,10 +93,15 @@ class NewsController extends Controller
         }   
 
         $author = $request->author;
-
         if ($author == -1)
         {
             $author = $newsItemModel->user_id;
+        }
+
+        $url = $request->url;
+        if ($url == null)
+        {
+            $url = $newsItemModel->url;
         }
 
         News::updateNewsItem(
@@ -103,7 +114,7 @@ class NewsController extends Controller
             $request->post,
             $request->excerpt,
             $newsItemModel->type,
-            $newsItemModel->url
+            $url
         );
 
         $request->session()->flash("status", "Post saved");

@@ -59,7 +59,7 @@
                         <div class="form-group">
                             <label for="author">Author</label>
                             <select id="author" class="form-control" name="author" required>
-                            <option>- Select Author -</option>
+                            <option value="-1">- Select Author -</option>
                             <?php foreach($users as $user): ?>
                             <option value="{{ $user->id }}">{{ $user->name }}</option>
                             <?php endforeach; ?>
