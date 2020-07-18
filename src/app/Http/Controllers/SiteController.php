@@ -107,6 +107,11 @@ class SiteController extends Controller
         return view('pages.funny.listing', ["funnyItems" => $funnyCategoryCache]);
     }
 
+    public function showDonate()
+    {
+        return view('pages.donate');
+    }
+
     public function showCreatorsListings(Request $request)
     {   
         $streams = [];
