@@ -50,6 +50,11 @@ class Sites extends AbstractCustomView
                         <img src="assets/images/sites/iw.png" loading="lazy" alt="PPMSite Logo" />
                     </div>
                 </a>
+                <a href="https://www.united-forum.de/" target="_blank" class="site-item" title="United Forum" rel="nofollow noreferrer">
+                    <div class="logo">
+                        <img src="assets/images/sites/unitedforum.png" loading="lazy" alt="United Forum Logo" />
+                    </div>
+                </a>
             </div>
         <?php 
     }

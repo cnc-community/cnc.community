@@ -97,7 +97,7 @@
                     video content, streams and compatibility patches for moderns operating systems.
                 </p>
                 <div class="buttons">
-                    <a class="btn btn-primary" title="What is C&C Community?" href="/news/official-news/our-mission-what-is-cc-community">Read more</a>
+                    <a class="btn btn-primary" title="What is C&C Community?" href="/news/official-news/our-mission">Read more</a>
                 </div>
             </div>
 

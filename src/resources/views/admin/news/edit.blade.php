@@ -30,6 +30,22 @@
                             <input id="title" type="text" name="title" class="form-control" value="{{ $newsItem->title }}" />
                         </div>
 
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label for="postType">Post Type</label>
+                                <select id="postType" class="form-control" name="type" required>
+                                    <option>- Select Post Type -</option>
+                                    <option value="<?php echo \App\News::NEWS_INTERNAL; ?>" {{ $newsItem->type == \App\News::NEWS_INTERNAL ? "selected":"" }}>Article</option>
+                                    <option value="<?php echo \App\News::NEWS_EXTERNAL; ?>" {{ $newsItem->type == \App\News::NEWS_EXTERNAL ? "selected": ""}}>Link</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label for="url">Url (Only use with Post Type as Link)</label>
+                                <input id="url" type="text" name="url" class="form-control" value={{$newsItem->url }} required />
+                            </div>
+                        </div>
+
                         <div class="form-group">
                             <label for="content">Excerpt</label>
                             <textarea id="excerpt" name="excerpt" class="form-control">{!! $newsItem->excerpt  !!}</textarea>

@@ -7,9 +7,11 @@
 @section('content')
 <section class="funny-listings">
     <div class="main-content">
-    <h1>Funny/Cool</h1>
-    <p>Today we will make history comrade! - Premier Romanov</p>
-    <?php new App\Http\CustomView\Components\NewsListing($funnyItems); ?>
+        <h1>Funny/Cool</h1>
+        <p>Today we will make history comrade! - Premier Romanov</p>
+        <?php new App\Http\CustomView\Components\NewsListing($funnyItems); ?>
+        
+        {{ $funnyItems->links() }}
     </div>
 </section>
 @endsection
