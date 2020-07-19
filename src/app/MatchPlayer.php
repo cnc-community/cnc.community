@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
 
 class MatchPlayer extends Model
 {
@@ -131,16 +132,34 @@ class MatchPlayer extends Model
 
     public function matches($matchType, $pageNumber, $searchQuery, $leaderboardHistoryId)
     {
+        // DB::connection('mysql2')->enableQueryLog();
+        // $start = microtime(true);
+        
         $matches = Cache::remember("playerMatches".$this->player_id.$matchType.$pageNumber.$searchQuery, Constants::getCacheSeconds(), function () 
         use ($matchType, $searchQuery, $leaderboardHistoryId)
         {
-            return Match::whereJsonContains("players", [$this->player_id])
-                ->where("matchtype", $matchType)
-                ->where("leaderboard_history_id", $leaderboardHistoryId)
-                ->where("names", "LIKE", "%$searchQuery%")
-                ->orderBy("starttime", "DESC")
-                ->paginate(10);
+            if ($searchQuery == null)
+            {
+                return Match::whereJsonContains("players", [$this->player_id])
+                    ->where("matchtype", $matchType)
+                    ->where("leaderboard_history_id", $leaderboardHistoryId)
+                    ->orderBy("starttime", "DESC")
+                    ->simplePaginate(10);
+            }
+            else
+            {
+                return Match::whereJsonContains("players", [$this->player_id])
+                    ->where("matchtype", $matchType)
+                    ->where("leaderboard_history_id", $leaderboardHistoryId)
+                    ->where("names", "LIKE", "%$searchQuery%")
+                    ->orderBy("starttime", "DESC")
+                    ->simplePaginate(10);
+            }
         });
         return $matches;
+
+        // $time = microtime(true) - $start;
+        // $queries = DB::connection('mysql2')->getQueryLog();
+        // return ["debug" => $queries, "time" => $time];
     }
 }

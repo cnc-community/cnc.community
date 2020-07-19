@@ -53,37 +53,26 @@ class LeaderboardController extends Controller
 
     public function getPlayerLeaderboardProfile(Request $request, $gameSlug, $playerId)
     {
-        $player = MatchPlayer::find($playerId);
-        $page = $request->page;
+        $pageNumber = $request->page;
         $searchRequest = filter_var($request->search, FILTER_SANITIZE_STRING);
-
+        
+        $player = MatchPlayer::find($playerId);
         if ($player == null)
         {
             abort(404);
         }
         
-        $matchType = Match::getMatchTypeByGameSlug($gameSlug);
-        
-        $gameLogo = "";
-        if ($matchType == Match::RA_1vs1)
-        {
-            $gameLogo = ViewHelper::getRARemasterLogo();
-            $leaderboard = Leaderboard::where("type", "ra_1vs1")->first();
-        }
-        else
-        {
-             $gameLogo = ViewHelper::getTDRemasterLogo();
-             $leaderboard = Leaderboard::where("type", "td_1vs1")->first();
-        }
-
-        $leaderboardHistory = $leaderboard->history();
         $playerData = LeaderboardData::findPlayerData($player->id);
-        $gameName = Constants::getTwitchGameBySlug($gameSlug);
-        $matches = $player->matches($matchType, $page, $searchRequest, $leaderboardHistory->id);
+        $gameName = Constants::getRemasterGameBySlug($gameSlug);
+        $gameLogo = ViewHelper::getRemasterLogoBySlug($gameSlug);
+        $matchType = Match::getMatchTypeByGameSlug($gameSlug);
+        $leaderboard = Leaderboard::getLeadeboardByMatchType($matchType);
+        $leaderboardHistory = $leaderboard->history();
 
+        $matches = $player->matches($matchType, $pageNumber, $searchRequest, $leaderboardHistory->id);
         return view('pages.remasters.leaderboard.player-detail', 
             [
-                "matches" => $matches,
+                "matches" => $matches->appends(request()->query()),
                 "player" => $player,
                 "playerData" => $playerData,
                 "gameSlug" => $gameSlug,
@@ -98,33 +87,16 @@ class LeaderboardController extends Controller
     public function getLeaderboardListingsByGame(Request $request, $gameSlug)
     {
         $pageNumber = $request->page == null ? 1: $request->page;
-        $gameLogo = "";
-        $gameName = Constants::getRemasterGameBySlug($gameSlug);
         $searchRequest = filter_var($request->search, FILTER_SANITIZE_STRING);
-        $matchType = Match::getMatchTypeByGameSlug($gameSlug);
         
-        // $longestMatches = Match::quickStats($matchType);
-
-        switch($gameSlug)
-        {
-            case "tiberian-dawn":
-                $gameLogo = ViewHelper::getTDRemasterLogo();
-                $leaderboardTD = Leaderboard::where("type", "td_1vs1")->first();
-                $data = $leaderboardTD->dataPaginated("leaderboardTD_1vs1".$pageNumber, $searchRequest, $paginate=200, $limit=400);
-            break;
-
-            case "red-alert":
-                $gameLogo = ViewHelper::getRARemasterLogo();
-                $leaderboardRA = Leaderboard::where("type", "ra_1vs1")->first();
-                $data = $leaderboardRA->dataPaginated("leaderboardRA_1vs1".$pageNumber, $searchRequest, $paginate=200, $limit=400);
-            break;
-
-            default:
-                abort(404);
-        }
-
-        $ranks = $this->getRankTypes($pageNumber);
-
+        $gameName = Constants::getRemasterGameBySlug($gameSlug);
+        $gameLogo = ViewHelper::getRemasterLogoBySlug($gameSlug);
+        $matchType = Match::getMatchTypeByGameSlug($gameSlug);
+        $ranks = ViewHelper::getLeaderboardRanksByPageNumber($pageNumber);
+        
+        $cacheKey = $matchType . $pageNumber;
+        $data = Leaderboard::dataPaginated($cacheKey, $matchType, $searchRequest, $paginate=200, $limit=200);
+        
         return view('pages.remasters.leaderboard.detail', 
             [
                 "gameLogo" => $gameLogo,
@@ -134,37 +106,8 @@ class LeaderboardController extends Controller
                 "searchRequest" => $searchRequest,
                 "data" => $data,
                 "pageRanks" => $ranks,
-                "searchRequest" => $searchRequest,
-                // "longestMatches" => $longestMatches
+                "searchRequest" => $searchRequest
             ]
         );
-    }
-
-    private function getRankTypes($pageNumber)
-    {
-        switch($pageNumber)
-        {
-            case 5:
-                return [1000];
-
-            case 4:
-            case 3:
-                return [600];
-
-            case 2:
-                return [400];
-            
-            case 1:
-            default:
-                return [16, 200];
-        }
-
-        return [];
-    }
-
-    public function getTopTDLeadeboard1vs1()
-    {
-        $leaderboard = Leaderboard::where("type", "td_1vs1")->first();
-        return $leaderboard->history();
     }
 }

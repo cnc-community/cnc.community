@@ -13,64 +13,41 @@ class Leaderboard extends Model
     protected $connection = 'mysql2';
     protected $table = 'leaderboards';
 
-    public function history($date = null)
+    public function history()
     {
-        // $date = Carbon::create($year, $month, 1, 0);
+        return LeaderboardHistory::where("leaderboard_id", $this->id)->first();
+    }
 
+    public static function getLeadeboardByMatchType($matchType)
+    {
+        return Leaderboard::where("matchtype", $matchType)->first();
+    }
+
+    public static function getHistoryByMatchType($matchType)
+    {
         $date = Carbon::now();
-        $start = $date->startOfMonth()->toDateTimeString();
         $end = $date->endOfMonth()->toDateTimeString();
+        $leaderboard = Leaderboard::where("matchtype", $matchType)->first();
 
-        $h= LeaderboardHistory::where("leaderboard_id", $this->id)
-            ->where("start", ">=", $start)
+        return LeaderboardHistory::where("end", "<=", $end)
+            ->where("leaderboard_id", $leaderboard->id)
             ->first();
-
-        dd($h);
     }
 
-    public function data($cacheKey, $searchQuery, $limit = 200, $offset = 0)
+    public static function dataPaginated($cacheKey, $matchType, $searchQuery, $paginate, $limit)
     {
-        return Cache::remember("Leaderboard.data".$limit.$offset.$cacheKey.$searchQuery, 1200, 
-        function () use($limit, $offset, $searchQuery)
-        {
-            // 20 minutes cache
-            return LeaderboardData::where("leaderboard_history_id", $this->history()->id)
-                ->leftJoin("match_players as mp", "mp.id", "leaderboard_data.match_player_id")
-                ->where("mp.player_name", "LIKE", "%$searchQuery%")
-                ->select("mp.player_name", "mp.player_id", "leaderboard_data.*")
-                ->offset($offset)
-                ->limit($limit)
-                ->get();
-        });
-    }
+        $history = Leaderboard::getHistoryByMatchType($matchType);
+        $paginatedCacheKey = "Leaderboard.dataPaginated".$paginate.$limit.$cacheKey.$searchQuery;
 
-    public function dataPaginated($cacheKey, $searchQuery, $paginate, $limit)
-    {
-        return Cache::remember("Leaderboard.dataPaginated".$paginate.$limit.$cacheKey.$searchQuery, 1200, function () 
-            use($paginate, $limit, $searchQuery)
+        return Cache::remember($paginatedCacheKey, 1200, function () use($history, $paginate, $limit, $searchQuery)
         {
-            // 20 minutes cache
-            return LeaderboardData::where("leaderboard_history_id", $this->history()->id)
+            return LeaderboardData::where("leaderboard_history_id", $history->id)
                 ->leftJoin("match_players as mp", "mp.id", "leaderboard_data.match_player_id")
                 ->where("mp.player_name", "LIKE", "%$searchQuery%")
                 ->select("mp.player_name", "mp.player_id", "leaderboard_data.*")
                 ->limit($limit)
                 ->paginate($paginate);
         });
-    }
-
-    public static function saveRA1vs1Data($result)
-    {
-        $leaderboard = Leaderboard::where("type", "ra_1vs1")->first();
-        $history = $leaderboard->history();
-        Leaderboard::saveData($history->id, $result);
-    }
-
-    public static function saveTDvs1Data($result)
-    {
-        $leaderboard = Leaderboard::where("type", "td_1vs1")->first();
-        $history = $leaderboard->history();
-        Leaderboard::saveData($history->id, $result);
     }
 
     public static function saveData($historyId, $result)
