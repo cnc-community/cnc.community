@@ -6,11 +6,13 @@ use App\Constants;
 use App\Http\Services\Petroglyph\PetroglyphAPIService;
 use App\Leaderboard;
 use App\LeaderboardData;
+use App\LeaderboardHelper;
 use App\LeaderboardHistory;
 use App\LeaderboardMatchHistory;
 use App\Match;
 use App\MatchPlayer;
 use App\ViewHelper;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
@@ -51,39 +53,9 @@ class LeaderboardController extends Controller
         );
     }
 
-    public function getPlayerLeaderboardProfile(Request $request, $gameSlug, $playerId)
-    {
-        $pageNumber = $request->page;
-        $searchRequest = filter_var($request->search, FILTER_SANITIZE_STRING);
-        
-        $player = MatchPlayer::find($playerId);
-        if ($player == null)
-        {
-            abort(404);
-        }
-        
-        $playerData = LeaderboardData::findPlayerData($player->id);
-        $gameName = Constants::getRemasterGameBySlug($gameSlug);
-        $gameLogo = ViewHelper::getRemasterLogoBySlug($gameSlug);
-        $matchType = Match::getMatchTypeByGameSlug($gameSlug);
-        $leaderboard = Leaderboard::getLeadeboardByMatchType($matchType);
-        $leaderboardHistory = $leaderboard->history();
-
-        $matches = $player->matches($matchType, $pageNumber, $searchRequest, $leaderboardHistory->id);
-        return view('pages.remasters.leaderboard.player-detail', 
-            [
-                "matches" => $matches->appends(request()->query()),
-                "player" => $player,
-                "playerData" => $playerData,
-                "gameSlug" => $gameSlug,
-                "gameName" => $gameName,
-                "gameLogo" => $gameLogo,
-                "leaderboardHistory" => $leaderboardHistory,
-                "searchRequest" => $searchRequest
-            ]
-        );
-    }
-
+    /**
+     * Leaderboard Listings by Game Slug
+     */
     public function getLeaderboardListingsByGame(Request $request, $gameSlug)
     {
         $pageNumber = $request->page == null ? 1: $request->page;
@@ -95,8 +67,10 @@ class LeaderboardController extends Controller
         $ranks = ViewHelper::getLeaderboardRanksByPageNumber($pageNumber);
         
         $cacheKey = $matchType . $pageNumber;
-        $data = Leaderboard::dataPaginated($cacheKey, $matchType, $searchRequest, $paginate=200, $limit=200);
         
+        $date = LeaderboardHelper::getCarbonDateFromQueryString($request->season);
+        $data = Leaderboard::dataPaginated($cacheKey, $date, $matchType, $searchRequest, $paginate=200, $limit=200);
+
         return view('pages.remasters.leaderboard.detail', 
             [
                 "gameLogo" => $gameLogo,
@@ -106,6 +80,49 @@ class LeaderboardController extends Controller
                 "searchRequest" => $searchRequest,
                 "data" => $data,
                 "pageRanks" => $ranks,
+                "searchRequest" => $searchRequest,
+                "season" => $request->season
+            ]
+        );
+    }
+
+    /**
+     * Leaderboard Profiles
+     */
+    public function getPlayerLeaderboardProfile(Request $request, $gameSlug, $playerId)
+    {
+        $pageNumber = $request->page;
+        $searchRequest = filter_var($request->search, FILTER_SANITIZE_STRING);
+        
+        $player = MatchPlayer::find($playerId);
+        if ($player == null)
+        {
+            abort(404);
+        }
+
+        $date = LeaderboardHelper::getCarbonDateFromQueryString($request->season);
+        $gameName = Constants::getRemasterGameBySlug($gameSlug);
+        $gameLogo = ViewHelper::getRemasterLogoBySlug($gameSlug);
+        $matchType = Match::getMatchTypeByGameSlug($gameSlug);
+
+        $leaderboardHistory = Leaderboard::getHistoryByDateAndMatchType($date, $matchType);
+        if ($leaderboardHistory == null)
+        {
+            abort(404);
+        }
+
+        $playerData = LeaderboardData::findPlayerData($player->id, $leaderboardHistory->id);
+
+        $matches = $player->matches($matchType, $pageNumber, $searchRequest, $leaderboardHistory->id);
+        return view('pages.remasters.leaderboard.player-detail', 
+            [
+                "matches" => $matches->appends(request()->query()),
+                "player" => $player,
+                "playerData" => $playerData,
+                "gameSlug" => $gameSlug,
+                "gameName" => $gameName,
+                "gameLogo" => $gameLogo,
+                "leaderboardHistory" => $leaderboardHistory,
                 "searchRequest" => $searchRequest
             ]
         );

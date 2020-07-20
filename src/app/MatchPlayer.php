@@ -135,8 +135,8 @@ class MatchPlayer extends Model
         // DB::connection('mysql2')->enableQueryLog();
         // $start = microtime(true);
         
-        $matches = Cache::remember("playerMatches".$this->player_id.$matchType.$pageNumber.$searchQuery, Constants::getCacheSeconds(), function () 
-        use ($matchType, $searchQuery, $leaderboardHistoryId)
+        $cacheKey = "playerMatches".$this->player_id.$matchType.$pageNumber.$searchQuery.$leaderboardHistoryId;
+        $matches = Cache::remember($cacheKey, Constants::getCacheSeconds(), function () use ($matchType, $searchQuery, $leaderboardHistoryId)
         {
             if ($searchQuery == null)
             {

@@ -68,7 +68,11 @@
         </div>
 
         <div class="main-content">
+
+            <?php if(count($data) > 0): ?>
             {{ $data->links() }}
+            <?php endif; ?>
+
             <p class="note">Hint: Click into a profile below to view further stats!</p>
                 <?php if($searchRequest): ?>
                 <div class="search-results">
@@ -100,7 +104,7 @@
                         </div>
                         <?php foreach($data as $result): ?>
                             <?php 
-                                $url = $gameSlug ."/player/".$result->player()->id;
+                                $url = $gameSlug ."/player/".$result->player()->id . "?season=".$season;
                                 new \App\Http\CustomView\Components\PlayerListingProfile
                                 (
                                     $result->player_name,
@@ -115,7 +119,10 @@
                         <?php endforeach; ?>
                     </div>
             </div>
+
+            <?php if(count($data) > 0): ?>
             {{ $data->links() }}
+            <?php endif; ?>
         </div>
     </section>
 </div>

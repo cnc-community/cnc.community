@@ -23,30 +23,40 @@ class Leaderboard extends Model
         return Leaderboard::where("matchtype", $matchType)->first();
     }
 
-    public static function getHistoryByMatchType($matchType)
-    {
-        $date = Carbon::now();
-        $end = $date->endOfMonth()->toDateTimeString();
-        $leaderboard = Leaderboard::where("matchtype", $matchType)->first();
+    public static function getHistoryByDateAndMatchType($requestedCarbonDate, $matchType)
+    {       
+        // Debug
+        // $requestedCarbonDate = Carbon::create(2021, 1, 0,0,0)->startOfMonth();
 
-        return LeaderboardHistory::where("end", "<=", $end)
+        $leaderboard = Leaderboard::where("matchtype", $matchType)->first();
+        
+        $startDate = $requestedCarbonDate->toImmutable()->toDateTimeString();
+        $endDate = $requestedCarbonDate->toImmutable()->endOfMonth()->addMonths(3)->toDateTimeString();
+
+        return LeaderboardHistory::where("end", ">=", $startDate)
+            ->where("end", "<=", $endDate)
             ->where("leaderboard_id", $leaderboard->id)
             ->first();
     }
 
-    public static function dataPaginated($cacheKey, $matchType, $searchQuery, $paginate, $limit)
+    public static function dataPaginated($cacheKey, $date, $matchType, $searchQuery, $paginate, $limit)
     {
-        $history = Leaderboard::getHistoryByMatchType($matchType);
+        $history = Leaderboard::getHistoryByDateAndMatchType($date, $matchType);
         $paginatedCacheKey = "Leaderboard.dataPaginated".$paginate.$limit.$cacheKey.$searchQuery;
 
+        if ($history == null)
+        {
+            return [];
+        }
+
+        return LeaderboardData::where("leaderboard_history_id", $history->id)
+            ->leftJoin("match_players as mp", "mp.id", "leaderboard_data.match_player_id")
+            ->where("mp.player_name", "LIKE", "%$searchQuery%")
+            ->select("mp.player_name", "mp.player_id", "leaderboard_data.*")
+            ->limit($limit)
+            ->paginate($paginate);
         return Cache::remember($paginatedCacheKey, 1200, function () use($history, $paginate, $limit, $searchQuery)
         {
-            return LeaderboardData::where("leaderboard_history_id", $history->id)
-                ->leftJoin("match_players as mp", "mp.id", "leaderboard_data.match_player_id")
-                ->where("mp.player_name", "LIKE", "%$searchQuery%")
-                ->select("mp.player_name", "mp.player_id", "leaderboard_data.*")
-                ->limit($limit)
-                ->paginate($paginate);
         });
     }
 
