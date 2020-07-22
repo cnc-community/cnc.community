@@ -4,6 +4,7 @@ namespace App;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Match extends Model
 {
@@ -12,6 +13,22 @@ class Match extends Model
 
     public const TD_1vs1 = 1;
     public const RA_1vs1 = 2;
+
+    public function __construct()
+    {
+        // Match::updateLeaderboardHistory();
+    }
+
+    public static function updateLeaderboardHistory()
+    {
+        DB::connection('mysql2')->table('matches')
+            ->where('matchtype', Match::RA_1vs1)
+            ->update(['leaderboard_history_id' => 1]);
+
+        DB::connection('mysql2')->table('matches')
+            ->where('matchtype', Match::TD_1vs1)
+            ->update(['leaderboard_history_id' => 2]);
+    }
 
     public static function quickStats($matchType)
     {
@@ -93,6 +110,7 @@ class Match extends Model
         $match->extramatchsettings = json_encode($matchResponse["extramatchsettings"]);
         $match->extraperplayersettings = json_encode($matchResponse["extraperplayersettings"]);
         $match->save();
+        return $match;
     }
 
     public static function savePlayersFromMatch($matchResponse)

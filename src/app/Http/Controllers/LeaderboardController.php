@@ -6,14 +6,17 @@ use App\Constants;
 use App\Http\Services\Petroglyph\PetroglyphAPIService;
 use App\Leaderboard;
 use App\LeaderboardData;
+use App\LeaderboardHelper;
 use App\LeaderboardHistory;
 use App\LeaderboardMatchHistory;
 use App\Match;
 use App\MatchPlayer;
 use App\ViewHelper;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
 
 class LeaderboardController extends Controller
 {
@@ -50,78 +53,23 @@ class LeaderboardController extends Controller
         );
     }
 
-    public function getPlayerLeaderboardProfile(Request $request, $gameSlug, $playerId)
-    {
-        $player = MatchPlayer::find($playerId);
-        $page = $request->page;
-        $searchRequest = filter_var($request->search, FILTER_SANITIZE_STRING);
-
-        if ($player == null)
-        {
-            abort(404);
-        }
-        
-        $matchType = Match::getMatchTypeByGameSlug($gameSlug);
-        
-        $gameLogo = "";
-        if ($matchType == Match::RA_1vs1)
-        {
-            $gameLogo = ViewHelper::getRARemasterLogo();
-            $leaderboard = Leaderboard::where("type", "ra_1vs1")->first();
-        }
-        else
-        {
-             $gameLogo = ViewHelper::getTDRemasterLogo();
-             $leaderboard = Leaderboard::where("type", "td_1vs1")->first();
-        }
-
-        $playerData = LeaderboardData::findPlayerData($player->id);
-        $gameName = Constants::getTwitchGameBySlug($gameSlug);
-        $matches = $player->matches($matchType, $page, $searchRequest);
-
-        return view('pages.remasters.leaderboard.player-detail', 
-            [
-                "matches" => $matches,
-                "player" => $player,
-                "playerData" => $playerData,
-                "gameSlug" => $gameSlug,
-                "gameName" => $gameName,
-                "gameLogo" => $gameLogo,
-                "leaderboardHistory" => $leaderboard->history(),
-                "searchRequest" => $searchRequest
-            ]
-        );
-    }
-
+    /**
+     * Leaderboard Listings by Game Slug
+     */
     public function getLeaderboardListingsByGame(Request $request, $gameSlug)
     {
         $pageNumber = $request->page == null ? 1: $request->page;
-        $gameLogo = "";
-        $gameName = Constants::getRemasterGameBySlug($gameSlug);
         $searchRequest = filter_var($request->search, FILTER_SANITIZE_STRING);
-        $matchType = Match::getMatchTypeByGameSlug($gameSlug);
         
-        // $longestMatches = Match::quickStats($matchType);
-
-        switch($gameSlug)
-        {
-            case "tiberian-dawn":
-                $gameLogo = ViewHelper::getTDRemasterLogo();
-                $leaderboardTD = Leaderboard::where("type", "td_1vs1")->first();
-                $data = $leaderboardTD->dataPaginated("leaderboardTD_1vs1".$pageNumber, $searchRequest, $paginate=200, $limit=400);
-            break;
-
-            case "red-alert":
-                $gameLogo = ViewHelper::getRARemasterLogo();
-                $leaderboardRA = Leaderboard::where("type", "ra_1vs1")->first();
-                $data = $leaderboardRA->dataPaginated("leaderboardRA_1vs1".$pageNumber, $searchRequest, $paginate=200, $limit=400);
-            break;
-
-            default:
-                abort(404);
-        }
-
-        $ranks = $this->getRankTypes($pageNumber);
+        $gameName = Constants::getRemasterGameBySlug($gameSlug);
+        $gameLogo = ViewHelper::getRemasterLogoBySlug($gameSlug);
+        $matchType = Match::getMatchTypeByGameSlug($gameSlug);
+        $ranks = ViewHelper::getLeaderboardRanksByPageNumber($pageNumber);
+        
+        $cacheKey = $matchType . $pageNumber;
+        
+        $date = LeaderboardHelper::getCarbonDateFromQueryString($request->season);
+        $data = Leaderboard::dataPaginated($cacheKey, $date, $matchType, $searchRequest, $paginate=200, $limit=200);
 
         return view('pages.remasters.leaderboard.detail', 
             [
@@ -133,36 +81,50 @@ class LeaderboardController extends Controller
                 "data" => $data,
                 "pageRanks" => $ranks,
                 "searchRequest" => $searchRequest,
-                // "longestMatches" => $longestMatches
+                "season" => $request->season
             ]
         );
     }
 
-    private function getRankTypes($pageNumber)
+    /**
+     * Leaderboard Profiles
+     */
+    public function getPlayerLeaderboardProfile(Request $request, $gameSlug, $playerId)
     {
-        switch($pageNumber)
+        $pageNumber = $request->page;
+        $searchRequest = filter_var($request->search, FILTER_SANITIZE_STRING);
+        
+        $player = MatchPlayer::find($playerId);
+        if ($player == null)
         {
-            case 5:
-                return [1000];
-
-            case 4:
-            case 3:
-                return [600];
-
-            case 2:
-                return [400];
-            
-            case 1:
-            default:
-                return [16, 200];
+            abort(404);
         }
 
-        return [];
-    }
+        $date = LeaderboardHelper::getCarbonDateFromQueryString($request->season);
+        $gameName = Constants::getRemasterGameBySlug($gameSlug);
+        $gameLogo = ViewHelper::getRemasterLogoBySlug($gameSlug);
+        $matchType = Match::getMatchTypeByGameSlug($gameSlug);
 
-    public function getTopTDLeadeboard1vs1()
-    {
-        $leaderboard = Leaderboard::where("type", "td_1vs1")->first();
-        return $leaderboard->history();
+        $leaderboardHistory = Leaderboard::getHistoryByDateAndMatchType($date, $matchType);
+        if ($leaderboardHistory == null)
+        {
+            abort(404);
+        }
+
+        $playerData = LeaderboardData::findPlayerData($player->id, $leaderboardHistory->id);
+
+        $matches = $player->matches($matchType, $pageNumber, $searchRequest, $leaderboardHistory->id);
+        return view('pages.remasters.leaderboard.player-detail', 
+            [
+                "matches" => $matches->appends(request()->query()),
+                "player" => $player,
+                "playerData" => $playerData,
+                "gameSlug" => $gameSlug,
+                "gameName" => $gameName,
+                "gameLogo" => $gameLogo,
+                "leaderboardHistory" => $leaderboardHistory,
+                "searchRequest" => $searchRequest
+            ]
+        );
     }
 }

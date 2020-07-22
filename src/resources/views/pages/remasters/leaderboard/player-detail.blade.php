@@ -1,7 +1,6 @@
 @extends('layouts.app')
-
-@section('title', ''.$gameName.' Online Leaderboard - Command & Conquer Remastered Collection')
-@section('description', ''.$gameName.' Leaderboard rankings, 1vs1')
+@section('title', ''.$gameName["long_name"].' Online Leaderboard - Command & Conquer Remastered Collection')
+@section('description', ''.$gameName["long_name"].' Leaderboard rankings, 1vs1')
 @section('meta')
 <meta property="og:image" content="https://cnc.community/assets/images/meta2.png?v=1.0">
 @endsection

@@ -4,6 +4,7 @@ namespace App\Http\Services\Petroglyph;
 
 use App\Http\Services\Petroglyph\PetroglyphAPI;
 use App\Leaderboard;
+use App\LeaderboardHelper;
 use App\LeaderboardMatchHistory;
 use App\Match;
 use App\MatchPlayer;
@@ -26,8 +27,13 @@ class PetroglyphAPIService
 
     public function runRALeaderboardTasks()
     {
-        $leaderboard = Leaderboard::where("type", "ra_1vs1")->first();
-        $history = $leaderboard->history();
+        $date = LeaderboardHelper::getCarbonDateFromQueryString(null);
+        $history = Leaderboard::getHistoryByDateAndMatchType($date, Match::RA_1vs1);
+        if ($history == null)
+        {
+            Log::debug("Error - runRALeaderboardTasks leaderboard history was null");
+            die();
+        }   
 
         $this->getRALeaderboard($history, 200, 0);
         $this->getRALeaderboard($history, 200, 200);
@@ -49,8 +55,13 @@ class PetroglyphAPIService
 
     public function runTDLeaderboardTasks()
     {
-        $leaderboard = Leaderboard::where("type", "td_1vs1")->first();
-        $history = $leaderboard->history();
+        $date = LeaderboardHelper::getCarbonDateFromQueryString(null);
+        $history = Leaderboard::getHistoryByDateAndMatchType($date, Match::TD_1vs1);
+        if ($history == null)
+        {
+            Log::debug("Error - runRALeaderboardTasks leaderboard history was null");
+            die();
+        }   
 
         $this->getTDLeaderboard($history, 200, 0);
         $this->getTDLeaderboard($history, 200, 200);
@@ -121,6 +132,21 @@ class PetroglyphAPIService
 
     private function saveMatchResponse($matches)
     {
+        $date = LeaderboardHelper::getCarbonDateFromQueryString(null);
+        $historyRA = Leaderboard::getHistoryByDateAndMatchType($date, Match::RA_1vs1);
+        if ($historyRA == null)
+        {
+            Log::debug("Error - saveMatchResponse historyRA was null");
+            die();
+        }   
+        
+        $historyTD = Leaderboard::getHistoryByDateAndMatchType($date, Match::TD_1vs1);
+        if ($historyTD == null)
+        {
+            Log::debug("Error - saveMatchResponse historyTD was null");
+            die();
+        }   
+
         $matchIds = [];
         foreach($matches as $matchResponse)
         {
@@ -144,7 +170,18 @@ class PetroglyphAPIService
         {
             if (in_array($matchResponse["matchid"], $idsToInsert))
             {
-                Match::createMatch($matchResponse);
+                $match = Match::createMatch($matchResponse);
+                if ($match->matchtype == Match::RA_1vs1)
+                {
+                    $match->leaderboard_history_id = $historyRA->id;
+                    $match->save();
+                }
+                else if ($match->matchtype == Match::TD_1vs1)
+                {
+                    $match->leaderboard_history_id = $historyTD->id;
+                    $match->save();
+                }
+
                 Match::savePlayersFromMatch($matchResponse);
             }
         }

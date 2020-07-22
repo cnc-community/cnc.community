@@ -51,6 +51,18 @@ class ViewHelper
     {
         return "/assets/images/logos/tiberian-dawn-remastered.png";
     }
+
+    public static function getRemasterLogoBySlug($slug)
+    {
+        switch($slug)
+        {
+            case "red-alert":
+                return ViewHelper::getRARemasterLogo();
+
+            case "tiberian-dawn":
+                return ViewHelper::getTDRemasterLogo();
+        }
+    }
     
     public static function getFeatureBannerByGameSlug($slug)
     {
@@ -75,5 +87,27 @@ class ViewHelper
         ];
 
         return new LengthAwarePaginator($items->forPage($page, $perPage), $items->count(), $perPage, $page, $options);
+    }
+
+    public static function getLeaderboardRanksByPageNumber($pageNumber)
+    {
+        switch($pageNumber)
+        {
+            case 5:
+                return [1000];
+
+            case 4:
+            case 3:
+                return [600];
+
+            case 2:
+                return [400];
+            
+            case 1:
+            default:
+                return [16, 200];
+        }
+
+        return [];
     }
 }

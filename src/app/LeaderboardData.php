@@ -15,11 +15,14 @@ class LeaderboardData extends Model
         return MatchPlayer::where("id", $this->match_player_id)->first();
     }
 
-    public static function findPlayerData($playerId)
+    public static function findPlayerData($playerId, $leaderboardHistoryId)
     {
-        $playerData = Cache::remember("findPlayerData".$playerId, Constants::getCacheSeconds(), function () use($playerId) 
+        $playerData = Cache::remember("findPlayerData".$playerId.$leaderboardHistoryId, Constants::getCacheSeconds(), function () 
+        use($playerId, $leaderboardHistoryId) 
         {
-            return LeaderboardData::where("match_player_id", $playerId)->first();
+            return LeaderboardData::where("match_player_id", $playerId)
+                ->where("leaderboard_history_id", $leaderboardHistoryId)
+                ->first();
         });
         return $playerData;
     }
