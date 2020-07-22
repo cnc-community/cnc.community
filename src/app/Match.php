@@ -110,6 +110,7 @@ class Match extends Model
         $match->extramatchsettings = json_encode($matchResponse["extramatchsettings"]);
         $match->extraperplayersettings = json_encode($matchResponse["extraperplayersettings"]);
         $match->save();
+        return $match;
     }
 
     public static function savePlayersFromMatch($matchResponse)

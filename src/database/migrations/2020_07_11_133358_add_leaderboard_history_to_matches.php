@@ -15,7 +15,7 @@ class AddLeaderboardHistoryToMatches extends Migration
     {
         Schema::connection('mysql2')->table('matches', function (Blueprint $table) 
         {
-            $table->unsignedInteger('leaderboard_history_id');
+            $table->unsignedInteger('leaderboard_history_id')->nullable();
         });
     }
 
@@ -28,7 +28,7 @@ class AddLeaderboardHistoryToMatches extends Migration
     {
         Schema::connection('mysql2')->table('matches', function (Blueprint $table) 
         {
-            $table->unsignedInteger('leaderboard_history_id');
+            $table->unsignedInteger('leaderboard_history_id')->nullable();
         });
     }
 }
