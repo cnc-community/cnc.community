@@ -6,7 +6,9 @@ use App\Constants;
 use App\Http\Services\SteamWorkShopItem;
 use Illuminate\Support\Facades\Http;
 use App\Http\Services\Twitch\AbstractTwitchAPI;
+use Exception;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Log;
 
 class SteamAPI extends AbstractSteamAPI
 {
@@ -101,7 +103,8 @@ class SteamAPI extends AbstractSteamAPI
     {
         return Cache::remember('getTopWorkShopItems'.$appId.$limit, 43200, function () use($appId, $limit) // 1/2 day cache
         {
-            $response = Http::get(
+            try{
+                $response = Http::get(
                     $this->_apiUrl . SteamAPI::WORKSHOP_ITEMS_URL . 
                     '?appid='. $appId . 
                     '&key='. $this->_apiKey .
@@ -110,8 +113,14 @@ class SteamAPI extends AbstractSteamAPI
                     '&query_type='. SteamAPI::RankedByTotalUniqueSubscriptions() .
                     '&strip_description_bbcode=true'
                 );
-
-            return $this->buildResponse($response->json()["response"]);
+                
+                return $this->buildResponse($response->json()["response"]);
+            }
+            catch(Exception $exception)
+            {
+                Log::error($exception);
+                return [];
+            }
         });
     }
 
