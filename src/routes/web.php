@@ -26,8 +26,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin']], function ()
     
     // Debug
     // Route::get('/fetch-leaderboard', 'LeaderboardController@runMatchesTask');
-    // Route::get('/fetch-leaderboard-data-ra', 'LeaderboardController@runRALeaderboardTasks');
-    // Route::get('/fetch-leaderboard-data-td', 'LeaderboardController@runTDLeaderboardTasks');
+    Route::get('/fetch-leaderboard-data-ra', 'LeaderboardController@runRALeaderboardTasks');
+    Route::get('/fetch-leaderboard-data-td', 'LeaderboardController@runTDLeaderboardTasks');
 
     Route::get('/dashboard', 'AdminController@index')->name('admin.index')->middleware('role:admin,editor');
 

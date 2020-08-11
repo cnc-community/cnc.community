@@ -68,7 +68,11 @@
         </div>
 
         <div class="main-content">
-
+            <h3>Note: Season 2 </h3>
+            <p>
+                We'll be working this evening to get season 2 stats showing. We'll also be keeping a record of the previous season which will be available later this weekend.
+            </p>
+            
             <?php if(count($data) > 0): ?>
             {{ $data->links() }}
             <?php endif; ?>

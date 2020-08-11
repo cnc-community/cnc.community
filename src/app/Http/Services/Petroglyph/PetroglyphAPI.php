@@ -22,17 +22,18 @@ class PetroglyphAPI
     public function getTDLeaderboard($limit, $offset)
     {
         // 1V1_MMR_BOARD is the TiberianDawn one.
-        return $this->getLeaderboard("1V1_MMR_BOARD", $limit, $offset);
+        return $this->getLeaderboard("1V1_BOARD_S_02", $limit, $offset);
     }
 
     public function getRALeaderboard($limit, $offset)
     {
         // R1V1_MMR_BOARD is the RedAlert leaderboard,
-        return $this->getLeaderboard("R1V1_MMR_BOARD", $limit, $offset);
+        return $this->getLeaderboard("R1V1_BOARD_S_02", $limit, $offset);
     }
 
     private function getLeaderboard($type, $limit, $offset)
     {
+        // https://coordinator.cnctdra.ea.com:6531/Coordinator/webresources/com.petroglyph.coord.leaderboard.list.query/
         // R1V1_MMR_BOARD is the RedAlert leaderboard,
         // 1V1_MMR_BOARD is the TiberianDawn one.
         $request = json_encode(
