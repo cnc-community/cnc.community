@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\LeaderboardHistory;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Log;
 
 class Leaderboard extends Model
 {
@@ -24,10 +25,12 @@ class Leaderboard extends Model
 
     public static function getHistoryByDateAndMatchType($requestedCarbonDate, $matchType)
     {       
-        // Debug
-        
         $leaderboard = Leaderboard::where("matchtype", $matchType)->first();
-
+        if ($leaderboard == null)
+        {
+            Log::info("Leaderboard was null", $matchType);
+            return null;
+        }
         
         // $startDate = $requestedCarbonDate->toImmutable()->toDateTimeString();
         // $endDate = $requestedCarbonDate->toImmutable()->endOfMonth()->addMonths(3)->toDateTimeString();

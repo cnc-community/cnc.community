@@ -68,9 +68,9 @@
         </div>
 
         <div class="main-content">
-            <h3>Note: Season 2 </h3>
+            <h3>Season 1 reset</h3>
             <p>
-                We'll be working this evening to get season 2 stats showing. We'll also be keeping a record of the previous season which will be available later this weekend.
+                We're now showing Season 2 rankings. We're hoping to have an archived Season 1 soon.
             </p>
             
             <?php if(count($data) > 0): ?>
