@@ -67,14 +67,16 @@
 
                     @foreach($match->teams() as $teamId => $teamArr)
                         @foreach($teamArr as $teamPlayer)
-                        <?php new \App\Http\CustomView\Components\PlayerDetailProfileStats
+                        <?php 
+                            $rank = $teamPlayer->playerRank($leaderboardHistory);
+                            new \App\Http\CustomView\Components\PlayerDetailProfileStats
                             (
                                 $teamPlayer->playerName(),
                                 "",//$teamPlayer->playerWins(),
                                 "",//$teamPlayer->playerLosses(),
-                                $teamPlayer->playerBadge($teamPlayer->playerRank()),
+                                $teamPlayer->playerBadge($rank),
                                 "",//$teamPlayer->playerPoints(),
-                                $teamPlayer->playerRank(),
+                                $rank,
                                 $teamPlayer->playerFactionByMatchId($match->matchid),
                                 $teamId == $match->winningTeamId(),
                                 $teamPlayer->playerUrlByGameSlug($gameSlug)

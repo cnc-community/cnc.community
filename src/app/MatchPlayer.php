@@ -60,11 +60,18 @@ class MatchPlayer extends Model
         return null; 
     }
 
-    public function playerRank()
+    public function playerRank($history)
     {
-        $player = Cache::remember("playerRank".$this->id, Constants::getCacheSeconds(), function () 
+        if ($history == null)
         {
-            return LeaderboardData::where("match_player_id", $this->id)->first();
+            abort(500);
+        }
+
+        $player = Cache::remember("playerRank".$this->id.$history->id, Constants::getCacheSeconds(), function () use ($history)
+        {
+            return LeaderboardData::where("match_player_id", $this->id)
+            ->where("leaderboard_history_id", $history->id)
+            ->first();
         });
         
         if ($player)
@@ -135,26 +142,31 @@ class MatchPlayer extends Model
         // DB::connection('mysql2')->enableQueryLog();
         // $start = microtime(true);
         
+        // dd(Match::whereJsonContains("players", [$this->player_id])
+        //         ->where("matchtype", $matchType)
+        //         ->where("leaderboard_history_id", $leaderboardHistoryId)
+        //         ->orderBy("starttime", "DESC")
+        //         ->simplePaginate(10));
+        if ($searchQuery == null)
+        {
+            return Match::whereJsonContains("players", [$this->player_id])
+                ->where("matchtype", $matchType)
+                ->where("leaderboard_history_id", $leaderboardHistoryId)
+                ->orderBy("starttime", "DESC")
+                ->simplePaginate(10);
+        }
+        else
+        {
+            return Match::whereJsonContains("players", [$this->player_id])
+                ->where("matchtype", $matchType)
+                ->where("leaderboard_history_id", $leaderboardHistoryId)
+                ->where("names", "LIKE", "%$searchQuery%")
+                ->orderBy("starttime", "DESC")
+                ->simplePaginate(10);
+        }
         $cacheKey = "playerMatches".$this->player_id.$matchType.$pageNumber.$searchQuery.$leaderboardHistoryId;
         $matches = Cache::remember($cacheKey, Constants::getCacheSeconds(), function () use ($matchType, $searchQuery, $leaderboardHistoryId)
         {
-            if ($searchQuery == null)
-            {
-                return Match::whereJsonContains("players", [$this->player_id])
-                    ->where("matchtype", $matchType)
-                    ->where("leaderboard_history_id", $leaderboardHistoryId)
-                    ->orderBy("starttime", "DESC")
-                    ->simplePaginate(10);
-            }
-            else
-            {
-                return Match::whereJsonContains("players", [$this->player_id])
-                    ->where("matchtype", $matchType)
-                    ->where("leaderboard_history_id", $leaderboardHistoryId)
-                    ->where("names", "LIKE", "%$searchQuery%")
-                    ->orderBy("starttime", "DESC")
-                    ->simplePaginate(10);
-            }
         });
         return $matches;
 

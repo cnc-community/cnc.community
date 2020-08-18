@@ -123,7 +123,7 @@ class LeaderboardController extends Controller
                 "gameName" => $gameName,
                 "gameLogo" => $gameLogo,
                 "leaderboardHistory" => $leaderboardHistory,
-                "searchRequest" => $searchRequest
+                "searchRequest" => $searchRequest,
             ]
         );
     }
