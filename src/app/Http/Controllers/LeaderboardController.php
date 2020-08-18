@@ -112,8 +112,8 @@ class LeaderboardController extends Controller
         }
 
         $playerData = LeaderboardData::findPlayerData($player->id, $leaderboardHistory->id);
-
         $matches = $player->matches($matchType, $pageNumber, $searchRequest, $leaderboardHistory->id);
+
         return view('pages.remasters.leaderboard.player-detail', 
             [
                 "matches" => $matches->appends(request()->query()),

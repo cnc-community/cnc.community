@@ -142,33 +142,27 @@ class MatchPlayer extends Model
         // DB::connection('mysql2')->enableQueryLog();
         // $start = microtime(true);
         
-        // dd(Match::whereJsonContains("players", [$this->player_id])
-        //         ->where("matchtype", $matchType)
-        //         ->where("leaderboard_history_id", $leaderboardHistoryId)
-        //         ->orderBy("starttime", "DESC")
-        //         ->simplePaginate(10));
-        if ($searchQuery == null)
-        {
-            return Match::whereJsonContains("players", [$this->player_id])
-                ->where("matchtype", $matchType)
-                ->where("leaderboard_history_id", $leaderboardHistoryId)
-                ->orderBy("starttime", "DESC")
-                ->simplePaginate(10);
-        }
-        else
-        {
-            return Match::whereJsonContains("players", [$this->player_id])
-                ->where("matchtype", $matchType)
-                ->where("leaderboard_history_id", $leaderboardHistoryId)
-                ->where("names", "LIKE", "%$searchQuery%")
-                ->orderBy("starttime", "DESC")
-                ->simplePaginate(10);
-        }
         $cacheKey = "playerMatches".$this->player_id.$matchType.$pageNumber.$searchQuery.$leaderboardHistoryId;
-        $matches = Cache::remember($cacheKey, Constants::getCacheSeconds(), function () use ($matchType, $searchQuery, $leaderboardHistoryId)
+        return Cache::remember($cacheKey, Constants::getCacheSeconds(), function () use ($matchType, $searchQuery, $leaderboardHistoryId)
         {
+            if ($searchQuery == null)
+            {
+                return Match::whereJsonContains("players", [$this->player_id])
+                    ->where("matchtype", $matchType)
+                    ->where("leaderboard_history_id", $leaderboardHistoryId)
+                    ->orderBy("starttime", "DESC")
+                    ->paginate(20);
+            }
+            else
+            {
+                return Match::whereJsonContains("players", [$this->player_id])
+                    ->where("matchtype", $matchType)
+                    ->where("leaderboard_history_id", $leaderboardHistoryId)
+                    ->where("names", "LIKE", "%$searchQuery%")
+                    ->orderBy("starttime", "DESC")
+                    ->simplePaginate(20);
+            }
         });
-        return $matches;
 
         // $time = microtime(true) - $start;
         // $queries = DB::connection('mysql2')->getQueryLog();
