@@ -8,6 +8,8 @@ use App\Http\Services\SteamHelper;
 use App\Http\Services\SteamWorkShopItem;
 use App\Http\Services\Twitch\TwitchStreamsAPI;
 use App\Leaderboard;
+use App\LeaderboardData;
+use App\LeaderboardHelper;
 use App\Match;
 use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\Cache;
@@ -80,5 +82,24 @@ class APIController extends Controller
                 "max-age" => Constants::getCacheSeconds()
             ]
         );
+    }
+
+    public function getPlayerRank($gameSlug, $playerId)
+    {
+        $matchType = Match::getMatchTypeByGameSlug($gameSlug);
+        $date = LeaderboardHelper::getCarbonDateFromQueryString(null);
+        $leaderboardHistory = Leaderboard::getHistoryByDateAndMatchType($date, $matchType);
+        if ($leaderboardHistory == null)
+        {
+            abort(404);
+        }
+
+        $playerData = LeaderboardData::findPlayerData($playerId, $leaderboardHistory->id);
+        if ($playerData == null)
+        {
+            abort(404);
+        }
+
+        return $playerData;
     }
 }

@@ -16,3 +16,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/twitch/streams/count', 'APIController@streamCount');
 Route::get('/twitch/streams/total-count', 'APIController@totalStreamCount');
+
+Route::get('/leaderboard/{game}/player/{playerId}', 'APIController@getPlayerRank');
