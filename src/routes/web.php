@@ -14,10 +14,6 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 //
 // Admin routes
 Route::group(['prefix' => 'admin', 'middleware' => ['admin']], function () 
@@ -84,19 +80,21 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin']], function ()
 
 //
 // Public routes
-Route::get('/', 'SiteController@index')->name('home');
-Route::get('/funny', 'SiteController@showFunnyListings')->name('pages.funny.listing');
-Route::get('/donate', 'SiteController@showDonate')->name('pages.donate');
-Route::get('/creators', 'SiteController@showCreatorsListings')->name('pages.creators.listing');
-Route::get('/command-and-conquer-remastered', 'SiteController@showRemastersListings')->name('pages.remasters.listing');
-Route::get('/command-and-conquer-remastered/workshop-mods', 'SiteController@showRemastersWorkshopMods')->name('pages.remasters.workshop.listings');
-Route::get('/command-and-conquer-remastered/leaderboard', 'LeaderboardController@getLeaderboardListings')->name('pages.remasters.leaderboard.listings');
-Route::get('/command-and-conquer-remastered/leaderboard/{game}', 'LeaderboardController@getLeaderboardListingsByGame')->name('pages.remasters.leaderboard.detail');
-Route::get('/command-and-conquer-remastered/leaderboard/{game}/player/{playerId}', 'LeaderboardController@getPlayerLeaderboardProfile')->name('pages.remasters.leaderboard.player-detail');
+Route::get('/', 'SiteController@index')->name('home')->middleware('cache.headers:public;max_age=14400');
+Route::get('/funny', 'SiteController@showFunnyListings')->name('pages.funny.listing')->middleware('cache.headers:public;max_age=14400');
+Route::get('/donate', 'SiteController@showDonate')->name('pages.donate')->middleware('cache.headers:public;max_age=14400');
 
-Route::get('/news/{categorySlug}', 'SiteController@showNewsByCategorySlug')->name('news.listing');
-Route::get('/news/{categorySlug?}/{newsSlug}', 'SiteController@showNewsBySlug')->name('news.detail');
+Route::get('/creators', 'SiteController@showCreatorsListings')->name('pages.creators.listing')->middleware('cache.headers:public;max_age=1800');
+Route::get('/command-and-conquer-remastered', 'SiteController@showRemastersListings')->name('pages.remasters.listing')->middleware('cache.headers:public;max_age=14400');
+
+Route::get('/command-and-conquer-remastered/workshop-mods', 'SiteController@showRemastersWorkshopMods')->name('pages.remasters.workshop.listings')->middleware('cache.headers:public;max_age=14400');
+Route::get('/command-and-conquer-remastered/leaderboard', 'LeaderboardController@getLeaderboardListings')->name('pages.remasters.leaderboard.listings')->middleware('cache.headers:public;max_age=1800');
+Route::get('/command-and-conquer-remastered/leaderboard/{game}', 'LeaderboardController@getLeaderboardListingsByGame')->name('pages.remasters.leaderboard.detail')->middleware('cache.headers:public;max_age=1800');
+Route::get('/command-and-conquer-remastered/leaderboard/{game}/player/{playerId}', 'LeaderboardController@getPlayerLeaderboardProfile')->name('pages.remasters.leaderboard.player-detail')->middleware('cache.headers:public;max_age=1800');
+
+Route::get('/news/{categorySlug}', 'SiteController@showNewsByCategorySlug')->name('news.listing')->middleware('cache.headers:public;max_age=14400');
+Route::get('/news/{categorySlug?}/{newsSlug}', 'SiteController@showNewsBySlug')->name('news.detail')->middleware('cache.headers:public;max_age=14400');
 
 // Pages by category + slug
-Route::get('/{category?}', 'SiteController@showPageByCategory');
-Route::get('/{category?}/{pageSlug?}', 'SiteController@showPageBySlug')->name('pages.detail');
+Route::get('/{category?}', 'SiteController@showPageByCategory')->name('news.detail')->middleware('cache.headers:public;max_age=28800');
+Route::get('/{category?}/{pageSlug?}', 'SiteController@showPageBySlug')->name('pages.detail')->name('news.detail')->middleware('cache.headers:public;max_age=28800');

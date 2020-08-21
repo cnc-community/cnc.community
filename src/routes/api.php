@@ -14,7 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/twitch/streams/count', 'APIController@streamCount');
-Route::get('/twitch/streams/total-count', 'APIController@totalStreamCount');
+Route::get('/twitch/streams/count', 'APIController@streamCount')->middleware('cache.headers:public;max_age=900');
+Route::get('/twitch/streams/total-count', 'APIController@totalStreamCount')->middleware('cache.headers:public;max_age=900');
+Route::get('/leaderboard/{game}/player/{playerId}', 'APIController@getPlayerRank')->middleware('cache.headers:public;max_age=900');
 
-Route::get('/leaderboard/{game}/player/{playerId}', 'APIController@getPlayerRank');
+Route::get('/test', 'APIController@testCache')->middleware('cache.headers:public;max_age=900');
