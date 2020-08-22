@@ -3,6 +3,7 @@
 namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Support\Facades\App;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -50,6 +51,14 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Throwable $exception)
     {
+        if( $request->is('api/*'))
+        {
+            if (!App::environment('local')) 
+            {
+                return view('api.error', ["message" => ""]);
+            }
+        }
+        
         return parent::render($request, $exception);
     }
 }

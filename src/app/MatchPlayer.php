@@ -176,19 +176,19 @@ class MatchPlayer extends Model
         $leaderboardHistory = Leaderboard::getHistoryByDateAndMatchType($date, $matchType);
         if ($leaderboardHistory == null)
         {
-            abort(404);
+            return null;
         }
 
         $playerData = LeaderboardData::findPlayerData($playerId, $leaderboardHistory->id);
         if ($playerData == null)
         {
-            abort(404);
+            return null;
         }
 
         $matchPlayer = MatchPlayer::find($playerData->match_player_id);
         if ($matchPlayer == null)
         {
-            abort(404);
+            return null;
         }
 
         $playerData["name"] = $matchPlayer->playerName();

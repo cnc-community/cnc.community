@@ -120,6 +120,13 @@ class APIController extends Controller
     public function configRankWebView(Request $request, $gameSlug, $playerId)
     {
         $profile = MatchPlayer::profile($gameSlug, $playerId);
+
+        if ($profile == null)
+        {
+            $message = "Sorry we couldn't find your profile";
+            return view('api.error', ["message" => $message]);
+        }
+
         $badge = LeaderboardHelper::getBadgeByRank($profile->rank);
         $inputColor = APILeaderboardProfile::validateColorRequest($request);
         $inputSize = APILeaderboardProfile::validateSizeRequest($request);
@@ -148,5 +155,10 @@ class APIController extends Controller
                 "generatedUrl" => $generatedUrl
             ]
         );
+    }
+
+    public function APIController()
+    {
+        return view('api.error');
     }
 }

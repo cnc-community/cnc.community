@@ -83,7 +83,8 @@
         Below is your generated preview. Copy the below URL into OBS Browser Source.
     </p>
     <div class="form-group">
-    <input type="text" value={{ $generatedUrl }} />
+        <label for="url">OBS URL - Copy this into your OBS Browser stream</label>
+        <input id="url" type="text" value={{ $generatedUrl }} />
     </div>
     @include("api.leaderboard.player._profile")
 
