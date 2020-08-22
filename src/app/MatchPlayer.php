@@ -185,6 +185,14 @@ class MatchPlayer extends Model
             abort(404);
         }
 
+        $matchPlayer = MatchPlayer::find($playerData->match_player_id);
+        if ($matchPlayer == null)
+        {
+            abort(404);
+        }
+
+        $playerData["name"] = $matchPlayer->playerName();
+        
         return $playerData;
     }
 }

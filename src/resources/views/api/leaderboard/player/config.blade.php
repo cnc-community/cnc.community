@@ -12,6 +12,7 @@
     <p>
         Below are some properties to customize your leaderboard rank. 
     </p>
+
     <form>
         <div class="form-layout">
             <div class="form-group">
@@ -63,6 +64,7 @@
             <div class="form-group">
                 <label for="color">Properties <small>Shift click to select multiple</small></label>
                 <select id="color" class="form-control" name="properties[]" multiple onchange="this.form.submit()">
+                <option value="name" <?php if (in_array("name", $properties)):?>selected<?php endif;?>>Name</option>
                 <option value="badge" <?php if (in_array("badge", $properties)):?>selected<?php endif;?>>Badge</option>
                 <option value="rank" <?php if (in_array("rank", $properties)):?>selected<?php endif;?>>Rank</option>
                 <option value="wins" <?php if (in_array("wins", $properties)):?>selected<?php endif;?>>Wins</option>

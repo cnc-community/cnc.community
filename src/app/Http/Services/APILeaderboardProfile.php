@@ -18,7 +18,8 @@ class APILeaderboardProfile
             "wins",
             "lost",
             "points",
-            "played"
+            "played",
+            "name"
         ];
 
         if ($request->properties == null)

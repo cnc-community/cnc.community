@@ -13,6 +13,7 @@
     </div>
     <?php endif; ?>
 
+    <?php if (in_array("name", $properties)):?><div><span>{{ $profile->name }}</span></div><?php endif; ?>
     <?php if (in_array("rank", $properties)):?><div>Rank: #<span>{{ $profile->rank }}</span></div><?php endif; ?>
     <?php if (in_array("wins", $properties)):?><div>Wins: <span>{{ $profile->wins }}</span></div><?php endif; ?>
     <?php if (in_array("lost", $properties)):?><div>Lost: <span>{{ $profile->losses }}</span></div><?php endif; ?>
