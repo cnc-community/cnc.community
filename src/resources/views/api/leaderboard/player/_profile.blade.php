@@ -18,4 +18,14 @@
     <?php if (in_array("lost", $properties)):?><div>Lost: <span>{{ $profile->losses }}</span></div><?php endif; ?>
     <?php if (in_array("points", $properties)):?><div>Points: <span>{{ round($profile->points) }}</span></div><?php endif; ?>
     <?php if (in_array("games", $properties)):?><div>Games: <span>{{ $gamesPlayed }}</span></div><?php endif; ?>
+
+    <?php if ($inputBranding == "show-branding"): ?>
+    <div class="branding">
+        <div class="logo">
+            <a href="/" title="C&C Community">
+                <img src="/assets/images/logo.svg" alt="C&C Community Logo" />
+            </a>
+        </div>
+    </div>
+    <?php endif; ?>
 </div>

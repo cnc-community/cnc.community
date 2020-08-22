@@ -99,16 +99,20 @@ class APIController extends Controller
         $inputColor = APILeaderboardProfile::validateColorRequest($request);
         $inputSize = APILeaderboardProfile::validateSizeRequest($request);
         $inputLayout = APILeaderboardProfile::validateLayoutRequest($request);
+        $inputBorder = APILeaderboardProfile::validateBorderRequest($request);
+        $inputBranding = APILeaderboardProfile::validateBrandingRequest($request);
         $validatedProps = APILeaderboardProfile::buildProfile($request);
 
         return view('api.leaderboard.player.webview', 
             [
                 "profile" => $profile,
                 "badge" => $badge,
-                "props" => $validatedProps,
+                "properties" => $validatedProps,
                 "inputColor" => $inputColor,
                 "inputLayout" => $inputLayout,
-                "inputSize" => $inputSize
+                "inputSize" => $inputSize,
+                "inputBorder" => $inputBorder,
+                "inputBranding" => $inputBranding
             ]
         );
     }
@@ -121,7 +125,15 @@ class APIController extends Controller
         $inputSize = APILeaderboardProfile::validateSizeRequest($request);
         $inputLayout = APILeaderboardProfile::validateLayoutRequest($request);
         $inputBorder = APILeaderboardProfile::validateBorderRequest($request);
+        $inputBranding = APILeaderboardProfile::validateBrandingRequest($request);
         $validatedProps = APILeaderboardProfile::buildProfile($request);
+
+        $parts = parse_url(url()->full());
+        $generatedUrl = "";
+        if (isset($parts["query"]))
+        {
+            $generatedUrl = url("/api/leaderboard/". $gameSlug . "/player/". $playerId ."/webview?".$parts["query"]);
+        }
 
         return view('api.leaderboard.player.config', 
             [
@@ -131,7 +143,9 @@ class APIController extends Controller
                 "inputColor" => $inputColor,
                 "inputLayout" => $inputLayout,
                 "inputSize" => $inputSize,
-                "inputBorder" => $inputBorder
+                "inputBorder" => $inputBorder,
+                "inputBranding" => $inputBranding,
+                "generatedUrl" => $generatedUrl
             ]
         );
     }

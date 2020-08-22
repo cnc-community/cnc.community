@@ -82,6 +82,13 @@ class APILeaderboardProfile
         return "";
     }
     
+    public static function validateBrandingRequest(Request $request)
+    {
+        if ($request->branding == "show-branding")
+            return "show-branding";
+        return "";
+    }
+    
     public static function validateSizeRequest(Request $request)
     {
         // Handle size inputs

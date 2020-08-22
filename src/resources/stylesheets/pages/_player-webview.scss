@@ -6,6 +6,21 @@
     margin: 0; 
 }
 
+.page-player-webview .form-layout
+{
+    display: flex;
+    flex-wrap: wrap;
+    width: $lg-width;
+    max-width: 100%;
+}
+
+.page-player-webview .form-layout .form-group 
+{
+    padding: 10px 0;
+    width: 300px;
+    margin-right: 15px;
+}
+
 .page-player-webview .player-stats
 {
     display: flex;
@@ -16,9 +31,24 @@
     padding-right: 25px;
     padding-left: 25px;
 
+    position: relative;
+
     & div {
         margin-right: 35px;
     }
+}
+
+.page-player-webview .player-stats .branding 
+{
+    position: absolute;
+    right: 0;
+    width: 130px;
+    margin-right: 0;
+}
+
+.page-player-webview .player-stats--layout-space-between .branding 
+{
+    position: relative;
 }
 
 .page-player-webview .player-badge
