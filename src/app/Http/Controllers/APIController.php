@@ -11,9 +11,12 @@ use App\Leaderboard;
 use App\LeaderboardData;
 use App\LeaderboardHelper;
 use App\Match;
+use App\MatchPlayer;
 use Illuminate\Http\Client\Response;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
+use App\Http\Services\APILeaderboardProfile;
 
 class APIController extends Controller
 {
@@ -86,20 +89,50 @@ class APIController extends Controller
 
     public function getPlayerRank($gameSlug, $playerId)
     {
-        $matchType = Match::getMatchTypeByGameSlug($gameSlug);
-        $date = LeaderboardHelper::getCarbonDateFromQueryString(null);
-        $leaderboardHistory = Leaderboard::getHistoryByDateAndMatchType($date, $matchType);
-        if ($leaderboardHistory == null)
-        {
-            abort(404);
-        }
+        return MatchPlayer::profile($gameSlug, $playerId);
+    }
 
-        $playerData = LeaderboardData::findPlayerData($playerId, $leaderboardHistory->id);
-        if ($playerData == null)
-        {
-            abort(404);
-        }
+    public function getPlayerRankWebView(Request $request, $gameSlug, $playerId)
+    {
+        $profile = MatchPlayer::profile($gameSlug, $playerId);
+        $badge = LeaderboardHelper::getBadgeByRank($profile->rank);
+        $inputColor = APILeaderboardProfile::validateColorRequest($request);
+        $inputSize = APILeaderboardProfile::validateSizeRequest($request);
+        $inputLayout = APILeaderboardProfile::validateLayoutRequest($request);
+        $validatedProps = APILeaderboardProfile::buildProfile($request);
 
-        return $playerData;
+        return view('api.leaderboard.player.webview', 
+            [
+                "profile" => $profile,
+                "badge" => $badge,
+                "props" => $validatedProps,
+                "inputColor" => $inputColor,
+                "inputLayout" => $inputLayout,
+                "inputSize" => $inputSize
+            ]
+        );
+    }
+
+    public function configRankWebView(Request $request, $gameSlug, $playerId)
+    {
+        $profile = MatchPlayer::profile($gameSlug, $playerId);
+        $badge = LeaderboardHelper::getBadgeByRank($profile->rank);
+        $inputColor = APILeaderboardProfile::validateColorRequest($request);
+        $inputSize = APILeaderboardProfile::validateSizeRequest($request);
+        $inputLayout = APILeaderboardProfile::validateLayoutRequest($request);
+        $inputBorder = APILeaderboardProfile::validateBorderRequest($request);
+        $validatedProps = APILeaderboardProfile::buildProfile($request);
+
+        return view('api.leaderboard.player.config', 
+            [
+                "profile" => $profile,
+                "badge" => $badge,
+                "properties" => $validatedProps,
+                "inputColor" => $inputColor,
+                "inputLayout" => $inputLayout,
+                "inputSize" => $inputSize,
+                "inputBorder" => $inputBorder
+            ]
+        );
     }
 }

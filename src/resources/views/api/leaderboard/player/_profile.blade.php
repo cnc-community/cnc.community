@@ -1,0 +1,21 @@
+<div class="player-stats 
+    player-stats--color-{{ $inputColor }} 
+    player-stats--size-{{ $inputSize }} 
+    player-stats--layout-{{ $inputLayout }}
+    player-stats--border-{{ $inputBorder }}
+    ">
+    <?php $gamesPlayed = ($profile->wins + $profile->losses); ?>
+
+    <?php if (in_array("badge", $properties)):?>
+    <div class="player-badge">
+        <img src="<?php echo $badge["image"]; ?>" alt="Rank" />
+        <small class="rank-title"><?php echo $badge["rank"];?></small>
+    </div>
+    <?php endif; ?>
+
+    <?php if (in_array("rank", $properties)):?><div>Rank: #<span>{{ $profile->rank }}</span></div><?php endif; ?>
+    <?php if (in_array("wins", $properties)):?><div>Wins: <span>{{ $profile->wins }}</span></div><?php endif; ?>
+    <?php if (in_array("lost", $properties)):?><div>Lost: <span>{{ $profile->losses }}</span></div><?php endif; ?>
+    <?php if (in_array("points", $properties)):?><div>Points: <span>{{ round($profile->points) }}</span></div><?php endif; ?>
+    <?php if (in_array("games", $properties)):?><div>Games: <span>{{ $gamesPlayed }}</span></div><?php endif; ?>
+</div>

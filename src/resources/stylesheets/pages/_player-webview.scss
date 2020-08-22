@@ -1,0 +1,100 @@
+.page-player-webview .main-content 
+{
+    width: 100%;
+    max-width: 100%;
+    z-index: 10;
+    margin: 0; 
+}
+
+.page-player-webview .player-stats
+{
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    border: 2px solid;
+    border-radius: 4px;
+    padding-right: 25px;
+    padding-left: 25px;
+
+    & div {
+        margin-right: 35px;
+    }
+}
+
+.page-player-webview .player-badge
+{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 15px;
+    text-transform: uppercase;
+    color: #edd32d;
+}
+
+
+.page-player-webview .player-stats--border-no-border
+{
+    border: 0;
+}
+
+
+// Layout Type
+.page-player-webview .player-stats--layout-space-between 
+{
+    justify-content: space-between;
+}
+
+
+// Sizes
+.page-player-webview .player-stats--size-lg
+{
+    font-size: 1.2rem;
+}
+
+.page-player-webview .player-stats--size-xl
+{
+    font-size: 1.5rem;
+}
+
+.page-player-webview .player-stats--size-xxl
+{
+    font-size: 1.7rem;
+}
+
+// Colours
+.page-player-webview .player-stats--color-pink 
+{
+    color: #ff00b1;
+    border-color:#ff00b1;
+}
+
+.page-player-webview .player-stats--color-blue 
+{
+    color: #0400ff;
+    border-color:#0400ff;
+}
+
+.page-player-webview .player-stats--color-green 
+{
+    color: #6eff00;
+    border-color:#6eff00;
+}
+
+.page-player-webview .player-stats--color-teal 
+{
+    color: #00ffe7;
+    border-color:#00ffe7;
+}
+
+.page-player-webview .player-stats--color-purple 
+{
+    color: #b400ff;
+    border-color:#b400ff;
+}
+
+.page-player-webview .player-stats--color-red 
+{
+    color: #ff0000;
+    border-color:#ff0000;
+}
+

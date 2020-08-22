@@ -168,4 +168,23 @@ class MatchPlayer extends Model
         // $queries = DB::connection('mysql2')->getQueryLog();
         // return ["debug" => $queries, "time" => $time];
     }
+
+    public static function profile($gameSlug, $playerId)
+    {
+        $matchType = Match::getMatchTypeByGameSlug($gameSlug);
+        $date = LeaderboardHelper::getCarbonDateFromQueryString(null);
+        $leaderboardHistory = Leaderboard::getHistoryByDateAndMatchType($date, $matchType);
+        if ($leaderboardHistory == null)
+        {
+            abort(404);
+        }
+
+        $playerData = LeaderboardData::findPlayerData($playerId, $leaderboardHistory->id);
+        if ($playerData == null)
+        {
+            abort(404);
+        }
+
+        return $playerData;
+    }
 }
