@@ -109,7 +109,10 @@ class LeaderboardController extends Controller
         if ($leaderboardHistory == null)
         {
             abort(404);
-        }
+        }   
+
+        $showWebView = $request->showWebView;
+        $webViewUrl = url("/api/leaderboard/". $gameSlug . "/player/". $playerId ."/webview/config");
 
         $playerData = LeaderboardData::findPlayerData($player->id, $leaderboardHistory->id);
         $matches = $player->matches($matchType, $pageNumber, $searchRequest, $leaderboardHistory->id);
@@ -124,6 +127,8 @@ class LeaderboardController extends Controller
                 "gameLogo" => $gameLogo,
                 "leaderboardHistory" => $leaderboardHistory,
                 "searchRequest" => $searchRequest,
+                "showWebView" => $showWebView,
+                "webViewUrl" => $webViewUrl
             ]
         );
     }

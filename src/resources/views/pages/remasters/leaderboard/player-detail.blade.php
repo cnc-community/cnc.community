@@ -31,6 +31,10 @@
                     </div>
                      @endif
                     <div class="buttons">
+                        <?php if($showWebView): ?>
+                        <a href="{{ $webViewUrl}}" class="btn btn-outline">Go to your WebView Configuration</a>
+                        <?php endif; ?>
+
                         <a href="/command-and-conquer-remastered/leaderboard/{{$gameSlug}}" class="btn btn-outline" title="Back to all leaderboards">
                             Back to Leaderboard
                         </a>
