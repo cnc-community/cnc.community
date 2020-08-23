@@ -67,7 +67,7 @@ class MatchPlayer extends Model
             abort(500);
         }
 
-        $player = Cache::remember("playerRank".$this->id.$history->id, Constants::getCacheSeconds(), function () use ($history)
+        $player = Cache::remember("playerRank".$this->id.$history->id, 480, function () use ($history)
         {
             return LeaderboardData::where("match_player_id", $this->id)
             ->where("leaderboard_history_id", $history->id)

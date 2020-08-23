@@ -19,6 +19,6 @@ Route::get("/error", "APIController@showError");
 Route::get('/twitch/streams/count', 'APIController@streamCount')->middleware('cache.headers:public;max_age=900');
 Route::get('/twitch/streams/total-count', 'APIController@totalStreamCount')->middleware('cache.headers:public;max_age=900');
 
-Route::get('/leaderboard/{game}/player/{playerId}', 'APIController@getPlayerRank')->middleware('cache.headers:public;max_age=900');
-Route::get('/leaderboard/{game}/player/{playerId}/webview', 'APIController@getPlayerRankWebView')->middleware('cache.headers:public;max_age=900')->name("api.player.webview");
+Route::get('/leaderboard/{game}/player/{playerId}', 'APIController@getPlayerRank')->middleware('cache.headers:public;max_age=480');
+Route::get('/leaderboard/{game}/player/{playerId}/webview', 'APIController@getPlayerRankWebView')->middleware('cache.headers:public;max_age=480')->name("api.player.webview");
 Route::get('/leaderboard/{game}/player/{playerId}/webview/config', 'APIController@configRankWebView')->middleware('cache.headers:public;max_age=0');

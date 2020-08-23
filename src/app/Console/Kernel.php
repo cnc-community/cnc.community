@@ -34,11 +34,11 @@ class Kernel extends ConsoleKernel
             ->runInBackground();
 
         $schedule->call('App\Http\Controllers\LeaderboardController@runRALeaderboardTasks')
-            ->cron('*/35 * * * *')
+            ->cron('*/8 * * * *')
             ->runInBackground();
             
         $schedule->call('App\Http\Controllers\LeaderboardController@runTDLeaderboardTasks')
-            ->cron('*/40 * * * *')
+            ->cron('*/8 * * * *')
             ->runInBackground();
     }
 

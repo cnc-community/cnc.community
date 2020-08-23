@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\LeaderboardHistory;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
 class Leaderboard extends Model
@@ -56,7 +57,7 @@ class Leaderboard extends Model
             return [];
         }
         
-        return Cache::remember($paginatedCacheKey, 1200, function () use($history, $paginate, $limit, $searchQuery)
+        return Cache::remember($paginatedCacheKey, 480, function () use($history, $paginate, $limit, $searchQuery)
         {
             return LeaderboardData::where("leaderboard_history_id", $history->id)
                 ->leftJoin("match_players as mp", "mp.id", "leaderboard_data.match_player_id")
@@ -91,5 +92,40 @@ class Leaderboard extends Model
         }
 
         $leaderResult->save();
+    }
+
+    public static function stats($matchType, $historyId)
+    {
+        // DB::connection('mysql2')->enableQueryLog();
+        // $start = microtime(true);
+
+        $statsLast24Hours = Cache::remember("last24Hours", 3600, function () use($matchType, $historyId)
+        {
+            $last24Hours = time() - (24 * 60 * 60);
+            return Leaderboard::matchesByTime($matchType, $historyId, $last24Hours);
+        });
+
+        $statsLastHour = Cache::remember("lastHour", 3600, function () use($matchType, $historyId)
+        {
+            $lastHour = time() - (0 * 60 * 60);
+            return Leaderboard::matchesByTime($matchType, $historyId, $lastHour);
+        });
+
+        return [
+            "last24hours" => $statsLast24Hours,
+            "lastHour" => $statsLastHour
+        ];
+
+        // $time = microtime(true) - $start;
+        // $queries = DB::connection('mysql2')->getQueryLog();
+        // return ["debug" => $queries, "time" => $time];
+    }
+
+    private static function matchesByTime($matchType, $historyId, $time)
+    {
+        return Match::where("matchtype", $matchType)
+            ->where("leaderboard_history_id", $historyId)
+            ->where('starttime', '>=', $time)
+            ->count();
     }
 }

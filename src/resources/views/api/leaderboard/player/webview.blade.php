@@ -10,6 +10,6 @@
     setTimeout(function ()
     {
         document.location.reload();
-    }, 900000); // 15 minutes
+    }, 300000); // 5 minutes
 </script>
 @endsection
