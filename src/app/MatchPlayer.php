@@ -18,7 +18,7 @@ class MatchPlayer extends Model
 
     public function playerWins()
     {
-        $player = Cache::remember("playerWins".$this->id, Constants::getCacheSeconds(), function ()
+        $player = Cache::remember("playerWins".$this->id, 480, function ()
         {
             return LeaderboardData::where("match_player_id", $this->id)->first();
         });
@@ -32,7 +32,7 @@ class MatchPlayer extends Model
 
     public function playerLosses()
     {
-        $player = Cache::remember("playerLosses".$this->id, Constants::getCacheSeconds(), function () 
+        $player = Cache::remember("playerLosses".$this->id, 480, function () 
         {
             return LeaderboardData::where("match_player_id", $this->id)->first();
         });
@@ -47,7 +47,7 @@ class MatchPlayer extends Model
 
     public function playerPoints()
     {
-        $player = Cache::remember("playerPoints".$this->id, Constants::getCacheSeconds(), function () 
+        $player = Cache::remember("playerPoints".$this->id, 480, function () 
         {
             return LeaderboardData::where("match_player_id", $this->id)->first();
         });
@@ -110,7 +110,7 @@ class MatchPlayer extends Model
 
     public static function findPlayer($playerId)
     {
-        $player = Cache::remember("findPlayer".$playerId, Constants::getCacheSeconds(), function () use ($playerId)
+        $player = Cache::remember("findPlayer".$playerId, 480, function () use ($playerId)
         {
             return MatchPlayer::where("player_id", $playerId)->first();
         });
@@ -143,7 +143,7 @@ class MatchPlayer extends Model
         // $start = microtime(true);
         
         $cacheKey = "playerMatches".$this->player_id.$matchType.$pageNumber.$searchQuery.$leaderboardHistoryId;
-        return Cache::remember($cacheKey, Constants::getCacheSeconds(), function () use ($matchType, $searchQuery, $leaderboardHistoryId)
+        return Cache::remember($cacheKey, 1800, function () use ($matchType, $searchQuery, $leaderboardHistoryId)
         {
             if ($searchQuery == null)
             {
