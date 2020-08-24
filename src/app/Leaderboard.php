@@ -112,8 +112,8 @@ class Leaderboard extends Model
         });
 
         return [
-            "last24hours" => $statsLast24Hours,
-            "lastHour" => $statsLastHour
+            "matchesPlayedLast24hours" => $statsLast24Hours,
+            "matchesPlayedLastHour" => $statsLastHour
         ];
 
         // $time = microtime(true) - $start;

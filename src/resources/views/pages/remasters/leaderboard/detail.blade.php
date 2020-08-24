@@ -37,42 +37,36 @@
         </div>
 
         <div class="main-content">
-            <form>
-                <div class="form-group player-search">
-                    <label class="label" for="search">Search by player name</label>
-                    <div class="search-box">
-                        <div class="search-input">
-                            <input id="search" type="text" name="search" class="form-input" placeholder="Enter a player name.." value="{{ $searchRequest }}" />
-                            <?php if($searchRequest): ?>
-                            <a href="?search=" title="Clear Search" class="btn-clear"><i class="icon-close-alt"></i></a>
-                            <?php endif; ?>
+            <div class="leaderboard-bar">
+                <form>
+                    <div class="form-group player-search">
+                        <label class="label" for="search">Search by player name</label>
+                        <div class="search-box">
+                            <div class="search-input">
+                                <input id="search" type="text" name="search" class="form-input" placeholder="Enter a player name.." value="{{ $searchRequest }}" />
+                                <?php if($searchRequest): ?>
+                                <a href="?search=" title="Clear Search" class="btn-clear"><i class="icon-close-alt"></i></a>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div class="statistics">
+                    <div class="statistics-list">
+                        <div class="statistic-detail">
+                            <div class="value text-uppercase">
+                                <strong>{{ $stats["matchesPlayedLast24hours"]}}</strong>
+                            </div>              
+                            <div class="title text-uppercase">
+                                Games Played <br/><span>(last 24 hours)</span>
+                            </div>      
                         </div>
                     </div>
                 </div>
-            </form>
-            <?php /*
-            <div>
-                <h4>Top 5 Longest Matches</h4>
-                @foreach($longestMatches as $match)
-                {{ $match->matchduration }}
-                <div class="map-preview" style="background-image:url({{ \App\LeaderboardHelper::mapPreviewByInternalName($match->mapInternalName()) }}">
-                    <div class="game-details">
-                        <div><strong>Map:</strong> {{ $match->mapName() }}</div>
-                        <div><strong>Duration:</strong> {{ $match->matchduration() }}</div>
-                        <div class="date-played">{{ $match->startTime() }}</div>
-                    </div>
-                </div>
-                @endforeach
             </div>
-            */ ?>
         </div>
 
         <div class="main-content">
-            <h3>Season 1 reset</h3>
-            <p>
-                We're now showing Season 2 rankings. We're hoping to have an archived Season 1 soon.
-            </p>
-            
             <?php if(count($data) > 0): ?>
             {{ $data->links() }}
             <?php endif; ?>

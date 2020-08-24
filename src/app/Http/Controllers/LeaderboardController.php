@@ -71,9 +71,9 @@ class LeaderboardController extends Controller
         $date = LeaderboardHelper::getCarbonDateFromQueryString($request->season);
         $data = Leaderboard::dataPaginated($cacheKey, $date, $matchType, $searchRequest, $paginate=200, $limit=200);
 
-        // $leaderboardHistory = Leaderboard::getHistoryByDateAndMatchType($date, $matchType);
+        $leaderboardHistory = Leaderboard::getHistoryByDateAndMatchType($date, $matchType);
+        $stats = Leaderboard::stats($leaderboardHistory->id, $matchType);
 
-        // return Leaderboard::stats($leaderboardHistory->id, $matchType);
         return view('pages.remasters.leaderboard.detail', 
             [
                 "gameLogo" => $gameLogo,
@@ -84,7 +84,8 @@ class LeaderboardController extends Controller
                 "data" => $data,
                 "pageRanks" => $ranks,
                 "searchRequest" => $searchRequest,
-                "season" => $request->season
+                "season" => $request->season,
+                "stats" => $stats
             ]
         );
     }

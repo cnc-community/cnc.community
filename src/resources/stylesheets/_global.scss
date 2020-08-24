@@ -703,7 +703,7 @@ ul.pagination
 .player-search 
 {
     text-align: center;
-    @media(min-width: $lg-width)
+    @media(min-width: $sm-width)
     {
         text-align: left;
     }
@@ -711,7 +711,10 @@ ul.pagination
 
 .player-search .form-input 
 {
-    width: 400px;
+    @media(min-width:$sm-width)
+    {
+        width: 400px;
+    }
     max-width: 100%;
 }
 
