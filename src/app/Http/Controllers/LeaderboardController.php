@@ -72,7 +72,7 @@ class LeaderboardController extends Controller
         $data = Leaderboard::dataPaginated($cacheKey, $date, $matchType, $searchRequest, $paginate=200, $limit=200);
 
         $leaderboardHistory = Leaderboard::getHistoryByDateAndMatchType($date, $matchType);
-        $stats = Leaderboard::stats($leaderboardHistory->id, $matchType);
+        $stats = Leaderboard::stats($matchType, $leaderboardHistory->id);
 
         return view('pages.remasters.leaderboard.detail', 
             [

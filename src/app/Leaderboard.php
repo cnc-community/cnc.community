@@ -99,21 +99,14 @@ class Leaderboard extends Model
         // DB::connection('mysql2')->enableQueryLog();
         // $start = microtime(true);
 
-        $statsLast24Hours = Cache::remember("last24Hours", 3600, function () use($matchType, $historyId)
+        $statsLast24Hours = Cache::remember("last24Hours".$matchType.$historyId, 3600, function () use($matchType, $historyId)
         {
             $last24Hours = time() - (24 * 60 * 60);
             return Leaderboard::matchesByTime($matchType, $historyId, $last24Hours);
         });
 
-        $statsLastHour = Cache::remember("lastHour", 3600, function () use($matchType, $historyId)
-        {
-            $lastHour = time() - (0 * 60 * 60);
-            return Leaderboard::matchesByTime($matchType, $historyId, $lastHour);
-        });
-
         return [
-            "matchesPlayedLast24hours" => $statsLast24Hours,
-            "matchesPlayedLastHour" => $statsLastHour
+            "matchesPlayedLast24hours" => $statsLast24Hours
         ];
 
         // $time = microtime(true) - $start;
