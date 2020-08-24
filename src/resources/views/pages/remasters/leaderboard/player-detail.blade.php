@@ -50,19 +50,33 @@
             <div class="recent-games">
             <h3 class="text-uppercase">Games</h3>
 
-            <form>
-                <div class="form-group player-search">
-                    <label class="label" for="search">Search for a player in these games</label>
-                    <div class="search-box">
-                        <div class="search-input">
-                            <input id="search" type="text" name="search" class="form-input" placeholder="Enter a player name.." value="{{ $searchRequest }}" />
-                            <?php if($searchRequest): ?>
-                            <a href="?search=" title="Clear Search" class="btn-clear"><i class="icon-close-alt"></i></a>
-                            <?php endif; ?>
+            <div class="leaderboard-bar">
+                <form>
+                    <div class="form-group player-search">
+                        <label class="label" for="search">Search for a player in these games</label>
+                        <div class="search-box">
+                            <div class="search-input">
+                                <input id="search" type="text" name="search" class="form-input" placeholder="Enter a player name.." value="{{ $searchRequest }}" />
+                                <?php if($searchRequest): ?>
+                                <a href="?search=" title="Clear Search" class="btn-clear"><i class="icon-close-alt"></i></a>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div class="statistics">
+                    <div class="statistics-list">
+                        <div class="statistic-detail">
+                            <div class="value text-uppercase">
+                                <strong>{{ $gamesLast24Hours }}</strong>
+                            </div>              
+                            <div class="title text-uppercase">
+                                Games Played <br/><span>(last 24 hours)</span>
+                            </div>      
                         </div>
                     </div>
                 </div>
-            </form>
+            </div>
 
             {{ $matches->links() }}
             @foreach($matches as $match)

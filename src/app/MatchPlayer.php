@@ -16,6 +16,21 @@ class MatchPlayer extends Model
         return "/command-and-conquer-remastered/leaderboard/" . $gameSlug . "/player/" . $this->id; 
     }
 
+    public function playerGames24Hours($matchType, $leaderboardHistoryId)
+    {
+        $last24Hours = time() - (24 * 60 * 60);
+
+        return Cache::remember("playerGames24Hours".$this->id.$matchType.$leaderboardHistoryId, 480, function ()
+            use($matchType, $leaderboardHistoryId, $last24Hours)
+        {
+            return Match::whereJsonContains("players", [$this->player_id])
+                ->where("matchtype", $matchType)
+                ->where("leaderboard_history_id", $leaderboardHistoryId)
+                ->where('starttime', '>=', $last24Hours)
+                ->count();
+        });
+    }
+
     public function playerWins()
     {
         $player = Cache::remember("playerWins".$this->id, 480, function ()
@@ -169,6 +184,10 @@ class MatchPlayer extends Model
         // return ["debug" => $queries, "time" => $time];
     }
 
+
+    /**
+     * API Endpoint for generating webview
+     */
     public static function profile($gameSlug, $playerId)
     {
         $matchType = Match::getMatchTypeByGameSlug($gameSlug);

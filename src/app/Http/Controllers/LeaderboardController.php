@@ -120,6 +120,7 @@ class LeaderboardController extends Controller
 
         $playerData = LeaderboardData::findPlayerData($player->id, $leaderboardHistory->id);
         $matches = $player->matches($matchType, $pageNumber, $searchRequest, $leaderboardHistory->id);
+        $gamesLast24Hours = $player->playerGames24Hours($matchType, $leaderboardHistory->id);
 
         return view('pages.remasters.leaderboard.player-detail', 
             [
@@ -132,7 +133,8 @@ class LeaderboardController extends Controller
                 "leaderboardHistory" => $leaderboardHistory,
                 "searchRequest" => $searchRequest,
                 "showWebView" => $showWebView,
-                "webViewUrl" => $webViewUrl
+                "webViewUrl" => $webViewUrl,
+                "gamesLast24Hours" => $gamesLast24Hours
             ]
         );
     }
