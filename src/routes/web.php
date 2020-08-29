@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 
 /*
 |--------------------------------------------------------------------------
@@ -84,7 +85,9 @@ Route::get('/', 'SiteController@index')->name('home')->middleware('cache.headers
 Route::get('/funny', 'SiteController@showFunnyListings')->name('pages.funny.listing')->middleware('cache.headers:public;max_age=14400');
 Route::get('/donate', 'SiteController@showDonate')->name('pages.donate')->middleware('cache.headers:public;max_age=14400');
 
-Route::get('/creators', 'SiteController@showCreatorsListings')->name('pages.creators.listing')->middleware('cache.headers:public;max_age=1800');
+Route::get('/cnc-streamers', 'SiteController@showCreatorsListings')->name('pages.creators.listing')->middleware('cache.headers:public;max_age=1800');
+Route::get('/creators', function() {  return Redirect::to('/cnc-streamers', 301); });
+
 Route::get('/command-and-conquer-remastered', 'SiteController@showRemastersListings')->name('pages.remasters.listing')->middleware('cache.headers:public;max_age=14400');
 
 Route::get('/command-and-conquer-remastered/workshop-mods', 'SiteController@showRemastersWorkshopMods')->name('pages.remasters.workshop.listings')->middleware('cache.headers:public;max_age=14400');

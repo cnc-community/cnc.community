@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Creators')
+@section('title', 'Watch C&C Livestreams')
 @section('page-class', 'creators')
 
 @section('hero-video')
@@ -11,7 +11,7 @@
 @section('hero')
 <div class="content center">
     <h1 class="text-uppercase">
-        Creators
+        Watch C&amp;C Livestreams
     </h1>
     <p class="lead">
         Discover Twitch Streamers who play Command &amp; Conquer
