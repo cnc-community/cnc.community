@@ -163,4 +163,54 @@ class Constants
         }
         return $videos["default"];
     }
+
+    public static function getGameNameFromOnlineAbbreviation($abbreviation)
+    {
+        switch($abbreviation)
+        {
+            case "cncnet5_td":
+                return "Tiberian Dawn";
+            
+            case "cncnet5_ra":
+                return "Red Alert";
+
+            case "cncnet5_ts":
+                return "Tiberian Sun";
+
+            case "cncnet5_yr":
+                return "Yuri's Revenge";
+
+            case "cncnet5_dta":
+                return "Dawn of the Tiberium Age";
+            
+            case "cncnet5_mo":
+                return "Mental Omega";
+            
+            case "cncnet5_ti":
+                return "Twisted Insurrection";
+
+            case "cncnet5_rr":
+                return "YR Red-Resurrection";
+
+            case "cnc3":
+                return "C&C3: Tiberium Wars";
+                        
+            case "cnc3kw":
+                return "C&C3: Kane's Wrath";
+                     
+            case "generals":
+                return "Generals";
+            
+            case "generalszh":
+                return "Generals: Zero Hour";
+               
+            case "ra3":
+                return "Red Alert 3";
+                     
+            case "cncremastered":
+                return "C&C Remastered Collection";
+        }
+
+        return "";
+    }
 }

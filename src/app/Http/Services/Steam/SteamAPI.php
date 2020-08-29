@@ -40,16 +40,16 @@ class SteamAPI extends AbstractSteamAPI
 
     public function getSteamPlayerCount($appId)
     {
-        $response = Http::get(
-            $this->_apiUrl . SteamAPI::PLAYER_COUNT_URL . 
-            '?appid='. $appId . 
-            '&key='. $this->_apiKey
-        );  
-
-        return Cache::remember('getSteamPlayerCount'.$appId, 450, function () use($response) // 1 day cache
+        return Cache::remember('getSteamPlayerCount'.$appId, 450, function () use($appId)
         {
             try
             {
+                $response = Http::get(
+                    $this->_apiUrl . SteamAPI::PLAYER_COUNT_URL . 
+                    '?appid='. $appId . 
+                    '&key='. $this->_apiKey
+                );  
+
                 $playerCount = $response->json()["response"]["player_count"];
                 if ($playerCount)
                 {

@@ -2,6 +2,7 @@
 
 namespace App\Http\Services;
 
+use App\Constants;
 use App\Http\Services\CnCNet\CnCNetAPI;
 use App\Http\Services\CnCOnline\CnCOnlineAPI;
 
@@ -22,7 +23,20 @@ class CNCOnlineCount
     {
         $cncnetCounts = $this->cncnetAPI->getOnlineCount();
         $cnconlineCounts = $this->cnconlineAPI->getOnlineCount();
+        $remasterOnlineCount = ["cncremastered" => $this->steamHelper->getSteamPlayerCount(Constants::remastersAppId())];
 
-        return array_merge($cncnetCounts, $cnconlineCounts);
+        $combined = array_merge($cncnetCounts, $cnconlineCounts, $remasterOnlineCount);
+        $combined["total"] = $this->total($combined);
+        return $combined;
+    }
+
+    private function total($results)
+    {
+        $total = 0;
+        foreach($results as $k => $v)
+        {
+            $total += $v;
+        }
+        return $total;
     }
 }

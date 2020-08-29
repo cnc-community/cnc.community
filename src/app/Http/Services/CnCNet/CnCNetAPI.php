@@ -6,6 +6,7 @@ use App\Constants;
 use Exception;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Log;
 
 class CnCNetAPI
 {
@@ -17,7 +18,7 @@ class CnCNetAPI
 
     public function getOnlineCount()
     {
-        return Cache::remember('CnCNetAPI.getOnlineCount', 600, function ()
+        return Cache::remember('CnCNetAPI.getOnlineCount', 450, function ()
         {
             try 
             {
@@ -27,8 +28,9 @@ class CnCNetAPI
         
                 return $this->buildResponse($response->json());
             }
-            catch(Exception $ex)
+            catch(Exception $exception)
             {
+                Log::error($exception);
                 return [];
             }
         });
@@ -40,7 +42,12 @@ class CnCNetAPI
             "cncnet5_td",
             "cncnet5_ra",
             "cncnet5_ts",
-            "cncnet5_yr"
+            "cncnet5_yr",
+            "cncnet5_mo",
+            "cncnet5_dta",
+            "cncnet5_cncr",
+            "cncnet5_rr",
+            "cncnet5_ti"
         ];
         
         $result = [];

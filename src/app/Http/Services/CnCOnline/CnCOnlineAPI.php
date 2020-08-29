@@ -6,6 +6,7 @@ use App\Constants;
 use Exception;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Log;
 
 class CnCOnlineAPI
 {
@@ -17,7 +18,7 @@ class CnCOnlineAPI
 
     public function getOnlineCount()
     {
-        return Cache::remember('CnCOnlineAPI.getOnlineCount', 600, function ()
+        return Cache::remember('CnCOnlineAPI.getOnlineCount', 450, function ()
         {
             try 
             {
@@ -27,8 +28,9 @@ class CnCOnlineAPI
         
                 return $this->buildResponse($response->json());
             }
-            catch(Exception $ex)
+            catch(Exception $exception)
             {
+                Log::error($exception);
                 return [];
             }
         });
