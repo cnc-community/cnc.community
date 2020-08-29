@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Constants;
 use App\Http\Services\Petroglyph\PetroglyphAPIService;
+use App\Http\Services\SteamHelper;
 use App\Leaderboard;
 use App\LeaderboardData;
 use App\LeaderboardHelper;
@@ -21,10 +22,12 @@ use Illuminate\Support\Facades\DB;
 class LeaderboardController extends Controller
 {
     private $petroglyphAPIService;
+    private $steamHelper;
 
     public function __construct()
     {
         $this->petroglyphAPIService = new PetroglyphAPIService();
+        $this->steamHelper = new SteamHelper();
     }
 
     public function runMatchesTask()
@@ -73,6 +76,7 @@ class LeaderboardController extends Controller
 
         $leaderboardHistory = Leaderboard::getHistoryByDateAndMatchType($date, $matchType);
         $stats = Leaderboard::stats($matchType, $leaderboardHistory->id);
+        $stats["steamInGameCount"] = $this->steamHelper->getSteamPlayerCount(Constants::remastersAppId());
 
         return view('pages.remasters.leaderboard.detail', 
             [
