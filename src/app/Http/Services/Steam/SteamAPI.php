@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Log;
 class SteamAPI extends AbstractSteamAPI
 {
     public const WORKSHOP_ITEMS_URL = "IPublishedFileService/QueryFiles/v1/";
+    public const PLAYER_COUNT_URL = "ISteamUserStats/GetNumberOfCurrentPlayers/v1/";
 
     private $_apiUrl = "https://api.steampowered.com/";
     private $_apiKey;
@@ -35,6 +36,32 @@ class SteamAPI extends AbstractSteamAPI
             $workShopItems[] = new SteamWorkShopItem($v);
         }
         return $workShopItems;
+    }
+
+    public function getSteamPlayerCount($appId)
+    {
+        $response = Http::get(
+            $this->_apiUrl . SteamAPI::PLAYER_COUNT_URL . 
+            '?appid='. $appId . 
+            '&key='. $this->_apiKey
+        );  
+
+        return Cache::remember('getSteamPlayerCount'.$appId, 450, function () use($response) // 1 day cache
+        {
+            try
+            {
+                $playerCount = $response->json()["response"]["player_count"];
+                if ($playerCount)
+                {
+                    return $playerCount;
+                }
+            }
+            catch(Exception $exception)
+            {
+                Log::error($exception);
+                return -1;
+            }
+        });
     }
 
     public function getWorkshopItemsByAppId($appId)
@@ -61,22 +88,21 @@ class SteamAPI extends AbstractSteamAPI
             $tagQuery .= "&requiredtags[".$k."]=". $tag;
         }
         
-        $response = Http::get(
-            $this->_apiUrl . SteamAPI::WORKSHOP_ITEMS_URL . 
-            '?appid='. $appId . 
-            '&key='. $this->_apiKey .
-            $tagQuery.
-            '&match_all_tags=false' .
-            '&numperpage='.$limit .
-            '&return_details=true' .
-            '&query_type='. SteamAPI::RankedByTotalUniqueSubscriptions() .
-            '&strip_description_bbcode=true'
-        );
-        return $this->buildResponse($response->json()["response"]);
-
         return Cache::remember('getTopWorkShopItemsByTagNames'.$cacheKey.$appId.$tagQuery.$limit, 43200, 
         function () use($appId, $tagQuery, $limit) // 1/2 day cache
         {
+            $response = Http::get(
+                $this->_apiUrl . SteamAPI::WORKSHOP_ITEMS_URL . 
+                '?appid='. $appId . 
+                '&key='. $this->_apiKey .
+                $tagQuery.
+                '&match_all_tags=false' .
+                '&numperpage='.$limit .
+                '&return_details=true' .
+                '&query_type='. SteamAPI::RankedByTotalUniqueSubscriptions() .
+                '&strip_description_bbcode=true'
+            );
+            return $this->buildResponse($response->json()["response"]);
         });
     }
 

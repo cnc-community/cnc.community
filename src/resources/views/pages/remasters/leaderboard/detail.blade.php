@@ -55,6 +55,14 @@
                     <div class="statistics-list">
                         <div class="statistic-detail">
                             <div class="value text-uppercase">
+                                <strong>{{ $stats["steamInGameCount"]}}</strong>
+                            </div>              
+                            <div class="title text-uppercase">
+                                Players In-Game <br/><span>(Steam only TD + RA)</span>
+                            </div>      
+                        </div>
+                        <div class="statistic-detail">
+                            <div class="value text-uppercase">
                                 <strong>{{ $stats["matchesPlayedLast24hours"]}}</strong>
                             </div>              
                             <div class="title text-uppercase">

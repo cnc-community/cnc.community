@@ -15,4 +15,9 @@ abstract class AbstractSteamAPI
     {
         $this->_parser->getWorkshopItemsByGameId($appId);
     }
+
+    public function getSteamPlayerCount($appId)
+    {
+        return $this->_parser->getSteamPlayerCount($appId);
+    }
 }
