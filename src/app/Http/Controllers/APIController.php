@@ -94,8 +94,23 @@ class APIController extends Controller
 
     public function getPlayerRankWebView(Request $request, $gameSlug, $playerId)
     {
+        $matchType = Match::getMatchTypeByGameSlug($gameSlug);
+        $date = LeaderboardHelper::getCarbonDateFromQueryString($request->season);
+        $leaderboardHistory = Leaderboard::getHistoryByDateAndMatchType($date, $matchType);
+        if ($leaderboardHistory == null)
+        {
+            return view('api.error', ["message" => ""]);
+        }   
+
         $profile = MatchPlayer::profile($gameSlug, $playerId);
+        if ($profile == null)
+        {
+            return view('api.error', ["message" => ""]);
+        }
+
+        $gamesLast24Hours = $profile->player()->playerGames24Hours($matchType, $leaderboardHistory->id);
         $badge = LeaderboardHelper::getBadgeByRank($profile->rank);
+
         $inputColor = APILeaderboardProfile::validateColorRequest($request);
         $inputSize = APILeaderboardProfile::validateSizeRequest($request);
         $inputLayout = APILeaderboardProfile::validateLayoutRequest($request);
@@ -107,6 +122,7 @@ class APIController extends Controller
             [
                 "profile" => $profile,
                 "badge" => $badge,
+                "gamesLast24Hours" => $gamesLast24Hours,
                 "properties" => $validatedProps,
                 "inputColor" => $inputColor,
                 "inputLayout" => $inputLayout,
@@ -119,13 +135,21 @@ class APIController extends Controller
 
     public function configRankWebView(Request $request, $gameSlug, $playerId)
     {
-        $profile = MatchPlayer::profile($gameSlug, $playerId);
+        $matchType = Match::getMatchTypeByGameSlug($gameSlug);
+        $date = LeaderboardHelper::getCarbonDateFromQueryString($request->season);
+        $leaderboardHistory = Leaderboard::getHistoryByDateAndMatchType($date, $matchType);
+        if ($leaderboardHistory == null)
+        {
+            return view('api.error', ["message" => ""]);
+        }   
 
+        $profile = MatchPlayer::profile($gameSlug, $playerId);
         if ($profile == null)
         {
-            $message = "Sorry we couldn't find your profile";
-            return view('api.error', ["message" => $message]);
+            return view('api.error', ["message" => ""]);
         }
+
+        $gamesLast24Hours = $profile->player()->playerGames24Hours($matchType, $leaderboardHistory->id);
 
         $badge = LeaderboardHelper::getBadgeByRank($profile->rank);
         $inputColor = APILeaderboardProfile::validateColorRequest($request);
@@ -134,18 +158,13 @@ class APIController extends Controller
         $inputBorder = APILeaderboardProfile::validateBorderRequest($request);
         $inputBranding = APILeaderboardProfile::validateBrandingRequest($request);
         $validatedProps = APILeaderboardProfile::buildProfile($request);
-
-        $parts = parse_url(url()->full());
-        $generatedUrl = "";
-        if (isset($parts["query"]))
-        {
-            $generatedUrl = url("/api/leaderboard/". $gameSlug . "/player/". $playerId ."/webview?".$parts["query"]);
-        }
+        $generatedUrl = APILeaderboardProfile::buildProfileWebViewUrl($gameSlug, $playerId);
 
         return view('api.leaderboard.player.config', 
             [
                 "profile" => $profile,
                 "badge" => $badge,
+                "gamesLast24Hours" => $gamesLast24Hours,
                 "properties" => $validatedProps,
                 "inputColor" => $inputColor,
                 "inputLayout" => $inputLayout,

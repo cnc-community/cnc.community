@@ -76,19 +76,44 @@
 
 
 // Sizes
-.page-player-webview .player-stats--size-lg
+.page-player-webview .player-stats--size-md
 {
     font-size: 1.2rem;
+
+    & .player-name 
+    {
+        font-size: 1.5rem;
+    }
+}
+
+.page-player-webview .player-stats--size-lg
+{
+    font-size: 1.5rem;
+
+    & .player-name 
+    {
+        font-size: 2.2rem;
+    }
 }
 
 .page-player-webview .player-stats--size-xl
 {
-    font-size: 1.5rem;
+    font-size: 2.2rem;
+    
+    & .player-name 
+    {
+        font-size: 2.8rem;
+    }
 }
 
 .page-player-webview .player-stats--size-xxl
 {
-    font-size: 1.7rem;
+    font-size: 2.8rem;
+
+    & .player-name 
+    {
+        font-size: 3.2rem;
+    }
 }
 
 // Colours
@@ -128,3 +153,8 @@
     border-color:#ff0000;
 }
 
+.page-player-webview .player-stats--color-white 
+{
+    color: #ffffff;
+    border-color:#ffffff;
+}

@@ -10,6 +10,17 @@ use Illuminate\Support\Facades\Storage;
 
 class APILeaderboardProfile
 {
+    public static function buildProfileWebViewUrl($gameSlug, $playerId)
+    {
+        $parts = parse_url(url()->full());
+        $generatedUrl = "";
+        if (isset($parts["query"]))
+        {
+            $generatedUrl = url("/api/leaderboard/". $gameSlug . "/player/". $playerId ."/webview?".$parts["query"]);
+        }
+        return $generatedUrl;
+    }
+
     public static function buildProfile(Request $request)
     {
         $validatedProps = [
@@ -19,7 +30,8 @@ class APILeaderboardProfile
             "lost",
             "points",
             "played",
-            "name"
+            "name",
+            "playedLast24Hours",
         ];
 
         if ($request->properties == null)
@@ -64,6 +76,9 @@ class APILeaderboardProfile
             case "purple":
                 $color = "purple";
                 break;
+            case "white":
+                $color = "white";
+                break;
             default: "";
         }
         return $color;
@@ -96,6 +111,9 @@ class APILeaderboardProfile
         $size = "";
         switch($request->size)
         {
+            case "md":
+                $size = "md";
+                break;
             case "lg":
                 $size = "lg";
                 break;

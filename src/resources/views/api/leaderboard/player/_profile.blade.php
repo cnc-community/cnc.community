@@ -13,12 +13,13 @@
     </div>
     <?php endif; ?>
 
-    <?php if (in_array("name", $properties)):?><div><h3>{{ $profile->name }}</h3></div><?php endif; ?>
+    <?php if (in_array("name", $properties)):?><div><h3 class="player-name">{{ $profile->name }}</h3></div><?php endif; ?>
     <?php if (in_array("rank", $properties)):?><div>Rank: #<span>{{ $profile->rank }}</span></div><?php endif; ?>
     <?php if (in_array("wins", $properties)):?><div>Wins: <span>{{ $profile->wins }}</span></div><?php endif; ?>
     <?php if (in_array("lost", $properties)):?><div>Lost: <span>{{ $profile->losses }}</span></div><?php endif; ?>
     <?php if (in_array("points", $properties)):?><div>Points: <span>{{ round($profile->points) }}</span></div><?php endif; ?>
-    <?php if (in_array("games", $properties)):?><div>Games: <span>{{ $gamesPlayed }}</span></div><?php endif; ?>
+    <?php if (in_array("played", $properties)):?><div>Played: <span>{{ $gamesPlayed }}</span></div><?php endif; ?>
+    <?php if (in_array("playedLast24Hours", $properties)):?><div>Played (Last 24 hrs): <span>{{ $gamesLast24Hours }}</span></div><?php endif; ?>
 
     <?php if ($inputBranding == "show-branding"): ?>
     <div class="branding">

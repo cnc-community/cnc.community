@@ -32,6 +32,7 @@
                     <option value="purple" {{ $inputColor == "purple" ? "selected": ""}}>Purple</option>
                     <option value="pink" {{ $inputColor == "pink" ? "selected": ""}}>Pink</option>
                     <option value="teal" {{ $inputColor == "teal" ? "selected": ""}}>Teal</option>
+                    <option value="white" {{ $inputColor == "white" ? "selected": ""}}>White</option>
                 </select>
             </div>
 
@@ -47,6 +48,7 @@
                 <label for="size">Size</label>
                 <select id="size" class="form-control" name="size" onchange="this.form.submit()">
                     <option value="default" {{ $inputSize == "default" ? "selected": ""}}>Default</option>
+                    <option value="md" {{ $inputSize == "md" ? "selected": ""}}>Medium</option>
                     <option value="lg" {{ $inputSize == "lg" ? "selected": ""}}>Large</option>
                     <option value="xl" {{ $inputSize == "xl" ? "selected": ""}}>XL</option>
                     <option value="xxl" {{ $inputSize == "xxl" ? "selected": ""}}>XXL</option>
@@ -64,13 +66,14 @@
             <div class="form-group">
                 <label for="color">Properties <small>Shift click to select multiple</small></label>
                 <select id="color" class="form-control" name="properties[]" multiple onchange="this.form.submit()">
-                <option value="name" <?php if (in_array("name", $properties)):?>selected<?php endif;?>>Name</option>
-                <option value="badge" <?php if (in_array("badge", $properties)):?>selected<?php endif;?>>Badge</option>
-                <option value="rank" <?php if (in_array("rank", $properties)):?>selected<?php endif;?>>Rank</option>
-                <option value="wins" <?php if (in_array("wins", $properties)):?>selected<?php endif;?>>Wins</option>
-                <option value="lost" <?php if (in_array("lost", $properties)):?>selected<?php endif;?>>Lost</option>
-                <option value="points" <?php if (in_array("points", $properties)):?>selected<?php endif;?>>Points</option>
-                <option value="played" <?php if (in_array("played", $properties)):?>selected<?php endif;?>>Played</option>
+                    <option value="name" <?php if (in_array("name", $properties)):?>selected<?php endif;?>>Name</option>
+                    <option value="badge" <?php if (in_array("badge", $properties)):?>selected<?php endif;?>>Badge</option>
+                    <option value="rank" <?php if (in_array("rank", $properties)):?>selected<?php endif;?>>Rank</option>
+                    <option value="wins" <?php if (in_array("wins", $properties)):?>selected<?php endif;?>>Wins</option>
+                    <option value="lost" <?php if (in_array("lost", $properties)):?>selected<?php endif;?>>Lost</option>
+                    <option value="points" <?php if (in_array("points", $properties)):?>selected<?php endif;?>>Points</option>
+                    <option value="played" <?php if (in_array("played", $properties)):?>selected<?php endif;?>>Played</option>
+                    <option value="playedLast24Hours" <?php if (in_array("playedLast24Hours", $properties)):?>selected<?php endif;?>>Played (Last 24hrs)</option>
                 </select>
             </div>
         </div>
