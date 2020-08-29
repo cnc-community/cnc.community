@@ -84,6 +84,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin']], function ()
 Route::get('/', 'SiteController@index')->name('home')->middleware('cache.headers:public;max_age=14400');
 Route::get('/funny', 'SiteController@showFunnyListings')->name('pages.funny.listing')->middleware('cache.headers:public;max_age=14400');
 Route::get('/donate', 'SiteController@showDonate')->name('pages.donate')->middleware('cache.headers:public;max_age=14400');
+Route::get('/stats', 'SiteController@showStats')->name('pages.stats')->middleware('cache.headers:public;max_age=400');
 
 Route::get('/cnc-streamers', 'SiteController@showCreatorsListings')->name('pages.creators.listing')->middleware('cache.headers:public;max_age=1800');
 Route::get('/creators', function() {  return Redirect::to('/cnc-streamers', 301); });

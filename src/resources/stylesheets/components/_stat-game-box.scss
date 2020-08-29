@@ -1,0 +1,112 @@
+.stat-game-box 
+{
+    background: #212121;
+    padding: 25px;
+    width: 100%;
+    margin-bottom: 15px;
+    margin-right: 15px;
+    flex-grow: 1;
+    transition: ease-in background 250ms;
+
+    &:hover {
+        background: #000;
+    }
+    
+    @media(min-width: $lg-width)
+    {
+        width: 22%;
+    }
+}
+
+.stat-game-box-logo 
+{
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    & img { 
+        width: 200px;
+        max-width: 100%;
+    }
+}
+
+.stat-game-box .buttons 
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.stat-game-box .stat-game-online-count
+{
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+.stat-game-box .stat-game-online-count strong 
+{
+    font-size: 1.5rem;
+}
+
+.stat-game-box .stat-game-online-count small 
+{
+    font-size: 0.95rem;
+    color: #797979;
+}
+
+.stat-game-box
+{
+    order: 20;
+}
+
+// 
+// Ordering 
+.stat-game--image-cncnet5_td
+{
+    order: 0;
+}
+.stat-game--image-cncnet5_ra
+{
+    order: 1;
+}
+.stat-game--image-cncnet5_ts
+{
+    order: 2;
+}
+.stat-game--image-cncnet5_yr
+{
+    order: 3;
+}
+.stat-game--image-renegade
+{
+    order: 3;
+}
+.stat-game--image-cncnet5_rg
+{
+    order: 4;
+}
+.stat-game--image-generals
+{
+    order: 5;
+}
+.stat-game--image-generalszh
+{
+    order: 6;
+}
+.stat-game--image-cnc3
+{
+    order: 8;
+}
+.stat-game--image-cnc3kw
+{
+    order: 9;
+}
+.stat-game--image-ra3
+{
+    order: 9;
+}
+.stat-game--image-cncremastered
+{
+    order: -1;
+}

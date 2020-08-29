@@ -164,53 +164,143 @@ class Constants
         return $videos["default"];
     }
 
-    public static function getGameNameFromOnlineAbbreviation($abbreviation)
+    public static function getGameFromOnlineAbbreviation($abbreviation)
     {
         switch($abbreviation)
         {
             case "cncnet5_td":
-                return "Tiberian Dawn";
+                return [
+                    "url" => "tiberian-dawn",
+                    "logo" => ViewHelper::getGameLogoPathByName("tiberian-dawn"),
+                    "external_link" => false,
+                    "name" => "Tiberian Dawn"
+                ];
             
             case "cncnet5_ra":
-                return "Red Alert";
+                return [
+                    "url" => "red-alert",
+                    "logo" => ViewHelper::getGameLogoPathByName("red-alert"),
+                    "external_link" => false,
+                    "name" => "Red Alert"
+                ];
 
             case "cncnet5_ts":
-                return "Tiberian Sun";
+                return [
+                    "url" => "tiberian-sun",
+                    "logo" => ViewHelper::getGameLogoPathByName("tiberian-sun"),
+                    "external_link" => false,
+                    "name" => "Tiberian Sun"
+                ];
 
             case "cncnet5_yr":
-                return "Yuri's Revenge";
+                return [
+                    "url" => "red-alert-2",
+                    "logo" => ViewHelper::getGameLogoPathByName("yuris-revenge"),
+                    "external_link" => false,
+                    "name" => "Yuri's Revenge"
+                ];
 
             case "cncnet5_dta":
-                return "Dawn of the Tiberium Age";
+                return [
+                    "url" => "https://cncnet.org/dawn-of-the-tiberium-age",
+                    "logo" => ViewHelper::getGameLogoPathByName("dawn-of-the-tiberium-age"),
+                    "external_link" => true,
+                    "name" => "Dawn of the Tiberium Age"
+                ];
             
             case "cncnet5_mo":
-                return "Mental Omega";
+                return [
+                    "url" => "https://cncnet.org/mental-omega",
+                    "logo" => ViewHelper::getGameLogoPathByName("mental-omega"),
+                    "external_link" => true,
+                    "name" => "Mental Omega"
+                ];
             
             case "cncnet5_ti":
-                return "Twisted Insurrection";
+                return [
+                    "url" => "https://cncnet.org/twisted-insurrection",
+                    "logo" => ViewHelper::getGameLogoPathByName("twisted-insurrection"),
+                    "external_link" => true,
+                    "name" => "Twisted Insurrection"
+                ];
 
             case "cncnet5_rr":
-                return "YR Red-Resurrection";
+                return [
+                    "url" => "https://cncnet.org/red-resurrection",
+                    "logo" => ViewHelper::getGameLogoPathByName("yr-red-resurrection"),
+                    "external_link" => true,
+                    "name" => "YR Red-Resurrection"
+                ];
+            
+            case "cncnet5_cncr":
+                return [
+                    "url" => "https://www.moddb.com/mods/cncreloaded",
+                    "logo" => ViewHelper::getGameLogoPathByName("cncreloaded"),
+                    "external_link" => true,
+                    "name" => "C&C: Reloaded"
+                ];
 
             case "cnc3":
-                return "C&C3: Tiberium Wars";
+                return [
+                    "url" => "command-and-conquer-3",
+                    "logo" => ViewHelper::getGameLogoPathByName("command-and-conquer-3"),
+                    "external_link" => false,
+                    "name" => "C&C3: Tiberium Wars"
+                ];
+                      
+            case "renegade":
+                return [
+                    "url" => "renegade",
+                    "logo" => ViewHelper::getGameLogoPathByName("renegade"),
+                    "external_link" => false,
+                    "name" => "Renegade"
+                ];
                         
             case "cnc3kw":
-                return "C&C3: Kane's Wrath";
+                return [
+                    "url" => "command-and-conquer-3/how-to-play",
+                    "logo" => ViewHelper::getGameLogoPathByName("command-and-conquer-3-kanes-wrath"),
+                    "external_link" => false,
+                    "name" => "C&C3: Kane's Wrath"
+                ];
                      
             case "generals":
-                return "Generals";
+                return [
+                    "url" => "generals",
+                    "logo" => ViewHelper::getGameLogoPathByName("generals"),
+                    "external_link" => false,
+                    "name" => "Generals"
+                ];
             
             case "generalszh":
-                return "Generals: Zero Hour";
+                return [
+                    "url" => "generals/how-to-play",
+                    "logo" => ViewHelper::getGameLogoPathByName("generals-zero-hour"),
+                    "external_link" => false,
+                    "name" => "Generals: Zero Hour"
+                ];
                
             case "ra3":
-                return "Red Alert 3";
+                return [
+                    "url" => "red-alert-3",
+                    "logo" => ViewHelper::getGameLogoPathByName("red-alert-3"),
+                    "external_link" => false,
+                    "name" => "Red Alert 3"
+                ];
                      
             case "cncremastered":
-                return "C&C Remastered Collection";
+                return [
+                    "url" => "command-and-conquer-remastered",
+                    "logo" => ViewHelper::getGameLogoPathByName("cnc-remastered"),
+                    "external_link" => false,
+                    "name" => "C&C Remastered Collection"
+                ];
         }
 
-        return "";
+        return [
+            "url" => "",
+            "external_link" => false,
+            "name" => ""
+        ];
     }
 }

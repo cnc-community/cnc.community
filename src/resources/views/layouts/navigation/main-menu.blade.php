@@ -51,7 +51,7 @@
     </div>
 
     <div class="nav-item">
-        <a href="/cnc-streamers" title="Watch C&C Livestreams" class="nav-link nav-creators-count">Watch <span class="notification">0</span></a>
+        <a href="/cnc-streamers" title="Watch C&C Livestreams" class="nav-link nav-creators-count">Watch <span class="notification">LIVE</span></a>
     </div>
 
     <div class="nav-item nav-item-dropdown">
@@ -81,6 +81,10 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <div class="nav-item">
+        <a href="/stats" title="C&C Online Stats" class="nav-link">Online <span class="notification pop-in">{{ $onlineCounts["total"] }} </span></a>
     </div>
 
     <div class="nav-item nav-item-hide-on-small">

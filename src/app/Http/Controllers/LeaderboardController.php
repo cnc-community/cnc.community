@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Constants;
+use App\Http\Services\CNCOnlineCount;
 use App\Http\Services\Petroglyph\PetroglyphAPIService;
 use App\Http\Services\SteamHelper;
 use App\Leaderboard;
@@ -18,6 +19,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\View;
 
 class LeaderboardController extends Controller
 {
@@ -28,6 +30,8 @@ class LeaderboardController extends Controller
     {
         $this->petroglyphAPIService = new PetroglyphAPIService();
         $this->steamHelper = new SteamHelper();
+        $this->cncOnlineCount = new CNCOnlineCount();
+        View::share('onlineCounts', $this->cncOnlineCount->getGameCounts());
     }
 
     public function runMatchesTask()

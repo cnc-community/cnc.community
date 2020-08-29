@@ -45,7 +45,6 @@ class CnCNetAPI
             "cncnet5_yr",
             "cncnet5_mo",
             "cncnet5_dta",
-            "cncnet5_cncr",
             "cncnet5_rr",
             "cncnet5_ti"
         ];
@@ -60,6 +59,7 @@ class CnCNetAPI
             }
         }
         
+        $result["renegade"] = 0;
         return $result;
     }
 }

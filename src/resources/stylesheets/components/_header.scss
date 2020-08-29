@@ -67,6 +67,7 @@
  .site-header .notification 
 {
     @extend %notification-balloon;
+    z-index: 10;
 }
 
 %notification-balloon 
@@ -115,7 +116,7 @@
 
 .site-header .main-content
 {
-    width: 90vw;
+    width: 92vw;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -303,7 +304,7 @@
     display: none;
 }
 
-@media(min-width: $xl-width) and (max-width: $xxl-width)
+@media(min-width: $xl-width) and (max-width: $xxxl-width)
 {
     .navbar-items .nav-item.nav-item-show-more-menu
     {
@@ -311,7 +312,7 @@
     }
 }
 
-@media(min-width: $xxl-width)
+@media(min-width: $xxxl-width)
 {
     .site-header .main-navigation .nav-item-hide-on-small,
     .site-header .main-navigation .nav-item-hide-on-small.social-links
