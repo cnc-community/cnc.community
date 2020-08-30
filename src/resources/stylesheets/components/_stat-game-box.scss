@@ -55,7 +55,14 @@
     color: #797979;
 }
 
-.stat-game-box
+.stat-game--image-cncnet5_mo img,
+.stat-game--image-cncnet5_rr img,
+.stat-game--image-openra_ra img,
+.stat-game--image-openra_cnc img,
+.stat-game--image-cncnet5_dta img,
+.stat-game--image-ia img,
+.stat-game--image-ra3 img,
+.stat-game--image-cncnet5_ti img
 {
-    order: 20;
+    width: 250px;
 }

@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
-@section('title', 'Supporting the C&C Community team and website')
-@section('description', 'All donations regardless of size are greatly appreciated in keeping the costs down on our website.')
-@section('page-class', 'donate')
+@section('title', 'C&C Games Statistics')
+@section('description', 'Find all the official C&C Online and C&C Community online game statistics')
+@section('page-class', 'game-stats')
 
 
 @section('hero-video')
@@ -16,7 +16,7 @@
         C&amp;C Games Statistics
     </h1>
     <p class="lead">
-        <strong>{{ $onlineCounts["total"] }}</strong> players online C&amp;C Games &amp; mods
+        <strong><span class="js-total-online"></span></strong> players online C&amp;C Games &amp; mods
     </p>
 </div>
 @endsection
@@ -24,64 +24,58 @@
 @section('content')
 <section class="section how-to-play-steps">
     <div class="main-content">
-        <h3>C&amp;C Titles Players Online</h3>
+        <h3>Official C&amp;C Titles - Players Online</h3>
         <div class="items-wrap">
-            <?php foreach($onlineCounts["games"] as $abrev => $onlineCount) :?>
-                <?php if($abrev == "total") continue; ?>
-                
-                <?php $game = App\Constants::getGameFromOnlineAbbreviation($abrev); ?>
-
-                <?php new App\Http\CustomView\Components\OnlineBox(
-                    $title = $game["name"], 
-                    $url = $game["url"], 
-                    $logo = $game["logo"], 
-                    $externalLink = $game["external_link"], 
-                    $gameAbrev = $abrev, 
-                    $onlineCount = $onlineCount
-                ); ?>
-
+            <?php foreach($games as $game) :?>
+                <?php $gameByAbbreviation = App\Constants::getGameFromOnlineAbbreviation($game->getAbbreviation()); ?>
+                <?php 
+                    new App\Http\CustomView\Components\OnlineBox(
+                        $title = $gameByAbbreviation["name"], 
+                        $url = $gameByAbbreviation["url"], 
+                        $logo = $gameByAbbreviation["logo"], 
+                        $externalLink = $gameByAbbreviation["external_link"], 
+                        $gameAbrev = $game->getAbbreviation(), 
+                        $onlineCount = $game->getOnlineCount()
+                    ); 
+                ?>
             <?php endforeach; ?>
         </div>
     </div>
 
     <div class="main-content">
-        <h3>C&amp;C Mods Players Online</h3>
+        <h3>C&amp;C Mods - Players Online</h3>
         <div class="items-wrap">
-            <?php foreach($onlineCounts["mods"] as $abrev => $onlineCount) :?>
-                <?php if($abrev == "total") continue; ?>
-                
-                <?php $game = App\Constants::getGameFromOnlineAbbreviation($abrev); ?>
-
-                <?php new App\Http\CustomView\Components\OnlineBox(
-                    $title = $game["name"], 
-                    $url = $game["url"], 
-                    $logo = $game["logo"], 
-                    $externalLink = $game["external_link"], 
-                    $gameAbrev = $abrev, 
-                    $onlineCount = $onlineCount
-                ); ?>
-
+            <?php foreach($mods as $game) :?>
+                <?php $gameByAbbreviation = App\Constants::getGameFromOnlineAbbreviation($game->getAbbreviation()); ?>
+                <?php 
+                    new App\Http\CustomView\Components\OnlineBox(
+                        $title = $gameByAbbreviation["name"], 
+                        $url = $gameByAbbreviation["url"], 
+                        $logo = $gameByAbbreviation["logo"], 
+                        $externalLink = $gameByAbbreviation["external_link"], 
+                        $gameAbrev = $game->getAbbreviation(), 
+                        $onlineCount = $game->getOnlineCount()
+                    ); 
+                ?>
             <?php endforeach; ?>
         </div>
     </div>
 
     <div class="main-content">
-        <h3>C&amp;C Standalones Players Online</h3>
+        <h3>C&amp;C Community Games - Players Online</h3>
         <div class="items-wrap">
-            <?php foreach($onlineCounts["standalone"] as $abrev => $onlineCount) :?>
-                <?php if($abrev == "total") continue; ?>
-                
-                <?php $game = App\Constants::getGameFromOnlineAbbreviation($abrev); ?>
-
-                <?php new App\Http\CustomView\Components\OnlineBox(
-                    $title = $game["name"], 
-                    $url = $game["url"], 
-                    $logo = $game["logo"], 
-                    $externalLink = $game["external_link"], 
-                    $gameAbrev = $abrev, 
-                    $onlineCount = $onlineCount
-                ); ?>
-
+            <?php foreach($standalone as $game) :?>
+                <?php $gameByAbbreviation = App\Constants::getGameFromOnlineAbbreviation($game->getAbbreviation()); ?>
+                <?php 
+                    new App\Http\CustomView\Components\OnlineBox(
+                        $title = $gameByAbbreviation["name"], 
+                        $url = $gameByAbbreviation["url"], 
+                        $logo = $gameByAbbreviation["logo"], 
+                        $externalLink = $gameByAbbreviation["external_link"], 
+                        $gameAbrev = $game->getAbbreviation(), 
+                        $onlineCount = $game->getOnlineCount()
+                    ); 
+                ?>
             <?php endforeach; ?>
         </div>
     </div>

@@ -14,7 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get("/error", "APIController@showError");
+Route::get('/error', 'APIController@showError');
+
+Route::get('/game-count/total', 'APIController@onlineCount')->middleware('cache.headers:public;max_age=480');
 
 Route::get('/twitch/streams/count', 'APIController@streamCount')->middleware('cache.headers:public;max_age=900');
 Route::get('/twitch/streams/total-count', 'APIController@totalStreamCount')->middleware('cache.headers:public;max_age=900');

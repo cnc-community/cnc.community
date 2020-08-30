@@ -59,7 +59,7 @@ class CNCOnlineCount
 
     public function getTotal()
     {
-        return Cache::remember('CNCOnlineCount.getOnlingetTotaleCount', 450, function ()
+        return Cache::remember('CNCOnlineCount.getTotalPlayersOnline', 450, function ()
         {
             return GameStat::getTotalPlayersOnline();
         });
@@ -70,82 +70,63 @@ class CNCOnlineCount
         $newResults = [
             "games" => [],
             "mods" => [],
-            "standalone" => []
+            "communityGames" => []
         ];
 
         $modsFilter = [
-            "apb",
-            "ia",
-            "cncnet5_dta",
-            "cncnet5_ti",
-            "cncnet5_mo",
-            "cncnet5_rr",
+            "cncnet5_mo" => 1,
+            "cncnet5_rr" => 2,
         ];
 
-        $standaloneFilter = [
-            "renegadex",
-            "openra_ra",
-            "openra_cnc"
+        $communityGamesFilter = [
+            "apb" => 1,
+            "ia" => 2,
+            "cncnet5_dta" => 3,
+            "cncnet5_ti" => 4,
+            "renegadex" => 5,
+            "openra_ra" => 6,
+            "openra_cnc" => 7,
         ];
 
+        // Abbreviation + order
         $gamesFilter = [
             // "cncremastered",
-            "cncnet5_td",
-            "cncnet5_ra",
-            "cncnet5_ts",
-            "cncnet5_yr",
-            "ren",
-            "generals",
-            "generalszh",
-            "cnc3",
-            "cnc3kw",
-            "ra3",
+            "cncnet5_td" => 1,
+            "cncnet5_ra" => 2,
+            "cncnet5_ts" => 3,
+            "cncnet5_yr" => 4,
+            "ren" => 5,
+            "generals" => 6,
+            "generalszh" => 7,
+            "cnc3" => 8,
+            "cnc3kw" => 9,
+            "ra3" => 10,
         ];
 
         // Collect results into correct groups
         foreach($results as $game => $count)
         {
-            if (in_array($game, $gamesFilter))
+            if (array_key_exists($game, $gamesFilter))
             {
                 $newResults["games"][$game] = $count;
+                $order = $gamesFilter[$game];
+                GameStat::createOrUpdateStat($game, $count, GameStat::TYPE_GAME, $order);
             }
-            if (in_array($game, $modsFilter))
+
+            if (array_key_exists($game, $modsFilter))
             {
                 $newResults["mods"][$game] = $count;
+                $order = $modsFilter[$game];
+                GameStat::createOrUpdateStat($game, $count, GameStat::TYPE_MOD, $order);
             }
-            if (in_array($game, $standaloneFilter))
+
+            if (array_key_exists($game, $communityGamesFilter))
             {
-                $newResults["standalone"][$game] = $count;
+                $newResults["communityGames"][$game] = $count;
+                $order = $communityGamesFilter[$game];
+                GameStat::createOrUpdateStat($game, $count, GameStat::TYPE_STANDALONE, $order);
             }
         }
-
-        // Order based on array filter keys
-        $orderedResults = [];
-        $orderedResults["games"] = $this->sortByArrayFilter($newResults["games"], $gamesFilter);
-        $orderedResults["mods"] = $this->sortByArrayFilter($newResults["mods"], $modsFilter);
-        $orderedResults["standalone"] = $this->sortByArrayFilter($newResults["standalone"], $standaloneFilter);
-
-        // Save order we want in db
-        foreach($orderedResults as $type => $result)
-        {
-            $order = 0;
-
-            foreach($result as $gameAbbrev => $count)
-            {
-                $order++;
-                GameStat::createOrUpdateStat($gameAbbrev, $count, $type, $order);
-            }
-        }
-    }
-
-    private function sortByArrayFilter($resultsArr, $filterArr)
-    {
-        // Otherwise we get keys as values
-        if (count($resultsArr) > 0)
-        {
-            return array_merge(array_flip($filterArr), $resultsArr);
-        }
-        return [];
     }
 
     private function total($results)

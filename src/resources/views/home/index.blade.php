@@ -18,16 +18,6 @@
 @endsection
 
 @section('content')
-<div class="online-count">
-    <div>
-        <p>
-            <a href="">
-                <strong>{{ $onlineTotal }}</strong> Players playing C&amp;C Games
-            </a>
-        </p>
-    </div>
-</div>
-
 <section id="games" class="how-to-guides">
     <div class="main-content">
         <h2 class="section-title">Discover <br class="hide-for-xs"/>Command &amp; Conquer</h2>

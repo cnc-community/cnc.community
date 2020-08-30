@@ -1,6 +1,6 @@
-import { IWebRequest } from "../WebRequest/IWebRequest";
-import { WebRequestHandler } from "../WebRequest/WebRequestHandler";
 import { ITwitchStreamAPI } from "./ITwitchStreamAPI";
+import { IWebRequest } from "../../../cnccommunity/WebRequest/IWebRequest";
+import { WebRequestHandler } from "../../../cnccommunity/WebRequest/WebRequestHandler";
 
 export class GetVideoByGameId implements ITwitchStreamAPI
 {

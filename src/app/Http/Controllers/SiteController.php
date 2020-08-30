@@ -6,18 +6,15 @@ use App\Category;
 use App\News;
 use App\Page;
 use App\Constants;
-use App\Http\Services\CNCOnlineCount;
 use App\Http\Services\SteamHelper;
 use App\Http\Services\TwitchHelper;
 use App\PageCategory;
 use App\ViewHelper;
 use Symfony\Component\HttpFoundation\Request;
 use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\View;
 
 class SiteController extends Controller
 {
-    private $cncOnlineCount;
     private $twitchHelper;
     /**
      * Create a new controller instance.
@@ -29,9 +26,6 @@ class SiteController extends Controller
     {
         $this->twitchHelper = new TwitchHelper();
         $this->steamHelper = new SteamHelper();
-        $this->cncOnlineCount = new CNCOnlineCount();
-        
-        View::share('totalOnline', $this->cncOnlineCount->getTotal());
     }
 
     /**
@@ -49,13 +43,11 @@ class SiteController extends Controller
         });
 
         $workShopItems = $this->steamHelper->getTopWorkShopItems(Constants::remastersAppId(), 8);
-        $onlineCounts =  $this->cncOnlineCount->getGameCounts();
 
         return view('home.index', 
             [
                 "officialNews" => $officialNewsCache,
-                "workShopItems" => $workShopItems,
-                "onlineTotal" => $onlineCounts["total"]
+                "workShopItems" => $workShopItems
             ]
         );
     }
@@ -119,16 +111,6 @@ class SiteController extends Controller
     public function showDonate()
     {
         return view('pages.donate');
-    }
-
-    public function showStats()
-    {
-        $onlineCounts =  $this->cncOnlineCount->getGameCounts();
-
-        return view('pages.stats', 
-        [
-            "onlineCounts" => $onlineCounts
-        ]);
     }
 
     public function showCreatorsListings(Request $request)

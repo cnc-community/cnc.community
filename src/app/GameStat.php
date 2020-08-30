@@ -10,9 +10,9 @@ class GameStat extends Model
 {
     protected $table = 'game_stats';
 
-    public const TYPE_MOD = "mods";
-    public const TYPE_GAME = "games";
-    public const TYPE_STANDALONE = "standalone";
+    public const TYPE_MOD = "mod";
+    public const TYPE_GAME = "game";
+    public const TYPE_STANDALONE = "communityGame";
 
     public static function getTotalPlayersOnline()
     {
@@ -21,12 +21,12 @@ class GameStat extends Model
 
     public static function getStatsByType($type)
     {
-        return GameStat::where("type", $type)->get();
+        return GameStat::where("type", $type)->orderBy("order", "ASC")->get();
     }
 
     public static function createOrUpdateStat($abbrev, $playersOnline, $type, $order)
     {
-        $gameStat = GameStat::where("abbrev", $abbrev)->where("type", $type)->first();
+        $gameStat = GameStat::where("abbrev", $abbrev)->first();
         if ($gameStat == null)
         {
             $gameStat = new GameStat();
@@ -38,5 +38,6 @@ class GameStat extends Model
         $gameStat->save();
     }
 
-    public function getOnlineCount() { return $this->online_count; }
+    public function getOnlineCount() { return $this->players_online; }
+    public function getAbbreviation() { return $this->abbrev; }
 }

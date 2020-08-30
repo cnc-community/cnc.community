@@ -17,22 +17,30 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
 use App\Http\Services\APILeaderboardProfile;
+use App\Http\Services\CNCOnlineCount;
 
 class APIController extends Controller
 {
     private $twitchStreamsAPI;
     private $steamAPI;
     private $petroglyphAPI;
+    private $cncOnlineCount;
 
     public function __construct()
     {
         $this->twitchStreamsAPI = new TwitchStreamsAPI();
         $this->steamAPI = new SteamAPI();
+        $this->cncOnlineCount = new CNCOnlineCount();
     }
 
     public function runTask()
     {
         $this->twitchStreamsAPI->getToken();
+    }
+
+    public function onlineCount()
+    {
+        return $this->cncOnlineCount->getTotal();
     }
 
     public function streamCount()

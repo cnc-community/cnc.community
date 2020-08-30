@@ -19,7 +19,7 @@ class CreateGameStatsTable extends Migration
             $table->string("abbrev");
             $table->integer("players_online");
             $table->integer("order")->unsigned();
-            $table->enum("type", ["games", "mods", "standalone"]);
+            $table->enum("type", ["game", "mod", "communityGame"]);
             $table->timestamps();
         });
     }

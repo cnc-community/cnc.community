@@ -1,8 +1,7 @@
-import { IWebRequest } from "../../../cnccommunity/WebRequest/IWebRequest";
-import { WebRequestHandler } from "../../../cnccommunity/WebRequest/WebRequestHandler";
-import { ITwitchStreamAPI } from "./ITwitchStreamAPI";
+import { IWebRequest } from "./WebRequest/IWebRequest";
+import { WebRequestHandler } from "./WebRequest/WebRequestHandler";
 
-export class GetStreamCount implements ITwitchStreamAPI
+export class GetOnlineCount
 {
     private webRequest: IWebRequest;
 
@@ -12,7 +11,7 @@ export class GetStreamCount implements ITwitchStreamAPI
 
     public get(): void
     {
-        this.webRequest = new WebRequestHandler("/api/twitch/streams/count",
+        this.webRequest = new WebRequestHandler("/api/game-count/total",
             null,
             this.onRequestComplete.bind(this)
         );
@@ -23,7 +22,7 @@ export class GetStreamCount implements ITwitchStreamAPI
     {
         if (error != null)
         {
-            console.log("Error fetching streams");
+            console.log("Error fetching online count");
             return;
         }
 
