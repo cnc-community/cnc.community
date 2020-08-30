@@ -20,7 +20,7 @@ class StatsController extends Controller
     // Cron task only
     public function runTask()
     {
-        return $this->cncOnlineCount->getGameCounts();
+        return $this->cncOnlineCount->runCountTasks();
     }
 
     public function showStats()
