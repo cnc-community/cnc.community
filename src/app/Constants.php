@@ -248,7 +248,7 @@ class Constants
                     "name" => "C&C3: Tiberium Wars"
                 ];
                       
-            case "renegade":
+            case "ren":
                 return [
                     "url" => "renegade",
                     "logo" => ViewHelper::getGameLogoPathByName("renegade"),
@@ -295,10 +295,51 @@ class Constants
                     "external_link" => false,
                     "name" => "C&C Remastered Collection"
                 ];
+
+            case "apb":
+                return [
+                    "url" => "https://w3dhub.com/#/games-apb",
+                    "logo" => ViewHelper::getGameLogoPathByName("a-path-beyond"),
+                    "external_link" => true,
+                    "name" => "Red Alert: A Path Beyond"
+                ];
+
+            case "ia":
+                return [
+                    "url" => "https://w3dhub.com/forum/topic/416844-interim-apex/",
+                    "logo" => ViewHelper::getGameLogoPathByName("interim-apex"),
+                    "external_link" => true,
+                    "name" => "Interim Apex"
+                ];
+                
+            case "openra_cnc":
+                return [
+                    "url" => "https://www.openra.net/",
+                    "logo" => ViewHelper::getGameLogoPathByName("openra-td"),
+                    "external_link" => true,
+                    "name" => "OpenRA: Tiberian Dawn"
+                ];
+
+            case "openra_ra":
+                return [
+                    "url" => "https://www.openra.net/",
+                    "logo" => ViewHelper::getGameLogoPathByName("openra"),
+                    "external_link" => true,
+                    "name" => "OpenRA: Red Alert"
+                ];
+
+            case "renegadex":
+                return [
+                    "url" => "https://renegade-x.com/",
+                    "logo" => ViewHelper::getGameLogoPathByName("renegade-x"),
+                    "external_link" => true,
+                    "name" => "Renegade X"
+                ];
         }
 
         return [
             "url" => "",
+            "logo" => "",
             "external_link" => false,
             "name" => ""
         ];

@@ -30,7 +30,8 @@ class SiteController extends Controller
         $this->twitchHelper = new TwitchHelper();
         $this->steamHelper = new SteamHelper();
         $this->cncOnlineCount = new CNCOnlineCount();
-        View::share('onlineCounts', $this->cncOnlineCount->getGameCounts());
+        
+        View::share('totalOnline', $this->cncOnlineCount->getTotal());
     }
 
     /**

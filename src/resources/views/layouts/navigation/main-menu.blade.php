@@ -84,7 +84,7 @@
     </div>
 
     <div class="nav-item">
-        <a href="/stats" title="C&C Online Stats" class="nav-link">Online <span class="notification pop-in">{{ $onlineCounts["total"] }} </span></a>
+        <a href="/stats" title="C&C Online Stats" class="nav-link">Online <span class="notification pop-in">{{ $totalOnline }} </span></a>
     </div>
 
     <div class="nav-item nav-item-hide-on-small">

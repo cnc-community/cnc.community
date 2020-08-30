@@ -1,17 +1,16 @@
 <?php
 
-namespace App\Http\Services\W3DHub;
+namespace App\Http\Services\OpenRA;
 
 use App\Constants;
-use App\Http\Services\W3DHub\GSHServerListing;
 use Exception;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
 
-class W3DHubAPI
+class OpenRAAPI
 {
-    private $_apiUrl = "https://gsh.w3dhub.com/listings/getAll/v2?statusLevel=2";
+    private $_apiUrl = "https://master.openra.net/games.php?protocol=2&type=json";
 
     public function __construct()
     {
@@ -19,7 +18,7 @@ class W3DHubAPI
 
     public function getOnlineCount()
     {
-        return Cache::remember('W3DHubAPI.getOnlineCount', 450, function ()
+        return Cache::remember('OpenRAAPI.getOnlineCount', 450, function ()
         {
             try 
             {
@@ -39,27 +38,33 @@ class W3DHubAPI
         $result = [];
 
         $games = [
-            "ren", // renegade
-            "apb", // a path beyond
-            "ia" //interim apex
+            "ra", // openra ra
+            "cnc", // openra td
         ];
         
         foreach($response as $server)
         {
-            $serverListing = new GSHServerListing($server);
+            $serverListing = new OpenRAServerListing($server);
 
-            if (in_array($serverListing->game(), $games))
+            if (in_array($serverListing->mod(), $games))
             {
-                if (isset($result[$serverListing->game()]))
+                if (isset($result[$serverListing->mod()]))
                 {
-                    $result[$serverListing->game()] += $serverListing->status()->playerCount();
+                    $result[$serverListing->mod()] += $serverListing->totalPlayers();
                 }
                 else
                 {
-                    $result[$serverListing->game()] = $serverListing->status()->playerCount();
+                    $result[$serverListing->mod()] = $serverListing->totalPlayers();
                 }
             }
         }
-        return $result;
+
+        // Make sure names don't clash
+        $newResult = [];
+        foreach($result as $k => $v)
+        {
+            $newResult["openra_".$k] = $v;
+        }
+        return $newResult;
     }
 }

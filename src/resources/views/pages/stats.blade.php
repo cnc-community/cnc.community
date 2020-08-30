@@ -24,33 +24,67 @@
 @section('content')
 <section class="section how-to-play-steps">
     <div class="main-content">
+        <h3>C&amp;C Titles Players Online</h3>
         <div class="items-wrap">
-            <?php foreach($onlineCounts as $abrev => $onlineCount) :?>
+            <?php foreach($onlineCounts["games"] as $abrev => $onlineCount) :?>
                 <?php if($abrev == "total") continue; ?>
                 
                 <?php $game = App\Constants::getGameFromOnlineAbbreviation($abrev); ?>
 
-                <a href="{{  $game["url"] }}" <?php if($game["external_link"] == true):?> 
-                            target="_blank" rel="nofollow noreferrer"<?php endif; ?> 
-                            title="{{ $game["name"] }}" class="stat-game-box stat-game--image-{{ $abrev }}">
+                <?php new App\Http\CustomView\Components\OnlineBox(
+                    $title = $game["name"], 
+                    $url = $game["url"], 
+                    $logo = $game["logo"], 
+                    $externalLink = $game["external_link"], 
+                    $gameAbrev = $abrev, 
+                    $onlineCount = $onlineCount
+                ); ?>
 
-                    <div class="stat-game-box-logo">
-                        <img src="{{ $game["logo"]}}" alt="Game Logo" />
-                    </div>
-                    <div class="stat-game-online-count">
-                        <?php if($onlineCount > 0 ) :?>
-                            <strong>{{ $onlineCount }} online</strong> 
-                        <?php endif; ?>
-                        <br/> {{ $game["name"] }}
-                        <br/>
-                        <?php if($abrev == "cncremastered"):?>
-                            <small>In-game (Steam only)</small>
-                        <?php endif; ?>
-                    </div>
-                </a>
+            <?php endforeach; ?>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <h3>C&amp;C Mods Players Online</h3>
+        <div class="items-wrap">
+            <?php foreach($onlineCounts["mods"] as $abrev => $onlineCount) :?>
+                <?php if($abrev == "total") continue; ?>
+                
+                <?php $game = App\Constants::getGameFromOnlineAbbreviation($abrev); ?>
+
+                <?php new App\Http\CustomView\Components\OnlineBox(
+                    $title = $game["name"], 
+                    $url = $game["url"], 
+                    $logo = $game["logo"], 
+                    $externalLink = $game["external_link"], 
+                    $gameAbrev = $abrev, 
+                    $onlineCount = $onlineCount
+                ); ?>
+
+            <?php endforeach; ?>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <h3>C&amp;C Standalones Players Online</h3>
+        <div class="items-wrap">
+            <?php foreach($onlineCounts["standalone"] as $abrev => $onlineCount) :?>
+                <?php if($abrev == "total") continue; ?>
+                
+                <?php $game = App\Constants::getGameFromOnlineAbbreviation($abrev); ?>
+
+                <?php new App\Http\CustomView\Components\OnlineBox(
+                    $title = $game["name"], 
+                    $url = $game["url"], 
+                    $logo = $game["logo"], 
+                    $externalLink = $game["external_link"], 
+                    $gameAbrev = $abrev, 
+                    $onlineCount = $onlineCount
+                ); ?>
 
             <?php endforeach; ?>
         </div>
     </div>
 </section>
 @endsection
+

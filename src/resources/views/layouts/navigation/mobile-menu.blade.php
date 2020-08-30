@@ -27,7 +27,7 @@
     <div class="category">
         <div class="title">Other</div>
         <a href="/cnc-streamers" title="Watch C&C Livestreams" class="nav-link nav-creators-count">Watch <span class="notification">0</span></a>
-        <a href="/stats" title="C&C Online Stats" class="nav-link">Online <span class="notification pop-in">{{ $onlineCounts["total"] }} </span></a>
+        <a href="/stats" title="C&C Online Stats" class="nav-link">Online <span class="notification pop-in">{{ $totalOnline }} </span></a>
         <a href="/funny" title="Funny/Cool" class="nav-link">Funny/Cool</a>
     </div>
 

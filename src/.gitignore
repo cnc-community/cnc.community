@@ -15,3 +15,4 @@ public/css
 public/assets/css
 .cache/
 public/assets/js
+*.log

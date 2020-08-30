@@ -31,7 +31,8 @@ class LeaderboardController extends Controller
         $this->petroglyphAPIService = new PetroglyphAPIService();
         $this->steamHelper = new SteamHelper();
         $this->cncOnlineCount = new CNCOnlineCount();
-        View::share('onlineCounts', $this->cncOnlineCount->getGameCounts());
+
+        View::share('totalOnline', $this->cncOnlineCount->getTotal());
     }
 
     public function runMatchesTask()
