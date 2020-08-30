@@ -26,7 +26,7 @@ class CnCOnlineAPI
                     $this->_apiUrl
                 );
         
-                return $this->buildResponse($response->json());
+                return $this->getPlayerCountFromResponse($response->json());
             }
             catch(Exception $exception)
             {
@@ -36,7 +36,7 @@ class CnCOnlineAPI
         });
     }
 
-    private function buildResponse($data)
+    private function getPlayerCountFromResponse($data)
     {
         $games = [
             "cnc3",
