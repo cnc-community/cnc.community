@@ -4,7 +4,6 @@
 @section('description', 'Find all the official C&C Online and C&C Community online game statistics')
 @section('page-class', 'game-stats')
 
-
 @section('hero-video')
 <div class="video" style="background-image: url('/assets/images/creators.jpg')">
 </div>
@@ -22,7 +21,7 @@
 @endsection
 
 @section('content')
-<section class="section how-to-play-steps">
+<section class="section">
     <div class="main-content">
         <h3>Official C&amp;C Titles - Players Online</h3>
         <div class="items-wrap">
@@ -80,5 +79,62 @@
         </div>
     </div>
 </section>
+
+<section class="section game-stats-chart">
+    <div class="main-content">
+        <h3>C&amp;C Stats - Last 24 Hours Players Online</h3>
+        <canvas id="chart"></canvas>
+    </div>
+</section>
+
 @endsection
 
+@section("scripts")
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+<script>
+    const ctx = document.getElementById('chart').getContext('2d');
+    const myLineChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            datasets: [
+                <?php foreach($graphData as $gameAbbrev => $data):?>
+                    {
+                        label: "<?php echo $data['label'];?>",
+                        data: [
+                            <?php foreach($data["data"] as $d):?>
+                                { t: "<?php echo $d['t']; ?>",  y: <?php echo $d['y']; ?> },
+                            <?php endforeach;?>
+                        ],
+                        backgroundColor: [ 
+                            '<?php echo $data["backgroundColor"]; ?>'
+                        ],
+                        borderColor: [
+                            '<?php echo $data["borderColor"]; ?>'
+                        ],
+                        borderWidth: 2
+                    },
+                <?php endforeach; ?>
+            ]
+        },
+        options: {
+            scales: {
+                xAxes: [{
+                    type: 'time',
+                    time: {
+                        unit: 'hour'
+                    }
+                }]
+            },
+            legend: {
+                position: 'bottom',
+                labels: {
+                    fontSize: 14,
+                    defaultFontFamily: "Open Sans, sans-serif",
+                    fontColor: "#868383"
+                }
+            }
+        }
+    });
+</script>
+@endsection

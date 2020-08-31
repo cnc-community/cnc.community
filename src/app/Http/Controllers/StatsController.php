@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\GameStat;
+use App\GameStatGraph;
 use App\Http\Services\CNCOnlineCount;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\View;
 
@@ -40,11 +43,14 @@ class StatsController extends Controller
             return $this->cncOnlineCount->getStandaloneCounts();
         });
 
+        $graphData = $this->cncOnlineCount->createGraph(GameStatGraph::getLast24Hours());
+
         return view('pages.stats', 
         [
             "games" => $games,
             "mods" => $mods,
-            "standalone" => $standalone
+            "standalone" => $standalone,
+            "graphData" => $graphData
         ]);
     }
 }

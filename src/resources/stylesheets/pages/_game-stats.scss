@@ -1,0 +1,8 @@
+.page-game-stats .game-stats-chart
+{
+    display: none;
+    @media(min-width:$md-width)
+    {
+        display: block;
+    }
+}

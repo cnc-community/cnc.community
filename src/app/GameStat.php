@@ -36,6 +36,8 @@ class GameStat extends Model
         $gameStat->type = $type;
         $gameStat->order = $order;
         $gameStat->save();
+
+        GameStatGraph::createStat($gameStat->id, $playersOnline);
     }
 
     public function getOnlineCount() { return $this->players_online; }

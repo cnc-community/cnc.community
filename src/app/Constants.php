@@ -173,7 +173,9 @@ class Constants
                     "url" => "tiberian-dawn",
                     "logo" => ViewHelper::getGameLogoPathByName("tiberian-dawn"),
                     "external_link" => false,
-                    "name" => "Tiberian Dawn"
+                    "name" => "Tiberian Dawn",
+                    "graph_color" => "rgba(255, 215, 0, 0.3)",
+                    "graph_border_color" => "rgba(255, 215, 0, 1)"
                 ];
             
             case "cncnet5_ra":
@@ -181,7 +183,9 @@ class Constants
                     "url" => "red-alert",
                     "logo" => ViewHelper::getGameLogoPathByName("red-alert"),
                     "external_link" => false,
-                    "name" => "Red Alert"
+                    "name" => "Red Alert",
+                    "graph_color" => "rgba(255, 0, 0, 0.3)",
+                    "graph_border_color" => "rgba(255, 0, 0, 1)"
                 ];
 
             case "cncnet5_ts":
@@ -189,7 +193,9 @@ class Constants
                     "url" => "tiberian-sun",
                     "logo" => ViewHelper::getGameLogoPathByName("tiberian-sun"),
                     "external_link" => false,
-                    "name" => "Tiberian Sun"
+                    "name" => "Tiberian Sun",
+                    "graph_color" => "rgba(212, 127, 0, 0.3)",
+                    "graph_border_color" => "rgba(212, 127, 0, 1)"
                 ];
 
             case "cncnet5_yr":
@@ -197,7 +203,9 @@ class Constants
                     "url" => "red-alert-2",
                     "logo" => ViewHelper::getGameLogoPathByName("yuris-revenge"),
                     "external_link" => false,
-                    "name" => "Yuri's Revenge"
+                    "name" => "Yuri's Revenge",
+                    "graph_color" => "rgba(255, 19, 128, 0.3)",
+                    "graph_border_color" => "rgba(255, 19, 128, 1)"
                 ];
 
             case "cncnet5_dta":
@@ -205,7 +213,9 @@ class Constants
                     "url" => "https://cncnet.org/dawn-of-the-tiberium-age",
                     "logo" => ViewHelper::getGameLogoPathByName("dawn-of-the-tiberium-age"),
                     "external_link" => true,
-                    "name" => "Dawn of the Tiberium Age"
+                    "name" => "Dawn of the Tiberium Age",
+                    "graph_color" => "rgba(0, 184, 255, 0.2)",
+                    "graph_border_color" => "rgba(0, 184, 255, 1)"
                 ];
             
             case "cncnet5_mo":
@@ -213,7 +223,9 @@ class Constants
                     "url" => "https://cncnet.org/mental-omega",
                     "logo" => ViewHelper::getGameLogoPathByName("mental-omega"),
                     "external_link" => true,
-                    "name" => "Mental Omega"
+                    "name" => "Mental Omega",
+                    "graph_color" => "rgba(202, 21, 251, 0.2)",
+                    "graph_border_color" => "rgba(202, 21, 251, 1)"
                 ];
             
             case "cncnet5_ti":
@@ -221,7 +233,9 @@ class Constants
                     "url" => "https://cncnet.org/twisted-insurrection",
                     "logo" => ViewHelper::getGameLogoPathByName("twisted-insurrection"),
                     "external_link" => true,
-                    "name" => "Twisted Insurrection"
+                    "name" => "Twisted Insurrection",
+                    "graph_color" => "rgba(0, 212, 16, 0.2)",
+                    "graph_border_color" => "rgba(0, 212, 16, 1)"
                 ];
 
             case "cncnet5_rr":
@@ -229,7 +243,9 @@ class Constants
                     "url" => "https://cncnet.org/red-resurrection",
                     "logo" => ViewHelper::getGameLogoPathByName("yr-red-resurrection"),
                     "external_link" => true,
-                    "name" => "YR Red-Resurrection"
+                    "name" => "YR Red-Resurrection",
+                    "graph_color" => "rgba(230, 109, 154, 0.2)",
+                    "graph_border_color" => "rgba(230, 109, 154, 1)"
                 ];
             
             case "cncnet5_cncr":
@@ -237,7 +253,9 @@ class Constants
                     "url" => "https://www.moddb.com/mods/cncreloaded",
                     "logo" => ViewHelper::getGameLogoPathByName("cncreloaded"),
                     "external_link" => true,
-                    "name" => "C&C: Reloaded"
+                    "name" => "C&C: Reloaded",
+                    "graph_color" => "rgba(42, 212, 0, 0.2)",
+                    "graph_border_color" => "rgba(42, 212, 0, 1)"
                 ];
 
             case "cnc3":
@@ -245,7 +263,9 @@ class Constants
                     "url" => "command-and-conquer-3",
                     "logo" => ViewHelper::getGameLogoPathByName("command-and-conquer-3"),
                     "external_link" => false,
-                    "name" => "C&C3: Tiberium Wars"
+                    "name" => "C&C3: Tiberium Wars",
+                    "graph_color" => "rgba(31, 255, 48, 0.3)",
+                    "graph_border_color" => "rgba(31, 255, 48, 1)",
                 ];
                       
             case "ren":
@@ -253,7 +273,9 @@ class Constants
                     "url" => "renegade",
                     "logo" => ViewHelper::getGameLogoPathByName("renegade"),
                     "external_link" => false,
-                    "name" => "Renegade"
+                    "name" => "Renegade",
+                    "graph_color" => "rgba(185, 114, 255, 0.3)",
+                    "graph_border_color" => "rgba(185, 114, 255, 1)"
                 ];
                         
             case "cnc3kw":
@@ -261,7 +283,9 @@ class Constants
                     "url" => "command-and-conquer-3/how-to-play",
                     "logo" => ViewHelper::getGameLogoPathByName("command-and-conquer-3-kanes-wrath"),
                     "external_link" => false,
-                    "name" => "C&C3: Kane's Wrath"
+                    "name" => "C&C3: Kane's Wrath",
+                    "graph_color" => "rgba(0, 55, 255, 0.3)",
+                    "graph_border_color" => "rgba(0, 55, 255, 1)",
                 ];
                      
             case "generals":
@@ -269,7 +293,9 @@ class Constants
                     "url" => "generals",
                     "logo" => ViewHelper::getGameLogoPathByName("generals"),
                     "external_link" => false,
-                    "name" => "Generals"
+                    "name" => "Generals",
+                    "graph_color" => "rgba(30, 144, 23, 0.3)",
+                    "graph_border_color" => "rgba(30, 144, 23, 1)"
                 ];
             
             case "generalszh":
@@ -277,7 +303,9 @@ class Constants
                     "url" => "generals/how-to-play",
                     "logo" => ViewHelper::getGameLogoPathByName("generals-zero-hour"),
                     "external_link" => false,
-                    "name" => "Generals: Zero Hour"
+                    "name" => "Generals: Zero Hour",
+                    "graph_color" => "rgba(253, 198, 75, 0.3)",
+                    "graph_border_color" => "rgba(253, 198, 75, 0.3)"
                 ];
                
             case "ra3":
@@ -285,7 +313,9 @@ class Constants
                     "url" => "red-alert-3",
                     "logo" => ViewHelper::getGameLogoPathByName("red-alert-3"),
                     "external_link" => false,
-                    "name" => "Red Alert 3"
+                    "name" => "Red Alert 3",
+                    "graph_color" => "rgba(253, 75, 75, 0.3)",
+                    "graph_border_color" => "rgba(253, 75, 75, 1)",
                 ];
                      
             case "cncremastered":
@@ -293,7 +323,9 @@ class Constants
                     "url" => "command-and-conquer-remastered",
                     "logo" => ViewHelper::getGameLogoPathByName("cnc-remastered"),
                     "external_link" => false,
-                    "name" => "C&C Remastered Collection"
+                    "name" => "C&C Remastered Collection",
+                    "graph_color" => "rgba(255, 212, 0, 0.3)",
+                    "graph_border_color" => "rgba(255, 212, 0, 1)"
                 ];
 
             case "apb":
@@ -301,7 +333,9 @@ class Constants
                     "url" => "https://w3dhub.com/#/games-apb",
                     "logo" => ViewHelper::getGameLogoPathByName("a-path-beyond"),
                     "external_link" => true,
-                    "name" => "Red Alert: A Path Beyond"
+                    "name" => "Red Alert: A Path Beyond",
+                    "graph_color" => "rgba(253, 3, 1, 0.2)",
+                    "graph_border_color" => "rgba(253, 3, 1, 1)",
                 ];
 
             case "ia":
@@ -309,7 +343,9 @@ class Constants
                     "url" => "https://w3dhub.com/forum/topic/416844-interim-apex/",
                     "logo" => ViewHelper::getGameLogoPathByName("interim-apex"),
                     "external_link" => true,
-                    "name" => "Interim Apex"
+                    "name" => "Interim Apex",
+                    "graph_color" => "rgba(0, 218, 186, 0.2)",
+                    "graph_border_color" => "rgba(0, 218, 186, 1)",
                 ];
                 
             case "openra_cnc":
@@ -317,7 +353,9 @@ class Constants
                     "url" => "https://www.openra.net/",
                     "logo" => ViewHelper::getGameLogoPathByName("openra-td"),
                     "external_link" => true,
-                    "name" => "OpenRA: Tiberian Dawn"
+                    "name" => "OpenRA: Tiberian Dawn",
+                    "graph_color" => "rgba(121, 121, 121,0.2)",
+                    "graph_border_color" => "rgba(121, 121, 121, 1)",
                 ];
 
             case "openra_ra":
@@ -325,7 +363,9 @@ class Constants
                     "url" => "https://www.openra.net/",
                     "logo" => ViewHelper::getGameLogoPathByName("openra"),
                     "external_link" => true,
-                    "name" => "OpenRA: Red Alert"
+                    "name" => "OpenRA: Red Alert",
+                    "graph_color" => "rgba(255, 211, 0, 0.2)",
+                    "graph_border_color" => "rgba(255, 211, 0, 1)"
                 ];
 
             case "renegadex":
@@ -333,7 +373,9 @@ class Constants
                     "url" => "https://renegade-x.com/",
                     "logo" => ViewHelper::getGameLogoPathByName("renegade-x"),
                     "external_link" => true,
-                    "name" => "Renegade X"
+                    "name" => "Renegade X",
+                    "graph_color" => "rgba(136, 232, 249, 0.2)",
+                    "graph_border_color" => "rgba(136, 232, 249, 1)",
                 ];
         }
 
@@ -341,7 +383,8 @@ class Constants
             "url" => "",
             "logo" => "",
             "external_link" => false,
-            "name" => ""
+            "name" => "",
+            "graph_color" => "rgb(18 3 47)"
         ];
     }
 }

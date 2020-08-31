@@ -141,4 +141,55 @@ class CNCOnlineCount
         }
         return $total;
     }
+
+    public function createGraph($graphData)
+    {
+        // Format for Chart.js
+        $dataSets = [];
+        foreach($graphData as $gameStatGraph)
+        {
+            $gameStat = GameStat::where("id", $gameStatGraph->game_stats_id)->first();
+            $dataSets[$gameStat->getAbbreviation()][] = [$gameStatGraph->created_at, $gameStatGraph->players_online];
+        }
+
+        $chartJsFormat = [];
+        foreach($dataSets as $abbrev => $dataSet)
+        {
+            $chartJsFormat[$abbrev]["data"] = $this->createChartJsFormat($dataSet);
+            $chartJsFormat[$abbrev]["label"] = $this->getNameByAbbrev($abbrev);
+            $chartJsFormat[$abbrev]["backgroundColor"] = $this->getColourByAbbrev($abbrev);
+            $chartJsFormat[$abbrev]["borderColor"] = $this->getBorderColorByAbbrev($abbrev);
+        }
+
+        return $chartJsFormat;
+    }
+
+    private function getNameByAbbrev($gameAbbrev)
+    {
+        return Constants::getGameFromOnlineAbbreviation($gameAbbrev)["name"];
+    }
+
+    private function getColourByAbbrev($gameAbbrev)
+    {
+        return Constants::getGameFromOnlineAbbreviation($gameAbbrev)["graph_color"];
+    }
+
+    private function getBorderColorByAbbrev($gameAbbrev)
+    {
+        return Constants::getGameFromOnlineAbbreviation($gameAbbrev)["graph_border_color"];
+    }
+
+    private function createChartJsFormat($arr)
+    {
+        $newResult = [];
+        foreach($arr as $obj)
+        {
+            $newResult[] = 
+            [
+                "t" => $obj[0], 
+                "y" => $obj[1],                
+            ];
+        }
+        return $newResult;
+    }
 }
