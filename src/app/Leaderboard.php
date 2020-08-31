@@ -24,7 +24,7 @@ class Leaderboard extends Model
         return Leaderboard::where("matchtype", $matchType)->first();
     }
 
-    public static function getHistoryByDateAndMatchType($requestedCarbonDate, $matchType)
+    public static function getActiveLeaderboardSeason($matchType)
     {       
         $leaderboard = Leaderboard::where("matchtype", $matchType)->first();
         if ($leaderboard == null)
@@ -49,7 +49,7 @@ class Leaderboard extends Model
 
     public static function dataPaginated($cacheKey, $date, $matchType, $searchQuery, $paginate, $limit)
     {
-        $history = Leaderboard::getHistoryByDateAndMatchType($date, $matchType);
+        $history = Leaderboard::getActiveLeaderboardSeason($date, $matchType);
         $paginatedCacheKey = "Leaderboard.dataPaginated".$paginate.$date.$limit.$cacheKey.$searchQuery;
 
         if ($history == null)

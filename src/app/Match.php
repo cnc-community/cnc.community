@@ -16,7 +16,6 @@ class Match extends Model
 
     public function __construct()
     {
-        // Match::updateLeaderboardHistory();
     }
 
     public static function updateLeaderboardHistory()
@@ -28,13 +27,6 @@ class Match extends Model
         DB::connection('mysql2')->table('matches')
             ->where('matchtype', Match::TD_1vs1)
             ->update(['leaderboard_history_id' => 2]);
-    }
-
-    public static function quickStats($matchType)
-    {
-        return Match::orderBy("matchduration", "DESC")
-            ->limit(5)
-            ->get();
     }
 
     public static function getMatchTypeByGameSlug($gameSlug)
