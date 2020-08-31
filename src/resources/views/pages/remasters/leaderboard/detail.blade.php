@@ -51,6 +51,12 @@
                             </div>
                         </div>
                     </div>
+                    <div class="form-group season-select">
+                        <select name="season" onchange="this.form.submit()">
+                            <option value="">-Select a past season-</option>
+                            <option value="1" <?php if($season == 1): ?>selected<?php endif; ?>>Season 1</option>
+                        </select>
+                    </div>
                 </form>
                 <div class="statistics">
                     <div class="statistics-list">
