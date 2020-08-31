@@ -37,7 +37,7 @@
 @endsection
 
 @section('content')
-<section id="about" class="section section-dark-alt section-about">
+<section class="section section-dark-alt section-about">
     <div class="main-content center">
         <div class="center-box">
             <h1 class="section-title">C&amp;C Remastered <br/>Web Leaderboards <span class="light">have arrived</span></h1>
@@ -58,5 +58,4 @@
         </div>
     </div>
 </section>
-
 @endsection
