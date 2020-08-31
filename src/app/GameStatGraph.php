@@ -23,11 +23,11 @@ class GameStatGraph extends Model
             return;
         }
         
-        // Check if created in the last 15 minutes
+        // Check if created in the last 8 minutes
         $gameStatGraph = GameStatGraph::where("game_stats_id", $gameStat->id)
             ->whereBetween("created_at", 
                 array(
-                    Carbon::now()->subMinutes(15)->toDateTimeString(), 
+                    Carbon::now()->subMinutes(8)->toDateTimeString(), 
                     Carbon::now()->toDateTimeString()
                 )
             )
