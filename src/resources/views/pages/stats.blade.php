@@ -106,13 +106,9 @@
                                 { t: "<?php echo $d['t']; ?>",  y: <?php echo $d['y']; ?> },
                             <?php endforeach;?>
                         ],
-                        backgroundColor: [ 
-                            '<?php echo $data["backgroundColor"]; ?>'
-                        ],
-                        borderColor: [
-                            '<?php echo $data["borderColor"]; ?>'
-                        ],
-                        borderWidth: 2
+                        backgroundColor: '<?php echo $data["backgroundColor"]; ?>',
+                        borderColor: '<?php echo $data["borderColor"]; ?>',
+                        borderWidth: 3
                     },
                 <?php endforeach; ?>
             ]
