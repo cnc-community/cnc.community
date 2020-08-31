@@ -41,6 +41,10 @@ class OnlineBox extends AbstractCustomView
                     <?php endif; ?>
                     <br/> 
                     <?php echo $this->title; ?>
+                    <?php if($this->gameAbrev == "cncremastered"):?>
+                    <br/>
+                    <small>Steam In-Game only</small>
+                    <?php endif; ?>
                 </div>
             </a>
             <?php

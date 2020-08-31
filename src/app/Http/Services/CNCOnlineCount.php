@@ -34,9 +34,9 @@ class CNCOnlineCount
         $openraCounts = $this->openRAAPI->getOnlineCount();
 
         // Leaving this out for now until we get proper online numbers
-        // $remasterOnlineCount = ["cncremastered" => $this->steamHelper->getSteamPlayerCount(Constants::remastersAppId())];
+        $remasterOnlineCount = ["cncremastered" => $this->steamHelper->getSteamPlayerCount(Constants::remastersAppId())];
 
-        $combined = array_merge($cncnetCounts, $cnconlineCounts, $w3dhubCounts, $openraCounts);
+        $combined = array_merge($cncnetCounts, $cnconlineCounts, $w3dhubCounts, $openraCounts, $remasterOnlineCount);
         $combined["total"] = $this->total($combined);
 
         $this->groupAndSaveIntoGameTypes($combined);
@@ -90,7 +90,7 @@ class CNCOnlineCount
 
         // Abbreviation + order
         $gamesFilter = [
-            // "cncremastered",
+            "cncremastered" => 0,
             "cncnet5_td" => 1,
             "cncnet5_ra" => 2,
             "cncnet5_ts" => 3,
