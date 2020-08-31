@@ -57,6 +57,7 @@ class GameStatGraph extends Model
                 Carbon::now()->toDateTimeString()
             )
         )
+        ->orderBy("created_at", "DESC")
         ->get();
     }
 
