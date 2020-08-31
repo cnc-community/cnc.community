@@ -123,6 +123,20 @@
                     type: 'time',
                     time: {
                         unit: 'hour'
+                    },
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Last 24 hours',
+                        fontSize: 16,
+                        fontStyle: "bold"
+                    }
+                }],
+                yAxes: [{
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Players Online',
+                        fontSize: 16,
+                        fontStyle: "bold"
                     }
                 }]
             },
@@ -131,7 +145,8 @@
                 labels: {
                     fontSize: 14,
                     defaultFontFamily: "Open Sans, sans-serif",
-                    fontColor: "#868383"
+                    fontColor: "#868383",
+                    padding: 15,
                 }
             }
         }
