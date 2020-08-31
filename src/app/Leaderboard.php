@@ -14,52 +14,48 @@ class Leaderboard extends Model
     protected $connection = 'mysql2';
     protected $table = 'leaderboards';
 
-    public function history()
-    {
-        return LeaderboardHistory::where("leaderboard_id", $this->id)->first();
-    }
-
-    public static function getLeadeboardByMatchType($matchType)
-    {
-        return Leaderboard::where("matchtype", $matchType)->first();
-    }
-
     public static function getActiveLeaderboardSeason($matchType)
     {       
+        return Leaderboard::getLeaderboard($matchType, null);
+    }
+
+    public static function getLeaderboardBySeason($matchType, $season)
+    {
+        return Leaderboard::getLeaderboard($matchType, $season);
+    }
+    
+    private static function getLeaderboard($matchType, $season)
+    {
         $leaderboard = Leaderboard::where("matchtype", $matchType)->first();
         if ($leaderboard == null)
         {
-            Log::info("Leaderboard was null", $matchType);
+            Log::info("Leaderboard ** getLeaderboard - Leaderboard not found", $matchType);
             return null;
         }
         
-        // $startDate = $requestedCarbonDate->toImmutable()->toDateTimeString();
-        // $endDate = $requestedCarbonDate->toImmutable()->endOfMonth()->addMonths(3)->toDateTimeString();
-        
-        // year, month, day, hour, minute, second
-        // Temp patch for now
-        $startDate = $requestedCarbonDate->toImmutable()->toDateTimeString();
-
-        $history = LeaderboardHistory::where("start", ">=", $startDate)
+        if ($season == null)
+        {
+            $history = LeaderboardHistory::where("active", "=", 1)
             ->where("leaderboard_id", $leaderboard->id)
             ->first();
-
+        }
+        else
+        {
+            $history = LeaderboardHistory::where("season", "=", $season)
+            ->where("leaderboard_id", $leaderboard->id)
+            ->first();
+        }
+        
         return $history;
     }
 
-    public static function dataPaginated($cacheKey, $date, $matchType, $searchQuery, $paginate, $limit)
+    public static function dataPaginated($cacheKey, $leaderboardHistoryId, $matchType, $searchQuery, $paginate, $limit)
     {
-        $history = Leaderboard::getActiveLeaderboardSeason($date, $matchType);
-        $paginatedCacheKey = "Leaderboard.dataPaginated".$paginate.$date.$limit.$cacheKey.$searchQuery;
+        $paginatedCacheKey = "Leaderboard.dataPaginated".$paginate.$leaderboardHistoryId.$limit.$cacheKey.$searchQuery;
 
-        if ($history == null)
+        return Cache::remember($paginatedCacheKey, 480, function () use($leaderboardHistoryId, $paginate, $limit, $searchQuery)
         {
-            return [];
-        }
-        
-        return Cache::remember($paginatedCacheKey, 480, function () use($history, $paginate, $limit, $searchQuery)
-        {
-            return LeaderboardData::where("leaderboard_history_id", $history->id)
+            return LeaderboardData::where("leaderboard_history_id", $leaderboardHistoryId)
                 ->leftJoin("match_players as mp", "mp.id", "leaderboard_data.match_player_id")
                 ->where("mp.player_name", "LIKE", "%$searchQuery%")
                 ->select("mp.player_name", "mp.player_id", "leaderboard_data.*")

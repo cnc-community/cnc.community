@@ -103,8 +103,7 @@ class APIController extends Controller
     public function getPlayerRankWebView(Request $request, $gameSlug, $playerId)
     {
         $matchType = Match::getMatchTypeByGameSlug($gameSlug);
-        $date = LeaderboardHelper::getCarbonDateFromQueryString($request->season);
-        $leaderboardHistory = Leaderboard::getHistoryByDateAndMatchType($date, $matchType);
+        $leaderboardHistory = Leaderboard::getActiveLeaderboardSeason($matchType);
         if ($leaderboardHistory == null)
         {
             return view('api.error', ["message" => ""]);
@@ -144,8 +143,8 @@ class APIController extends Controller
     public function configRankWebView(Request $request, $gameSlug, $playerId)
     {
         $matchType = Match::getMatchTypeByGameSlug($gameSlug);
-        $date = LeaderboardHelper::getCarbonDateFromQueryString($request->season);
-        $leaderboardHistory = Leaderboard::getHistoryByDateAndMatchType($date, $matchType);
+        $leaderboardHistory = Leaderboard::getActiveLeaderboardSeason($matchType);
+        
         if ($leaderboardHistory == null)
         {
             return view('api.error', ["message" => ""]);

@@ -39,6 +39,7 @@
         <div class="main-content">
             <div class="leaderboard-bar">
                 <form>
+                    <input type="hidden" name="season" value="{{ $season }}" />
                     <div class="form-group player-search">
                         <label class="label" for="search">Search by player name</label>
                         <div class="search-box">
@@ -73,6 +74,8 @@
                 </div>
             </div>
         </div>
+
+        @include("pages.remasters.leaderboard._season-finish")
 
         <div class="main-content">
             <?php if(count($data) > 0): ?>

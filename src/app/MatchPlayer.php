@@ -191,8 +191,7 @@ class MatchPlayer extends Model
     public static function profile($gameSlug, $playerId)
     {
         $matchType = Match::getMatchTypeByGameSlug($gameSlug);
-        $date = LeaderboardHelper::getCarbonDateFromQueryString(null);
-        $leaderboardHistory = Leaderboard::getHistoryByDateAndMatchType($date, $matchType);
+        $leaderboardHistory = Leaderboard::getActiveLeaderboardSeason($matchType);
         if ($leaderboardHistory == null)
         {
             return null;

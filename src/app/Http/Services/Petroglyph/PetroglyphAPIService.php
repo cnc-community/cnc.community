@@ -27,8 +27,7 @@ class PetroglyphAPIService
 
     public function runRALeaderboardTasks()
     {
-        $date = LeaderboardHelper::getCarbonDateFromQueryString(null);
-        $history = Leaderboard::getHistoryByDateAndMatchType($date, Match::RA_1vs1);
+        $history = Leaderboard::getActiveLeaderboardSeason(Match::RA_1vs1);
         if ($history == null)
         {
             Log::debug("Error - runRALeaderboardTasks leaderboard history was null");
@@ -55,8 +54,7 @@ class PetroglyphAPIService
 
     public function runTDLeaderboardTasks()
     {
-        $date = LeaderboardHelper::getCarbonDateFromQueryString(null);
-        $history = Leaderboard::getHistoryByDateAndMatchType($date, Match::TD_1vs1);
+        $history = Leaderboard::getActiveLeaderboardSeason(Match::TD_1vs1);
         if ($history == null)
         {
             Log::debug("Error - runRALeaderboardTasks leaderboard history was null");
@@ -132,15 +130,14 @@ class PetroglyphAPIService
 
     private function saveMatchResponse($matches)
     {
-        $date = LeaderboardHelper::getCarbonDateFromQueryString(null);
-        $historyRA = Leaderboard::getHistoryByDateAndMatchType($date, Match::RA_1vs1);
+        $historyRA = Leaderboard::getActiveLeaderboardSeason(Match::RA_1vs1);
         if ($historyRA == null)
         {
             Log::debug("Error - saveMatchResponse historyRA was null");
             die();
         }   
         
-        $historyTD = Leaderboard::getHistoryByDateAndMatchType($date, Match::TD_1vs1);
+        $historyTD = Leaderboard::getActiveLeaderboardSeason(Match::TD_1vs1);
         if ($historyTD == null)
         {
             Log::debug("Error - saveMatchResponse historyTD was null");

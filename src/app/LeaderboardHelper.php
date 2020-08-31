@@ -6,19 +6,6 @@ use Carbon\Carbon;
 
 class LeaderboardHelper
 {
-    public static function getCarbonDateFromQueryString($date)
-    {
-        return Carbon::create(2020, 8, 10, 19, 15,1);
-        // if ($date == null)
-        // {
-        //     // Default to our first leaderboard
-        //     // return Carbon::create("2020", "06");
-        //     return Carbon::now()->startOfMonth();
-        // }
-        // $res = explode("-", $date);
-        // return Carbon::create($res[1], $res[0])->startOfMonth();
-    }
-
     public static function mapPreviewByInternalName($internalName): string
     {
         return "/assets/images/leaderboard/maps/".$internalName.".png";

@@ -35,7 +35,7 @@
                         <a href="{{ $webViewUrl}}" class="btn btn-outline">Go to your WebView Configuration</a>
                         <?php endif; ?>
 
-                        <a href="/command-and-conquer-remastered/leaderboard/{{$gameSlug}}" class="btn btn-outline" title="Back to all leaderboards">
+                        <a href="/command-and-conquer-remastered/leaderboard/{{$gameSlug}}?season={{$season}}" class="btn btn-outline" title="Back to all leaderboards">
                             Back to Leaderboard
                         </a>
                     </div>
@@ -46,12 +46,15 @@
             </div>
         </div>
 
+        @include("pages.remasters.leaderboard._season-finish")
+
         <div class="main-content">
             <div class="recent-games">
             <h3 class="text-uppercase">Games</h3>
 
             <div class="leaderboard-bar">
                 <form>
+                    <input type="hidden" name="season" value="{{ $season }}" />
                     <div class="form-group player-search">
                         <label class="label" for="search">Search for a player in these games</label>
                         <div class="search-box">
