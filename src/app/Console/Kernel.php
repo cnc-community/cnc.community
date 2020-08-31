@@ -24,11 +24,7 @@ class Kernel extends ConsoleKernel
      * @return void
      */
     protected function schedule(Schedule $schedule)
-    {
-        $schedule->call('App\Http\Controllers\FeedController@runTask')->hourly()->runInBackground();
-        $schedule->call('App\Http\Controllers\FeedController@runTaskDaily')->daily()->runInBackground();
-        $schedule->call('App\Http\Controllers\APIController@runTask')->weekly()->runInBackground();
-        
+    {       
         $schedule->call('App\Http\Controllers\StatsController@runTask')
             ->everyTenMinutes()
             ->runInBackground();
@@ -44,6 +40,10 @@ class Kernel extends ConsoleKernel
         $schedule->call('App\Http\Controllers\LeaderboardController@runTDLeaderboardTasks')
             ->cron('*/8 * * * *')
             ->runInBackground();
+
+        $schedule->call('App\Http\Controllers\FeedController@runTask')->hourly()->runInBackground();
+        $schedule->call('App\Http\Controllers\FeedController@runTaskDaily')->daily()->runInBackground();
+        $schedule->call('App\Http\Controllers\APIController@runTask')->weekly()->runInBackground();
     }
 
     /**
