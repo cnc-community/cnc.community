@@ -7,6 +7,7 @@ use App\GameStat;
 use App\Http\Services\CnCNet\CnCNetAPI;
 use App\Http\Services\CnCOnline\CnCOnlineAPI;
 use App\Http\Services\OpenRA\OpenRAAPI;
+use App\Http\Services\RenegadeX\RenegadeXAPI;
 use App\Http\Services\W3DHub\W3DHubAPI;
 use Illuminate\Support\Facades\Cache;
 
@@ -15,6 +16,8 @@ class CNCOnlineCount
     private $cncnetAPI;
     private $cnconlineAPI;
     private $w3dhubAPI;
+    private $openRAAPI;
+    private $renegadexAPI;
     private $steamHelper;
 
     public function __construct()
@@ -23,6 +26,7 @@ class CNCOnlineCount
         $this->cnconlineAPI = new CnCOnlineAPI();
         $this->w3dhubAPI = new W3DHubAPI();
         $this->openRAAPI = new OpenRAAPI();
+        $this->renegadexAPI = new RenegadeXAPI();
         $this->steamHelper = new SteamHelper();
     }
 
@@ -32,11 +36,20 @@ class CNCOnlineCount
         $cncnetCounts = $this->cncnetAPI->getOnlineCount();
         $cnconlineCounts = $this->cnconlineAPI->getOnlineCount();
         $openraCounts = $this->openRAAPI->getOnlineCount();
+        $renegadexCounts = $this->renegadexAPI->getOnlineCount();
 
         // Leaving this out for now until we get proper online numbers
         $remasterOnlineCount = ["cncremastered" => $this->steamHelper->getSteamPlayerCount(Constants::remastersAppId())];
 
-        $combined = array_merge($cncnetCounts, $cnconlineCounts, $w3dhubCounts, $openraCounts, $remasterOnlineCount);
+        $combined = array_merge(
+            $cncnetCounts, 
+            $cnconlineCounts, 
+            $w3dhubCounts, 
+            $openraCounts, 
+            $remasterOnlineCount,
+            $renegadexCounts
+        );
+        
         $combined["total"] = $this->total($combined);
 
         $this->groupAndSaveIntoGameTypes($combined);
