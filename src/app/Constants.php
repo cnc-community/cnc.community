@@ -215,7 +215,7 @@ class Constants
                     "external_link" => true,
                     "name" => "Dawn of the Tiberium Age",
                     "graph_color" => "rgba(0, 184, 255, 0.2)",
-                    "graph_border_color" => "rgba(0, 184, 255, 1)"
+                    "graph_border_color" => "rgba(0, 184, 255, 0.8)"
                 ];
             
             case "cncnet5_mo":
@@ -225,7 +225,7 @@ class Constants
                     "external_link" => true,
                     "name" => "Mental Omega",
                     "graph_color" => "rgba(202, 21, 251, 0.2)",
-                    "graph_border_color" => "rgba(202, 21, 251, 1)"
+                    "graph_border_color" => "rgba(202, 21, 251, 0.8)"
                 ];
             
             case "cncnet5_ti":
@@ -235,7 +235,7 @@ class Constants
                     "external_link" => true,
                     "name" => "Twisted Insurrection",
                     "graph_color" => "rgba(0, 212, 16, 0.2)",
-                    "graph_border_color" => "rgba(0, 212, 16, 1)"
+                    "graph_border_color" => "rgba(0, 212, 16, 0.8)"
                 ];
 
             case "cncnet5_rr":
@@ -245,7 +245,7 @@ class Constants
                     "external_link" => true,
                     "name" => "YR Red-Resurrection",
                     "graph_color" => "rgba(230, 109, 154, 0.2)",
-                    "graph_border_color" => "rgba(230, 109, 154, 1)"
+                    "graph_border_color" => "rgba(230, 109, 154, 0.8)"
                 ];
             
             case "cncnet5_cncr":
@@ -255,7 +255,7 @@ class Constants
                     "external_link" => true,
                     "name" => "C&C: Reloaded",
                     "graph_color" => "rgba(42, 212, 0, 0.2)",
-                    "graph_border_color" => "rgba(42, 212, 0, 1)"
+                    "graph_border_color" => "rgba(42, 212, 0, 0.8)"
                 ];
 
             case "cnc3":
@@ -305,7 +305,7 @@ class Constants
                     "external_link" => false,
                     "name" => "Generals: Zero Hour",
                     "graph_color" => "rgba(253, 198, 75, 0.3)",
-                    "graph_border_color" => "rgba(253, 198, 75, 0.3)"
+                    "graph_border_color" => "rgba(253, 198, 75, 1)"
                 ];
                
             case "ra3":
@@ -324,8 +324,8 @@ class Constants
                     "logo" => ViewHelper::getGameLogoPathByName("cnc-remastered"),
                     "external_link" => false,
                     "name" => "C&C Remastered Collection",
-                    "graph_color" => "rgba(255, 212, 0, 0.3)",
-                    "graph_border_color" => "rgba(255, 212, 0, 1)"
+                    "graph_color" => "rgba(0, 255, 208, 0.3)",
+                    "graph_border_color" => "rgba(0, 255, 208, 1)"
                 ];
 
             case "apb":
@@ -335,7 +335,7 @@ class Constants
                     "external_link" => true,
                     "name" => "Red Alert: A Path Beyond",
                     "graph_color" => "rgba(253, 3, 1, 0.2)",
-                    "graph_border_color" => "rgba(253, 3, 1, 1)",
+                    "graph_border_color" => "rgba(253, 3, 1, 0.8)",
                 ];
 
             case "ia":
@@ -345,7 +345,7 @@ class Constants
                     "external_link" => true,
                     "name" => "Interim Apex",
                     "graph_color" => "rgba(0, 218, 186, 0.2)",
-                    "graph_border_color" => "rgba(0, 218, 186, 1)",
+                    "graph_border_color" => "rgba(0, 218, 186, 0.8)",
                 ];
                 
             case "openra_cnc":
@@ -355,7 +355,7 @@ class Constants
                     "external_link" => true,
                     "name" => "OpenRA: Tiberian Dawn",
                     "graph_color" => "rgba(121, 121, 121,0.2)",
-                    "graph_border_color" => "rgba(121, 121, 121, 1)",
+                    "graph_border_color" => "rgba(121, 121, 121, 0.8)",
                 ];
 
             case "openra_ra":
@@ -365,7 +365,7 @@ class Constants
                     "external_link" => true,
                     "name" => "OpenRA: Red Alert",
                     "graph_color" => "rgba(255, 211, 0, 0.2)",
-                    "graph_border_color" => "rgba(255, 211, 0, 1)"
+                    "graph_border_color" => "rgba(255, 211, 0, 0.8)"
                 ];
 
             case "renegadex":
