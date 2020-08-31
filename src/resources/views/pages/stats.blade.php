@@ -103,7 +103,7 @@
                         label: "<?php echo $data['label'];?>",
                         data: [
                             <?php foreach($data["data"] as $d):?>
-                                { t: "<?php echo $d['t']; ?>",  y: <?php echo $d['y']; ?> },
+                                { t: moment.utc("<?php echo $d['t']; ?>"),  y: <?php echo $d['y']; ?> },
                             <?php endforeach;?>
                         ],
                         backgroundColor: '<?php echo $data["backgroundColor"]; ?>',
