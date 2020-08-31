@@ -39,7 +39,6 @@
         <div class="main-content">
             <div class="leaderboard-bar">
                 <form>
-                    <input type="hidden" name="season" value="{{ $season }}" />
                     <div class="form-group player-search">
                         <label class="label" for="search">Search by player name</label>
                         <div class="search-box">

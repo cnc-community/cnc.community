@@ -28,7 +28,7 @@ class Kernel extends ConsoleKernel
         $schedule->call('App\Http\Controllers\StatsController@runTask')
             ->everyTenMinutes()
             ->runInBackground();
-
+        
         $schedule->call('App\Http\Controllers\LeaderboardController@runMatchesTask')
             ->everyFifteenMinutes()
             ->runInBackground();
