@@ -74,6 +74,8 @@
                     <option value="points" <?php if (in_array("points", $properties)):?>selected<?php endif;?>>Points</option>
                     <option value="played" <?php if (in_array("played", $properties)):?>selected<?php endif;?>>Played</option>
                     <option value="playedLast24Hours" <?php if (in_array("playedLast24Hours", $properties)):?>selected<?php endif;?>>Played (Last 24hrs)</option>
+                    <option value="winstreakHighest" <?php if (in_array("winstreakHighest", $properties)):?>selected<?php endif;?>>Winstreak (Highest)</option>
+                    <option value="winstreakCurrent" <?php if (in_array("winstreakCurrent", $properties)):?>selected<?php endif;?>>Winstreak (Current)</option>
                 </select>
             </div>
         </div>

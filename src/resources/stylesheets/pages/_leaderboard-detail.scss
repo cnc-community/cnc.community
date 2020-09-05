@@ -151,11 +151,11 @@
 {
     display: flex;
     flex-direction: column;
-    padding-bottom: 120px;
     text-align: center;
     
     @media(min-width: $xl-width)
     {
+        padding-bottom: 120px;
         text-align: left;
         flex-direction: row;
         justify-content: space-between;
@@ -209,7 +209,7 @@
     width: 100%;
     order: -1;
 
-    @media(min-width: $lg-width)
+    @media(min-width: $xl-width)
     {
         width: 40%;
         order: 1;
@@ -350,5 +350,20 @@
 
 .leaderboard-detail .statistics
 {
-    margin-right: 0;
+    @media(min-width: $xl-width)
+    {
+        margin-left: auto;
+        margin-right: 0;
+    }
+}
+
+.leaderboard-detail.leaderboard-profile-detail .statistics
+{
+    margin-left: auto;
+    margin-right: auto;
+
+    @media(min-width: $xl-width)
+    {
+        margin-right: 0;
+    }
 }

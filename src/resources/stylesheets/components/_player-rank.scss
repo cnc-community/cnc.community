@@ -77,6 +77,16 @@
     margin: 0 5px;
 }
 
+.red-alert .player .player-stats > div 
+{
+    color: $color-gold;
+}
+
+.tiberian-dawn .player .player-stats > div 
+{
+    color: $color-green;
+}
+
 .player-stats > div:first-child
 {
     margin-left: 0;

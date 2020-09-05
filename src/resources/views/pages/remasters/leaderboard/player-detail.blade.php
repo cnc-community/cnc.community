@@ -111,10 +111,7 @@
                             new \App\Http\CustomView\Components\PlayerDetailProfileStats
                             (
                                 $teamPlayer->playerName(),
-                                "1",//$teamPlayer->playerWins(),
-                                "2",//$teamPlayer->playerLosses(),
                                 $teamPlayer->playerBadge($rank),
-                                "3",//$teamPlayer->playerPoints(),
                                 $rank,
                                 $teamPlayer->playerFactionByMatchId($match->matchid),
                                 $teamId == $match->winningTeamId(),

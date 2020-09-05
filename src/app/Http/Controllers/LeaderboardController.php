@@ -159,7 +159,8 @@ class LeaderboardController extends Controller
                 "leaderboardHistory" => $leaderboardHistory,
                 "showWebView" => $showWebView,
                 "webViewUrl" => $webViewUrl,
-                "activeSeason" => $activeSeason
+                "activeSeason" => $activeSeason,
+                "matchType" => $matchType
             ]
         );
     }

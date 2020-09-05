@@ -7,10 +7,7 @@ use App\Http\CustomView\AbstractCustomView;
 class PlayerDetailProfileStats extends AbstractCustomView
 {
     private $name;
-    private $wins;
-    private $losses;
     private $badge;
-    private $points;
     private $rank;
     private $faction;
     private $wonGame;
@@ -18,20 +15,14 @@ class PlayerDetailProfileStats extends AbstractCustomView
 
     public function __construct(
         $name, 
-        $wins, 
-        $losses, 
         $badge, 
-        $points, 
         $rank, 
         $faction, 
         $wonGame, 
         $url)
     {
         $this->name = $name;
-        $this->wins = $wins;
-        $this->losses = $losses;
         $this->badge = $badge;
-        $this->points = $points;
         $this->rank = $rank;
         $this->faction = $faction;
         $this->wonGame = $wonGame;
@@ -53,11 +44,6 @@ class PlayerDetailProfileStats extends AbstractCustomView
                     </div>
                     <div class="details">
                         <div class="player-name"><h3><?php echo $this->name; ?></h3></div>
-                        <div class="player-stats">
-                            <div>Wins <?php echo $this->wins; ?></div>
-                            <div>Lost <?php echo $this->losses; ?></div>
-                            <div>Points <?php echo round($this->points); ?></div>
-                        </div>
                     </div>
                     <div class="faction">
                         <img src="/assets/images/leaderboard/<?php echo $this->faction; ?>.png" />

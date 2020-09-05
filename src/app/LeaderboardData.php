@@ -17,13 +17,8 @@ class LeaderboardData extends Model
 
     public static function findPlayerData($playerId, $leaderboardHistoryId)
     {
-        $playerData = Cache::remember("findPlayerData".$playerId.$leaderboardHistoryId, 480, function () 
-        use($playerId, $leaderboardHistoryId) 
-        {
-            return LeaderboardData::where("match_player_id", $playerId)
-                ->where("leaderboard_history_id", $leaderboardHistoryId)
-                ->first();
-        });
-        return $playerData;
+        return LeaderboardData::where("match_player_id", $playerId)
+            ->where("leaderboard_history_id", $leaderboardHistoryId)
+            ->first();
     }
 }

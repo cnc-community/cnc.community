@@ -27,7 +27,6 @@ class MatchPlayer extends Model
         $winningStreaks = [];
         $winningCount = 0;
         $attempts = 0;
-        $lost = false;
 
         foreach($matches as $match)
         {
@@ -230,7 +229,6 @@ class MatchPlayer extends Model
         }
 
         $playerData["name"] = $matchPlayer->playerName();
-        
         return $playerData;
     }
 }

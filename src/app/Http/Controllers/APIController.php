@@ -116,6 +116,7 @@ class APIController extends Controller
         }
 
         $gamesLast24Hours = $profile->player()->playerGames24Hours($matchType, $leaderboardHistory->id);
+        $winstreak = $profile->player()->playerWinStreak($matchType, $leaderboardHistory->id);
 
         $badge = LeaderboardHelper::getBadgeByRank($profile->rank);
 
@@ -130,6 +131,8 @@ class APIController extends Controller
             [
                 "profile" => $profile,
                 "badge" => $badge,
+                "winstreakHighest" => $winstreak["highest"],
+                "winstreakCurrent" => $winstreak["current"],
                 "gamesLast24Hours" => $gamesLast24Hours,
                 "properties" => $validatedProps,
                 "inputColor" => $inputColor,
@@ -158,6 +161,7 @@ class APIController extends Controller
         }
 
         $gamesLast24Hours = $profile->player()->playerGames24Hours($matchType, $leaderboardHistory->id);
+        $winstreak = $profile->player()->playerWinStreak($matchType, $leaderboardHistory->id);
 
         $badge = LeaderboardHelper::getBadgeByRank($profile->rank);
         $inputColor = APILeaderboardProfile::validateColorRequest($request);
@@ -173,6 +177,8 @@ class APIController extends Controller
                 "profile" => $profile,
                 "badge" => $badge,
                 "gamesLast24Hours" => $gamesLast24Hours,
+                "winstreakHighest" => $winstreak["highest"],
+                "winstreakCurrent" => $winstreak["current"],
                 "properties" => $validatedProps,
                 "inputColor" => $inputColor,
                 "inputLayout" => $inputLayout,

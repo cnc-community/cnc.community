@@ -20,6 +20,8 @@
     <?php if (in_array("points", $properties)):?><div>Points: <span>{{ round($profile->points) }}</span></div><?php endif; ?>
     <?php if (in_array("played", $properties)):?><div>Played: <span>{{ $gamesPlayed }}</span></div><?php endif; ?>
     <?php if (in_array("playedLast24Hours", $properties)):?><div>Played (Last 24 hrs): <span>{{ $gamesLast24Hours }}</span></div><?php endif; ?>
+    <?php if (in_array("winstreakHighest", $properties)):?><div>Highest Winstreak:<span> {{ $winstreakHighest }}</span></div><?php endif; ?>
+    <?php if (in_array("winstreakCurrent", $properties)):?><div>Current Winstreak:<span> {{ $winstreakCurrent }}</span></div><?php endif; ?>
 
     <?php if ($inputBranding == "show-branding"): ?>
     <div class="branding">

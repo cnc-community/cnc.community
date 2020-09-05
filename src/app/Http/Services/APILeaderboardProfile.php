@@ -32,6 +32,8 @@ class APILeaderboardProfile
             "played",
             "name",
             "playedLast24Hours",
+            "winstreakCurrent",
+            "winstreakHighest",
         ];
 
         if ($request->properties == null)
