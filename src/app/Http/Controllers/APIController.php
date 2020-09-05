@@ -116,6 +116,7 @@ class APIController extends Controller
         }
 
         $gamesLast24Hours = $profile->player()->playerGames24Hours($matchType, $leaderboardHistory->id);
+
         $badge = LeaderboardHelper::getBadgeByRank($profile->rank);
 
         $inputColor = APILeaderboardProfile::validateColorRequest($request);

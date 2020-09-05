@@ -40,8 +40,36 @@
                         </a>
                     </div>
                 </div>
-                <div class="logo">
-                    <img src="{{ $gameLogo }}" alt="logo" />
+                <div class="statistics">
+                    <div class="statistics-list">
+
+                        <div class="statistic-detail">
+                            <div class="value text-uppercase">
+                                <strong>{{ $winStreak["current"] }}</strong>
+                            </div>              
+                            <div class="title text-uppercase">
+                                Current Win Streak <br/><span>(this season)</span>
+                            </div>      
+                        </div>
+
+                        <div class="statistic-detail">
+                            <div class="value text-uppercase">
+                                <strong>{{ $winStreak["highest"] }}</strong>
+                            </div>              
+                            <div class="title text-uppercase">
+                                Highest Win Streak <br/><span>(this season)</span>
+                            </div>      
+                        </div>
+
+                        <div class="statistic-detail">
+                            <div class="value text-uppercase">
+                                <strong>{{ $gamesLast24Hours }}</strong>
+                            </div>              
+                            <div class="title text-uppercase">
+                                Games Played <br/><span>(last 24 hours)</span>
+                            </div>      
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -50,7 +78,6 @@
 
         <div class="main-content">
             <div class="recent-games">
-            <h3 class="text-uppercase">Games</h3>
 
             <div class="leaderboard-bar">
                 <form>
@@ -67,22 +94,13 @@
                         </div>
                     </div>
                 </form>
-                <div class="statistics">
-                    <div class="statistics-list">
-                        <div class="statistic-detail">
-                            <div class="value text-uppercase">
-                                <strong>{{ $gamesLast24Hours }}</strong>
-                            </div>              
-                            <div class="title text-uppercase">
-                                Games Played <br/><span>(last 24 hours)</span>
-                            </div>      
-                        </div>
-                    </div>
-                </div>
             </div>
 
             {{ $matches->links() }}
+            <h3 class="text-uppercase">{{ $player->playerName()}}'s games </h3>
             @foreach($matches as $match)
+
+
             <div class="recent-game">
                 <div class="players">
 
@@ -93,10 +111,10 @@
                             new \App\Http\CustomView\Components\PlayerDetailProfileStats
                             (
                                 $teamPlayer->playerName(),
-                                "",//$teamPlayer->playerWins(),
-                                "",//$teamPlayer->playerLosses(),
+                                "1",//$teamPlayer->playerWins(),
+                                "2",//$teamPlayer->playerLosses(),
                                 $teamPlayer->playerBadge($rank),
-                                "",//$teamPlayer->playerPoints(),
+                                "3",//$teamPlayer->playerPoints(),
                                 $rank,
                                 $teamPlayer->playerFactionByMatchId($match->matchid),
                                 $teamId == $match->winningTeamId(),

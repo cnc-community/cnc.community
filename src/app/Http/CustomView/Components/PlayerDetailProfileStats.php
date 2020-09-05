@@ -53,14 +53,11 @@ class PlayerDetailProfileStats extends AbstractCustomView
                     </div>
                     <div class="details">
                         <div class="player-name"><h3><?php echo $this->name; ?></h3></div>
-                        <?php /*
                         <div class="player-stats">
                             <div>Wins <?php echo $this->wins; ?></div>
                             <div>Lost <?php echo $this->losses; ?></div>
                             <div>Points <?php echo round($this->points); ?></div>
                         </div>
-                        */
-                        ?>
                     </div>
                     <div class="faction">
                         <img src="/assets/images/leaderboard/<?php echo $this->faction; ?>.png" />

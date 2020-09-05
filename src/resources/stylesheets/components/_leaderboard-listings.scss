@@ -77,6 +77,12 @@
 .statistics-list
 {
     display: flex;
+    flex-direction: column;
+
+    @media(min-width: $md-width)
+    {
+        flex-direction: row;
+    }
 }
 
 .statistics .statistics-section-title 
@@ -105,10 +111,10 @@
 
 .statistics 
 {
-    @media(min-width: $md-width)
-    {
-        margin-left: auto;
-    }
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .statistic-detail 
@@ -117,13 +123,13 @@
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    width: 200px;
     max-width: 100%;
     text-align: center;
     padding: 15px;
     border-radius: 4px;
     margin-right: 5px;
     margin-left: 5px;
+    width: 180px;
 }
 
 .statistic-detail .value 
@@ -134,7 +140,7 @@
 
 .statistic-detail .title
 {
-    font-size: 1.1rem;
+    font-size: 1rem;
     color: $color-white;
     font-weight: 500;
 
@@ -146,14 +152,19 @@
 
 .red-alert .statistic-detail
 {
-    background: #270102;
+    background: rgba(39,1,2,0.2);
     border: 1px solid #800008;
     color: #ff1818;
 }
 
 .tiberian-dawn .statistic-detail
 {
-    background: #0e0e0e;
+    background: rgba(14,14,14,0.4);
     border: 1px solid #565656;
     color: silver;
+}
+
+.tiberian-dawn .statistic-detail .value
+{
+    color: $color-green;
 }

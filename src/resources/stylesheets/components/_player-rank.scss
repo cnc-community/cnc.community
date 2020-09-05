@@ -52,7 +52,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    color: #fca720;
+    color: $color-gold;
     text-transform: uppercase;
     font-weight: 600;
     font-size: 12px;
@@ -69,7 +69,6 @@
     display: flex;
     align-content: space-around;
     @extend .font-secondary-bold;
-    color: #ff8d00;
     font-size: 0.8rem;
 }
 
@@ -81,11 +80,6 @@
 .player-stats > div:first-child
 {
     margin-left: 0;
-}
-
-.tiberian-dawn .player-stats
-{
-    color: #e8deb5;
 }
 
 .tiberian-dawn .top-rank-box .results .player-rank

@@ -10,33 +10,57 @@ class MatchPlayer extends Model
 {
     protected $connection = 'mysql2';
     protected $table = 'match_players';
-    
-    protected function fullTextWildcards($term)
-    {
-        // removing symbols used by MySQL
-        $reservedSymbols = ['-', '+', '<', '>', '@', '(', ')', '~'];
-        $term = str_replace($reservedSymbols, '', $term);
-
-        $words = explode(' ', $term);
-
-        foreach ($words as $key => $word) {
-            /*
-            * applying + operator (required word) only big words
-            * because smaller ones are not indexed by mysql
-            */
-            if (strlen($word) >= 3) {
-                $words[$key] = '*' . $word . '*';
-            }
-        }
-
-        $searchTerm = implode(' ', $words);
-
-        return $searchTerm;
-    }
-
+   
     public function playerUrlByGameSlug($gameSlug)
     {
         return "/command-and-conquer-remastered/leaderboard/" . $gameSlug . "/player/" . $this->id; 
+    }
+
+    public function playerWinStreak($matchType, $leaderboardHistoryId)
+    {
+        $matches = Match::where("matchtype", $matchType)
+            ->where("leaderboard_history_id", $leaderboardHistoryId)
+            ->whereRaw("MATCH (players) AGAINST (? IN BOOLEAN MODE)", $this->fullTextWildcards($this->player_id))
+            ->orderBy("starttime", "DESC")
+            ->get();
+
+        $winningStreaks = [];
+        $winningCount = 0;
+        $attempts = 0;
+        $lost = false;
+
+        foreach($matches as $match)
+        {
+            $players = json_decode($match->players);
+
+            foreach($players as $key => $playerId)
+            {
+                $teams = json_decode($match->teams);
+                $teamId = $teams[$key];
+
+                if ($playerId == $this->player_id)
+                {
+                    if ($teamId == $match->winningteamid)
+                    {
+                        // We won the match, add to current streak
+                        $winningCount++;
+                        $winningStreaks[$attempts] = $winningCount;
+                    }
+                    else
+                    {
+                        // We lost add our latest win streak and reset
+                        $winningStreaks[$attempts] = $winningCount;
+                        $attempts++;
+                        $winningCount = 0;
+                    }
+                }
+            }
+        }
+
+        return [
+            "highest" => count($winningStreaks) > 0 ? max($winningStreaks) : 0,
+            "current" => count($winningStreaks) > 0 ? $winningStreaks[0] : 0
+        ];
     }
 
     public function playerGames24Hours($matchType, $leaderboardHistoryId)
@@ -46,56 +70,12 @@ class MatchPlayer extends Model
         return Cache::remember("playerGames24Hours".$this->id.$matchType.$leaderboardHistoryId, 480, function ()
             use($matchType, $leaderboardHistoryId, $last24Hours)
         {
-            return Match::whereJsonContains("players", [$this->player_id])
-                ->where("matchtype", $matchType)
+            return Match::where("matchtype", $matchType)
                 ->where("leaderboard_history_id", $leaderboardHistoryId)
+                ->whereRaw("MATCH (players) AGAINST (? IN BOOLEAN MODE)", $this->fullTextWildcards($this->player_id))
                 ->where('starttime', '>=', $last24Hours)
                 ->count();
         });
-    }
-
-    public function playerWins()
-    {
-        $player = Cache::remember("playerWins".$this->id, 480, function ()
-        {
-            return LeaderboardData::where("match_player_id", $this->id)->first();
-        });
-
-        if($player)
-        {
-            return $player->wins;
-        }   
-        return null; 
-    }
-
-    public function playerLosses()
-    {
-        $player = Cache::remember("playerLosses".$this->id, 480, function () 
-        {
-            return LeaderboardData::where("match_player_id", $this->id)->first();
-        });
-
-        if($player)
-        {
-            return $player->losses;
-        }   
-
-        return null; 
-    }
-
-    public function playerPoints()
-    {
-        $player = Cache::remember("playerPoints".$this->id, 480, function () 
-        {
-            return LeaderboardData::where("match_player_id", $this->id)->first();
-        });
-
-        if($player)
-        {
-            return $player->points;
-        }   
-
-        return null; 
     }
 
     public function playerRank($history)
@@ -155,13 +135,6 @@ class MatchPlayer extends Model
         return $player;
     }
 
-    public function leaderboardStats($leaderboardHistory)
-    {
-        return LeaderboardData::where("match_player_id", "=", $this->id)
-            ->where("leaderboard_history_id", $leaderboardHistory->id)
-            ->first();
-    }
-
     public static function savePlayer($playerId, $playerName)
     {
         $player = MatchPlayer::where("player_id", $playerId)->first();
@@ -205,6 +178,30 @@ class MatchPlayer extends Model
         // $time = microtime(true) - $start;
         // $queries = DB::connection('mysql2')->getQueryLog();
         // return ["debug" => $queries, "time" => $time];
+    }
+
+    // https://stackoverflow.com/questions/52852264/laravel-5-full-text-search
+    protected function fullTextWildcards($term)
+    {
+        // removing symbols used by MySQL
+        $reservedSymbols = ['-', '+', '<', '>', '@', '(', ')', '~'];
+        $term = str_replace($reservedSymbols, '', $term);
+
+        $words = explode(' ', $term);
+
+        foreach ($words as $key => $word) {
+            /*
+            * applying + operator (required word) only big words
+            * because smaller ones are not indexed by mysql
+            */
+            if (strlen($word) >= 3) {
+                $words[$key] = '*' . $word . '*';
+            }
+        }
+
+        $searchTerm = implode(' ', $words);
+
+        return $searchTerm;
     }
 
 

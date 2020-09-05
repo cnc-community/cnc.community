@@ -140,6 +140,7 @@ class LeaderboardController extends Controller
         $gameLogo = ViewHelper::getRemasterLogoBySlug($gameSlug);
         $webViewUrl = url("/api/leaderboard/". $gameSlug . "/player/". $playerId ."/webview/config");
         $gamesLast24Hours = $player->playerGames24Hours($matchType, $leaderboardHistory->id);
+        $winStreak = $player->playerWinStreak($matchType, $leaderboardHistory->id);
         $activeSeason = $leaderboardHistory->isActiveSeason();
 
         return view('pages.remasters.leaderboard.player-detail', 
@@ -151,6 +152,7 @@ class LeaderboardController extends Controller
                 "searchRequest" => $searchRequest,
                 "season" => $season,
                 "gamesLast24Hours" => $gamesLast24Hours,
+                "winStreak" => $winStreak,
                 "matches" => $matches->appends(["season" => $season, "search" => $searchRequest]),
                 "player" => $player,
                 "playerData" => $playerData,

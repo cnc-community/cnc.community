@@ -8,12 +8,6 @@
 .recent-games 
 {
     width: 100%;
-    margin: 0 auto;
-    
-    @media(min-width: $xl-width)
-    {
-        width: 65vw;
-    }
 }
 
 .player-detail-rank 
@@ -249,16 +243,27 @@
 .leaderboard-profile-detail .leaderboard-header .player-stats
 {
     margin-top: 10px;
-    font-size: 1rem;
+    font-size: 1.4rem;
     justify-content: center;
+    color: $color-gold;
     
-    @media(min-width:$lg-width)
+    @media(min-width:$xl-width)
     {
         justify-content: flex-start;
     }
 }
 
+.tiberian-dawn.leaderboard-profile-detail .leaderboard-header .player-stats
+{
+    color: #fff6e0;
+}
+
 .leaderboard-profile-detail .leaderboard-header 
 {
     padding-bottom: 50px;
+}
+
+.leaderboard-profile-detail .statistics 
+{
+    margin-right: auto;
 }

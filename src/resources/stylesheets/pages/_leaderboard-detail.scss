@@ -154,7 +154,7 @@
     padding-bottom: 120px;
     text-align: center;
     
-    @media(min-width: $lg-width)
+    @media(min-width: $xl-width)
     {
         text-align: left;
         flex-direction: row;
@@ -176,7 +176,7 @@
     flex-direction: column;
     align-items: center;
 
-    @media(min-width: $lg-width)
+    @media(min-width: $xl-width)
     {
         flex-direction: row;
         justify-content: flex-start;
@@ -190,14 +190,9 @@
     align-items: center;
 }
 
-.leaderboard-header .title 
+.leaderboard-header > .title 
 {
     width: 100%;
-
-    @media(min-width: $lg-width)
-    {
-        width: 60%;
-    }
 
     @media(min-width: $xl-width)
     {
@@ -310,11 +305,6 @@
     top: calc(56px * 16);
 }
 
-// Badge type
-
-
-
-
 // End skins
 
 .leaderboard-detail.red-alert .other-rank-box .results,
@@ -356,4 +346,9 @@
 .search-results p 
 {
     color: $color-white;
+}
+
+.leaderboard-detail .statistics
+{
+    margin-right: 0;
 }
