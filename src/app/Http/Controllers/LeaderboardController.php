@@ -136,7 +136,6 @@ class LeaderboardController extends Controller
 
         $playerData = LeaderboardData::findPlayerData($player->id, $leaderboardHistory->id);
         $matches = $player->matches($matchType, $pageNumber, $searchRequest, $leaderboardHistory->id);
-        
         $gameName = Constants::getRemasterGameBySlug($gameSlug);
         $gameLogo = ViewHelper::getRemasterLogoBySlug($gameSlug);
         $webViewUrl = url("/api/leaderboard/". $gameSlug . "/player/". $playerId ."/webview/config");

@@ -11,6 +11,29 @@ class MatchPlayer extends Model
     protected $connection = 'mysql2';
     protected $table = 'match_players';
     
+    protected function fullTextWildcards($term)
+    {
+        // removing symbols used by MySQL
+        $reservedSymbols = ['-', '+', '<', '>', '@', '(', ')', '~'];
+        $term = str_replace($reservedSymbols, '', $term);
+
+        $words = explode(' ', $term);
+
+        foreach ($words as $key => $word) {
+            /*
+            * applying + operator (required word) only big words
+            * because smaller ones are not indexed by mysql
+            */
+            if (strlen($word) >= 3) {
+                $words[$key] = '*' . $word . '*';
+            }
+        }
+
+        $searchTerm = implode(' ', $words);
+
+        return $searchTerm;
+    }
+
     public function playerUrlByGameSlug($gameSlug)
     {
         return "/command-and-conquer-remastered/leaderboard/" . $gameSlug . "/player/" . $this->id; 
@@ -156,15 +179,15 @@ class MatchPlayer extends Model
     {
         // DB::connection('mysql2')->enableQueryLog();
         // $start = microtime(true);
-        
+
         $cacheKey = "playerMatches".$this->player_id.$matchType.$pageNumber.$searchQuery.$leaderboardHistoryId;
         return Cache::remember($cacheKey, 1800, function () use ($matchType, $searchQuery, $leaderboardHistoryId)
         {
             if ($searchQuery == null)
             {
-                return Match::whereJsonContains("players", [$this->player_id])
-                    ->where("matchtype", $matchType)
+                return Match::where("matchtype", $matchType)
                     ->where("leaderboard_history_id", $leaderboardHistoryId)
+                    ->whereRaw("MATCH (players) AGAINST (? IN BOOLEAN MODE)", $this->fullTextWildcards($this->player_id))
                     ->orderBy("starttime", "DESC")
                     ->paginate(20);
             }
@@ -173,9 +196,9 @@ class MatchPlayer extends Model
                 return Match::whereJsonContains("players", [$this->player_id])
                     ->where("matchtype", $matchType)
                     ->where("leaderboard_history_id", $leaderboardHistoryId)
-                    ->where("names", "LIKE", "%$searchQuery%")
+                    ->whereRaw("MATCH (names) AGAINST (? IN BOOLEAN MODE)", $this->fullTextWildcards($searchQuery))
                     ->orderBy("starttime", "DESC")
-                    ->simplePaginate(20);
+                    ->paginate(20);
             }
         });
 

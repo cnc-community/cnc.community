@@ -61,15 +61,21 @@ If so run `rm -rf public/storage` from the src.
 * Relink symlink for storage `docker exec -it 15f2f7114930 php artisan storage:link`
 
 
-## Special
+### Special
 - Will convert text for startime to varchar(255) for now until work out what to do processing wise
 
 ```
 ALTER TABLE matches CHANGE starttime starttime VARCHAR(20) NULL
 ```
 
+### Indexes 
 - Add index
 ```
 ALTER TABLE `matches` ADD INDEX `matches_leaderboard_history_id_index` (leaderboard_history_id)
 ```
 
+- Fulltext search for player ids/names
+```
+ALTER TABLE `matches` ADD FULLTEXT `matches_fulltext_players_index` (players)
+ALTER TABLE `matches` ADD FULLTEXT `matches_fulltext_names_index` (names)
+```
