@@ -100,6 +100,26 @@ class APIController extends Controller
         return MatchPlayer::profile($gameSlug, $playerId);
     }
 
+    public function searchPlayers(Request $request, $gameSlug)
+    {
+        $searchRequest = filter_var($request->search, FILTER_SANITIZE_STRING);
+        $matchType = Match::getMatchTypeByGameSlug($gameSlug);
+
+        $leaderboardHistory = Leaderboard::getActiveLeaderboardSeason($matchType);
+        if ($leaderboardHistory == null)
+        {
+            abort(404);
+        }
+        
+        $cacheKey = "APIController.searchPlayersByRequest".$matchType.$searchRequest;
+        return Leaderboard::getPlayersFromSearchRequest(
+            $cacheKey, 
+            $leaderboardHistory->id, 
+            $searchRequest, 
+            $limit=10
+        );
+    }
+
     public function getPlayerRankWebView(Request $request, $gameSlug, $playerId)
     {
         $matchType = Match::getMatchTypeByGameSlug($gameSlug);

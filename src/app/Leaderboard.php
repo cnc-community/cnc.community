@@ -64,6 +64,27 @@ class Leaderboard extends Model
         });
     }
 
+    public static function getPlayersFromSearchRequest($cacheKey, $leaderboardHistoryId,$searchQuery, $limit)
+    {
+        $paginatedCacheKey = "Leaderboard.getPlayersFromSearchRequest".$leaderboardHistoryId.$limit.$cacheKey.$searchQuery;
+
+        return Cache::remember($paginatedCacheKey, 480, function () use($leaderboardHistoryId, $limit, $searchQuery)
+        {
+            return LeaderboardData::where("leaderboard_history_id", $leaderboardHistoryId)
+                ->leftJoin("match_players as mp", "mp.id", "leaderboard_data.match_player_id")
+                ->where("mp.player_name", "LIKE", "%$searchQuery%")
+                ->select(
+                    "mp.player_name",
+                    "leaderboard_data.rank", 
+                    "leaderboard_data.wins",
+                    "leaderboard_data.losses", 
+                    "leaderboard_data.points"
+                )
+                ->limit($limit)
+                ->get();
+        });
+    }
+
     public static function saveData($historyId, $result)
     {
         $leaderResult = LeaderboardData::where("rank", $result["rank"])
