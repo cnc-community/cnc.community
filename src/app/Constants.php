@@ -250,7 +250,7 @@ class Constants
             
             case "cncnet5_cncr":
                 return [
-                    "url" => "https://www.moddb.com/mods/cncreloaded",
+                    "url" => "https://cncnet.org/cnc-reloaded",
                     "logo" => ViewHelper::getGameLogoPathByName("cncreloaded"),
                     "external_link" => true,
                     "name" => "C&C: Reloaded",
