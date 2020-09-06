@@ -70,10 +70,11 @@ class Leaderboard extends Model
 
         return Cache::remember($paginatedCacheKey, 480, function () use($leaderboardHistoryId, $limit, $searchQuery)
         {
-            return LeaderboardData::where("leaderboard_history_id", $leaderboardHistoryId)
+            $results = LeaderboardData::where("leaderboard_history_id", $leaderboardHistoryId)
                 ->leftJoin("match_players as mp", "mp.id", "leaderboard_data.match_player_id")
                 ->where("mp.player_name", "LIKE", "%$searchQuery%")
                 ->select(
+                    "mp.id",
                     "mp.player_name",
                     "leaderboard_data.rank", 
                     "leaderboard_data.wins",
@@ -82,6 +83,13 @@ class Leaderboard extends Model
                 )
                 ->limit($limit)
                 ->get();
+
+            // Parse the Octal names out for ease
+            foreach($results as $result)
+            {
+                $result->player_name = ViewHelper::renderSpecialOctal($result->player_name);
+            }
+            return $results;
         });
     }
 
