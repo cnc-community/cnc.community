@@ -46,7 +46,8 @@ class CnCNetAPI
             "cncnet5_mo",
             "cncnet5_dta",
             "cncnet5_rr",
-            "cncnet5_ti"
+            "cncnet5_ti",
+            "cncnet5_cncr"
         ];
         
         $result = [];

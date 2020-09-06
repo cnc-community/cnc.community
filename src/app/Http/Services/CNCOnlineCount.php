@@ -89,6 +89,7 @@ class CNCOnlineCount
         $modsFilter = [
             "cncnet5_mo" => 1,
             "cncnet5_rr" => 2,
+            "cncnet5_cncr" => 3,
         ];
 
         $communityGamesFilter = [
