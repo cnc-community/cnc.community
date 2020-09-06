@@ -45,7 +45,7 @@
 
                         <div class="statistic-detail">
                             <div class="value text-uppercase">
-                                <strong>{{ $winStreak["current"] }}</strong>
+                                <strong>{{ $playerStats["winstreak"]["current"] }}</strong>
                             </div>              
                             <div class="title text-uppercase">
                                 Current Win Streak <br/><span>(this season)</span>
@@ -54,7 +54,7 @@
 
                         <div class="statistic-detail">
                             <div class="value text-uppercase">
-                                <strong>{{ $winStreak["highest"] }}</strong>
+                                <strong>{{ $playerStats["winstreak"]["highest"] }}</strong>
                             </div>              
                             <div class="title text-uppercase">
                                 Highest Win Streak <br/><span>(this season)</span>
@@ -63,7 +63,7 @@
 
                         <div class="statistic-detail">
                             <div class="value text-uppercase">
-                                <strong>{{ $gamesLast24Hours }}</strong>
+                                <strong>{{ $playerStats["gamesLast24Hours"] }}</strong>
                             </div>              
                             <div class="title text-uppercase">
                                 Games Played <br/><span>(last 24 hours)</span>

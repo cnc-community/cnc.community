@@ -16,6 +16,25 @@ class MatchPlayer extends Model
         return "/command-and-conquer-remastered/leaderboard/" . $gameSlug . "/player/" . $this->id; 
     }
 
+    public function playerStats($matchType, $leaderboardHistoryId)
+    {
+        $matches = Match::where("matchtype", $matchType)
+            ->where("leaderboard_history_id", $leaderboardHistoryId)
+            ->whereRaw("MATCH (players) AGAINST (? IN BOOLEAN MODE)", $this->fullTextWildcards($this->player_id))
+            ->orderBy("starttime", "DESC")
+            ->get();
+
+        $factions = $this->getPlayerFactions($matches);
+        $winStreak = $this->getPlayerWinStreak($matches);
+        $gamesLast24Hours = $this->playerGames24Hours($matchType, $leaderboardHistoryId);
+
+        return [
+            "factions" => $factions,
+            "winstreak" => $winStreak,
+            "gamesLast24Hours" => $gamesLast24Hours
+        ];
+    }
+
     public function playerWinStreak($matchType, $leaderboardHistoryId)
     {
         $matches = Match::where("matchtype", $matchType)
@@ -24,6 +43,49 @@ class MatchPlayer extends Model
             ->orderBy("starttime", "DESC")
             ->get();
 
+        return $this->getPlayerWinStreak($matches);
+    }
+
+    private function getPlayerFactions($matches)
+    {
+        $playerFactions = [];
+        foreach($matches as $match)
+        {
+            $factions = json_decode($match->factions);
+            $players = json_decode($match->players);
+
+            foreach($players as $key => $playerId)
+            {
+                $teams = json_decode($match->teams);
+                $teamId = $teams[$key];
+
+                // We are the player we want to query this against
+                if ($playerId == $this->player_id)
+                {
+                    $factionId = $factions[$key];
+                    $faction = LeaderboardHelper::getFactionById($factionId);
+                    
+                    // Add faction usage
+                    $playerFactions[$faction]["total"] = isset($playerFactions[$faction]["total"]) ? $playerFactions[$faction]["total"] + 1: 1;
+                    
+                    if ($teamId == $match->winningteamid)
+                    {
+                        // We've won
+                        $playerFactions[$faction]["wins"] = isset($playerFactions[$faction]["wins"]) ? $playerFactions[$faction]["wins"] + 1 : 1;
+                    }
+                    else
+                    {
+                        // We've lost
+                        $playerFactions[$faction]["losses"] = isset($playerFactions[$faction]["losses"]) ? $playerFactions[$faction]["losses"] + 1 : 1;
+                    }
+                }
+            }
+        }
+        return $playerFactions;
+    }
+
+    private function getPlayerWinStreak($matches)
+    {
         $winningStreaks = [];
         $winningCount = 0;
         $attempts = 0;
