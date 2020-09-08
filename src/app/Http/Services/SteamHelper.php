@@ -13,6 +13,11 @@ class SteamHelper
         $this->steamAPI = new SteamAPI();
     }
 
+    public function getSteamProfiles($appId, $steamIds)
+    {
+        return $this->steamAPI->getSteamProfileData($appId, $steamIds);
+    }
+
     public function getSteamPlayerCount($appId)
     {
         return $this->steamAPI->getSteamPlayerCount($appId);

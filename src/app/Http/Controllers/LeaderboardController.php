@@ -6,6 +6,7 @@ use App\Constants;
 use App\Http\Services\CNCOnlineCount;
 use App\Http\Services\Petroglyph\PetroglyphAPIService;
 use App\Http\Services\SteamHelper;
+use App\Http\Services\SteamProfileDataParser;
 use App\Leaderboard;
 use App\LeaderboardData;
 use App\LeaderboardHelper;
@@ -33,6 +34,12 @@ class LeaderboardController extends Controller
         $this->cncOnlineCount = new CNCOnlineCount();
 
         View::share('totalOnline', $this->cncOnlineCount->getTotal());
+    }
+
+    public function runProfileDataTask()
+    {
+        $steamProfileParser = new SteamProfileDataParser();
+        $steamProfileParser->run();
     }
 
     public function runMatchesTask()
