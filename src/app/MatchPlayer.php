@@ -16,6 +16,16 @@ class MatchPlayer extends Model
         return "/command-and-conquer-remastered/leaderboard/" . $gameSlug . "/player/" . $this->id; 
     }
 
+    public function getSteamProfileAvatar()
+    {
+        $profile = MatchPlayerSteamProfile::where("match_player_id", $this->id)->first();
+        if ($profile)
+        {
+            return $profile->avatar_full;
+        }
+        return "";
+    }
+
     public function playerStats($matchType, $leaderboardHistoryId)
     {
         $matches = Match::where("matchtype", $matchType)

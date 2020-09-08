@@ -1,0 +1,94 @@
+.leaderboard-profile-details
+{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background: rgba(8, 4, 4,0.8);
+    
+    @media(min-width: $md-width)
+    {
+        flex-direction: row;
+    }
+}
+
+.leaderboard-profile-extra
+{
+    background: rgb(8, 4, 4);
+}
+
+
+//
+// Player Avatar + Rank
+// 
+.leaderboard-profile-avatar
+{
+    width: 180px;
+    height: 180px;
+    border-radius: 100%;
+    margin-right: 30px;
+    box-shadow: inset 0px 0px 0 4px #8e00ff;
+}
+
+
+//
+// Player Name + Rank
+// 
+.leaderboard-profile-rank
+{
+    @extend .font-secondary-bold;
+    // width: 200px;
+    padding-top: 25px;
+}
+
+.leaderboard-profile-rank .player-name 
+{
+    font-size: 1.4rem;
+}
+
+.leaderboard-profile-rank .rank 
+{
+    font-size: 4rem;
+}
+
+
+// 
+// Player Quick Stats, Games, Points, Wins.
+// 
+.leaderboard-profile-quick-stats 
+{
+    display: flex;
+    width: 50%;
+    max-width: 100%;
+    margin-left: auto;
+}
+
+.leaderboard-profile-quick-stats .profile-quick-stat
+{
+    width: 33%;
+    padding-top: 25px;
+}
+
+.leaderboard-profile-quick-stats .quick-stats-title
+{
+    font-weight: 300;
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+.leaderboard-profile-quick-stats .quick-stats-value
+{
+    font-size: 2rem;
+}
+
+// Overall quick stats
+.profile-quick-stat.overall div 
+{   
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.profile-quick-stat.overall .quick-stats-value
+{
+    font-size: 1.2rem;
+}

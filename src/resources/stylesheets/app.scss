@@ -40,6 +40,11 @@
         "components/online-count",
         "components/stat-game-box";
 
+// New: Eventually splitting out Leaderboards from main codebase
+@import 
+    "components/leaderboard/leaderboard-profile", 
+    "components/leaderboard/leaderboard-breadcrumb";
+
 //
 // Pages
 @import "pages/homepage",
@@ -51,5 +56,6 @@
         "pages/creators",
         "pages/page-remasters",
         "pages/leaderboard-detail",
+        "pages/leaderboard-profile",
         "pages/player-webview",
         "pages/game-stats";

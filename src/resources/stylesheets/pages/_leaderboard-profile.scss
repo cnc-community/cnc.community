@@ -1,0 +1,15 @@
+.page-leaderboard-profile main
+{
+    position: relative;
+    z-index: 1;
+}
+
+.page-leaderboard-profile .page-background
+{
+    padding-top: 150px;
+    background: url('../images/leaderboard-profile/background.jpg');
+    background-position: top center;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    height: 100vh;
+}

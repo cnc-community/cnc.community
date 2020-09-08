@@ -1,0 +1,55 @@
+.leaderboard-breadcrumb
+{
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    background: rgba(9, 6, 6, 0.5);
+}
+
+.leaderboard-breadcrumb .spacer
+{
+    display: none;
+    padding: 0 5px;
+    @media(min-width: $md-width)
+    {
+        display: block;
+    }
+}
+
+.leaderboard-breadcrumb .btn-back 
+{
+    padding-left: 15px;
+    text-align: center;
+    color: $color-white;
+    font-size: 1.2rem;
+    padding-right: 15px;
+}
+
+.leaderboard-breadcrumb-trail
+{
+    display: flex;
+    flex-direction: column;
+    padding-left: 15px;
+    padding-right: 15px;    
+
+    @media(min-width: $md-width)
+    {
+        flex-direction: row;
+    }
+}
+
+.leaderboard-breadcrumb-logo
+{
+    margin-left: auto;
+    display: none;
+
+    @media(min-width: $md-width)
+    {
+        display: block;
+    }
+    
+    & img {
+        height: 80px;
+        max-width: 100%;
+    }
+}
