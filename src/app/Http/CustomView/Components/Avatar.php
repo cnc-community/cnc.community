@@ -22,7 +22,7 @@ class Avatar extends AbstractCustomView
         ?>
         <div class="profile-avatar" aria-label="Avatar for <?php echo $this->title; ?>">
             <div class="profile-avatar-fx"></div>
-            <div class="profile-avatar-image" style="background-image: url(<?php echo $this->imgSrc; ?>)"></div>
+            <div class="profile-avatar-image" style="background-image: url('<?php echo $this->imgSrc; ?>')"></div>
         </div>
         <?php
     }

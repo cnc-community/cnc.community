@@ -2,6 +2,8 @@
 
 namespace App;
 
+use App\Http\CustomView\Components\LeaderboardMatchPlayer;
+use App\Http\Services\LeaderboardMatch;
 use App\Http\Services\LeaderboardProfile;
 use App\Http\Services\LeaderboardProfileStats;
 use Illuminate\Database\Eloquent\Model;
@@ -47,11 +49,12 @@ class MatchPlayer extends Model
     public function leaderboardProfile($leaderboardHistoryId)
     {
         return new LeaderboardProfile(
-            LeaderboardData::findPlayerData($this->id, $leaderboardHistoryId)->toArray()
+            LeaderboardData::findPlayerData($this->id, $leaderboardHistoryId)->toArray(),
+            $this->getSteamProfileAvatar()
         );
     }
 
-    public function playerWinStreak($matchType, $leaderboardHistoryId)
+    private function playerWinStreak($matchType, $leaderboardHistoryId)
     {
         $matches = Match::where("matchtype", $matchType)
             ->where("leaderboard_history_id", $leaderboardHistoryId)
@@ -259,6 +262,17 @@ class MatchPlayer extends Model
         $player->player_name = $playerName;
         $player->save();
         return $player;
+    }
+
+    public function leaderboardMatches($matchType, $pageNumber, $searchQuery, $leaderboardHistoryId)
+    {
+        $leaderboardMatches = [];
+        $matches = $this->matches($matchType, $pageNumber, $searchQuery, $leaderboardHistoryId);
+        foreach($matches as $match)
+        {
+            $leadboardMatches[] = new LeaderboardMatch($match->toArray());
+        }
+        return $leadboardMatches;
     }
 
     public function matches($matchType, $pageNumber, $searchQuery, $leaderboardHistoryId)

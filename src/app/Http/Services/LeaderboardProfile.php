@@ -2,6 +2,8 @@
 
 namespace App\Http\Services;
 
+use App\LeaderboardHelper;
+
 interface LeaderboardProfileInterface
 {
     public function id(): int;
@@ -9,16 +11,19 @@ interface LeaderboardProfileInterface
     public function wins(): int;
     public function losses(): int;
     public function points(): int;
+    public function badge();
+    public function avatar(): string;
 }
 
 class LeaderboardProfile implements LeaderboardProfileInterface
 {
-    public function __construct($json)
+    public function __construct($leaderboardData, $avatarUrl)
     {
-        foreach($json as $k => $v) 
+        foreach($leaderboardData as $k => $v) 
         {
             $this->{$k} = $v;
         }
+        $this->avatar = $avatarUrl;
     }
 
     public function id(): int { return $this->id; }
@@ -33,5 +38,31 @@ class LeaderboardProfile implements LeaderboardProfileInterface
         (
             round(($this->wins/$this->totalGames() * 100))
         ); 
+    }
+    public function badge() 
+    {
+        return new LeaderboardBadge(LeaderboardHelper::getBadgeByRank($this->rank));
+    }
+    public function avatar(): string { return $this->avatar; }
+}
+
+class LeaderboardBadge
+{
+    public function __construct($json)
+    {
+        foreach($json as $k => $v) 
+        {
+            $this->{$k} = $v;
+        }
+    }
+
+    public function badgeImage()
+    {
+        return $this->image;
+    }
+
+    public function badgeTitle()
+    {
+        return $this->rank;
     }
 }

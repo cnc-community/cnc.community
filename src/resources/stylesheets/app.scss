@@ -44,7 +44,9 @@
 // New: Eventually splitting out Leaderboards from main codebase
 @import 
     "components/leaderboard/leaderboard-profile", 
-    "components/leaderboard/leaderboard-breadcrumb";
+    "components/leaderboard/leaderboard-breadcrumb",
+    "components/leaderboard/leaderboard-games",
+    "components/leaderboard/leaderboard-match";
 
 //
 // Pages

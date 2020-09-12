@@ -42,16 +42,21 @@
         <div class="leaderboard-profile">
 
             <div class="leaderboard-profile-details">
-                <?php new App\Http\CustomView\Components\Avatar($player->playerName(), $player->getSteamProfileAvatar() );?>
+                <?php 
+                    new App\Http\CustomView\Components\Avatar(
+                        $player->playerName(), 
+                        $player->getSteamProfileAvatar() 
+                    );
+                ?>
                 
-                <div class="leaderboard-profile-rank">
-                    <div class="player-name">
-                        {{ $player->playerName() }}
-                    </div>
-                    <div class="rank">
-                        #{{ $playerLeaderboardProfile->rank() }}
-                    </div>
-                </div>
+                <?php 
+                    new App\Http\CustomView\Components\Leaderboard\PlayerRank(
+                        $player->playerName(), 
+                        $playerLeaderboardProfile->rank(),
+                        $playerLeaderboardProfile->badge()->badgeImage(),
+                        $playerLeaderboardProfile->badge()->badgeTitle()
+                    ); 
+                ?>
 
                 <div class="leaderboard-profile-stats">
 
@@ -129,39 +134,44 @@
                 </div>
 
                 <div class="leaderboard-profile-factions">
-                <div class="profile-stat">
-                    <h2 class="profile-stat-title">Faction stats</h2>
+                    <div class="profile-stat">
+                        <h2 class="profile-stat-title">Faction stats</h2>
 
-                    <div class="faction-stats-list">
-                        @foreach($playerLeaderboardProfileStats->playerFactionStats() as $faction => $stats)
-                        <div class="faction">
-                            <div class="faction-image">
-                                <img src="/assets/images/leaderboard/{{ $faction }}.png" />
+                        <div class="faction-stats-list">
+                            @foreach($playerLeaderboardProfileStats->playerFactionStats() as $faction => $stats)
+                            <div class="faction">
+                                <div class="faction-image">
+                                    <img src="/assets/images/leaderboard/{{ $faction }}.png" />
+                                </div>
+                                <div class="faction-stats">
+                                    <div>
+                                        Win Ratio
+                                        <strong>{{ $stats->winRatio() }}%</strong>
+                                    </div>
+                                    <div>
+                                        Wins
+                                        <strong>{{ $stats->wins() }}</strong>
+                                    </div>
+                                    <div>
+                                        Losses
+                                        <strong>{{ $stats->losses() }}</strong>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="faction-stats">
-                                <div>
-                                    Win Ratio
-                                    <strong>{{ $stats->winRatio() }}%</strong>
-                                </div>
-                                <div>
-                                    Wins
-                                    <strong>{{ $stats->wins() }}</strong>
-                                </div>
-                                <div>
-                                    Losses
-                                    <strong>{{ $stats->losses() }}</strong>
-                                </div>
-                            </div>
+                            @endforeach 
                         </div>
-                        @endforeach 
                     </div>
-                </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="leaderboard-profile-recent-games">
+    <div class="main-content">
+        <div class="leaderboard-profile-recent-games leaderboard-games">
+            @foreach($playerLeaderboardProfileMatches as $leaderboardMatch)
+                <?php new App\Http\CustomView\Components\Leaderboard\LeaderboardMatch($leaderboardMatch, $leaderboardHistory, $player); ?>
+            @endforeach
+        </div>
     </div>
 </div>
 @endsection
