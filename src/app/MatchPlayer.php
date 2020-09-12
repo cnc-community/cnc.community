@@ -48,8 +48,18 @@ class MatchPlayer extends Model
 
     public function leaderboardProfile($leaderboardHistoryId)
     {
+        $leaderboardData = LeaderboardData::findPlayerData($this->id, $leaderboardHistoryId);
+        if ($leaderboardData == null)
+        {
+            $leaderboardData = [];
+        }
+        else 
+        {
+            $leaderboardData = $leaderboardData->toArray();
+        }
+
         return new LeaderboardProfile(
-            LeaderboardData::findPlayerData($this->id, $leaderboardHistoryId)->toArray(),
+            $leaderboardData,
             $this->getSteamProfileAvatar()
         );
     }

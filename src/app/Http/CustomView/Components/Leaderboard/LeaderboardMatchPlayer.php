@@ -13,11 +13,15 @@ class LeaderboardMatchPlayer extends AbstractCustomView
         {
             $this->{$k} = $v;
         }
+        if (isset($player->leaderboardProfile))
+        {
+            dd($player);
+        }
         $this->renderContents();
     }
 
-    private function rank(): int { return $this->leaderboardProfile->rank; }
-    private function avatar(): string { return $this->leaderboardProfile->avatar; }
+    private function rank(): int { return $this->leaderboardProfile->rank(); }
+    private function avatar(): string { return $this->leaderboardProfile->avatar(); }
     private function playerName(): string { return $this->playerName; }
     private function playerBadge(): string { return $this->leaderboardProfile->badge()->badgeImage(); }
     private function playerRankTitle(): string { return $this->leaderboardProfile->badge()->badgeTitle(); }
@@ -42,7 +46,6 @@ class LeaderboardMatchPlayer extends AbstractCustomView
                     ); 
                 ?>
             </div>
-            <?php /*
             <div class="leaderboard-match-profile-stats">
                 <div class="profile-stat overall">
                     <div>
@@ -71,7 +74,6 @@ class LeaderboardMatchPlayer extends AbstractCustomView
                     </div>
                 </div>
             </div>
-            */?>
         </div>
         <?php
     }

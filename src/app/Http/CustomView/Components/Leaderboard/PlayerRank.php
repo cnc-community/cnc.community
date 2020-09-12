@@ -29,7 +29,9 @@ class PlayerRank extends AbstractCustomView
                     <?php echo $this->playerName; ?>
                 </div>
                 <div class="rank">
-                    #<?php echo $this->playerRank; ?>
+                    <?php if($this->playerRank != -1): ?>
+                        #<?php echo $this->playerRank; ?>
+                    <?php endif; ?>
                 </div>
 
                 <img src="<?php echo $this->playerBadge; ?>" alt="<?php echo $this->playerBadgeTitle; ?>" />

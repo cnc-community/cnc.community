@@ -17,6 +17,12 @@ interface LeaderboardProfileInterface
 
 class LeaderboardProfile implements LeaderboardProfileInterface
 {
+    private $id = -1;
+    private $rank = -1;
+    private $wins = 0;
+    private $losses = 0;
+    private $points = 0;
+
     public function __construct($leaderboardData, $avatarUrl)
     {
         foreach($leaderboardData as $k => $v) 
@@ -36,7 +42,7 @@ class LeaderboardProfile implements LeaderboardProfileInterface
     { 
         return 
         (
-            round(($this->wins/$this->totalGames() * 100))
+            round(($this->wins / $this->totalGames() * 100))
         ); 
     }
     public function badge() 
