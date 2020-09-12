@@ -1,6 +1,6 @@
 @extends('layouts.app')
-@section('title', ''.$gameName["long_name"].' Online Leaderboard - Command & Conquer Remastered Collection')
-@section('description', ''.$gameName["long_name"].' Leaderboard rankings, 1vs1')
+@section('title', $player->playerName() .' - '.$gameName["long_name"].' Online Leaderboard - Command & Conquer Remastered Collection')
+@section('description', $player->playerName() .' - '.$gameName["long_name"].' Leaderboard rankings, 1vs1')
 @section('meta')
 <meta property="og:image" content="https://cnc.community/assets/images/meta2.png?v=1.0">
 @endsection
@@ -24,7 +24,7 @@
                 <div>
                     <a href="/command-and-conquer-remastered/leaderboard/{{$gameSlug}}?season={{$season}}"
                         title="Back to all leaderboards">
-                        Red Alert Remastered Leaderboard
+                        {{ $gameName["long_name"] }} Leaderboard
                     </a>
                 </div>
                 <div class="spacer">/</div>
@@ -42,66 +42,120 @@
         <div class="leaderboard-profile">
 
             <div class="leaderboard-profile-details">
-                <div class="leaderboard-profile-avatar" style="background: url({{ $player->getSteamProfileAvatar() }})">
-                </div>
+                <?php new App\Http\CustomView\Components\Avatar($player->playerName(), $player->getSteamProfileAvatar() );?>
                 
                 <div class="leaderboard-profile-rank">
                     <div class="player-name">
                         {{ $player->playerName() }}
                     </div>
                     <div class="rank">
-                        #{{ $playerData->rank }}
+                        #{{ $playerLeaderboardProfile->rank() }}
                     </div>
                 </div>
 
-                <div class="leaderboard-profile-quick-stats">
-                    <div class="profile-quick-stat games-played">
-                        <h3 class="quick-stats-title">Games (Last 24 hours)</h3>
-                        <div class="quick-stats-value">
-                            <strong>{{ $playerStats["gamesLast24Hours"] }}</strong>
+                <div class="leaderboard-profile-stats">
+
+                    <div class="profile-stat overall">
+                        <div>
+                            <h3 class="profile-stat-title">Wins</h3>
+                            <div class="quick-stats-value">
+                                <strong>{{ $playerLeaderboardProfile->wins() }}</strong>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="profile-stat-title">Losses</h3>
+                            <div class="quick-stats-value">
+                                <strong>{{ $playerLeaderboardProfile->losses() }}</strong>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="profile-stat-title">Played</h3>
+                            <div class="quick-stats-value">
+                                <strong>{{ $playerLeaderboardProfile->totalGames() }}</strong>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="profile-stat-title">Win Ratio</h3>
+                            <div class="quick-stats-value">
+                                <strong>{{ $playerLeaderboardProfile->winRatio() }}%</strong>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="profile-quick-stat points">
-                        <h3 class="quick-stats-title">Points</h3>
+                    <div class="profile-stat games-played">
+                        <h3 class="profile-stat-title">Games (Last 24 hours)</h3>
                         <div class="quick-stats-value">
-                            <strong>{{ round($playerData->points) }}</strong>
+                            <strong>{{ $playerLeaderboardProfileStats->gamesPlayedLast24Hours() }}</strong>
                         </div>
                     </div>
 
-                    <div class="profile-quick-stat overall">
-                        <div>
-                            <h3 class="quick-stats-title">Wins</h3>
-                            <div class="quick-stats-value">
-                                <strong>{{ $playerData->wins }}</strong>
-                            </div>
-                        </div>
-                        <div>
-                            <h3 class="quick-stats-title">Losses</h3>
-                            <div class="quick-stats-value">
-                                <strong>{{ $playerData->losses }}</strong>
-                            </div>
-                        </div>
-                        <div>
-                            <h3 class="quick-stats-title">Played</h3>
-                            <div class="quick-stats-value">
-                                <strong>{{ $playerData->wins + $playerData->losses }}</strong>
-                            </div>
+                    <div class="profile-stat points">
+                        <h3 class="profile-stat-title">Points</h3>
+                        <div class="quick-stats-value">
+                            <strong>{{ $playerLeaderboardProfile->points() }}</strong>
                         </div>
                     </div>
+
                 </div>
             </div>
 
             <div class="leaderboard-profile-extra">
                 <div class="leaderboard-profile-games">
-                    <div>
-                        Last 5 Games, High Winstreak etc
+                   
+                    <div class="profile-stat last-games-played">
+                        <h2 class="profile-stat-title">Last 5 games</h2>
+
+                        <div class="last-5-games">
+                            @foreach($playerLeaderboardProfileStats->playerLast5GameStates() as $winState)
+                            <div class="result {{ $winState == "W" ? "result--win": "result--loss"}}">{{ $winState }}</div>
+                            @endforeach
+                        </div>
+                    </div>
+                    
+                    <div class="profile-stat winstreaks">
+                        <div>
+                            <h2 class="profile-stat-title">Highest winstreak</h3>
+                            <div class="quick-stats-value">
+                                <strong>{{ $playerLeaderboardProfileStats->winStreakHighest() }}</strong>
+                            </div>
+                        </div>
+                        <div>
+                            <h2 class="profile-stat-title">Current winstreak</h3>
+                            <div class="quick-stats-value">
+                                <strong>{{ $playerLeaderboardProfileStats->winStreakCurrent() }}</strong>
+                            </div>
+                        </div>
                     </div>
                 </div>
+
                 <div class="leaderboard-profile-factions">
-                    <div>
-                        Last 5 Games, High Winstreak etc
+                <div class="profile-stat">
+                    <h2 class="profile-stat-title">Faction stats</h2>
+
+                    <div class="faction-stats-list">
+                        @foreach($playerLeaderboardProfileStats->playerFactionStats() as $faction => $stats)
+                        <div class="faction">
+                            <div class="faction-image">
+                                <img src="/assets/images/leaderboard/{{ $faction }}.png" />
+                            </div>
+                            <div class="faction-stats">
+                                <div>
+                                    Win Ratio
+                                    <strong>{{ $stats->winRatio() }}%</strong>
+                                </div>
+                                <div>
+                                    Wins
+                                    <strong>{{ $stats->wins() }}</strong>
+                                </div>
+                                <div>
+                                    Losses
+                                    <strong>{{ $stats->losses() }}</strong>
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach 
                     </div>
+                </div>
                 </div>
             </div>
         </div>

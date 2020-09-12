@@ -13,3 +13,32 @@
     background-repeat: no-repeat;
     height: 100vh;
 }
+
+.red-alert.page-leaderboard-profile .page-background::before
+{
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: url('../images/leaderboard-profile/head-right.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 900px;
+    background-position: top right;
+}
+
+
+.tiberian-dawn.page-leaderboard-profile .page-background::before
+{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: url('../images/leaderboard-profile/head-left.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 900px;
+    background-position: top left;
+}

@@ -1,11 +1,20 @@
+.leaderboard-profile .profile-avatar
+{
+    @media(max-width: $sm-width)
+    {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
 .leaderboard-profile-details
 {
     display: flex;
     flex-direction: column;
     padding: 20px;
-    background: rgba(8, 4, 4,0.8);
+    background: rgba(8, 4, 4,0.5);
     
-    @media(min-width: $md-width)
+    @media(min-width: $lg-width)
     {
         flex-direction: row;
     }
@@ -13,22 +22,16 @@
 
 .leaderboard-profile-extra
 {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
     background: rgb(8, 4, 4);
+        
+    @media(min-width: $md-width)
+    {
+        flex-direction: row;
+    }
 }
-
-
-//
-// Player Avatar + Rank
-// 
-.leaderboard-profile-avatar
-{
-    width: 180px;
-    height: 180px;
-    border-radius: 100%;
-    margin-right: 30px;
-    box-shadow: inset 0px 0px 0 4px #8e00ff;
-}
-
 
 //
 // Player Name + Rank
@@ -36,59 +39,258 @@
 .leaderboard-profile-rank
 {
     @extend .font-secondary-bold;
-    // width: 200px;
     padding-top: 25px;
+    text-align: center;
+
+    @media(min-width: $sm-width) and (max-width: $lg-width)
+    {
+        position: absolute;
+        right: 25px;
+        top: 0;
+    }
+
+    @media(min-width: $md-width)
+    {
+        text-align: left;
+    }
 }
 
 .leaderboard-profile-rank .player-name 
 {
-    font-size: 1.4rem;
+    font-size: 2rem;
 }
 
 .leaderboard-profile-rank .rank 
 {
-    font-size: 4rem;
+    line-height: 1;
+    font-size: 5rem;
 }
 
 
 // 
 // Player Quick Stats, Games, Points, Wins.
 // 
-.leaderboard-profile-quick-stats 
+.leaderboard-profile-stats 
 {
     display: flex;
-    width: 50%;
-    max-width: 100%;
-    margin-left: auto;
+    flex-direction: column;
+    width: 100%;
+
+    @media(min-width: $md-width)
+    {
+        flex-direction: row;
+        justify-content: flex-end;
+        max-width: 100%;
+        margin-left: auto;
+    }
+    
+    @media(min-width: $lg-width)
+    {
+        width: 55%;
+    }
 }
 
-.leaderboard-profile-quick-stats .profile-quick-stat
+.leaderboard-profile-games > div
 {
-    width: 33%;
-    padding-top: 25px;
+    padding-bottom: 20px;
 }
 
-.leaderboard-profile-quick-stats .quick-stats-title
+.leaderboard-profile-stats .profile-stat
+{
+    @media(min-width: $md-width)
+    {
+        width: 33%;
+        padding-top: 25px;
+    }
+}
+
+h3.profile-stat-title
 {
     font-weight: 300;
-    font-size: 1.2rem;
+    margin: 0;
+    font-size: initial;
+
+    @media(min-width: $sm-width) and (max-width: $lg-width)
+    {
+        font-size: 1rem;
+    }
+
+    @media(min-width: $md-width)
+    {
+        font-size: 1.2rem;
+    }
+}
+
+h2.profile-stat-title
+{
+    font-weight: 300;
+    font-size: 1.4rem;
     margin: 0;
 }
 
-.leaderboard-profile-quick-stats .quick-stats-value
+.quick-stats-value
 {
     font-size: 2rem;
 }
 
+// 
 // Overall quick stats
-.profile-quick-stat.overall div 
+.profile-stat.overall div 
 {   
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: flex-start;
 }
 
-.profile-quick-stat.overall .quick-stats-value
+.profile-stat.overall .profile-stat-title
+{
+    padding-left: 15px;
+}
+
+.profile-stat.overall .quick-stats-value
 {
     font-size: 1.2rem;
+    margin-left: auto;
+}
+
+//
+// Border divides 
+.leaderboard-profile-stats .profile-stat
+{
+    position: relative;
+}
+
+.leaderboard-profile-stats .profile-stat::after
+{
+    content: "";
+    width: 1px;
+    background: #2d2d2d;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    height: 80%;
+}
+
+.leaderboard-profile-stats .profile-stat:last-child::after
+{
+    content: none;
+}
+
+
+// 
+// Leaderboard profile recent games
+// 
+
+.leaderboard-profile-games
+{
+    display: flex;
+    flex-direction: column;
+    
+    @media(min-width: $xl-width)
+    {
+        width: 50%;
+    }
+}
+
+.leaderboard-profile .profile-stat 
+{
+    padding: 20px;
+    word-break: break-word;
+}
+
+.leaderboard-profile-games .last-5-games 
+{
+    display: flex;
+    padding-top: 10px;
+}
+
+.leaderboard-profile-games .profile-stat.winstreaks 
+{
+    display: flex;
+    flex-direction: column;
+
+    & div { margin-right: 25px; }
+
+    @media(min-width: $md-width)
+    {
+        flex-direction: row;
+    }
+}
+
+
+
+// 
+// Leaderboard profile faction stats
+// 
+.leaderboard-profile-factions 
+{
+    width: 100%;
+    max-width: 100%;
+
+    @media(min-width: $md-width)
+    {
+        width: 50%;
+    }
+}
+
+.faction-stats-list 
+{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.faction-stats-list .faction 
+{
+    display: flex;
+    align-items: center;
+    margin-right: 5px;
+    margin-bottom: 10px;
+    padding-right: 15px;
+    padding-bottom: 15px;
+}
+
+.faction-stats-list .faction-image 
+{
+    width: 50px;
+}
+
+.faction-stats-list .faction-stats 
+{
+    padding: 15px;
+}
+
+.faction-stats-list .faction .profile-stat-title 
+{
+    margin-right: 10px;
+}
+
+
+// 
+// Results badges
+// 
+
+.result 
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 25px;
+    width: 25px;
+    padding: 10px;
+    border-radius: 4px;
+    margin-right: 5px;
+    @extend .font-secondary-bold;
+}
+
+.result.result--win 
+{
+    background: #0020ff;
+    color: #ffffff;
+}
+
+.result.result--loss
+{
+    background: #212121;
 }

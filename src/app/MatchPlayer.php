@@ -2,6 +2,8 @@
 
 namespace App;
 
+use App\Http\Services\LeaderboardProfile;
+use App\Http\Services\LeaderboardProfileStats;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
@@ -26,7 +28,7 @@ class MatchPlayer extends Model
         return "";
     }
 
-    public function playerStats($matchType, $leaderboardHistoryId)
+    public function leaderboardProfileStats($matchType, $leaderboardHistoryId)
     {
         $matches = Match::where("matchtype", $matchType)
             ->where("leaderboard_history_id", $leaderboardHistoryId)
@@ -36,13 +38,17 @@ class MatchPlayer extends Model
 
         $factions = $this->getPlayerFactions($matches);
         $winStreak = $this->getPlayerWinStreak($matches);
+        $last5Games = $this->getPlayerLast5GameStreak($matches);
         $gamesLast24Hours = $this->playerGames24Hours($matchType, $leaderboardHistoryId);
 
-        return [
-            "factions" => $factions,
-            "winstreak" => $winStreak,
-            "gamesLast24Hours" => $gamesLast24Hours
-        ];
+        return new LeaderboardProfileStats($factions, $winStreak, $gamesLast24Hours, $last5Games);
+    }
+
+    public function leaderboardProfile($leaderboardHistoryId)
+    {
+        return new LeaderboardProfile(
+            LeaderboardData::findPlayerData($this->id, $leaderboardHistoryId)->toArray()
+        );
     }
 
     public function playerWinStreak($matchType, $leaderboardHistoryId)
@@ -132,6 +138,42 @@ class MatchPlayer extends Model
             "highest" => count($winningStreaks) > 0 ? max($winningStreaks) : 0,
             "current" => count($winningStreaks) > 0 ? $winningStreaks[0] : 0
         ];
+    }
+
+    private function getPlayerLast5GameStreak($matches)
+    {
+        $winLoss = [];
+        $count = 0;
+
+        foreach($matches as $match)
+        {
+            if ($count == 5) break;
+            $count++;
+
+            $players = json_decode($match->players);
+
+            foreach($players as $key => $playerId)
+            {
+                $teams = json_decode($match->teams);
+                $teamId = $teams[$key];
+
+                if ($playerId == $this->player_id)
+                {
+                    if ($teamId == $match->winningteamid)
+                    {
+                        // We won the match, add to current streak
+                        $winLoss[] = "W";
+                    }
+                    else
+                    {
+                        // We lost add our latest win streak and reset
+                        $winLoss[] = "L";
+                    }
+                }
+            }
+        }
+
+        return $winLoss;
     }
 
     public function playerGames24Hours($matchType, $leaderboardHistoryId)
