@@ -12,8 +12,9 @@ class LeaderboardMatch extends AbstractCustomView
 {
     private $players = [];
     private $match;
+    private $gameSlug;
 
-    public function __construct($match, $leaderboardHistory, $matchPlayer)
+    public function __construct($match, $leaderboardHistory, $matchPlayer, $gameSlug)
     {
         $this->buildPlayers(
             $match->players(),
@@ -22,6 +23,7 @@ class LeaderboardMatch extends AbstractCustomView
         );
 
         $this->match = $match;
+        $this->gameSlug = $gameSlug;
         
         $this->orderMatchPlayerFirst($matchPlayer->player_id);
         $this->renderContents();
@@ -35,7 +37,7 @@ class LeaderboardMatch extends AbstractCustomView
             $winLostState = ($k == $winningTeamId);
 
             $this->players[$matchPlayer->player_id]["playerName"] = ViewHelper::renderSpecialOctal($matchPlayer->playerName($leaderboardHistory));
-            $this->players[$matchPlayer->player_id]["leaderboardProfile"] = $matchPlayer->leaderboardProfile($leaderboardHistory->id);
+            $this->players[$matchPlayer->player_id]["leaderboardProfile"] = $matchPlayer->leaderboardProfile($leaderboardHistory->id, $this->gameSlug);
             $this->players[$matchPlayer->player_id]["winLostState"] = $winLostState;
         }
     }

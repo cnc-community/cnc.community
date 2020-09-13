@@ -57,7 +57,8 @@
                         $player->playerName(), 
                         $playerLeaderboardProfile->rank(),
                         $playerLeaderboardProfile->badge()->badgeImage(),
-                        $playerLeaderboardProfile->badge()->badgeTitle()
+                        $playerLeaderboardProfile->badge()->badgeTitle(),
+                        $playerLeaderboardProfile->profileUrl()
                     ); 
                 ?>
 
@@ -196,7 +197,12 @@
             {{ $playerLeaderboardProfileMatches->links() }}
 
             @foreach($playerLeaderboardProfileMatches as $leaderboardMatch)
-                <?php new App\Http\CustomView\Components\Leaderboard\LeaderboardMatch($leaderboardMatch, $leaderboardHistory, $player); ?>
+                <?php new App\Http\CustomView\Components\Leaderboard\LeaderboardMatch(
+                        $leaderboardMatch, 
+                        $leaderboardHistory, 
+                        $player,
+                        $gameSlug
+                    ); ?>
             @endforeach
 
             {{ $playerLeaderboardProfileMatches->links() }}

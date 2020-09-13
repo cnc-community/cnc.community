@@ -99,7 +99,6 @@ class LeaderboardController extends Controller
         );
 
         $stats = Leaderboard::stats($matchType, $leaderboardHistory->id);
-        $stats["steamInGameCount"] = $this->steamHelper->getSteamPlayerCount(Constants::remastersAppId());
         $activeSeason = $leaderboardHistory->isActiveSeason();
 
         return view('pages.remasters.leaderboard.detail', 
@@ -109,7 +108,7 @@ class LeaderboardController extends Controller
                 "gameSlug" => $gameSlug,
                 "pageNumber" => $pageNumber,
                 "pageRanks" => $ranks,
-                "searchRequest" => $searchRequest,
+                "search" => $searchRequest,
                 "season" => $season,
                 "stats" => $stats,
                 "activeSeason" => $activeSeason,
@@ -141,7 +140,7 @@ class LeaderboardController extends Controller
             abort(404);
         }
 
-        $playerLeaderboardProfile = $player->leaderboardProfile($leaderboardHistory->id);
+        $playerLeaderboardProfile = $player->leaderboardProfile($leaderboardHistory->id, $gameSlug);
         $playerLeaderboardProfileStats = $player->leaderboardProfileStats($matchType, $leaderboardHistory->id);
         $playerLeaderboardProfileMatches = ViewHelper::paginate($player->leaderboardMatches($matchType, $pageNumber, $searchRequest, $leaderboardHistory->id), 15);
 

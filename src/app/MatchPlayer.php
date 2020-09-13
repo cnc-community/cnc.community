@@ -53,7 +53,7 @@ class MatchPlayer extends Model
         return new LeaderboardProfileStats($factions, $winStreak, $gamesLast24Hours, $last5Games);
     }
 
-    public function leaderboardProfile($leaderboardHistoryId)
+    public function leaderboardProfile($leaderboardHistoryId, $gameSlug)
     {
         $leaderboardData = LeaderboardData::findPlayerData($this->id, $leaderboardHistoryId);
         if ($leaderboardData == null)
@@ -70,7 +70,8 @@ class MatchPlayer extends Model
         return new LeaderboardProfile(
             $leaderboardData,
             $steamProfile["steamAvatarUrl"],
-            $steamProfile["steamProfileUrl"]
+            $steamProfile["steamProfileUrl"],
+            $this->playerUrlByGameSlug($gameSlug)
         );
     }
 

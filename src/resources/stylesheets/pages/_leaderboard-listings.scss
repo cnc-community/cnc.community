@@ -1,0 +1,282 @@
+.page-leaderboard-listing .main-content 
+{
+    width: 92vw;
+}
+
+.page-leaderboard-listing main
+{
+    position: relative;
+    z-index: 1;
+}
+
+.page-leaderboard-listing .page-background
+{
+    padding-top: 150px;
+    background-color: #070707;
+    background-image: url('../images/leaderboard-profile/background.jpg');
+    background-position: top center;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+}
+
+.page-leaderboard-listing .pagination 
+{
+    margin: 0;
+    padding-top: 20px;
+    padding-bottom: 40px;
+}
+
+
+// 
+// Leaderboard Hero
+// 
+
+.leaderboard-hero
+{
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    @media(min-width: $lg-width)
+    {
+        flex-direction: row;
+    }
+}
+
+.leaderboard-hero,
+.leaderboard-listing-recent-games
+{
+    display: flex;
+    background:rgba(0, 0, 0, 0.7);
+    padding: 40px;
+}
+
+.leaderboard-hero .leaderboard-logo 
+{
+    order: -1;
+    width: 380px;
+    @media(min-width:  $lg-width)
+    {
+        order: initial;
+        margin-left: auto;
+    }
+}
+
+.leaderboard-hero .leaderboard-hero-title
+{
+    text-transform: uppercase;
+    line-height: 1.1;
+    @extend h2;
+
+    .light {
+        @extend .font-secondary-light;
+    }
+}
+
+.leaderboard-hero .leaderboard-description
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    @media(min-width: $lg-width)
+    {
+        width: 50%;
+        display: block;
+    }
+}
+
+.leaderboard-hero .leaderboard-search 
+{
+    padding: 0 25px;
+}
+
+.leaderboard-details .profile-stat 
+{
+    width: 33%;
+}
+
+// 
+// Search + Leaderboard listing stats
+// 
+.leaderboard-search-and-stats 
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+
+    @media(min-width: $lg-width)
+    {
+        flex-direction: row;
+    }
+}
+
+.leaderboard-search-and-stats .leaderboard-stats 
+{
+    display: flex;
+    flex-direction: column;
+    margin: 50px auto;
+    width: auto;
+
+    @media(min-width: $md-width)
+    {
+        flex-direction: row;
+    }
+
+    @media(min-width: $lg-width)
+    {
+        margin: auto;
+    }
+}
+
+.leaderboard-stats .profile-stat 
+{
+    display: flex;
+    flex-direction: column;
+    padding-left: 35px;
+    padding-top: 35px;
+
+    @media(min-width: $md-width)
+    {
+        padding-top: initial;
+    }
+}
+
+
+// 
+// Leaderboard Player Listings
+// 
+.leaderboard-player-listings
+{
+    position: relative;
+    background: rgba(0,0,0,0.7);
+    padding: 0 40px;
+}
+
+.leaderboard-listings
+{
+    width: 100%;
+    margin: 0 0 auto auto;
+    min-height: 100vh;
+    
+    @media(min-width: $lg-width)
+    {
+        width: calc(98% - 150px);
+    }
+}
+
+.leaderboard-listings .headers 
+{
+    display: none;
+    @media(min-width: $lg-width)
+    {
+        display: flex;
+        padding: 15px 5px;
+        border-radius: 4px;
+    }
+}
+
+.leaderboard-listings .stats
+{
+    @media(max-width: $lg-width)
+    {
+        display: flex;
+    }
+}
+
+.leaderboard-listings .headers
+{
+    background: #0e0e0e;
+    border: 1px solid #565656;
+    color: silver;
+}
+
+.leaderboard-listings .headers div 
+{
+    text-transform: uppercase;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.leaderboard-listings .headers .rank 
+{
+    padding-left: 15px;
+}
+
+
+
+// 
+// Leaderboard Ranks - appear along side ladder
+// 
+
+.top-rank-box 
+{
+    background: rgba(0, 0, 0, 0.17);
+    flex-grow: 1;
+    margin: 5px;
+    border-radius: 4px;
+}
+
+.top-rank-box.rank-type-2 .player-rank,
+.top-rank-box.rank-type-3 .player-rank 
+{
+    background: #020202bf;
+}
+
+.top-ranks
+{
+    padding-top: 150px;
+    padding-bottom: 150px;
+}
+
+.ranks
+{
+    display: none;
+
+    @media(min-width: $lg-width)
+    {
+        display: block;
+    }
+}
+
+.ranks-top-15 
+{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    @media(min-width:$xl-width)
+    {
+        flex-direction: row;
+    }
+}
+
+.rank.rank-type.general 
+{
+    position: absolute;
+    top: 0;
+}
+
+.rank.rank-type
+{
+    position: absolute;
+    top: 0;
+}
+
+.rank.rank-type.colonel 
+{
+    top: calc(16 * 54px);
+}
+
+.rank.rank-type.colonel 
+{
+    top: calc(16 * 56px + 200px);
+}
+
+.rank.rank-type.major
+{
+    top: calc(56px * 16);
+}

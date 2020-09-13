@@ -202,12 +202,23 @@ footer .logo img
 .button-group
 {
     display: flex;
-    button { margin-left: 15px; margin-right: 15px;}
+    flex-direction: column;
+
+    button 
+    { 
+        margin-left: 15px; 
+        margin-right: 15px; 
+    }
     
     @media(min-width: $sm-width)
     {
         button:first-child { margin-left: 0;}
         button:last-child { margin-right: 0;}
+    }
+
+    @media(min-width: $md-width)
+    {
+        flex-direction: row;
     }
 }
 
@@ -790,4 +801,32 @@ ul.pagination
 .avatar.reddit
 {
     background-image: url("../images/sites/thumbnails/reddit.png");
+}
+
+.red-alert .page-background::before
+{
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: url('../images/leaderboard-profile/head-right.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 900px;
+    background-position: top right;
+}
+
+.tiberian-dawn .page-background::before
+{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: url('../images/leaderboard-profile/head-left.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 900px;
+    background-position: top left;
 }

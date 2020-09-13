@@ -34,8 +34,8 @@
         "components/generic-box-item",
         "components/player-rank",
         "components/player-detail-rank",
-        "components/leaderboard-listings",
-        // "components/leaderboard-item",
+        // "components/leaderboard-listings",
+        "components/leaderboard-item",
         "components/leaderboard-badge",
         "components/online-count",
         "components/stat-game-box",
@@ -46,7 +46,10 @@
     "components/leaderboard/leaderboard-profile", 
     "components/leaderboard/leaderboard-breadcrumb",
     "components/leaderboard/leaderboard-games",
-    "components/leaderboard/leaderboard-match";
+    "components/leaderboard/leaderboard-match",
+    "components/leaderboard/leaderboard-search",
+    "components/leaderboard/leaderboard-season-select",
+    "components/leaderboard/leaderboard-table-row";
 
 //
 // Pages
@@ -58,7 +61,7 @@
         "pages/funny",
         "pages/creators",
         "pages/page-remasters",
-        "pages/leaderboard-detail",
+        "pages/leaderboard-listings",
         "pages/leaderboard-profile",
         "pages/player-webview",
         "pages/game-stats";

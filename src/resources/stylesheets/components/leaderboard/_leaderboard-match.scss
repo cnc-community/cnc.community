@@ -16,11 +16,20 @@
     border-radius: 4px;
     padding: 10px;
 
-    @media(min-width: $xl-width)
+    @media(min-width: $lg-width)
     {
         flex-direction: row;
         border: 0;
         padding: initial;
+    }
+}
+
+.leaderboard-match .leaderboard-match-profile .profile-avatar
+{
+    display: none;
+    @media(min-width: $xxl-width)
+    {
+        display: flex;
     }
 }
 
@@ -229,10 +238,12 @@
     max-width: 100%;
     margin: auto;
 
-    @media(min-width:$lg-width)
+    width: 250px;
+    height: 250px;
+
+    @media (min-width:$xl-width)
     {
-        width: 220px;
-        height: 220px;
-        background-size: 110%;
+        width: 250px;
+        height: 250px;
     }
 }

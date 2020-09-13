@@ -136,7 +136,8 @@
 .leaderboard-profile-rank .player-name 
 {
     font-size: 1.5rem;
-    @media(min-width: $md-width)
+    
+    @media(min-width: $xl-width)
     {
         font-size: 2rem;
     }
@@ -148,7 +149,7 @@
     text-align: center;
     font-size: 2rem;
     
-    @media(min-width: $md-width)
+    @media(min-width: $xl-width)
     {
         font-size: 5rem;
         text-align: right;

@@ -1,0 +1,25 @@
+// Season select
+.season-select select
+{
+    height: 50px;
+    border-radius: 4px;
+    font-size: 1.2rem;
+    padding-left: 15px;
+}
+
+.season-select select
+{
+    background: rgb(13, 11, 6);
+    color: silver;
+    border: 1px solid #6b6b6b;
+
+    &::placeholder
+    {
+        color: $color-gold;
+    }
+
+    &:focus {
+        outline: 0;
+        border-color: $color-white;
+    }
+}

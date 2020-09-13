@@ -43,7 +43,7 @@ class PlayerListingProfile extends AbstractCustomView
     public function render()
     {
         ?>
-             <a href="<?php echo $this->url; ?>" class="leaderboard-item <?php echo $this->rank == 1 ? "gold": ""; ?>" title="View <?php echo $this->name; ?> stats">
+             <a href="<?php echo $this->url; ?>" class="leaderboard-table-row <?php echo $this->rank == 1 ? "gold": ""; ?>" title="View <?php echo $this->name; ?> stats">
          
                 <div class="col col-10 hidden-lg">
                     <div class="player-badge">
