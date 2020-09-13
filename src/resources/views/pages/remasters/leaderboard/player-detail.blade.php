@@ -43,9 +43,12 @@
 
             <div class="leaderboard-profile-details">
                 <?php 
-                    new App\Http\CustomView\Components\Avatar(
+                    $steamProfile = $player->getSteamProfile();
+
+                    new App\Http\CustomView\Components\SteamAvatar(
                         $player->playerName(), 
-                        $player->getSteamProfileAvatar() 
+                        $steamProfile["steamAvatarUrl"],
+                        $steamProfile["steamProfileUrl"]
                     );
                 ?>
                 
@@ -59,54 +62,20 @@
                 ?>
 
                 <div class="leaderboard-profile-stats">
-
-                    <div class="profile-stat overall">
-                        <div>
-                            <h3 class="profile-stat-title">Wins</h3>
-                            <div class="quick-stats-value">
-                                <strong>{{ $playerLeaderboardProfile->wins() }}</strong>
-                            </div>
-                        </div>
-                        <div>
-                            <h3 class="profile-stat-title">Losses</h3>
-                            <div class="quick-stats-value">
-                                <strong>{{ $playerLeaderboardProfile->losses() }}</strong>
-                            </div>
-                        </div>
-                        <div>
-                            <h3 class="profile-stat-title">Played</h3>
-                            <div class="quick-stats-value">
-                                <strong>{{ $playerLeaderboardProfile->totalGames() }}</strong>
-                            </div>
-                        </div>
-                        <div>
-                            <h3 class="profile-stat-title">Win Ratio</h3>
-                            <div class="quick-stats-value">
-                                <strong>{{ $playerLeaderboardProfile->winRatio() }}%</strong>
-                            </div>
-                        </div>
-                    </div>
-
                     <div class="profile-stat games-played">
-                        <h3 class="profile-stat-title">Games (Last 24 hours)</h3>
+                        <h2 class="profile-stat-title">Games (Last 24 hours)</h2>
                         <div class="quick-stats-value">
                             <strong>{{ $playerLeaderboardProfileStats->gamesPlayedLast24Hours() }}</strong>
                         </div>
                     </div>
 
                     <div class="profile-stat points">
-                        <h3 class="profile-stat-title">Points</h3>
+                        <h2 class="profile-stat-title">Points</h2>
                         <div class="quick-stats-value">
                             <strong>{{ $playerLeaderboardProfile->points() }}</strong>
                         </div>
                     </div>
 
-                </div>
-            </div>
-
-            <div class="leaderboard-profile-extra">
-                <div class="leaderboard-profile-games">
-                   
                     <div class="profile-stat last-games-played">
                         <h2 class="profile-stat-title">Last 5 games</h2>
 
@@ -116,49 +85,84 @@
                             @endforeach
                         </div>
                     </div>
-                    
+                </div>
+            </div>
+
+            <div class="leaderboard-profile-extra">
+                <div class="leaderboard-profile-games">
+                   
+                    <div class="profile-stat overall">
+                        <div>
+                            <h2 class="profile-stat-title">Wins</h2>
+                            <div class="quick-stats-value">
+                                <strong>{{ $playerLeaderboardProfile->wins() }}</strong>
+                            </div>
+                        </div>
+                        <div>
+                            <h2 class="profile-stat-title">Losses</h2>
+                            <div class="quick-stats-value">
+                                <strong>{{ $playerLeaderboardProfile->losses() }}</strong>
+                            </div>
+                        </div>
+                        <div>
+                            <h2 class="profile-stat-title">Played</h2>
+                            <div class="quick-stats-value">
+                                <strong>{{ $playerLeaderboardProfile->totalGames() }}</strong>
+                            </div>
+                        </div>
+                        <div>
+                            <h2 class="profile-stat-title">Win Ratio</h2>
+                            <div class="quick-stats-value">
+                                <strong>{{ $playerLeaderboardProfile->winRatio() }}%</strong>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="profile-stat winstreaks">
                         <div>
-                            <h2 class="profile-stat-title">Highest winstreak</h3>
+                            <h2 class="profile-stat-title">Highest winstreak</h2>
                             <div class="quick-stats-value">
                                 <strong>{{ $playerLeaderboardProfileStats->winStreakHighest() }}</strong>
                             </div>
                         </div>
+                    </div>
+
+                    <div class="profile-stat winstreaks">
                         <div>
-                            <h2 class="profile-stat-title">Current winstreak</h3>
+                            <h2 class="profile-stat-title">Current winstreak</h2>
                             <div class="quick-stats-value">
                                 <strong>{{ $playerLeaderboardProfileStats->winStreakCurrent() }}</strong>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="leaderboard-profile-factions">
-                    <div class="profile-stat">
-                        <h2 class="profile-stat-title">Faction stats</h2>
+                    <div class="leaderboard-profile-factions">
+                        <div class="profile-stat">
+                            <h2 class="profile-stat-title">Faction stats</h2>
 
-                        <div class="faction-stats-list">
-                            @foreach($playerLeaderboardProfileStats->playerFactionStats() as $faction => $stats)
-                            <div class="faction">
-                                <div class="faction-image">
-                                    <img src="/assets/images/leaderboard/{{ $faction }}.png" />
+                            <div class="faction-stats-list">
+                                @foreach($playerLeaderboardProfileStats->playerFactionStats() as $faction => $stats)
+                                <div class="faction">
+                                    <div class="faction-image">
+                                        <img src="/assets/images/leaderboard/{{ $faction }}.png" />
+                                    </div>
+                                    <div class="faction-stats">
+                                        <div>
+                                            Win Ratio
+                                            <strong>{{ $stats->winRatio() }}%</strong>
+                                        </div>
+                                        <div>
+                                            Wins
+                                            <strong>{{ $stats->wins() }}</strong>
+                                        </div>
+                                        <div>
+                                            Losses
+                                            <strong>{{ $stats->losses() }}</strong>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="faction-stats">
-                                    <div>
-                                        Win Ratio
-                                        <strong>{{ $stats->winRatio() }}%</strong>
-                                    </div>
-                                    <div>
-                                        Wins
-                                        <strong>{{ $stats->wins() }}</strong>
-                                    </div>
-                                    <div>
-                                        Losses
-                                        <strong>{{ $stats->losses() }}</strong>
-                                    </div>
-                                </div>
+                                @endforeach 
                             </div>
-                            @endforeach 
                         </div>
                     </div>
                 </div>
@@ -168,9 +172,34 @@
 
     <div class="main-content">
         <div class="leaderboard-profile-recent-games leaderboard-games">
+
+            <div class="leaderboard-search">
+                <h3 class="text-uppercase">Recent Games</h3>
+                <div class="leaderboard-bar">
+                    <form>
+                        <input type="hidden" name="season" value="{{ $season }}" />
+                        <div class="form-group player-search">
+                            <label class="label" for="search">Search for a player in these games</label>
+                            <div class="search-box">
+                                <div class="search-input">
+                                    <input id="search" type="text" name="search" class="form-input" placeholder="Enter a player name.." value="{{ $search }}" />
+                                    <?php if($search): ?>
+                                    <a href="?search=" title="Clear Search" class="btn-clear"><i class="icon-close-alt"></i></a>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            {{ $playerLeaderboardProfileMatches->links() }}
+
             @foreach($playerLeaderboardProfileMatches as $leaderboardMatch)
                 <?php new App\Http\CustomView\Components\Leaderboard\LeaderboardMatch($leaderboardMatch, $leaderboardHistory, $player); ?>
             @endforeach
+
+            {{ $playerLeaderboardProfileMatches->links() }}
         </div>
     </div>
 </div>

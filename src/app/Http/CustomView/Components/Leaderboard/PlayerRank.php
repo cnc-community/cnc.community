@@ -25,16 +25,19 @@ class PlayerRank extends AbstractCustomView
     {
         ?>
             <div class="leaderboard-profile-rank">
-                <div class="player-name">
-                    <?php echo $this->playerName; ?>
+                <div class="player-rank-name">
+                    <div class="player-name">
+                        <?php echo $this->playerName; ?>
+                    </div>
+                    <div class="rank">
+                        <?php if($this->playerRank != -1): ?>
+                            #<?php echo $this->playerRank; ?>
+                        <?php endif; ?>
+                    </div>
                 </div>
-                <div class="rank">
-                    <?php if($this->playerRank != -1): ?>
-                        #<?php echo $this->playerRank; ?>
-                    <?php endif; ?>
+                <div class="player-badge">
+                    <img src="<?php echo $this->playerBadge; ?>" alt="<?php echo $this->playerBadgeTitle; ?>" />
                 </div>
-
-                <img src="<?php echo $this->playerBadge; ?>" alt="<?php echo $this->playerBadgeTitle; ?>" />
             </div>
         <?php
     }

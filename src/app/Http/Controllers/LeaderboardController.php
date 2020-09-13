@@ -143,7 +143,7 @@ class LeaderboardController extends Controller
 
         $playerLeaderboardProfile = $player->leaderboardProfile($leaderboardHistory->id);
         $playerLeaderboardProfileStats = $player->leaderboardProfileStats($matchType, $leaderboardHistory->id);
-        $playerLeaderboardProfileMatches = $player->leaderboardMatches($matchType, $pageNumber, $searchRequest, $leaderboardHistory->id);
+        $playerLeaderboardProfileMatches = ViewHelper::paginate($player->leaderboardMatches($matchType, $pageNumber, $searchRequest, $leaderboardHistory->id), 15);
 
         $activeSeason = $leaderboardHistory->isActiveSeason();
         $gameName = Constants::getRemasterGameBySlug($gameSlug);
@@ -156,11 +156,10 @@ class LeaderboardController extends Controller
                 "gameName" => $gameName,
                 "gameSlug" => $gameSlug,
                 "pageNumber" => $pageNumber,
-                "searchRequest" => $searchRequest,
+                "search" => $searchRequest,
                 "season" => $season,
-                // "matches" => $matches->appends(["season" => $season, "search" => $searchRequest]),
                 "player" => $player,
-                "playerLeaderboardProfileMatches" => $playerLeaderboardProfileMatches,
+                "playerLeaderboardProfileMatches" => $playerLeaderboardProfileMatches->appends(["season" => $season, "search" => $searchRequest]),
                 "playerLeaderboardProfileStats" => $playerLeaderboardProfileStats,
                 "playerLeaderboardProfile" => $playerLeaderboardProfile,
                 "leaderboardHistory" => $leaderboardHistory,

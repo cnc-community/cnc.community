@@ -12,6 +12,11 @@ class MatchPlayerSteamProfile extends Model
     protected $table = 'match_players_steam_profile';
     protected $connection = 'mysql2';
 
+    public function matchPlayer()
+    {
+        return $this->belongsTo('App\MatchPlayer')->first();
+    }
+
     public static function saveProfile($steamId, $personaName, $avatar, $avatarMedium, $avatarFull, $avatarHash)
     {
         $player = MatchPlayer::where("player_id", $steamId)->first();

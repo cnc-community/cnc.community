@@ -12,7 +12,8 @@ interface LeaderboardProfileInterface
     public function losses(): int;
     public function points(): int;
     public function badge();
-    public function avatar(): string;
+    public function avatarSteamUrl();
+    public function avatarImageUrl();
 }
 
 class LeaderboardProfile implements LeaderboardProfileInterface
@@ -23,13 +24,14 @@ class LeaderboardProfile implements LeaderboardProfileInterface
     private $losses = 0;
     private $points = 0;
 
-    public function __construct($leaderboardData, $avatarUrl)
+    public function __construct($leaderboardData, $avatarSteamUrl, $avatarImageUrl)
     {
         foreach($leaderboardData as $k => $v) 
         {
             $this->{$k} = $v;
         }
-        $this->avatar = $avatarUrl;
+        $this->avatarSteamUrl = $avatarSteamUrl;
+        $this->avatarImageUrl = $avatarImageUrl;
     }
 
     public function id(): int { return $this->id; }
@@ -49,7 +51,8 @@ class LeaderboardProfile implements LeaderboardProfileInterface
     {
         return new LeaderboardBadge(LeaderboardHelper::getBadgeByRank($this->rank));
     }
-    public function avatar(): string { return $this->avatar; }
+    public function avatarSteamUrl() { return $this->avatarSteamUrl; }
+    public function avatarImageUrl() { return $this->avatarImageUrl; }
 }
 
 class LeaderboardBadge

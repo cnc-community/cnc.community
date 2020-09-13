@@ -7,21 +7,20 @@ use App\Http\CustomView\Components\Avatar;
 
 class LeaderboardMatchPlayer extends AbstractCustomView
 {
-    public function __construct($player)
+    private $order;
+    public function __construct($player, $order)
     {
         foreach($player as $k => $v)
         {
             $this->{$k} = $v;
         }
-        if (isset($player->leaderboardProfile))
-        {
-            dd($player);
-        }
+        $this->order = $order;
         $this->renderContents();
     }
 
     private function rank(): int { return $this->leaderboardProfile->rank(); }
-    private function avatar(): string { return $this->leaderboardProfile->avatar(); }
+    private function avatarImageUrl() { return $this->leaderboardProfile->avatarImageUrl(); }
+    private function avatarUrl(): string { return $this->leaderboardProfile->avatarSteamUrl(); }
     private function playerName(): string { return $this->playerName; }
     private function playerBadge(): string { return $this->leaderboardProfile->badge()->badgeImage(); }
     private function playerRankTitle(): string { return $this->leaderboardProfile->badge()->badgeTitle(); }
@@ -33,9 +32,15 @@ class LeaderboardMatchPlayer extends AbstractCustomView
     public function render()
     {
         ?>
-        <div class="leaderboard-match-player">
+        <div class="leaderboard-match-player leaderboard-match-player--order-<?php echo $this->order; ?>">
             <div class="leaderboard-match-profile">
-                <?php new Avatar($this->playerName(), $this->avatar()); ?>
+                <?php 
+                    new Avatar(
+                        $this->playerName(), 
+                        $this->avatarUrl(),
+                        $this->avatarImageUrl()
+                    ); 
+                ?>
                 
                 <?php 
                     new PlayerRank(
@@ -46,6 +51,7 @@ class LeaderboardMatchPlayer extends AbstractCustomView
                     ); 
                 ?>
             </div>
+            <?php /*
             <div class="leaderboard-match-profile-stats">
                 <div class="profile-stat overall">
                     <div>
@@ -74,6 +80,7 @@ class LeaderboardMatchPlayer extends AbstractCustomView
                     </div>
                 </div>
             </div>
+            */ ?>
         </div>
         <?php
     }

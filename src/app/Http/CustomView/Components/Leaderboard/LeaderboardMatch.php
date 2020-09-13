@@ -55,7 +55,7 @@ class LeaderboardMatch extends AbstractCustomView
         <div class="leaderboard-match">
             <?php foreach($this->players as $k => $player): ?>
 
-                <?php new LeaderboardMatchPlayer($player); ?>
+                <?php new LeaderboardMatchPlayer($player, $k); ?>
 
                 <?php if ($k == 0): ?>
                     <div class="leaderboard-match-details">

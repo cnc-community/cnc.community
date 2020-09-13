@@ -20,14 +20,21 @@ class MatchPlayer extends Model
         return "/command-and-conquer-remastered/leaderboard/" . $gameSlug . "/player/" . $this->id; 
     }
 
-    public function getSteamProfileAvatar()
+    public function getSteamProfile()
     {
         $profile = MatchPlayerSteamProfile::where("match_player_id", $this->id)->first();
         if ($profile)
         {
-            return $profile->avatar_full;
+            $url = "https://steamcommunity.com/profiles/". $profile->matchPlayer()->playerId();
+            return [
+                "steamProfileUrl" => $url,
+                "steamAvatarUrl" => $profile->avatar_full
+            ];
         }
-        return "";
+        return [
+            "steamProfileUrl" => null,
+            "steamAvatarUrl" => "/assets/images/avatar-default.jpg"
+        ];
     }
 
     public function leaderboardProfileStats($matchType, $leaderboardHistoryId)
@@ -58,9 +65,12 @@ class MatchPlayer extends Model
             $leaderboardData = $leaderboardData->toArray();
         }
 
+        $steamProfile = $this->getSteamProfile();
+
         return new LeaderboardProfile(
             $leaderboardData,
-            $this->getSteamProfileAvatar()
+            $steamProfile["steamAvatarUrl"],
+            $steamProfile["steamProfileUrl"]
         );
     }
 
@@ -252,6 +262,11 @@ class MatchPlayer extends Model
         return ViewHelper::renderSpecialOctal($this->player_name);
     }
 
+    public function playerId()
+    {
+        return $this->player_id;
+    }
+
     public static function findPlayer($playerId)
     {
         $player = Cache::remember("findPlayer".$playerId, 480, function () use ($playerId)
@@ -282,7 +297,7 @@ class MatchPlayer extends Model
         {
             $leadboardMatches[] = new LeaderboardMatch($match->toArray());
         }
-        return $leadboardMatches;
+        return collect($leadboardMatches);
     }
 
     public function matches($matchType, $pageNumber, $searchQuery, $leaderboardHistoryId)

@@ -1,17 +1,65 @@
-.leaderboard-profile .profile-avatar
+.leaderboard-profile .steam-avatar
 {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    margin-right: 15px;
+
     @media(max-width: $sm-width)
     {
         margin-left: auto;
         margin-right: auto;
     }
+
+    @media(min-width: $xl-width)
+    {
+        width: 200px;
+        height: 200px;
+    }
+}
+
+.leaderboard-profile .steam-avatar .leaderboard-profile-social
+{
+    display: none;
+}
+
+.leaderboard-profile .steam-avatar:hover .leaderboard-profile-social
+{
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    background: #000000d6;
+    border-radius: 100%;
+    margin: 5px;
+
+    & a {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+    }
+} 
+
+
+.leaderboard-profile .steam-avatar .profile-avatar
+{
+    position: absolute;
+    width: 100%;
+    height: 100%;
 }
 
 .leaderboard-profile-details
 {
     display: flex;
     flex-direction: column;
-    padding: 20px;
+    padding: 35px;
     background: rgba(8, 4, 4,0.5);
     
     @media(min-width: $lg-width)
@@ -27,7 +75,7 @@
     padding: 20px;
     background: rgb(8, 4, 4);
         
-    @media(min-width: $md-width)
+    @media(min-width: $lg-width)
     {
         flex-direction: row;
     }
@@ -38,32 +86,73 @@
 // 
 .leaderboard-profile-rank
 {
-    @extend .font-secondary-bold;
-    padding-top: 25px;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 
+    text-align: center;
+    @extend .font-secondary-bold;
+
+    order: -1;
+    padding-bottom: 20px;
+
+    @media(min-width: $md-width)
+    {
+        order: initial;
+        padding-bottom: 0;
+        text-align: left;
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
+
+    @media(min-width: $xxl-width)
+    {
+        padding-left: 50px;
+    }
+}
+
+// Position rank absolutely only in top stats
+.leaderboard-profile-details .leaderboard-profile-rank
+{
     @media(min-width: $sm-width) and (max-width: $lg-width)
     {
         position: absolute;
         right: 25px;
         top: 0;
     }
+}
 
-    @media(min-width: $md-width)
-    {
-        text-align: left;
-    }
+.leaderboard-profile-rank .player-badge
+{
+    display: flex;
+    align-items: flex-start;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 15px;
 }
 
 .leaderboard-profile-rank .player-name 
 {
-    font-size: 2rem;
+    font-size: 1.5rem;
+    @media(min-width: $md-width)
+    {
+        font-size: 2rem;
+    }
 }
 
 .leaderboard-profile-rank .rank 
 {
     line-height: 1;
-    font-size: 5rem;
+    text-align: center;
+    font-size: 2rem;
+    
+    @media(min-width: $md-width)
+    {
+        font-size: 5rem;
+        text-align: right;
+    }
 }
 
 
@@ -131,10 +220,17 @@ h2.profile-stat-title
 .quick-stats-value
 {
     font-size: 2rem;
+    padding-top: 15px;
 }
 
 // 
 // Overall quick stats
+// 
+.profile-stat.overall
+{
+    width: 260px;
+}
+
 .profile-stat.overall div 
 {   
     display: flex;
@@ -142,64 +238,63 @@ h2.profile-stat-title
     justify-content: flex-start;
 }
 
-.profile-stat.overall .profile-stat-title
-{
-    padding-left: 15px;
-}
-
 .profile-stat.overall .quick-stats-value
 {
     font-size: 1.2rem;
     margin-left: auto;
-}
-
-//
-// Border divides 
-.leaderboard-profile-stats .profile-stat
-{
-    position: relative;
-}
-
-.leaderboard-profile-stats .profile-stat::after
-{
-    content: "";
-    width: 1px;
-    background: #2d2d2d;
-    position: absolute;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    height: 80%;
-}
-
-.leaderboard-profile-stats .profile-stat:last-child::after
-{
-    content: none;
+    margin-right: 20px;
+    padding-top: 0;
 }
 
 
 // 
 // Leaderboard profile recent games
 // 
-
 .leaderboard-profile-games
 {
     display: flex;
     flex-direction: column;
+    width: auto;
     
-    @media(min-width: $xl-width)
+    @media(min-width: $lg-width)
     {
-        width: 50%;
+        flex-direction: row;
     }
 }
 
 .leaderboard-profile .profile-stat 
 {
+    position: relative;
     padding: 20px;
     word-break: break-word;
+
+    @media(min-width: $xl-width)
+    {
+        margin-right: 20px;
+    }
 }
 
-.leaderboard-profile-games .last-5-games 
+@media(min-width: $lg-width)
+{
+    .leaderboard-profile .profile-stat:last-child::after
+    {
+        content: none;
+    }
+    
+    .leaderboard-profile .profile-stat::after
+    {
+        content: "";
+        width: 1px;
+        background: #2d2d2d;
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        height: 80%;
+    }
+}
+
+.last-5-games 
 {
     display: flex;
     padding-top: 10px;
@@ -225,13 +320,8 @@ h2.profile-stat-title
 // 
 .leaderboard-profile-factions 
 {
-    width: 100%;
+    width: auto;
     max-width: 100%;
-
-    @media(min-width: $md-width)
-    {
-        width: 50%;
-    }
 }
 
 .faction-stats-list 
@@ -270,7 +360,6 @@ h2.profile-stat-title
 // 
 // Results badges
 // 
-
 .result 
 {
     display: flex;
