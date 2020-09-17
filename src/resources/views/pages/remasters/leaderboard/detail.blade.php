@@ -54,6 +54,7 @@
                         <select name="season" onchange="this.form.submit()">
                             <option value="">-Select a past season-</option>
                             <option value="1" <?php if($season == 1): ?>selected<?php endif; ?>>Season 1</option>
+                            <option value="2" <?php if($season == 2): ?>selected<?php endif; ?>>Season 2</option>
                         </select>
                     </div>
                 </form>
