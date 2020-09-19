@@ -88,6 +88,7 @@ Route::get('/stats', 'StatsController@showStats')->name('pages.stats')->middlewa
 
 Route::get('/cnc-streamers', 'SiteController@showCreatorsListings')->name('pages.creators.listing')->middleware('cache.headers:public;max_age=1800');
 Route::get('/creators', function() {  return Redirect::to('/cnc-streamers', 301); });
+Route::get('/command-and-conquer-25-years', 'SiteController@showAnniversary25Years')->name('pages.creators.listing')->middleware('cache.headers:public;max_age=1800');
 
 Route::get('/command-and-conquer-remastered', 'SiteController@showRemastersListings')->name('pages.remasters.listing')->middleware('cache.headers:public;max_age=14400');
 
