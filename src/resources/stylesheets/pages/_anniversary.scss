@@ -124,9 +124,21 @@
     color: $color-white;
 }
 
+
+.page-anniversary .events
+{
+    background: #070707;
+}
+
 .page-anniversary .event-boxes
 {
     display: flex;
+    flex-direction: column;
+    
+    @media(min-width: $md-width)
+    {
+        flex-direction: row;
+    }
 }
 
 .page-anniversary .event-box 
@@ -140,21 +152,29 @@
     transition: ease-in background 250ms;
 }
 
-.page-anniversary .events
-{
-    background: #070707;
-}
-
-
 .page-anniversary .prizes
 {
     background: #0c0c0c;
 }
 
+.page-anniversary .prizes p.lead 
+{
+    width: $md-width;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
 .page-anniversary .prizes .prize-boxes 
 {
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    
+    @media(min-width: $md-width)
+    {
+        flex-direction: row;
+    }
+
     margin-top: 15px;
     margin-bottom: 15px;
     padding-top: 50px;

@@ -71,7 +71,7 @@
         <h2 class="text-uppercase">Prizes</h2>
         <p class="lead">
             We have lots of goodies to give away.
-            You could be winning a <br class="hide-for-xs"/> Month long EA Play Subscription or a Year long EA Play Subscription code <br class="hide-for-xs"/>
+            You could be winning a Month long EA Play Subscription or a Year long EA Play Subscription code 
             Other prizes include Steam Gift Cards (Value £4).
         </p>
        
