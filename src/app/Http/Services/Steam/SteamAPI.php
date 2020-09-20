@@ -5,7 +5,7 @@ namespace App\Http\Services\Steam;
 use App\Constants;
 use App\Http\Services\SteamWorkShopItem;
 use Illuminate\Support\Facades\Http;
-use App\Http\Services\Twitch\AbstractTwitchAPI;
+use App\Http\Services\Steam\AbstractSteamAPI;
 use Exception;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
