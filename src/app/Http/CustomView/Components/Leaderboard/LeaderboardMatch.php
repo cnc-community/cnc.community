@@ -20,25 +20,36 @@ class LeaderboardMatch extends AbstractCustomView
         $this->gameSlug = $gameSlug;
 
         $this->buildPlayers(
-            $match->players(),
-            $match->winningTeamId(),
+            $this->match->players(),
             $leaderboardHistory
         );
-        
+
         $this->orderMatchPlayerFirst($matchPlayer->player_id);
         $this->renderContents();
     }
 
-    private function buildPlayers($players, $winningTeamId, $leaderboardHistory)
+    private function buildPlayers($players, $leaderboardHistory)
     {
         foreach($players as $k => $player)
         {
             $matchPlayer = MatchPlayer::findPlayer($player);
-            $winLostState = ($k == $winningTeamId);
+
+            $teams = json_decode($this->match->teams);
+            $winningTeam = false;
+
+            foreach($teams as $key => $teamId)
+            {
+                $playerId = $players[$key];
+
+                if ($teamId == $this->match->winningTeamId() && $playerId == $matchPlayer->player_id)
+                {
+                    $winningTeam = true;
+                }
+            }
 
             $this->players[$matchPlayer->player_id]["playerName"] = ViewHelper::renderSpecialOctal($matchPlayer->playerName($leaderboardHistory));
             $this->players[$matchPlayer->player_id]["leaderboardProfile"] = $matchPlayer->leaderboardProfile($leaderboardHistory->id, $this->gameSlug);
-            $this->players[$matchPlayer->player_id]["winLostState"] = $winLostState;
+            $this->players[$matchPlayer->player_id]["winLostState"] = $winningTeam;
         }
     }
 
@@ -56,7 +67,6 @@ class LeaderboardMatch extends AbstractCustomView
         ?>
         <div class="leaderboard-match">
             <?php foreach($this->players as $k => $player): ?>
-
                 <?php new LeaderboardMatchPlayer($player, $k); ?>
 
                 <?php if ($k == 0): ?>
@@ -72,10 +82,10 @@ class LeaderboardMatch extends AbstractCustomView
                         ?>
                         </div>
                         <div class="match-game-status">
-                            <?php foreach($this->players as $player): ?>
-                                <div class="game-status <?php echo $player["winLostState"] == true ? 
+                            <?php foreach($this->players as $p): ?>
+                                <div class="game-status <?php echo $p["playerName"]; ?> <?php echo $p["winLostState"] == true ? 
                                     "game-status--won": "game-status--lost"; ?>">
-                                    <?php echo $player["winLostState"] == true ? "W ": "L" ?>
+                                    <?php echo $p["winLostState"] == true ? "W ": "L" ?>
                                 </div>
                             <?php endforeach; ?>
                         </div>

@@ -67,10 +67,6 @@ class MatchPlayer extends Model
 
         $steamProfile = $this->getSteamProfile();
 
-        if ($gameSlug == "")
-        {
-            dd($steamProfile);
-        }
         return new LeaderboardProfile(
             $leaderboardData,
             $steamProfile["steamAvatarUrl"],
