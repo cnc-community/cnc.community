@@ -18,7 +18,7 @@
     
     @media(min-width: $lg-width)
     {
-        height: 400px;
+        height: 440px;
         flex-direction: row;
         border: 0;
         padding: initial;
@@ -117,7 +117,13 @@
     height: 100px;
     display: none;
 
-    @media(min-width: $lg-width)
+    @media(min-width: $md-width)
+    {
+        width: 100px; 
+        height: 100px;
+    }
+
+    @media(min-width: 1600px)
     {
         display: flex;
         width: 150px;
@@ -169,9 +175,29 @@
     }
 }
 
+.leaderboard-match-details .match-other
+{
+    display: none;
+    @media(min-width: $lg-width)
+    {
+        display: block;
+    }
+}
+
 .leaderboard-match-details .match-game-details
 {
     position: relative;
+}
+
+.leaderboard-match-details .download-replay 
+{
+    padding: 15px 0;
+    display: flex;
+    justify-content: center;
+
+    & i {
+        padding: 0 15px;
+    }
 }
 
 @media(max-width: $lg-width)

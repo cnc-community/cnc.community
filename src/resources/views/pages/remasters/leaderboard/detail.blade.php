@@ -16,7 +16,7 @@
             <div class="leaderboard-description">
                 <h1 class="leaderboard-hero-title">{{ $gameName["long_name"] }}<br/> <span class="light">Leaderboard Rankings</span></h1>
                 <p class="leaderboard-hero-description">
-                    Our leaderboards are still under development, join our discord to leave suggestions and feedback. 
+                    Our leaderboards have received an update. Join our website discord to leave your suggestions and feedback. 
                 </p>
                 <div class="button-group">
                     <a href="/command-and-conquer-remastered/leaderboard/" class="btn btn-primary" title="Back to all leaderboards">
@@ -36,19 +36,20 @@
     </div>
 
     <div class="main-content">
+        @include("pages.remasters.leaderboard._season-finish")
+
         <div class="leaderboard-listing-recent-games">
             <div class="leaderboard-search-and-stats">
                 <div class="leaderboard-search">
                     <div class="leaderboard-bar">
                         <form>
-                            <input type="hidden" name="season" value="{{ $season }}" />
                             <div class="form-group player-search">
                                 <label class="label" for="search">Search for a player</label>
                                 <div class="search-box">
                                     <div class="search-input">
                                         <input id="search" type="text" name="search" class="form-input" placeholder="Enter a player name.." value="{{ $search }}" />
                                         <?php if($search): ?>
-                                        <a href="?search=" title="Clear Search" class="btn-clear"><i class="icon-close-alt"></i></a>
+                                        <a href="?search=&season={{ $season }}" title="Clear Search" class="btn-clear"><i class="icon-close-alt"></i></a>
                                         <?php endif; ?>
                                     </div>
                                 </div>
@@ -68,19 +69,20 @@
                     <div class="profile-stat games-played">
                         <h2 class="profile-stat-title">Games (Last 24 hours)</h2>
                         <div class="quick-stats-value">
-                            <strong>46463</strong>
+                            <strong>{{ $stats["matchesPlayedLast24hours"]}}</strong>
                         </div>
                     </div>
-
+{{-- 
                     <div class="profile-stat points">
                         <h2 class="profile-stat-title">Active Players (Last 24 hours)</h2>
                         <div class="quick-stats-value">
                             <strong>346</strong>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
-            </div>            
+            </div>   
         </div>
+
         
         <div class="leaderboard-player-listings">
             {{ $data->links() }}

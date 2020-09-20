@@ -185,7 +185,7 @@
                                 <div class="search-input">
                                     <input id="search" type="text" name="search" class="form-input" placeholder="Enter a player name.." value="{{ $search }}" />
                                     <?php if($search): ?>
-                                    <a href="?search=" title="Clear Search" class="btn-clear"><i class="icon-close-alt"></i></a>
+                                    <a href="?search=&season={{ $season }}" title="Clear Search" class="btn-clear"><i class="icon-close-alt"></i></a>
                                     <?php endif; ?>
                                 </div>
                             </div>

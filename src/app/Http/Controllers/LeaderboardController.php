@@ -100,6 +100,11 @@ class LeaderboardController extends Controller
 
         $stats = Leaderboard::stats($matchType, $leaderboardHistory->id);
         $activeSeason = $leaderboardHistory->isActiveSeason();
+        $seasonNumber = null;
+        if ($season)
+        {
+            $seasonNumber = intval($season);
+        }
 
         return view('pages.remasters.leaderboard.detail', 
             [
@@ -109,7 +114,7 @@ class LeaderboardController extends Controller
                 "pageNumber" => $pageNumber,
                 "pageRanks" => $ranks,
                 "search" => $searchRequest,
-                "season" => $season,
+                "season" => $seasonNumber,
                 "stats" => $stats,
                 "activeSeason" => $activeSeason,
                 "data" => $data->appends(["season" => $season, "search" => $searchRequest])

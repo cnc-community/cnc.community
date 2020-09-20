@@ -16,6 +16,8 @@ class LeaderboardProfileStats implements LeaderboardProfileStatsInterface
 
     public function __construct($factions, $winStreak, $gamesLast24Hours, $last5Games)
     {
+        $this->playerFactionStats = $factions;
+        
         foreach($factions as $faction => $factionStats)
         {
             $this->buildFactionStats($faction, $factionStats);

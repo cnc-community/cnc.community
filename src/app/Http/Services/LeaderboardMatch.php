@@ -51,6 +51,10 @@ class LeaderboardMatch implements MatchInterface
     {
         return LeaderboardHelper::mapPreviewByInternalName($this->mapname);
     }
+    public function matchReplayUrl(): string 
+    {
+        return "https://replays.cnctdra.ea.com/". $this->cdnurl;
+    }
     public function names(): array { return json_decode($this->names, false); }
     public function players(): array { return json_decode($this->players, false); }
     public function factions(): array { return json_decode($this->factions, false); }

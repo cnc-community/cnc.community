@@ -131,7 +131,8 @@
 
     @media(min-width: $lg-width)
     {
-        margin: auto;
+        margin-left: auto;
+        margin-right: 0;
     }
 }
 

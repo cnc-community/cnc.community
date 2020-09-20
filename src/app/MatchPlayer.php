@@ -201,7 +201,7 @@ class MatchPlayer extends Model
             }
         }
 
-        return $winLoss;
+        return array_reverse($winLoss);
     }
 
     public function playerGames24Hours($matchType, $leaderboardHistoryId)
@@ -300,9 +300,9 @@ class MatchPlayer extends Model
         $matches = $this->matches($matchType, $pageNumber, $searchQuery, $leaderboardHistoryId);
         foreach($matches as $match)
         {
-            $leadboardMatches[] = new LeaderboardMatch($match->toArray());
+            $leaderboardMatches[] = new LeaderboardMatch($match->toArray());
         }
-        return collect($leadboardMatches);
+        return collect($leaderboardMatches);
     }
 
     public function matches($matchType, $pageNumber, $searchQuery, $leaderboardHistoryId)

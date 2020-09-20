@@ -79,6 +79,11 @@ class LeaderboardMatch extends AbstractCustomView
                                 </div>
                             <?php endforeach; ?>
                         </div>
+                        <div class="match-other">
+                            <a href="<?php echo $this->match->matchReplayUrl(); ?>" target="_blank" title="Download Replay of this game" class="download-replay">
+                                <i class="icon icon-replay"></i> Download Replay
+                            </a>
+                        </div>
                     </div>
                 <?php endif; ?>
 
