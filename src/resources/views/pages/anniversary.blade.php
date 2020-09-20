@@ -16,7 +16,7 @@
         <h1 class="section-title">Celebrating 25 years <br class="hide-for-xs"/> of Command &amp; Conquer</h1>
         <p class="lead">
             Take a look below to see the events you can take part in! <br class="hide-for-xs"/>
-            Prizes will be given out just for playing online!
+            Prizes will be given out just for playing online! <br class="hide-for-xs"/>
         </p>
 
         <div class="logos">
@@ -40,6 +40,9 @@
         </p>
         <p>
             Prizes will be given away EVERY day during this time. <br/> Anyone can win a prize regardless of their skill level!
+        </p>
+        <p>
+            <strong>Please note</strong> - Steam Accounts will only be able to take part in this event.
         </p>
     </div>
 </section>
@@ -86,6 +89,29 @@
     </div>
 </section>
 
+<section class="section winners">
+    <div class="main-content text-center">
+        <h2 class="text-uppercase">Winners</h2>
+        <p>If you're a winner, your Steam username will be listed below.</p>
+
+        <?php foreach($winners as $day => $playersWon): ?>
+            <div class="day">
+                <h3>Winners for <?php echo $day; ?></h3>
+                <div class="names">
+                    <?php foreach($playersWon as $player):?>
+                    
+                    <div class="name">
+                        <h4><?php echo $player->name();?></h4>
+                        <p>Won a <?php echo $player->prize(); ?>!</p>
+                    </div>
+
+                    <?php endforeach; ?>
+                </div>
+            </div>    
+        <?php endforeach; ?>
+    </div>
+</section>
+
 <section class="section sponsors">
     <div class="main-content text-center">
         <h2 class="text-uppercase">Sponsors</h2>
@@ -111,7 +137,7 @@
             <p>
                 <strong>Eligibility</strong> <br/>
                 The event is open to Steam players only, playing Tiberian Dawn Remastered and Red Alert Remastered Online games.  
-                Single player games will not qualify.
+                Single player games will not qualify. 
             </p>
             <p>
                 <strong>Winner selection</strong> <br/>

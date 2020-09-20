@@ -113,11 +113,6 @@ class SiteController extends Controller
         return view('pages.donate');
     }
 
-    public function showAnniversary25Years()
-    {
-        return view('pages.anniversary');
-    }
-
     public function showCreatorsListings(Request $request)
     {   
         $streams = [];

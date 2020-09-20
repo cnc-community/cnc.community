@@ -124,7 +124,6 @@
     color: $color-white;
 }
 
-
 .page-anniversary .events
 {
     background: #070707;
@@ -222,4 +221,49 @@
 {
     width: 250px;
     max-width: 100%;
+}
+
+.page-anniversary .names 
+{
+    display: flex;
+    flex-wrap: wrap;
+    width: $lg-width;
+    margin: 0 auto;
+    max-width: 100%;
+    text-align: center;
+}
+
+.page-anniversary .name 
+{
+    margin: 25px 15px;
+    width: 200px;
+    max-width: 100%;
+}
+
+.page-anniversary .name h4
+{
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+.page-anniversary .name p
+{
+    font-size: 1rem;
+    color: #949494;
+    font-weight: 600;
+    margin: 0;
+}
+
+.page-anniversary .day 
+{
+    border-bottom: 2px dashed #353535;
+    padding-bottom: 25px;
+    padding-top: 25px;
+}
+
+.page-anniversary .day > h3 
+{
+    text-transform: uppercase;
+    color: #18d4ff;
+    font-size: 1.4rem;
 }
