@@ -16,14 +16,14 @@ class LeaderboardMatch extends AbstractCustomView
 
     public function __construct($match, $leaderboardHistory, $matchPlayer, $gameSlug)
     {
+        $this->match = $match;
+        $this->gameSlug = $gameSlug;
+
         $this->buildPlayers(
             $match->players(),
             $match->winningTeamId(),
             $leaderboardHistory
         );
-
-        $this->match = $match;
-        $this->gameSlug = $gameSlug;
         
         $this->orderMatchPlayerFirst($matchPlayer->player_id);
         $this->renderContents();

@@ -7,17 +7,18 @@
 {
     display: flex;
     align-items: center;
+    flex-direction: column;
     margin-top: 25px;
     margin-bottom: 25px;
     padding-bottom: 25px;
-    flex-direction: column;
-
+    background: rgb(12, 12, 12);
     border: 2px solid #2b2b2b;
     border-radius: 4px;
-    padding: 10px;
-
+    // padding: 10px;
+    
     @media(min-width: $lg-width)
     {
+        height: 400px;
         flex-direction: row;
         border: 0;
         padding: initial;
@@ -41,6 +42,7 @@
 .leaderboard-match-player 
 {
     width: 100%;
+    height: 100%;
     border-radius: 4px;
     padding-top: 15px;
     padding-bottom: 15px;
@@ -59,6 +61,14 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
+    height: 100%;
+    transition: ease-in-out all 300ms;
+    color: #e4e4e4;
+
+    &:hover{
+        background: rgba(0,0,0, .10);
+        color: $color-white;
+    }
 }
 
 .leaderboard-match-profile .player-rank-name
@@ -74,17 +84,31 @@
     }
 }
 
-.leaderboard-match-player--order-1 .leaderboard-profile-rank
+.leaderboard-match-player .leaderboard-profile-rank
 {
-    flex-direction: row-reverse;
-    .rank { text-align: left; }
+    flex-direction: row;
+    align-items: center;
+
+    @media(min-width: $xl-width)
+    {
+        flex-direction: row;
+    }
 }
 
-.leaderboard-match-player--order-1 .leaderboard-match-profile-stats
+@media(min-width: $xl-width)
 {
-    flex-direction: row-reverse;
-    margin-right: auto;
-    margin-left: 0;
+    .leaderboard-match-player--order-1 .leaderboard-profile-rank
+    {
+        flex-direction: row-reverse;
+        .rank { text-align: left; }
+    }
+
+    .leaderboard-match-player--order-1 .leaderboard-match-profile-stats
+    {
+        flex-direction: row-reverse;
+        margin-right: auto;
+        margin-left: 0;
+    }
 }
 
 .leaderboard-match-profile .profile-avatar
@@ -126,17 +150,21 @@
     justify-content: center;
     text-align: center;
     position: relative;
-
+    padding-top: 65px;
+    padding-bottom: 65px;
+    
     & strong {
         @extend .font-secondary-bold;
     }
 
-    @media(max-width: $xl-width)
+    @media(min-width: $lg-width)
     {
-        margin-top: 20px;
-        margin-bottom: 20px;
-        background: #101010;
-        width: 100%;
+        width: 300px;
+    }
+
+    @media(min-width: $xl-width)
+    {
+        background: #0c0c0c;
         height: 100%;
     }
 }
@@ -144,6 +172,17 @@
 .leaderboard-match-details .match-game-details
 {
     position: relative;
+}
+
+@media(max-width: $lg-width)
+{
+    .leaderboard-match-details .game-status 
+    {
+        margin: 0 auto;
+        left: 0;
+        right: 0;
+        width: 100%;
+    }
 }
 
 .leaderboard-match-details .match-details 
@@ -163,7 +202,7 @@
         bottom: 0;
         width: 100%;
         height: 100%;
-        background: rgba(31,31,31,0.4);
+        background: rgba(31,31,31,0.5);
         z-index: 1;
     }
 }
@@ -180,13 +219,13 @@
     padding-bottom: 15px;
     z-index: 10;
 
-    @media(min-width: $xl-width)
+    @media(min-width: $lg-width)
     {
         position: relative;
     }
 }
 
-@media(max-width: $xl-width)
+@media(max-width: $lg-width)
 {
     .leaderboard-match-details .match-game-status .game-status:nth-child(1) 
     {
@@ -208,10 +247,17 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 80px;
-    height: 58px;
-    font-size: 2.1rem;
     font-weight: 600;
+    font-size: 1.1rem;
+    width: 60px;
+    height: 60px;
+
+    @media(min-width: $md-width)
+    {
+        font-size: 2.1rem;
+        width: 80px;
+        height: 58px;
+    }
 }
 
 .game-status.game-status--lost 
@@ -238,12 +284,12 @@
     max-width: 100%;
     margin: auto;
 
-    width: 250px;
-    height: 250px;
-
-    @media (min-width:$xl-width)
+    width: 300px;
+    height: 300px;
+    
+    @media(min-width: $lg-width)
     {
-        width: 250px;
-        height: 250px;
+        width: 200px;
+        height: 200px;
     }
 }

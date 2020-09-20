@@ -33,7 +33,9 @@ class LeaderboardMatchPlayer extends AbstractCustomView
     public function render()
     {
         ?>
-        <a class="leaderboard-match-player leaderboard-match-player--order-<?php echo $this->order; ?>" href="<?php echo $this->profileUrl(); ?>">
+        <a class="leaderboard-match-player leaderboard-match-player--order-<?php echo $this->order; ?>" 
+            href="<?php echo $this->profileUrl(); ?>" 
+            title="View <?php echo $this->playerName(); ?>'s profile'">
             <div class="leaderboard-match-profile">
                 <?php 
                     new Avatar(

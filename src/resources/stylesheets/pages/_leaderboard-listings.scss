@@ -34,9 +34,12 @@
 
 .leaderboard-hero
 {
+    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    background: linear-gradient(0deg, black, transparent);
+    padding: 40px;
 
     @media(min-width: $lg-width)
     {
@@ -44,7 +47,6 @@
     }
 }
 
-.leaderboard-hero,
 .leaderboard-listing-recent-games
 {
     display: flex;

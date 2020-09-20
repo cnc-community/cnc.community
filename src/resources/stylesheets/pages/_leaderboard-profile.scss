@@ -25,3 +25,11 @@
     background-repeat: no-repeat;
     min-height: 100vh;
 }
+
+@media(min-width: $md-width)
+{
+    .page-leaderboard-profile .leaderboard-search .leaderboard-bar 
+    {
+        margin-left: auto;
+    }
+}
