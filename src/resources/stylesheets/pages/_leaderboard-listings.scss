@@ -165,7 +165,7 @@
     margin: 0 0 auto auto;
     min-height: 100vh;
     
-    @media(min-width: $lg-width)
+    @media(min-width: $xl-width)
     {
         width: calc(98% - 150px);
     }
@@ -174,7 +174,7 @@
 .leaderboard-listings .headers 
 {
     display: none;
-    @media(min-width: $lg-width)
+    @media(min-width: $xl-width)
     {
         display: flex;
         padding: 15px 5px;
@@ -239,7 +239,7 @@
 {
     display: none;
 
-    @media(min-width: $lg-width)
+    @media(min-width: $xl-width)
     {
         display: block;
     }

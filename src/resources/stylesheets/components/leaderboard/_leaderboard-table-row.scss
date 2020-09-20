@@ -158,3 +158,17 @@
     color: gold;
     font-weight: 600;
 }
+
+.leaderboard-table-row .col-10 
+{
+    position: relative;
+}
+
+.leaderboard-table-row .icon-right 
+{
+    position: absolute;
+    right: 20px;
+    top: 0;
+    bottom: 0;
+    font-size: 1rem;
+}

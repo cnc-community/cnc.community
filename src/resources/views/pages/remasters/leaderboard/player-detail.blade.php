@@ -17,7 +17,7 @@
                 <a href="/command-and-conquer-remastered/leaderboard/{{$gameSlug}}?season={{$season}}" 
                     class="btn btn-transparent btn-back" 
                     title="back">
-                    <
+                    <i class="icon icon-left"></i>
                 </a>
             </div>
             <div class="leaderboard-breadcrumb-trail">

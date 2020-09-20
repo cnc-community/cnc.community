@@ -150,8 +150,8 @@
     justify-content: center;
     text-align: center;
     position: relative;
-    padding-top: 65px;
-    padding-bottom: 65px;
+    // padding-top: 65px;
+    // padding-bottom: 65px;
     
     & strong {
         @extend .font-secondary-bold;
@@ -286,10 +286,14 @@
 
     width: 300px;
     height: 300px;
+
+    & img { height: 300px; }
     
     @media(min-width: $lg-width)
     {
         width: 200px;
         height: 200px;
+
+        & img { height: 200px; }
     }
 }

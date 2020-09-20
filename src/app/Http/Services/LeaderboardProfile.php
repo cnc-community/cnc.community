@@ -44,10 +44,14 @@ class LeaderboardProfile implements LeaderboardProfileInterface
     public function totalGames(): int { return $this->wins + $this->losses; }
     public function winRatio(): int 
     { 
-        return 
-        (
-            round(($this->wins / $this->totalGames() * 100))
-        ); 
+        if ($this->wins > 0 && $this->totalGames() > 0)
+        {
+            return 
+            (
+                round(($this->wins / $this->totalGames() * 100))
+            ); 
+        }
+        return 0;
     }
     public function badge() 
     {

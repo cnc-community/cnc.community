@@ -57,7 +57,7 @@ class PlayerListingProfile extends AbstractCustomView
                     </div>
                 </div>
 
-                <div class="col col-50 visible-lg">
+                <div class="col col-40 visible-lg">
                     <div class="player-name">
                         <h3><?php echo $this->name; ?></h3>
                     </div>
@@ -81,6 +81,10 @@ class PlayerListingProfile extends AbstractCustomView
 
                 <div class="col col-10 visible-lg">
                     <div class="wins"><?php echo $this->winRate; ?>%</div>
+                </div>
+
+                <div class="col col-10 visible-lg">
+                    <i class="icon icon-right"></i>
                 </div>
 
                 <div class="stats hidden-lg">
