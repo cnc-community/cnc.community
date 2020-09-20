@@ -8,6 +8,12 @@
     margin-right: 30px;
     box-shadow: inset 0px 0px 0 4px #4e95ff;
     padding: 4px;
+
+    &:hover .profile-avatar-fx:after
+    {
+        animation: backgroundAutomatedSpin 10s linear 2s infinite;
+        background: linear-gradient(180deg, rgba(0,184,255,0.5) 70%, rgb(0, 255, 243));
+    }
 }
 
 .profile-avatar-image 

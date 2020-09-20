@@ -79,7 +79,7 @@ class MatchPlayer extends Model
         );
     }
 
-    private function playerWinStreak($matchType, $leaderboardHistoryId)
+    public function playerWinStreak($matchType, $leaderboardHistoryId)
     {
         $matches = Match::where("matchtype", $matchType)
             ->where("leaderboard_history_id", $leaderboardHistoryId)
