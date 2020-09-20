@@ -43,7 +43,7 @@ class PlayerListingProfile extends AbstractCustomView
     public function render()
     {
         ?>
-             <a href="<?php echo $this->url; ?>" class="leaderboard-item <?php echo $this->rank == 1 ? "gold": ""; ?>" title="View <?php echo $this->name; ?> stats">
+             <a href="<?php echo $this->url; ?>" class="leaderboard-table-row <?php echo $this->rank == 1 ? "gold": ""; ?>" title="View <?php echo $this->name; ?> stats">
          
                 <div class="col col-10 hidden-lg">
                     <div class="player-badge">
@@ -57,7 +57,7 @@ class PlayerListingProfile extends AbstractCustomView
                     </div>
                 </div>
 
-                <div class="col col-50 visible-lg">
+                <div class="col col-40 visible-lg">
                     <div class="player-name">
                         <h3><?php echo $this->name; ?></h3>
                     </div>
@@ -81,6 +81,10 @@ class PlayerListingProfile extends AbstractCustomView
 
                 <div class="col col-10 visible-lg">
                     <div class="wins"><?php echo $this->winRate; ?>%</div>
+                </div>
+
+                <div class="col col-10 visible-lg">
+                    <i class="icon icon-right"></i>
                 </div>
 
                 <div class="stats hidden-lg">

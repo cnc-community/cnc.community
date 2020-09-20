@@ -6,6 +6,7 @@ use App\Constants;
 use App\Http\Services\CNCOnlineCount;
 use App\Http\Services\Petroglyph\PetroglyphAPIService;
 use App\Http\Services\SteamHelper;
+use App\Http\Services\SteamProfileDataParser;
 use App\Leaderboard;
 use App\LeaderboardData;
 use App\LeaderboardHelper;
@@ -33,6 +34,12 @@ class LeaderboardController extends Controller
         $this->cncOnlineCount = new CNCOnlineCount();
 
         View::share('totalOnline', $this->cncOnlineCount->getTotal());
+    }
+
+    public function runProfileDataTask()
+    {
+        $steamProfileParser = new SteamProfileDataParser();
+        $steamProfileParser->run();
     }
 
     public function runMatchesTask()
@@ -92,8 +99,12 @@ class LeaderboardController extends Controller
         );
 
         $stats = Leaderboard::stats($matchType, $leaderboardHistory->id);
-        $stats["steamInGameCount"] = $this->steamHelper->getSteamPlayerCount(Constants::remastersAppId());
         $activeSeason = $leaderboardHistory->isActiveSeason();
+        $seasonNumber = null;
+        if ($season)
+        {
+            $seasonNumber = intval($season);
+        }
 
         return view('pages.remasters.leaderboard.detail', 
             [
@@ -102,8 +113,8 @@ class LeaderboardController extends Controller
                 "gameSlug" => $gameSlug,
                 "pageNumber" => $pageNumber,
                 "pageRanks" => $ranks,
-                "searchRequest" => $searchRequest,
-                "season" => $season,
+                "search" => $searchRequest,
+                "season" => $seasonNumber,
                 "stats" => $stats,
                 "activeSeason" => $activeSeason,
                 "data" => $data->appends(["season" => $season, "search" => $searchRequest])
@@ -134,27 +145,27 @@ class LeaderboardController extends Controller
             abort(404);
         }
 
+        $playerLeaderboardProfile = $player->leaderboardProfile($leaderboardHistory->id, $gameSlug);
+        $playerLeaderboardProfileStats = $player->leaderboardProfileStats($matchType, $leaderboardHistory->id);
+        $playerLeaderboardProfileMatches = ViewHelper::paginate($player->leaderboardMatches($matchType, $pageNumber, $searchRequest, $leaderboardHistory->id), 15);
+
         $activeSeason = $leaderboardHistory->isActiveSeason();
-        $playerData = LeaderboardData::findPlayerData($player->id, $leaderboardHistory->id);
-        $matches = $player->matches($matchType, $pageNumber, $searchRequest, $leaderboardHistory->id);
         $gameName = Constants::getRemasterGameBySlug($gameSlug);
         $gameLogo = ViewHelper::getRemasterLogoBySlug($gameSlug);
         $webViewUrl = url("/api/leaderboard/". $gameSlug . "/player/". $playerId ."/webview/config");
         
-        $playerStats = $player->playerStats($matchType, $leaderboardHistory->id);
-
         return view('pages.remasters.leaderboard.player-detail', 
             [
                 "gameLogo" => $gameLogo,
                 "gameName" => $gameName,
                 "gameSlug" => $gameSlug,
                 "pageNumber" => $pageNumber,
-                "searchRequest" => $searchRequest,
+                "search" => $searchRequest,
                 "season" => $season,
-                "playerStats" => $playerStats,
-                "matches" => $matches->appends(["season" => $season, "search" => $searchRequest]),
                 "player" => $player,
-                "playerData" => $playerData,
+                "playerLeaderboardProfileMatches" => $playerLeaderboardProfileMatches->appends(["season" => $season, "search" => $searchRequest]),
+                "playerLeaderboardProfileStats" => $playerLeaderboardProfileStats,
+                "playerLeaderboardProfile" => $playerLeaderboardProfile,
                 "leaderboardHistory" => $leaderboardHistory,
                 "showWebView" => $showWebView,
                 "webViewUrl" => $webViewUrl,

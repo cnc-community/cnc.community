@@ -2,6 +2,10 @@
 
 namespace App;
 
+use App\Http\CustomView\Components\LeaderboardMatchPlayer;
+use App\Http\Services\LeaderboardMatch;
+use App\Http\Services\LeaderboardProfile;
+use App\Http\Services\LeaderboardProfileStats;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
@@ -16,7 +20,24 @@ class MatchPlayer extends Model
         return "/command-and-conquer-remastered/leaderboard/" . $gameSlug . "/player/" . $this->id; 
     }
 
-    public function playerStats($matchType, $leaderboardHistoryId)
+    public function getSteamProfile()
+    {
+        $profile = MatchPlayerSteamProfile::where("match_player_id", $this->id)->first();
+        if ($profile)
+        {
+            $url = "https://steamcommunity.com/profiles/". $profile->matchPlayer()->playerId();
+            return [
+                "steamProfileUrl" => $url,
+                "steamAvatarUrl" => $profile->avatar_full
+            ];
+        }
+        return [
+            "steamProfileUrl" => null,
+            "steamAvatarUrl" => "/assets/images/avatar-default.jpg"
+        ];
+    }
+
+    public function leaderboardProfileStats($matchType, $leaderboardHistoryId)
     {
         $matches = Match::where("matchtype", $matchType)
             ->where("leaderboard_history_id", $leaderboardHistoryId)
@@ -26,13 +47,36 @@ class MatchPlayer extends Model
 
         $factions = $this->getPlayerFactions($matches);
         $winStreak = $this->getPlayerWinStreak($matches);
+        $last5Games = $this->getPlayerLast5GameStreak($matches);
         $gamesLast24Hours = $this->playerGames24Hours($matchType, $leaderboardHistoryId);
 
-        return [
-            "factions" => $factions,
-            "winstreak" => $winStreak,
-            "gamesLast24Hours" => $gamesLast24Hours
-        ];
+        return new LeaderboardProfileStats($factions, $winStreak, $gamesLast24Hours, $last5Games);
+    }
+
+    public function leaderboardProfile($leaderboardHistoryId, $gameSlug)
+    {
+        $leaderboardData = LeaderboardData::findPlayerData($this->id, $leaderboardHistoryId);
+        if ($leaderboardData == null)
+        {
+            $leaderboardData = [];
+        }
+        else 
+        {
+            $leaderboardData = $leaderboardData->toArray();
+        }
+
+        $steamProfile = $this->getSteamProfile();
+
+        if ($gameSlug == "")
+        {
+            dd($steamProfile);
+        }
+        return new LeaderboardProfile(
+            $leaderboardData,
+            $steamProfile["steamAvatarUrl"],
+            $steamProfile["steamProfileUrl"],
+            $this->playerUrlByGameSlug($gameSlug)
+        );
     }
 
     public function playerWinStreak($matchType, $leaderboardHistoryId)
@@ -124,6 +168,42 @@ class MatchPlayer extends Model
         ];
     }
 
+    private function getPlayerLast5GameStreak($matches)
+    {
+        $winLoss = [];
+        $count = 0;
+
+        foreach($matches as $match)
+        {
+            if ($count == 5) break;
+            $count++;
+
+            $players = json_decode($match->players);
+
+            foreach($players as $key => $playerId)
+            {
+                $teams = json_decode($match->teams);
+                $teamId = $teams[$key];
+
+                if ($playerId == $this->player_id)
+                {
+                    if ($teamId == $match->winningteamid)
+                    {
+                        // We won the match, add to current streak
+                        $winLoss[] = "W";
+                    }
+                    else
+                    {
+                        // We lost add our latest win streak and reset
+                        $winLoss[] = "L";
+                    }
+                }
+            }
+        }
+
+        return array_reverse($winLoss);
+    }
+
     public function playerGames24Hours($matchType, $leaderboardHistoryId)
     {
         $last24Hours = time() - (24 * 60 * 60);
@@ -187,6 +267,11 @@ class MatchPlayer extends Model
         return ViewHelper::renderSpecialOctal($this->player_name);
     }
 
+    public function playerId()
+    {
+        return $this->player_id;
+    }
+
     public static function findPlayer($playerId)
     {
         $player = Cache::remember("findPlayer".$playerId, 480, function () use ($playerId)
@@ -207,6 +292,17 @@ class MatchPlayer extends Model
         $player->player_name = $playerName;
         $player->save();
         return $player;
+    }
+
+    public function leaderboardMatches($matchType, $pageNumber, $searchQuery, $leaderboardHistoryId)
+    {
+        $leaderboardMatches = [];
+        $matches = $this->matches($matchType, $pageNumber, $searchQuery, $leaderboardHistoryId);
+        foreach($matches as $match)
+        {
+            $leaderboardMatches[] = new LeaderboardMatch($match->toArray());
+        }
+        return collect($leaderboardMatches);
     }
 
     public function matches($matchType, $pageNumber, $searchQuery, $leaderboardHistoryId)

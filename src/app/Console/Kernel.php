@@ -44,6 +44,7 @@ class Kernel extends ConsoleKernel
         $schedule->call('App\Http\Controllers\FeedController@runTask')->hourly()->runInBackground();
         $schedule->call('App\Http\Controllers\FeedController@runTaskDaily')->daily()->runInBackground();
         $schedule->call('App\Http\Controllers\APIController@runTask')->weekly()->runInBackground();
+        $schedule->call('App\Http\Controllers\LeaderboardController@runProfileDataTask')->daily()->runInBackground();
     }
 
     /**

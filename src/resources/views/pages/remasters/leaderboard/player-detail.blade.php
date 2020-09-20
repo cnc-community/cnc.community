@@ -1,141 +1,212 @@
 @extends('layouts.app')
-@section('title', ''.$gameName["long_name"].' Online Leaderboard - Command & Conquer Remastered Collection')
-@section('description', ''.$gameName["long_name"].' Leaderboard rankings, 1vs1')
+@section('title', $player->playerName() .' - '.$gameName["long_name"].' Online Leaderboard - Command & Conquer Remastered Collection')
+@section('description', $player->playerName() .' - '.$gameName["long_name"].' Leaderboard rankings, 1vs1')
 @section('meta')
 <meta property="og:image" content="https://cnc.community/assets/images/meta2.png?v=1.0">
 @endsection
 
-@section('page-class', 'remasters leaderboard-detail leaderboard-profile-detail '.  $gameSlug)
+@section('page-class', 'remasters page-leaderboard-profile '.  $gameSlug)
 
 @section('content')
+
 <div class="page-background">
-    <section class="top-ranks">
 
-        <div class="main-content">
-            <div class="leaderboard-header">
-                <div class="title">
-                    @if ($playerData == null )
-                    <h1 class="section-title">
-                        #Unranked {{ $player->playerName() }}
-                    </h1>
-                    @else
-                    <h1 class="section-title">
-                        #{{ $playerData->rank }} {{ $player->playerName() }}
-                    </h1>
-                    <div class="player-stats">
-                        <?php $gamesPlayed = ($playerData->wins + $playerData->losses); ?>
-                        <div>Wins: <span>{{ $playerData->wins }}</span></div>
-                        <div>Lost: {{ $playerData->losses }}</div>
-                        <div>Points: {{ round($playerData->points) }}</div>
-                        <div>Played: {{ $gamesPlayed }}</div>
-                    </div>
-                     @endif
-                    <div class="buttons">
-                        <?php if($showWebView): ?>
-                        <a href="{{ $webViewUrl}}" class="btn btn-outline">Go to your WebView Configuration</a>
-                        <?php endif; ?>
-
-                        <a href="/command-and-conquer-remastered/leaderboard/{{$gameSlug}}?season={{$season}}" class="btn btn-outline" title="Back to all leaderboards">
-                            Back to Leaderboard
-                        </a>
-                    </div>
+    <div class="main-content">
+        <div class="leaderboard-breadcrumb">
+            <div>
+                <a href="/command-and-conquer-remastered/leaderboard/{{$gameSlug}}?season={{$season}}" 
+                    class="btn btn-transparent btn-back" 
+                    title="back">
+                    <i class="icon icon-left"></i>
+                </a>
+            </div>
+            <div class="leaderboard-breadcrumb-trail">
+                <div>
+                    <a href="/command-and-conquer-remastered/leaderboard/{{$gameSlug}}?season={{$season}}"
+                        title="Back to all leaderboards">
+                        {{ $gameName["long_name"] }} Leaderboard
+                    </a>
                 </div>
-                <div class="statistics">
-                    <div class="statistics-list">
+                <div class="spacer">/</div>
+                <div>
+                    <strong>{{ $player->playerName() }}</strong>
+                </div>
+            </div>
+            <div class="leaderboard-breadcrumb-logo">
+                <img src="{{ $gameLogo }}" alt="{{ $gameName["long_name"] }} logo" />
+            </div>
+        </div>
+    </div>
 
-                        <div class="statistic-detail">
-                            <div class="value text-uppercase">
-                                <strong>{{ $playerStats["winstreak"]["current"] }}</strong>
-                            </div>              
-                            <div class="title text-uppercase">
-                                Current Win Streak <br/><span>(this season)</span>
-                            </div>      
+    <div class="main-content">
+        <div class="leaderboard-profile">
+
+            <div class="leaderboard-profile-details">
+                <?php 
+                    $steamProfile = $player->getSteamProfile();
+
+                    new App\Http\CustomView\Components\SteamAvatar(
+                        $player->playerName(), 
+                        $steamProfile["steamAvatarUrl"],
+                        $steamProfile["steamProfileUrl"]
+                    );
+                ?>
+                
+                <?php 
+                    new App\Http\CustomView\Components\Leaderboard\PlayerRank(
+                        $player->playerName(), 
+                        $playerLeaderboardProfile->rank(),
+                        $playerLeaderboardProfile->badge()->badgeImage(),
+                        $playerLeaderboardProfile->badge()->badgeTitle(),
+                        $playerLeaderboardProfile->profileUrl()
+                    ); 
+                ?>
+
+                <div class="leaderboard-profile-stats">
+                    <div class="profile-stat games-played">
+                        <h2 class="profile-stat-title">Games (Last 24 hours)</h2>
+                        <div class="quick-stats-value">
+                            <strong>{{ $playerLeaderboardProfileStats->gamesPlayedLast24Hours() }}</strong>
                         </div>
+                    </div>
 
-                        <div class="statistic-detail">
-                            <div class="value text-uppercase">
-                                <strong>{{ $playerStats["winstreak"]["highest"] }}</strong>
-                            </div>              
-                            <div class="title text-uppercase">
-                                Highest Win Streak <br/><span>(this season)</span>
-                            </div>      
+                    <div class="profile-stat points">
+                        <h2 class="profile-stat-title">Points</h2>
+                        <div class="quick-stats-value">
+                            <strong>{{ $playerLeaderboardProfile->points() }}</strong>
                         </div>
+                    </div>
 
-                        <div class="statistic-detail">
-                            <div class="value text-uppercase">
-                                <strong>{{ $playerStats["gamesLast24Hours"] }}</strong>
-                            </div>              
-                            <div class="title text-uppercase">
-                                Games Played <br/><span>(last 24 hours)</span>
-                            </div>      
+                    <div class="profile-stat last-games-played">
+                        <h2 class="profile-stat-title">Last 5 games</h2>
+
+                        <div class="last-5-games">
+                            @foreach($playerLeaderboardProfileStats->playerLast5GameStates() as $winState)
+                            <div class="result {{ $winState == "W" ? "result--win": "result--loss"}}">{{ $winState }}</div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        @include("pages.remasters.leaderboard._season-finish")
-
-        <div class="main-content">
-            <div class="recent-games">
-
-            <div class="leaderboard-bar">
-                <form>
-                    <input type="hidden" name="season" value="{{ $season }}" />
-                    <div class="form-group player-search">
-                        <label class="label" for="search">Search for a player in these games</label>
-                        <div class="search-box">
-                            <div class="search-input">
-                                <input id="search" type="text" name="search" class="form-input" placeholder="Enter a player name.." value="{{ $searchRequest }}" />
-                                <?php if($searchRequest): ?>
-                                <a href="?search=" title="Clear Search" class="btn-clear"><i class="icon-close-alt"></i></a>
-                                <?php endif; ?>
+            <div class="leaderboard-profile-extra">
+                <div class="leaderboard-profile-games">
+                   
+                    <div class="profile-stat overall">
+                        <div>
+                            <h2 class="profile-stat-title">Wins</h2>
+                            <div class="quick-stats-value">
+                                <strong>{{ $playerLeaderboardProfile->wins() }}</strong>
+                            </div>
+                        </div>
+                        <div>
+                            <h2 class="profile-stat-title">Losses</h2>
+                            <div class="quick-stats-value">
+                                <strong>{{ $playerLeaderboardProfile->losses() }}</strong>
+                            </div>
+                        </div>
+                        <div>
+                            <h2 class="profile-stat-title">Played</h2>
+                            <div class="quick-stats-value">
+                                <strong>{{ $playerLeaderboardProfile->totalGames() }}</strong>
+                            </div>
+                        </div>
+                        <div>
+                            <h2 class="profile-stat-title">Win Ratio</h2>
+                            <div class="quick-stats-value">
+                                <strong>{{ $playerLeaderboardProfile->winRatio() }}%</strong>
                             </div>
                         </div>
                     </div>
-                </form>
-            </div>
 
-            {{ $matches->links() }}
-            <h3 class="text-uppercase">{{ $player->playerName()}}'s games </h3>
-            @foreach($matches as $match)
+                    <div class="profile-stat winstreaks">
+                        <div>
+                            <h2 class="profile-stat-title">Highest winstreak</h2>
+                            <div class="quick-stats-value">
+                                <strong>{{ $playerLeaderboardProfileStats->winStreakHighest() }}</strong>
+                            </div>
+                        </div>
+                    </div>
 
+                    <div class="profile-stat winstreaks">
+                        <div>
+                            <h2 class="profile-stat-title">Current winstreak</h2>
+                            <div class="quick-stats-value">
+                                <strong>{{ $playerLeaderboardProfileStats->winStreakCurrent() }}</strong>
+                            </div>
+                        </div>
+                    </div>
 
-            <div class="recent-game">
-                <div class="players">
+                    <div class="leaderboard-profile-factions">
+                        <div class="profile-stat">
+                            <h2 class="profile-stat-title">Faction stats</h2>
 
-                    @foreach($match->teams() as $teamId => $teamArr)
-                        @foreach($teamArr as $teamPlayer)
-                        <?php 
-                            $rank = $teamPlayer->playerRank($leaderboardHistory);
-                            new \App\Http\CustomView\Components\PlayerDetailProfileStats
-                            (
-                                $teamPlayer->playerName(),
-                                $teamPlayer->playerBadge($rank),
-                                $rank,
-                                $teamPlayer->playerFactionByMatchId($match->matchid),
-                                $teamId == $match->winningTeamId(),
-                                $teamPlayer->playerUrlByGameSlug($gameSlug)
-                            ); 
-                        ?>     
-                        @endforeach
-                    @endforeach
-                </div>
-
-                <div class="map-preview" style="background-image:url({{ \App\LeaderboardHelper::mapPreviewByInternalName($match->mapInternalName()) }}">
-                    <div class="game-details">
-                        <div><strong>Map:</strong> {{ $match->mapName() }}</div>
-                        <div><strong>Duration:</strong> {{ $match->matchduration() }}</div>
-                        <div class="date-played">{{ $match->startTime() }}</div>
+                            <div class="faction-stats-list">
+                                @foreach($playerLeaderboardProfileStats->playerFactionStats() as $faction => $stats)
+                                <div class="faction">
+                                    <div class="faction-image">
+                                        <img src="/assets/images/leaderboard/{{ $faction }}.png" />
+                                    </div>
+                                    <div class="faction-stats">
+                                        <div>
+                                            Win Ratio
+                                            <strong>{{ $stats->winRatio() }}%</strong>
+                                        </div>
+                                        <div>
+                                            Wins
+                                            <strong>{{ $stats->wins() }}</strong>
+                                        </div>
+                                        <div>
+                                            Losses
+                                            <strong>{{ $stats->losses() }}</strong>
+                                        </div>
+                                    </div>
+                                </div>
+                                @endforeach 
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            @endforeach 
-
-            {{ $matches->links() }}
-            </div>
         </div>
-    </section>
-</div>
+    </div>
 
+    <div class="main-content">
+        <div class="leaderboard-profile-recent-games leaderboard-games">
+
+            <div class="leaderboard-search">
+                <h3 class="text-uppercase">Recent Games</h3>
+                <div class="leaderboard-bar">
+                    <form>
+                        <input type="hidden" name="season" value="{{ $season }}" />
+                        <div class="form-group player-search">
+                            <label class="label" for="search">Search for a player in these games</label>
+                            <div class="search-box">
+                                <div class="search-input">
+                                    <input id="search" type="text" name="search" class="form-input" placeholder="Enter a player name.." value="{{ $search }}" />
+                                    <?php if($search): ?>
+                                    <a href="?search=&season={{ $season }}" title="Clear Search" class="btn-clear"><i class="icon-close-alt"></i></a>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            {{ $playerLeaderboardProfileMatches->links() }}
+
+            @foreach($playerLeaderboardProfileMatches as $leaderboardMatch)
+                <?php new App\Http\CustomView\Components\Leaderboard\LeaderboardMatch(
+                        $leaderboardMatch, 
+                        $leaderboardHistory, 
+                        $player,
+                        $gameSlug
+                    ); ?>
+            @endforeach
+
+            {{ $playerLeaderboardProfileMatches->links() }}
+        </div>
+    </div>
+</div>
 @endsection

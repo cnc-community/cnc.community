@@ -1,0 +1,29 @@
+.leaderboard-search 
+{
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    
+    @media(min-width: $md-width)
+    {
+        flex-direction: row;
+    }
+}
+
+.leaderboard-search .search-input input 
+{
+    background: rgb(13, 11, 6);
+    color: silver;
+    border: 1px solid #6b6b6b;
+    font-size: 1rem;
+
+    &::placeholder
+    {
+        color: silver;
+    }
+
+    &:focus {
+        outline: 0;
+        border-color: $color-white;
+    }
+}

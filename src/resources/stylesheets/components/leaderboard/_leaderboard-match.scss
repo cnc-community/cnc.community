@@ -1,0 +1,325 @@
+
+// 
+// Match listing row
+// 
+
+.leaderboard-match 
+{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    padding-bottom: 25px;
+    background: rgb(12, 12, 12);
+    border: 2px solid #2b2b2b;
+    border-radius: 4px;
+    // padding: 10px;
+    
+    @media(min-width: $lg-width)
+    {
+        height: 440px;
+        flex-direction: row;
+        border: 0;
+        padding: initial;
+    }
+}
+
+.leaderboard-match .leaderboard-match-profile .profile-avatar
+{
+    display: none;
+    @media(min-width: $xxl-width)
+    {
+        display: flex;
+    }
+}
+
+.leaderboard-match:nth-child(odd)
+{
+    background: rgba(43, 43, 43, 0.34);
+}
+
+.leaderboard-match-player 
+{
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+
+    @media(min-width: $xl-width)
+    {
+        background: transparent;
+        padding-top: 0;
+        padding-bottom: 0;
+        width: 50%;
+    }
+}
+
+.leaderboard-match-profile
+{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 100%;
+    transition: ease-in-out all 300ms;
+    color: #e4e4e4;
+
+    &:hover{
+        background: rgba(0,0,0, .10);
+        color: $color-white;
+    }
+}
+
+.leaderboard-match-profile .player-rank-name
+{
+    padding: 0 15px;
+}
+
+.leaderboard-match-player--order-1 .leaderboard-match-profile
+{
+    @media(min-width: $lg-width)
+    {
+        flex-direction: row-reverse;
+    }
+}
+
+.leaderboard-match-player .leaderboard-profile-rank
+{
+    flex-direction: row;
+    align-items: center;
+
+    @media(min-width: $xl-width)
+    {
+        flex-direction: row;
+    }
+}
+
+@media(min-width: $xl-width)
+{
+    .leaderboard-match-player--order-1 .leaderboard-profile-rank
+    {
+        flex-direction: row-reverse;
+        .rank { text-align: left; }
+    }
+
+    .leaderboard-match-player--order-1 .leaderboard-match-profile-stats
+    {
+        flex-direction: row-reverse;
+        margin-right: auto;
+        margin-left: 0;
+    }
+}
+
+.leaderboard-match-profile .profile-avatar
+{
+    width: 100px;
+    height: 100px;
+    display: none;
+
+    @media(min-width: $md-width)
+    {
+        width: 100px; 
+        height: 100px;
+    }
+
+    @media(min-width: 1600px)
+    {
+        display: flex;
+        width: 150px;
+        height: 150px;
+    }
+}
+
+.leaderboard-match-profile-stats
+{
+    display: flex;
+    width: 60%;
+    margin-left: auto;
+    padding-top: 20px;
+}
+
+.leaderboard-match-profile-stats .profile-stat
+{
+    width: 120px;
+}
+
+//
+// Match details - map name, duration etc
+//
+.leaderboard-match-details
+{
+    @extend .font-secondary-light;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    // padding-top: 65px;
+    // padding-bottom: 65px;
+    
+    & strong {
+        @extend .font-secondary-bold;
+    }
+
+    @media(min-width: $lg-width)
+    {
+        width: 300px;
+    }
+
+    @media(min-width: $xl-width)
+    {
+        background: #0c0c0c;
+        height: 100%;
+    }
+}
+
+.leaderboard-match-details .match-other
+{
+    display: none;
+    @media(min-width: $lg-width)
+    {
+        display: block;
+    }
+}
+
+.leaderboard-match-details .match-game-details
+{
+    position: relative;
+}
+
+.leaderboard-match-details .download-replay 
+{
+    padding: 15px 0;
+    display: flex;
+    justify-content: center;
+
+    & i {
+        padding: 0 15px;
+    }
+}
+
+@media(max-width: $lg-width)
+{
+    .leaderboard-match-details .game-status 
+    {
+        margin: 0 auto;
+        left: 0;
+        right: 0;
+        width: 100%;
+    }
+}
+
+.leaderboard-match-details .match-details 
+{
+    padding-bottom: 15px;
+    padding-top: 15px;
+    word-break: break-all;
+    
+    @media(max-width: $xl-width)
+    {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(31,31,31,0.5);
+        z-index: 1;
+    }
+}
+
+.leaderboard-match-details .match-game-status
+{
+    display: flex;
+    justify-content: space-around;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    z-index: 10;
+
+    @media(min-width: $lg-width)
+    {
+        position: relative;
+    }
+}
+
+@media(max-width: $lg-width)
+{
+    .leaderboard-match-details .match-game-status .game-status:nth-child(1) 
+    {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    
+    .leaderboard-match-details .match-game-status .game-status:nth-child(2) 
+    {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+    }
+}
+    
+.game-status
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 1.1rem;
+    width: 60px;
+    height: 60px;
+
+    @media(min-width: $md-width)
+    {
+        font-size: 2.1rem;
+        width: 80px;
+        height: 58px;
+    }
+}
+
+.game-status.game-status--lost 
+{
+    color: #c5c5c5;
+    border: 2px solid #d0d0d0;
+    border-radius: 4px;
+}
+
+.game-status.game-status--won 
+{
+    color: #08df81;
+    border: 2px solid #08df81;
+    border-radius: 4px;
+}
+
+.map-preview 
+{
+    display: flex;
+    align-items: center;
+    position: relative;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 100%;
+    margin: auto;
+
+    width: 300px;
+    height: 300px;
+
+    & img { height: 300px; }
+    
+    @media(min-width: $lg-width)
+    {
+        width: 200px;
+        height: 200px;
+
+        & img { height: 200px; }
+    }
+}

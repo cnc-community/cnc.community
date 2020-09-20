@@ -168,6 +168,15 @@ $xxxl-width: 1600px;
 {
     @extend .btn-theme-blue;
 }
+
+.visible-md 
+{
+    display: none;
+    @media(min-width: $md-width)
+    {
+        display: block;
+    }
+}
         
 .visible-lg
 {

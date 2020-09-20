@@ -50,103 +50,6 @@
 }
 
 
-// Season select
-.season-select select
-{
-    height: 50px;
-    border-radius: 4px;
-    font-size: 1.2rem;
-    padding-left: 15px;
-}
-
-.red-alert .season-select select
-{
-    background: rgb(39, 1, 2);
-    border: 1px solid #800008;
-    color: red;
-
-    &::placeholder
-    {
-        color: red;
-    }
-
-    &:focus {
-        outline: 0;
-        border-color: $color-white;
-    }
-}
-
-.tiberian-dawn .season-select select
-{
-    background: rgb(13, 11, 6);
-    border: 1px solid $color-gold;
-    color: $color-gold;
-
-    &::placeholder
-    {
-        color: $color-gold;
-    }
-
-    &:focus {
-        outline: 0;
-        border-color: $color-white;
-    }
-}
-
-.leaderboard-detail .ranks
-{
-    display: none;
-
-    @media(min-width: $lg-width)
-    {
-        display: block;
-    }
-}
-
-.leaderboard-detail.red-alert .player-search label 
-{
-    color: #ff100a;
-}
-
-.leaderboard-detail.tiberian-dawn .player-search label 
-{
-    color: $color-gold;
-}
-
-.leaderboard-detail .player-search label 
-{
-    @extend .font-secondary;
-    font-size: 1.3rem;
-}
-
-.leaderboard-detail.red-alert .player-search .form-input
-{
-    background: rgba(175, 0, 11, 0.2);
-    border: 1px solid #800008;
-}
-
-.leaderboard-detail.tiberian-dawn .player-search .form-input
-{
-    background: rgba(21, 14, 3, 0.4);
-    border: 1px solid $color-gold;
-}
-
-.leaderboard-detail.red-alert .page-background
-{
-    background: url('../images/leaderboard/background-ra.jpg');
-    background-position: top center;
-    background-size: 100%;
-    background-repeat: no-repeat;
-}
-
-.leaderboard-detail.tiberian-dawn .page-background
-{
-    background: url('../images/leaderboard/background-td.jpg');
-    background-position: top center;
-    background-size: 100%;
-    background-repeat: no-repeat;
-}
-
 .leaderboard-header 
 {
     display: flex;
@@ -242,35 +145,7 @@
     }
 }
 
-.leaderboard-detail.tiberian-dawn .btn-theme 
-{
-    @extend .btn-primary;
-}
 
-.leaderboard-detail.red-alert .btn-theme 
-{
-    @extend .btn-primary;
-}
-
-.top-rank-box 
-{
-    background: rgba(0, 0, 0, 0.17);
-    flex-grow: 1;
-    margin: 5px;
-    border-radius: 4px;
-}
-
-.top-rank-box.rank-type-2 .player-rank,
-.top-rank-box.rank-type-3 .player-rank 
-{
-    background: #1f0000bf;
-}
-
-.leaderboard-detail.tiberian-dawn .top-rank-box.rank-type-2 .player-rank,
-.leaderboard-detail.tiberian-dawn .top-rank-box.rank-type-3 .player-rank 
-{
-    background: #020202bf;
-}
 
 .leaderboard-detail .listings 
 {
@@ -278,32 +153,6 @@
     position: relative;
 }
 
-.leaderboard-detail .rank.rank-type.general 
-{
-    position: absolute;
-    top: 0;
-}
-
-.leaderboard-detail .rank.rank-type
-{
-    position: absolute;
-    top: 0;
-}
-
-.leaderboard-detail .rank.rank-type.colonel 
-{
-    top: calc(16 * 54px);
-}
-
-.leaderboard-detail .rank.rank-type.colonel 
-{
-    top: calc(16 * 56px + 200px);
-}
-
-.leaderboard-detail .rank.rank-type.major
-{
-    top: calc(56px * 16);
-}
 
 // End skins
 

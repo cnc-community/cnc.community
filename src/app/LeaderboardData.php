@@ -21,4 +21,13 @@ class LeaderboardData extends Model
             ->where("leaderboard_history_id", $leaderboardHistoryId)
             ->first();
     }
+
+    public static function getLeaderboardPlayers($leaderboardHistoryId, $limit=200, $offset=0)
+    {
+        return LeaderboardData::where("leaderboard_history_id", $leaderboardHistoryId)
+            ->leftJoin("match_players", "match_players.id", "=", "leaderboard_data.match_player_id")
+            ->limit($limit)
+            ->offset($offset)
+            ->get();
+    }
 }

@@ -5,7 +5,7 @@ namespace App\Http\Services\Steam;
 use App\Constants;
 use App\Http\Services\SteamWorkShopItem;
 use Illuminate\Support\Facades\Http;
-use App\Http\Services\Twitch\AbstractTwitchAPI;
+use App\Http\Services\Steam\AbstractSteamAPI;
 use Exception;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
@@ -14,6 +14,7 @@ class SteamAPI extends AbstractSteamAPI
 {
     public const WORKSHOP_ITEMS_URL = "IPublishedFileService/QueryFiles/v1/";
     public const PLAYER_COUNT_URL = "ISteamUserStats/GetNumberOfCurrentPlayers/v1/";
+    public const PLAYER_PROFILE_URL = "ISteamUser/GetPlayerSummaries/v1/";
 
     private $_apiUrl = "https://api.steampowered.com/";
     private $_apiKey;
@@ -36,6 +37,33 @@ class SteamAPI extends AbstractSteamAPI
             $workShopItems[] = new SteamWorkShopItem($v);
         }
         return $workShopItems;
+    }
+    
+    public function getSteamProfileData($appId, $steamIds)
+    {
+        try
+        {
+            $response = Http::get(
+                $this->_apiUrl . SteamAPI::PLAYER_PROFILE_URL . 
+                '?appid='. $appId . 
+                '&steamids='. $steamIds .
+                '&key='. $this->_apiKey
+            );  
+
+            $players = $response->json()["response"]["players"]["player"];
+            if ($players)
+            {
+                return $players;
+            }
+        }
+        catch(Exception $exception)
+        {
+            Log::error($exception);
+            return -1;
+        }
+        return Cache::remember('getSteamProfileData'.$appId, 86400, function () use($appId, $steamIds)
+        {
+        });
     }
 
     public function getSteamPlayerCount($appId)
