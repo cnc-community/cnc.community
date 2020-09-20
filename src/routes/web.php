@@ -71,9 +71,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin']], function ()
     Route::get('/pages/edit/{id}/custom-fields', 'PageController@addField')->name('admin.pages.fields.add')->middleware('role:admin');
     Route::post('/pages/edit/{id}/custom-fields', 'PageController@createCustomField')->middleware('role:admin');
     
-    // Feed endpoint - eventually hit by task runner
-    Route::get('/feed', 'FeedController@index')->name('admin.feed')->middleware('role:admin,editor');
-    
     // Endpoint if we want to clear cache
     Route::get('/cache/clear', 'SiteController@clearCache')->middleware('role:admin,editor');
 });

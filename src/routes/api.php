@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/error', 'APIController@showError');
+Route::get('/recent-games/{matchType}/', 'APIController@recentGamesByMatchType');
 
 Route::get('/game-count/total', 'APIController@onlineCount')->middleware('cache.headers:public;max_age=480');
 

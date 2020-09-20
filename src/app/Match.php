@@ -13,6 +13,7 @@ class Match extends Model
 
     public const TD_1vs1 = 1;
     public const RA_1vs1 = 2;
+    public const RA_TD_FFG = 8;
 
     public static function getMatchTypeByGameSlug($gameSlug)
     {

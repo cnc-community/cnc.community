@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
 use App\Http\Services\APILeaderboardProfile;
 use App\Http\Services\CNCOnlineCount;
+use App\Http\Services\CompetitionService;
 
 class APIController extends Controller
 {
@@ -25,12 +26,45 @@ class APIController extends Controller
     private $steamAPI;
     private $petroglyphAPI;
     private $cncOnlineCount;
+    private $competitionService;
 
     public function __construct()
     {
         $this->twitchStreamsAPI = new TwitchStreamsAPI();
         $this->steamAPI = new SteamAPI();
         $this->cncOnlineCount = new CNCOnlineCount();
+        $this->competitionService = new CompetitionService();
+    }
+
+    public function recentGamesByMatchType(Request $request, $matchType)
+    {
+        $type = null;
+        switch($matchType)
+        {
+            case "ra":
+                $type = Match::RA_1vs1;
+                break;
+            case "td":
+                $type = Match::TD_1vs1;
+                break;
+            case "all":
+                $type = Match::RA_TD_FFG;
+                break;
+            default:
+                $type = null;
+        }
+        
+        if ($type == null)
+        {
+           return "Incorrect params";
+        }
+
+        if ($request->winnerIndex)
+        {
+            return $this->competitionService->getPlayersByMatchType($type)[$request->winnerIndex];
+        }
+
+        return $this->competitionService->getPlayersByMatchType($type);
     }
 
     public function runTask()

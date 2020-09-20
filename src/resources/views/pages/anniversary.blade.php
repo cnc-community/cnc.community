@@ -41,9 +41,6 @@
         <p>
             Prizes will be given away EVERY day during this time. <br/> Anyone can win a prize regardless of their skill level!
         </p>
-        <p>
-            <strong>Please note</strong> - Steam Accounts will only be able to take part in this event.
-        </p>
     </div>
 </section>
 
@@ -92,7 +89,7 @@
 <section class="section winners">
     <div class="main-content text-center">
         <h2 class="text-uppercase">Winners</h2>
-        <p>If you're a winner, your Steam username will be listed below.</p>
+        <p>If you're a winner, your in game username will be listed below.</p>
 
         <?php foreach($winners as $day => $playersWon): ?>
             <div class="day">
@@ -136,7 +133,7 @@
             </p>
             <p>
                 <strong>Eligibility</strong> <br/>
-                The event is open to Steam players only, playing Tiberian Dawn Remastered and Red Alert Remastered Online games.  
+                The event is open to Steam &amp; Origin players, playing Tiberian Dawn Remastered and Red Alert Remastered Online games.  
                 Single player games will not qualify. 
             </p>
             <p>
@@ -164,15 +161,15 @@
                 <strong>
                     Winners being contacted
                 </strong> <br/>
-                Prizes will be awarded to Steam Players only.  Players who have won, will have their steam username listed on the C&C community website as a winner. 
+                Prizes will be awarded to Steam and Origin Players.  Players who have won, will have their Steam or Origin username listed on the C&C community website as a winner. 
 
-                The winners Steam account will then be added as a friend by a member of the C&C Community website team. If for whatever reason, their steam profile does not allow this, the players will not be eligible for a prize. 
+                The winners Steam or Origin account will then be added as a friend by a member of the C&C Community website team. If for whatever reason, the winners profile does not allow this, the players will not be eligible for a prize. 
 
-                Upon sending a request and accepting, they will be asked to confirm they are able to accept the prize as the account holder, including that they are the account holder and of age in accordance to the Command & Conquer:tm: Remastered Collection EULA terms and conditions.
+                Upon sending a request and accepting, they will be asked to confirm they are able to accept the prize as the account holder and are of age in accordance to the Command & Conquer:tm: Remastered Collection EULA terms and conditions.
             </p>
 
             <p>
-                Players who have won a prize, will have 14 days from the point of initially being contacted via Steam to accept the friend request and claim their prize. If after this period no contact is made, the player will lose their prize.
+                Players who have won a prize, will have 14 days from the point of initially being contacted to accept the friend request and claim their prize. If after this period no contact is made, the player will lose their prize.
             </p>
             
             <p>
