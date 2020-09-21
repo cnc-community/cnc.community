@@ -187,6 +187,15 @@ $xxxl-width: 1600px;
     }
 }
 
+.hidden-md
+{
+    display: block;
+    @media(min-width: $md-width)
+    {
+        display: none;
+    }
+}
+
 .hidden-lg
 {
     display: block;
