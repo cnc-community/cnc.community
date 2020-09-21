@@ -108,8 +108,13 @@
 .leaderboard-table-row.gold 
 {
     border: 1px solid #ffb300;
-    background: #ffb3003d;
     border-radius: 4px;
+    background: linear-gradient(45deg, #ffb30024, #ffb30052);
+
+    @media(min-width: $md-width)
+    {
+        background: rgba(255, 179, 0, 0.24);
+    }
 }
 
 .leaderboard-table-row.gold:hover 

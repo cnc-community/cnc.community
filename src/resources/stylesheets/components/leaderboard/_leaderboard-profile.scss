@@ -114,6 +114,21 @@
     }
 }
 
+.leaderboard-profile-rank .player-rank-name 
+{
+    @media(max-width: $lg-width)
+    {
+        padding: 20px;
+    }
+
+    @media(min-width: $xl-width)
+    {
+        margin-right: 15px;
+        margin-left: 15px;
+    }
+}
+
+
 // Position rank absolutely only in top stats
 .leaderboard-profile-details .leaderboard-profile-rank
 {
@@ -136,12 +151,7 @@
 
 .leaderboard-profile-rank .player-name 
 {
-    font-size: 1.5rem;
-    
-    @media(min-width: $xl-width)
-    {
-        font-size: 2rem;
-    }
+    font-size: 2rem;
 }
 
 .leaderboard-profile-rank .rank 
@@ -149,7 +159,13 @@
     line-height: 1;
     text-align: center;
     font-size: 2rem;
+    margin-top: 15px;
     
+    @media(min-width: $md-width)
+    {
+        margin-top: 0;
+    }
+
     @media(min-width: $xl-width)
     {
         font-size: 5rem;

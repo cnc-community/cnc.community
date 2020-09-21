@@ -51,7 +51,19 @@
 {
     display: flex;
     background:rgba(0, 0, 0, 0.7);
-    padding: 40px;
+    padding-left: 15px;
+    padding-right: 15px;
+        
+    @media(min-width: $md-width)
+    {
+        padding: 40px;
+    }
+}
+
+.leaderboard-listing-recent-games .leaderboard-stats .profile-stat
+{
+    padding-left: 15px;
+    padding-right: 15px;
 }
 
 .leaderboard-hero .leaderboard-logo 
@@ -121,16 +133,18 @@
 {
     display: flex;
     flex-direction: column;
-    margin: 50px auto;
     width: auto;
-
+    text-align: center;
+    
     @media(min-width: $md-width)
     {
+        margin: 50px auto;
         flex-direction: row;
     }
 
     @media(min-width: $lg-width)
     {
+        text-align: left;
         margin-left: auto;
         margin-right: 0;
     }
