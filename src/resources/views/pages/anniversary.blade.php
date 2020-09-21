@@ -109,21 +109,6 @@
     </div>
 </section>
 
-<section class="section sponsors">
-    <div class="main-content text-center">
-        <h2 class="text-uppercase">Sponsors</h2>
-       
-        <div class="sponsor-logos">
-            <div class="ea">
-                <img src="assets/images/logos/ea.png" alt="EA" />
-            </div>
-            <div class="cnc-community">
-                <img src="assets/images/logo.svg" alt="C&C Community" />
-            </div>
-        </div>
-    </div>
-</section>
-
 <section class="section terms">
     <div class="main-content text-center">
         <div class="page-content">
