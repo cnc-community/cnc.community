@@ -114,8 +114,27 @@
         </footer>
     </div>
 
+    <div class="site-notification js-site-notification hidden">
+        <div class="main-content">
+            <div class="logo">
+                <img src="/assets/images/cnc-25-years-logo.png" alt="25 Years of Command and conquer" />
+            </div>
+            <div class="site-notification-title">
+                <h4 class="text-uppercase">
+                    <a href="/command-and-conquer-25-years" class="text-uppercase js-site-notification-close" title="25 Years of Command &amp; Conquer Giveaway!">25 Years of Command &amp; Conquer Giveaway!</a>
+                </h4>
+            </div>
+            <div class="site-notification-close">
+                <button class="js-site-notification-close btn btn-transparent" title="Close notification">
+                    <i class="icon icon-close"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
     @yield('scripts')
     <script defer src="/assets/js/OnlineCount.js?v=2.8"></script>
     <script defer src="/assets/js/navbar/NavBarJs.js?v=2.8"></script>
+    <script defer src="/assets/js/SiteNotification.js"></script>
 </body>
 </html>

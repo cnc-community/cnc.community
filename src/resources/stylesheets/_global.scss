@@ -830,3 +830,53 @@ ul.pagination
     height: 900px;
     background-position: top left;
 }
+
+
+.site-notification 
+{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: url(../images/bg-anniversary.jpg);
+    background-size: cover;
+    background-position: bottom;
+    border-top: 3px solid #ff8c081a;
+    border-bottom: 3px solid #ff8c081a;
+    z-index: 1000;
+}
+
+.site-notification .logo
+{
+    padding-right: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.site-notification-title 
+{
+    padding-left: 25px;
+    color: #fffbf0;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.site-notification .logo img
+{
+    height: 100px;
+}
+
+.site-notification .main-content 
+{
+    display: flex;
+    align-items: center;
+}
+
+.site-notification .site-notification-close
+{
+    margin-left: auto;
+    margin-right: 0;
+    & i {
+        color: $color-white;
+    }
+}
