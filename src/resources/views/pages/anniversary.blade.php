@@ -59,7 +59,7 @@
                 <p>
                     Finish Rank #1 on <a href="/command-and-conquer-remastered/leaderboard/red-alert">Red Alert</a> 
                     or <a href="/command-and-conquer-remastered/leaderboard/tiberian-dawn">Tiberian Dawn</a> when the event ends and you will win a 1 year 
-                    EA Play subscription. If you finish in the top 50, you will be put into a randomizer for a chance to win a prize too!
+                    EA Play Pro subscription. If you finish in the top 50, you will be put into a randomizer for a chance to win a prize too!
                 </p>
             </div>
         </div>
@@ -71,7 +71,7 @@
         <h2 class="text-uppercase">Prizes</h2>
         <p class="lead">
             We have lots of goodies to give away.
-            You could be winning a Month long EA Play Subscription or a Year long EA Play Subscription code 
+            You could be winning a Month long EA Play Pro Subscription or a Year long EA Play Pro Subscription code.
             Other prizes include Steam Gift Cards (Value £4).
         </p>
        
@@ -138,8 +138,8 @@
             </p>
 
             <p>
-                Smaller band prizes include but are not limited to: Steam Gift Cards, 1 Month EA Play Subscription codes.
-                Larger band prizes include but are not limited to: 1 Year EA Play Subscription codes.
+                Smaller band prizes include but are not limited to: Steam Gift Cards, 1 Month EA Play Pro Subscription codes.
+                Larger band prizes include but are not limited to: 1 Year EA Play Pro Subscription codes.
             </p>
 
             <p>
