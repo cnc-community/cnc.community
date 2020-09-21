@@ -860,11 +860,17 @@ ul.pagination
 
 .site-notification-title 
 {
-    padding-left: 25px;
     color: #fffbf0;
+    text-align: center;
     margin-left: auto;
     margin-right: auto;
-    text-align: center;
+    
+    @media(min-width: $md-width)
+    {
+        padding-left: 25px;
+        padding-right: 25px;
+        margin-right: 0;
+    }
 }
 
 .site-notification .logo img
