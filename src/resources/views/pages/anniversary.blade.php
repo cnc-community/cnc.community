@@ -83,10 +83,17 @@
                 <img src="assets/images/steam-prize.jpg" alt="Steam Gift Card" />
             </div>
         </div>
+
+        <div class="about-prizes">
+            <h2 class="text-uppercase">EA Play Pro</h2>
+            <p>
+                EA Play Pro members can play the deluxe editions of every new Electronic Arts title -- with all the added extras including in-game rewards, Season Passes, and premium player content that lets you stand out from the competition – as soon as they drop. Plus, members have instant access to The Play List, a library of our fan-favorite series and best loved titles.
+            </p>
+        </div>
     </div>
 </section>
 
-<section class="section winners">
+<section class="section winners sponsors">
     <div class="main-content text-center">
         <h2 class="text-uppercase">Winners</h2>
         <p>If you're a winner, your in game username will be listed below.</p>
@@ -163,6 +170,13 @@
             </p>
             <p>
                 In the extremely rare occasion prizes are withdrawn from the C&C Community teams possession, we will not be able to honor the delivery of prizes to winners.
+            </p>
+
+            <p>
+                * THIS OFFER IS BEING ISSUED TO YOU FOR PROMOTIONAL PURPOSES ONLY AND DOES NOT HAVE A CASH VALUE.  SINGLE-USE CODE EXPIRES ON [09/24/2021]. CODE VALID FOR ONE MONTH OF EA PLAY PRO ("PRODUCT") FROM THE ORIGIN STORE (origin.com).   MAY NOT BE COMBINED WITH ANY OTHER PROMOTIONAL OR DISCOUNT OFFER, UNLESS EXPRESSLY AUTHORIZED BY EA; MAY NOT BE COMBINED WITH ANY PREPAID CARD REDEEMABLE FOR THE APPLICABLE CONTENT.   LIMIT ONE CODE PER PERSON.  OFFER MAY NOT BE SUBSTITUTED, EXCHANGED, SOLD OR REDEEMED FOR CASH OR OTHER GOODS OR SERVICES.   VOID WHERE PROHIBITED, TAXED OR RESTRICTED BY LAW.
+            </p>
+            <p>
+                * THIS OFFER IS BEING ISSUED TO YOU FOR PROMOTIONAL PURPOSES ONLY AND DOES NOT HAVE A CASH VALUE.  SINGLE-USE CODE EXPIRES ON [09/24/2021]. CODE VALID FOR TWELVE MONTHS OF EA PLAY PRO ("PRODUCT") FROM THE ORIGIN STORE (origin.com).   MAY NOT BE COMBINED WITH ANY OTHER PROMOTIONAL OR DISCOUNT OFFER, UNLESS EXPRESSLY AUTHORIZED BY EA; MAY NOT BE COMBINED WITH ANY PREPAID CARD REDEEMABLE FOR THE APPLICABLE CONTENT.   LIMIT ONE CODE PER PERSON.  OFFER MAY NOT BE SUBSTITUTED, EXCHANGED, SOLD OR REDEEMED FOR CASH OR OTHER GOODS OR SERVICES.   VOID WHERE PROHIBITED, TAXED OR RESTRICTED BY LAW.
             </p>
         </div>
     </div>
