@@ -77,7 +77,7 @@
        
         <div class="prize-boxes">
             <div>
-                <img src="assets/images/ea-play-prize.jpg" alt="EA Play" />
+                <img src="assets/images/ea-play-prize.jpg" alt="EA Play Pro" />
             </div>
             <div>
                 <img src="assets/images/steam-prize.jpg" alt="Steam Gift Card" />
