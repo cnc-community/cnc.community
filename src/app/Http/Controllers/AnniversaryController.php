@@ -43,26 +43,26 @@ class AnniversaryController extends Controller
         $winners["24/09/2020"][] = new AnniversaryWinner("devvv", AnniversaryController::STEAM_GIFT_CODE);
 
 
-        return $winners;
 
         // 
         // 25th Sept 2020
 
         // 1x Year EA Subscription Code
-        $winners["25/09/2020"][] = new AnniversaryWinner ("Name", AnniversaryController::EA_1_YEAR_CODE);
+        $winners["25/09/2020"][] = new AnniversaryWinner ("(Winner not yet announced)", AnniversaryController::EA_1_YEAR_CODE);
         
         // 6x Monthly EA Subscription Codes
-        $winners["25/09/2020"][] = new AnniversaryWinner("Name", AnniversaryController::EA_1_MONTH_CODE);
-        $winners["25/09/2020"][] = new AnniversaryWinner("Name", AnniversaryController::EA_1_MONTH_CODE);
-        $winners["25/09/2020"][] = new AnniversaryWinner("Name", AnniversaryController::EA_1_MONTH_CODE);
-        $winners["25/09/2020"][] = new AnniversaryWinner("Name", AnniversaryController::EA_1_MONTH_CODE);
-        $winners["25/09/2020"][] = new AnniversaryWinner("Name", AnniversaryController::EA_1_MONTH_CODE);
-        $winners["25/09/2020"][] = new AnniversaryWinner("Name", AnniversaryController::EA_1_MONTH_CODE);
+        $winners["25/09/2020"][] = new AnniversaryWinner("(Winner not yet announced)", AnniversaryController::EA_1_MONTH_CODE);
+        $winners["25/09/2020"][] = new AnniversaryWinner("(Winner not yet announced)", AnniversaryController::EA_1_MONTH_CODE);
+        $winners["25/09/2020"][] = new AnniversaryWinner("(Winner not yet announced)", AnniversaryController::EA_1_MONTH_CODE);
+        $winners["25/09/2020"][] = new AnniversaryWinner("(Winner not yet announced)", AnniversaryController::EA_1_MONTH_CODE);
+        $winners["25/09/2020"][] = new AnniversaryWinner("(Winner not yet announced)", AnniversaryController::EA_1_MONTH_CODE);
+        $winners["25/09/2020"][] = new AnniversaryWinner("(Winner not yet announced)", AnniversaryController::EA_1_MONTH_CODE);
         
         // 2x Steam Gift Card
-        $winners["25/09/2020"][] = new AnniversaryWinner("Name", AnniversaryController::STEAM_GIFT_CODE);
-        $winners["25/09/2020"][] = new AnniversaryWinner("Name", AnniversaryController::STEAM_GIFT_CODE);
+        $winners["25/09/2020"][] = new AnniversaryWinner("(Winner not yet announced)", AnniversaryController::STEAM_GIFT_CODE);
+        $winners["25/09/2020"][] = new AnniversaryWinner("(Winner not yet announced)", AnniversaryController::STEAM_GIFT_CODE);
 
+        return $winners;
 
 
 
