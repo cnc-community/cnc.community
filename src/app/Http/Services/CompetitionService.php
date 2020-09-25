@@ -10,9 +10,9 @@ class CompetitionService
     {
     }
 
-    public function getPlayersByMatchType($matchType)
+    public function getPlayersByMatchType($matchType, $timeStart, $timeEnd)
     {
-        return $this->getLast24Hours($matchType);
+        return $this->getLast24Hours($matchType, $timeStart, $timeEnd);
         // $matches = Match::where("matchtype", $matchType)
         //     ->orderBy("starttime", "DESC")
         //     ->select(["names", "players", "matchtype"])
@@ -50,13 +50,15 @@ class CompetitionService
         return $keyedResults;
     }
 
-    private function getLast24Hours($matchType)
+    private function getLast24Hours($matchType, $timeStart, $timeEnd)
     {
         // Uncomment when we're on Friday 6pm BST
         // $last24Hours = time() - (24 * 60 * 60);
 
+        // 24th 6pm BST 1600966800
         return Match::where("matchtype", $matchType)
-            ->where('starttime', '>=', "1600966800")
+            ->where('starttime', '>=', $timeStart)
+            ->where('starttime', '<=', $timeEnd)
             ->orderBy("starttime", "DESC")
             ->paginate(200);
     }

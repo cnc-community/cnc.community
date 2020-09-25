@@ -59,12 +59,10 @@ class APIController extends Controller
            return "Incorrect params";
         }
 
-        if ($request->winnerIndex)
-        {
-            return $this->competitionService->getPlayersByMatchType($type)[$request->winnerIndex];
-        }
+        $timeStart = filter_var($request->timeStart == null ? 1: $request->timeStart, FILTER_SANITIZE_STRING);
+        $timeEnd = filter_var($request->timeEnd == null ? 1: $request->timeEnd, FILTER_SANITIZE_STRING);
 
-        return $this->competitionService->getPlayersByMatchType($type);
+        return $this->competitionService->getPlayersByMatchType($type, $timeStart, $timeEnd);
     }
 
     public function runTask()
