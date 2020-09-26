@@ -69,10 +69,10 @@ class AnniversaryController extends Controller
         // 26th Sept 2020
 
         // 6x Monthly EA Subscription Codes
-        $winners["26/09/2020"][] = new AnniversaryWinner("(Winner not yet announced)", AnniversaryController::EA_1_MONTH_CODE);
-        $winners["26/09/2020"][] = new AnniversaryWinner("(Winner not yet announced)", AnniversaryController::EA_1_MONTH_CODE);
-        $winners["26/09/2020"][] = new AnniversaryWinner("(Winner not yet announced)", AnniversaryController::EA_1_MONTH_CODE);
-        $winners["26/09/2020"][] = new AnniversaryWinner("(Winner not yet announced)", AnniversaryController::EA_1_MONTH_CODE);
+        $winners["26/09/2020"][] = new AnniversaryWinner("parappa56", AnniversaryController::EA_1_MONTH_CODE);
+        $winners["26/09/2020"][] = new AnniversaryWinner("zzemteam", AnniversaryController::EA_1_MONTH_CODE);
+        $winners["26/09/2020"][] = new AnniversaryWinner("chessman500", AnniversaryController::EA_1_MONTH_CODE);
+        $winners["26/09/2020"][] = new AnniversaryWinner("Aezwozere", AnniversaryController::EA_1_MONTH_CODE);
         $winners["26/09/2020"][] = new AnniversaryWinner("(Winner not yet announced)", AnniversaryController::EA_1_MONTH_CODE);
         $winners["26/09/2020"][] = new AnniversaryWinner("(Winner not yet announced)", AnniversaryController::EA_1_MONTH_CODE);
         
