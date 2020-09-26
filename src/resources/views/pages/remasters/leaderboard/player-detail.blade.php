@@ -10,7 +10,11 @@
 @section('content')
 
 <div class="page-background">
-
+    <?php if($showWebView): ?>
+    <div class="main-content flex">
+        <a href="{{ $webViewUrl}}" class="btn btn-outline">Go to your WebView Configuration </a>
+    </div>
+    <?php endif; ?>
     <div class="main-content">
         <div class="leaderboard-breadcrumb">
             <div>
