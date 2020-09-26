@@ -315,7 +315,7 @@ class MatchPlayer extends Model
                     ->where("leaderboard_history_id", $leaderboardHistoryId)
                     ->whereRaw("MATCH (players) AGAINST (? IN BOOLEAN MODE)", $this->fullTextWildcards($this->player_id))
                     ->orderBy("starttime", "DESC")
-                    ->paginate(20);
+                    ->get();
             }
             else
             {
@@ -324,7 +324,7 @@ class MatchPlayer extends Model
                     ->where("leaderboard_history_id", $leaderboardHistoryId)
                     ->whereRaw("MATCH (names) AGAINST (? IN BOOLEAN MODE)", $this->fullTextWildcards($searchQuery))
                     ->orderBy("starttime", "DESC")
-                    ->paginate(20);
+                    ->get();
             }
         });
 
