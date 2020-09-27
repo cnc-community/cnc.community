@@ -97,13 +97,13 @@ class AnniversaryController extends Controller
         $winners["27/09/2020"][] = new AnniversaryWinner ("(Winner not yet announced)", AnniversaryController::EA_1_YEAR_CODE);
 
 
-        $winners["27/09/2020"][] = new AnniversaryWinner("(Winner not yet announced)", AnniversaryController::EA_1_MONTH_CODE);
-        $winners["27/09/2020"][] = new AnniversaryWinner("(Winner not yet announced)", AnniversaryController::EA_1_MONTH_CODE);
-        $winners["27/09/2020"][] = new AnniversaryWinner("(Winner not yet announced)", AnniversaryController::EA_1_MONTH_CODE);
-        $winners["27/09/2020"][] = new AnniversaryWinner("(Winner not yet announced)", AnniversaryController::EA_1_MONTH_CODE);
+        $winners["27/09/2020"][] = new AnniversaryWinner("DATA", AnniversaryController::EA_1_MONTH_CODE);
+        $winners["27/09/2020"][] = new AnniversaryWinner("AlphaMaleDude", AnniversaryController::EA_1_MONTH_CODE);
+        $winners["27/09/2020"][] = new AnniversaryWinner("Troubadirix", AnniversaryController::EA_1_MONTH_CODE);
+        $winners["27/09/2020"][] = new AnniversaryWinner("Ryo", AnniversaryController::EA_1_MONTH_CODE);
         
         // 1x Steam Gift Card
-        $winners["27/09/2020"][] = new AnniversaryWinner("(Winner not yet announced)", AnniversaryController::STEAM_GIFT_CODE);
+        $winners["27/09/2020"][] = new AnniversaryWinner("Daawee (CZ)", AnniversaryController::STEAM_GIFT_CODE);
 
         return $winners;
     }
