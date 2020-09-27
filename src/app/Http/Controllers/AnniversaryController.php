@@ -73,38 +73,37 @@ class AnniversaryController extends Controller
         $winners["26/09/2020"][] = new AnniversaryWinner("zzemteam", AnniversaryController::EA_1_MONTH_CODE);
         $winners["26/09/2020"][] = new AnniversaryWinner("chessman500", AnniversaryController::EA_1_MONTH_CODE);
         $winners["26/09/2020"][] = new AnniversaryWinner("Aezwozere", AnniversaryController::EA_1_MONTH_CODE);
-        $winners["26/09/2020"][] = new AnniversaryWinner("(Winner not yet announced)", AnniversaryController::EA_1_MONTH_CODE);
-        $winners["26/09/2020"][] = new AnniversaryWinner("(Winner not yet announced)", AnniversaryController::EA_1_MONTH_CODE);
+        $winners["26/09/2020"][] = new AnniversaryWinner("MeowPhace", AnniversaryController::EA_1_MONTH_CODE);
+        $winners["26/09/2020"][] = new AnniversaryWinner("ClassicAntique77", AnniversaryController::EA_1_MONTH_CODE);
         
         // 1x Steam Gift Card
-        $winners["26/09/2020"][] = new AnniversaryWinner("(Winner not yet announced)", AnniversaryController::STEAM_GIFT_CODE);
+        $winners["26/09/2020"][] = new AnniversaryWinner("NMP97", AnniversaryController::STEAM_GIFT_CODE);
 
-        return $winners;
 
 
         // 
         // 27th Sept 2020 
 
         // 1st Place RA 
-        $winners["27/09/2020"][] = new AnniversaryWinner ("Name", AnniversaryController::EA_1_YEAR_CODE);
+        $winners["27/09/2020"][] = new AnniversaryWinner ("(Winner not yet announced)", AnniversaryController::EA_1_YEAR_CODE);
 
         // 1st Place TD
-        $winners["27/09/2020"][] = new AnniversaryWinner ("Name", AnniversaryController::EA_1_YEAR_CODE);
+        $winners["27/09/2020"][] = new AnniversaryWinner ("(Winner not yet announced)", AnniversaryController::EA_1_YEAR_CODE);
 
         // Random Top 50 Place RA
-        $winners["27/09/2020"][] = new AnniversaryWinner ("Name", AnniversaryController::EA_1_YEAR_CODE);
+        $winners["27/09/2020"][] = new AnniversaryWinner ("(Winner not yet announced)", AnniversaryController::EA_1_YEAR_CODE);
 
         // Random Top 50 Place TD
-        $winners["27/09/2020"][] = new AnniversaryWinner ("Name", AnniversaryController::EA_1_YEAR_CODE);
+        $winners["27/09/2020"][] = new AnniversaryWinner ("(Winner not yet announced)", AnniversaryController::EA_1_YEAR_CODE);
 
 
-        $winners["27/09/2020"][] = new AnniversaryWinner("Name", AnniversaryController::EA_1_MONTH_CODE);
-        $winners["27/09/2020"][] = new AnniversaryWinner("Name", AnniversaryController::EA_1_MONTH_CODE);
-        $winners["27/09/2020"][] = new AnniversaryWinner("Name", AnniversaryController::EA_1_MONTH_CODE);
-        $winners["27/09/2020"][] = new AnniversaryWinner("Name", AnniversaryController::EA_1_MONTH_CODE);
+        $winners["27/09/2020"][] = new AnniversaryWinner("(Winner not yet announced)", AnniversaryController::EA_1_MONTH_CODE);
+        $winners["27/09/2020"][] = new AnniversaryWinner("(Winner not yet announced)", AnniversaryController::EA_1_MONTH_CODE);
+        $winners["27/09/2020"][] = new AnniversaryWinner("(Winner not yet announced)", AnniversaryController::EA_1_MONTH_CODE);
+        $winners["27/09/2020"][] = new AnniversaryWinner("(Winner not yet announced)", AnniversaryController::EA_1_MONTH_CODE);
         
         // 1x Steam Gift Card
-        $winners["27/09/2020"][] = new AnniversaryWinner("Name", AnniversaryController::STEAM_GIFT_CODE);
+        $winners["27/09/2020"][] = new AnniversaryWinner("(Winner not yet announced)", AnniversaryController::STEAM_GIFT_CODE);
 
         return $winners;
     }
