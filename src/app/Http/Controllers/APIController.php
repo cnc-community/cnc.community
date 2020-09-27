@@ -36,6 +36,13 @@ class APIController extends Controller
         $this->competitionService = new CompetitionService();
     }
 
+    public function test()
+    {
+        $collection = Match::test();
+        $sorted = $collection->sortByDesc('rank_points');
+        return $sorted->values()->all();
+    }
+
     public function recentGamesByMatchType(Request $request, $matchType)
     {
         $type = null;
