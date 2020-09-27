@@ -85,16 +85,16 @@ class AnniversaryController extends Controller
         // 27th Sept 2020 
 
         // 1st Place RA 
-        $winners["27/09/2020"][] = new AnniversaryWinner ("(Winner not yet announced)", AnniversaryController::EA_1_YEAR_CODE);
+        $winners["27/09/2020"][] = new AnniversaryWinner ("AI: MEDIUM", AnniversaryController::EA_1_YEAR_CODE);
 
         // 1st Place TD
-        $winners["27/09/2020"][] = new AnniversaryWinner ("(Winner not yet announced)", AnniversaryController::EA_1_YEAR_CODE);
+        $winners["27/09/2020"][] = new AnniversaryWinner ("Peasy", AnniversaryController::EA_1_YEAR_CODE);
 
         // Random Top 50 Place RA
-        $winners["27/09/2020"][] = new AnniversaryWinner ("(Winner not yet announced)", AnniversaryController::EA_1_YEAR_CODE);
+        $winners["27/09/2020"][] = new AnniversaryWinner ("Bikerushownz", AnniversaryController::EA_1_YEAR_CODE);
 
         // Random Top 50 Place TD
-        $winners["27/09/2020"][] = new AnniversaryWinner ("(Winner not yet announced)", AnniversaryController::EA_1_YEAR_CODE);
+        $winners["27/09/2020"][] = new AnniversaryWinner ("Danku", AnniversaryController::EA_1_YEAR_CODE);
 
 
         $winners["27/09/2020"][] = new AnniversaryWinner("DATA", AnniversaryController::EA_1_MONTH_CODE);
