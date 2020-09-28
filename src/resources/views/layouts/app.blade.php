@@ -113,7 +113,7 @@
             </div>
         </footer>
     </div>
-    <?php if (!\Request::is('command-and-conquer-25-years')): ?>
+    {{-- <?php if (!\Request::is('command-and-conquer-25-years')): ?>
     <div class="site-notification js-site-notification hidden">
         <div class="main-content">
             <div class="logo">
@@ -131,11 +131,11 @@
             </div>
         </div>
     </div>
-    <?php endif; ?>
+    <?php endif; ?> --}}
 
     @yield('scripts')
     <script defer src="/assets/js/OnlineCount.js?v=2.8"></script>
     <script defer src="/assets/js/navbar/NavBarJs.js?v=2.8"></script>
-    <script defer src="/assets/js/SiteNotification.js"></script>
+    {{-- <script defer src="/assets/js/SiteNotification.js"></script> --}}
 </body>
 </html>
