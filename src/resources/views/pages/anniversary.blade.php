@@ -30,6 +30,32 @@
     </div>
 </section>
 
+<section class="section winners sponsors">
+    <div class="main-content text-center">
+        <h2 class="text-uppercase">Winners</h2>
+        <p>
+            Congratulations to all the winners! <br class="hide-for-xs"/> 
+            If your name is listed below, be sure to accept a Steam or <br class="hide-for-xs"/> Origin friend request from "neogrant" in order to receive your prize. 
+        </p>
+
+        <?php foreach($winners as $day => $playersWon): ?>
+            <div class="day">
+                <h3>Winners for <?php echo $day; ?></h3>
+                <div class="names">
+                    <?php foreach($playersWon as $player):?>
+                    
+                    <div class="name">
+                        <h4><?php echo $player->name();?></h4>
+                        <p>Won a <?php echo $player->prize(); ?>!</p>
+                    </div>
+
+                    <?php endforeach; ?>
+                </div>
+            </div>    
+        <?php endforeach; ?>
+    </div>
+</section>
+
 <section class="section dates">
     <div class="main-content text-center">
         <p class="lead">
@@ -90,29 +116,6 @@
                 EA Play Pro members can play the deluxe editions of every new Electronic Arts title -- with all the added extras including in-game rewards, Season Passes, and premium player content that lets you stand out from the competition – as soon as they drop. Plus, members have instant access to The Play List, a library of our fan-favorite series and best loved titles.
             </p>
         </div>
-    </div>
-</section>
-
-<section class="section winners sponsors">
-    <div class="main-content text-center">
-        <h2 class="text-uppercase">Winners</h2>
-        <p>If you're a winner, your in game username will be listed below.</p>
-
-        <?php foreach($winners as $day => $playersWon): ?>
-            <div class="day">
-                <h3>Winners for <?php echo $day; ?></h3>
-                <div class="names">
-                    <?php foreach($playersWon as $player):?>
-                    
-                    <div class="name">
-                        <h4><?php echo $player->name();?></h4>
-                        <p>Won a <?php echo $player->prize(); ?>!</p>
-                    </div>
-
-                    <?php endforeach; ?>
-                </div>
-            </div>    
-        <?php endforeach; ?>
     </div>
 </section>
 
