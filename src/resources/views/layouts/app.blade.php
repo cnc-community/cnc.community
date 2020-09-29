@@ -104,6 +104,7 @@
                         <a href="/privacy-policy" title="Privacy">Privacy Policy</a> 
                         <a href="/contact" title="Contact">Contact</a> 
                         <a href="/legal" title="Legal">Legal</a> 
+                        <a href="/donate" title="Donate">Donate</a> 
                     </div>
                     <p class="notice">
                         C&amp;C Community has no affiliation with Electronic Arts or PetroGlyph Games

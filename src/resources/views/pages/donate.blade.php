@@ -12,7 +12,7 @@
 @section('hero')
 <div class="content center">
     <h1 class="small-h1">
-        Supporting our site
+        Supporting the C&amp;C Community team and website
     </h1>
 </div>
 @endsection
@@ -23,13 +23,14 @@
         <div class="page-content">
             <h1>Donations</h1>
             <p>
-                All donations regardless of size are greatly appreciated by the C&amp;C Community team.
+                All donations regardless of size are greatly appreciated by the C&amp;C Community team and will help us to keep the site going for the foreseeable future.
             </p>
             <p>
-                There are a couple of options you can assign your donation towards:
+                We've provided a couple of options that you can assign your donation towards:
                 <ul>
                     <li><strong>To support site costs</strong> - This will be used towards keeping hosting and domain renewal costs down.</li>
-                    <li><strong>To buy the team a beer</strong> - If you wish to thank the team for their work on the site, we'll split it between ourselves towards a 🍺!</li>
+                    <li><strong>To buy the team a beer</strong> - If you wish to thank the team for their work on the site, 
+                    we'll split it between ourselves towards a 🍺 fund.</li>
                 </ul>
             </p>
 
