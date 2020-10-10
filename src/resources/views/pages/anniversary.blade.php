@@ -34,10 +34,9 @@
     <div class="main-content text-center">
         <h2 class="text-uppercase">Winners</h2>
         <p>
-            Congratulations to all the winners! <br class="hide-for-xs"/> 
-            If your name is listed below, be sure to accept a Steam or <br class="hide-for-xs"/> Origin friend request from "neogrant" in order to receive your prize. 
+            Congratulations to all the winners! The event has now finished. <br class="hide-for-xs"/> 
         </p>
-
+        <?php /*
         <?php foreach($winners as $day => $playersWon): ?>
             <div class="day">
                 <h3>Winners for <?php echo $day; ?></h3>
@@ -53,6 +52,7 @@
                 </div>
             </div>    
         <?php endforeach; ?>
+        */ ?>
     </div>
 </section>
 
