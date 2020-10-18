@@ -837,11 +837,9 @@ ul.pagination
     position: fixed;
     bottom: 0;
     width: 100%;
-    background: url(../images/bg-anniversary.jpg);
+    background: #000000;
     background-size: cover;
     background-position: bottom;
-    border-top: 3px solid #ff8c081a;
-    border-bottom: 3px solid #ff8c081a;
     z-index: 1000;
 }
 
@@ -861,15 +859,16 @@ ul.pagination
 .site-notification-title 
 {
     color: #fffbf0;
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    
-    @media(min-width: $md-width)
+    text-align: left;
+    margin: 0;
+    padding-right: 15px;
+    padding-left: 15px;
+
+    @media(min-width: $lg-width)
     {
-        padding-left: 25px;
-        padding-right: 25px;
-        margin-right: 0;
+        padding-left: 0;
+        padding-right: 0;
+        text-align: center;
     }
 }
 
@@ -890,11 +889,21 @@ ul.pagination
     }
 }
 
+.site-notification-donate
+{
+    margin-left: auto;
+    margin-right: auto;
+
+    @media(min-width: $md-width)
+    {
+        margin-right: 0;
+    }
+}
+
 .site-notification .site-notification-close
 {
     @media(min-width: $md-width)
     {
-        margin-left: auto;
         margin-right: 0;
     }
     

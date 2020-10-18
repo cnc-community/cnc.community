@@ -19,7 +19,7 @@ export class SiteNotification
 
     private checkToShowNotification()
     {
-        let hidden = localStorage.getItem("siteNotificationHidden");
+        let hidden = localStorage.getItem("donateSiteNotificationHidden");
         if (hidden === "true")
         {
             this.closeNotification();
@@ -33,7 +33,7 @@ export class SiteNotification
     private closeNotification()
     {
         this.notificationContainer.classList.add("hidden");
-        localStorage.setItem("siteNotificationHidden", "true");
+        localStorage.setItem("donateSiteNotificationHidden", "true");
     }
 
     private showNotification()
