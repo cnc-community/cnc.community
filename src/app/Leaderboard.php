@@ -29,7 +29,6 @@ class Leaderboard extends Model
         $leaderboard = Leaderboard::where("matchtype", $matchType)->first();
         if ($leaderboard == null)
         {
-            Log::info("Leaderboard ** getLeaderboard - Leaderboard not found", $matchType);
             return null;
         }
         

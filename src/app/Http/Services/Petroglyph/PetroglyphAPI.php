@@ -57,14 +57,12 @@ class PetroglyphAPI
             'body' => $request
             ]);
             
-        Log::debug("Requested ".$url);
 
         if ($r->getStatusCode() == 200)
         {
             return json_decode($r->getBody(), true);
         }
 
-        Log::debug("Request returned an error: ".$url . " - Error code: " . $r->getStatusCode());
         return [];
     }
 
@@ -81,7 +79,6 @@ class PetroglyphAPI
             ]
         ]);
 
-        Log::debug("Requested ".$url);
         
         if ($r->getStatusCode() == 200)
         {
@@ -89,7 +86,6 @@ class PetroglyphAPI
             return $response;
         }
         
-        Log::debug("Request returned an error: ".$url . " - Error code: " . $r->getStatusCode());
         return [];
     }
 }

@@ -30,8 +30,6 @@ class FeedController extends Controller
      */
     public function index()
     {
-        Log::debug("Running feeds");
-        
         $this->runTask();
         $this->runTaskDaily();
 

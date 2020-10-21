@@ -30,7 +30,6 @@ class PetroglyphAPIService
         $history = Leaderboard::getActiveLeaderboardSeason(Match::RA_1vs1);
         if ($history == null)
         {
-            Log::debug("Error - runRALeaderboardTasks leaderboard history was null");
             die();
         }   
 
@@ -57,7 +56,6 @@ class PetroglyphAPIService
         $history = Leaderboard::getActiveLeaderboardSeason(Match::TD_1vs1);
         if ($history == null)
         {
-            Log::debug("Error - runRALeaderboardTasks leaderboard history was null");
             die();
         }   
 
@@ -133,14 +131,12 @@ class PetroglyphAPIService
         $historyRA = Leaderboard::getActiveLeaderboardSeason(Match::RA_1vs1);
         if ($historyRA == null)
         {
-            Log::debug("Error - saveMatchResponse historyRA was null");
             die();
         }   
         
         $historyTD = Leaderboard::getActiveLeaderboardSeason(Match::TD_1vs1);
         if ($historyTD == null)
         {
-            Log::debug("Error - saveMatchResponse historyTD was null");
             die();
         }   
 

@@ -49,7 +49,6 @@ class FeedHelper
         }
         catch(Exception $ex)
         {
-            Log::debug("Error creating image");
         }
     }
 

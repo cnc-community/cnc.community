@@ -19,7 +19,6 @@ class GameStatGraph extends Model
         $gameStat = GameStat::where("id",$gameStatId)->first();
         if ($gameStat == null)
         {
-            Log::info("Game Stat not found could not save graph record");
             return;
         }
         
