@@ -25,6 +25,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {       
+        $schedule->call('App\Console\ClearExpiredCommand@handle')->everyMinute();
+
         $schedule->call('App\Http\Controllers\StatsController@runTask')
             ->everyTenMinutes()
             ->runInBackground();
