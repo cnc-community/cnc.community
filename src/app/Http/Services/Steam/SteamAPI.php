@@ -61,9 +61,9 @@ class SteamAPI extends AbstractSteamAPI
             Log::error($exception);
             return -1;
         }
-        return Cache::remember('getSteamProfileData'.$appId, 86400, function () use($appId, $steamIds)
-        {
-        });
+        // return Cache::remember('getSteamProfileData'.$appId, 86400, function () use($appId, $steamIds)
+        // {
+        // });
     }
 
     public function getSteamPlayerCount($appId)
