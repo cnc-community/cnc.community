@@ -37,6 +37,15 @@
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="msapplication-config" content="/assets/images/favicon/browserconfig.xml">
     <meta name="theme-color" content="#000000">
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z81J03VGW6"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-Z81J03VGW6');
+    </script>
 </head>
 <body>
 
