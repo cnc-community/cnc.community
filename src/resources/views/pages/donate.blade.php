@@ -46,6 +46,16 @@
                 <img alt="" border="0" src="https://www.paypal.com/en_GB/i/scr/pixel.gif" width="1" height="1" />
             </form>
         </div>
+
+        <div class="page-content">
+            <h1>Donators</h1>
+            <p>
+                Thanks for keeping the C&amp;C Community website going!
+            </p>
+            <ul>
+                <li>[CNC] PlagueNXC</li>
+            </ul>
+        </div>
     </div>
 </section>
 @endsection
