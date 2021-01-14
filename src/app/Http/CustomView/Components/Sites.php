@@ -30,9 +30,9 @@ class Sites extends AbstractCustomView
                         <img src="assets/images/sites/cncnz.png" loading="lazy" alt="CNCNZ Logo" />
                     </div>
                 </a>
-                <a href="https://cncremaster.com/" target="_blank" class="site-item" title="CNCRemaster" rel="nofollow noreferrer">
+                <a href="https://cncseries.ru/" target="_blank" class="site-item" title="C&C Series" rel="nofollow noreferrer">
                     <div class="logo">
-                        <img src="assets/images/sites/cncremaster.png" loading="lazy" alt="CNCRemaster Site Logo" />
+                        <img src="assets/images/sites/cncseries-logo.png" loading="lazy" alt="CNC Series Site Logo" />
                     </div>
                 </a>
                 <a href="https://cnc-online.net/en/" target="_blank" class="site-item" title="C&C Online" rel="nofollow noreferrer">
