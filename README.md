@@ -22,33 +22,19 @@ Check out [our mission](OURMISSION.MD)
     php artisan serve --port=8080
 ```
 
-**Using docker**
-
-Installing
+## Development
 ```shell
-    docker-compose run --rm composer install
-    docker-compose run --rm artisan migrate
-    docker-compose run artisan migrate:refresh --seed
-    docker-compose run artisan storage:link
-    docker-compose run artisan key:generate
-    docker-compose run --rm npm run dev
+docker-compose -f docker-compose-dev.yml build app
+docker-compose -f docker-compose-dev.yml up -d 
+docker-compose -f docker-compose-dev.yml exec app bash ./install.sh
+
 ```
 
-Developing
-```shell
-    # run both of these in seperate terminal instances from the /src directory
-    npm run dev:ts
-    npm run dev:css
-    
-    # open up the docker dashboard, select the cnccommunity container and click play (top right)
-    
-    # visit localhost:8080 in a browser to view the site
+## Production
 ```
-
-Commands 
-```shell
-    docker-compose run --rm composer dump-autoload
-    docker-compose up -d --build
+docker-compose build app
+docker-compose up -d
+docker-compose exec app bash ./install.sh
 ```
 
 

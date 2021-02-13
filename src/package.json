@@ -14,6 +14,7 @@
         "gulp-nw-builder": "^1.4.0",
         "gulp-sass": "^3.1.0",
         "gulp-terser": "^1.4.0",
+        "parcel-bundler": "^1.12.4",
         "typescript": "^3.9.7"
     }
 }
