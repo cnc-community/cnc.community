@@ -47,7 +47,7 @@
                 <img src="/assets/images/renegade-19-years-logo.png" alt="Renegade turns 19 years old logo event" loading="lazy" />
 
                 <div class="buttons">
-                    <a href="https://w3dhub.com/forum/topic/422694-cc-renegades-19th-anniversary-event/" class="btn btn-secondary" title="Read more" target="_blank" rel="nofollow noreferrer">
+                    <a href="/news/official-news/celebrating-19-years-of-command-conquer-renegade" class="btn btn-secondary" title="Read more" target="_blank" rel="nofollow noreferrer">
                         Find Out More About the Event
                     </a>
                 </div>
