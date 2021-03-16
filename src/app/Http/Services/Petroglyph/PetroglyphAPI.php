@@ -22,13 +22,13 @@ class PetroglyphAPI
     public function getTDLeaderboard($limit, $offset)
     {
         // 1V1_MMR_BOARD is the TiberianDawn one.
-        return $this->getLeaderboard("1V1_BOARD_S_03", $limit, $offset);
+        return $this->getLeaderboard("1V1_BOARD_S_04", $limit, $offset);
     }
 
     public function getRALeaderboard($limit, $offset)
     {
         // R1V1_MMR_BOARD is the RedAlert leaderboard,
-        return $this->getLeaderboard("R1V1_BOARD_S_03", $limit, $offset);
+        return $this->getLeaderboard("R1V1_BOARD_S_04", $limit, $offset);
     }
 
     private function getLeaderboard($type, $limit, $offset)
@@ -38,25 +38,26 @@ class PetroglyphAPI
         // 1V1_MMR_BOARD is the TiberianDawn one.
         $request = json_encode(
             array(
-            "leaderboardQueryV2" => [
-                "boardName" => $type,
-                "offset" => $offset,
-                "limit" => $limit
-            ])
+                "leaderboardQueryV2" => [
+                    "boardName" => $type,
+                    "offset" => $offset,
+                    "limit" => $limit
+                ]
+            )
         );
-        
+
         $client = new Client();
-        
+
         $url = $this->_apiUrl . PetroglyphAPI::LEADERBOARD_URL;
 
-        $r = $client->request('PUT',$url, [
+        $r = $client->request('PUT', $url, [
             'headers' => [
                 'Accept' => 'application/json',
                 'Content-Type' => 'application/json;charset=utf-8'
             ],
             'body' => $request
-            ]);
-            
+        ]);
+
 
         if ($r->getStatusCode() == 200)
         {
@@ -69,8 +70,8 @@ class PetroglyphAPI
     public function getMatches($limit, $offset)
     {
         $client = new Client();
-        
-        $url = $this->_apiUrl . PetroglyphAPI::RECENT_MATCHES_URL . "?limit=".$limit . "&offset=". $offset;
+
+        $url = $this->_apiUrl . PetroglyphAPI::RECENT_MATCHES_URL . "?limit=" . $limit . "&offset=" . $offset;
 
         $r = $client->request('GET', $url, [
             'headers' => [
@@ -79,13 +80,13 @@ class PetroglyphAPI
             ]
         ]);
 
-        
+
         if ($r->getStatusCode() == 200)
         {
             $response = json_decode($r->getBody(), true);
             return $response;
         }
-        
+
         return [];
     }
 }
