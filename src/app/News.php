@@ -9,7 +9,7 @@ use App\User;
 
 class News extends Model
 {
-    protected $connection= 'mysql';
+    protected $connection = 'mysql';
 
     public const APPROVED = "approved";
     public const DELETE = "delete";
@@ -56,7 +56,7 @@ class News extends Model
         {
             return $this->url;
         }
-        
+
         return "/news/" . $this->primaryCategory()->slug . "/" . $this->url;
     }
 
@@ -100,6 +100,10 @@ class News extends Model
     public static function officialNewsPaginated($limit = 20)
     {
         $primaryCategory = Category::where("name", "Official News")->first();
+        if ($primaryCategory == null)
+        {
+            return [];
+        }
 
         return NewsCategory::leftJoin("news", "news_categories.news_id", "=", "news.id")
             ->where("news_categories.category_id", "=", $primaryCategory->id)
@@ -135,7 +139,7 @@ class News extends Model
         {
             $newsItemModel->url = Str::of($title)->slug('-');
         }
-        
+
         $newsItemModel->type = $type;
 
         // Primary Category
@@ -143,7 +147,7 @@ class News extends Model
         {
             $newsItemModel->category_id = $primaryCategoryId;
         }
-        
+
         // Secondary Categories
         if ($categories == null)
         {
@@ -153,14 +157,14 @@ class News extends Model
         {
             array_push($categories, $primaryCategoryId);
         }
-        
+
         $newsItemModel->user_id = $author;
         $newsItemModel->post = $post;
         $newsItemModel->excerpt = $excerpt;
         $newsItemModel->save();
-        
+
         NewsCategory::addRemoveCategory($newsItemModel->id, $categories);
-        
+
         return $newsItemModel;
     }
 

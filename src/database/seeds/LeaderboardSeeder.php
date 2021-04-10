@@ -15,6 +15,9 @@ class LeaderboardSeeder extends Seeder
      */
     public function run()
     {
+        $this->create("Red Alert", "ra_1vs1", 2);
+        $this->create("Tiberian Dawn", "td_1vs1", 1);
+
         $this->createMap("Mobius_Tiberian_Dawn_Multiplayer_71_Map", "One Pass Fits All");
         $this->createMap("Mobius_Tiberian_Dawn_Multiplayer_60_Map", "Monkey in the Middle");
         $this->createMap("Mobius_Tiberian_Dawn_Multiplayer_74_Map", "Nowhere to Hide");
@@ -38,15 +41,18 @@ class LeaderboardSeeder extends Seeder
         $this->createMap("Mobius_Red_Alert_Multiplayer_1_Map", "Coastal Influence");
     }
 
-    private function create($name, $type)
+    private function create($name, $type, $matchType)
     {
         $leaderboard = new Leaderboard();
         $leaderboard->name = $name;
         $leaderboard->type = $type;
+        $leaderboard->matchtype = $matchType;
         $leaderboard->save();
 
         $history = new LeaderboardHistory();
         $history->leaderboard_id = $leaderboard->id;
+        $history->season = $leaderboard->id;
+        $history->active = 1;
         $history->save();
     }
 

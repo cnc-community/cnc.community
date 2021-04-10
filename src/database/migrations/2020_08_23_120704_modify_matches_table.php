@@ -13,9 +13,9 @@ class ModifyMatchesTable extends Migration
      */
     public function up()
     {
-        Schema::connection('mysql2')->table('matches', function (Blueprint $table) 
+        Schema::connection('mysql2')->table('matches', function (Blueprint $table)
         {
-            $table->index("starttime");
+            // $table->index("starttime");
         });
     }
 

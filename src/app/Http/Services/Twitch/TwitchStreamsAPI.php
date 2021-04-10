@@ -89,6 +89,11 @@ class TwitchStreamsAPI extends AbstractTwitchAPI
             $queryString = "?game_id=" . $gameId;
 
             $json = $this->fetchByQuery($queryString, $pagination, $limit);
+
+            if (!isset($json["data"]))
+            {
+                return [];
+            }
             return $json["data"];
         });
     }
@@ -147,6 +152,11 @@ class TwitchStreamsAPI extends AbstractTwitchAPI
             $jsonResponse = $this->fetchByQuery($queryString, $pagination, 100);
 
             // Otherwise loop over until we have everything
+            if (!isset($jsonResponse["pagination"]))
+            {
+                return $data;
+            }
+
             while ($jsonResponse["pagination"] != null)
             {
                 foreach ($jsonResponse["data"] as $r)

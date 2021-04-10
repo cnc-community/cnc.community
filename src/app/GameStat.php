@@ -16,7 +16,13 @@ class GameStat extends Model
 
     public static function getTotalPlayersOnline()
     {
-        return GameStat::sum("players_online");
+        try
+        {
+            return GameStat::sum("players_online");
+        }
+        catch (\Exception $ex)
+        {
+        }
     }
 
     public static function getStatsByType($type)
@@ -40,6 +46,12 @@ class GameStat extends Model
         GameStatGraph::createStat($gameStat->id, $playersOnline);
     }
 
-    public function getOnlineCount() { return $this->players_online; }
-    public function getAbbreviation() { return $this->abbrev; }
+    public function getOnlineCount()
+    {
+        return $this->players_online;
+    }
+    public function getAbbreviation()
+    {
+        return $this->abbrev;
+    }
 }

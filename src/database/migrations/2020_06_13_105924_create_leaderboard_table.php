@@ -13,7 +13,11 @@ class CreateLeaderboardTable extends Migration
      */
     public function up()
     {
-        Schema::connection('mysql2')->create('leaderboards', function (Blueprint $table) 
+        Schema::connection('mysql2')->dropIfExists('leaderboards');
+        Schema::connection('mysql2')->dropIfExists('leaderboard_history');
+        Schema::connection('mysql2')->dropIfExists('leaderboard_data');
+
+        Schema::connection('mysql2')->create('leaderboards', function (Blueprint $table)
         {
             $table->id();
             $table->string("name");
@@ -21,23 +25,23 @@ class CreateLeaderboardTable extends Migration
             $table->timestamps();
         });
 
-        Schema::connection('mysql2')->create('leaderboard_history', function (Blueprint $table) 
+        Schema::connection('mysql2')->create('leaderboard_history', function (Blueprint $table)
         {
             $table->id();
-            $table->unsignedInteger("leaderboard_id")->nullable(); 
+            $table->unsignedInteger("leaderboard_id")->nullable();
             $table->timestamp('start')->nullable();
             $table->timestamp('end')->nullable();
             $table->timestamps();
         });
 
-        Schema::connection('mysql2')->create('leaderboard_data', function (Blueprint $table) 
+        Schema::connection('mysql2')->create('leaderboard_data', function (Blueprint $table)
         {
             $table->id();
             $table->integer("rank");
             $table->integer("wins");
             $table->integer("losses");
             $table->float("points");
-            $table->unsignedInteger("match_player_id")->nullable(); 
+            $table->unsignedInteger("match_player_id")->nullable();
             $table->unsignedInteger("leaderboard_history_id")->nullable();
             $table->timestamps();
         });
@@ -50,8 +54,8 @@ class CreateLeaderboardTable extends Migration
      */
     public function down()
     {
-        Schema::connection('mysql2')->dropIfExists('leaderboard');
-        Schema::connection('mysql2')->dropIfExists('leaderboard_history');
-        Schema::connection('mysql2')->dropIfExists('leaderboard_data');
+        // Schema::dropIfExists('leaderboards');
+        // Schema::dropIfExists('leaderboard_history');
+        // Schema::dropIfExists('leaderboard_data');
     }
 }

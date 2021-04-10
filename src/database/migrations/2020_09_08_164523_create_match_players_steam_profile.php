@@ -13,7 +13,9 @@ class CreateMatchPlayersSteamProfile extends Migration
      */
     public function up()
     {
-        Schema::connection('mysql2')->create('match_players_steam_profile', function (Blueprint $table) 
+        Schema::connection('mysql2')->dropIfExists('match_players_steam_profile');
+
+        Schema::connection('mysql2')->create('match_players_steam_profile', function (Blueprint $table)
         {
             $table->id();
             $table->unsignedInteger("match_player_id");

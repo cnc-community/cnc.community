@@ -13,7 +13,9 @@ class CreateMatchesTable extends Migration
      */
     public function up()
     {
-        Schema::connection('mysql2')->create('matches', function (Blueprint $table) 
+        Schema::connection('mysql2')->dropIfExists('matches');
+
+        Schema::connection('mysql2')->create('matches', function (Blueprint $table)
         {
             $table->id();
             $table->integer("matchid")->unique();

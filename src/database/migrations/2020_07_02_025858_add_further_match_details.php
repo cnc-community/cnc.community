@@ -13,7 +13,7 @@ class AddFurtherMatchDetails extends Migration
      */
     public function up()
     {
-        Schema::connection('mysql2')->table('matches', function (Blueprint $table) 
+        Schema::connection('mysql2')->table('matches', function (Blueprint $table)
         {
             $table->string('elos')->nullable();
             $table->text('names')->nullable();
@@ -32,7 +32,6 @@ class AddFurtherMatchDetails extends Migration
             $table->text('extraperplayersettings')->nullable();
             $table->text('matchduration')->nullable();
             $table->text('starttime')->nullable();
-            $table->timestamps();
         });
     }
 

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMatchPlayersTable extends Migration
+class CreateMapsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,13 @@ class CreateMatchPlayersTable extends Migration
      */
     public function up()
     {
-        Schema::connection('mysql2')->create('match_players', function (Blueprint $table) 
+        Schema::connection('mysql2')->dropIfExists('maps');
+
+        Schema::connection('mysql2')->create('maps', function (Blueprint $table)
         {
             $table->id();
-            $table->bigInteger("player_id")->unique(); // steam or origin id
-            $table->string("player_name"); // string player name
+            $table->string("internal_name");
+            $table->string("map_name");
             $table->timestamps();
         });
     }
@@ -29,6 +31,6 @@ class CreateMatchPlayersTable extends Migration
      */
     public function down()
     {
-        Schema::connection('mysql2')->dropIfExists('match_players');
+        Schema::connection('mysql2')->dropIfExists('maps');
     }
 }

@@ -13,11 +13,13 @@ class CreateLeaderboardMatchHistoryTable extends Migration
      */
     public function up()
     {
-        Schema::create('leaderboard_match_history', function (Blueprint $table) 
+        Schema::connection('mysql2')->dropIfExists('leaderboard_match_history');
+
+        Schema::connection('mysql2')->create('leaderboard_match_history', function (Blueprint $table)
         {
             $table->id();
-            $table->unsignedInteger("match_player_id")->nullable(); 
-            $table->unsignedInteger("match_id")->nullable(); 
+            $table->unsignedInteger("match_player_id")->nullable();
+            $table->unsignedInteger("match_id")->nullable();
             $table->timestamps();
         });
     }
@@ -29,6 +31,6 @@ class CreateLeaderboardMatchHistoryTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('leaderboard_match_history');
+        Schema::connection('mysql2')->dropIfExists('leaderboard_match_history');
     }
 }
