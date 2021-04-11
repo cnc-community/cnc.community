@@ -80,7 +80,6 @@ class PetroglyphAPI
             ]
         ]);
 
-
         if ($r->getStatusCode() == 200)
         {
             $response = json_decode($r->getBody(), true);

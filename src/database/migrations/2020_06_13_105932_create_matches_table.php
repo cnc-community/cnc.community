@@ -20,7 +20,6 @@ class CreateMatchesTable extends Migration
             $table->id();
             $table->integer("matchid")->unique();
             $table->string("mapname");
-            $table->text("raw");
             $table->timestamps();
         });
     }

@@ -36,6 +36,13 @@ class LeaderboardController extends Controller
         View::share('totalOnline', $this->cncOnlineCount->getTotal());
     }
 
+    public function seedLocalDevelopment()
+    {
+        $this->petroglyphAPIService->runMatchTaskWithLimit();
+        $this->runRALeaderboardTasks();
+        $this->runTDLeaderboardTasks();
+    }
+
     public function runProfileDataTask()
     {
         $steamProfileParser = new SteamProfileDataParser();

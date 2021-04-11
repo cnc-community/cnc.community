@@ -19,6 +19,13 @@ class PetroglyphAPIService
     {
         $this->petroglyphAPI = new PetroglyphAPI();
     }
+
+    // Sync enough for local development
+    // Syncing everything would take a LONG time.
+    public function runMatchTaskWithLimit($limitTimesRun = 2)
+    {
+        $this->getMatchesTask($limitTimesRun);
+    }
        
     public function runMatchesTask()
     {
@@ -77,13 +84,14 @@ class PetroglyphAPIService
         }
     }
 
-    private function getMatchesTask()
+    private function getMatchesTask($localDevelopment = true)
     {
         set_time_limit(0);
 
         $limit = 200;
         $offset = 0;
         $complete = false;
+        $timesRun = 0;
 
         $response = $this->sendGetMatches($limit, $offset);
         $totalMatchCount = $response["totalmatches"];
@@ -106,6 +114,15 @@ class PetroglyphAPIService
             $response = $this->sendGetMatches($limit, $offset);
             $nextRequest = $this->saveMatchResponse($response["matches"]);
 
+
+            // Stop syncing as its only local development
+            if ($localDevelopment && $timesRun > 3)
+            {
+                $complete = true;
+                break;
+            }
+            
+            // Stop syncing when we've fetched everything
             if ($nextRequest == false)
             {
                 $complete = true;
@@ -118,6 +135,8 @@ class PetroglyphAPIService
                 Log::debug("Error - Offset was more than total matches");
                 die("Safety kill switch");
             }
+
+            $timesRun++;
         }
     }
 

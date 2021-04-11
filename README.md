@@ -37,18 +37,12 @@ docker-compose exec app bash ./install.sh
     php artisan serve --port=8080
 ```
 
-# Other
-### Images 
-
-It could be the symlink for images needs to be updated for you. 
-If so run `rm -rf public/storage` from the src.
-
-* Get container id by running `docker ps`
-* Relink symlink for storage `docker exec -it 15f2f7114930 php artisan storage:link`
+### Seeding Leaderboard for Local Development
+- Login to `localhost:8080/admin/dashboard` with local env credentials: `admin@cnc.community` & `password` 
+- Run the leaderboard sync - `localhost:8080/admin/seed-local-development` (It will likely timeout but there will be enough data to use)
+- Login to phpmyadmin `localhost:8081/` with `root` and `cnccommunity`. Run the sql queries in the `cnccommunity_ladder` table:
 
 
-### Indexes example
-- Add index
 ```
 ALTER TABLE `matches` ADD INDEX `matches_leaderboard_history_id_index` (leaderboard_history_id)
 ```
@@ -58,3 +52,13 @@ ALTER TABLE `matches` ADD INDEX `matches_leaderboard_history_id_index` (leaderbo
 ALTER TABLE `matches` ADD FULLTEXT `matches_fulltext_players_index` (players)
 ALTER TABLE `matches` ADD FULLTEXT `matches_fulltext_names_index` (names)
 ```
+
+
+# Other
+### Images 
+
+It could be the symlink for images needs to be updated for you. 
+If so run `rm -rf public/storage` from the src.
+
+* Get container id by running `docker ps`
+* Relink symlink for storage `docker exec -it 15f2f7114930 php artisan storage:link`

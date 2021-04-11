@@ -17,44 +17,42 @@ use Illuminate\Support\Facades\Redirect;
 
 //
 // Admin routes
-Route::group(['prefix' => 'admin', 'middleware' => ['admin']], function () 
+Route::group(['prefix' => 'admin', 'middleware' => ['admin']], function ()
 {
     Auth::routes();
-    
-    // Debug
-    // Route::get('/fetch-leaderboard', 'LeaderboardController@runMatchesTask');
-    Route::get('/fetch-leaderboard-data-ra', 'LeaderboardController@runRALeaderboardTasks');
-    Route::get('/fetch-leaderboard-data-td', 'LeaderboardController@runTDLeaderboardTasks');
 
+    // Seed local leaderboard development 
+    Route::get('/seed-local-development', 'LeaderboardController@seedLocalDevelopment');
+
+    // Admin routes 
     Route::get('/dashboard', 'AdminController@index')->name('admin.index')->middleware('role:admin,editor');
-
     Route::post('/upload/editor', 'AdminController@uploadImageViaEditor')->name('upload')->middleware('role:admin,editor');
-    
+
     // Admin Users management
     Route::get('/users', 'UsersController@index')->name('admin.users.listing')->middleware('role:admin');
     Route::get('/users/edit/{id}', 'UsersController@edit')->name('admin.users.edit')->middleware('role:admin');
     Route::post('/users/edit/{id}', 'UsersController@save')->middleware('role:admin');
     Route::get('/users/create', 'UsersController@getCreate')->name('admin.users.add')->middleware('role:admin');
     Route::post('/users/create', 'UsersController@create')->name('admin.users.add')->middleware('role:admin');
-    
+
     // Admin News management 
     Route::get('/news', 'NewsController@index')->name('admin.news.listing')->middleware('role:admin,editor');
     Route::get('/news/add', 'NewsController@getCreate')->name('admin.news.add')->middleware('role:admin,editor');
     Route::post('/news/add', 'NewsController@create')->name('admin.news.add')->middleware('role:admin,editor');
     Route::get('/news/edit/{id}', 'NewsController@edit')->name('admin.news.edit')->middleware('role:admin,editor');
     Route::post('/news/edit/{id}', 'NewsController@save')->middleware('role:admin,editor');
-    
+
     // Admin Feed management 
     Route::get('/queue', 'QueuedNewsController@index')->name('admin.queue.listing')->middleware('role:admin,editor');
     Route::get('/queue/edit/{id}', 'QueuedNewsController@edit')->name('admin.queue.edit')->middleware('role:admin,editor');
     Route::post('/queue/edit/{id}', 'QueuedNewsController@save')->middleware('role:admin,editor');
-    
+
     // Admin Page management
     Route::get('/pages', 'PageController@listPages')->name('admin.pages.listing')->middleware('role:admin');
-    
+
     Route::get('/pages/add', 'PageController@addPage')->name('admin.pages.add')->middleware('role:admin');
     Route::post('/pages/add', 'PageController@createPage')->middleware('role:admin');
-    
+
     // Page categories and custom fields
     Route::get('/pages/category/add', 'PageController@addPageCategory')->name('admin.pages.category.add')->middleware('role:admin');
     Route::get('/pages/category/edit/{id}', 'PageController@editPageCategory')->name('admin.pages.category.edit')->middleware('role:admin');
@@ -62,15 +60,15 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin']], function ()
     Route::post('/pages/category/add', 'PageController@createPageCategory')->middleware('role:admin');
     Route::get('/pages/category/{id}/custom-fields', 'PageController@addPageCategoryCustomField')->name('admin.pages.category.fields.add')->middleware('role:admin');
     Route::post('/pages/category/{id}/custom-fields', 'PageController@createPageCategoryCustomField')->middleware('role:admin');
-    
-    
+
+
     // Pages and custom fields
     Route::get('/pages/edit/{id}', 'PageController@editPage')->name('admin.pages.edit')->middleware('role:admin');
     Route::post('/pages/edit/{id}', 'PageController@savePage')->middleware('role:admin');
-    
+
     Route::get('/pages/edit/{id}/custom-fields', 'PageController@addField')->name('admin.pages.fields.add')->middleware('role:admin');
     Route::post('/pages/edit/{id}/custom-fields', 'PageController@createCustomField')->middleware('role:admin');
-    
+
     // Endpoint if we want to clear cache
     Route::get('/cache/clear', 'SiteController@clearCache')->middleware('role:admin,editor');
 });
@@ -84,7 +82,10 @@ Route::get('/donate', 'SiteController@showDonate')->name('pages.donate')->middle
 Route::get('/stats', 'StatsController@showStats')->name('pages.stats')->middleware('cache.headers:public;max_age=400');
 
 Route::get('/cnc-streamers', 'SiteController@showCreatorsListings')->name('pages.creators.listing')->middleware('cache.headers:public;max_age=1800');
-Route::get('/creators', function() {  return Redirect::to('/cnc-streamers', 301); });
+Route::get('/creators', function ()
+{
+    return Redirect::to('/cnc-streamers', 301);
+});
 Route::get('/command-and-conquer-25-years', 'AnniversaryController@index')->name('pages.anniversary')->middleware('cache.headers:public;max_age=1800');
 
 Route::get('/command-and-conquer-remastered', 'SiteController@showRemastersListings')->name('pages.remasters.listing')->middleware('cache.headers:public;max_age=1800');
