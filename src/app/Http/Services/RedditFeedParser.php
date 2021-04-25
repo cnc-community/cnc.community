@@ -18,20 +18,20 @@ class RedditFeedParser extends AbstractFeedParser
         $json = file_get_contents($this->_feedUrl);
         $json = json_decode($json);
 
-        foreach($json->data->children as $k => $v)
+        foreach ($json->data->children as $k => $v)
         {
             $this->_items[] = new RedditFeedItem($v);
         }
 
-        foreach($this->_items as $redditFeedItem)
+        foreach ($this->_items as $redditFeedItem)
         {
-            if ($redditFeedItem->score() >= 300)
+            if ($redditFeedItem->score() >= 500)
             {
                 if ($redditFeedItem->postType() == RedditFeedItem::POST_HINT_IMAGE)
                 {
                     NewsFeedQueue::createFromRedditItem(
-                        $redditFeedItem->title(), 
-                        "https://www.reddit.com". $redditFeedItem->permalink(), 
+                        $redditFeedItem->title(),
+                        "https://www.reddit.com" . $redditFeedItem->permalink(),
                         $redditFeedItem->url()
                     );
                 }

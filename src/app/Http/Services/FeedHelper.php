@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace App\Http\Services;
 
@@ -11,13 +11,12 @@ class FeedHelper
 {
     public function __construct()
     {
-        
     }
 
     public static function getImageUrlFromString(string $string)
     {
         preg_match('/<img(.*)src(.*)=(.*)"(.*)"/U', $string, $result);
-        if ($result != null )
+        if ($result != null)
         {
             return array_pop($result);
         }
@@ -29,25 +28,22 @@ class FeedHelper
      */
     public static function createImageFromUrl($url)
     {
-        try{
+        try
+        {
             $image = Image::make($url)
-                ->resize(600, null, function ($constraint) 
+                ->resize(null, 600, function ($constraint)
                 {
                     $constraint->aspectRatio();
-                });
-    
-            // 16:9
-            $newImage = Image::canvas(600, 337.50, "#000")
-                ->insert($image, 'center', 0, 0)
+                })
                 ->encode('jpg', 75);
-            
+
             // Unique image name
-            $newImagePath = sha1($newImage) . ".jpg";
-            Storage::disk('public')->put($newImagePath, $newImage);
-            
+            $newImagePath = sha1($image) . ".jpg";
+            Storage::disk('public')->put($newImagePath, $image);
+
             return "storage/" . $newImagePath;
         }
-        catch(Exception $ex)
+        catch (Exception $ex)
         {
         }
     }
@@ -55,13 +51,14 @@ class FeedHelper
     public static function storeImage($file)
     {
         $fileWithoutExtension = $file->getClientOriginalName();
-    
+
         //get filename without extension
         $filename = pathinfo($fileWithoutExtension, PATHINFO_FILENAME);
-        
+
         //Upload File
         $path = $file->store(
-            $filename, 'public'
+            $filename,
+            'public'
         );
 
         return "storage/" . $path;

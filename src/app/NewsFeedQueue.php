@@ -8,7 +8,7 @@ use App\News;
 
 class NewsFeedQueue extends Model
 {
-    protected $connection= 'mysql';
+    protected $connection = 'mysql';
 
     public const PENDING = "pending";
     public const APPROVED = "approved";
@@ -46,7 +46,7 @@ class NewsFeedQueue extends Model
     {
         News::createFromQueuedItem($this);
         $this->delete();
-    }   
+    }
 
 
     /**
@@ -97,14 +97,15 @@ class NewsFeedQueue extends Model
     {
         $uuid = NewsFeedQueue::createUuid($url);
         $exists = NewsFeedQueue::checkForDuplicateByUuid($uuid);
-        $category = Category::where("name", "=", "Other")->first();
+        $category = Category::where("name", "=", Category::CATEGORY_FUNNY)->first();
 
         if ($exists == true)
         {
             return;
         }
 
-        NewsFeedQueue::create($title, $url, null, $uuid, $category, $imageUrl, "Reddit");
+        $news = NewsFeedQueue::create($title, $url, null, $uuid, $category, $imageUrl, "Reddit");
+        $news->approveQueuedItem();
     }
 
     private static function create($title, $url, $postHtml, $uuid, $category, $imageUrl, $feedName)
@@ -121,12 +122,15 @@ class NewsFeedQueue extends Model
             $newsQueue->post = strip_tags(html_entity_decode($postHtml), "<p><a>");
         }
 
-        if ($imageUrl) 
+        if ($imageUrl)
         {
             $newImageName = FeedHelper::createImageFromUrl($imageUrl);
             $newsQueue->image = $newImageName;
+            var_dump($newImageName);
         }
-        
+
         $newsQueue->save();
+
+        return $newsQueue;
     }
 }
