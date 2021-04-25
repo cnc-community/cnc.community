@@ -1,7 +1,7 @@
-
+![C&C Community Logo](https://user-images.githubusercontent.com/6104940/114301177-8f611c00-9abb-11eb-91b2-09dfaf77daef.png)
 
 # C&C Community Website
-CnC.Community is a new website that hopes to serve as an aggregate for C&C news and modding content from across the community; 
+CnC.Community is a website that hopes to serve as an aggregate for C&C news and modding content from across the community; 
 as well as provide a platform for influencers and livestreamers from the wider C&C community to promote their content. 
 
 ## Why is it necessary? 
