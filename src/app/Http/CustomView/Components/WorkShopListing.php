@@ -16,11 +16,11 @@ class WorkShopListing extends AbstractCustomView
 
     public function render()
     {
-        ?>
+?>
         <div class="workshop-listings">
-            <div class="items-wrap">
-                <?php foreach($this->_workShopItems as $workShopItem ):?>
-                    <?php 
+            <div class="items-wrap-old">
+                <?php foreach ($this->_workShopItems as $workShopItem) : ?>
+                    <?php
                     new WorkShopItem(
                         $workShopItem->title,
                         $workShopItem->preview_url,
@@ -34,10 +34,10 @@ class WorkShopListing extends AbstractCustomView
                         $workShopItem->subscriptions
                     );
                     ?>
-            <?php endforeach; ?>
+                <?php endforeach; ?>
             </div>
         </div>
 
-        <?php 
+<?php
     }
 }

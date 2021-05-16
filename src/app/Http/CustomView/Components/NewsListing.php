@@ -16,33 +16,33 @@ class NewsListing extends AbstractCustomView
 
     public function render()
     {
-        ?>
-            <div class="news-listings">
-                <div class="items-wrap">
-                    <?php foreach($this->_newsItems as $newsItem):?>
-                        <?php 
-                            $news = \App\News::find($newsItem->id);
-                            if ($news == null) 
-                            {
-                                continue;
-                            }
+?>
+        <div class="news-listings">
+            <div class="items-wrap masonry-wrap">
+                <?php foreach ($this->_newsItems as $newsItem) : ?>
+                    <?php
+                    $news = \App\News::find($newsItem->id);
+                    if ($news == null)
+                    {
+                        continue;
+                    }
 
-                            new NewsItem(
-                                $news->title, 
-                                $news->url(), 
-                                $news->excerpt(), 
-                                $news->image, 
-                                $news->categories(),
-                                $news->created_at->diffForHumans(),
-                                $news->readTime(),
-                                $news->type,
-                                $news->feed_source,
-                                $news->author()
-                            ); 
-                        ?>
+                    new NewsItem(
+                        $news->title,
+                        $news->url(),
+                        $news->excerpt(),
+                        $news->image,
+                        $news->categories(),
+                        $news->created_at->diffForHumans(),
+                        $news->readTime(),
+                        $news->type,
+                        $news->feed_source,
+                        $news->author()
+                    );
+                    ?>
                 <?php endforeach; ?>
             </div>
         </div>
-        <?php 
+<?php
     }
 }

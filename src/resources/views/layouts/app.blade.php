@@ -149,14 +149,18 @@
         @yield('scripts')
         <script src="/assets/vendor/masonry.js"></script>
         <script>
-            var masonry = new MiniMasonry({
-                container: ".items-wrap",
-                baseWidth: 350,
-                surroundingGutter: false,
-                gutter: 50
-            });
-            window.addEventListener("load", () => masonry.layout());
-            window.addEventListener("resize", () => masonry.layout());
+            var selectors = document.querySelectorAll(".masonry-wrap");
+
+            for (var i = 0; i < selectors.length; i++) {
+                var masonry = new MiniMasonry({
+                    container: ".masonry-wrap",
+                    baseWidth: 450,
+                    surroundingGutter: false,
+                    gutter: 35
+                });
+                window.addEventListener("load", () => masonry.layout());
+                window.addEventListener("resize", () => masonry.layout());
+            }
         </script>
         <script defer src="/assets/js/OnlineCount.js?v=2.8"></script>
         <script defer src="/assets/js/navbar/NavBarJs.js?v=2.8"></script>
