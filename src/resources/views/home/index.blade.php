@@ -31,31 +31,6 @@
     </div>
 </section>
 
-<section id="tiberiandawn" class="section section-grey-alt">
-    <div class="main-content center">
-        <div class="feature-box">
-            <div class="col-50 feature-text">
-                <h1 class="section-title"><span class="light">Command &amp; Conquer Renegade </span> <br />Turns 19 Years old</h1>
-                <p>
-                    Join us for a week of games and streams as we celebrate the birthday of one of the hidden gems of the C&C franchise.
-                    Renegade was a first and third person shooter released in 2002 by Westwood Studios which combined tactical action with real time strategy
-                    elements found in other titles in the franchise.
-                    Renegade's multiplayer mode was wholly unique and still captures the hearts and minds of C&C fans who continue to play and mod it to this day.
-                </p>
-            </div>
-            <div class="col-50 feature-logo">
-                <img src="/assets/images/renegade-19-years-logo.png" alt="Renegade turns 19 years old logo event" loading="lazy" />
-
-                <div class="buttons">
-                    <a href="/news/official-news/celebrating-19-years-of-command-conquer-renegade" class="btn btn-secondary" title="Read more" target="_blank" rel="nofollow noreferrer">
-                        Find Out More About the Event
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
 <section id="leaderboards" class="section section-black-alt leaderboard-introduction">
     <div class="main-content center">
         <div class="feature-box">

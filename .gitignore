@@ -14,3 +14,4 @@ mysql
 .DS_Store
 .cache/
 .env
+*:Zone.Identifier
