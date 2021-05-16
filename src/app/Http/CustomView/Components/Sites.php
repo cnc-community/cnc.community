@@ -57,7 +57,7 @@ class Sites extends AbstractCustomView
             </a>
             <a href="https://cnc.fandom.com" target="_blank" class="site-item" title="Command & Conquer Wiki" rel="nofollow noreferrer">
                 <div class="logo">
-                    <img src="assets/images/sites/fandom-wiki.png" loading="lazy" alt="United Forum Logo" />
+                    <img src="assets/images/sites/fandom-wiki.png" loading="lazy" alt="fandom wiki Logo" />
                 </div>
             </a>
         </div>
