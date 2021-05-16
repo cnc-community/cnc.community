@@ -28,7 +28,7 @@
     <meta property="fb:pages" content="100994338349629" />
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;500;700&display=swap" rel="stylesheet">
     <meta name="google-site-verification" content="xrCaa-F6MyCOiXD6KvugZJtt80qKj8uPbmoU74lxAPE" />
-    <link rel="stylesheet" href="/assets/css/app.css?v=4.9" />
+    <link rel="stylesheet" href="/assets/css/app.css?v=5.0" />
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon/favicon-16x16.png">
@@ -147,6 +147,17 @@
         </div>
 
         @yield('scripts')
+        <script src="/assets/vendor/masonry.js"></script>
+        <script>
+            var masonry = new MiniMasonry({
+                container: ".items-wrap",
+                baseWidth: 350,
+                surroundingGutter: false,
+                gutter: 50
+            });
+            window.addEventListener("load", () => masonry.layout());
+            window.addEventListener("resize", () => masonry.layout());
+        </script>
         <script defer src="/assets/js/OnlineCount.js?v=2.8"></script>
         <script defer src="/assets/js/navbar/NavBarJs.js?v=2.8"></script>
         <script defer src="/assets/js/SiteNotification.js?v=1.0"></script>
