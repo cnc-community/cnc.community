@@ -149,16 +149,15 @@
         @yield('scripts')
         <script src="/assets/vendor/masonry.js"></script>
         <script>
-            var selectors = document.querySelectorAll(".masonry-wrap");
-
             var baseWidth = 250;
             if (window.innerWidth >= 768) {
                 baseWidth = 450;
             }
 
+            var selectors = document.querySelectorAll(".masonry-wrap");
             for (var i = 0; i < selectors.length; i++) {
                 var masonry = new MiniMasonry({
-                    container: ".masonry-wrap",
+                    container: selectors[i],
                     baseWidth: baseWidth,
                     surroundingGutter: false,
                     gutter: 35
