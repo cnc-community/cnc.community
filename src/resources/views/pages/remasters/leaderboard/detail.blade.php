@@ -60,6 +60,7 @@
                                     <option value="1" <?php if ($season == 1) : ?>selected<?php endif; ?>>Season 1</option>
                                     <option value="2" <?php if ($season == 2) : ?>selected<?php endif; ?>>Season 2</option>
                                     <option value="3" <?php if ($season == 3) : ?>selected<?php endif; ?>>Season 3</option>
+                                    <option value="3" <?php if ($season == 4) : ?>selected<?php endif; ?>>Season 4</option>
                                 </select>
                             </div>
                         </form>
