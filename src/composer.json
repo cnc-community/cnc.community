@@ -28,7 +28,19 @@
     "config": {
         "optimize-autoloader": true,
         "preferred-install": "dist",
-        "sort-packages": true
+        "sort-packages": true,
+        "platform": {
+            "php": "7.2.5",
+            "ext-mbstring": "1",
+            "ext-xml": "1",
+            "ext-xmlwriter": "1",
+            "ext-dom": "1",
+            "ext-bcmath": "1",
+            "ext-gd": "1",
+            "ext-simplexml": "1",
+            "ext-xmlreader": "1",
+            "ext-zip": "1"
+        }
     },
     "extra": {
         "laravel": {

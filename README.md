@@ -19,7 +19,7 @@ docker-compose -f docker-compose-dev.yml exec app bash ./install.sh
 
 ## Production
 ```
-docker-compose build app
+docker-compose build
 docker-compose up -d
 docker-compose exec app bash ./install.sh
 ```
@@ -42,13 +42,18 @@ ALTER TABLE `matches` ADD FULLTEXT `matches_fulltext_names_index` (names)
 
 
 ## Other
+
+## Steam API Key
+It seems after a period of time steam API key expire. If anything steam related on the site is no longer displaying, edit the .env and update `STEAM_API_KEY` with a new steam key. Register a new steam key here: https://steamcommunity.com/dev. Clear site wide cache the site should be fetching steam related content again.
+
+
 ### Images 
 
 It could be the symlink for images needs to be updated for you. 
 If so run `rm -rf public/storage` from the src.
 
 * Get container id by running `docker ps`
-* Relink symlink for storage `docker exec -it 15f2f7114930 php artisan storage:link`
+* Relink symlink for storage `docker exec -it <container_id> php artisan storage:link`
 
 
 
