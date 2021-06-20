@@ -11,7 +11,7 @@ Check out [our mission](https://cnc.community/news/official-news/our-mission)
 
 ## Development
 ```shell
-docker-compose -f docker-compose-dev.yml build app
+docker-compose -f docker-compose-dev.yml build
 docker-compose -f docker-compose-dev.yml up -d 
 docker-compose -f docker-compose-dev.yml exec app bash ./install.sh
 

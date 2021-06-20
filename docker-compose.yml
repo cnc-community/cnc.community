@@ -16,11 +16,6 @@ services:
   mysql:
     image: mysql:5.7.29
     restart: always
-    environment:
-      MYSQL_RANDOM_ROOT_PASSWORD: 1
-      MYSQL_DATABASE: ${DB_DATABASE}
-      MYSQL_USER: ${DB_USERNAME}
-      MYSQL_PASSWORD: ${DB_PASSWORD}
     networks:
       - laravel
 
@@ -39,3 +34,9 @@ services:
 networks:
   laravel:
     driver: bridge
+
+volumes:
+  phpmyadmin:
+    driver: local
+  mysql:
+    driver: local
