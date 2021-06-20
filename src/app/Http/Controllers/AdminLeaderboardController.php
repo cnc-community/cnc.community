@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\View;
 
 class AdminLeaderboardController extends Controller
 {
-    private array $raSeasons = [
+    private $raSeasons = [
         "R1V1_BOARD_S_05" => 5,
         "R1V1_BOARD_S_06" => 6,
         "R1V1_BOARD_S_07" => 7,
