@@ -28,6 +28,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin']], function ()
     Route::get('/dashboard', 'AdminController@index')->name('admin.index')->middleware('role:admin,editor');
     Route::post('/upload/editor', 'AdminController@uploadImageViaEditor')->name('upload')->middleware('role:admin,editor');
 
+    Route::get('/leaderboard', 'AdminLeaderboardController@getLeaderboardManager')->name('admin.leaderboard.index')->middleware('role:admin');
+    Route::post('/leaderboard/update', 'AdminLeaderboardController@updateLeaderboard')->name('admin.update:leaderboard')->middleware('role:admin');
+
     // Admin Users management
     Route::get('/users', 'UsersController@index')->name('admin.users.listing')->middleware('role:admin');
     Route::get('/users/edit/{id}', 'UsersController@edit')->name('admin.users.edit')->middleware('role:admin');

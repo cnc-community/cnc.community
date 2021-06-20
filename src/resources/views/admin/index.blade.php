@@ -17,26 +17,36 @@
             </div>
         </div>
 
-        <?php if(auth()->user()->role == \App\User::ROLE_ADMIN): ?>
-        <div class="col-xl-3 col-md-6">
-            <div class="card bg-primary text-white mb-4">
-                <div class="card-body">Pages</div>
-                <div class="card-footer d-flex align-items-center justify-content-between">
-                    <a class="small text-white stretched-link" href="/admin/pages">Manage Pages</a>
-                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+        <?php if (auth()->user()->role == \App\User::ROLE_ADMIN) : ?>
+            <div class="col-xl-3 col-md-6">
+                <div class="card bg-primary text-white mb-4">
+                    <div class="card-body">Pages</div>
+                    <div class="card-footer d-flex align-items-center justify-content-between">
+                        <a class="small text-white stretched-link" href="/admin/pages">Manage Pages</a>
+                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="col-xl-3 col-md-6">
-            <div class="card bg-primary text-white mb-4">
-                <div class="card-body">Users</div>
-                <div class="card-footer d-flex align-items-center justify-content-between">
-                    <a class="small text-white stretched-link" href="/admin/users">Manage Users</a>
-                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+            <div class="col-xl-3 col-md-6">
+                <div class="card bg-primary text-white mb-4">
+                    <div class="card-body">Users</div>
+                    <div class="card-footer d-flex align-items-center justify-content-between">
+                        <a class="small text-white stretched-link" href="/admin/users">Manage Users</a>
+                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                    </div>
                 </div>
             </div>
-        </div>
+
+            <div class="col-xl-3 col-md-6">
+                <div class="card bg-primary text-white mb-4">
+                    <div class="card-body">Leaderboard</div>
+                    <div class="card-footer d-flex align-items-center justify-content-between">
+                        <a class="small text-white stretched-link" href="/admin/leaderboard">Manage Leaderboard Season</a>
+                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                    </div>
+                </div>
+            </div>
         <?php endif; ?>
 
     </div>

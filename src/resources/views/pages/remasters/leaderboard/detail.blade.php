@@ -16,7 +16,7 @@
             <div class="leaderboard-description">
                 <h1 class="leaderboard-hero-title">{{ $gameName["long_name"] }}<br /> <span class="light">Leaderboard Rankings</span></h1>
                 <p class="leaderboard-hero-description">
-                    Our leaderboards have received an update. Join our website discord to leave your suggestions and feedback.
+                    Join our website discord to leave your suggestions and feedback.
                 </p>
                 <div class="button-group">
                     <a href="/command-and-conquer-remastered/leaderboard/" class="btn btn-primary" title="Back to all leaderboards">
@@ -57,10 +57,11 @@
                             <div class="form-group season-select">
                                 <select name="season" onchange="this.form.submit()">
                                     <option value="">-Select a past season-</option>
-                                    <option value="1" <?php if ($season == 1) : ?>selected<?php endif; ?>>Season 1</option>
-                                    <option value="2" <?php if ($season == 2) : ?>selected<?php endif; ?>>Season 2</option>
-                                    <option value="3" <?php if ($season == 3) : ?>selected<?php endif; ?>>Season 3</option>
-                                    <option value="4" <?php if ($season == 4) : ?>selected<?php endif; ?>>Season 4</option>
+                                    @foreach($previousSeasons as $ps)
+                                    <option value="{{ $ps->season }}" <?php if ($season == $ps->season) : ?>selected<?php endif; ?>>
+                                        Season {{ $ps->season }}
+                                    </option>
+                                    @endforeach
                                 </select>
                             </div>
                         </form>
@@ -74,13 +75,6 @@
                             <strong>{{ $stats["matchesPlayedLast24hours"]}}</strong>
                         </div>
                     </div>
-                    {{--
-                    <div class="profile-stat points">
-                        <h2 class="profile-stat-title">Active Players (Last 24 hours)</h2>
-                        <div class="quick-stats-value">
-                            <strong>346</strong>
-                        </div>
-                    </div> --}}
                 </div>
             </div>
         </div>

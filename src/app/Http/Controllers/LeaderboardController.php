@@ -113,6 +113,8 @@ class LeaderboardController extends Controller
             $seasonNumber = intval($season);
         }
 
+        $previousSeasons = $leaderboardHistory->getPreviousSeasons();
+
         return view('pages.remasters.leaderboard.detail', 
             [
                 "gameLogo" => $gameLogo,
@@ -122,6 +124,7 @@ class LeaderboardController extends Controller
                 "pageRanks" => $ranks,
                 "search" => $searchRequest,
                 "season" => $seasonNumber,
+                "previousSeasons" => $previousSeasons,
                 "stats" => $stats,
                 "activeSeason" => $activeSeason,
                 "data" => $data->appends(["season" => $season, "search" => $searchRequest])

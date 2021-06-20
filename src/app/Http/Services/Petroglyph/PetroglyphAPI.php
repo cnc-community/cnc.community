@@ -3,6 +3,8 @@
 namespace App\Http\Services\Petroglyph;
 
 use App\Constants;
+use App\Leaderboard;
+use App\LeaderboardHistory;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Cache;
@@ -22,13 +24,17 @@ class PetroglyphAPI
     public function getTDLeaderboard($limit, $offset)
     {
         // 1V1_MMR_BOARD is the TiberianDawn one.
-        return $this->getLeaderboard("1V1_BOARD_S_05", $limit, $offset);
+        $leaderboard = Leaderboard::where("type", "td_1vs1")->first();
+        $leaderboardHistory = LeaderboardHistory::getActiveSeasonByLeaderboard($leaderboard);
+        return $this->getLeaderboard($leaderboardHistory->getSeasonId(), $limit, $offset);
     }
 
     public function getRALeaderboard($limit, $offset)
     {
         // R1V1_MMR_BOARD is the RedAlert leaderboard,
-        return $this->getLeaderboard("R1V1_BOARD_S_05", $limit, $offset);
+        $leaderboard = Leaderboard::where("type", "ra_1vs1")->first();
+        $leaderboardHistory = LeaderboardHistory::getActiveSeasonByLeaderboard($leaderboard);
+        return $this->getLeaderboard($leaderboardHistory->getSeasonId(), $limit, $offset);
     }
 
     private function getLeaderboard($type, $limit, $offset)

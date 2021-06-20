@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,7 +17,7 @@
 
     <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
-    
+
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon/favicon-16x16.png">
@@ -27,31 +28,37 @@
     <meta name="msapplication-config" content="/assets/images/favicon/browserconfig.xml">
     <meta name="theme-color" content="#000000">
 
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"  crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 
     <style>
-    .page-title{ margin-top: 15px;margin-bottom: 15px; padding-bottom: 20px; }
-    .bg-primary {
-        background-color: #272b2f !important;
-    }   
-    .queue-count {
-        background: #008aff;
-        color: white;
-        border-radius: 50%;
-        width: 20px;
-        height: 20px;
-        font-size: 13px;
-        font-weight: bold;
-        text-align: center;
-        margin-left: 15px;
-    }
-    .admin-listings 
-    {
-        display: flex;
-        flex-wrap: wrap;
-    }
+        .page-title {
+            margin-top: 15px;
+            margin-bottom: 15px;
+            padding-bottom: 20px;
+        }
+
+        .bg-primary {
+            background-color: #272b2f !important;
+        }
+
+        .queue-count {
+            background: #008aff;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            font-size: 13px;
+            font-weight: bold;
+            text-align: center;
+            margin-left: 15px;
+        }
+
+        .admin-listings {
+            display: flex;
+            flex-wrap: wrap;
+        }
     </style>
 </head>
 
@@ -60,13 +67,12 @@
 
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <a class="navbar-brand" href="/admin/dashboard">
-            @guest
-            C&C Community
-            @else
-            C&C Admin
-            @endguest
-            </a><button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button
-            ><!-- Navbar Search-->
+                @guest
+                C&C Community
+                @else
+                C&C Admin
+                @endguest
+            </a><button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button><!-- Navbar Search-->
             <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
             </form>
             @guest
@@ -77,8 +83,7 @@
                     <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
 
-                        <a class="dropdown-item" href="{{ route('logout') }}"
-                            onclick="event.preventDefault();
+                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                             document.getElementById('logout-form').submit();">
                             {{ __('Logout') }}
                         </a>
@@ -119,33 +124,39 @@
                                 Pending News <span class="queue-count">{{ $queue_count }}</span>
                                 <div class="sb-sidenav-collapse-arrow"></div>
                             </a>
-                            <?php if(\Auth::user()->role == App\User::ROLE_ADMIN): ?>
-                            <div class="sb-sidenav-menu-heading">Pages</div>
-                            <a class="nav-link collapsed" href="/admin/pages">
-                                <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-                                Manage Pages
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                            </a>
+                            <?php if (\Auth::user()->role == App\User::ROLE_ADMIN) : ?>
+                                <div class="sb-sidenav-menu-heading">Pages</div>
+                                <a class="nav-link collapsed" href="/admin/pages">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+                                    Manage Pages
+                                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                                </a>
 
-                            <div class="sb-sidenav-menu-heading">Users</div>
-                            <a class="nav-link" href="/admin/users">
-                                <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
-                                Manage Users
-                            </a>
+                                <div class="sb-sidenav-menu-heading">Users</div>
+                                <a class="nav-link" href="/admin/users">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
+                                    Manage Users
+                                </a>
+
+                                <div class="sb-sidenav-menu-heading">Leaderboard</div>
+                                <a class="nav-link" href="/admin/leaderboard">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-trophy"></i></div>
+                                    Manage Leaderboard
+                                </a>
                             <?php endif; ?>
                             @endguest
                         </div>
                     </div>
                     <div class="sb-sidenav-footer">
-                    @guest
-                    @else
+                        @guest
+                        @else
                         <div class="small">Logged in as:</div>
                         {{ Auth::user()->name }}
-                    @endguest
+                        @endguest
                     </div>
                 </nav>
             </div>
-            
+
             <div id="layoutSidenav_content">
                 <main>
                     @yield('content')
@@ -157,4 +168,5 @@
         <script src="{{ asset('admin/js/scripts.js') }}"></script>
     </div>
 </body>
+
 </html>
