@@ -25,7 +25,7 @@
 @section('content')
 <section id="buy" class="section section-grey section-buy">
     <div class="main-content center">
-        <div class="items-wrap">
+        <div class="items-wrap-old">
 
             <?php new \App\Http\CustomView\Components\GenericBoxItem(
                 $image = "/assets/images/more-cnc-games/ss.jpg",
