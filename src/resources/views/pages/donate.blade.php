@@ -27,22 +27,21 @@
             </p>
             <p>
                 We've provided a couple of options that you can assign your donation towards:
-                <ul>
-                    <li><strong>To support site costs</strong> - This will be used towards keeping hosting and domain renewal costs down.</li>
-                    <li><strong>To buy the team a beer</strong> - If you wish to thank the team for their work on the site, 
+            <ul>
+                <li><strong>To support site costs</strong> - This will be used towards keeping hosting and domain renewal costs down.</li>
+                <li><strong>To buy the team a beer</strong> - If you wish to thank the team for their work on the site,
                     we'll split it between ourselves towards a 🍺 fund.</li>
-                </ul>
+            </ul>
             </p>
 
             <p>
-                <strong>As a donator</strong> please confirm in the additional Paypal notes if you are happy to be listed as a Donator on our Website and Discord channel. 
+                <strong>As a donator</strong> please confirm in the additional Paypal notes if you are happy to be listed as a Donator on our Website and Discord channel.
                 Please include the name and your Discord username so we can add you.
             </p>
 
-            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-                <input type="hidden" name="cmd" value="_s-xclick" />
-                <input type="hidden" name="hosted_button_id" value="YTXE2YT4CLMRY" />
-                <input type="image" src="https://www.paypalobjects.com/en_GB/i/btn/btn_donate_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
+            <form action="https://www.paypal.com/donate" method="post" target="_top">
+                <input type="hidden" name="hosted_button_id" value="AL7RN2VVR36EE" />
+                <input type="image" src="https://i.imgur.com/p4ckBcs.png" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
                 <img alt="" border="0" src="https://www.paypal.com/en_GB/i/scr/pixel.gif" width="1" height="1" />
             </form>
         </div>
