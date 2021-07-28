@@ -52,8 +52,20 @@
                 Thanks for keeping the C&amp;C Community website going!
             </p>
             <ul>
+                <li>Chronostorm</li>
                 <li>[CNC] PlagueNXC</li>
                 <li>eksmad</li>
+                <li>Salem H.A</li>
+                <li>Tiberiansun292</li>
+                <li>Monopoxie</li>
+                <li>The Crazy Psychopath</li>
+                <li>Dino M</li>
+                <li>Frank G</li>
+                <li>Lee W.</li>
+                <li>Daniel Z</li>
+                <li>Dominique K</li>
+                <li>Isa Y</li>
+                <li>Caloy P</li>
             </ul>
         </div>
     </div>
