@@ -370,7 +370,7 @@ class Constants
 
             case "renegadex":
                 return [
-                    "url" => "https://renegade-x.com/",
+                    "url" => "https://ren-x.com/",
                     "logo" => ViewHelper::getGameLogoPathByName("renegade-x"),
                     "external_link" => true,
                     "name" => "Renegade X",

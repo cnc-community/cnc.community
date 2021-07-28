@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Log;
 
 class RenegadeXAPI
 {
-    private $_apiUrl = "https://serverlist.renegade-x.com/metadata";
+    private $_apiUrl = "https://serverlist.ren-x.com/metadata";
 
     public function __construct()
     {
