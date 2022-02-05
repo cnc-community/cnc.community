@@ -50,6 +50,7 @@ class GameStat extends Model
     {
         return $this->players_online;
     }
+
     public function getAbbreviation()
     {
         return $this->abbrev;

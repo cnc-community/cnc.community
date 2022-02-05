@@ -5,6 +5,7 @@ namespace App\Http\Services;
 use App\Constants;
 use App\GameStat;
 use App\Http\Services\CnCNet\CnCNetAPI;
+use App\Http\Services\CnCNet\CnCNetSoleAPI;
 use App\Http\Services\CnCOnline\CnCOnlineAPI;
 use App\Http\Services\OpenRA\OpenRAAPI;
 use App\Http\Services\RenegadeX\RenegadeXAPI;
@@ -19,6 +20,7 @@ class CNCOnlineCount
     private $openRAAPI;
     private $renegadexAPI;
     private $steamHelper;
+    private $cncnetSoleAPI;
 
     public function __construct()
     {
@@ -28,6 +30,7 @@ class CNCOnlineCount
         $this->openRAAPI = new OpenRAAPI();
         $this->renegadexAPI = new RenegadeXAPI();
         $this->steamHelper = new SteamHelper();
+        $this->cncnetSoleAPI = new CnCNetSoleAPI();
     }
 
     public function runCountTasks()
@@ -37,19 +40,21 @@ class CNCOnlineCount
         $cnconlineCounts = $this->cnconlineAPI->getOnlineCount();
         $openraCounts = $this->openRAAPI->getOnlineCount();
         $renegadexCounts = $this->renegadexAPI->getOnlineCount();
+        $cncnetSoleCounts = $this->cncnetSoleAPI->getOnlineCount();
 
         // Leaving this out for now until we get proper online numbers
         $remasterOnlineCount = ["cncremastered" => $this->steamHelper->getSteamPlayerCount(Constants::remastersAppId())];
 
         $combined = array_merge(
-            $cncnetCounts, 
-            $cnconlineCounts, 
-            $w3dhubCounts, 
-            $openraCounts, 
+            $cncnetCounts,
+            $cnconlineCounts,
+            $w3dhubCounts,
+            $openraCounts,
             $remasterOnlineCount,
-            $renegadexCounts
+            $renegadexCounts,
+            $cncnetSoleCounts
         );
-        
+
         $combined["total"] = $this->total($combined);
 
         $this->groupAndSaveIntoGameTypes($combined);
@@ -59,7 +64,7 @@ class CNCOnlineCount
     {
         return GameStat::getStatsByType(GameStat::TYPE_GAME);
     }
-    
+
     public function getModCounts()
     {
         return GameStat::getStatsByType(GameStat::TYPE_MOD);
@@ -107,18 +112,19 @@ class CNCOnlineCount
             "cncremastered" => 0,
             "cncnet5_td" => 1,
             "cncnet5_ra" => 2,
-            "cncnet5_ts" => 3,
-            "cncnet5_yr" => 4,
-            "ren" => 5,
-            "generals" => 6,
-            "generalszh" => 7,
-            "cnc3" => 8,
-            "cnc3kw" => 9,
-            "ra3" => 10,
+            "sole" > 3,
+            "cncnet5_ts" => 4,
+            "cncnet5_yr" => 5,
+            "ren" => 6,
+            "generals" => 7,
+            "generalszh" => 8,
+            "cnc3" => 9,
+            "cnc3kw" => 10,
+            "ra3" => 11,
         ];
 
         // Collect results into correct groups
-        foreach($results as $game => $count)
+        foreach ($results as $game => $count)
         {
             if (array_key_exists($game, $gamesFilter))
             {
@@ -146,7 +152,7 @@ class CNCOnlineCount
     private function total($results)
     {
         $total = 0;
-        foreach($results as $k => $v)
+        foreach ($results as $k => $v)
         {
             if (is_int($v))
             {
@@ -160,14 +166,14 @@ class CNCOnlineCount
     {
         // Format for Chart.js
         $dataSets = [];
-        foreach($graphData as $gameStatGraph)
+        foreach ($graphData as $gameStatGraph)
         {
             $gameStat = GameStat::where("id", $gameStatGraph->game_stats_id)->first();
             $dataSets[$gameStat->getAbbreviation()][] = [$gameStatGraph->created_at, $gameStatGraph->players_online];
         }
 
         $chartJsFormat = [];
-        foreach($dataSets as $abbrev => $dataSet)
+        foreach ($dataSets as $abbrev => $dataSet)
         {
             $chartJsFormat[$abbrev]["data"] = $this->createChartJsFormat($dataSet);
             $chartJsFormat[$abbrev]["label"] = $this->getNameByAbbrev($abbrev);
@@ -196,13 +202,13 @@ class CNCOnlineCount
     private function createChartJsFormat($arr)
     {
         $newResult = [];
-        foreach($arr as $obj)
+        foreach ($arr as $obj)
         {
-            $newResult[] = 
-            [
-                "t" => $obj[0], 
-                "y" => $obj[1],                
-            ];
+            $newResult[] =
+                [
+                    "t" => $obj[0],
+                    "y" => $obj[1],
+                ];
         }
         return $newResult;
     }

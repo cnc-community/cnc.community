@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace App;
 
@@ -32,44 +32,44 @@ class Constants
     public static function getTwitchGames()
     {
         return
-        [
-            "red-alert" => "235", // Command & Conquer: Red Alert
-            "red-alert-cs" => "10393", // Command & Conquer: Red Alert - Counterstrike
-            "red-alert-am" => "14999", // Command & Conquer: Red Alert - The Aftermath
-            "tiberian-dawn" => "4012", // Command & Conquer
-            "tiberian-sun" => "1900", // Command & Conquer: Tiberian Sun
-            "tiberian-sun-firestorm" => "20015", // Command & Conquer: Tiberian Sun Firestorm
-            "red-alert-2" => "16580", // Command & Conquer: Red Alert 2
-            "red-alert-2-yuris-revenge" => "5090", // Command & Conquer: Yuri's Revenge
-            "renegade" => "3813", // Command & Conquer: Renegade
-            "red-alert-3" => "18881", // Command & Conquer: Red Alert 3
-            "command-and-conquer-3-kanes-wrath" => "18733", // Command & Conquer 3: Kane's Wrath
-            "tiberium-wars" => "16106", // Command & Conquer 3: Tiberium Wars
-            "generals" => "10070", // Command & Conquer: Generals
-            "zero-hour" => "16487", // Command & Conquer: Zero hour,
-            "remasters" => "517837" // C&C Remastered Collection
-        ];
+            [
+                "red-alert" => "235", // Command & Conquer: Red Alert
+                "red-alert-cs" => "10393", // Command & Conquer: Red Alert - Counterstrike
+                "red-alert-am" => "14999", // Command & Conquer: Red Alert - The Aftermath
+                "tiberian-dawn" => "4012", // Command & Conquer
+                "tiberian-sun" => "1900", // Command & Conquer: Tiberian Sun
+                "tiberian-sun-firestorm" => "20015", // Command & Conquer: Tiberian Sun Firestorm
+                "red-alert-2" => "16580", // Command & Conquer: Red Alert 2
+                "red-alert-2-yuris-revenge" => "5090", // Command & Conquer: Yuri's Revenge
+                "renegade" => "3813", // Command & Conquer: Renegade
+                "red-alert-3" => "18881", // Command & Conquer: Red Alert 3
+                "command-and-conquer-3-kanes-wrath" => "18733", // Command & Conquer 3: Kane's Wrath
+                "tiberium-wars" => "16106", // Command & Conquer 3: Tiberium Wars
+                "generals" => "10070", // Command & Conquer: Generals
+                "zero-hour" => "16487", // Command & Conquer: Zero hour,
+                "remasters" => "517837" // C&C Remastered Collection
+            ];
     }
 
     // Hacky but for getting live, quickest solution
     public static function getTwitchGameBySlug($slug)
     {
         $twitchGames =
-        [
-            "red-alert" => "Red Alert", // Command & Conquer: Red Alert
-            "tiberian-dawn" => "Tiberian Dawn", // Command & Conquer
-            "tiberian-sun" => "Tiberian Sun", // Command & Conquer: Tiberian Sun
-            "red-alert-2" => "Red Alert 2", // Command & Conquer: Red Alert 2
-            "red-alert-2-yuris-revenge" => "Yuris' Revenge", // Command & Conquer: Red Alert 2
-            "renegade" => "Renegade", // Command & Conquer: Renegade
-            "red-alert-3" => "Red Alert 3", // Command & Conquer: Red Alert 3
-            "command-and-conquer-3-kanes-wrath" => "C&C 3: Kanes Wrath", // Command & Conquer 3: Kane's Wrath
-            "tiberium-wars" => "C&C 3: Tiberium Wars", // Command & Conquer 3: Tiberium Wars
-            "generals" => "Generals", // Command & Conquer: Generals
-            "zero-hour" => "Zero Hour", // Command & Conquer: Zero hour,
-            "remasters" => "C&C Remastered Collection", // C&C Remastered Collection,
-            "default" => ""
-        ];
+            [
+                "red-alert" => "Red Alert", // Command & Conquer: Red Alert
+                "tiberian-dawn" => "Tiberian Dawn", // Command & Conquer
+                "tiberian-sun" => "Tiberian Sun", // Command & Conquer: Tiberian Sun
+                "red-alert-2" => "Red Alert 2", // Command & Conquer: Red Alert 2
+                "red-alert-2-yuris-revenge" => "Yuris' Revenge", // Command & Conquer: Red Alert 2
+                "renegade" => "Renegade", // Command & Conquer: Renegade
+                "red-alert-3" => "Red Alert 3", // Command & Conquer: Red Alert 3
+                "command-and-conquer-3-kanes-wrath" => "C&C 3: Kanes Wrath", // Command & Conquer 3: Kane's Wrath
+                "tiberium-wars" => "C&C 3: Tiberium Wars", // Command & Conquer 3: Tiberium Wars
+                "generals" => "Generals", // Command & Conquer: Generals
+                "zero-hour" => "Zero Hour", // Command & Conquer: Zero hour,
+                "remasters" => "C&C Remastered Collection", // C&C Remastered Collection,
+                "default" => ""
+            ];
 
         if (array_key_exists($slug, $twitchGames))
         {
@@ -81,20 +81,20 @@ class Constants
     public static function getRemasterGameBySlug($slug)
     {
         $remasterGames =
-        [
-            "red-alert" => [ 
-                "long_name" => "Red Alert Remastered",
-                "short_name" => "Red Alert" 
-            ], 
-            "tiberian-dawn" => [ 
-                "long_name" => "Tiberian Dawn Remastered",
-                "short_name" => "Tiberian Dawn"
-            ], 
-            "default"   => [ 
-                "long_name" => "",
-                "short_name" => ""
-            ], 
-        ];
+            [
+                "red-alert" => [
+                    "long_name" => "Red Alert Remastered",
+                    "short_name" => "Red Alert"
+                ],
+                "tiberian-dawn" => [
+                    "long_name" => "Tiberian Dawn Remastered",
+                    "short_name" => "Tiberian Dawn"
+                ],
+                "default"   => [
+                    "long_name" => "",
+                    "short_name" => ""
+                ],
+            ];
 
         if (array_key_exists($slug, $remasterGames))
         {
@@ -102,52 +102,52 @@ class Constants
         }
         return $remasterGames["default"];
     }
-    
+
     public static function getVideoWithPoster($slug)
     {
         $version = 1.4;
-        $cdnUrl = "//cdn.jsdelivr.net/gh/cnc-community/files@". $version . "/";
+        $cdnUrl = "//cdn.jsdelivr.net/gh/cnc-community/files@" . $version . "/";
         $posterSrc = "/assets/images/posters/";
 
         $videos = [
-            "command-and-conquer-remastered" => 
-            [ 
+            "command-and-conquer-remastered" =>
+            [
                 "src" => $cdnUrl . "cnc-remastered.mp4",
                 "poster" => $posterSrc . "cnc-remastered.jpg"
-            ],      
-            "red-alert" => [ 
+            ],
+            "red-alert" => [
                 "src" => $cdnUrl . "red-alert-1.mp4",
                 "poster" => $posterSrc . "red-alert-1.jpg"
             ],
-            "tiberian-dawn" => [ 
+            "tiberian-dawn" => [
                 "src" => $cdnUrl . "tiberian-dawn.mp4",
                 "poster" => $posterSrc . "tiberian-dawn.jpg"
             ],
-            "tiberian-sun" => [ 
+            "tiberian-sun" => [
                 "src" => $cdnUrl . "tiberian-sun.mp4",
                 "poster" => $posterSrc . "tiberian-sun.jpg"
             ],
-            "red-alert-2" => [ 
+            "red-alert-2" => [
                 "src" => $cdnUrl . "red-alert-2.mp4",
                 "poster" => $posterSrc . "red-alert-2.jpg"
             ],
-            "renegade" => [ 
+            "renegade" => [
                 "src" => $cdnUrl . "renegade.mp4",
                 "poster" => $posterSrc . "renegade.jpg"
             ],
-            "generals" => [ 
+            "generals" => [
                 "src" => $cdnUrl . "generals.mp4",
                 "poster" => $posterSrc . "generals.jpg"
             ],
-            "command-and-conquer-3" => [ 
+            "command-and-conquer-3" => [
                 "src" => $cdnUrl . "tiberium-wars.mp4",
                 "poster" => $posterSrc . "tiberium-wars.jpg"
             ],
-            "red-alert-3" => [ 
+            "red-alert-3" => [
                 "src" => $cdnUrl . "red-alert-3.mp4",
                 "poster" => $posterSrc . "red-alert-3.jpg"
             ],
-            "command-and-conquer-4" => [ 
+            "command-and-conquer-4" => [
                 "src" => $cdnUrl . "tiberium-twighlight.mp4",
                 "poster" => $posterSrc . "command-and-conquer-4.jpg"
             ],
@@ -166,7 +166,7 @@ class Constants
 
     public static function getGameFromOnlineAbbreviation($abbreviation)
     {
-        switch($abbreviation)
+        switch ($abbreviation)
         {
             case "cncnet5_td":
                 return [
@@ -177,7 +177,7 @@ class Constants
                     "graph_color" => "rgba(255, 215, 0, 0.3)",
                     "graph_border_color" => "rgba(255, 215, 0, 1)"
                 ];
-            
+
             case "cncnet5_ra":
                 return [
                     "url" => "red-alert",
@@ -196,6 +196,16 @@ class Constants
                     "name" => "Tiberian Sun",
                     "graph_color" => "rgba(212, 127, 0, 0.3)",
                     "graph_border_color" => "rgba(212, 127, 0, 1)"
+                ];
+
+            case "sole":
+                return [
+                    "url" => "https://cnc-comm.com/sole-survivor",
+                    "logo" => ViewHelper::getGameLogoPathByName("sole-survivor"),
+                    "external_link" => true,
+                    "name" => "Sole Survivor",
+                    "graph_color" => "rgba(209, 209, 209, 0.3)",
+                    "graph_border_color" => "gba(209, 209, 209, 0.3)"
                 ];
 
             case "cncnet5_yr":
@@ -217,7 +227,7 @@ class Constants
                     "graph_color" => "rgba(0, 184, 255, 0.2)",
                     "graph_border_color" => "rgba(0, 184, 255, 0.8)"
                 ];
-            
+
             case "cncnet5_mo":
                 return [
                     "url" => "https://cncnet.org/mental-omega",
@@ -227,7 +237,7 @@ class Constants
                     "graph_color" => "rgba(202, 21, 251, 0.2)",
                     "graph_border_color" => "rgba(202, 21, 251, 0.8)"
                 ];
-            
+
             case "cncnet5_ti":
                 return [
                     "url" => "https://cncnet.org/twisted-insurrection",
@@ -247,7 +257,7 @@ class Constants
                     "graph_color" => "rgba(230, 109, 154, 0.2)",
                     "graph_border_color" => "rgba(230, 109, 154, 0.8)"
                 ];
-            
+
             case "cncnet5_cncr":
                 return [
                     "url" => "https://cncnet.org/cnc-reloaded",
@@ -267,7 +277,7 @@ class Constants
                     "graph_color" => "rgba(31, 255, 48, 0.3)",
                     "graph_border_color" => "rgba(31, 255, 48, 1)",
                 ];
-                      
+
             case "ren":
                 return [
                     "url" => "renegade",
@@ -277,7 +287,7 @@ class Constants
                     "graph_color" => "rgba(185, 114, 255, 0.3)",
                     "graph_border_color" => "rgba(185, 114, 255, 1)"
                 ];
-                        
+
             case "cnc3kw":
                 return [
                     "url" => "command-and-conquer-3/how-to-play",
@@ -287,7 +297,7 @@ class Constants
                     "graph_color" => "rgba(0, 55, 255, 0.3)",
                     "graph_border_color" => "rgba(0, 55, 255, 1)",
                 ];
-                     
+
             case "generals":
                 return [
                     "url" => "generals",
@@ -297,7 +307,7 @@ class Constants
                     "graph_color" => "rgba(30, 144, 23, 0.3)",
                     "graph_border_color" => "rgba(30, 144, 23, 1)"
                 ];
-            
+
             case "generalszh":
                 return [
                     "url" => "generals/how-to-play",
@@ -307,7 +317,7 @@ class Constants
                     "graph_color" => "rgba(253, 198, 75, 0.3)",
                     "graph_border_color" => "rgba(253, 198, 75, 1)"
                 ];
-               
+
             case "ra3":
                 return [
                     "url" => "red-alert-3",
@@ -317,7 +327,7 @@ class Constants
                     "graph_color" => "rgba(253, 75, 75, 0.3)",
                     "graph_border_color" => "rgba(253, 75, 75, 1)",
                 ];
-                     
+
             case "cncremastered":
                 return [
                     "url" => "command-and-conquer-remastered",
@@ -347,7 +357,7 @@ class Constants
                     "graph_color" => "rgba(0, 218, 186, 0.2)",
                     "graph_border_color" => "rgba(0, 218, 186, 0.8)",
                 ];
-                
+
             case "openra_cnc":
                 return [
                     "url" => "https://www.openra.net/",

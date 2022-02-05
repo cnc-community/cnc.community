@@ -16,7 +16,7 @@ class StatsController extends Controller
     public function __construct()
     {
         $this->cncOnlineCount = new CNCOnlineCount();
-        
+
         View::share('totalOnline', $this->cncOnlineCount->getTotal());
     }
 
@@ -28,29 +28,31 @@ class StatsController extends Controller
 
     public function showStats()
     {
-        $games = Cache::remember("StatsController.showStats.games", 450, function () 
+        $games = Cache::remember("StatsController.showStats.games", 450, function ()
         {
             return $this->cncOnlineCount->getGameCounts();
         });
 
-        $mods = Cache::remember("StatsController.showStats.mods", 450, function () 
+        $mods = Cache::remember("StatsController.showStats.mods", 450, function ()
         {
             return $this->cncOnlineCount->getModCounts();
         });
-        
-        $standalone = Cache::remember("StatsController.showStats.standalone", 450, function () 
+
+        $standalone = Cache::remember("StatsController.showStats.standalone", 450, function ()
         {
             return $this->cncOnlineCount->getStandaloneCounts();
         });
 
         $graphData = $this->cncOnlineCount->createGraph(GameStatGraph::getLast24Hours());
 
-        return view('pages.stats', 
-        [
-            "games" => $games,
-            "mods" => $mods,
-            "standalone" => $standalone,
-            "graphData" => $graphData
-        ]);
+        return view(
+            'pages.stats',
+            [
+                "games" => $games,
+                "mods" => $mods,
+                "standalone" => $standalone,
+                "graphData" => $graphData
+            ]
+        );
     }
 }
