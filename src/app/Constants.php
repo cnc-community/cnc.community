@@ -166,6 +166,34 @@ class Constants
         return $videos["default"];
     }
 
+    public static function getGameAbbreviations()
+    {
+        return [
+            "cncnet5_td",
+            "cncnet5_ra",
+            "cncnet5_ts",
+            "sole",
+            "cncnet5_yr",
+            "cncnet5_dta",
+            "cncnet5_mo",
+            "cncnet5_ti",
+            "cncnet5_rr",
+            "cncnet5_cncr",
+            "cnc3",
+            "ren",
+            "cnc3kw",
+            "generals",
+            "generalszh",
+            "ra3",
+            "cncremastered",
+            "apb",
+            "ia",
+            "openra_cnc",
+            "openra_ra",
+            "renegadex",
+        ];
+    }
+
     public static function getGameFromOnlineAbbreviation($abbreviation)
     {
         switch ($abbreviation)

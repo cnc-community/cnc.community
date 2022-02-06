@@ -161,10 +161,11 @@ class CNCOnlineCount
         return $total;
     }
 
-    public function createGraph($graphData)
+    public function createGraph($graphData, $includeGameAbbreviations = [])
     {
         // Format for Chart.js
         $dataSets = [];
+
         foreach ($graphData as $gameStatGraph)
         {
             $gameStat = GameStat::where("id", $gameStatGraph->game_stats_id)->first();
@@ -174,6 +175,10 @@ class CNCOnlineCount
         $chartJsFormat = [];
         foreach ($dataSets as $abbrev => $dataSet)
         {
+            if (!in_array($abbrev, $includeGameAbbreviations))
+            {
+                continue;
+            }
             $chartJsFormat[$abbrev]["data"] = $this->createChartJsFormat($dataSet);
             $chartJsFormat[$abbrev]["label"] = $this->getNameByAbbrev($abbrev);
             $chartJsFormat[$abbrev]["backgroundColor"] = $this->getColourByAbbrev($abbrev);

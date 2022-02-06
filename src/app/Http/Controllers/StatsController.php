@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Constants;
 use App\GameStat;
 use App\GameStatGraph;
 use App\Http\Services\CNCOnlineCount;
 use Carbon\Carbon;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\View;
 
@@ -26,12 +28,18 @@ class StatsController extends Controller
         return $this->cncOnlineCount->runCountTasks();
     }
 
-    public function showStats()
+    public function showStats(Request $request)
     {
         $games = $this->cncOnlineCount->getGameCounts();
         $mods = $this->cncOnlineCount->getModCounts();
         $standalone =  $this->cncOnlineCount->getStandaloneCounts();
-        $graphData = $this->cncOnlineCount->createGraph(GameStatGraph::getLast24Hours());
+
+        $filteredGameAbbreviations = explode(",", $request->filteredGames) ?? Constants::getGameAbbreviations();
+
+        $graphData = $this->cncOnlineCount->createGraph(
+            GameStatGraph::getLast24Hours(),
+            $filteredGameAbbreviations
+        );
 
         return view(
             'pages.stats',
