@@ -56,7 +56,6 @@ class CNCOnlineCount
         );
 
         $combined["total"] = $this->total($combined);
-
         $this->groupAndSaveIntoGameTypes($combined);
     }
 

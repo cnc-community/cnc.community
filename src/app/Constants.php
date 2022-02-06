@@ -47,7 +47,8 @@ class Constants
                 "tiberium-wars" => "16106", // Command & Conquer 3: Tiberium Wars
                 "generals" => "10070", // Command & Conquer: Generals
                 "zero-hour" => "16487", // Command & Conquer: Zero hour,
-                "remasters" => "517837" // C&C Remastered Collection
+                "remasters" => "517837", // C&C Remastered Collection,
+                "sole-survivor" => "8884",
             ];
     }
 
@@ -68,6 +69,7 @@ class Constants
                 "generals" => "Generals", // Command & Conquer: Generals
                 "zero-hour" => "Zero Hour", // Command & Conquer: Zero hour,
                 "remasters" => "C&C Remastered Collection", // C&C Remastered Collection,
+                "sole-survivor" => "Sole Survivor",
                 "default" => ""
             ];
 
