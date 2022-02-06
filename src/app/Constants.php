@@ -206,8 +206,8 @@ class Constants
                     "logo" => ViewHelper::getGameLogoPathByName("sole-survivor"),
                     "external_link" => true,
                     "name" => "Sole Survivor",
-                    "graph_color" => "rgba(209, 209, 209, 0.3)",
-                    "graph_border_color" => "rgba(209, 209, 209, 0.3)"
+                    "graph_color" => "rgba(255,255,255,0.5)",
+                    "graph_border_color" => "rgba(255,255,255,0.5)"
                 ];
 
             case "cncnet5_yr":
