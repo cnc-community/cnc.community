@@ -111,7 +111,7 @@ class CNCOnlineCount
             "cncremastered" => 0,
             "cncnet5_td" => 1,
             "cncnet5_ra" => 2,
-            "sole" > 3,
+            "sole" => 3,
             "cncnet5_ts" => 4,
             "cncnet5_yr" => 5,
             "ren" => 6,
