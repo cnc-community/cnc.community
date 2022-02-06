@@ -33,8 +33,12 @@ class StatsController extends Controller
         $games = $this->cncOnlineCount->getGameCounts();
         $mods = $this->cncOnlineCount->getModCounts();
         $standalone =  $this->cncOnlineCount->getStandaloneCounts();
+        $filteredGameAbbreviations  = Constants::getGameAbbreviations();
 
-        $filteredGameAbbreviations = explode(",", $request->filteredGames) ?? Constants::getGameAbbreviations();
+        if ($request->filteredGames)
+        {
+            $filteredGameAbbreviations = explode(",", $request->filteredGames);
+        }
 
         $graphData = $this->cncOnlineCount->createGraph(
             GameStatGraph::getLast24Hours(),
