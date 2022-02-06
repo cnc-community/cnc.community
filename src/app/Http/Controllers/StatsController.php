@@ -28,21 +28,9 @@ class StatsController extends Controller
 
     public function showStats()
     {
-        $games = Cache::remember("StatsController.showStats.games", 450, function ()
-        {
-            return $this->cncOnlineCount->getGameCounts();
-        });
-
-        $mods = Cache::remember("StatsController.showStats.mods", 450, function ()
-        {
-            return $this->cncOnlineCount->getModCounts();
-        });
-
-        $standalone = Cache::remember("StatsController.showStats.standalone", 450, function ()
-        {
-            return $this->cncOnlineCount->getStandaloneCounts();
-        });
-
+        $games = $this->cncOnlineCount->getGameCounts();
+        $mods = $this->cncOnlineCount->getModCounts();
+        $standalone =  $this->cncOnlineCount->getStandaloneCounts();
         $graphData = $this->cncOnlineCount->createGraph(GameStatGraph::getLast24Hours());
 
         return view(
