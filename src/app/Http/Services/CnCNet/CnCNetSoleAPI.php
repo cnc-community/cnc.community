@@ -24,7 +24,6 @@ class CnCNetSoleAPI
                 $response = Http::get(
                     $this->_apiUrl
                 );
-
                 return $this->getPlayerCountFromResponse($response->json());
             }
             catch (Exception $exception)

@@ -205,7 +205,7 @@ class Constants
                     "external_link" => true,
                     "name" => "Sole Survivor",
                     "graph_color" => "rgba(209, 209, 209, 0.3)",
-                    "graph_border_color" => "gba(209, 209, 209, 0.3)"
+                    "graph_border_color" => "rgba(209, 209, 209, 0.3)"
                 ];
 
             case "cncnet5_yr":
