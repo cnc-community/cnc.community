@@ -24,29 +24,29 @@ class Kernel extends ConsoleKernel
      * @return void
      */
     protected function schedule(Schedule $schedule)
-    {       
+    {
         $schedule->call('App\Console\ClearExpiredCommand@handle')->everyMinute();
 
         $schedule->call('App\Http\Controllers\StatsController@runTask')
             ->everyTenMinutes()
             ->runInBackground();
-        
-        $schedule->call('App\Http\Controllers\LeaderboardController@runMatchesTask')
-            ->everyFifteenMinutes()
-            ->runInBackground();
 
-        $schedule->call('App\Http\Controllers\LeaderboardController@runRALeaderboardTasks')
-            ->cron('*/8 * * * *')
-            ->runInBackground();
-            
-        $schedule->call('App\Http\Controllers\LeaderboardController@runTDLeaderboardTasks')
-            ->cron('*/8 * * * *')
-            ->runInBackground();
+        // $schedule->call('App\Http\Controllers\LeaderboardController@runMatchesTask')
+        //     ->everyFifteenMinutes()
+        //     ->runInBackground();
+
+        // $schedule->call('App\Http\Controllers\LeaderboardController@runRALeaderboardTasks')
+        //     ->cron('*/8 * * * *')
+        //     ->runInBackground();
+
+        // $schedule->call('App\Http\Controllers\LeaderboardController@runTDLeaderboardTasks')
+        //     ->cron('*/8 * * * *')
+        //     ->runInBackground();
 
         $schedule->call('App\Http\Controllers\FeedController@runTask')->hourly()->runInBackground();
         $schedule->call('App\Http\Controllers\FeedController@runTaskDaily')->daily()->runInBackground();
-        $schedule->call('App\Http\Controllers\APIController@runTask')->weekly()->runInBackground();
-        $schedule->call('App\Http\Controllers\LeaderboardController@runProfileDataTask')->daily()->runInBackground();
+        // $schedule->call('App\Http\Controllers\APIController@runTask')->weekly()->runInBackground();
+        // $schedule->call('App\Http\Controllers\LeaderboardController@runProfileDataTask')->daily()->runInBackground();
     }
 
     /**
@@ -56,7 +56,7 @@ class Kernel extends ConsoleKernel
      */
     protected function commands()
     {
-        $this->load(__DIR__.'/Commands');
+        $this->load(__DIR__ . '/Commands');
 
         require base_path('routes/console.php');
     }
