@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Redirect;
 // Admin routes
 Route::group(['prefix' => 'admin', 'middleware' => ['admin']], function ()
 {
-    Auth::routes();
+    Auth::routes(['register' => false]);
 
     // Seed local leaderboard development 
     Route::get('/seed-local-development', 'LeaderboardController@seedLocalDevelopment');
