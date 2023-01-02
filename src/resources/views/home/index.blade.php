@@ -33,25 +33,27 @@
         </div>
     </section>
 
-    {{-- <section id="leaderboards" class="section section-black-alt leaderboard-introduction">
-    <div class="main-content center">
-        <div class="feature-box">
-            <div class="col-50 feature-text">
-                <h1 class="section-title"><span class="light">Command &amp; Conquer Remastered</span> Leaderboards</h1>
-                <p class="section-description">
-                    Find the elite in our new Command &amp; Conquer Remastered Leaderboards for Tiberian Dawn and Red Alert.
-                </p>
-                <div class="buttons">
-                    <a href="/command-and-conquer-remastered/leaderboard" class="btn btn-secondary" title="View All Leaderboards">View Leaderboards</a>
+    <section id="leaderboards" class="section section-black-alt leaderboard-introduction">
+        <div class="main-content center">
+            <div class="feature-box">
+                <div class="col-50 feature-text">
+                    <h1 class="section-title"><span class="light">Command &amp; Conquer Remastered</span> Leaderboards</h1>
+                    <p class="section-description">
+                        Find the elite in our new Command &amp; Conquer Remastered Leaderboards for Tiberian Dawn and Red
+                        Alert.
+                    </p>
+                    <div class="buttons">
+                        <a href="/command-and-conquer-remastered/leaderboard" class="btn btn-secondary"
+                            title="View All Leaderboards">View Leaderboards</a>
+                    </div>
+                </div>
+
+                <div class="col-50 feature-banner">
+                    <img src="/assets/images/leaderboard-promo.jpg" alt="Leaderboard" loading="lazy" />
                 </div>
             </div>
-
-            <div class="col-50 feature-banner">
-                <img src="/assets/images/leaderboard-promo.jpg" alt="Leaderboard" loading="lazy" />
-            </div>
         </div>
-    </div>
-</section> --}}
+    </section>
 
     <section class="section section-black news-listings">
         <div class="main-content">

@@ -74,13 +74,16 @@
                     <a href="/command-and-conquer-remastered/workshop-mods" title="Steam Workshop">Steam Workshop</a>
                     <a href="/command-and-conquer-remastered#help" title="Help & Support">Help &amp; Support</a>
                 </div>
-                {{-- <div class="category">
+                <div class="category">
                     <div class="title">
-                        <a href="/command-and-conquer-remastered/leaderboard" title="C&C Remastered Collection">Leaderboards (1vs1)</a>
+                        <a href="/command-and-conquer-remastered/leaderboard"
+                            title="C&C Remastered Collection">Leaderboards (1vs1)</a>
                     </div>
-                    <a href="/command-and-conquer-remastered/leaderboard/tiberian-dawn" title="Tiberian Dawn Leaderboard">Tiberian Dawn</a>
-                    <a href="/command-and-conquer-remastered/leaderboard/red-alert" title="Red Alert Leaderboard">Red Alert</a>
-                </div> --}}
+                    <a href="/command-and-conquer-remastered/leaderboard/tiberian-dawn"
+                        title="Tiberian Dawn Leaderboard">Tiberian Dawn</a>
+                    <a href="/command-and-conquer-remastered/leaderboard/red-alert" title="Red Alert Leaderboard">Red
+                        Alert</a>
+                </div>
             </div>
         </div>
     </div>
