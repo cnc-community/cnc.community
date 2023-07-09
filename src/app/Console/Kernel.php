@@ -25,25 +25,25 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->call('App\Console\ClearExpiredCommand@handle')->everyMinute();
+        $schedule->call('App\Console\ClearExpiredCommand@handle')->hourly();
 
         $schedule->call('App\Http\Controllers\StatsController@runTask')
             ->everyTenMinutes()
             ->runInBackground();
 
-        // $schedule->call('App\Http\Controllers\LeaderboardController@runMatchesTask')
-        //     ->everyFifteenMinutes()
-        //     ->runInBackground();
+        $schedule->call('App\Http\Controllers\LeaderboardController@runMatchesTask')
+            ->hourly()
+            ->runInBackground();
 
-        // $schedule->call('App\Http\Controllers\LeaderboardController@runRALeaderboardTasks')
-        //     ->cron('*/8 * * * *')
-        //     ->runInBackground();
+        $schedule->call('App\Http\Controllers\LeaderboardController@runRALeaderboardTasks')
+            ->hourly()
+            ->runInBackground();
 
-        // $schedule->call('App\Http\Controllers\LeaderboardController@runTDLeaderboardTasks')
-        //     ->cron('*/8 * * * *')
-        //     ->runInBackground();
+        $schedule->call('App\Http\Controllers\LeaderboardController@runTDLeaderboardTasks')
+            ->hourly()
+            ->runInBackground();
 
-        $schedule->call('App\Http\Controllers\FeedController@runTask')->hourly()->runInBackground();
+        $schedule->call('App\Http\Controllers\FeedController@runTask')->daily()->runInBackground();
         $schedule->call('App\Http\Controllers\FeedController@runTaskDaily')->daily()->runInBackground();
 
         $schedule->call('App\Http\Controllers\APIController@runTask')->weekly()->runInBackground();

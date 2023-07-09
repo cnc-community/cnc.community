@@ -57,10 +57,11 @@ class ClearExpiredCommand extends Command
         $files = Storage::disk('fcache')->allFiles();
 
         // Loop the files and get rid of any that have expired
-        foreach($files as $key => $cachefile) 
+        foreach ($files as $key => $cachefile)
         {
             // Ignore files that named with dot(.) at the begining e.g. .gitignore
-            if(substr($cachefile, 0, 1) == '.') {
+            if (substr($cachefile, 0, 1) == '.')
+            {
                 continue;
             }
 
@@ -71,14 +72,14 @@ class ClearExpiredCommand extends Command
             $expire = substr($contents, 0, 10);
 
             // See if we have expired
-            if(time() >= $expire) 
+            if (time() >= $expire)
             {
                 // Delete the file
                 $this->expiredFileSize += Storage::disk('fcache')->size($cachefile);
                 Storage::disk('fcache')->delete($cachefile);
                 $this->expiredFileCount++;
-            } 
-            else 
+            }
+            else
             {
                 $this->activeFileCount++;
                 $this->activeFileSize += Storage::disk('fcache')->size($cachefile);
@@ -92,9 +93,9 @@ class ClearExpiredCommand extends Command
         $dirCount = count($directories);
 
         // looping backward to make sure subdirectories are deleted first
-        while(--$dirCount >= 0) 
+        while (--$dirCount >= 0)
         {
-            if (!Storage::disk('fcache')->allFiles($directories[$dirCount])) 
+            if (!Storage::disk('fcache')->allFiles($directories[$dirCount]))
             {
                 Storage::disk('fcache')->deleteDirectory($directories[$dirCount]);
             }
@@ -105,13 +106,13 @@ class ClearExpiredCommand extends Command
     {
         $expiredFileSize = $this->formatBytes($this->expiredFileSize);
         $activeFileSize = $this->formatBytes($this->activeFileSize);
-        
-        if ($this->expiredFileCount) 
+
+        if ($this->expiredFileCount)
         {
             Log::info("✔ {$this->expiredFileCount} expired cache files removed");
             Log::info("✔ {$expiredFileSize} disk cleared");
-        } 
-        else 
+        }
+        else
         {
             Log::info('✔ No expired cache file found!');
         }
@@ -122,12 +123,13 @@ class ClearExpiredCommand extends Command
 
     private function formatBytes($size, $precision = 2)
     {
-        $unit = ['Byte','KiB','MiB','GiB','TiB','PiB','EiB','ZiB','YiB'];
+        $unit = ['Byte', 'KiB', 'MiB', 'GiB', 'TiB', 'PiB', 'EiB', 'ZiB', 'YiB'];
 
-        for($i = 0; $size >= 1024 && $i < count($unit)-1; $i++){
+        for ($i = 0; $size >= 1024 && $i < count($unit) - 1; $i++)
+        {
             $size /= 1024;
         }
 
-        return round($size, $precision).' '.$unit[$i];
+        return round($size, $precision) . ' ' . $unit[$i];
     }
 }

@@ -43,13 +43,15 @@ class PetroglyphAPIService
         $this->getRALeaderboard($history, 200, 0);
         $this->getRALeaderboard($history, 200, 200);
         $this->getRALeaderboard($history, 200, 400);
+        /*
         $this->getRALeaderboard($history, 200, 600);
         $this->getRALeaderboard($history, 200, 800);
+        */
     }
 
     private function getRALeaderboard($history, $limit, $offset)
     {
-        sleep(6);
+        sleep(100);
 
         $leaderboardResult = $this->petroglyphAPI->getRALeaderboard($limit, $offset)["ranks"];
         foreach($leaderboardResult as $result)
@@ -69,13 +71,15 @@ class PetroglyphAPIService
         $this->getTDLeaderboard($history, 200, 0);
         $this->getTDLeaderboard($history, 200, 200);
         $this->getTDLeaderboard($history, 200, 400);
+        /*
         $this->getTDLeaderboard($history, 200, 600);
         $this->getTDLeaderboard($history, 200, 800);
+        */
     }
 
     private function getTDLeaderboard($history, $limit, $offset)
     {
-        sleep(6);
+        sleep(100);
 
         $leaderboardResult = $this->petroglyphAPI->getTDLeaderboard($limit, $offset)["ranks"];
         foreach($leaderboardResult as $result)
@@ -102,7 +106,9 @@ class PetroglyphAPIService
             $complete = true;
         }
 
+        // @TODO: Suspect this is causing the high memory usage
         // Continue requests until we have nothing back from our matches array response
+        /*
         while(count($response["matches"]) > 0 && $complete == false)
         {
             // Timeout between requests
@@ -138,6 +144,7 @@ class PetroglyphAPIService
 
             $timesRun++;
         }
+        */
     }
 
     private function sendGetMatches($limit, $offset)
