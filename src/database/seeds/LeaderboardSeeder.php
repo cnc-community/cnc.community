@@ -49,9 +49,12 @@ class LeaderboardSeeder extends Seeder
         $leaderboard->matchtype = $matchType;
         $leaderboard->save();
 
+        echo "Leaderboard created" . $leaderboard;
+
         $history = new LeaderboardHistory();
         $history->leaderboard_id = $leaderboard->id;
-        $history->season = $leaderboard->id;
+        $history->season = 1;
+        $history->season_id = "";
         $history->active = 1;
         $history->save();
     }
