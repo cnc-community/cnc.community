@@ -2,6 +2,10 @@
 # Read more here: https://hub.docker.com/_/php
 FROM php:7.4-fpm
 
+# Args from Docker-compose
+ARG user
+ARG uid
+
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
     libfreetype6-dev \
@@ -18,25 +22,23 @@ RUN docker-php-ext-install pdo_mysql exif pcntl bcmath gd zip \
 # Clear cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
+
 # Install Composer
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+RUN apt-get update \
+    && apt-get install curl -y \
+    && curl -sS https://getcomposer.org/installer | php \
+    && mv composer.phar /usr/bin/composer \
+    && chmod +x /usr/bin/composer
 
-# Setup web user
-# --groups - Specify the groups we want our new user to be added to.
-# --uid - Add a non system account (i.e not < 1000)
-# --home - Specify path for the users home directory
-RUN useradd --groups www-data --uid 1000 --home /home/laravel laravel
 
-# Setup composer & site folders
-# --parents - Make parent directories as needed
-# chown:owner:group - Change the group owner of our files  
-# --recursive - Operate on all files and directories recursively 
-RUN mkdir --parents /home/laravel/.composer && \
-    mkdir /home/laravel/site && \
-    chown --recursive laravel:laravel /home/laravel
+# Create system user to run Composer and Artisan Commands
+RUN useradd -G www-data,root -u $uid -d /home/$user $user
+RUN mkdir -p /home/$user/.composer && \
+    chown -R $user:$user /home/$user
+
 
 # Set working directory
-WORKDIR /home/laravel/site
+WORKDIR /home/$user/site
 
 # Ensure our user is not root
-USER laravel
+USER $user

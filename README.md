@@ -10,6 +10,8 @@ Check out [our mission](https://cnc.community/news/official-news/our-mission)
 ## 🚀 Quick start
 
 ## Development
+Node 14.21.3
+
 ```shell
 docker-compose -f docker-compose-dev.yml build
 docker-compose -f docker-compose-dev.yml up -d 

@@ -25,6 +25,11 @@
     }
 }
 
+.news-item .post-preview .description p  
+{
+    word-break: break-word;
+}
+
 .news-item .author .author-data 
 {
     color: #d6d6d6;
@@ -116,7 +121,8 @@
     @extend .btn-transparent;
     @extend .btn-sm;
 
-    i { 
+    i 
+    {
         font-size: 14px;
     }
     
@@ -127,7 +133,8 @@
     color: $color-white;
     border: 1px solid $color-white;
     
-    &:hover,&:focus {
+    &:hover,&:focus 
+    {
         background: transparent;
         border: 1px solid $color-gold;
         color: $color-gold;

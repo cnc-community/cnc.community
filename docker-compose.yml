@@ -1,42 +1,48 @@
 version: "3.3"
 
 services:
-  app:
-    build:
-      context: .
-      dockerfile: ./docker/Dockerfile
-    restart: always
-    working_dir: /home/laravel/site
-    tty: false
-    volumes:
-      - ./src:/home/laravel/site
-    networks:
-      - laravel
+    app:
+        build:
+            args:
+                user: ${HOST_USER}
+                uid: ${HOST_UID}
+            context: .
+            dockerfile: ./docker/Dockerfile
+        env_file: ./src/.env
+        volumes:
+            - ./src:/home/${HOST_USER}/site
+        networks:
+            - cnccommunity
 
-  mysql:
-    image: mysql:5.7.29
-    restart: always
-    networks:
-      - laravel
+    nginx:
+        image: nginx:stable-alpine
+        restart: always
+        ports:
+            - "80:80"
+            - "443:443"
+        volumes:
+            - ./src:/home/${HOST_USER}/site
+            - ./docker/nginx/templates:/etc/nginx/templates/
+        environment:
+            NGINX_ENVSUBST_TEMPLATE_SUFFIX: ".conf"
+            HOST_USER: ${HOST_USER}
+        networks:
+            - cnccommunity
 
-  nginx:
-    image: nginx:stable-alpine
-    restart: always
-    ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - ./src:/home/laravel/site
-      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
-    networks:
-      - laravel
-      
+    mysql:
+        image: mariadb:latest
+        restart: always
+        env_file: ./src/.env
+        volumes:
+            - ./docker/mysql/init:/docker-entrypoint-initdb.d
+            - cnc-community-db:/var/lib/mysql
+        networks:
+            - cnccommunity
+
 networks:
-  laravel:
-    driver: bridge
+    cnccommunity:
+        driver: bridge
 
 volumes:
-  phpmyadmin:
-    driver: local
-  mysql:
-    driver: local
+    cnc-community-db:
+        driver: local
