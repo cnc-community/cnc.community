@@ -31,17 +31,17 @@ class Kernel extends ConsoleKernel
             ->everyTenMinutes()
             ->runInBackground();
 
-        $schedule->call('App\Http\Controllers\LeaderboardController@runMatchesTask')
-            ->hourly()
-            ->runInBackground();
+        // $schedule->call('App\Http\Controllers\LeaderboardController@runMatchesTask')
+        //     ->hourly()
+        //     ->runInBackground();
 
-        $schedule->call('App\Http\Controllers\LeaderboardController@runRALeaderboardTasks')
-            ->hourly()
-            ->runInBackground();
+        // $schedule->call('App\Http\Controllers\LeaderboardController@runRALeaderboardTasks')
+        //     ->hourly();
+        // ->runInBackground();
 
-        $schedule->call('App\Http\Controllers\LeaderboardController@runTDLeaderboardTasks')
-            ->hourly()
-            ->runInBackground();
+        // $schedule->call('App\Http\Controllers\LeaderboardController@runTDLeaderboardTasks')
+        //     ->everyThirtyMinutes();
+        // ->runInBackground();
 
         $schedule->call('App\Http\Controllers\FeedController@runTask')->daily()->runInBackground();
         $schedule->call('App\Http\Controllers\FeedController@runTaskDaily')->daily()->runInBackground();
