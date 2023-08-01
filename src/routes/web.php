@@ -93,9 +93,9 @@ Route::get('/command-and-conquer-25-years', 'AnniversaryController@index')->name
 
 Route::get('/command-and-conquer-remastered', 'SiteController@showRemastersListings')->name('pages.remasters.listing')->middleware('cache.headers:public;max_age=1800');
 Route::get('/command-and-conquer-remastered/workshop-mods', 'SiteController@showRemastersWorkshopMods')->name('pages.remasters.workshop.listings')->middleware('cache.headers:public;max_age=14400');
-Route::get('/command-and-conquer-remastered/leaderboard', 'LeaderboardController@getLeaderboardListings')->name('pages.remasters.leaderboard.listings')->middleware('cache.headers:public;max_age=1800');
-Route::get('/command-and-conquer-remastered/leaderboard/{game}', 'LeaderboardController@getLeaderboardListingsByGame')->name('pages.remasters.leaderboard.detail')->middleware('cache.headers:public;max_age=480');
-Route::get('/command-and-conquer-remastered/leaderboard/{game}/player/{playerId}', 'LeaderboardController@getPlayerLeaderboardProfile')->name('pages.remasters.leaderboard.player-detail')->middleware('cache.headers:public;max_age=480');
+// Route::get('/command-and-conquer-remastered/leaderboard', 'LeaderboardController@getLeaderboardListings')->name('pages.remasters.leaderboard.listings')->middleware('cache.headers:public;max_age=1800');
+// Route::get('/command-and-conquer-remastered/leaderboard/{game}', 'LeaderboardController@getLeaderboardListingsByGame')->name('pages.remasters.leaderboard.detail')->middleware('cache.headers:public;max_age=480');
+// Route::get('/command-and-conquer-remastered/leaderboard/{game}/player/{playerId}', 'LeaderboardController@getPlayerLeaderboardProfile')->name('pages.remasters.leaderboard.player-detail')->middleware('cache.headers:public;max_age=480');
 
 Route::get('/news/{categorySlug}', 'SiteController@showNewsByCategorySlug')->name('news.listing')->middleware('cache.headers:public;max_age=14400');
 Route::get('/news/{categorySlug?}/{newsSlug}', 'SiteController@showNewsBySlug')->name('news.detail')->middleware('cache.headers:public;max_age=14400');
