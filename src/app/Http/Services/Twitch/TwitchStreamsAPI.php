@@ -173,7 +173,6 @@ class TwitchStreamsAPI extends AbstractTwitchAPI
                     $data[] = $r;
                 }
 
-                dd($data);
                 $jsonResponse = $this->fetchByQuery($queryString, $jsonResponse["pagination"]["cursor"], 100);
 
                 $callCount++;
