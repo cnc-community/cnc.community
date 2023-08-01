@@ -14,7 +14,7 @@ return [
     */
 
     'name' => env('APP_NAME', 'Laravel'),
-    
+
     'cache_period' => env('CACHE_PERIOD', 7200), // seconds
 
     'twitch_secret' => env('TWITCH_SECRET', null),
@@ -63,6 +63,8 @@ return [
     'url' => env('APP_URL', 'http://localhost'),
 
     'asset_url' => env('ASSET_URL', null),
+
+    'twitch_bad_words' => explode(',', env('TWITCH_BAD_WORDS', '')),
 
     /*
     |--------------------------------------------------------------------------

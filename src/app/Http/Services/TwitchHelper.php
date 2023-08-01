@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace App\Http\Services;
 
@@ -11,7 +11,8 @@ class TwitchHelper
 
     public function __construct()
     {
-        $this->twitchStreamsAPI = new TwitchStreamsAPI();
+        $twitchBadWords = config("app.twitch_bad_words");
+        $this->twitchStreamsAPI = new TwitchStreamsAPI($twitchBadWords);
     }
 
     public function getTopTwitchStreamsBySlug($slug, $limit)
@@ -42,7 +43,7 @@ class TwitchHelper
         $games = Constants::getTwitchGames();
         $gameId = -1;
 
-        foreach($games as $key => $value)
+        foreach ($games as $key => $value)
         {
             if ($key == $slug)
             {
@@ -55,7 +56,7 @@ class TwitchHelper
     public static function getTwitchThumbnailUrl($url, $width, $height)
     {
         return str_replace(
-            array("{width}","{height}", "%"),
+            array("{width}", "{height}", "%"),
             array($width, $height, ""),
             $url
         );

@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Http;
 use App\Http\Services\Twitch\AbstractTwitchAPI;
 use Exception;
 use Illuminate\Support\Facades\Cache;
+use PhpParser\Node\Stmt\Continue_;
 
 class TwitchStreamsAPI extends AbstractTwitchAPI
 {
@@ -20,11 +21,14 @@ class TwitchStreamsAPI extends AbstractTwitchAPI
     private $_clientSecret;
     private $_token;
 
-    public function __construct()
+    private $_badWordList = [];
+
+    public function __construct($badWordList)
     {
         $this->_clientId = Constants::getTwitchClient();
         $this->_clientSecret = Constants::getTwitchSecret();
         $this->_token = $this->getToken();
+        $this->_badWordList = $badWordList;
     }
 
     public function getToken()
@@ -161,9 +165,15 @@ class TwitchStreamsAPI extends AbstractTwitchAPI
             {
                 foreach ($jsonResponse["data"] as $r)
                 {
+                    $hasBadWord = $this->checkStreamForBannedWords($r);
+                    if ($hasBadWord)
+                    {
+                        continue;
+                    }
                     $data[] = $r;
                 }
 
+                dd($data);
                 $jsonResponse = $this->fetchByQuery($queryString, $jsonResponse["pagination"]["cursor"], 100);
 
                 $callCount++;
@@ -207,6 +217,22 @@ class TwitchStreamsAPI extends AbstractTwitchAPI
         )
             ->get($this->_apiUrl . TwitchStreamsAPI::STREAMS_URL . $queryString . '&first=' . $limit . '&after=' . $pagination)
             ->json();
+    }
+
+    private function checkStreamForBannedWords($stream): bool
+    {
+        foreach ($this->_badWordList as $badWord)
+        {
+            if (strlen($badWord) > 0)
+            {
+                $match = str_contains($stream["title"], $badWord);
+                if ($match)
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     public function getCounts($data)
