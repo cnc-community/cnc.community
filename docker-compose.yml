@@ -9,6 +9,7 @@ services:
             context: .
             dockerfile: ./docker/Dockerfile
         env_file: ./src/.env
+        restart: always
         volumes:
             - ./src:/home/${HOST_USER}/site
         networks:
