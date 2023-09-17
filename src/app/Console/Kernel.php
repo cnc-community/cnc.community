@@ -27,6 +27,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
+        Log::info("Cron run");
+
         $schedule->call('App\Console\ClearExpiredCommand@handle')->hourly();
 
         $schedule->call('App\Http\Controllers\StatsController@runTask')

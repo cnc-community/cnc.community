@@ -11,7 +11,7 @@ class TwitchHelper
 
     public function __construct()
     {
-        $twitchBadWords = config("app.twitch_bad_words");
+        $twitchBadWords = config("app.twitch_bad_words") ?? [];
         $this->twitchStreamsAPI = new TwitchStreamsAPI($twitchBadWords);
     }
 

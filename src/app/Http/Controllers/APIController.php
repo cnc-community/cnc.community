@@ -30,7 +30,9 @@ class APIController extends Controller
 
     public function __construct()
     {
-        $this->twitchStreamsAPI = new TwitchStreamsAPI();
+        $twitchBadWords = config("app.twitch_bad_words") ?? [];
+
+        $this->twitchStreamsAPI = new TwitchStreamsAPI($twitchBadWords);
         $this->steamAPI = new SteamAPI();
         $this->cncOnlineCount = new CNCOnlineCount();
         $this->competitionService = new CompetitionService();
