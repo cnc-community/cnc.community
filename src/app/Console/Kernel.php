@@ -15,6 +15,8 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         //
+        '\App\Console\Commands\RunLeaderboardSync',
+        '\App\Console\Commands\RunLeaderboardMatchTask'
     ];
 
     /**
@@ -31,17 +33,17 @@ class Kernel extends ConsoleKernel
             ->everyTenMinutes()
             ->runInBackground();
 
-        // $schedule->call('App\Http\Controllers\LeaderboardController@runMatchesTask')
-        //     ->hourly()
-        //     ->runInBackground();
+        $schedule->call('App\Http\Controllers\LeaderboardController@runMatchesTask')
+            ->hourly()
+            ->runInBackground();
 
-        // $schedule->call('App\Http\Controllers\LeaderboardController@runRALeaderboardTasks')
-        //     ->hourly();
-        // ->runInBackground();
+        $schedule->call('App\Http\Controllers\LeaderboardController@runRALeaderboardTasks')
+            ->hourly()
+            ->runInBackground();
 
-        // $schedule->call('App\Http\Controllers\LeaderboardController@runTDLeaderboardTasks')
-        //     ->everyThirtyMinutes();
-        // ->runInBackground();
+        $schedule->call('App\Http\Controllers\LeaderboardController@runTDLeaderboardTasks')
+            ->everyThirtyMinutes()
+            ->runInBackground();
 
         $schedule->call('App\Http\Controllers\FeedController@runTask')->daily()->runInBackground();
         $schedule->call('App\Http\Controllers\FeedController@runTaskDaily')->daily()->runInBackground();

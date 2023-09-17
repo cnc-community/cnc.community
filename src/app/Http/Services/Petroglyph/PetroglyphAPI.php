@@ -69,6 +69,10 @@ class PetroglyphAPI
         {
             return json_decode($r->getBody(), true);
         }
+        else
+        {
+            dd("Bad request", $r->getStatusCode());
+        }
 
         return [];
     }

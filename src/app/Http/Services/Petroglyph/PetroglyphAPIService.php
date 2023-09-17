@@ -32,7 +32,7 @@ class PetroglyphAPIService
         $this->getMatchesTask();
     }
 
-    public function runRALeaderboardTasks()
+    public function runRALeaderboardTasks($canSleep = true)
     {
         $history = Leaderboard::getActiveLeaderboardSeason(Match::RA_1vs1);
         if ($history == null)
@@ -40,18 +40,17 @@ class PetroglyphAPIService
             die();
         }   
 
-        $this->getRALeaderboard($history, 200, 0);
-        $this->getRALeaderboard($history, 200, 200);
-        $this->getRALeaderboard($history, 200, 400);
-        /*
-        $this->getRALeaderboard($history, 200, 600);
-        $this->getRALeaderboard($history, 200, 800);
-        */
+        $this->getRALeaderboard($history, 200, 0, $canSleep);
+        $this->getRALeaderboard($history, 200, 200, $canSleep);
+        $this->getRALeaderboard($history, 200, 400, $canSleep);
     }
 
-    private function getRALeaderboard($history, $limit, $offset)
+    public function getRALeaderboard($history, $limit, $offset, $canSleep = true)
     {
-        sleep(100);
+        if($canSleep)
+        {
+            sleep(100);
+        }
 
         $leaderboardResult = $this->petroglyphAPI->getRALeaderboard($limit, $offset)["ranks"];
         foreach($leaderboardResult as $result)
@@ -60,7 +59,7 @@ class PetroglyphAPIService
         }
     }
 
-    public function runTDLeaderboardTasks()
+    public function runTDLeaderboardTasks($canSleep = true)
     {
         $history = Leaderboard::getActiveLeaderboardSeason(Match::TD_1vs1);
         if ($history == null)
@@ -68,18 +67,17 @@ class PetroglyphAPIService
             die();
         }   
 
-        $this->getTDLeaderboard($history, 200, 0);
-        $this->getTDLeaderboard($history, 200, 200);
-        $this->getTDLeaderboard($history, 200, 400);
-        /*
-        $this->getTDLeaderboard($history, 200, 600);
-        $this->getTDLeaderboard($history, 200, 800);
-        */
+        $this->getTDLeaderboard($history, 200, 0, $canSleep);
+        $this->getTDLeaderboard($history, 200, 200, $canSleep);
+        $this->getTDLeaderboard($history, 200, 400, $canSleep);
     }
 
-    private function getTDLeaderboard($history, $limit, $offset)
+    public function getTDLeaderboard($history, $limit, $offset,$canSleep = true)
     {
-        sleep(100);
+        if($canSleep)
+        {
+            sleep(100);
+        }
 
         $leaderboardResult = $this->petroglyphAPI->getTDLeaderboard($limit, $offset)["ranks"];
         foreach($leaderboardResult as $result)
