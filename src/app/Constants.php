@@ -267,16 +267,6 @@ class Constants
                     "graph_border_color" => "rgba(202, 21, 251, 0.8)"
                 ];
 
-            case "cncnet5_ti":
-                return [
-                    "url" => "https://cncnet.org/twisted-insurrection",
-                    "logo" => ViewHelper::getGameLogoPathByName("twisted-insurrection"),
-                    "external_link" => true,
-                    "name" => "Twisted Insurrection",
-                    "graph_color" => "rgba(0, 212, 16, 0.2)",
-                    "graph_border_color" => "rgba(0, 212, 16, 0.8)"
-                ];
-
             case "cncnet5_rr":
                 return [
                     "url" => "https://cncnet.org/red-resurrection",
