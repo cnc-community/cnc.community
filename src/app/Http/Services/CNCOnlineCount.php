@@ -100,7 +100,6 @@ class CNCOnlineCount
             "apb" => 1,
             "ia" => 2,
             "cncnet5_dta" => 3,
-            "cncnet5_ti" => 4,
             "renegadex" => 5,
             "openra_ra" => 6,
             "openra_cnc" => 7,

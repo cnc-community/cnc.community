@@ -176,7 +176,6 @@ class Constants
             "cncnet5_yr",
             "cncnet5_dta",
             "cncnet5_mo",
-            "cncnet5_ti",
             "cncnet5_rr",
             "cncnet5_cncr",
             "cnc3",
