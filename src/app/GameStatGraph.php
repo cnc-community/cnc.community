@@ -16,17 +16,18 @@ class GameStatGraph extends Model
         // Always ensure we only keep the data we want
         GameStatGraph::deleteOldRecords();
 
-        $gameStat = GameStat::where("id",$gameStatId)->first();
+        $gameStat = GameStat::where("id", $gameStatId)->first();
         if ($gameStat == null)
         {
             return;
         }
-        
+
         // Check if created in the last 8 minutes
         $gameStatGraph = GameStatGraph::where("game_stats_id", $gameStat->id)
-            ->whereBetween("created_at", 
+            ->whereBetween(
+                "created_at",
                 array(
-                    Carbon::now()->subMinutes(8)->toDateTimeString(), 
+                    Carbon::now()->subMinutes(8)->toDateTimeString(),
                     Carbon::now()->toDateTimeString()
                 )
             )
@@ -41,25 +42,46 @@ class GameStatGraph extends Model
         }
         return $gameStatGraph;
     }
-    
+
     private static function deleteOldRecords()
     {
-        // Delete anything older than 24hours
-        return GameStatGraph::where("created_at", "<=", Carbon::now()->subDays(1)->toDateTimeString())->delete();
+        // Delete anything older than 5 years
+        return GameStatGraph::where("created_at", "<=", Carbon::now()->subYears(5)->toDateTimeString())->delete();
     }
 
     public static function getLast24Hours()
     {
-        return GameStatGraph::whereBetween("created_at", 
+        return GameStatGraph::whereBetween(
+            "created_at",
             array(
-                Carbon::now()->subDays(1)->toDateTimeString(), 
+                Carbon::now()->subDays(1)->toDateTimeString(),
                 Carbon::now()->toDateTimeString()
             )
         )
-        ->orderBy("created_at", "DESC")
-        ->get();
+            ->orderBy("created_at", "DESC")
+            ->get();
     }
 
-    public function getOnlineCount() { return $this->players_online; }
-    public function getAbbreviation() { return $this->abbrev; }
+    public static function getLast7Days()
+    {
+        return GameStatGraph::whereBetween(
+            "created_at",
+            array(
+                Carbon::now()->subDays(7)->toDateTimeString(),
+                Carbon::now()->toDateTimeString()
+            )
+        )
+            ->orderBy("created_at", "DESC")
+            ->get();
+    }
+
+    public function getOnlineCount()
+    {
+        return $this->players_online;
+    }
+
+    public function getAbbreviation()
+    {
+        return $this->abbrev;
+    }
 }

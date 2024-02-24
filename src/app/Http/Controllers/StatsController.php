@@ -41,7 +41,7 @@ class StatsController extends Controller
         }
 
         $graphData = $this->cncOnlineCount->createGraph(
-            GameStatGraph::getLast24Hours(),
+            GameStatGraph::getLast7Days(),
             $filteredGameAbbreviations
         );
 
