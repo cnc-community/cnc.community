@@ -51,6 +51,7 @@ main
 p, ul, li
 {
     color: $color-secondary;
+    word-wrap: break-word;
 }
 
 a 

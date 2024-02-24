@@ -126,7 +126,6 @@ class NewsFeedQueue extends Model
         {
             $newImageName = FeedHelper::createImageFromUrl($imageUrl);
             $newsQueue->image = $newImageName;
-            var_dump($newImageName);
         }
 
         $newsQueue->save();

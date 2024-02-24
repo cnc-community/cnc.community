@@ -45,6 +45,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin']], function ()
     Route::get('/news/edit/{id}', 'NewsController@edit')->name('admin.news.edit')->middleware('role:admin,editor');
     Route::post('/news/edit/{id}', 'NewsController@save')->middleware('role:admin,editor');
 
+
     // Admin Feed management 
     Route::get('/queue', 'QueuedNewsController@index')->name('admin.queue.listing')->middleware('role:admin,editor');
     Route::get('/queue/edit/{id}', 'QueuedNewsController@edit')->name('admin.queue.edit')->middleware('role:admin,editor');
@@ -64,7 +65,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin']], function ()
     Route::get('/pages/category/{id}/custom-fields', 'PageController@addPageCategoryCustomField')->name('admin.pages.category.fields.add')->middleware('role:admin');
     Route::post('/pages/category/{id}/custom-fields', 'PageController@createPageCategoryCustomField')->middleware('role:admin');
 
-
     // Pages and custom fields
     Route::get('/pages/edit/{id}', 'PageController@editPage')->name('admin.pages.edit')->middleware('role:admin');
     Route::post('/pages/edit/{id}', 'PageController@savePage')->middleware('role:admin');
@@ -74,6 +74,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin']], function ()
 
     // Endpoint if we want to clear cache
     Route::get('/cache/clear', 'SiteController@clearCache')->middleware('role:admin,editor');
+
+    // Ckeditor endpointfor image uploads
+    Route::post('/upload/image', 'ImageUploadController@upload')->name('uploadImage');
 });
 
 
