@@ -40,6 +40,17 @@ services:
         networks:
             - cnccommunity
 
+    db-backup:
+        env_file: ./src/.env
+        image: tiredofit/db-backup
+        volumes:
+            - ./backups:/backup
+        restart: always
+        links:
+            - mysql
+        networks:
+            - cnccommunity
+
 networks:
     cnccommunity:
         driver: bridge

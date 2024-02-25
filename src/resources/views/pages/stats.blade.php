@@ -61,11 +61,11 @@
 
     <section class="section game-stats-chart">
         <div class="main-content">
-            <h3>C&amp;C Stats - Last 7 Days - Players Online</h3>
+            <h3>C&amp;C Stats - Players Online</h3>
+
             <canvas id="chart"></canvas>
         </div>
     </section>
-
 @endsection
 
 @section('scripts')
@@ -73,36 +73,38 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <script>
         const ctx = document.getElementById('chart').getContext('2d');
+        const datasets = [
+            <?php foreach ($graphData as $gameAbbrev => $data) : ?> {
+                label: "<?php echo $data['label']; ?>",
+                data: [
+                    <?php foreach ($data["data"] as $d) : ?> {
+                        t: moment.utc("<?php echo $d['t']; ?>"),
+                        y: <?php echo $d['y']; ?>
+                    },
+                    <?php endforeach; ?>
+                ],
+                backgroundColor: '<?php echo $data['backgroundColor']; ?>',
+                borderColor: '<?php echo $data['borderColor']; ?>',
+                borderWidth: 3
+            },
+            <?php endforeach; ?>
+        ];
+
         const myLineChart = new Chart(ctx, {
             type: 'line',
             data: {
-                datasets: [
-                    <?php foreach ($graphData as $gameAbbrev => $data) : ?> {
-                        label: "<?php echo $data['label']; ?>",
-                        data: [
-                            <?php foreach ($data["data"] as $d) : ?> {
-                                t: moment.utc("<?php echo $d['t']; ?>"),
-                                y: <?php echo $d['y']; ?>
-                            },
-                            <?php endforeach; ?>
-                        ],
-                        backgroundColor: '<?php echo $data['backgroundColor']; ?>',
-                        borderColor: '<?php echo $data['borderColor']; ?>',
-                        borderWidth: 3
-                    },
-                    <?php endforeach; ?>
-                ]
+                datasets: datasets
             },
             options: {
                 scales: {
                     xAxes: [{
                         type: 'time',
                         time: {
-                            unit: 'hour'
+                            unit: 'day'
                         },
                         scaleLabel: {
                             display: true,
-                            labelString: 'Last 24 hours',
+                            labelString: '',
                             fontSize: 16,
                             fontStyle: "bold"
                         }
