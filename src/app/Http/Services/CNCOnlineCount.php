@@ -178,7 +178,7 @@ class CNCOnlineCount
             {
                 continue;
             }
-            $chartJsFormat[$abbrev]["data"] = $this->createChartJsFormat($dataSet);
+            $chartJsFormat[$abbrev]["data"] = $this->createChartJsFormat($dataSet, 60);
             $chartJsFormat[$abbrev]["label"] = $this->getNameByAbbrev($abbrev);
             $chartJsFormat[$abbrev]["backgroundColor"] = $this->getColourByAbbrev($abbrev);
             $chartJsFormat[$abbrev]["borderColor"] = $this->getBorderColorByAbbrev($abbrev);
@@ -202,17 +202,51 @@ class CNCOnlineCount
         return Constants::getGameFromOnlineAbbreviation($gameAbbrev)["graph_border_color"];
     }
 
-    private function createChartJsFormat($arr)
+    /**
+     * 
+     * @param mixed $arr 
+     * @param int $timeGapMinutes - Value in which to have a gap between each dataset 
+     * @return array 
+     */
+    private function createChartJsFormat($arr, $timeGapMinutes = 60)
     {
         $newResult = [];
+        $prevCarbon = null;
+
         foreach ($arr as $obj)
         {
-            $newResult[] =
-                [
-                    "t" => $obj[0],
-                    "y" => $obj[1],
-                ];
+            $currentCarbonTime = $obj[0]; // Assuming 't' is the key for Carbon object
+            $currentValue = $obj[1];
+
+            if ($prevCarbon === null)
+            {
+                $prevCarbon = $currentCarbonTime;
+            }
+            else
+            {
+                // Calculate the time difference in minutes
+                $timeDiffMinutes = $currentCarbonTime->diffInMinutes($prevCarbon);
+
+                // If the time difference is at least 1 hr
+                if ($timeDiffMinutes >= $timeGapMinutes)
+                {
+                    $newResult[] = [
+                        "t" => $currentCarbonTime,
+                        "y" => $currentValue,
+                    ];
+
+                    // Update the previous carbon timestamp
+                    $prevCarbon = $currentCarbonTime;
+                }
+            }
+
+            // Update the previous carbon timestamp if it's null
+            if ($prevCarbon === null)
+            {
+                $prevCarbon = $currentCarbonTime;
+            }
         }
+
         return $newResult;
     }
 }

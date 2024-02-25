@@ -75,6 +75,19 @@ class GameStatGraph extends Model
             ->get();
     }
 
+    public static function getLast5Years()
+    {
+        return GameStatGraph::whereBetween(
+            "created_at",
+            array(
+                Carbon::now()->subYears(5)->toDateTimeString(),
+                Carbon::now()->toDateTimeString()
+            )
+        )
+            ->orderBy("created_at", "DESC")
+            ->get();
+    }
+
     public function getOnlineCount()
     {
         return $this->players_online;

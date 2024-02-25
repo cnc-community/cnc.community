@@ -30,6 +30,9 @@
     <meta property="fb:pages" content="100994338349629" />
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;500;700&display=swap" rel="stylesheet">
     <meta name="google-site-verification" content="xrCaa-F6MyCOiXD6KvugZJtt80qKj8uPbmoU74lxAPE" />
+
+    @yield('head')
+
     <link rel="stylesheet" href="/assets/css/app.css?v=5.1" />
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon/favicon-32x32.png">
@@ -58,6 +61,7 @@
         })(window, document, 'script', 'dataLayer', 'GTM-NJLJRXT');
     </script>
     <!-- End Google Tag Manager -->
+
 </head>
 
 <body>
@@ -76,8 +80,7 @@
                             </a>
                         </div>
 
-                        <button id="mobileMenuToggle" class="navburger navburger--elastic" type="button"
-                            title="Mobile Menu">
+                        <button id="mobileMenuToggle" class="navburger navburger--elastic" type="button" title="Mobile Menu">
                             <span class="navburger-box">
                                 <span class="navburger-inner"></span>
                             </span>
@@ -117,16 +120,15 @@
                     </div>
 
                     <div class="social-links" style="margin-top: 20px; margin-bottom: 20px;">
-                        <a href="https://www.facebook.com/groups/commandandconquer" title="C&C Facebook Group"
-                            rel="nofollow noreferrer" target="_blank"><i class="icon-facebook"></i></a>
-                        <a href="https://twitter.com/cnccomofficial" title="C&C Community Twitter"
-                            rel="nofollow noreferrer" target="_blank"><i class="icon-twitter"></i></a>
-                        <a href="https://discord.gg/zktcZQY" title="C&C Discord" rel="nofollow noreferrer"
-                            target="_blank"><i class="icon-discord"></i></a>
-                        <a href="https://store.steampowered.com/franchise/CandC" title="C&C Steam"
-                            rel="nofollow noreferrer" target="_blank"><i class="icon-steam"></i></a>
-                        <a href="https://www.reddit.com/r/commandandconquer" title="C&C Reddit"
-                            rel="nofollow noreferrer" target="_blank"><i class="icon-reddit"></i></a>
+                        <a href="https://www.facebook.com/groups/commandandconquer" title="C&C Facebook Group" rel="nofollow noreferrer" target="_blank"><i
+                                class="icon-facebook"></i></a>
+                        <a href="https://twitter.com/cnccomofficial" title="C&C Community Twitter" rel="nofollow noreferrer" target="_blank"><i
+                                class="icon-twitter"></i></a>
+                        <a href="https://discord.gg/zktcZQY" title="C&C Discord" rel="nofollow noreferrer" target="_blank"><i class="icon-discord"></i></a>
+                        <a href="https://store.steampowered.com/franchise/CandC" title="C&C Steam" rel="nofollow noreferrer" target="_blank"><i
+                                class="icon-steam"></i></a>
+                        <a href="https://www.reddit.com/r/commandandconquer" title="C&C Reddit" rel="nofollow noreferrer" target="_blank"><i
+                                class="icon-reddit"></i></a>
                     </div>
 
                     <div class="copyright-notice text-uppercase">

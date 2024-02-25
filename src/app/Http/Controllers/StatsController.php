@@ -35,15 +35,33 @@ class StatsController extends Controller
         $standalone =  $this->cncOnlineCount->getStandaloneCounts();
         $filteredGameAbbreviations  = Constants::getGameAbbreviations();
 
-        if ($request->filteredGames)
-        {
-            $filteredGameAbbreviations = explode(",", $request->filteredGames);
-        }
-
         $graphData = $this->cncOnlineCount->createGraph(
-            GameStatGraph::getLast7Days(),
+            GameStatGraph::getLast5Years(),
             $filteredGameAbbreviations
         );
+
+        $selectedLabels = explode(",", $request->filteredGames) ?? [];
+        $officialGamesUrlOnly = "filteredGames=";
+        foreach ($games as $game)
+        {
+            $gameByAbbreviation = Constants::getGameFromOnlineAbbreviation($game->abbrev);
+            $officialGamesUrlOnly .= urlencode($gameByAbbreviation["name"] . ',');
+        }
+
+        $modGamesUrlOnly = "filteredGames=";
+        foreach ($mods as $game)
+        {
+            $gameByAbbreviation = Constants::getGameFromOnlineAbbreviation($game->abbrev);
+            $modGamesUrlOnly .= urlencode($gameByAbbreviation["name"] . ',');
+        }
+
+        $standaloneUrlOnly = "filteredGames=";
+        foreach ($standalone as $game)
+        {
+            $gameByAbbreviation = Constants::getGameFromOnlineAbbreviation($game->abbrev);
+            $standaloneUrlOnly .= urlencode($gameByAbbreviation["name"] . ',');
+        }
+
 
         return view(
             'pages.stats',
@@ -51,7 +69,11 @@ class StatsController extends Controller
                 "games" => $games,
                 "mods" => $mods,
                 "standalone" => $standalone,
-                "graphData" => $graphData
+                "graphData" => $graphData,
+                "selectedLabels" => $selectedLabels,
+                "officialGamesUrlOnly" => $officialGamesUrlOnly,
+                "modGamesUrlOnly" => $modGamesUrlOnly,
+                "standaloneUrlOnly" => $standaloneUrlOnly
             ]
         );
     }

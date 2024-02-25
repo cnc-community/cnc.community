@@ -1,26 +1,22 @@
-
 //
 // Form and related styles
 // These are not be customised to style components.
 // If a component needs to extend this, override it in a specific component file.
 
-.form-group
-{
+.form-group {
     @extend .font-primary;
     padding: 10px 0;
 }
 
 .form-group label,
 .form-group input,
-.form-group textarea
-{
+.form-group textarea {
     @extend .font-primary;
     border-radius: 4px;
     border: 2px solid transparent;
 }
 
-.form-group label
-{
+.form-group label {
     margin: 5px 0;
     padding: 5px 0;
     display: block;
@@ -28,58 +24,49 @@
     font-weight: 600;
 }
 
-.form-group .form-input
-{
+.form-group .form-input {
     padding: 25px;
     border: 1px solid transparent;
 }
 
-.form-group .form-input:focus
-{
+.form-group .form-input:focus {
     border: 1px solid #9d5007;
     outline: 0;
 }
 
-.form-group input
-{
+.form-group input {
     width: 100%;
     padding: 10px;
     height: 20px;
 }
 
-.form-group .form-input
-{
+.form-group .form-input {
     border: 1px solid #e6e6e6;
 }
 
-.form-group.form-inline 
-{
+.form-group.form-inline {
     display: flex;
 }
 
-.form-group select
-{
+.form-group select {
     width: 100%;
     padding: 5px;
 }
 
-.radio
-{
+.radio {
     display: block;
     position: relative;
     cursor: pointer;
     user-select: none;
 }
 
-.radio input
-{
+.radio input {
     position: absolute;
     display: none;
     cursor: pointer;
 }
 
-.radio .checkmark
-{
+.radio .checkmark {
     position: absolute;
     left: 0;
     top: 0;
@@ -94,13 +81,11 @@
     justify-content: center;
 }
 
-.radio input:checked ~ .checkmark
-{
+.radio input:checked ~ .checkmark {
     background-color: transparent;
 }
 
-.radio input:checked ~ .checkmark:before
-{
+.radio input:checked ~ .checkmark:before {
     content: "";
     width: 10px;
     height: 10px;
@@ -108,28 +93,113 @@
     border-radius: 100%;
 }
 
-.form-group .radio
-{
+.form-group .radio {
     padding-top: 5px;
     padding-left: 35px;
     padding-bottom: 10px;
 }
 
-.radio input
-{
+.radio input {
     position: absolute;
     display: none;
     cursor: pointer;
 }
 
-.radio .title
-{
+.radio .title {
     display: block;
     padding-bottom: 5px;
 }
 
-.radio small
-{
+.radio small {
     display: block;
     font-size: 14px;
+}
+
+.ts-control,
+.ts-wrapper.single.input-active .ts-control {
+    background: #0d0b06;
+    cursor: text;
+    border-color: #232323;
+}
+
+.ts-wrapper.multi .ts-control > div {
+    background: #212121;
+    display: flex;
+    align-items: center;
+}
+
+.ts-dropdown {
+    display: flex;
+    align-items: center;
+    background: #101010;
+    padding: 0.5rem;
+    border-color: transparent;
+}
+
+.ts-control > input {
+    height: 40px;
+    font-size: 1rem;
+}
+
+.ts-dropdown .active {
+    border: none;
+    background: transparent;
+    opacity: 0.9;
+}
+
+.ts-dropdown .optgroup-header {
+    border: none;
+    color: #a5a5a5;
+    background: #0a0a0a;
+    cursor: default;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    padding: 1rem;
+    text-align: center;
+}
+
+.ts-dropdown,
+.ts-control,
+.ts-control input {
+    color: #fff;
+}
+
+.ts-wrapper.multi .ts-control > div.active {
+    background: #272727;
+    color: #303030;
+    border: 1px solid #c79c00;
+}
+
+.ts-wrapper .optgroup {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+    background: #101010;
+}
+
+.ts-wrapper .optgroup-header {
+    width: 100%;
+}
+
+.ts-dropdown [data-selectable].option {
+    opacity: 1;
+    cursor: pointer;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    border-radius: 4px;
+    margin: 0.2rem;
+    padding: 1rem;
+
+    &:hover {
+        background: #1a1a1a;
+    }
+}
+
+.ts-dropdown-content {
+    max-height: 400px;
 }
