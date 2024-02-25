@@ -205,10 +205,11 @@
             dateFormat: "Y-m-d",
             minDate: "2024-02-23",
             maxDate: new Date().toISOString().split('T')[0],
-            onChange: function(selectedDates, dateStr, instance) {
+            onChange: function(selectedDates, dateStr, instanc) {
                 updateTimeScale(selectedDates[0], new Date());
             }
         });
+
 
         // Define the updateTimeScale function to update the time scale of the chart
         function updateTimeScale(minDate, maxDate) {
@@ -219,7 +220,6 @@
 
         // Function to filter datasets based on selected labels
         function filterDatasetsByLabels(labels) {
-            console.log("Datasets", datasets);
             return datasets.filter(dataset => labels.includes(dataset.label));
         }
 
@@ -299,6 +299,13 @@
         function getStartDateFromURL() {
             const params = new URLSearchParams(window.location.search);
             return params.get('startDate');
+        }
+
+        // Function to get all labels
+        function getAllLabels() {
+            const allLabels = [];
+            datasets.forEach(dataset => allLabels.push(dataset.label));
+            return allLabels;
         }
 
         // Initialize chart with selected labels and start date from URL parameters
