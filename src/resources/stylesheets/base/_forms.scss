@@ -203,3 +203,11 @@
 .ts-dropdown-content {
     max-height: 400px;
 }
+
+.ts-wrapper.plugin-remove_button:not(.rtl) .item .remove {
+    border-left: 1px solid #474747;
+    margin-left: 6px;
+    color: white;
+    font-weight: bold;
+    font-size: 1rem;
+}

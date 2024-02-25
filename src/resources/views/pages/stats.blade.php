@@ -240,6 +240,11 @@
             maxItems: 200,
             maxOptions: 200,
             persist: true,
+            plugins: {
+                remove_button: {
+                    title: 'Remove this item',
+                }
+            },
             render: {
                 option: function(data, escape) {
                     return `<div><img class="me-2" src="${data.src}" style="width:100px;"></div>`;
