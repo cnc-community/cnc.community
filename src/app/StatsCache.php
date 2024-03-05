@@ -31,11 +31,6 @@ class StatsCache extends Model
     public static function getCache($key)
     {
         $cacheEntry = StatsCache::where('key', $key)
-            ->where(function ($query)
-            {
-                $query->where('expires_at', '>', Carbon::now())
-                    ->orWhereNull('expires_at');
-            })
             ->first();
 
         if ($cacheEntry)
