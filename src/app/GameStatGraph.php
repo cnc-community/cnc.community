@@ -11,6 +11,8 @@ class GameStatGraph extends Model
 {
     protected $table = 'game_stats_graph';
 
+    public const GAME_STAT_GRAPH_CACHE_5_YEARS = "GAME_STAT_GRAPH_CACHE_5_YEARS";
+
     public static function createStat($gameStatId, $playersOnline)
     {
         // Always ensure we only keep the data we want

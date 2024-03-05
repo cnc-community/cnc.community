@@ -47,7 +47,7 @@ class StatsController extends Controller
         $games = $this->cncOnlineCount->getGameCounts();
         $mods = $this->cncOnlineCount->getModCounts();
         $standalone =  $this->cncOnlineCount->getStandaloneCounts();
-        $graphData = StatsCache::getCache(GameStatGraph::GAME_STAT_GRAPH_CACHE_5_YEARS);
+        $graphData = StatsCache::getCache(GameStatGraph::GAME_STAT_GRAPH_CACHE_5_YEARS) ?? [];
 
         $selectedLabels = explode(",", $request->filteredGames) ?? [];
         $officialGamesUrlOnly = "filteredGames=";
