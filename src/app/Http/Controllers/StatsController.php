@@ -6,6 +6,7 @@ use App\Constants;
 use App\GameStat;
 use App\GameStatGraph;
 use App\Http\Services\CNCOnlineCount;
+use App\StatsCache;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
@@ -23,6 +24,19 @@ class StatsController extends Controller
     }
 
     // Cron task only
+    public function runCacheTask()
+    {
+        $data = GameStatGraph::getLast5Years();
+        $filteredGameAbbreviations  = Constants::getGameAbbreviations();
+        $graphData = $this->cncOnlineCount->createGraph(
+            $data,
+            $filteredGameAbbreviations
+        );
+
+        StatsCache::saveCache(GameStatGraph::GAME_STAT_GRAPH_CACHE_5_YEARS, $graphData, 20); // 20 minutes
+    }
+
+    // Cron task only
     public function runTask()
     {
         return $this->cncOnlineCount->runCountTasks();
@@ -33,12 +47,7 @@ class StatsController extends Controller
         $games = $this->cncOnlineCount->getGameCounts();
         $mods = $this->cncOnlineCount->getModCounts();
         $standalone =  $this->cncOnlineCount->getStandaloneCounts();
-        $filteredGameAbbreviations  = Constants::getGameAbbreviations();
-
-        $graphData = $this->cncOnlineCount->createGraph(
-            GameStatGraph::getLast5Years(),
-            $filteredGameAbbreviations
-        );
+        $graphData = StatsCache::getCache(GameStatGraph::GAME_STAT_GRAPH_CACHE_5_YEARS);
 
         $selectedLabels = explode(",", $request->filteredGames) ?? [];
         $officialGamesUrlOnly = "filteredGames=";
