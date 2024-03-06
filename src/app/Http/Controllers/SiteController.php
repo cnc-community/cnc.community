@@ -37,14 +37,15 @@ class SiteController extends Controller
     {
         $key = "cache_";
 
-        $officialNewsCache = Cache::remember($key."home.index.officialNews", Constants::getCacheSeconds(), function () 
+        $officialNewsCache = Cache::remember($key . "home.index.officialNews", Constants::getCacheSeconds(), function ()
         {
             return News::officialNewsPaginated(9);
         });
 
         $workShopItems = $this->steamHelper->getTopWorkShopItems(Constants::remastersAppId(), 8);
 
-        return view('home.index', 
+        return view(
+            'home.index',
             [
                 "officialNews" => $officialNewsCache,
                 "workShopItems" => $workShopItems
@@ -59,19 +60,19 @@ class SiteController extends Controller
     {
         $key = "cache_";
 
-        $categoryCache = Cache::remember($key.$categorySlug."news.listing.category", Constants::getCacheSeconds(), function () use ($categorySlug)
+        $categoryCache = Cache::remember($key . $categorySlug . "news.listing.category", Constants::getCacheSeconds(), function () use ($categorySlug)
         {
             return Category::where("slug", $categorySlug)->first();
         });
         if ($categoryCache == null) abort(404);
 
 
-        $pageCategoryCache = Cache::remember($key.$categorySlug."news.listing.pageCategory", Constants::getCacheSeconds(), function () use ($categoryCache)
+        $pageCategoryCache = Cache::remember($key . $categorySlug . "news.listing.pageCategory", Constants::getCacheSeconds(), function () use ($categoryCache)
         {
             return PageCategory::where("news_category_id", $categoryCache->id)->first();
-        });        
-        
-        $newsByCategoryCache = Cache::remember($key.$categorySlug."news.listing.newsByCategory", Constants::getCacheSeconds(), function () use ($categoryCache)
+        });
+
+        $newsByCategoryCache = Cache::remember($key . $categorySlug . "news.listing.newsByCategory", Constants::getCacheSeconds(), function () use ($categoryCache)
         {
             return News::newsPaginatedByCategory($categoryCache->id);
         });
@@ -86,7 +87,7 @@ class SiteController extends Controller
 
         $newsItem = News::where("url", $newsSlug)->where("category_id", $category->id)->first();
         if ($newsItem == null) abort(404);
-        
+
         return view('news.detail', ["newsItem" => $newsItem]);
     }
 
@@ -95,12 +96,12 @@ class SiteController extends Controller
         $key = "cache_";
         $pageNumber = $request->page;
 
-        $categoryCache = Cache::remember($key."categoryCache.funny.listing.showFunnyListings", Constants::getCacheSeconds(), function ()
+        $categoryCache = Cache::remember($key . "categoryCache.funny.listing.showFunnyListings", Constants::getCacheSeconds(), function ()
         {
             return Category::where("name", Category::CATEGORY_FUNNY)->first();
         });
 
-        $funnyCategoryCache = Cache::remember($key."funnyCategoryCache.funny.listing.showFunnyListings".$pageNumber, Constants::getCacheSeconds(), function () use ($categoryCache)
+        $funnyCategoryCache = Cache::remember($key . "funnyCategoryCache.funny.listing.showFunnyListings" . $pageNumber, Constants::getCacheSeconds(), function () use ($categoryCache)
         {
             return News::newsPaginatedByCategory($categoryCache->id, 21);
         });
@@ -113,12 +114,17 @@ class SiteController extends Controller
         return view('pages.donate');
     }
 
+    public function showTUCPage()
+    {
+        return view('pages.tuc');
+    }
+
     public function showCreatorsListings(Request $request)
-    {   
+    {
         $streams = [];
         $videos = [];
         $gameName = "";
-        
+
         if ($request->gameName == null)
         {
             $streams = $this->twitchHelper->getStreamsByTwitchGames();
@@ -134,7 +140,7 @@ class SiteController extends Controller
         $streamsPaginated->withPath('/creators');
 
         return view('pages.creators.listing', [
-            "streams" => $streamsPaginated, 
+            "streams" => $streamsPaginated,
             "videos" => $videos,
             "gameFullName" => Constants::getTwitchGameBySlug($request->gameName),
             "gameName" => $gameName
@@ -164,25 +170,28 @@ class SiteController extends Controller
             ],
             5
         );
-   
+
         $streams = $this->twitchHelper->getTopTwitchStreamsBySlug("remasters", 8);
 
-        $categoryCache = Cache::remember($key."pages.remasters.listing.categoryCache", Constants::getCacheSeconds(), function ()
+        $categoryCache = Cache::remember($key . "pages.remasters.listing.categoryCache", Constants::getCacheSeconds(), function ()
         {
             return Category::where("name", Category::CATEGORY_REMASTERS)->first();
         });
 
-        $newsByCategoryCache = Cache::remember($key."pages.remasters.listing.showRemastersListings", 
-            Constants::getCacheSeconds(), function () use ($categoryCache)
-        {
-            return News::newsPaginatedByCategory($categoryCache->id, 6);
-        });
+        $newsByCategoryCache = Cache::remember(
+            $key . "pages.remasters.listing.showRemastersListings",
+            Constants::getCacheSeconds(),
+            function () use ($categoryCache)
+            {
+                return News::newsPaginatedByCategory($categoryCache->id, 6);
+            }
+        );
 
         $heroVideo = Constants::getVideoWithPoster("command-and-conquer-remastered");
 
         return view('pages.remasters.listing', [
-            "raWorkShopItems" => $raWorkShopItems, 
-            "tdWorkShopItems" => $tdWorkShopItems, 
+            "raWorkShopItems" => $raWorkShopItems,
+            "tdWorkShopItems" => $tdWorkShopItems,
             "news" => $newsByCategoryCache,
             "streams" => $streams,
             "heroVideo" => $heroVideo
@@ -193,10 +202,10 @@ class SiteController extends Controller
     {
         $heroVideo = Constants::getVideoWithPoster("command-and-conquer-remastered");
 
-        $topRedAlertMaps = $this->steamHelper->getTopWorkShopItemsByTagName("topRedAlertMaps", Constants::remastersAppId(), SteamHelper::RedAlertMap(), 20 );
-        $topTiberianDawnMaps = $this->steamHelper->getTopWorkShopItemsByTagName("topTiberianDawnMaps", Constants::remastersAppId(), SteamHelper::TiberianDawnMap(), 20 );
-        $topTDMods = $this->steamHelper->getTopWorkShopItemsByTagName("topTDMods",Constants::remastersAppId(), SteamHelper::TiberianDawnMod(), 20 );
-        $topRAMods = $this->steamHelper->getTopWorkShopItemsByTagName("topRAMods",Constants::remastersAppId(), SteamHelper::RedAlertMod(), 20 );
+        $topRedAlertMaps = $this->steamHelper->getTopWorkShopItemsByTagName("topRedAlertMaps", Constants::remastersAppId(), SteamHelper::RedAlertMap(), 20);
+        $topTiberianDawnMaps = $this->steamHelper->getTopWorkShopItemsByTagName("topTiberianDawnMaps", Constants::remastersAppId(), SteamHelper::TiberianDawnMap(), 20);
+        $topTDMods = $this->steamHelper->getTopWorkShopItemsByTagName("topTDMods", Constants::remastersAppId(), SteamHelper::TiberianDawnMod(), 20);
+        $topRAMods = $this->steamHelper->getTopWorkShopItemsByTagName("topRAMods", Constants::remastersAppId(), SteamHelper::RedAlertMod(), 20);
 
         return view('pages.remasters.workshop.listings', [
             "heroVideo" => $heroVideo,
@@ -215,22 +224,22 @@ class SiteController extends Controller
     {
         $key = "cache_" . $categorySlug;
 
-        $categoryCache = Cache::remember($key."category", Constants::getCacheSeconds(), function () use ($categorySlug) 
+        $categoryCache = Cache::remember($key . "category", Constants::getCacheSeconds(), function () use ($categorySlug)
         {
             return PageCategory::categoryBySlug($categorySlug);
         });
-        
+
         if ($categoryCache == null)
         {
             abort(404);
         }
-        
-        $pagesCache = Cache::remember($key."pages", Constants::getCacheSeconds(), function ()  use ($categoryCache) 
+
+        $pagesCache = Cache::remember($key . "pages", Constants::getCacheSeconds(), function ()  use ($categoryCache)
         {
             return Page::getPagesByCategory($categoryCache->id);
         });
 
-        $newsByCategoryCache = Cache::remember($key."home.index.communityNews", Constants::getCacheSeconds(), function () use($categoryCache)
+        $newsByCategoryCache = Cache::remember($key . "home.index.communityNews", Constants::getCacheSeconds(), function () use ($categoryCache)
         {
             return News::newsByCategoryId($categoryCache->news_category_id);
         });
@@ -239,14 +248,14 @@ class SiteController extends Controller
         $videos = $this->twitchHelper->getTwitchVideosBySlug($categorySlug);
 
         $template = $categoryCache->bladeTemplate();
-        $template == null ? "pages.category": $template;
-        
+        $template == null ? "pages.category" : $template;
+
         $heroVideo = Constants::getVideoWithPoster($categorySlug);
-        
+
         return view($template, [
             "heroVideo" => $heroVideo,
-            "pages" => $pagesCache, 
-            "category" => $categoryCache, 
+            "pages" => $pagesCache,
+            "category" => $categoryCache,
             "news" => $newsByCategoryCache,
             "streams" => $streams,
             "videos" => $videos
@@ -259,15 +268,15 @@ class SiteController extends Controller
     public function showPageBySlug($slugCategory, $slug)
     {
         $key = "cache_" . $slugCategory . "_" . $slug;
-        
+
         $heroVideo = Constants::getVideoWithPoster($slugCategory);
-        $pageCache = Cache::remember($key, Constants::getCacheSeconds(), function ()  use ($slugCategory, $slug) 
+        $pageCache = Cache::remember($key, Constants::getCacheSeconds(), function ()  use ($slugCategory, $slug)
         {
             return Page::checkPageExistsWithSlugs($slugCategory, $slug);
         });
 
         if ($pageCache == null) abort(404);
-        
+
         if ($pageCache->bladeTemplate() == null)
         {
             return view('pages.detail', array("page" => $pageCache));

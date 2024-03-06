@@ -20,12 +20,12 @@
                     <a class="btn btn-secondary btn-icon" href="#games" title="How to play">
                         How to play <i class="icon-right"></i>
                     </a>
+                    <a class="btn btn-outline btn-icon" title="Buy on Steam" rel="nofollow" href="https://store.steampowered.com/agecheck/app/1213210/">
+                        Buy on Steam <i class="icon-steam"></i>
+                    </a>
                     <a class="btn btn-outline btn-icon" title="Buy on EA Origin" rel="nofollow"
                         href="https://www.origin.com/gbr/en-us/store/command-and-conquer/command-and-conquer-remastered">
                         Buy on EA App <i class="icon-ea"></i>
-                    </a>
-                    <a class="btn btn-outline btn-icon" title="Buy on Steam" rel="nofollow" href="https://store.steampowered.com/agecheck/app/1213210/">
-                        Buy on Steam <i class="icon-steam"></i>
                     </a>
                 </div>
             </div>
