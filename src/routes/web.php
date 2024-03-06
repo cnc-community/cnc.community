@@ -86,6 +86,7 @@ Route::get('/', 'SiteController@index')->name('home')->middleware('cache.headers
 Route::get('/funny', 'SiteController@showFunnyListings')->name('pages.funny.listing')->middleware('cache.headers:public;max_age=3600');
 Route::get('/donate', 'SiteController@showDonate')->name('pages.donate')->middleware('cache.headers:public;max_age=14400');
 Route::get('/stats', 'StatsController@showStats')->name('pages.stats')->middleware('cache.headers:public;max_age=400');
+Route::get('/cnc-ultimate-collection-steam', 'StatsController@showStats')->name('pages.stats')->middleware('cache.headers:public;max_age=400');
 
 Route::get('/cnc-streamers', 'SiteController@showCreatorsListings')->name('pages.creators.listing')->middleware('cache.headers:public;max_age=1800');
 Route::get('/creators', function ()
