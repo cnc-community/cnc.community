@@ -33,7 +33,40 @@
         </div>
     </section>
 
-    <section id="leaderboards" class="section section-black-alt leaderboard-introduction">
+    <section id="buy" class="section section-grey-alt section-buy">
+        <div class="main-content center">
+            <div class="feature-box">
+                <div class="feature-text">
+                    <h1 class="section-title">
+                        <span class="light">Now On Steam!</span> <br> C&amp;C Ultimate Collection
+                    </h1>
+                    <p class="section-description">Command and Conquer™ The Ultimate Collection now out on Steam. Enjoy limitless hours of RTS Command &amp; Conquer
+                        gaming with 10 base games and 7 in-depth expansion packs.
+                    </p>
+                    <div class="buttons">
+                        <a class="btn btn-secondary btn-icon" title="Buy on EA Origin" rel="nofollow"
+                            href="https://www.origin.com/gbr/en-us/store/command-and-conquer/command-and-conquer-remastered">
+                            How To Play
+                            <i class="icon-origin" style="width: 0;opacity: 0;padding: 0;"></i>
+                        </a>
+                        <a class="btn btn-outline btn-icon" title="Buy on Steam" rel="nofollow" href="#">
+                            Buy on Steam
+                            <i class="icon-steam"></i>
+                        </a>
+                        <a class="btn btn-outline btn-icon" title="Buy on EA Origin" rel="nofollow"
+                            href="https://www.origin.com/gbr/en-us/store/command-and-conquer/command-and-conquer-remastered">Buy on EA App
+                            <i class="icon-origin"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="feature-banner" style="text-align:center;">
+                    <img src="/assets/images/tuc/tuc-logo.png" alt="C&C Ultimate Collection Logo" style="max-width:100%" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {{-- <section id="leaderboards" class="section section-black-alt leaderboard-introduction">
         <div class="main-content center">
             <div class="feature-box">
                 <div class="col-50 feature-text">
@@ -53,7 +86,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
 
     <section class="section section-black news-listings">
         <div class="main-content">
@@ -82,8 +115,7 @@
                         video content, streams and compatibility patches for moderns operating systems.
                     </p>
                     <div class="buttons">
-                        <a class="btn btn-primary" title="What is C&C Community?"
-                            href="/news/official-news/our-mission">Read more</a>
+                        <a class="btn btn-primary" title="What is C&C Community?" href="/news/official-news/our-mission">Read more</a>
                     </div>
                 </div>
 
