@@ -30,7 +30,7 @@ class GameStat extends Model
         return GameStat::where("type", $type)->orderBy("order", "ASC")->get();
     }
 
-    public static function createOrUpdateStat($abbrev, $playersOnline, $type, $order)
+    public static function createOrUpdateStat($abbrev, $playersOnline, $type, $order, $steamInGameCount = 0)
     {
         $gameStat = GameStat::where("abbrev", $abbrev)->first();
         if ($gameStat == null)
@@ -41,9 +41,14 @@ class GameStat extends Model
         $gameStat->players_online = $playersOnline;
         $gameStat->type = $type;
         $gameStat->order = $order;
+        $gameStat->steam_players_online = $steamInGameCount;
         $gameStat->save();
 
-        GameStatGraph::createStat($gameStat->id, $playersOnline);
+        GameStatGraph::createStat(
+            $gameStat->id,
+            $playersOnline,
+            $steamInGameCount
+        );
     }
 
     public function getOnlineCount()

@@ -9,6 +9,46 @@ class Constants
         return 1213210;
     }
 
+    public static function getSteamIDByAbbrev($abbrev): ?int
+    {
+        switch ($abbrev)
+        {
+            case "cncnet5_td":
+                return 2229830;
+
+            case "cncnet5_ra":
+                return 2229840;
+
+            case "cncnet5_ts":
+                return 2229880;
+
+            case "cncnet5_yr":
+                return 2229850;
+
+            case "ren":
+                return 2229890;
+
+            case "generals":
+                return 2229870;
+
+            case "generalszh":
+                return 2732960;
+
+            case "cnc3":
+                return 24790;
+
+            case "cnc3kw":
+                return 24810;
+
+            case "ra3":
+                return 17480;
+        }
+        return null;
+    }
+
+    // RA3 - 17480
+    // Uprising - 24800
+
     public static function getCacheSeconds()
     {
         return config('app.cache_period');

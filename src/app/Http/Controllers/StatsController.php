@@ -21,6 +21,8 @@ class StatsController extends Controller
         $this->cncOnlineCount = new CNCOnlineCount();
 
         View::share('totalOnline', $this->cncOnlineCount->getTotal());
+
+        $this->runTask();
     }
 
     // Cron task only
