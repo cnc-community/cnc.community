@@ -76,7 +76,7 @@
     </div>
 
     <div class="nav-item">
-        <a href="/ultimate-collection-steam" title="Where to buy the C&C Ultimate Collection" class="nav-link">Where to buy C&amp;C</a>
+        <a href="{{ route('pages.tuc') }}" title="Where to buy the C&C Ultimate Collection" class="nav-link">Where to buy C&amp;C</a>
     </div>
 
     <div class="nav-item">

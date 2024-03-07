@@ -17,14 +17,13 @@
                     Enjoy decades worth of Command & Conquer with 10 base games and 7 in-depth expansion packs.
                 </p>
                 <div class="buttons">
-                    <a class="btn btn-secondary btn-icon" href="#games" title="How to play">
+                    <a class="btn btn-secondary btn-icon" href="{{ route('pages.tuc') }}" title="How to play C&C Ultimate Collection">
                         How to play <i class="icon-right"></i>
                     </a>
-                    <a class="btn btn-outline btn-icon" title="Buy on Steam" rel="nofollow" href="https://store.steampowered.com/agecheck/app/1213210/">
+                    <a class="btn btn-outline btn-icon" title="Buy on Steam" rel="nofollow" href="{{ \App\Constants::getTUCSteamPageUrl() }}">
                         Buy on Steam <i class="icon-steam"></i>
                     </a>
-                    <a class="btn btn-outline btn-icon" title="Buy on EA Origin" rel="nofollow"
-                        href="https://www.origin.com/gbr/en-us/store/command-and-conquer/command-and-conquer-remastered">
+                    <a class="btn btn-outline btn-icon" title="Buy on EA Origin" rel="nofollow" href="{{ \App\Constants::getTUCEAPageUrl() }}">
                         Buy on EA App <i class="icon-ea"></i>
                     </a>
                 </div>

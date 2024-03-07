@@ -29,6 +29,16 @@ class Constants
         return config('app.steam_api_key');
     }
 
+    public static function getTUCSteamPageUrl()
+    {
+        return "#tuc-steam";
+    }
+
+    public static function getTUCEAPageUrl()
+    {
+        return "#tuc-ea";
+    }
+
     public static function getTwitchGames()
     {
         return

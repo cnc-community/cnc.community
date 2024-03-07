@@ -15,7 +15,7 @@
     </div>
 
     <div class="category">
-        <a href="/command-and-conquer-remastered#buy" title="Buy the Remastered Collection" class="nav-link">Where to buy C&amp;C Ultimate Collection</a>
+        <a href="{{ route('pages.tuc') }}" title="Buy the Remastered Collection" class="nav-link">Where to buy C&amp;C Ultimate Collection</a>
     </div>
 
     <div class="category">
