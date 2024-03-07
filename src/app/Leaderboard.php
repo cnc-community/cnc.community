@@ -26,6 +26,8 @@ class Leaderboard extends Model
     
     private static function getLeaderboard($matchType, $season)
     {
+        return null;
+
         $leaderboard = Leaderboard::where("matchtype", $matchType)->first();
         if ($leaderboard == null)
         {
@@ -140,6 +142,7 @@ class Leaderboard extends Model
 
     private static function matchesByTime($matchType, $historyId, $time)
     {
+        return -1;
         return Match::where("matchtype", $matchType)
             ->where("leaderboard_history_id", $historyId)
             ->where('starttime', '>=', $time)

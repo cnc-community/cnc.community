@@ -36,7 +36,7 @@ class Constants
 
     public static function getTUCEAPageUrl()
     {
-        return "https://www.ea.com/en-gb/games/command-and-conquer";
+        return "https://www.ea.com/en-gb/games/command-and-conquer/command-and-conquer-the-ultimate-collection/buy/pc";
     }
 
     public static function getTwitchGames()
