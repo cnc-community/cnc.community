@@ -31,12 +31,12 @@ class Constants
 
     public static function getTUCSteamPageUrl()
     {
-        return "#tuc-steam";
+        return "https://store.steampowered.com/bundle/39394/";
     }
 
     public static function getTUCEAPageUrl()
     {
-        return "#tuc-ea";
+        return "https://www.ea.com/en-gb/games/command-and-conquer";
     }
 
     public static function getTwitchGames()
