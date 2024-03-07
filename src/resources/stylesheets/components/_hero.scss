@@ -171,7 +171,7 @@
     font-weight: 600;
 }
 
-@media(min-width: $md-width)
+@media(min-width: $lg-width)
 {
     .hero h1 
     {
@@ -181,6 +181,19 @@
     .hero h3 
     {
         font-size: 1.8rem
+    }
+}
+
+@media(min-width: $md-width)
+{
+    .hero h1 
+    {
+        font-size: 3rem;
+    }
+
+    .hero h3 
+    {
+        font-size: 1.5rem
     }
 }
 

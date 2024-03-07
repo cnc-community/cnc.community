@@ -29,6 +29,16 @@ class Constants
         return config('app.steam_api_key');
     }
 
+    public static function getTUCSteamPageUrl()
+    {
+        return "https://store.steampowered.com/bundle/39394/";
+    }
+
+    public static function getTUCEAPageUrl()
+    {
+        return "https://www.ea.com/en-gb/games/command-and-conquer/command-and-conquer-the-ultimate-collection/buy/pc";
+    }
+
     public static function getTwitchGames()
     {
         return

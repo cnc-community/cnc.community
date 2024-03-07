@@ -80,6 +80,7 @@ class LeaderboardController extends Controller
      */
     public function getLeaderboardListingsByGame(Request $request, $gameSlug)
     {
+        return null;
         $pageNumber = filter_var($request->page == null ? 1: $request->page, FILTER_SANITIZE_STRING);
         $searchRequest = filter_var($request->search, FILTER_SANITIZE_STRING);
         $season = filter_var($request->season, FILTER_SANITIZE_STRING);
@@ -137,6 +138,7 @@ class LeaderboardController extends Controller
      */
     public function getPlayerLeaderboardProfile(Request $request, $gameSlug, $playerId)
     {
+        return null;
         $pageNumber = filter_var($request->page, FILTER_SANITIZE_STRING);
         $searchRequest = filter_var($request->search, FILTER_SANITIZE_STRING);
         $season = filter_var($request->season, FILTER_SANITIZE_STRING);

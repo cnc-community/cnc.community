@@ -5,7 +5,7 @@
             <i class="icon icon-dropdown"></i>
         </div>
 
-        <div class="nav-dropdown-contents nav-drop-col-1">
+        <div class="nav-dropdown-contents nav-drop-col-2">
             <div class="dropdown-container">
                 <div class="category">
                     <div class="title">
@@ -21,6 +21,24 @@
                     <a href="/red-alert-3" title="Red Alert 3">Red Alert 3</a>
                     <a href="/other-cnc-games" title="Other C&C games">Other C&amp;C Games</a>
                 </div>
+
+                <div class="category">
+                    <div class="title">
+                        <a href="/#games" title="Command & Conquer Games">C&amp;C Remastered</a>
+                    </div>
+                    <a href="/command-and-conquer-remastered#buy" title="Buy the Remastered Collection">Where to buy</a>
+                    <a href="/command-and-conquer-remastered#about" title="Petroglyph Games">Petroglyph</a>
+                    <a href="/command-and-conquer-remastered#news" title="C&C News">News</a>
+                    <a href="/command-and-conquer-remastered#streams" title="C&C Streams">Streams</a>
+                    <a href="/command-and-conquer-remastered/workshop-mods" title="Steam Workshop">Steam Workshop</a>
+                    <a href="/command-and-conquer-remastered#help" title="Help & Support">Help &amp; Support</a>
+
+                    <div class="title" style="margin-top:10px;">
+                        Leaderboard
+                    </div>
+                    <a href="/command-and-conquer-remastered/leaderboard/tiberian-dawn" title="Tiberian Dawn Leaderboard">Tiberian Dawn</a>
+                    <a href="/command-and-conquer-remastered/leaderboard/red-alert" title="Red Alert Leaderboard">Red Alert</a>
+                </div>
             </div>
         </div>
     </div>
@@ -31,7 +49,7 @@
             <i class="icon icon-dropdown"></i>
         </div>
 
-        <div class="nav-dropdown-contents nav-drop-col-1">
+        <div class="nav-dropdown-contents nav-drop-col-2">
             <div class="dropdown-container">
                 <div class="category">
                     <div class="title">
@@ -46,51 +64,29 @@
                     <a href="/command-and-conquer-3/how-to-play" title="Command & Conquer 3">C&amp;C3: Tiberium Wars</a>
                     <a href="/red-alert-3/how-to-play" title="Red Alert 3">Red Alert 3</a>
                 </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="nav-item">
-        <a href="/cnc-streamers" title="Watch C&C Livestreams" class="nav-link nav-creators-count">Watch <span
-                class="notification pop-in">LIVE</span></a>
-    </div>
-
-    <div class="nav-item nav-item-dropdown">
-        <div class="nav-link">
-            <a href="/command-and-conquer-remastered" title="Command & Conquer Remastered">C&amp;C Remastered</a>
-            <i class="icon icon-dropdown"></i>
-        </div>
-        <div class="nav-dropdown-contents nav-drop-col-2">
-            <div class="dropdown-container">
                 <div class="category">
                     <div class="title">
-                        <a href="/command-and-conquer-remastered" title="C&C Remastered Collection">C&amp;C
-                            Remastered</a>
+                        Where to Buy?
                     </div>
-                    <a href="/command-and-conquer-remastered#buy" title="Buy the Remastered Collection">Where to buy</a>
-                    <a href="/command-and-conquer-remastered#about" title="Petroglyph Games">Petroglyph</a>
-                    <a href="/command-and-conquer-remastered#news" title="C&C News">News</a>
-                    <a href="/command-and-conquer-remastered#streams" title="C&C Streams">Streams</a>
-                    <a href="/command-and-conquer-remastered/workshop-mods" title="Steam Workshop">Steam Workshop</a>
-                    <a href="/command-and-conquer-remastered#help" title="Help & Support">Help &amp; Support</a>
-                </div>
-                <div class="category">
-                    <div class="title">
-                        <a href="/command-and-conquer-remastered/leaderboard"
-                            title="C&C Remastered Collection">Leaderboards (1vs1)</a>
-                    </div>
-                    <a href="/command-and-conquer-remastered/leaderboard/tiberian-dawn"
-                        title="Tiberian Dawn Leaderboard">Tiberian Dawn</a>
-                    <a href="/command-and-conquer-remastered/leaderboard/red-alert" title="Red Alert Leaderboard">Red
-                        Alert</a>
+                    <a href="#" title="Steam">Buy on Steam</a>
+                    <a href="#" title="Steam">Buy on EA App</a>
                 </div>
             </div>
         </div>
     </div>
 
     <div class="nav-item">
-        <a href="/stats" title="C&C Online Stats" class="nav-link">Online <span
-                class="notification js-total-online"></span></a>
+        <a href="{{ route('pages.tuc') }}" title="Where to buy the C&C Ultimate Collection" class="nav-link">Where to buy C&amp;C</a>
+    </div>
+
+    <div class="nav-item">
+        <a href="/cnc-streamers" title="Watch C&C Livestreams" class="nav-link nav-creators-count">Watch <span class="notification pop-in">LIVE</span></a>
+    </div>
+
+
+
+    <div class="nav-item">
+        <a href="/stats" title="C&C Online Stats" class="nav-link">Online <span class="notification js-total-online"></span></a>
     </div>
 
     <div class="nav-item nav-item-hide-on-small">
@@ -111,16 +107,15 @@
                     <a href="/funny" title="Funny/Cool">Funny/Cool</a>
 
                     <div class="social-links" style="margin-top: 20px;">
-                        <a href="https://www.facebook.com/groups/commandandconquer" title="C&C Facebook Group"
-                            rel="nofollow noreferrer" target="_blank"><i class="icon-facebook"></i></a>
-                        <a href="https://twitter.com/cnccomofficial" title="C&C Community Twitter"
-                            rel="nofollow noreferrer" target="_blank"><i class="icon-twitter"></i></a>
-                        <a href="https://discord.gg/zktcZQY" title="C&C Discord" rel="nofollow noreferrer"
-                            target="_blank"><i class="icon-discord"></i></a>
-                        <a href="https://store.steampowered.com/franchise/CandC" title="C&C Steam"
-                            rel="nofollow noreferrer" target="_blank"><i class="icon-steam"></i></a>
-                        <a href="https://www.reddit.com/r/commandandconquer" title="C&C Reddit"
-                            rel="nofollow noreferrer" target="_blank"><i class="icon-reddit"></i></a>
+                        <a href="https://www.facebook.com/groups/commandandconquer" title="C&C Facebook Group" rel="nofollow noreferrer" target="_blank"><i
+                                class="icon-facebook"></i></a>
+                        <a href="https://twitter.com/cnccomofficial" title="C&C Community Twitter" rel="nofollow noreferrer" target="_blank"><i
+                                class="icon-twitter"></i></a>
+                        <a href="https://discord.gg/zktcZQY" title="C&C Discord" rel="nofollow noreferrer" target="_blank"><i class="icon-discord"></i></a>
+                        <a href="https://store.steampowered.com/franchise/CandC" title="C&C Steam" rel="nofollow noreferrer" target="_blank"><i
+                                class="icon-steam"></i></a>
+                        <a href="https://www.reddit.com/r/commandandconquer" title="C&C Reddit" rel="nofollow noreferrer" target="_blank"><i
+                                class="icon-reddit"></i></a>
                     </div>
                 </div>
             </div>
@@ -129,14 +124,10 @@
 </div>
 
 <div class="nav-item-hide-on-small social-links">
-    <a href="https://www.facebook.com/groups/commandandconquer" title="C&C Facebook Group" rel="nofollow noreferrer"
-        target="_blank"><i class="icon-facebook"></i></a>
-    <a href="https://twitter.com/cnccomofficial" title="C&C Community Twitter" rel="nofollow noreferrer"
-        target="_blank"><i class="icon-twitter"></i></a>
-    <a href="https://discord.gg/zktcZQY" title="C&C Discord" rel="nofollow noreferrer" target="_blank"><i
-            class="icon-discord"></i></a>
-    <a href="https://store.steampowered.com/franchise/CandC" title="C&C Steam" rel="nofollow noreferrer"
-        target="_blank"><i class="icon-steam"></i></a>
-    <a href="https://www.reddit.com/r/commandandconquer" title="C&C Reddit" rel="nofollow noreferrer"
-        target="_blank"><i class="icon-reddit"></i></a>
+    <a href="https://www.facebook.com/groups/commandandconquer" title="C&C Facebook Group" rel="nofollow noreferrer" target="_blank"><i
+            class="icon-facebook"></i></a>
+    <a href="https://twitter.com/cnccomofficial" title="C&C Community Twitter" rel="nofollow noreferrer" target="_blank"><i class="icon-twitter"></i></a>
+    <a href="https://discord.gg/zktcZQY" title="C&C Discord" rel="nofollow noreferrer" target="_blank"><i class="icon-discord"></i></a>
+    <a href="https://store.steampowered.com/franchise/CandC" title="C&C Steam" rel="nofollow noreferrer" target="_blank"><i class="icon-steam"></i></a>
+    <a href="https://www.reddit.com/r/commandandconquer" title="C&C Reddit" rel="nofollow noreferrer" target="_blank"><i class="icon-reddit"></i></a>
 </div>

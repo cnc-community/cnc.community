@@ -1,9 +1,17 @@
 
 //
 // Homepage Hero
+.page-homepage .hero
+{
+    background-image: url("../images/tuc/homepage-header.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
 .page-homepage .hero 
 {
-    background: url("../images/homepage-header-mobile.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -11,8 +19,9 @@
 
 .page-homepage .hero-content 
 {
-    padding-top: calc(20vh + 25px);
-    padding-bottom: calc(20vh + 80px);
+    padding-top: calc(15vh + 25px);
+    padding-bottom: calc(7vh + 80px);
+    max-width: 100%;
 }
 
 .page-homepage .hero-content .title
@@ -20,55 +29,128 @@
     margin-top: 25px;
 }
 
-.page-homepage .hero::before
+.page-homepage .hero .feature-image-text 
 {
-    content: "";
-    position: absolute;
-    background: #0000007a;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     width: 100%;
-    height: 100%;
+
+    @media(min-width: $lg-width)
+    {
+        flex-direction: row;
+    }
+}
+
+.page-homepage .hero .feature-image,
+.page-homepage .hero .feature-text
+{
+    width: 100%;
+
+    @media(min-width:$xl-width)
+    {
+        width: 50%;
+    }
+}
+
+
+.page-homepage .hero .feature-image
+{
+    @media(min-width: $lg-width)
+    {
+        width: 40%;
+    }
+}
+
+.page-homepage .hero .feature-text
+{
+    @media(min-width: $lg-width)
+    {
+        width: 60%;
+    }
+}
+
+@media(max-width: $lg-width)
+{
+    .page-homepage .hero .feature-text 
+    {
+        text-align: center;
+    }
+}
+
+.page-homepage .hero .feature-text,
+.page-homepage .hero .feature-image 
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 @media(min-width: $xl-width)
 {
-    .page-homepage .hero 
+    .page-homepage .hero .feature-text .content 
     {
-        background: url("../images/homepage-header.jpg");
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-    }
-
-    .page-homepage .hero::before
-    {
-        content: "";
-        position: absolute;
-        right: 0;
-        width: 100%;
-        height: 100%;
-        background: url("../images/ra-head-right.png");
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: right;
-    }
-
-    .page-homepage .hero::after
-    {
-        content: "";
-        position: absolute;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: url("../images/head-left.png");
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: left;
+        width: 710px;
+        margin-left: 0;
     }
 }
+
+.page-homepage .hero .feature-image 
+{
+    display: flex;
+    justify-content: center;
+    width: 350px;
+    max-width: 100%;
+    margin: auto;
+    
+    @media(min-width: $lg-width)
+    {
+        width: 550px;
+        max-width: 50%;
+        margin-left: auto;
+        align-items: flex-end;
+    }
+
+    @media(min-width: $xl-width)
+    {
+        width: 850px;
+        max-width: 50%;
+    }
+}
+
+.page-homepage .hero .buttons 
+{
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-evenly;
+    max-width: 100%;
+    
+    .btn-icon i { padding: 0;}
+    
+    @media(min-width: $lg-width)
+    {
+        flex-wrap: nowrap;
+        .btn:nth-child(1){ margin-left: 0;}
+    }
+
+    @media(min-width: $xl-width)
+    {
+        justify-content: flex-start;
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+.page-homepage .hero p
+{
+    font-size: 1.15rem;
+
+    @media(min-width: $lg-width)
+    {
+        font-size: 1.25rem;
+    }
+}
+
 
 
 // 
@@ -121,6 +203,12 @@
     padding: 36px 0;
     margin-top: 20px;
     margin-bottom: 20px;
+}
+
+.how-to-guides .section-description 
+{ 
+    width: 600px;
+    max-width: 100%;    
 }
 
 // .how-to-guides .guides .more-cnc-games
