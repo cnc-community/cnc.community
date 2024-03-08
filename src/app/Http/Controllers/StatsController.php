@@ -32,7 +32,6 @@ class StatsController extends Controller
             $data,
             $filteredGameAbbreviations
         );
-
         StatsCache::saveCache(GameStatGraph::GAME_STAT_GRAPH_CACHE_5_YEARS, $graphData, 20); // 20 minutes
     }
 
@@ -70,7 +69,6 @@ class StatsController extends Controller
             $gameByAbbreviation = Constants::getGameFromOnlineAbbreviation($game->abbrev);
             $standaloneUrlOnly .= urlencode($gameByAbbreviation["name"] . ',');
         }
-
 
         return view(
             'pages.stats',

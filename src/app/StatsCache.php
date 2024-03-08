@@ -21,6 +21,8 @@ class StatsCache extends Model
         // $serializedData = serialize($data);
         $savedData = json_encode($data);
 
+        StatsCache::where("key", "=", $key)->delete();
+
         // Update or create cache entry
         StatsCache::updateOrCreate(
             ['key' => $key],
