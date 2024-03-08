@@ -68,8 +68,12 @@
                     <div class="title">
                         Where to Buy?
                     </div>
-                    <a href="#" title="Steam">Buy on Steam</a>
-                    <a href="#" title="Steam">Buy on EA App</a>
+                    <a title="Buy on Steam" rel="nofollow" href="{{ \App\Constants::getTUCSteamPageUrl() }}">
+                        Buy on Steam
+                    </a>
+                    <a title="Buy on EA Origin" rel="nofollow" href="{{ \App\Constants::getTUCEAPageUrl() }}">
+                        Buy on EA App
+                    </a>
                 </div>
             </div>
         </div>
