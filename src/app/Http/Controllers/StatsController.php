@@ -23,6 +23,7 @@ class StatsController extends Controller
         $this->cncOnlineCount = new CNCOnlineCount();
 
         View::share('totalOnline', $this->cncOnlineCount->getTotal());
+        // $this->runCacheTask();
     }
 
     // Cron task only
@@ -46,7 +47,22 @@ class StatsController extends Controller
                 $filteredGameAbbreviations
             );
 
-            StatsCache::saveCache(GameStatGraph::GAME_STAT_GRAPH_CACHE_5_YEARS, $graphData, 20); // 20 minutes
+            StatsCache::saveCache(
+                GameStatGraph::GAME_STAT_GRAPH_CACHE_5_YEARS,
+                $graphData,
+                20
+            ); // 20 minutes
+
+            $graphDataSteamInGame = $onlineCount->createGraphForInGameStats(
+                $data,
+                $filteredGameAbbreviations
+            );
+
+            StatsCache::saveCache(
+                GameStatGraph::GAME_STAT_STEAM_IN_GAME_GRAPH_CACHE_5_YEARS,
+                $graphDataSteamInGame,
+                20
+            ); // 20 minutes
 
             Log::info("runCacheTask Completed");
         }
@@ -68,6 +84,11 @@ class StatsController extends Controller
         $mods = $this->cncOnlineCount->getModCounts();
         $standalone =  $this->cncOnlineCount->getStandaloneCounts();
         $graphData = StatsCache::getCache(GameStatGraph::GAME_STAT_GRAPH_CACHE_5_YEARS) ?? [];
+
+        if ($request->steamInGame)
+        {
+            $graphData = StatsCache::getCache(GameStatGraph::GAME_STAT_STEAM_IN_GAME_GRAPH_CACHE_5_YEARS) ?? [];
+        }
 
         $selectedLabels = explode(",", $request->filteredGames) ?? [];
         $officialGamesUrlOnly = "filteredGames=";
@@ -91,6 +112,13 @@ class StatsController extends Controller
             $standaloneUrlOnly .= urlencode($gameByAbbreviation["name"] . ',');
         }
 
+        $steamInGameOnly = "steamInGame=";
+        foreach ($games as $game)
+        {
+            $gameByAbbreviation = Constants::getGameFromOnlineAbbreviation($game->abbrev);
+            $steamInGameOnly .= urlencode($gameByAbbreviation["name"] . ',');
+        }
+
         return view(
             'pages.stats',
             [
@@ -101,7 +129,8 @@ class StatsController extends Controller
                 "selectedLabels" => $selectedLabels,
                 "officialGamesUrlOnly" => $officialGamesUrlOnly,
                 "modGamesUrlOnly" => $modGamesUrlOnly,
-                "standaloneUrlOnly" => $standaloneUrlOnly
+                "standaloneUrlOnly" => $standaloneUrlOnly,
+                "steamInGameOnly" => $steamInGameOnly,
             ]
         );
     }

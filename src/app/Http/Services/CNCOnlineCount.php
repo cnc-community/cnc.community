@@ -240,6 +240,54 @@ class CNCOnlineCount
         return $chartJsFormat;
     }
 
+    public function createGraphForInGameStats($graphData, $includeGameAbbreviations = [])
+    {
+        // Format for Chart.js
+        $dataSets = [];
+
+        ini_set('memory_limit', '1024M');
+
+        Log::info("createGraph ** Memory limit set");
+
+        $gameStatsIds = collect($graphData)->pluck('game_stats_id')->unique();
+        Log::info("createGraph ** gameStatsIds collected");
+
+        $gameStats = GameStat::whereIn('id', $gameStatsIds)->get()->keyBy('id');
+
+        Log::info("createGraph ** gameStats query complete");
+
+        foreach ($graphData as $gameStatGraph)
+        {
+            if (isset($gameStats[$gameStatGraph->game_stats_id]))
+            {
+                $gameStat = $gameStats[$gameStatGraph->game_stats_id];
+                $dataSets[$gameStat->getAbbreviation()][] = [
+                    $gameStatGraph->created_at,
+                    $gameStatGraph->steam_players_online
+                ];
+            }
+        }
+
+        Log::info("createGraph ** graphData loop complete");
+
+        $chartJsFormat = [];
+        foreach ($dataSets as $abbrev => $dataSet)
+        {
+            if (!in_array($abbrev, $includeGameAbbreviations))
+            {
+                continue;
+            }
+            $chartJsFormat[$abbrev]["data"] = $this->createChartJsFormat($dataSet, 60);
+            $chartJsFormat[$abbrev]["label"] = $this->getNameByAbbrev($abbrev);
+            $chartJsFormat[$abbrev]["backgroundColor"] = $this->getColourByAbbrev($abbrev);
+            $chartJsFormat[$abbrev]["borderColor"] = $this->getBorderColorByAbbrev($abbrev);
+        }
+
+        Log::info("Returning Chart JS Format");
+
+        return $chartJsFormat;
+    }
+
     private function getNameByAbbrev($gameAbbrev)
     {
         return Constants::getGameFromOnlineAbbreviation($gameAbbrev)["name"];
