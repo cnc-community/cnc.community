@@ -10,6 +10,7 @@ use App\StatsCache;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\View;
 
 class StatsController extends Controller
@@ -26,6 +27,8 @@ class StatsController extends Controller
     // Cron task only
     public function runCacheTask()
     {
+        Log::info("runCacheTask Started");
+
         $data = GameStatGraph::getLast5Years();
         $filteredGameAbbreviations  = Constants::getGameAbbreviations();
         $graphData = $this->cncOnlineCount->createGraph(
@@ -33,6 +36,7 @@ class StatsController extends Controller
             $filteredGameAbbreviations
         );
         StatsCache::saveCache(GameStatGraph::GAME_STAT_GRAPH_CACHE_5_YEARS, $graphData, 20); // 20 minutes
+        Log::info("runCacheTask Completed");
     }
 
     // Cron task only
