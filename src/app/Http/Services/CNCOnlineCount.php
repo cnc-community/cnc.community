@@ -11,6 +11,7 @@ use App\Http\Services\OpenRA\OpenRAAPI;
 use App\Http\Services\RenegadeX\RenegadeXAPI;
 use App\Http\Services\W3DHub\W3DHubAPI;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Log;
 
 class CNCOnlineCount
 {
@@ -196,11 +197,30 @@ class CNCOnlineCount
         // Format for Chart.js
         $dataSets = [];
 
+        $gameStatsIds = collect($graphData)->pluck('game_stats_id')->unique();
+
+        $gameStats = GameStat::whereIn('id', $gameStatsIds)->get()->keyBy('id');
+
+        foreach ($graphData as $gameStatGraph)
+        {
+            if (isset($gameStats[$gameStatGraph->game_stats_id]))
+            {
+                $gameStat = $gameStats[$gameStatGraph->game_stats_id];
+                $dataSets[$gameStat->getAbbreviation()][] = [
+                    $gameStatGraph->created_at,
+                    $gameStatGraph->players_online
+                ];
+            }
+        }
+
+        /*
+        Log::info("Create graph called");
         foreach ($graphData as $gameStatGraph)
         {
             $gameStat = GameStat::where("id", $gameStatGraph->game_stats_id)->first();
             $dataSets[$gameStat->getAbbreviation()][] = [$gameStatGraph->created_at, $gameStatGraph->players_online];
         }
+        */
 
         $chartJsFormat = [];
         foreach ($dataSets as $abbrev => $dataSet)
@@ -214,6 +234,8 @@ class CNCOnlineCount
             $chartJsFormat[$abbrev]["backgroundColor"] = $this->getColourByAbbrev($abbrev);
             $chartJsFormat[$abbrev]["borderColor"] = $this->getBorderColorByAbbrev($abbrev);
         }
+
+        Log::info("Returning Chart JS Format");
 
         return $chartJsFormat;
     }

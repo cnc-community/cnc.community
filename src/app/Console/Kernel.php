@@ -36,7 +36,7 @@ class Kernel extends ConsoleKernel
             ->runInBackground();
 
         $schedule->call('App\Http\Controllers\StatsController@runCacheTask')
-            ->everyTenMinutes()
+            ->everyFiveMinutes()
             ->runInBackground();
 
         $schedule->call('App\Http\Controllers\LeaderboardController@runMatchesTask')
