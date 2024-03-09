@@ -112,7 +112,7 @@ class StatsController extends Controller
             $standaloneUrlOnly .= urlencode($gameByAbbreviation["name"] . ',');
         }
 
-        $steamInGameOnly = "steamInGame=";
+        $steamInGameOnly = "steamInGame=true&filteredGames=";
         foreach ($games as $game)
         {
             $gameByAbbreviation = Constants::getGameFromOnlineAbbreviation($game->abbrev);
