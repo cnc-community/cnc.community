@@ -197,9 +197,16 @@ class CNCOnlineCount
         // Format for Chart.js
         $dataSets = [];
 
+        ini_set('memory_limit', '1024M');
+
+        Log::info("createGraph ** Memory limit set");
+
         $gameStatsIds = collect($graphData)->pluck('game_stats_id')->unique();
+        Log::info("createGraph ** gameStatsIds collected");
 
         $gameStats = GameStat::whereIn('id', $gameStatsIds)->get()->keyBy('id');
+
+        Log::info("createGraph ** gameStats query complete");
 
         foreach ($graphData as $gameStatGraph)
         {
@@ -213,14 +220,7 @@ class CNCOnlineCount
             }
         }
 
-        /*
-        Log::info("Create graph called");
-        foreach ($graphData as $gameStatGraph)
-        {
-            $gameStat = GameStat::where("id", $gameStatGraph->game_stats_id)->first();
-            $dataSets[$gameStat->getAbbreviation()][] = [$gameStatGraph->created_at, $gameStatGraph->players_online];
-        }
-        */
+        Log::info("createGraph ** graphData loop complete");
 
         $chartJsFormat = [];
         foreach ($dataSets as $abbrev => $dataSet)

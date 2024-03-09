@@ -23,8 +23,6 @@ class StatsController extends Controller
         $this->cncOnlineCount = new CNCOnlineCount();
 
         View::share('totalOnline', $this->cncOnlineCount->getTotal());
-
-        $this->runCacheTask();
     }
 
     // Cron task only
@@ -47,8 +45,6 @@ class StatsController extends Controller
                 $data,
                 $filteredGameAbbreviations
             );
-            Log::info("runCacheTask ** Got Graph Data");
-            Log::info("runCacheTask ** Attempting to set cache");
 
             StatsCache::saveCache(GameStatGraph::GAME_STAT_GRAPH_CACHE_5_YEARS, $graphData, 20); // 20 minutes
 
