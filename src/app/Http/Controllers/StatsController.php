@@ -8,6 +8,7 @@ use App\GameStatGraph;
 use App\Http\Services\CNCOnlineCount;
 use App\StatsCache;
 use Carbon\Carbon;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
@@ -27,16 +28,23 @@ class StatsController extends Controller
     // Cron task only
     public function runCacheTask()
     {
-        Log::info("runCacheTask Started");
+        try
+        {
+            Log::info("runCacheTask Started");
 
-        $data = GameStatGraph::getLast5Years();
-        $filteredGameAbbreviations  = Constants::getGameAbbreviations();
-        $graphData = $this->cncOnlineCount->createGraph(
-            $data,
-            $filteredGameAbbreviations
-        );
-        StatsCache::saveCache(GameStatGraph::GAME_STAT_GRAPH_CACHE_5_YEARS, $graphData, 20); // 20 minutes
-        Log::info("runCacheTask Completed");
+            $data = GameStatGraph::getLast5Years();
+            $filteredGameAbbreviations  = Constants::getGameAbbreviations();
+            $graphData = $this->cncOnlineCount->createGraph(
+                $data,
+                $filteredGameAbbreviations
+            );
+            StatsCache::saveCache(GameStatGraph::GAME_STAT_GRAPH_CACHE_5_YEARS, $graphData, 20); // 20 minutes
+            Log::info("runCacheTask Completed");
+        }
+        catch (Exception $ex)
+        {
+            Log::info("Error running cache task: " . $ex->getMessage());
+        }
     }
 
     // Cron task only
