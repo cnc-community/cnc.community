@@ -17,12 +17,18 @@
                     Red Alert to the modern warfare of Generals, this must-have compilation delivers a Command & Conquer experience like no other.
                 </p>
                 <div class="buttons">
+
+                    <a class="btn btn-secondary btn-icon" href="{{ route('pages.tucMultiplayer') }}" title="How to play C&amp;C Ultimate Collection Online">
+                        Play Online <i class="icon-right"></i>
+                    </a>
+
                     <a class="btn btn-secondary btn-icon" title="Buy on Steam" rel="nofollow" href="{{ \App\Constants::getTUCSteamPageUrl() }}">
                         Buy on Steam <i class="icon-steam"></i>
                     </a>
                     <a class="btn btn-secondary btn-icon" title="Buy on EA Origin" rel="nofollow" href="{{ \App\Constants::getTUCEAPageUrl() }}">
                         Buy on EA App <i class="icon-ea"></i>
                     </a>
+
                 </div>
             </div>
         </div>
@@ -57,7 +63,16 @@
 
             <h3>Check out our how-to guides</h3>
             <p>
-                Take a look at our how-to guides to get the latest info on running the utlimate collection at peak performance on Windows 10 and Windows 11.
+                Take a look at our how-to guides to get the latest info on running the C&C ultimate collection at peak performance on Windows 10 and Windows 11.
+            </p>
+
+            <h3>How to Play Online</h3>
+            <p>
+                View our how-to guides on how to play the C&C ultimate collection online.
+                <br class="hide-for-xs" />
+                <a href="{{ route('pages.tucMultiplayer') }}" title="How to play C&amp;C Ultimate Collection Online">
+                    How to Play Online Guides
+                </a>
             </p>
         </div>
 

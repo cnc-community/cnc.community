@@ -22,9 +22,6 @@
             <a href="{{ $page->category()->url() }}" class="btn btn-primary" title="Go to {{ $page->category()->title }}">
                 Go back to {{ $page->category()->title }}
             </a>
-            <a class="btn btn-primary" title="Buy on EA Origin" rel="nofollow" href="{{ route('pages.tuc') }}">
-                Where to Buy {{ $page->category()->title }}
-            </a>
         </div>
     </div>
 @endsection
@@ -34,7 +31,24 @@
     <?php if($howToPlaySteps): ?>
     <section class="section how-to-play-steps">
         <div class="main-content">
-            <div class="page-content">
+
+            <div class="page-content-without-editor">
+                <h2>Where to Buy {{ $page->category()->title }}</h2>
+                <p>
+                    You can now buy all of the classic Command & Conquer games digitally from either Steam or the EA App as part of The Ultimate Collection.
+                </p>
+                <div class="guide-buttons">
+                    <a class="btn btn-outline btn-icon" title="Buy on Steam" rel="nofollow" href="https://store.steampowered.com/bundle/39394/">
+                        Buy on Steam <i class="icon-steam"></i>
+                    </a>
+                    <a class="btn btn-outline btn-icon" title="Buy on EA Origin" rel="nofollow"
+                        href="https://www.ea.com/games/command-and-conquer/command-and-conquer-the-ultimate-collection/buy/pc">
+                        Buy on EA App <i class="icon-ea"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="page-content page-content-with-editor">
                 <?php print $howToPlaySteps; ?>
             </div>
         </div>
@@ -45,7 +59,7 @@
     <?php if($howToPlayVideo): ?>
     <section class="section section-grey video-tutorial">
         <div class="main-content">
-            <div class="page-content center">
+            <div class="page-content page-content-with-editor">
                 <h2>YouTube how to play steps</h2>
                 <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/<?php print strip_tags($howToPlayVideo); ?>" frameborder="0"
                     allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
@@ -59,7 +73,7 @@
     <?php if($howToPlayHelp): ?>
     <section class="section how-to-play-help">
         <div class="main-content">
-            <div class="page-content">
+            <div class="page-content page-content-with-editor">
                 <?php print $howToPlayHelp; ?>
             </div>
         </div>

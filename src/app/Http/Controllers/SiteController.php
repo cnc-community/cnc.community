@@ -119,6 +119,11 @@ class SiteController extends Controller
         return view('pages.tuc');
     }
 
+    public function showTUCMultiplayerPage()
+    {
+        return view('pages.tuc-online');
+    }
+
     public function showCreatorsListings(Request $request)
     {
         $streams = [];
