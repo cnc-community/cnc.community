@@ -384,14 +384,14 @@ p > code {
 .page-content-with-editor 
 {
     padding: 35px 0;
-    width: $lg-width;
+    width: 800px;
     margin: 0 auto;
     max-width: 100%;
 }
 
 .page-content-without-editor{
     padding: 35px 0;
-    width: $lg-width;
+    width: 800px;
     margin: 0 auto;
     max-width: 100%;
 }
@@ -903,4 +903,14 @@ ul.pagination {
 .online-guide-box {
     padding-bottom: 0.5rem;
     padding-top: 1rem;
+}
+
+.how-to-play-steps
+{
+    padding-top: 0;
+}
+
+.figure.image 
+{
+    text-align: center;
 }
