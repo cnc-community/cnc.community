@@ -13,7 +13,7 @@ class GameStatGraph extends Model
 
     public const GAME_STAT_GRAPH_CACHE_5_YEARS = "GAME_STAT_GRAPH_CACHE_5_YEARS";
 
-    public static function createStat($gameStatId, $playersOnline)
+    public static function createStat($gameStatId, $playersOnline, $steamInGameCount = 0)
     {
         // Always ensure we only keep the data we want
         GameStatGraph::deleteOldRecords();
@@ -40,6 +40,7 @@ class GameStatGraph extends Model
             $gameStatGraph = new GameStatGraph();
             $gameStatGraph->game_stats_id = $gameStat->id;
             $gameStatGraph->players_online = $playersOnline;
+            $gameStatGraph->steam_players_online = $steamInGameCount;
             $gameStatGraph->save();
         }
         return $gameStatGraph;

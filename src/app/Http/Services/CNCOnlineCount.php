@@ -121,6 +121,19 @@ class CNCOnlineCount
             "ra3" => 11,
         ];
 
+        $steamGamesFilter = [
+            "cncnet5_td",
+            "cncnet5_ra",
+            "cncnet5_ts",
+            "cncnet5_yr",
+            "ren",
+            "generals",
+            "generalszh",
+            "cnc3",
+            "cnc3kw",
+            "ra3",
+        ];
+
         // Collect results into correct groups
         foreach ($results as $game => $count)
         {
@@ -128,7 +141,25 @@ class CNCOnlineCount
             {
                 $newResults["games"][$game] = $count;
                 $order = $gamesFilter[$game];
-                GameStat::createOrUpdateStat($game, $count, GameStat::TYPE_GAME, $order);
+                $steamInGameCount = 0;
+
+                // Hack - Fetch individual steam players online
+                if (in_array($game, $steamGamesFilter))
+                {
+                    $steamId = Constants::getSteamIDByAbbrev($game);
+                    if ($steamId)
+                    {
+                        $steamInGameCount = $this->steamHelper->getSteamPlayerCount($steamId);
+                    }
+                }
+
+                GameStat::createOrUpdateStat(
+                    $game,
+                    $count,
+                    GameStat::TYPE_GAME,
+                    $order,
+                    $steamInGameCount
+                );
             }
 
             if (array_key_exists($game, $modsFilter))

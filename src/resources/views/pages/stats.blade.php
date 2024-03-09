@@ -28,7 +28,15 @@
                 <?php foreach ($games as $game) : ?>
                 <?php $gameByAbbreviation = App\Constants::getGameFromOnlineAbbreviation($game->getAbbreviation()); ?>
                 <?php
-                new App\Http\CustomView\Components\OnlineBox(($title = $gameByAbbreviation['name']), ($url = $gameByAbbreviation['url']), ($logo = $gameByAbbreviation['logo']), ($externalLink = $gameByAbbreviation['external_link']), ($gameAbrev = $game->getAbbreviation()), ($onlineCount = $game->getOnlineCount()));
+                new App\Http\CustomView\Components\OnlineBox(
+                    ($title = $gameByAbbreviation['name']), 
+                    ($url = $gameByAbbreviation['url']), 
+                    ($logo = $gameByAbbreviation['logo']), 
+                    ($externalLink = $gameByAbbreviation['external_link']), 
+                    ($gameAbrev = $game->getAbbreviation()), 
+                    ($onlineCount = $game->getOnlineCount()), 
+                    ($steamPlayersOnline = $game->steam_players_online),
+                );
                 ?>
                 <?php endforeach; ?>
             </div>
