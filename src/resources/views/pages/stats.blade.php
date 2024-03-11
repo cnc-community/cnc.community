@@ -28,15 +28,7 @@
                 <?php foreach ($games as $game) : ?>
                 <?php $gameByAbbreviation = App\Constants::getGameFromOnlineAbbreviation($game->getAbbreviation()); ?>
                 <?php
-                new App\Http\CustomView\Components\OnlineBox(
-                    ($title = $gameByAbbreviation['name']), 
-                    ($url = $gameByAbbreviation['url']), 
-                    ($logo = $gameByAbbreviation['logo']), 
-                    ($externalLink = $gameByAbbreviation['external_link']), 
-                    ($gameAbrev = $game->getAbbreviation()), 
-                    ($onlineCount = $game->getOnlineCount()), 
-                    ($steamPlayersOnline = $game->steam_players_online),
-                );
+                new App\Http\CustomView\Components\OnlineBox(($title = $gameByAbbreviation['name']), ($url = $gameByAbbreviation['url']), ($logo = $gameByAbbreviation['logo']), ($externalLink = $gameByAbbreviation['external_link']), ($gameAbrev = $game->getAbbreviation()), ($onlineCount = $game->getOnlineCount()), ($steamPlayersOnline = $game->steam_players_online));
                 ?>
                 <?php endforeach; ?>
             </div>
@@ -83,6 +75,9 @@
                 </div>
                 <div style="margin-left:1rem;">
                     <a class="btn btn-outline btn-sm" href="?{{ $standaloneUrlOnly }}#stats">C&C Community Games only</a>
+                </div>
+                <div style="margin-left:1rem;">
+                    <a class="btn btn-outline btn-sm" href="?{{ $steamInGameOnly }}#stats">C&C Steam In Game only</a>
                 </div>
             </div>
 

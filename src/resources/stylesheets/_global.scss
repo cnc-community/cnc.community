@@ -381,6 +381,21 @@ p > code {
     max-width: 100%;
 }
 
+.page-content-with-editor 
+{
+    padding: 35px 0;
+    width: 800px;
+    margin: 0 auto;
+    max-width: 100%;
+}
+
+.page-content-without-editor{
+    padding: 35px 0;
+    width: 800px;
+    margin: 0 auto;
+    max-width: 100%;
+}
+
 .embed-iframe {
     position: relative;
     padding-bottom: 56.25%; /*16:9*/
@@ -870,4 +885,32 @@ ul.pagination {
 
 .search-dropdown {
     max-height: 400px;
+}
+
+
+.guide-buttons {
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    justify-content: center;
+
+    .btn {
+        margin-right: 1rem;
+        margin-left: 1rem;
+    }
+}
+
+.online-guide-box {
+    padding-bottom: 0.5rem;
+    padding-top: 1rem;
+}
+
+.how-to-play-steps
+{
+    padding-top: 0;
+}
+
+.figure.image 
+{
+    text-align: center;
 }

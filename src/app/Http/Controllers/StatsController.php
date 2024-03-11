@@ -8,6 +8,7 @@ use App\GameStatGraph;
 use App\Http\Services\CNCOnlineCount;
 use App\StatsCache;
 use Carbon\Carbon;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
@@ -22,21 +23,53 @@ class StatsController extends Controller
         $this->cncOnlineCount = new CNCOnlineCount();
 
         View::share('totalOnline', $this->cncOnlineCount->getTotal());
+        // $this->runCacheTask();
     }
 
     // Cron task only
     public function runCacheTask()
     {
-        Log::info("runCacheTask Started");
+        try
+        {
+            Log::info("runCacheTask ** Started");
 
-        $data = GameStatGraph::getLast5Years();
-        $filteredGameAbbreviations  = Constants::getGameAbbreviations();
-        $graphData = $this->cncOnlineCount->createGraph(
-            $data,
-            $filteredGameAbbreviations
-        );
-        StatsCache::saveCache(GameStatGraph::GAME_STAT_GRAPH_CACHE_5_YEARS, $graphData, 20); // 20 minutes
-        Log::info("runCacheTask Completed");
+            $data = GameStatGraph::getLast5Years();
+            Log::info("runCacheTask ** Data found");
+
+            $filteredGameAbbreviations  = Constants::getGameAbbreviations();
+            Log::info("runCacheTask ** Abbreviations found");
+
+            $onlineCount = new CNCOnlineCount();
+            Log::info("runCacheTask ** Created service");
+
+            $graphData = $onlineCount->createGraph(
+                $data,
+                $filteredGameAbbreviations
+            );
+
+            StatsCache::saveCache(
+                GameStatGraph::GAME_STAT_GRAPH_CACHE_5_YEARS,
+                $graphData,
+                20
+            ); // 20 minutes
+
+            $graphDataSteamInGame = $onlineCount->createGraphForInGameStats(
+                $data,
+                $filteredGameAbbreviations
+            );
+
+            StatsCache::saveCache(
+                GameStatGraph::GAME_STAT_STEAM_IN_GAME_GRAPH_CACHE_5_YEARS,
+                $graphDataSteamInGame,
+                20
+            ); // 20 minutes
+
+            Log::info("runCacheTask Completed");
+        }
+        catch (Exception $ex)
+        {
+            Log::info("Error running cache task: " . $ex->getMessage());
+        }
     }
 
     // Cron task only
@@ -51,6 +84,11 @@ class StatsController extends Controller
         $mods = $this->cncOnlineCount->getModCounts();
         $standalone =  $this->cncOnlineCount->getStandaloneCounts();
         $graphData = StatsCache::getCache(GameStatGraph::GAME_STAT_GRAPH_CACHE_5_YEARS) ?? [];
+
+        if ($request->steamInGame)
+        {
+            $graphData = StatsCache::getCache(GameStatGraph::GAME_STAT_STEAM_IN_GAME_GRAPH_CACHE_5_YEARS) ?? [];
+        }
 
         $selectedLabels = explode(",", $request->filteredGames) ?? [];
         $officialGamesUrlOnly = "filteredGames=";
@@ -74,6 +112,13 @@ class StatsController extends Controller
             $standaloneUrlOnly .= urlencode($gameByAbbreviation["name"] . ',');
         }
 
+        $steamInGameOnly = "steamInGame=true&filteredGames=";
+        foreach ($games as $game)
+        {
+            $gameByAbbreviation = Constants::getGameFromOnlineAbbreviation($game->abbrev);
+            $steamInGameOnly .= urlencode($gameByAbbreviation["name"] . ',');
+        }
+
         return view(
             'pages.stats',
             [
@@ -84,7 +129,8 @@ class StatsController extends Controller
                 "selectedLabels" => $selectedLabels,
                 "officialGamesUrlOnly" => $officialGamesUrlOnly,
                 "modGamesUrlOnly" => $modGamesUrlOnly,
-                "standaloneUrlOnly" => $standaloneUrlOnly
+                "standaloneUrlOnly" => $standaloneUrlOnly,
+                "steamInGameOnly" => $steamInGameOnly,
             ]
         );
     }

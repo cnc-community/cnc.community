@@ -12,6 +12,7 @@ class GameStatGraph extends Model
     protected $table = 'game_stats_graph';
 
     public const GAME_STAT_GRAPH_CACHE_5_YEARS = "GAME_STAT_GRAPH_CACHE_5_YEARS";
+    public const GAME_STAT_STEAM_IN_GAME_GRAPH_CACHE_5_YEARS = "GAME_STAT_STEAM_IN_GAME_GRAPH_CACHE_5_YEARS";
 
     public static function createStat($gameStatId, $playersOnline, $steamInGameCount = 0)
     {
