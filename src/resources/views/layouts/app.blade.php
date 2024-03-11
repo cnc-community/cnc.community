@@ -13,7 +13,7 @@
     @if (View::hasSection('meta'))
         @yield('meta')
     @else
-        <meta property="og:image" content="https://cnc.community/assets/images/meta.png">
+        <meta property="og:image" content="{{ Vite::asset('resources/assets/images/meta.png') }}">
     @endif
 
     @if (View::hasSection('description'))
@@ -23,28 +23,29 @@
         <meta name="description"
             content="Find how to play guides for Command & Conquer games. Find C&C news and C&C mods from the C&C community, including C&C Remastered Leaderboards">
     @endif
+
     <meta name="author" content="C&C Community">
     <meta name="keywords"
         content="cnc tdra map editor, cnc tdra, cnc tdra ladder, C&amp;C Leaderboard, C&amp;C Remastered Leaderboard, tiberian dawn remastered ladder, red alert remastered ladder, C&amp;C, Command &amp; Conquer, C&amp;C95, C&mp;C1, RA, RA95, Tiberian, Sun, Tiberium, Red Alert, Red, Alert, Red Alert 3, Renegade, C&C Remastered, Command & Conquer Remasters, Red Alert 1 Remastered, 
         Tiberian Dawn Remastered, Red Alert 2,Generals,C&amp;C3: Tiberium Wars, C&amp;C Mods, C&amp;C Mod Workshop, C&amp;C Steam Workshop" />
     <meta property="fb:pages" content="100994338349629" />
+
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;500;700&display=swap" rel="stylesheet">
     <meta name="google-site-verification" content="xrCaa-F6MyCOiXD6KvugZJtt80qKj8uPbmoU74lxAPE" />
 
     @yield('head')
 
-    <link rel="stylesheet" href="/assets/css/app.css?v=5.6" />
-    @vite(['resources/stylesheets/app.scss', 'resources/typescript/App.ts'])
+    @vite(['resources/assets/stylesheets/app.scss', 'resources/assets/typescript/App.ts'])
 
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon/favicon-16x16.png">
-    <link rel="manifest" href="/assets/images/favicon/site.webmanifest">
-    <link rel="mask-icon" href="/assets/images/favicon/safari-pinned-tab.svg" color="#000000">
-    <link rel="shortcut icon" href="/assets/images/favicon/favicon.ico">
+    <link rel="manifest" href="{{ Vite::asset('resources/assets/images/favicon/site.webmanifest') }}">
+    <link rel="mask-icon" href="{{ Vite::asset('resources/assets/images/favicon/safari-pinned-tab.svg') }}" color="#000000">
+    <link rel="shortcut icon" href="{{ Vite::asset('resources/assets/images/favicon/favicon.ico') }}">
 
     <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="msapplication-config" content="/assets/images/favicon/browserconfig.xml">
+    <meta name="msapplication-config" content="{{ Vite::asset('resources/assets/images/favicon/browserconfig.xml') }}">
     <meta name="theme-color" content="#000000">
 
     <!-- Google tag (gtag.js) -->
@@ -62,10 +63,6 @@
 </head>
 
 <body>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NJLJRXT" height="0" width="0"
-            style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
     <main>
         <div class="page page-@yield('page-class')">
             <header id="nav" class="site-header nav-closed">
@@ -73,7 +70,7 @@
                     <div class="logo-burger-container">
                         <div class="logo">
                             <a href="/" title="C&C Community">
-                                <img src="/assets/images/logo.svg" alt="C&C Community Logo" />
+                                <img src="{{ Vite::asset('resources/assets/images/logo.svg') }}" alt="C&C Community Logo" />
                             </a>
                         </div>
 
@@ -110,22 +107,28 @@
             <footer role="contentinfo">
                 <div class="main-content center">
                     <div class="logo">
-                        <img src="/assets/images/logo.svg" alt="C&C Community Logo" />
+                        <img src="{{ Vite::asset('resources/assets/images/logo.svg') }}" alt="C&C Community Logo" />
                         <small>
                             Copyright C&amp;C Community &copy; <?php echo date('Y'); ?>
                         </small>
                     </div>
 
                     <div class="social-links" style="margin-top: 20px; margin-bottom: 20px;">
-                        <a href="https://www.facebook.com/groups/commandandconquer" title="C&C Facebook Group" rel="nofollow noreferrer" target="_blank"><i
-                                class="icon-facebook"></i></a>
-                        <a href="https://twitter.com/cnccomofficial" title="C&C Community Twitter" rel="nofollow noreferrer" target="_blank"><i
-                                class="icon-twitter"></i></a>
-                        <a href="https://discord.gg/zktcZQY" title="C&C Discord" rel="nofollow noreferrer" target="_blank"><i class="icon-discord"></i></a>
-                        <a href="https://store.steampowered.com/franchise/CandC" title="C&C Steam" rel="nofollow noreferrer" target="_blank"><i
-                                class="icon-steam"></i></a>
-                        <a href="https://www.reddit.com/r/commandandconquer" title="C&C Reddit" rel="nofollow noreferrer" target="_blank"><i
-                                class="icon-reddit"></i></a>
+                        <a href="https://www.facebook.com/groups/commandandconquer" title="C&C Facebook Group" rel="nofollow noreferrer" target="_blank">
+                            <i class="icon-facebook"></i>
+                        </a>
+                        <a href="https://twitter.com/cnccomofficial" title="C&C Community Twitter" rel="nofollow noreferrer" target="_blank">
+                            <i class="icon-twitter"></i>
+                        </a>
+                        <a href="https://discord.gg/zktcZQY" title="C&C Discord" rel="nofollow noreferrer" target="_blank">
+                            <i class="icon-discord"></i>
+                        </a>
+                        <a href="https://store.steampowered.com/franchise/CandC" title="C&C Steam" rel="nofollow noreferrer" target="_blank">
+                            <i class="icon-steam"></i>
+                        </a>
+                        <a href="https://www.reddit.com/r/commandandconquer" title="C&C Reddit" rel="nofollow noreferrer" target="_blank">
+                            <i class="icon-reddit"></i>
+                        </a>
                     </div>
 
                     <div class="copyright-notice text-uppercase">
@@ -140,7 +143,6 @@
                             C&amp;C Community has no affiliation with Electronic Arts or PetroGlyph Games
                         </p>
                     </div>
-
                 </div>
             </footer>
         </div>
@@ -148,8 +150,7 @@
             <div class="main-content">
                 <div class="site-notification-title">
                     <p>
-                        The C&amp;C Community website runs on donations. <a href="/donate" title="Read more">Find out
-                            more</a>
+                        The C&amp;C Community website runs on donations. <a href="/donate" title="Read more">Find out more</a>
                     </p>
                 </div>
                 <div class="site-notification-donate">
@@ -164,7 +165,7 @@
         </div>
 
         @yield('scripts')
-        <script src="/assets/vendor/masonry.js"></script>
+        <script src="{{ Vite::asset('resources/assets/vendor/masonry.js') }}"></script>
         <script>
             var baseWidth = 250;
             if (window.innerWidth >= 768) {
@@ -183,9 +184,7 @@
                 window.addEventListener("resize", () => masonry.layout());
             }
         </script>
-        <script defer src="/assets/js/OnlineCount.js?v=2.8"></script>
-        <script defer src="/assets/js/navbar/NavBarJs.js?v=2.8"></script>
-        <script defer src="/assets/js/SiteNotification.js?v=1.0"></script>
+    </main>
 </body>
 
 </html>

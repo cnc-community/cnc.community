@@ -82,5 +82,3 @@ export class NavBarJs
         return this.cachedNavItem.classList.contains("open");
     }
 }
-
-new NavBarJs();
