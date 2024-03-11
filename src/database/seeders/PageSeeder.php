@@ -1,5 +1,7 @@
 <?php
 
+namespace Database\Seeders;
+
 use App\Category;
 use App\CustomFieldNames;
 use App\HowToContentSeed;
@@ -38,7 +40,7 @@ class PageSeeder extends Seeder
         $this->createGameCategoryPage("Generals", "generals", "Command & Conquer: Generals", $gameTemplate, $categoryTemplate);
         $this->createGameCategoryPage("Command & Conquer 3", "command-and-conquer-3", "Command & Conquer 3: Tiberium Wars", $gameTemplate, $categoryTemplate);
         $this->createGameCategoryPage("Command & Conquer 4", "command-and-conquer-4", "Command & Conquer 4: Tiberian Twilight", $gameTemplate, $categoryTemplate);
-    
+
         $this->createNewsCategory("Command & Conquer Remastered News", "command-and-conquer-remastered-news");
     }
 
@@ -54,7 +56,7 @@ class PageSeeder extends Seeder
     private function createGameCategoryPage($title, $slug, $description, $gameTemplate, $categoryTemplate)
     {
         $newsCategory = $this->createNewsCategory($title . " News", $slug . "-news");
-        
+
         $pageCategory = new PageCategory();
         $pageCategory->title = $title;
         $pageCategory->slug = $slug;
@@ -63,7 +65,7 @@ class PageSeeder extends Seeder
         $pageCategory->news_category_id = $newsCategory->id;
         $pageCategory->save();
 
-        $this->create("How to play ". $title, "Play ". $title . " campaign and online with thousands of players", "how-to-play", $gameTemplate->id, $pageCategory->id);
+        $this->create("How to play " . $title, "Play " . $title . " campaign and online with thousands of players", "how-to-play", $gameTemplate->id, $pageCategory->id);
     }
 
     private function create($title, $description, $slug, $templateId, $categoryId)
