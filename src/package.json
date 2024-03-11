@@ -1,18 +1,14 @@
 {
     "private": true,
+    "type": "module",
     "scripts": {
         "dev": "vite",
         "build": "vite build"
     },
     "devDependencies": {
-        "gulp": "^4.0.2",
-        "gulp-autoprefixer": "^4.0.0",
-        "gulp-concat": "^2.6.1",
-        "gulp-copy": "^4.0.1",
-        "gulp-nw-builder": "^1.4.0",
-        "gulp-sass": "^3.1.0",
-        "gulp-terser": "^1.4.0",
-        "parcel-bundler": "^1.12.4",
-        "typescript": "^3.9.7"
+        "axios": "^1.6.4",
+        "laravel-vite-plugin": "^1.0.0",
+        "sass": "^1.71.1",
+        "vite": "^5.0.0"
     }
 }
