@@ -43,12 +43,17 @@ class Kernel extends ConsoleKernel
             $task->runCacheTask();
         })->everyFiveMinutes();
 
-
         $schedule->call(function ()
         {
             $task = new \App\Http\Controllers\APIController();
             $task->runTask();
         })->weekly();
+
+        $schedule->call(function ()
+        {
+            $task = new \App\Http\Controllers\FeedController();
+            $task->runTaskDaily();
+        })->daily();
 
 
         // $schedule->call('App\Http\Controllers\LeaderboardController@runMatchesTask')
@@ -62,9 +67,6 @@ class Kernel extends ConsoleKernel
         // $schedule->call('App\Http\Controllers\LeaderboardController@runTDLeaderboardTasks')
         //     ->everyThirtyMinutes()
         //     ->runInBackground();
-
-        //$schedule->call('App\Http\Controllers\FeedController@runTask')->daily()->runInBackground();
-        //$schedule->call('App\Http\Controllers\FeedController@runTaskDaily')->daily()->runInBackground();
 
         // $schedule->call('App\Http\Controllers\LeaderboardController@runProfileDataTask')->daily()->runInBackground();
     }
