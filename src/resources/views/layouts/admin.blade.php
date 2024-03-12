@@ -25,7 +25,6 @@
     <link rel="mask-icon" href="{{ Vite::asset('/assets/images/favicon/safari-pinned-tab.svg') }}" color="#000000">
     <link rel="shortcut icon" href="{{ Vite::asset('/assets/images/favicon/favicon.ico') }}">
     <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="msapplication-config" content="{{ Vite::asset('/assets/images/favicon/browserconfig.xml') }}">
     <meta name="theme-color" content="#000000">
 
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" crossorigin="anonymous"></script>

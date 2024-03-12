@@ -45,7 +45,6 @@
     <link rel="shortcut icon" href="{{ Vite::asset('resources/assets/images/favicon/favicon.ico') }}">
 
     <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="msapplication-config" content="{{ Vite::asset('resources/assets/images/favicon/browserconfig.xml') }}">
     <meta name="theme-color" content="#000000">
 
     <!-- Google tag (gtag.js) -->
@@ -165,7 +164,7 @@
         </div>
 
         @yield('scripts')
-        <script src="{{ Vite::asset('resources/assets/vendor/masonry.js') }}"></script>
+        <script src="/static/vendor/masonry.js')"></script>
         <script>
             var baseWidth = 250;
             if (window.innerWidth >= 768) {

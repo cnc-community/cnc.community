@@ -31,7 +31,7 @@
 <div class="swiper-button-next"></div>
 
 @section('scripts')
-    <script src="{{ Vite::asset('resources/assets/vendor/swiper.min.js') }}"></script>
+    <script src="/static/vendor/swiper.min.js"></script>
     <script>
         (function() {
             let swiper = new Swiper(".swiper-container", {
