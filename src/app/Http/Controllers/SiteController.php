@@ -6,6 +6,7 @@ use App\Category;
 use App\News;
 use App\Page;
 use App\Constants;
+use App\Http\Services\RedditFeedParser;
 use App\Http\Services\SteamHelper;
 use App\Http\Services\TwitchHelper;
 use App\PageCategory;
@@ -16,6 +17,7 @@ use Illuminate\Support\Facades\Cache;
 class SiteController extends Controller
 {
     private $twitchHelper;
+    private $steamHelper;
     /**
      * Create a new controller instance.
      *

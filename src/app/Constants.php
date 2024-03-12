@@ -2,6 +2,8 @@
 
 namespace App;
 
+use Illuminate\Support\Facades\Vite;
+
 class Constants
 {
     public static function remastersAppId(): int
@@ -159,49 +161,48 @@ class Constants
     {
         $version = 1.4;
         $cdnUrl = "//cdn.jsdelivr.net/gh/cnc-community/files@" . $version . "/";
-        $posterSrc = "/assets/images/posters/";
 
         $videos = [
             "command-and-conquer-remastered" =>
             [
                 "src" => $cdnUrl . "cnc-remastered.mp4",
-                "poster" => $posterSrc . "cnc-remastered.jpg"
+                "poster" => Vite::asset("resources/assets/images/posters/cnc-remastered.jpg")
             ],
             "red-alert" => [
                 "src" => $cdnUrl . "red-alert-1.mp4",
-                "poster" => $posterSrc . "red-alert-1.jpg"
+                "poster" => Vite::asset("resources/assets/images/posters/red-alert-1.jpg")
             ],
             "tiberian-dawn" => [
                 "src" => $cdnUrl . "tiberian-dawn.mp4",
-                "poster" => $posterSrc . "tiberian-dawn.jpg"
+                "poster" => Vite::asset("resources/assets/images/posters/tiberian-dawn.jpg")
             ],
             "tiberian-sun" => [
                 "src" => $cdnUrl . "tiberian-sun.mp4",
-                "poster" => $posterSrc . "tiberian-sun.jpg"
+                "poster" => Vite::asset("resources/assets/images/posters/tiberian-sun.jpg")
             ],
             "red-alert-2" => [
                 "src" => $cdnUrl . "red-alert-2.mp4",
-                "poster" => $posterSrc . "red-alert-2.jpg"
+                "poster" => Vite::asset("resources/assets/images/posters/red-alert-2.jpg")
             ],
             "renegade" => [
                 "src" => $cdnUrl . "renegade.mp4",
-                "poster" => $posterSrc . "renegade.jpg"
+                "poster" => Vite::asset("resources/assets/images/posters/renegade.jpg")
             ],
             "generals" => [
                 "src" => $cdnUrl . "generals.mp4",
-                "poster" => $posterSrc . "generals.jpg"
+                "poster" => Vite::asset("resources/assets/images/posters/generals.jpg")
             ],
             "command-and-conquer-3" => [
                 "src" => $cdnUrl . "tiberium-wars.mp4",
-                "poster" => $posterSrc . "tiberium-wars.jpg"
+                "poster" => Vite::asset("resources/assets/images/posters/tiberium-wars.jpg")
             ],
             "red-alert-3" => [
                 "src" => $cdnUrl . "red-alert-3.mp4",
-                "poster" => $posterSrc . "red-alert-3.jpg"
+                "poster" => Vite::asset("resources/assets/images/posters/red-alert-3.jpg")
             ],
             "command-and-conquer-4" => [
                 "src" => $cdnUrl . "tiberium-twighlight.mp4",
-                "poster" => $posterSrc . "command-and-conquer-4.jpg"
+                "poster" => Vite::asset("resources/assets/images/posters/command-and-conquer-4.jpg")
             ],
             "default" => [
                 "src" => "",
@@ -254,7 +255,8 @@ class Constants
                     "external_link" => false,
                     "name" => "Tiberian Dawn",
                     "graph_color" => "rgba(255, 215, 0, 0.3)",
-                    "graph_border_color" => "rgba(255, 215, 0, 1)"
+                    "graph_border_color" => "rgba(255, 215, 0, 1)",
+                    'online_service' => 'CnCNet',
                 ];
 
             case "cncnet5_ra":
@@ -264,7 +266,8 @@ class Constants
                     "external_link" => false,
                     "name" => "Red Alert",
                     "graph_color" => "rgba(255, 0, 0, 0.3)",
-                    "graph_border_color" => "rgba(255, 0, 0, 1)"
+                    "graph_border_color" => "rgba(255, 0, 0, 1)",
+                    'online_service' => 'CnCNet',
                 ];
 
             case "cncnet5_ts":
@@ -274,7 +277,8 @@ class Constants
                     "external_link" => false,
                     "name" => "Tiberian Sun",
                     "graph_color" => "rgba(212, 127, 0, 0.3)",
-                    "graph_border_color" => "rgba(212, 127, 0, 1)"
+                    "graph_border_color" => "rgba(212, 127, 0, 1)",
+                    'online_service' => 'CnCNet',
                 ];
 
             case "sole":
@@ -284,7 +288,8 @@ class Constants
                     "external_link" => true,
                     "name" => "Sole Survivor",
                     "graph_color" => "rgba(255,255,255,0.5)",
-                    "graph_border_color" => "rgba(255,255,255,0.5)"
+                    "graph_border_color" => "rgba(255,255,255,0.5)",
+                    'online_service' => 'CnCNet',
                 ];
 
             case "cncnet5_yr":
@@ -294,7 +299,8 @@ class Constants
                     "external_link" => false,
                     "name" => "Yuri's Revenge",
                     "graph_color" => "rgba(255, 19, 128, 0.3)",
-                    "graph_border_color" => "rgba(255, 19, 128, 1)"
+                    "graph_border_color" => "rgba(255, 19, 128, 1)",
+                    'online_service' => 'CnCNet',
                 ];
 
             case "cncnet5_dta":
@@ -304,7 +310,8 @@ class Constants
                     "external_link" => true,
                     "name" => "Dawn of the Tiberium Age",
                     "graph_color" => "rgba(0, 184, 255, 0.2)",
-                    "graph_border_color" => "rgba(0, 184, 255, 0.8)"
+                    "graph_border_color" => "rgba(0, 184, 255, 0.8)",
+                    'online_service' => 'CnCNet',
                 ];
 
             case "cncnet5_mo":
@@ -314,7 +321,8 @@ class Constants
                     "external_link" => true,
                     "name" => "Mental Omega",
                     "graph_color" => "rgba(202, 21, 251, 0.2)",
-                    "graph_border_color" => "rgba(202, 21, 251, 0.8)"
+                    "graph_border_color" => "rgba(202, 21, 251, 0.8)",
+                    'online_service' => 'CnCNet',
                 ];
 
             case "cncnet5_rr":
@@ -324,7 +332,8 @@ class Constants
                     "external_link" => true,
                     "name" => "YR Red-Resurrection",
                     "graph_color" => "rgba(230, 109, 154, 0.2)",
-                    "graph_border_color" => "rgba(230, 109, 154, 0.8)"
+                    "graph_border_color" => "rgba(230, 109, 154, 0.8)",
+                    'online_service' => 'CnCNet',
                 ];
 
             case "cncnet5_cncr":
@@ -334,7 +343,8 @@ class Constants
                     "external_link" => true,
                     "name" => "C&C: Reloaded",
                     "graph_color" => "rgba(42, 212, 0, 0.2)",
-                    "graph_border_color" => "rgba(42, 212, 0, 0.8)"
+                    "graph_border_color" => "rgba(42, 212, 0, 0.8)",
+                    'online_service' => 'CnCNet',
                 ];
 
             case "cnc3":
@@ -345,6 +355,7 @@ class Constants
                     "name" => "C&C3: Tiberium Wars",
                     "graph_color" => "rgba(31, 255, 48, 0.3)",
                     "graph_border_color" => "rgba(31, 255, 48, 1)",
+                    'online_service' => 'C&C:Online',
                 ];
 
             case "ren":
@@ -354,7 +365,8 @@ class Constants
                     "external_link" => false,
                     "name" => "Renegade",
                     "graph_color" => "rgba(185, 114, 255, 0.3)",
-                    "graph_border_color" => "rgba(185, 114, 255, 1)"
+                    "graph_border_color" => "rgba(185, 114, 255, 1)",
+                    'online_service' => 'W3D Hub',
                 ];
 
             case "cnc3kw":
@@ -365,6 +377,7 @@ class Constants
                     "name" => "C&C3: Kane's Wrath",
                     "graph_color" => "rgba(0, 55, 255, 0.3)",
                     "graph_border_color" => "rgba(0, 55, 255, 1)",
+                    'online_service' => 'C&C:Online',
                 ];
 
             case "generals":
@@ -374,7 +387,8 @@ class Constants
                     "external_link" => false,
                     "name" => "Generals",
                     "graph_color" => "rgba(30, 144, 23, 0.3)",
-                    "graph_border_color" => "rgba(30, 144, 23, 1)"
+                    "graph_border_color" => "rgba(30, 144, 23, 1)",
+                    'online_service' => 'C&C:Online',
                 ];
 
             case "generalszh":
@@ -384,7 +398,8 @@ class Constants
                     "external_link" => false,
                     "name" => "Generals: Zero Hour",
                     "graph_color" => "rgba(253, 198, 75, 0.3)",
-                    "graph_border_color" => "rgba(253, 198, 75, 1)"
+                    "graph_border_color" => "rgba(253, 198, 75, 1)",
+                    'online_service' => 'C&C:Online',
                 ];
 
             case "ra3":
@@ -395,6 +410,7 @@ class Constants
                     "name" => "Red Alert 3",
                     "graph_color" => "rgba(253, 75, 75, 0.3)",
                     "graph_border_color" => "rgba(253, 75, 75, 1)",
+                    'online_service' => 'C&C:Online',
                 ];
 
             case "cncremastered":
@@ -404,7 +420,8 @@ class Constants
                     "external_link" => false,
                     "name" => "C&C Remastered Collection",
                     "graph_color" => "rgba(0, 255, 208, 0.3)",
-                    "graph_border_color" => "rgba(0, 255, 208, 1)"
+                    "graph_border_color" => "rgba(0, 255, 208, 1)",
+                    'online_service' => '',
                 ];
 
             case "apb":
@@ -415,6 +432,7 @@ class Constants
                     "name" => "Red Alert: A Path Beyond",
                     "graph_color" => "rgba(253, 3, 1, 0.2)",
                     "graph_border_color" => "rgba(253, 3, 1, 0.8)",
+                    'online_service' => 'W3D Hub',
                 ];
 
             case "ia":
@@ -425,6 +443,7 @@ class Constants
                     "name" => "Interim Apex",
                     "graph_color" => "rgba(0, 218, 186, 0.2)",
                     "graph_border_color" => "rgba(0, 218, 186, 0.8)",
+                    'online_service' => 'W3D Hub',
                 ];
 
             case "openra_cnc":
@@ -435,6 +454,7 @@ class Constants
                     "name" => "OpenRA: Tiberian Dawn",
                     "graph_color" => "rgba(121, 121, 121,0.2)",
                     "graph_border_color" => "rgba(121, 121, 121, 0.8)",
+                    'online_service' => 'OpenRA',
                 ];
 
             case "openra_ra":
@@ -444,7 +464,8 @@ class Constants
                     "external_link" => true,
                     "name" => "OpenRA: Red Alert",
                     "graph_color" => "rgba(255, 211, 0, 0.2)",
-                    "graph_border_color" => "rgba(255, 211, 0, 0.8)"
+                    "graph_border_color" => "rgba(255, 211, 0, 0.8)",
+                    'online_service' => 'OpenRA',
                 ];
 
             case "renegadex":
@@ -455,6 +476,7 @@ class Constants
                     "name" => "Renegade X",
                     "graph_color" => "rgba(136, 232, 249, 0.2)",
                     "graph_border_color" => "rgba(136, 232, 249, 1)",
+                    'online_service' => 'Totem Arts',
                 ];
         }
 

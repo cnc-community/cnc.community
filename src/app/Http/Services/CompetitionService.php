@@ -42,7 +42,7 @@ class CompetitionService
     {
         $count = 0;
         $keyedResults = [];
-        foreach($results as $k => $v)
+        foreach ($results as $k => $v)
         {
             $keyedResults[$count][$k] = $v;
             $count++;
@@ -56,10 +56,12 @@ class CompetitionService
         // $last24Hours = time() - (24 * 60 * 60);
 
         // 24th 6pm BST 1600966800
+        /*
         return Match::where("matchtype", $matchType)
             ->where('starttime', '>=', $timeStart)
             ->where('starttime', '<=', $timeEnd)
             ->orderBy("starttime", "DESC")
             ->paginate(200);
+        */
     }
 }

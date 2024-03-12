@@ -87,14 +87,8 @@
         <a href="/cnc-streamers" title="Watch C&C Livestreams" class="nav-link nav-creators-count">Watch <span class="notification pop-in">LIVE</span></a>
     </div>
 
-
-
     <div class="nav-item">
         <a href="/stats" title="C&C Online Stats" class="nav-link">Online <span class="notification js-total-online"></span></a>
-    </div>
-
-    <div class="nav-item nav-item-hide-on-small">
-        <a href="/funny" title="Funny/Cool" class="nav-link">Funny/Cool</a>
     </div>
 
     <div class="nav-item nav-item-dropdown nav-item-show-more-menu">
@@ -108,7 +102,6 @@
                     <div class="title">
                         More Links
                     </div>
-                    <a href="/funny" title="Funny/Cool">Funny/Cool</a>
 
                     <div class="social-links" style="margin-top: 20px;">
                         <a href="https://www.facebook.com/groups/commandandconquer" title="C&C Facebook Group" rel="nofollow noreferrer" target="_blank"><i

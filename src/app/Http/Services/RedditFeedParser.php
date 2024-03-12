@@ -7,6 +7,7 @@ use App\NewsFeedQueue;
 class RedditFeedParser extends AbstractFeedParser
 {
     private $_feedUrl;
+    private $_items = [];
 
     public function __construct($feedUrl)
     {

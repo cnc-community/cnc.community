@@ -1,0 +1,417 @@
+
+//
+// Homepage Hero
+.page-homepage .hero
+{
+    background-image: url("../images/tuc/homepage-header.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.page-homepage .hero 
+{
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.page-homepage .hero-content 
+{
+    padding-top: calc(15vh + 25px);
+    padding-bottom: calc(7vh + 80px);
+    max-width: 100%;
+}
+
+.page-homepage .hero-content .title
+{
+    margin-top: 25px;
+}
+
+.page-homepage .hero .feature-image-text 
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+
+    @media(min-width: $lg-width)
+    {
+        flex-direction: row;
+    }
+}
+
+.page-homepage .hero .feature-image,
+.page-homepage .hero .feature-text
+{
+    width: 100%;
+
+    @media(min-width:$xl-width)
+    {
+        width: 50%;
+    }
+}
+
+
+.page-homepage .hero .feature-image
+{
+    @media(min-width: $lg-width)
+    {
+        width: 40%;
+    }
+}
+
+.page-homepage .hero .feature-text
+{
+    @media(min-width: $lg-width)
+    {
+        width: 60%;
+    }
+}
+
+@media(max-width: $lg-width)
+{
+    .page-homepage .hero .feature-text 
+    {
+        text-align: center;
+    }
+}
+
+.page-homepage .hero .feature-text,
+.page-homepage .hero .feature-image 
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media(min-width: $xl-width)
+{
+    .page-homepage .hero .feature-text .content 
+    {
+        width: 710px;
+        margin-left: 0;
+    }
+}
+
+.page-homepage .hero .feature-image 
+{
+    display: flex;
+    justify-content: center;
+    width: 350px;
+    max-width: 100%;
+    margin: auto;
+    
+    @media(min-width: $lg-width)
+    {
+        width: 550px;
+        max-width: 50%;
+        margin-left: auto;
+        align-items: flex-end;
+    }
+
+    @media(min-width: $xl-width)
+    {
+        width: 850px;
+        max-width: 50%;
+    }
+}
+
+.page-homepage .hero .buttons 
+{
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-evenly;
+    max-width: 100%;
+    
+    .btn-icon i { padding: 0;}
+    
+    @media(min-width: $lg-width)
+    {
+        flex-wrap: nowrap;
+        .btn:nth-child(1){ margin-left: 0;}
+    }
+
+    @media(min-width: $xl-width)
+    {
+        justify-content: flex-start;
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+.page-homepage .hero p
+{
+    font-size: 1.15rem;
+
+    @media(min-width: $lg-width)
+    {
+        font-size: 1.25rem;
+    }
+}
+
+
+
+// 
+// How to play
+.page-homepage .how-to-play 
+{
+    background: #1d1d1d;
+    padding: 50px 0;
+}
+
+.page-homepage .section-title 
+{
+    line-height: 1.3;
+
+    & .highlight { font-size: 2.8rem; }
+}
+
+.page-homepage .how-to-play .content 
+{
+    max-width: 100%;
+}
+
+.page-homepage .how-to-play .section-description 
+{
+    width: $md-width;
+    max-width: 100%;
+}
+
+
+//
+// Guide boxes
+.how-to-guides 
+{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 100%;
+    margin: 50px auto;
+}
+
+.how-to-guides .guides 
+{
+    display: flex;
+    flex-direction: column;
+    // flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    padding: 36px 0;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.how-to-guides .section-description 
+{ 
+    width: 600px;
+    max-width: 100%;    
+}
+
+.how-to-guides .cta-buttons-guide 
+{
+    width: 600px;
+    margin: auto;
+    max-width: 100%;    
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+
+    .btn { margin-right: 1rem;}
+}
+
+// .how-to-guides .guides .more-cnc-games
+// {
+//     font-size: 1.2rem;
+//     color: #949494;
+//     text-transform: uppercase;
+//     font-weight: 600;
+//     text-decoration: underline;
+//     margin-top: 20px;
+//     padding: 20px 0 0;
+//     transition: ease-in 300ms all;
+
+//     &:hover { 
+//         color: silver;
+//     }
+// }
+    
+
+.how-to-guides .guides
+{
+    position: relative;
+    width: 96vw;
+    overflow: hidden;
+}
+
+.how-to-guides .swiper-container 
+{
+    width: 90%;
+
+    @media(min-width: $xl-width)
+    {
+        width: 93%;
+    }
+
+    height: 100%;
+}
+
+.how-to-guides .swiper-button-disabled
+{
+    @media(min-width: $xl-width)
+    {
+        display: none;
+    }
+}
+
+@media(min-width: $md-width)
+{
+    .how-to-guides .box 
+    {
+        transition: transform ease-in-out 250ms, 
+            background-size ease-in-out 550ms,
+            filter ease-in-out 550ms;
+    }
+
+    .how-to-guides .box .logo
+    {
+        transition: transform ease-in-out 250ms;
+        transform: translateY(-25px);
+    }
+
+    .how-to-guides .box:hover 
+    {
+        transform: translateY(-20px);
+        filter: saturate(1.5);
+    }
+
+    .how-to-guides .box:hover .logo
+    {
+        transform: translateY(20px);
+    }
+}
+
+
+.page-homepage .section-mission .feature-banner
+{
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    text-align: center;
+    justify-content: center;
+    padding-right: 0;
+    order: 0;
+}
+
+.page-homepage .section-mission .feature-text 
+{
+    padding-left: 50px;
+    padding-right: 50px;
+    order: 1;
+
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @media(min-width: $xl-width)
+    {
+        order: 0;
+        align-items: flex-start;
+        justify-content: flex-start;
+        text-align: left;
+    }
+}
+
+.page-homepage .section-mission .feature-box .section-description
+{
+    width: auto;
+}
+
+.page-homepage .section-mission  .feature-banner img 
+{
+    height: 100px;
+    max-width: 100%;
+    
+    @media(min-width: $xl-width)
+    {
+        height: 130px;
+    }
+}
+
+.page-homepage .leaderboard-introduction 
+{
+    background: #000;
+}
+
+.page-homepage .news-listings
+{
+    background: #131313;
+}
+
+.page-homepage .leaderboard-introduction .feature-banner
+{
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    text-align: center;
+    justify-content: center;
+    padding-right: 0;
+    order: 0;
+}
+
+.page-homepage .leaderboard-introduction .feature-text 
+{
+    padding-left: 50px;
+    padding-right: 50px;
+
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @media(min-width: $xl-width)
+    {
+        align-items: flex-start;
+        justify-content: flex-start;
+        text-align: left;
+    }
+}
+
+.page-homepage .leaderboard-introduction .feature-banner img 
+{
+    max-width: 100%;
+}
+
+.page-homepage .section-sites .sites
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+.page-homepage  .sites-container
+{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.page-homepage  .sites-container .site-item 
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 250px;
+    max-width: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}

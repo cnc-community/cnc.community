@@ -30,16 +30,9 @@ class FeedController extends Controller
      */
     public function index()
     {
-        $this->runTask();
         $this->runTaskDaily();
 
         return redirect("/admin/queue");
-    }
-
-    public function runTask()
-    {
-        $reddit = new RedditFeedParser("https://www.reddit.com/r/commandandconquer.json");
-        $reddit->run();
     }
 
     public function runTaskDaily()

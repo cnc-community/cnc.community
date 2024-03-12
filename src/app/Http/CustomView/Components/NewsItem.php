@@ -47,7 +47,7 @@ class NewsItem extends AbstractCustomView
                         <?php if ($this->image) : ?>
                             <img src="/<?php echo $this->image ?>" alt="<?php echo $this->title; ?>" />
                         <?php else : ?>
-                            <img src="/assets/images/no-image.jpg" alt="<?php echo $this->title; ?>" />
+                            <img src="/static/no-image.jpg" alt="<?php echo $this->title; ?>" />
                         <?php endif; ?>
                         </a>
 
@@ -70,7 +70,7 @@ class NewsItem extends AbstractCustomView
                                         <?php if ($this->feedSource) : ?>
                                             <div class="avatar <?php echo strtolower($this->feedSource); ?>"></div>
                                         <?php else : ?>
-                                            <div class="avatar" style="background-image: url(/assets/images/logo.svg)">
+                                            <div class="avatar" style="background-image: url(/static/logo.svg)">
                                             </div>
                                         <?php endif; ?>
 

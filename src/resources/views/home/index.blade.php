@@ -7,7 +7,7 @@
 @section('hero')
     <div class="feature-image-text">
         <div class="feature-image">
-            <img src="/assets/images/tuc/tuc-logo.png" alt="C&C Ultimate Collection on Steam" />
+            <img src="{{ Vite::asset('resources/assets/images/tuc/tuc-logo.png') }}" alt="C&C Ultimate Collection on Steam" />
         </div>
         <div class="feature-text">
             <div class="content">
@@ -29,24 +29,25 @@
                 </div>
             </div>
         </div>
-    @endsection
+    </div>
+@endsection
 
-    @section('content')
-        <section id="games" class="how-to-guides">
-            <div class="main-content">
-                <h2 class="section-title">Discover <br class="hide-for-xs" />Command &amp; Conquer</h2>
-                <p class="section-description">
-                    Choose a game to find out how to play on Windows 10 and Windows 11, staying up to date with the latest news from around the
-                    community.
-                </p>
-            </div>
+@section('content')
+    <section id="games" class="how-to-guides">
+        <div class="main-content">
+            <h2 class="section-title">Discover <br class="hide-for-xs" />Command &amp; Conquer</h2>
+            <p class="section-description">
+                Choose a game to find out how to play on Windows 10 and Windows 11, staying up to date with the latest news from around the
+                community.
+            </p>
+        </div>
 
-            <div class="guides">
-                <?php new App\Http\CustomView\Components\GameSlider($__env); ?>
-            </div>
-        </section>
+        <div class="guides">
+            @include('components.game-slider')
+        </div>
+    </section>
 
-        {{-- <section id="leaderboards" class="section section-black-alt leaderboard-introduction">
+    {{-- <section id="leaderboards" class="section section-black-alt leaderboard-introduction">
         <div class="main-content center">
             <div class="feature-box">
                 <div class="col-50 feature-text">
@@ -68,51 +69,51 @@
         </div>
     </section> --}}
 
-        <section class="section section-black news-listings">
-            <div class="main-content">
-                <h2 class="section-title">C&amp;C Community News</h2>
-                <p class="section-description">
-                    Discover the latest News from the C&amp;C Community Team.
-                </p>
+    <section class="section section-black news-listings">
+        <div class="main-content">
+            <h2 class="section-title">C&amp;C Community News</h2>
+            <p class="section-description">
+                Discover the latest News from the C&amp;C Community Team.
+            </p>
 
-                <?php new App\Http\CustomView\Components\NewsListing($officialNews); ?>
-                <div class="view-all">
-                    <a href="news/official-news" title="Official News" class="btn btn-primary">View all Official News</a>
-                </div>
+            <?php new App\Http\CustomView\Components\NewsListing($officialNews); ?>
+            <div class="view-all">
+                <a href="news/official-news" title="Official News" class="btn btn-primary">View all Official News</a>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="mission" class="section section-grey section-mission">
-            <div class="main-content center">
-                <div class="feature-box">
-                    <div class="feature-text">
-                        <h1 class="section-title">Our Mission</h1>
-                        <p class="section-description">
-                            C&amp;C Community is an ongoing project that aims to improve the accessibility of the Command &amp;
-                            Conquer
-                            the franchise and celebrate the tireless efforts of the wider communities that keep the games alive
-                            with mods,
-                            video content, streams and compatibility patches for moderns operating systems.
-                        </p>
-                        <div class="buttons">
-                            <a class="btn btn-primary" title="What is C&C Community?" href="/news/official-news/our-mission">Read more</a>
-                        </div>
-                    </div>
-
-                    <div class="feature-banner">
-                        <img src="/assets/images/cnc-community.png" alt="C&C logo" loading="lazy" />
+    <section id="mission" class="section section-grey section-mission">
+        <div class="main-content center">
+            <div class="feature-box">
+                <div class="feature-text">
+                    <h1 class="section-title">Our Mission</h1>
+                    <p class="section-description">
+                        C&amp;C Community is an ongoing project that aims to improve the accessibility of the Command &amp;
+                        Conquer
+                        the franchise and celebrate the tireless efforts of the wider communities that keep the games alive
+                        with mods,
+                        video content, streams and compatibility patches for moderns operating systems.
+                    </p>
+                    <div class="buttons">
+                        <a class="btn btn-primary" title="What is C&C Community?" href="/news/official-news/our-mission">Read more</a>
                     </div>
                 </div>
-            </div>
-        </section>
 
-        <section id="partners" class="section section-dark-grey section-sites">
-            <div class="main-content text-center">
-                <h2 class="section-title">Affiliates</h2>
+                <div class="feature-banner">
+                    <img src="{{ Vite::asset('resources/assets/images/logo.svg') }}" alt="C&C logo" loading="lazy" />
+                </div>
             </div>
+        </div>
+    </section>
 
-            <div class="sites">
-                <?php new App\Http\CustomView\Components\Sites(); ?>
-            </div>
-        </section>
-    @endsection
+    <section id="partners" class="section section-dark-grey section-sites">
+        <div class="main-content text-center">
+            <h2 class="section-title">Affiliates</h2>
+        </div>
+
+        <div class="sites">
+            @include('home.components.sites')
+        </div>
+    </section>
+@endsection

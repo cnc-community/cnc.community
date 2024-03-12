@@ -5,8 +5,7 @@
 @section('page-class', 'news-detail')
 
 @section('hero-video')
-    <div class="video" style="background-image: url('/assets/images/bg-grey.jpg')">
-    </div>
+    <div class="video" style="background-image: url('{{ Vite::asset('resources/assets/images/bg-grey.jpg') }}')"></div>
 @endsection
 
 @section('hero')

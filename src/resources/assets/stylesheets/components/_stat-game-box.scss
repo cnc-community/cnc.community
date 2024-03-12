@@ -1,0 +1,74 @@
+.stat-game-box 
+{
+    background: #212121;
+    padding: 25px;
+    width: 100%;
+    margin-bottom: 15px;
+    margin-right: 15px;
+    flex-grow: 1;
+    transition: ease-in background 250ms;
+
+    &:hover {
+        background: #000;
+    }
+    
+    @media(min-width: $lg-width)
+    {
+        width: 22%;
+    }
+}
+
+.stat-game-box-logo 
+{
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    & img { 
+        width: 200px;
+        max-width: 100%;
+    }
+}
+
+.stat-game-box .buttons 
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.stat-game-box .stat-game-online-count
+{
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+.stat-game-box .stat-game-online-count strong 
+{
+    font-size: 1.3rem;
+}
+
+.stat-game-box .stat-game-online-count small 
+{
+    font-size: 0.95rem;
+    color: #797979;
+}
+
+.stat-game--image-cncnet5_mo img,
+.stat-game--image-cncnet5_rr img,
+.stat-game--image-openra_ra img,
+.stat-game--image-openra_cnc img,
+.stat-game--image-cncnet5_dta img,
+.stat-game--image-ia img,
+.stat-game--image-ra3 img,
+.stat-game--image-cncnet5_ti img,
+.stat-game--image-apb img
+{
+    width: 250px;
+}
+
+.stat-game--image-renegadex img
+{
+    width: 300px;
+}

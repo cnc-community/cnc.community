@@ -31,31 +31,44 @@ class Kernel extends ConsoleKernel
 
         $schedule->call('App\Console\ClearExpiredCommand@handle')->hourly();
 
-        $schedule->call('App\Http\Controllers\StatsController@runTask')
-            ->everyTenMinutes()
-            ->runInBackground();
+        $schedule->call(function ()
+        {
+            $task = new \App\Http\Controllers\StatsController();
+            $task->runTask();
+        })->everyTenMinutes();
 
-        $schedule->call('App\Http\Controllers\StatsController@runCacheTask')
-            ->everyFiveMinutes()
-            ->runInBackground();
+        $schedule->call(function ()
+        {
+            $task = new \App\Http\Controllers\StatsController();
+            $task->runCacheTask();
+        })->everyFiveMinutes();
 
-        $schedule->call('App\Http\Controllers\LeaderboardController@runMatchesTask')
-            ->hourly()
-            ->runInBackground();
+        $schedule->call(function ()
+        {
+            $task = new \App\Http\Controllers\APIController();
+            $task->runTask();
+        })->weekly();
 
-        $schedule->call('App\Http\Controllers\LeaderboardController@runRALeaderboardTasks')
-            ->hourly()
-            ->runInBackground();
+        $schedule->call(function ()
+        {
+            $task = new \App\Http\Controllers\FeedController();
+            $task->runTaskDaily();
+        })->daily();
 
-        $schedule->call('App\Http\Controllers\LeaderboardController@runTDLeaderboardTasks')
-            ->everyThirtyMinutes()
-            ->runInBackground();
 
-        $schedule->call('App\Http\Controllers\FeedController@runTask')->daily()->runInBackground();
-        $schedule->call('App\Http\Controllers\FeedController@runTaskDaily')->daily()->runInBackground();
+        // $schedule->call('App\Http\Controllers\LeaderboardController@runMatchesTask')
+        //     ->hourly()
+        //     ->runInBackground();
 
-        $schedule->call('App\Http\Controllers\APIController@runTask')->weekly()->runInBackground();
-        $schedule->call('App\Http\Controllers\LeaderboardController@runProfileDataTask')->daily()->runInBackground();
+        // $schedule->call('App\Http\Controllers\LeaderboardController@runRALeaderboardTasks')
+        //     ->hourly()
+        //     ->runInBackground();
+
+        // $schedule->call('App\Http\Controllers\LeaderboardController@runTDLeaderboardTasks')
+        //     ->everyThirtyMinutes()
+        //     ->runInBackground();
+
+        // $schedule->call('App\Http\Controllers\LeaderboardController@runProfileDataTask')->daily()->runInBackground();
     }
 
     /**
