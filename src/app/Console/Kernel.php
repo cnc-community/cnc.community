@@ -32,12 +32,12 @@ class Kernel extends ConsoleKernel
         $schedule->call('App\Console\ClearExpiredCommand@handle')->hourly();
 
         $schedule->call('App\Http\Controllers\StatsController@runTask')
-            ->everyTenMinutes()
-            ->runInBackground();
+            ->everyTenMinutes();
+        //->runInBackground();
 
         $schedule->call('App\Http\Controllers\StatsController@runCacheTask')
-            ->everyFiveMinutes()
-            ->runInBackground();
+            ->everyFiveMinutes();
+        //->runInBackground();
 
         // $schedule->call('App\Http\Controllers\LeaderboardController@runMatchesTask')
         //     ->hourly()
@@ -51,8 +51,8 @@ class Kernel extends ConsoleKernel
         //     ->everyThirtyMinutes()
         //     ->runInBackground();
 
-        $schedule->call('App\Http\Controllers\FeedController@runTask')->daily()->runInBackground();
-        $schedule->call('App\Http\Controllers\FeedController@runTaskDaily')->daily()->runInBackground();
+        //$schedule->call('App\Http\Controllers\FeedController@runTask')->daily()->runInBackground();
+        //$schedule->call('App\Http\Controllers\FeedController@runTaskDaily')->daily()->runInBackground();
 
         $schedule->call('App\Http\Controllers\APIController@runTask')->weekly()->runInBackground();
         // $schedule->call('App\Http\Controllers\LeaderboardController@runProfileDataTask')->daily()->runInBackground();
