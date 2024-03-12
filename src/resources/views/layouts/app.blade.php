@@ -164,7 +164,7 @@
         </div>
 
         @yield('scripts')
-        <script src="/static/vendor/masonry.js')"></script>
+        <script src="/static/vendor/masonry.js"></script>
         <script>
             var baseWidth = 250;
             if (window.innerWidth >= 768) {

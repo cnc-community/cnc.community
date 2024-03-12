@@ -161,49 +161,48 @@ class Constants
     {
         $version = 1.4;
         $cdnUrl = "//cdn.jsdelivr.net/gh/cnc-community/files@" . $version . "/";
-        $posterSrc = Vite::asset("resources/assets/images/posters/");
 
         $videos = [
             "command-and-conquer-remastered" =>
             [
                 "src" => $cdnUrl . "cnc-remastered.mp4",
-                "poster" => $posterSrc . "cnc-remastered.jpg"
+                "poster" => Vite::asset("resources/assets/images/posters/cnc-remastered.jpg")
             ],
             "red-alert" => [
                 "src" => $cdnUrl . "red-alert-1.mp4",
-                "poster" => $posterSrc . "red-alert-1.jpg"
+                "poster" => Vite::asset("resources/assets/images/posters/red-alert-1.jpg")
             ],
             "tiberian-dawn" => [
                 "src" => $cdnUrl . "tiberian-dawn.mp4",
-                "poster" => $posterSrc . "tiberian-dawn.jpg"
+                "poster" => Vite::asset("resources/assets/images/posters/tiberian-dawn.jpg")
             ],
             "tiberian-sun" => [
                 "src" => $cdnUrl . "tiberian-sun.mp4",
-                "poster" => $posterSrc . "tiberian-sun.jpg"
+                "poster" => Vite::asset("resources/assets/images/posters/tiberian-sun.jpg")
             ],
             "red-alert-2" => [
                 "src" => $cdnUrl . "red-alert-2.mp4",
-                "poster" => $posterSrc . "red-alert-2.jpg"
+                "poster" => Vite::asset("resources/assets/images/posters/red-alert-2.jpg")
             ],
             "renegade" => [
                 "src" => $cdnUrl . "renegade.mp4",
-                "poster" => $posterSrc . "renegade.jpg"
+                "poster" => Vite::asset("resources/assets/images/posters/renegade.jpg")
             ],
             "generals" => [
                 "src" => $cdnUrl . "generals.mp4",
-                "poster" => $posterSrc . "generals.jpg"
+                "poster" => Vite::asset("resources/assets/images/posters/generals.jpg")
             ],
             "command-and-conquer-3" => [
                 "src" => $cdnUrl . "tiberium-wars.mp4",
-                "poster" => $posterSrc . "tiberium-wars.jpg"
+                "poster" => Vite::asset("resources/assets/images/posters/tiberium-wars.jpg")
             ],
             "red-alert-3" => [
                 "src" => $cdnUrl . "red-alert-3.mp4",
-                "poster" => $posterSrc . "red-alert-3.jpg"
+                "poster" => Vite::asset("resources/assets/images/posters/red-alert-3.jpg")
             ],
             "command-and-conquer-4" => [
                 "src" => $cdnUrl . "tiberium-twighlight.mp4",
-                "poster" => $posterSrc . "command-and-conquer-4.jpg"
+                "poster" => Vite::asset("resources/assets/images/posters/command-and-conquer-4.jpg")
             ],
             "default" => [
                 "src" => "",

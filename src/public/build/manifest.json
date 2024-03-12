@@ -1828,15 +1828,5 @@
     "file": "assets/App-w8qUK1Ar.js",
     "src": "resources/assets/typescript/App.ts",
     "isEntry": true
-  },
-  "resources/assets/vendor/masonry.js": {
-    "file": "assets/masonry-l0sNRNKZ.js",
-    "src": "resources/assets/vendor/masonry.js",
-    "isEntry": true
-  },
-  "resources/assets/vendor/swiper.min.js": {
-    "file": "assets/swiper.min-ChfhrGVn.js",
-    "src": "resources/assets/vendor/swiper.min.js",
-    "isEntry": true
   }
 }
