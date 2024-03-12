@@ -50,7 +50,7 @@ class ViewHelper
 
     public static function getTDRemasterLogo()
     {
-        return Vite::asset("/assets/images/logos/tiberian-dawn-remastered.png");
+        return Vite::asset("resources/assets/images/logos/tiberian-dawn-remastered.png");
     }
 
     public static function getRemasterLogoBySlug($slug)
@@ -67,7 +67,7 @@ class ViewHelper
 
     public static function getFeatureBannerByGameSlug($slug)
     {
-        return Vite::asset("/assets/images/banners/" . $slug . ".jpg");
+        return Vite::asset("resources/assets/images/banners/" . $slug . ".jpg");
     }
 
     public static function renderSpecialOctal($string)

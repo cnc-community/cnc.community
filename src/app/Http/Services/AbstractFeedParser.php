@@ -2,12 +2,12 @@
 
 namespace App\Http\Services;
 
-use Log;
+use Illuminate\Support\Facades\Log;
 
 abstract class AbstractFeedParser
 {
     private $_feedParser;
-    
+
     public function __construct($feedParser)
     {
         $this->_feedParser = $feedParser;
@@ -15,11 +15,11 @@ abstract class AbstractFeedParser
 
     public function run()
     {
-        try 
+        try
         {
             $this->_feedParser->run();
         }
-        catch (\Exception $exception) 
+        catch (\Exception $exception)
         {
             Log::error($exception);
         }

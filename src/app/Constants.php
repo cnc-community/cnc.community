@@ -2,6 +2,8 @@
 
 namespace App;
 
+use Illuminate\Support\Facades\Vite;
+
 class Constants
 {
     public static function remastersAppId(): int
@@ -159,7 +161,7 @@ class Constants
     {
         $version = 1.4;
         $cdnUrl = "//cdn.jsdelivr.net/gh/cnc-community/files@" . $version . "/";
-        $posterSrc = "/assets/images/posters/";
+        $posterSrc = Vite::asset("resources/assets/images/posters/");
 
         $videos = [
             "command-and-conquer-remastered" =>

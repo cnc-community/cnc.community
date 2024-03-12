@@ -3,17 +3,18 @@
 namespace App;
 
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Vite;
 
 class LeaderboardHelper
 {
     public static function mapPreviewByInternalName($internalName): string
     {
-        return "/assets/images/leaderboard/maps/".$internalName.".png";
+        return Vite::asset("resources/assets/images/leaderboard/maps/" . $internalName . ".png");
     }
-    
-    public static function getFactionById($id): string 
+
+    public static function getFactionById($id): string
     {
-        switch($id)
+        switch ($id)
         {
             case -1:
                 return "invalid";
@@ -50,46 +51,46 @@ class LeaderboardHelper
         // Captain would be in top 200, Lieutenant in top 400, 
         // Sergeant in top 800 and Private otherwise.
 
-        $path = "/assets/images/leaderboard/";
+        $path = Vite::asset("resources/assets/images/leaderboard/");
 
         if ($rank > 0 && $rank <= 16)
         {
             return [
-                "image" => $path."general.png",
+                "image" => $path . "general.png",
                 "rank" => "General"
             ];
         }
         else if ($rank > 16 && $rank <= 100)
         {
             return [
-                "image" => $path."colonel.png",
+                "image" => $path . "colonel.png",
                 "rank" => "Colonel"
             ];
         }
         else if ($rank > 100 && $rank <= 200)
         {
             return [
-                "image" => $path."major.png",
+                "image" => $path . "major.png",
                 "rank" => "Major"
             ];
         }
         else if ($rank > 200 && $rank <= 400)
         {
             return [
-                "image" => $path."captain.png",
+                "image" => $path . "captain.png",
                 "rank" => "Captain"
             ];
         }
         else if ($rank > 400 && $rank <= 800)
         {
             return [
-                "image" => $path."lieutenant.png",
+                "image" => $path . "lieutenant.png",
                 "rank" => "Lieutenant"
             ];
         }
 
         return [
-            "image" => $path."sergeant.png",
+            "image" => $path . "sergeant.png",
             "rank" => "Sergeant"
         ];
     }
