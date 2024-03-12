@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace App\Http\Controllers;
 
@@ -26,6 +26,7 @@ class LeaderboardController extends Controller
 {
     private $petroglyphAPIService;
     private $steamHelper;
+    private $cncOnlineCount;
 
     public function __construct()
     {
@@ -53,7 +54,7 @@ class LeaderboardController extends Controller
     {
         $this->petroglyphAPIService->runMatchesTask();
     }
-    
+
     public function runRALeaderboardTasks()
     {
         $this->petroglyphAPIService->runRALeaderboardTasks();
@@ -67,8 +68,9 @@ class LeaderboardController extends Controller
     public function getLeaderboardListings()
     {
         $heroVideo = Constants::getVideoWithPoster("command-and-conquer-remastered");
-        
-        return view('pages.remasters.leaderboard.listings', 
+
+        return view(
+            'pages.remasters.leaderboard.listings',
             [
                 "heroVideo" => $heroVideo
             ]
@@ -80,7 +82,9 @@ class LeaderboardController extends Controller
      */
     public function getLeaderboardListingsByGame(Request $request, $gameSlug)
     {
+        /*
         return null;
+
         $pageNumber = filter_var($request->page == null ? 1: $request->page, FILTER_SANITIZE_STRING);
         $searchRequest = filter_var($request->search, FILTER_SANITIZE_STRING);
         $season = filter_var($request->season, FILTER_SANITIZE_STRING);
@@ -131,6 +135,7 @@ class LeaderboardController extends Controller
                 "data" => $data->appends(["season" => $season, "search" => $searchRequest])
             ]
         );
+        */
     }
 
     /**
@@ -139,6 +144,7 @@ class LeaderboardController extends Controller
     public function getPlayerLeaderboardProfile(Request $request, $gameSlug, $playerId)
     {
         return null;
+        /*
         $pageNumber = filter_var($request->page, FILTER_SANITIZE_STRING);
         $searchRequest = filter_var($request->search, FILTER_SANITIZE_STRING);
         $season = filter_var($request->season, FILTER_SANITIZE_STRING);
@@ -185,5 +191,6 @@ class LeaderboardController extends Controller
                 "matchType" => $matchType
             ]
         );
+        */
     }
 }
