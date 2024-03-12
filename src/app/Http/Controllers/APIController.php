@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace App\Http\Controllers;
 
@@ -40,6 +40,7 @@ class APIController extends Controller
 
     public function recentGamesByMatchType(Request $request, $matchType)
     {
+        /*
         $type = null;
         switch($matchType)
         {
@@ -65,6 +66,7 @@ class APIController extends Controller
         $timeEnd = filter_var($request->timeEnd == null ? 1: $request->timeEnd, FILTER_SANITIZE_STRING);
 
         return $this->competitionService->getPlayersByMatchType($type, $timeStart, $timeEnd);
+        */
     }
 
     public function runTask()
@@ -83,28 +85,30 @@ class APIController extends Controller
         $counts = $this->twitchStreamsAPI->getCounts($data);
 
         return response($counts)
-            ->withHeaders([
-                "max-age" => Constants::getCacheSeconds()
-            ]
-        );
+            ->withHeaders(
+                [
+                    "max-age" => Constants::getCacheSeconds()
+                ]
+            );
     }
 
     public function totalStreamCount()
     {
         $data = $this->twitchStreamsAPI->getStreamByGames(Constants::getTwitchGames());
         $count = $this->twitchStreamsAPI->getCounts($data);
-        
+
         $total = 0;
-        foreach($count as $k => $arr)
+        foreach ($count as $k => $arr)
         {
             $total += count($arr);
         }
 
         return response($total)
-            ->withHeaders([
-                "max-age" => Constants::getCacheSeconds()
-            ]
-        );
+            ->withHeaders(
+                [
+                    "max-age" => Constants::getCacheSeconds()
+                ]
+            );
     }
 
     public function streamByGameId($gameId, $limit = 100)
@@ -112,10 +116,11 @@ class APIController extends Controller
         $data = $this->twitchStreamsAPI->getStreamByGame($gameId, $limit);
 
         return response($data)
-            ->withHeaders([
-                "max-age" => Constants::getCacheSeconds()
-            ]
-        );
+            ->withHeaders(
+                [
+                    "max-age" => Constants::getCacheSeconds()
+                ]
+            );
     }
 
     public function videosByGameId($gameId)
@@ -123,10 +128,11 @@ class APIController extends Controller
         $data = $this->twitchStreamsAPI->getVideosByGame($gameId);
 
         return response($data)
-            ->withHeaders([
-                "max-age" => Constants::getCacheSeconds()
-            ]
-        );
+            ->withHeaders(
+                [
+                    "max-age" => Constants::getCacheSeconds()
+                ]
+            );
     }
 
     public function getPlayerRank($gameSlug, $playerId)
@@ -136,6 +142,7 @@ class APIController extends Controller
 
     public function searchPlayers(Request $request, $gameSlug)
     {
+        /*
         $searchRequest = filter_var($request->search, FILTER_SANITIZE_STRING);
         $matchType = Match::getMatchTypeByGameSlug($gameSlug);
 
@@ -152,10 +159,12 @@ class APIController extends Controller
             $searchRequest, 
             $limit=10
         );
+        */
     }
 
     public function getPlayerRankWebView(Request $request, $gameSlug, $playerId)
     {
+        /*
         $matchType = Match::getMatchTypeByGameSlug($gameSlug);
         $leaderboardHistory = Leaderboard::getActiveLeaderboardSeason($matchType);
         if ($leaderboardHistory == null)
@@ -196,10 +205,12 @@ class APIController extends Controller
                 "inputBranding" => $inputBranding
             ]
         );
+        */
     }
 
     public function configRankWebView(Request $request, $gameSlug, $playerId)
     {
+        /*
         $matchType = Match::getMatchTypeByGameSlug($gameSlug);
         $leaderboardHistory = Leaderboard::getActiveLeaderboardSeason($matchType);
         
@@ -242,6 +253,7 @@ class APIController extends Controller
                 "generatedUrl" => $generatedUrl
             ]
         );
+        */
     }
 
     public function APIController()

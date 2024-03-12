@@ -42,7 +42,7 @@
             </p>
         </div>
 
-        <div class="guides">{}
+        <div class="guides">
             @include('components.game-slider')
         </div>
     </section>

@@ -375,10 +375,15 @@ p > code {
 }
 
 .page-content {
-    padding: 35px 0;
+    padding: 15px;
     width: $md-width;
     margin: 0 auto;
     max-width: 100%;
+
+    @media(min-width: $lg-width)
+    {
+        padding: 35px 0;
+    }
 }
 
 .page-content-with-editor 
@@ -890,13 +895,18 @@ ul.pagination {
 
 .guide-buttons {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     margin: auto;
     justify-content: center;
 
     .btn {
         margin-right: 1rem;
         margin-left: 1rem;
+    }
+
+    @media(min-width: $md-width)
+    {
+        flex-direction: row;
     }
 }
 

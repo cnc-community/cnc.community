@@ -407,6 +407,9 @@
 
 .page-homepage  .sites-container .site-item 
 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 250px;
     max-width: 100%;
     padding-left: 1rem;

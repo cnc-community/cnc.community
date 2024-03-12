@@ -5,6 +5,8 @@ import.meta.glob([
     '../assets/fonts/**',
 ]);
 
+import { TwitchCountNav } from "./TwitchCountNav";
 import { NavBarJs } from "./navbar/NavBarJs";
 
 new NavBarJs();
+new TwitchCountNav();

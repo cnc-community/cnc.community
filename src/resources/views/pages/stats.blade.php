@@ -5,7 +5,7 @@
 @section('page-class', 'game-stats')
 
 @section('hero-video')
-    <div class="video" style="background-image: url('/assets/images/creators.jpg')">
+    <div class="video" style="background-image: url('{{ Vite::asset('resources/assets/images/creators.jpg') }} ')">
     </div>
 @endsection
 
