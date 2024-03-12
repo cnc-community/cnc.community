@@ -18,12 +18,6 @@
     <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
 
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ Vite::asset('resources/assets/images/favicon/apple-touch-icon.png') }}">
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ Vite::asset('/assets/images/favicon/favicon-32x32.png') }}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ Vite::asset('/assets/images/favicon/favicon-16x16.png') }}">
-    <link rel="manifest" href="{{ Vite::asset('/assets/images/favicon/site.webmanifest') }}">
-    <link rel="mask-icon" href="{{ Vite::asset('/assets/images/favicon/safari-pinned-tab.svg') }}" color="#000000">
-    <link rel="shortcut icon" href="{{ Vite::asset('/assets/images/favicon/favicon.ico') }}">
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#000000">
 
