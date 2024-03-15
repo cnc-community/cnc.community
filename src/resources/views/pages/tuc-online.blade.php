@@ -81,8 +81,7 @@
                         C&C:Online supports Generals, Tiberium Wars, Red Alert 3 and works with Steam and EA App digital downloads.
                     </p>
                     <p class="text-center">
-                        <a href="https://w3dhub.com/games/command-conquer-renegade/" class="btn btn-primary" rel="nofollow"
-                            style="max-width:max-content;margin:auto;">Go to C&C:Online</a>
+                        <a href="https://cnc-online.net/" class="btn btn-primary" rel="nofollow" style="max-width:max-content;margin:auto;">Go to C&C:Online</a>
                     </p>
                 </div>
             </div>
