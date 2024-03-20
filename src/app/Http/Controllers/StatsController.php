@@ -33,6 +33,8 @@ class StatsController extends Controller
         {
             Log::info("runCacheTask ** Started");
 
+            ini_set('memory_limit', '256M');
+
             $data = GameStatGraph::getLast5Years();
             Log::info("runCacheTask ** Data found");
 
