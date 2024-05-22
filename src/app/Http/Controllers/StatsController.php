@@ -32,13 +32,10 @@ class StatsController extends Controller
         try
         {
             Log::info("runCacheTask ** Started");
-
-            ini_set('memory_limit', '256M');
-
             $data = GameStatGraph::getLast5Years();
             Log::info("runCacheTask ** Data found");
 
-            $filteredGameAbbreviations  = Constants::getGameAbbreviations();
+            $filteredGameAbbreviations = Constants::getGameAbbreviations();
             Log::info("runCacheTask ** Abbreviations found");
 
             $onlineCount = new CNCOnlineCount();
@@ -70,6 +67,7 @@ class StatsController extends Controller
         }
         catch (Exception $ex)
         {
+            dd($ex);
             Log::info("Error running cache task: " . $ex->getMessage());
         }
     }

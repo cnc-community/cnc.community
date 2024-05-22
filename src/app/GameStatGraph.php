@@ -81,6 +81,8 @@ class GameStatGraph extends Model
 
     public static function getLast5Years()
     {
+        ini_set('memory_limit', '1024M');
+
         return GameStatGraph::whereBetween(
             "created_at",
             array(

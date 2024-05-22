@@ -281,6 +281,13 @@
                 }
             }
         });
+
+
+        // Show last 7 days graph data
+        var currentDate = new Date();
+        var pastDate = new Date();
+        pastDate.setDate(currentDate.getDate() - 7);
+        updateTimeScale(pastDate, currentDate);
     </script>
 
     <script>
