@@ -162,7 +162,11 @@ class SteamAPI extends AbstractSteamAPI
                     '&strip_description_bbcode=true'
             );
 
-            return $this->buildResponse($response->json()["response"]);
+            if (isset($response->json()["response"]))
+            {
+                return $this->buildResponse($response->json()["response"]);
+            }
+            return [];
         });
     }
 
@@ -182,7 +186,11 @@ class SteamAPI extends AbstractSteamAPI
                         '&strip_description_bbcode=true'
                 );
 
-                return $this->buildResponse($response->json()["response"]);
+                if (isset($response->json()["response"]))
+                {
+                    return $this->buildResponse($response->json()["response"]);
+                }
+                return [];
             }
             catch (Exception $exception)
             {
