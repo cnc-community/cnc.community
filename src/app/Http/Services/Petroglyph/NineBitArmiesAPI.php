@@ -19,7 +19,19 @@ class NineBitArmiesAPI
     {
     }
 
-    public function getLeaderboard($limit = 200, $offset = 0)
+    public function getLeaderboard()
+    {
+        return Cache::remember("9bitarmies.ladder.listing", 900, function ()
+        {
+            $data = $this->sendLeaderboardRequest(200, 0);
+            $data = json_decode(json_encode($data["ranks"]));
+
+            return $data;
+        });
+        return [];
+    }
+
+    private function sendLeaderboardRequest($limit = 200, $offset = 0)
     {
         try
         {

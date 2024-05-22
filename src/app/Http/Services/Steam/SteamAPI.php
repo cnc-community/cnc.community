@@ -50,6 +50,7 @@ class SteamAPI extends AbstractSteamAPI
                     '&key=' . $this->_apiKey
             );
 
+            dd($response->json());
             $players = $response->json()["response"]["players"]["player"];
             if ($players)
             {

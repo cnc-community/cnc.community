@@ -7,6 +7,7 @@ use App\Http\Services\Petroglyph\NineBitArmiesAPI;
 use App\Http\Services\Petroglyph\PetroglyphAPIService;
 use App\Http\Services\SteamHelper;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class LadderController extends Controller
 {
@@ -21,8 +22,7 @@ class LadderController extends Controller
 
     public function getLadderIndex(Request $request)
     {
-        $data = $this->nineBitArmiesAPI->getLeaderboard(200, 0);
-        $data = json_decode(json_encode($data["ranks"]));
+        $data = $this->nineBitArmiesAPI->getLeaderboard();
 
         return view(
             'pages.9bitarmies.ladder.listings',

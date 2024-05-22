@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace App\Http\Services;
 
@@ -7,7 +7,7 @@ use App\Http\Services\Steam\SteamAPI;
 class SteamHelper
 {
     private $steamAPI;
-    
+
     public function __construct()
     {
         $this->steamAPI = new SteamAPI();
@@ -43,8 +43,20 @@ class SteamHelper
         return $this->steamAPI->getTopWorkShopItemsByTagName($cacheKey, $appId, $tagName, $limit);
     }
 
-    public static function RedAlertMod() { return "RedAlertMod"; }
-    public static function TiberianDawnMod() { return "TiberianDawnMod"; }
-    public static function RedAlertMap() { return "RA"; }
-    public static function TiberianDawnMap() { return "TD"; }
+    public static function RedAlertMod()
+    {
+        return "RedAlertMod";
+    }
+    public static function TiberianDawnMod()
+    {
+        return "TiberianDawnMod";
+    }
+    public static function RedAlertMap()
+    {
+        return "RA";
+    }
+    public static function TiberianDawnMap()
+    {
+        return "TD";
+    }
 }
