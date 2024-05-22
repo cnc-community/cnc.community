@@ -5,8 +5,13 @@
     <meta property="og:image" content="{{ Vite::asset('resources/assets/images/meta3.png') }}">
 @endsection
 
-@php $slug = Str::slug($gameName) @endphp
-@section('page-class', "$slug")
+@php
+    $slug = Str::slug($gameName);
+    $imageClasses = ['hero-bg', 'hero-bg-1', 'hero-bg-2', 'hero-bg-3', 'hero-bg-4'];
+    $randomImage = $imageClasses[array_rand($imageClasses)];
+@endphp
+
+@section('page-class', "$slug $randomImage")
 
 @section('hero')
     <div class="content center">
@@ -15,12 +20,13 @@
         </div>
         {{-- <h1 class="text-uppercase">{{ $gameName }} Leaderboards</h1> --}}
         <div class="buttons">
-            <a href="https://store.steampowered.com/app/1439750/9Bit_Armies_A_Bit_Too_Far/" class="btn btn-secondary btn-icon" target="_blank">Buy Game on Steam
+            <a href="https://store.steampowered.com/app/1439750/9Bit_Armies_A_Bit_Too_Far/" class="btn btn-secondary btn-icon" target="_blank">
+                Buy on Steam
                 <i class="icon-steam"></i>
             </a>
 
-            <a class="btn btn-secondary btn-icon" target="_blank" title="Visit Petroglpyh Website" rel="nofollow" href="https://petroglyphgames.com/">Petroglyph
-                Homepage
+            <a class="btn btn-secondary btn-icon" target="_blank" title="Visit Petroglpyh Website" rel="nofollow" href="https://petroglyphgames.com/">
+                Petroglyph Homepage
                 <i class="icon-petroglyph"></i>
             </a>
         </div>
