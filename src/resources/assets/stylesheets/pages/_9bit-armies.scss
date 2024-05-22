@@ -1,0 +1,41 @@
+.page.page-9-bit-armies-a-bit-too-far {
+    background: url(../images/9bit/hero.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.page.page-9-bit-armies-a-bit-too-far .hero {
+    background: transparent;
+}
+
+.page.page-9-bit-armies-a-bit-too-far .leaderboard-hero {
+    background: rgb(39 16 0 / 89%);
+    border-radius: 10px 0 0 0;
+}
+
+.leaderboard-player-listings {
+    background: rgb(39 16 0 / 89%);
+}
+
+.page.page-9-bit-armies-a-bit-too-far footer {
+    background: #000;
+}
+
+// Table styles
+.page.page-9-bit-armies-a-bit-too-far .leaderboard-listings .headers {
+    --bg-color: #1a0c0352;
+    --border-color: #4d2b16;
+    --text-color: #ff864a;
+}
+
+.page.page-9-bit-armies-a-bit-too-far .leaderboard-listings .leaderboard-table-row:nth-child(odd) {
+    --bg-color: rgb(26 12 3);
+    --bg-hover-color: #c7a38d73;
+    --bg-border-color: rgb(26 12 3);
+}
+
+.page.page-9-bit-armies-a-bit-too-far .leaderboard-listings .leaderboard-table-row {
+    --bg-color: rgb(41 22 9);
+    --bg-hover-color: #c7a38d73;
+    --bg-border-color: rgb(41 22 9);
+}

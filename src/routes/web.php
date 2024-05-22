@@ -89,6 +89,9 @@ Route::get('/stats', 'StatsController@showStats')->name('pages.stats')->middlewa
 Route::get('/command-and-conquer-ultimate-collection-steam', 'SiteController@showTUCPage')->name('pages.tuc')->middleware('cache.headers:public;max_age=400');
 Route::get('/command-and-conquer-ultimate-collection-online', 'SiteController@showTUCMultiplayerPage')->name('pages.tucMultiplayer')->middleware('cache.headers:public;max_age=400');
 
+// 9bit
+Route::get('/9bit/leaderboard', 'LadderController@getLadderIndex')->name('9bit.leaderboard');
+
 Route::get('/cnc-streamers', 'SiteController@showCreatorsListings')->name('pages.creators.listing')->middleware('cache.headers:public;max_age=1800');
 Route::get('/creators', function ()
 {
