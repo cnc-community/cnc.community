@@ -33,11 +33,11 @@
                     <a href="/command-and-conquer-remastered/workshop-mods" title="Steam Workshop">Steam Workshop</a>
                     <a href="/command-and-conquer-remastered#help" title="Help & Support">Help &amp; Support</a>
 
-                    <div class="title" style="margin-top:10px;">
+                    {{-- <div class="title" style="margin-top:10px;">
                         Leaderboard
                     </div>
                     <a href="/command-and-conquer-remastered/leaderboard/tiberian-dawn" title="Tiberian Dawn Leaderboard">Tiberian Dawn</a>
-                    <a href="/command-and-conquer-remastered/leaderboard/red-alert" title="Red Alert Leaderboard">Red Alert</a>
+                    <a href="/command-and-conquer-remastered/leaderboard/red-alert" title="Red Alert Leaderboard">Red Alert</a> --}}
                 </div>
             </div>
         </div>

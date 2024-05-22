@@ -10,15 +10,20 @@
 
 @section('hero')
     <div class="content center">
-        <div class="leaderboard-logo">
+        <div class="leaderboard-logo" style="margin-bottom:1rem;">
             <img src="{{ Vite::asset('resources/assets/images/9bit/9bit-logo.png') }}" alt="{{ $gameName }} logo" />
         </div>
-        <h1 class="text-uppercase">{{ $gameName }} Leaderboards</h1>
-        <p class="lead">
-            <a href="https://store.steampowered.com/app/1439750/9Bit_Armies_A_Bit_Too_Far/" class="btn btn-secondary btn-icon" target="_blank">View Game on steam
+        {{-- <h1 class="text-uppercase">{{ $gameName }} Leaderboards</h1> --}}
+        <div class="buttons">
+            <a href="https://store.steampowered.com/app/1439750/9Bit_Armies_A_Bit_Too_Far/" class="btn btn-secondary btn-icon" target="_blank">Buy Game on Steam
                 <i class="icon-steam"></i>
             </a>
-        </p>
+
+            <a class="btn btn-secondary btn-icon" target="_blank" title="Visit Petroglpyh Website" rel="nofollow" href="https://petroglyphgames.com/">Petroglyph
+                Homepage
+                <i class="icon-petroglyph"></i>
+            </a>
+        </div>
     </div>
 @endsection
 
@@ -31,8 +36,8 @@
                 <div class="leaderboard-description">
                     <h1 class="leaderboard-hero-title">{{ $gameName }}<br /> <span class="light">Leaderboard Rankings</span></h1>
                     <div class="button-group">
-                        <a href="https://discord.gg/ygGFZxz" class="btn btn-secondary btn-icon" title="Join the 9Bit Discord" target="_blank">
-                            Join the 9Bit Discord
+                        <a href="https://discord.gg/ygGFZxz" class="btn btn-secondary btn-icon" title="Join the official Petroglyph Discord" target="_blank">
+                            Join the official Petroglyph Discord
                             <i class="icon-discord"></i>
                         </a>
                     </div>
@@ -107,7 +112,6 @@
                                     @if ($rank !== $player->rank)
                                         @if ($rank > $player->rank)
                                             <div class="rank-history rank-green" style="color: #01ad00;">
-
                                                 <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#01ad00">
                                                     <path d="m280-400 200-200 200 200H280Z" />
                                                 </svg>

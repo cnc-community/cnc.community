@@ -1,5 +1,5 @@
 .page.page-9-bit-armies-a-bit-too-far {
-    background: url(../images/9bit/hero.jpg);
+    background: url(../images/9bit/hero-4.jpg);
     background-size: cover;
     background-attachment: fixed;
 }
@@ -9,35 +9,53 @@
 }
 
 .page.page-9-bit-armies-a-bit-too-far .leaderboard-hero {
-    background: rgb(39 16 0 / 89%);
+    // background: rgb(39 16 0 / 89%);
+    background: rgb(0 17 39 / 89%);
     border-radius: 10px 0 0 0;
 }
 
 .leaderboard-player-listings {
-    background: rgb(39 16 0 / 89%);
+    // background: rgb(39 16 0 / 89%);
+    background: rgb(0 17 39 / 89%);
 }
 
 .page.page-9-bit-armies-a-bit-too-far footer {
     background: #000;
 }
 
+.page.page-9-bit-armies-a-bit-too-far .hero .btn {
+    background: #173081d6;
+}
+
+.page.page-9-bit-armies-a-bit-too-far .btn {
+    border-color: rgb(0 20 255);
+    background: #173081;
+    color: #ffffff;
+    &:hover,
+    &:focus {
+        border-color: rgb(0 20 255);
+        background: #0b1a49;
+        color: rgb(255, 255, 255);
+    }
+}
+
 // Table styles
 .page.page-9-bit-armies-a-bit-too-far .leaderboard-listings .headers {
-    --bg-color: #1a0c0352;
-    --border-color: #4d2b16;
+    --bg-color: #03051a52;
+    --border-color: #03051a52;
     --text-color: #fff;
 }
 
 .page.page-9-bit-armies-a-bit-too-far .leaderboard-listings .leaderboard-table-row:nth-child(odd) {
-    --bg-color: rgb(26 12 3);
-    --bg-hover-color: #c7a38d73;
-    --bg-border-color: rgb(26 12 3);
+    --bg-color: rgb(6 3 26 / 52%);
+    --bg-hover-color: #1f0cc96b;
+    --bg-border-color: rgb(6 3 26 / 52%);
 }
 
 .page.page-9-bit-armies-a-bit-too-far .leaderboard-listings .leaderboard-table-row {
-    --bg-color: rgb(41 22 9);
-    --bg-hover-color: #c7a38d73;
-    --bg-border-color: rgb(41 22 9);
+    --bg-color: rgb(211 214 255 / 7%);
+    --bg-hover-color: #1f0cc96b;
+    --bg-border-color: rgb(211 214 255 / 7%);
 }
 
 .page.page-9-bit-armies-a-bit-too-far .rank-history {
