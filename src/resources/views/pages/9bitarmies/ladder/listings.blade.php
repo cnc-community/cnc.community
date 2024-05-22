@@ -2,7 +2,7 @@
 @section('title', "$gameName Leaderboard")
 @section('description', "$gameName Leaderboard rankings, 1vs1")
 @section('meta')
-    <meta property="og:image" content="https://cnc.community/assets/images/meta2.png?v=1.0">
+    <meta property="og:image" content="https://cnc.community/assets/images/meta3.png?v=1.0">
 @endsection
 
 @php $slug = Str::slug($gameName) @endphp
