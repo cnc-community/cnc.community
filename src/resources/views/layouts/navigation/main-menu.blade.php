@@ -42,9 +42,9 @@
 
                 <div class="category">
                     <div class="title">
-                        <a href="https://petroglyphgames.com/" title="Petroglpyh">Petroglpyh</a>
+                        <a href="https://petroglyphgames.com/" title="Petroglyph website">Petroglyph</a>
                     </div>
-                    <a href="https://petroglyphgames.com/" title="Visit Website">Visit Website</a>
+                    <a href="https://petroglyphgames.com/" title="Visit Website" target="_blank">Visit Website</a>
 
                     <div class="title" style="margin-top:10px;">
                         Leaderboard
