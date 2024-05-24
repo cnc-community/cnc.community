@@ -90,7 +90,8 @@ Route::get('/command-and-conquer-ultimate-collection-steam', 'SiteController@sho
 Route::get('/command-and-conquer-ultimate-collection-online', 'SiteController@showTUCMultiplayerPage')->name('pages.tucMultiplayer')->middleware('cache.headers:public;max_age=400');
 
 // 9bit
-Route::get('/9bitarmies/leaderboard', 'LadderController@getLadderIndex')->name('9bit.leaderboard');
+Route::get('/9bitarmies/leaderboard', 'LadderController@getNineBitArmiesIndex')->name('9bit.leaderboard');
+Route::get('/command-and-conquer-remastered/leaderboard/{game}', 'LadderController@getRemasteredIndex')->middleware('cache.headers:public;max_age=480');
 
 Route::get('/cnc-streamers', 'SiteController@showCreatorsListings')->name('pages.creators.listing')->middleware('cache.headers:public;max_age=1800');
 Route::get('/creators', function ()
@@ -100,9 +101,6 @@ Route::get('/creators', function ()
 Route::get('/command-and-conquer-25-years', 'AnniversaryController@index')->name('pages.anniversary')->middleware('cache.headers:public;max_age=1800');
 Route::get('/command-and-conquer-remastered', 'SiteController@showRemastersListings')->name('pages.remasters.listing')->middleware('cache.headers:public;max_age=1800');
 Route::get('/command-and-conquer-remastered/workshop-mods', 'SiteController@showRemastersWorkshopMods')->name('pages.remasters.workshop.listings')->middleware('cache.headers:public;max_age=14400');
-// Route::get('/command-and-conquer-remastered/leaderboard', 'LeaderboardController@getLeaderboardListings')->name('pages.remasters.leaderboard.listings')->middleware('cache.headers:public;max_age=1800');
-// Route::get('/command-and-conquer-remastered/leaderboard/{game}', 'LeaderboardController@getLeaderboardListingsByGame')->name('pages.remasters.leaderboard.detail')->middleware('cache.headers:public;max_age=480');
-// Route::get('/command-and-conquer-remastered/leaderboard/{game}/player/{playerId}', 'LeaderboardController@getPlayerLeaderboardProfile')->name('pages.remasters.leaderboard.player-detail')->middleware('cache.headers:public;max_age=480');
 
 Route::get('/news/{categorySlug}', 'SiteController@showNewsByCategorySlug')->name('news.listing')->middleware('cache.headers:public;max_age=14400');
 Route::get('/news/{categorySlug?}/{newsSlug}', 'SiteController@showNewsBySlug')->name('news.detail')->middleware('cache.headers:public;max_age=14400');

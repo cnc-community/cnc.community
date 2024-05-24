@@ -11,6 +11,11 @@ class Constants
         return 1213210;
     }
 
+    public static function nineBitArmiesAppId(): int
+    {
+        return 1439750;
+    }
+
     public static function getSteamIDByAbbrev($abbrev): ?int
     {
         switch ($abbrev)

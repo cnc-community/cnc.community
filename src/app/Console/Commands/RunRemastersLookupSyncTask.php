@@ -2,24 +2,26 @@
 
 namespace App\Console\Commands;
 
+use App\Http\Controllers\LadderController;
+use App\Http\Services\Petroglyph\NineBitArmiesAPI;
 use App\Http\Services\Petroglyph\PetroglyphAPIService;
 use Illuminate\Console\Command;
 
-class RunLeaderboardSync extends Command
+class RunRemastersLookupSyncTask extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'leaderboard:sync';
+    protected $signature = 'remasters:sync';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Sync Leaderboard Data';
+    protected $description = 'Run Remasters Lookup Sync Task';
 
     /**
      * Create a new command instance.
@@ -38,10 +40,8 @@ class RunLeaderboardSync extends Command
      */
     public function handle()
     {
-        $petroglyphAPIService = new PetroglyphAPIService();
-        $petroglyphAPIService->runRALeaderboardTasks($canSleep = false);
-        $petroglyphAPIService->runTDLeaderboardTasks($canSleep = false);
-
+        $petroglyphAPIService = new LadderController();
+        $petroglyphAPIService->syncRemasters();
         return 0;
     }
 }

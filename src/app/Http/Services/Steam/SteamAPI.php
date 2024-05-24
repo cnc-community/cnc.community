@@ -49,22 +49,25 @@ class SteamAPI extends AbstractSteamAPI
                     '&steamids=' . $steamIds .
                     '&key=' . $this->_apiKey
             );
-
-            dd($response->json());
-            $players = $response->json()["response"]["players"]["player"];
-            if ($players)
+            if ($response->status() == 200)
             {
-                return $players;
+                $players = $response->json()["response"]["players"]["player"];
+                if ($players && isset($players[0]["steamid"]))
+                {
+                    return $players;
+                }
             }
+            else
+            {
+                dd("Error", $response->status());
+            }
+            return [];
         }
         catch (Exception $exception)
         {
             Log::error($exception);
-            return -1;
+            return [];
         }
-        // return Cache::remember('getSteamProfileData'.$appId, 86400, function () use($appId, $steamIds)
-        // {
-        // });
     }
 
     public function getSteamPlayerCount($appId)

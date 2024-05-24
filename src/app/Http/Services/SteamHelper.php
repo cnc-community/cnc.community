@@ -13,9 +13,50 @@ class SteamHelper
         $this->steamAPI = new SteamAPI();
     }
 
-    public function getSteamProfiles($appId, $steamIds)
+    /**
+     * 
+     * @param mixed $appId 
+     * @param mixed $steamIdArr 
+     * @return mixed 
+     */
+    public function getSteamProfiles($appId, $steamIdArr)
     {
-        return $this->steamAPI->getSteamProfileData($appId, $steamIds);
+        /**
+         * Response
+         *  "steamid" => "76561199101543383"
+         *  "communityvisibilitystate" => 3
+         *  "profilestate" => 1
+         *  "personaname" => "Preußens Gloria"
+         *  "profileurl" => "https://steamcommunity.com/profiles/76561199101543383/"
+         *  "avatar" => "https://avatars.steamstatic.com/b2da4cd67c58bc0a991f9b747ffa2264b4fc6a6f.jpg"
+         *  "avatarmedium" => "https://avatars.steamstatic.com/b2da4cd67c58bc0a991f9b747ffa2264b4fc6a6f_medium.jpg"
+         *  "avatarfull" => "https://avatars.steamstatic.com/b2da4cd67c58bc0a991f9b747ffa2264b4fc6a6f_full.jpg"
+         *  "avatarhash" => "b2da4cd67c58bc0a991f9b747ffa2264b4fc6a6f"
+         *  "personastate" => 0
+         *  "realname" => ""
+         *  "primaryclanid" => "103582791429521408"
+         *  "timecreated" => 1603718875
+         *  "personastateflags" => 0
+         *  "loccountrycode" => "DE"
+         */
+        $steamIds = implode(', ', $steamIdArr);
+
+        $chunkSize = 100;
+
+        // Split the Steam IDs into chunks
+        $steamIdChunks = array_chunk($steamIdArr, $chunkSize);
+
+        // Array to store all players' data
+        $allPlayers = [];
+
+        foreach ($steamIdChunks as $chunk)
+        {
+            $steamIds = implode(', ', $chunk); // Create a comma-separated string from the chunk
+            $players = $this->steamAPI->getSteamProfileData($appId, $steamIds); // Call the API for each chunk
+            $allPlayers = array_merge($allPlayers, $players); // Merge the results into the main array
+        }
+
+        return $allPlayers;
     }
 
     public function getSteamPlayerCount($appId)

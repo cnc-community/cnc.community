@@ -2,12 +2,8 @@
 
 namespace App\Http\Services\Petroglyph;
 
-use App\Constants;
-use App\Leaderboard;
-use App\LeaderboardHistory;
 use Exception;
 use GuzzleHttp\Client;
-use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
 
@@ -16,13 +12,16 @@ class NineBitArmiesAPI
     private $_apiUrl = "http://8Bit2CoordLB1-339611218.us-east-1.elb.amazonaws.com:6530/Coordinator/webresources/com.petroglyph.coord.leaderboard.queryv2/";
     private $_recentMatchesUrl = "http://8bit2coordlb1-339611218.us-east-1.elb.amazonaws.com:6530/Coordinator/webresources/com.petroglyph.coord.matches.recent";
 
+    private const NINEBIT_ARMIES_CACHE = "9bitarmies.cache";
+    private const CACHE_TIME_SECONDS = 900; // Time we cache the leaderboard requests
+
     public function __construct()
     {
     }
 
     public function getLeaderboard()
     {
-        return Cache::remember("9bitarmies.ladder.listing", 900, function ()
+        return Cache::remember(NineBitArmiesAPI::NINEBIT_ARMIES_CACHE, NineBitArmiesAPI::CACHE_TIME_SECONDS, function ()
         {
             $data = $this->sendLeaderboardRequest(200, 0);
             $data = json_decode(json_encode($data["ranks"]));
@@ -71,30 +70,7 @@ class NineBitArmiesAPI
         return [];
     }
 
-    public function runSyncMatchNameLookup()
-    {
-        Log::info("runSyncMatchNameLookup started");
-        $lookupTable = $this->getSteamIdNameLookupTable();
-
-        if (empty($lookupTable))
-        {
-            Log::info("Cache is empty, rebuilding the lookup table.");
-            $lookupTable = $this->buildSteamIdNameLookupTable();
-            if (!empty($lookupTable))
-            {
-                Cache::put("9bitarmies.steamid_name_lookup", $lookupTable, 3600);
-                Log::info("Cache manually updated with new data.");
-            }
-            else
-            {
-                Log::error("Failed to rebuild the lookup table, no data found.");
-            }
-        }
-
-        Log::info("runSyncMatchNameLookup completed");
-    }
-
-    private function buildSteamIdNameLookupTable()
+    public function fetchNamesFromRecentGames()
     {
         $client = new Client();
         $offset = 0;
@@ -141,19 +117,14 @@ class NineBitArmiesAPI
 
                 $offset += $limit;
 
-                Log::info("Offset: $offset");
+                Log::info("NineBitArmiesAPI ** Offset: $offset");
             }
             else
             {
-                dd("Bad request", $response->getStatusCode());
+                Log::info("NineBitArmiesAPI ** " . $response->getStatusCode());
             }
         } while ($offset < $totalMatches);
 
         return $lookupTable;
-    }
-
-    public function getSteamIdNameLookupTable()
-    {
-        return Cache::get("9bitarmies.steamid_name_lookup", []);
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Http\Controllers\LadderController;
 use App\Http\Services\Petroglyph\NineBitArmiesAPI;
 use App\Http\Services\Petroglyph\PetroglyphAPIService;
 use Illuminate\Console\Command;
@@ -39,8 +40,8 @@ class RunNineBitArmiesLookupSyncTask extends Command
      */
     public function handle()
     {
-        $petroglyphAPIService = new NineBitArmiesAPI();
-        $petroglyphAPIService->runSyncMatchNameLookup();
+        $petroglyphAPIService = new LadderController();
+        $petroglyphAPIService->syncNineBitArmies();
         return 0;
     }
 }

@@ -15,8 +15,6 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         //
-        '\App\Console\Commands\RunLeaderboardSync',
-        '\App\Console\Commands\RunLeaderboardMatchTask'
     ];
 
     /**
@@ -31,18 +29,17 @@ class Kernel extends ConsoleKernel
 
         $schedule->call('App\Console\ClearExpiredCommand@handle')->hourly();
 
-
         $schedule->call(function ()
         {
-            $task = new \App\Http\Services\Petroglyph\NineBitArmiesAPI();
-            $task->runSyncMatchNameLookup();
+            $task = new \App\Http\Controllers\LadderController();
+            $task->syncRemasters();
         })->everyFourHours();
 
         $schedule->call(function ()
         {
-            $task = new \App\Http\Controllers\StatsController();
-            $task->runTask();
-        })->everyTenMinutes();
+            $task = new \App\Http\Controllers\LadderController();
+            $task->syncNineBitArmies();
+        })->everyFourHours();
 
         $schedule->call(function ()
         {

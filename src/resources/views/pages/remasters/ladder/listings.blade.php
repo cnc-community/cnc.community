@@ -11,24 +11,28 @@
     $randomImage = $imageClasses[array_rand($imageClasses)];
 @endphp
 
+@section('hero-video')
+    <?php new \App\Http\CustomView\Components\VideoPlayer($heroVideo); ?>
+@endsection
+
 @section('page-class', "$slug $randomImage")
 
 @section('hero')
     <div class="content center">
         <div class="leaderboard-logo" style="margin-bottom:1rem;">
-            <img src="{{ Vite::asset('resources/assets/images/9bit/9bit-logo.png') }}" alt="{{ $gameName }} logo" />
+            @if ($abbrev == 'red-alert')
+                <img src="{{ Vite::asset('resources/assets/images/logos/red-alert-remastered.png') }}" alt="{{ $gameName }} logo" />
+            @else
+                <img src="{{ Vite::asset('resources/assets/images/logos/tiberian-dawn-remastered.png') }}" alt="{{ $gameName }} logo" />
+            @endif
         </div>
         <div class="buttons">
-            <a href="https://store.steampowered.com/app/1439750/9Bit_Armies_A_Bit_Too_Far/" class="btn btn-secondary btn-icon" target="_blank">
+            <a href="https://www.ea.com/games/command-and-conquer/command-and-conquer-remastered" class="btn btn-secondary btn-icon" target="_blank">
                 Buy on Steam
                 <i class="icon-steam"></i>
             </a>
-
-            <a class="btn btn-secondary btn-icon" target="_blank" title="Visit Petroglpyh Website" rel="nofollow" href="https://petroglyphgames.com/">
-                Petroglyph Homepage
-                <i class="icon-petroglyph"></i>
-            </a>
         </div>
+        {{-- <h1 class="text-uppercase">{{ $gameName }} Leaderboards</h1> --}}
     </div>
 @endsection
 
@@ -40,15 +44,8 @@
             <div class="leaderboard-hero">
                 <div class="leaderboard-description">
                     <h1 class="leaderboard-hero-title">{{ $gameName }}<br /> <span class="light">Leaderboard Rankings</span></h1>
-                    <div class="button-group">
-                        <a href="https://discord.gg/ygGFZxz" class="btn btn-secondary btn-icon" title="Join the official Petroglyph Discord" target="_blank">
-                            Join the official Petroglyph Discord
-                            <i class="icon-discord"></i>
-                        </a>
-                    </div>
                 </div>
                 <div class="leaderboard-logo">
-                    <img src="{{ Vite::asset('resources/assets/images/9bit/9bit-factions.png') }}" alt="{{ $gameName }} factions" />
                 </div>
             </div>
         </div>
@@ -90,7 +87,6 @@
                                                 {{ \App\ViewHelper::renderSpecialOctal($steamProfile->personaname) }}
                                             @endif
                                         @endforeach
-
                                     </h3>
                                 </div>
                             </div>
@@ -144,6 +140,12 @@
                                 <div class="player-name">
                                     <div class="player-rank-name">
                                         <h3>
+                                            <span style="margin-right:1rem;">
+                                                <a href="https://steamcommunity.com/profiles/{{ $player->steamids[0] }}">
+                                                    <i class="icon icon-steam" style="font-size:1.3rem; margin-left:1rem;"></i>
+                                                </a>
+                                            </span>
+
                                             @foreach ($steamLookup as $steamProfile)
                                                 @if ($player->steamids[0] == $steamProfile->steam_id)
                                                     {{ \App\ViewHelper::renderSpecialOctal($steamProfile->personaname) }}
