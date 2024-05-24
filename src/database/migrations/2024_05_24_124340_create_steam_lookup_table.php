@@ -16,7 +16,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger("steam_id");
             $table->string("personaname");
-            $table->string("avatarfull")->nullable();
+            $table->text("avatarfull")->nullable();
             $table->timestamps();
         });
     }

@@ -52,6 +52,10 @@
 .page.page-9-bit-armies-a-bit-too-far .leaderboard-hero {
     background: rgb(0 17 39 / 89%);
     border-radius: 10px;
+
+    @media (min-width: $lg-width) {
+        border-radius: 10px 10px 0 0;
+    }
 }
 
 .page.page-9-bit-armies-a-bit-too-far .leaderboard-player-listings {

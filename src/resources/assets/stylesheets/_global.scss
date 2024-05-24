@@ -380,21 +380,19 @@ p > code {
     margin: 0 auto;
     max-width: 100%;
 
-    @media(min-width: $lg-width)
-    {
+    @media (min-width: $lg-width) {
         padding: 35px 0;
     }
 }
 
-.page-content-with-editor 
-{
+.page-content-with-editor {
     padding: 35px 0;
     width: 800px;
     margin: 0 auto;
     max-width: 100%;
 }
 
-.page-content-without-editor{
+.page-content-without-editor {
     padding: 35px 0;
     width: 800px;
     margin: 0 auto;
@@ -892,7 +890,6 @@ ul.pagination {
     max-height: 400px;
 }
 
-
 .guide-buttons {
     display: flex;
     flex-direction: column;
@@ -904,8 +901,7 @@ ul.pagination {
         margin-left: 1rem;
     }
 
-    @media(min-width: $md-width)
-    {
+    @media (min-width: $md-width) {
         flex-direction: row;
     }
 }
@@ -915,12 +911,10 @@ ul.pagination {
     padding-top: 1rem;
 }
 
-.how-to-play-steps
-{
+.how-to-play-steps {
     padding-top: 0;
 }
 
-.figure.image 
-{
+.figure.image {
     text-align: center;
 }

@@ -35,7 +35,7 @@
     background: linear-gradient(0deg, black, transparent);
     padding: 40px;
 
-    @media (min-width: $lg-width) {
+    @media (min-width: $xl-width) {
         flex-direction: row;
     }
 }
@@ -243,4 +243,32 @@
 
 .rank.rank-type.major {
     top: calc(56px * 16);
+}
+
+.leaderboard-listings .player-name {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+
+    @media (min-width: $lg-width) {
+        flex-direction: row;
+        padding: 1rem 0;
+    }
+}
+
+.leaderboard-listings .profile-avatar {
+    display: inline-flex;
+    width: 80px;
+    height: 80px;
+    justify-content: center;
+
+    @media (min-width: $lg-width) {
+        margin-right: 1rem;
+    }
+}
+
+.leaderboard-table-row div.profile-avatar {
+    width: 80px;
+    height: 80px;
 }

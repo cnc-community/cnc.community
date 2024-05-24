@@ -4,12 +4,14 @@
     align-items: center;
     transition: background ease-in-out 250ms;
     @extend .font-secondary-bold;
+    font-size: 1.2rem;
 }
 
 .leaderboard-table-row .detailed-stats {
     display: flex;
     flex-wrap: wrap;
     padding-bottom: 15px;
+    justify-content: center;
 }
 
 .leaderboard-table-row .detailed-stats div {
@@ -25,11 +27,6 @@
 @media (max-width: $lg-width) {
     .leaderboard-table-row {
         position: relative;
-    }
-
-    .leaderboard-table-row div {
-        flex-basis: auto;
-        width: auto;
     }
 
     .leaderboard-table-row .stats {
@@ -57,12 +54,14 @@
 .leaderboard-table-row .player-rank-name {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
     .rank {
         padding-left: 0;
     }
 
-    @media (min-width: $md-width) {
+    @media (min-width: $xl-width) {
         flex-direction: row;
         align-items: center;
         justify-content: flex-start;

@@ -51,13 +51,18 @@ class PetroglyphSteamProfileService
     {
         // Fetch those steam ids that don't exist in our system
         $steamProfiles = $this->steamHelper->getSteamProfiles($steamAppId, $steamIds);
-
         foreach ($steamProfiles as $steamProfile)
         {
             $steamLookup = SteamLookup::where("steam_id", $steamProfile["steamid"])->first();
             if ($steamLookup == null)
             {
                 $this->saveSteamLookup($steamProfile["steamid"], $steamProfile["personaname"], $steamProfile["avatarfull"]);
+            }
+            else
+            {
+                $steamLookup->personaname = $steamProfile["personaname"];
+                $steamLookup->avatarfull = $steamProfile["avatarfull"];
+                $steamLookup->save();
             }
         }
     }

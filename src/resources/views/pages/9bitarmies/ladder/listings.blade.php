@@ -78,20 +78,20 @@
 
                             <div class="col col-40 visible-lg">
                                 <div class="player-name">
-                                    <h3>
-                                        <span style="margin-right:1rem;">
-                                            <a href="https://steamcommunity.com/profiles/{{ $player->steamids[0] }}">
-                                                <i class="icon icon-steam" style="font-size:1.3rem; margin-left:1rem;"></i>
-                                            </a>
-                                        </span>
-
-                                        @foreach ($steamLookup as $steamProfile)
-                                            @if ($player->steamids[0] == $steamProfile->steam_id)
-                                                {{ \App\ViewHelper::renderSpecialOctal($steamProfile->personaname) }}
+                                    @foreach ($steamLookup as $steamProfile)
+                                        @if ($player->steamids[0] == $steamProfile->steam_id)
+                                            @if ($steamProfile->avatarfull)
+                                                <a href="https://steamcommunity.com/profiles/{{ $player->steamids[0] }}" class="profile-avatar" rel="nofollow">
+                                                    <div class="profile-avatar-fx"></div>
+                                                    <div class="profile-avatar-image" style="background-image: url('{{ $steamProfile->avatarfull }}')"></div>
+                                                </a>
                                             @endif
-                                        @endforeach
 
-                                    </h3>
+                                            <h3>
+                                                {{ \App\ViewHelper::renderSpecialOctal($steamProfile->personaname) }}
+                                            </h3>
+                                        @endif
+                                    @endforeach
                                 </div>
                             </div>
 
@@ -143,13 +143,20 @@
                             <div class="stats hidden-lg">
                                 <div class="player-name">
                                     <div class="player-rank-name">
-                                        <h3>
-                                            @foreach ($steamLookup as $steamProfile)
-                                                @if ($player->steamids[0] == $steamProfile->steam_id)
-                                                    {{ \App\ViewHelper::renderSpecialOctal($steamProfile->personaname) }}
+                                        @foreach ($steamLookup as $steamProfile)
+                                            @if ($player->steamids[0] == $steamProfile->steam_id)
+                                                @if ($steamProfile->avatarfull)
+                                                    <a href="https://steamcommunity.com/profiles/{{ $player->steamids[0] }}" class="profile-avatar" rel="nofollow">
+                                                        <div class="profile-avatar-fx"></div>
+                                                        <div class="profile-avatar-image" style="background-image: url('{{ $steamProfile->avatarfull }}')">
+                                                        </div>
+                                                    </a>
                                                 @endif
-                                            @endforeach
-                                        </h3>
+                                                <h3>
+                                                    {{ \App\ViewHelper::renderSpecialOctal($steamProfile->personaname) }}
+                                                </h3>
+                                            @endif
+                                        @endforeach
                                     </div>
                                     <div class="other-stats">
                                         <div class="player-rank-stat">

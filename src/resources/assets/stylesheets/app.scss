@@ -2,11 +2,7 @@
 
 //
 // Core styles, fonts and variables
-@import "base/variables",
-        "base/fonts",
-        "base/typography",
-        "base/buttons",
-        "base/forms";
+@import "base/variables", "base/fonts", "base/typography", "base/buttons", "base/forms";
 
 //
 // Vendors
@@ -16,54 +12,24 @@
 // Global
 @import "global";
 
-
 //
 // Components
-@import "components/header",
-        "components/navbar",
-        "components/navburger",
-        "components/hero",
-        "components/guide-box",
-        "components/article",
-        "components/news-item",
-        "components/boxes",
-        "components/twitch",
-        "components/workshop-items",
-        "components/workshop-item",
-        "components/feature-box",
-        "components/generic-box-item",
-        "components/player-rank",
-        "components/player-detail-rank",
-        // "components/leaderboard-listings",
-        "components/leaderboard-item",
-        "components/leaderboard-badge",
-        "components/online-count",
-        "components/stat-game-box",
-        "components/avatar";
+@import "components/header", "components/navbar", "components/navburger", "components/hero", "components/guide-box",
+    "components/article", "components/news-item", "components/boxes", "components/twitch", "components/workshop-items",
+    "components/workshop-item", "components/feature-box", "components/generic-box-item", "components/player-rank",
+    "components/player-detail-rank",
+    // "components/leaderboard-listings",
+    "components/leaderboard-item",
+    "components/leaderboard-badge", "components/online-count", "components/stat-game-box", "components/avatar";
 
 // New: Eventually splitting out Leaderboards from main codebase
-@import 
-    "components/leaderboard/leaderboard-profile", 
-    "components/leaderboard/leaderboard-breadcrumb",
-    "components/leaderboard/leaderboard-games",
-    "components/leaderboard/leaderboard-match",
-    "components/leaderboard/leaderboard-search",
-    "components/leaderboard/leaderboard-season-select",
+@import "components/leaderboard/leaderboard-profile", "components/leaderboard/leaderboard-breadcrumb",
+    "components/leaderboard/leaderboard-games", "components/leaderboard/leaderboard-match",
+    "components/leaderboard/leaderboard-search", "components/leaderboard/leaderboard-season-select",
     "components/leaderboard/leaderboard-table-row";
 
 //
 // Pages
-@import "pages/homepage",
-        "pages/news",
-        "pages/news-detail",
-        "pages/category",
-        "pages/game-detail",
-        "pages/funny",
-        "pages/creators",
-        "pages/page-remasters",
-        "pages/leaderboard-listings",
-        "pages/leaderboard-profile",
-        "pages/player-webview",
-        "pages/game-stats",
-        "pages/anniversary",
-        "pages/9bit-armies";
+@import "pages/homepage", "pages/news", "pages/news-detail", "pages/category", "pages/game-detail", "pages/funny",
+    "pages/creators", "pages/page-remasters", "pages/leaderboard-listings", "pages/leaderboard-profile",
+    "pages/player-webview", "pages/game-stats", "pages/anniversary", "pages/9bit-armies";
