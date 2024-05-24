@@ -31,6 +31,13 @@ class Kernel extends ConsoleKernel
 
         $schedule->call('App\Console\ClearExpiredCommand@handle')->hourly();
 
+
+        $schedule->call(function ()
+        {
+            $task = new \App\Http\Services\Petroglyph\NineBitArmiesAPI();
+            $task->runSyncMatchNameLookup();
+        })->everyFourHours();
+
         $schedule->call(function ()
         {
             $task = new \App\Http\Controllers\StatsController();

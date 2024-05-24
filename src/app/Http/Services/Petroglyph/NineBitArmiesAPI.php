@@ -22,8 +22,6 @@ class NineBitArmiesAPI
 
     public function getLeaderboard()
     {
-        $this->buildSteamIdNameLookupTable();
-
         return Cache::remember("9bitarmies.ladder.listing", 900, function ()
         {
             $data = $this->sendLeaderboardRequest(200, 0);
@@ -71,6 +69,13 @@ class NineBitArmiesAPI
         {
         }
         return [];
+    }
+
+    public function runSyncMatchNameLookup()
+    {
+        Log::info("runSyncMatchNameLookup started");
+        $this->buildSteamIdNameLookupTable();
+        Log::info("runSyncMatchNameLookup completed");
     }
 
     private function buildSteamIdNameLookupTable()
