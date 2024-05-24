@@ -164,7 +164,7 @@
                                         </div>
 
                                         <div class="detailed-stats">
-                                            <div class="wins"><strong>Wins:</strong>{{ $player->wins }}</div>
+                                            <div class="wins"><strong>Wins:</strong> {{ $player->wins }}</div>
                                             <div class="losses"><strong>Losses:</strong> {{ $player->loses }}</div>
                                             <div class="played"><strong>Played:</strong> {{ $player->wins += $player->loses }}</div>
                                             <div class="points"><strong>Points:</strong> {{ round($player->points) }}</div>
