@@ -74,69 +74,82 @@ class NineBitArmiesAPI
     public function runSyncMatchNameLookup()
     {
         Log::info("runSyncMatchNameLookup started");
-        $this->buildSteamIdNameLookupTable();
+        $lookupTable = $this->getSteamIdNameLookupTable();
+
+        if (empty($lookupTable))
+        {
+            Log::info("Cache is empty, rebuilding the lookup table.");
+            $lookupTable = $this->buildSteamIdNameLookupTable();
+            if (!empty($lookupTable))
+            {
+                Cache::put("9bitarmies.steamid_name_lookup", $lookupTable, 3600);
+                Log::info("Cache manually updated with new data.");
+            }
+            else
+            {
+                Log::error("Failed to rebuild the lookup table, no data found.");
+            }
+        }
+
         Log::info("runSyncMatchNameLookup completed");
     }
 
     private function buildSteamIdNameLookupTable()
     {
-        return Cache::remember("9bitarmies.steamid_name_lookup", 3600, function ()
+        $client = new Client();
+        $offset = 0;
+        $limit = 200;
+        $lookupTable = [];
+        $totalMatches = null;
+
+        do
         {
-            $client = new Client();
-            $offset = 0;
-            $limit = 200;
-            $lookupTable = [];
-            $totalMatches = null;
+            $response = $client->request('GET', $this->_recentMatchesUrl, [
+                'query' => [
+                    'limit' => $limit,
+                    'offset' => $offset
+                ],
+                'headers' => [
+                    'Accept' => 'application/json',
+                    'Content-Type' => 'application/json;charset=utf-8'
+                ]
+            ]);
 
-            do
+            if ($response->getStatusCode() == 200)
             {
-                $response = $client->request('GET', $this->_recentMatchesUrl, [
-                    'query' => [
-                        'limit' => $limit,
-                        'offset' => $offset
-                    ],
-                    'headers' => [
-                        'Accept' => 'application/json',
-                        'Content-Type' => 'application/json;charset=utf-8'
-                    ]
-                ]);
+                $data = json_decode($response->getBody(), true);
 
-                if ($response->getStatusCode() == 200)
+                if ($offset == 0)
                 {
-                    $data = json_decode($response->getBody(), true);
-
-                    if ($offset == 0)
-                    {
-                        $totalMatches = $data['totalmatches'];
-                    }
-
-                    $matches = $data['matches'];
-
-                    if (empty($matches))
-                    {
-                        break;
-                    }
-
-                    foreach ($matches as $match)
-                    {
-                        foreach ($match['players'] as $index => $steamid)
-                        {
-                            $lookupTable[$steamid] = $match['names'][$index];
-                        }
-                    }
-
-                    $offset += $limit;
-
-                    Log::info("Offset: $offset");
+                    $totalMatches = $data['totalmatches'];
                 }
-                else
+
+                $matches = $data['matches'];
+
+                if (empty($matches))
                 {
-                    dd("Bad request", $response->getStatusCode());
+                    break;
                 }
-            } while ($offset < $totalMatches);
 
-            return $lookupTable;
-        });
+                foreach ($matches as $match)
+                {
+                    foreach ($match['players'] as $index => $steamid)
+                    {
+                        $lookupTable[$steamid] = $match['names'][$index];
+                    }
+                }
+
+                $offset += $limit;
+
+                Log::info("Offset: $offset");
+            }
+            else
+            {
+                dd("Bad request", $response->getStatusCode());
+            }
+        } while ($offset < $totalMatches);
+
+        return $lookupTable;
     }
 
     public function getSteamIdNameLookupTable()
