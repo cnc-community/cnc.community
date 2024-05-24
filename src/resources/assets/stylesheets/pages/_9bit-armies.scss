@@ -1,45 +1,46 @@
 .page.page-9-bit-armies-a-bit-too-far {
     background: url(../images/9bit/hero-4.jpg);
-    background-size: cover;
-    background-attachment: fixed;
 }
 
 .page.page-9-bit-armies-a-bit-too-far.hero-bg-4 {
     background: url(../images/9bit/hero-4.jpg);
-    background-size: cover;
-    background-attachment: fixed;
 }
 
 .page.page-9-bit-armies-a-bit-too-far.hero-bg-3 {
     background: url(../images/9bit/hero-3.jpg);
-    background-size: cover;
-    background-attachment: fixed;
 }
 
 .page.page-9-bit-armies-a-bit-too-far.hero-bg-2 {
     background: url(../images/9bit/hero-2.jpg);
-    background-size: cover;
-    background-attachment: fixed;
 }
 
 .page.page-9-bit-armies-a-bit-too-far.hero-bg-1 {
     background: url(../images/9bit/hero-2.jpg);
-    background-size: cover;
-    background-attachment: fixed;
 }
 
 .page.page-9-bit-armies-a-bit-too-far .hero {
     background: transparent;
+    background-size: cover;
+
+    @media (min-width: $lg-width) {
+        background-attachment: fixed;
+    }
+}
+
+.page.page-9-bit-armies-a-bit-too-far .leaderboard-player-listings {
+    padding: 1rem;
+}
+
+.page.page-9-bit-armies-a-bit-too-far .leaderboard-hero .leaderboard-logo {
+    max-width: 100%;
 }
 
 .page.page-9-bit-armies-a-bit-too-far .leaderboard-hero {
-    // background: rgb(39 16 0 / 89%);
     background: rgb(0 17 39 / 89%);
     border-radius: 10px 0 0 0;
 }
 
 .leaderboard-player-listings {
-    // background: rgb(39 16 0 / 89%);
     background: rgb(0 17 39 / 89%);
 }
 

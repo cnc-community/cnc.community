@@ -80,7 +80,9 @@
                             <div class="col col-40 visible-lg">
                                 <div class="player-name">
                                     <h3>
-                                        {{ $player->name ?? 'TBC' }}
+                                        @if (array_key_exists($player->steamids[0], $steamLookup))
+                                            {{ \App\ViewHelper::renderSpecialOctal($steamLookup[$player->steamids[0]]) }}
+                                        @endif
                                         <span>
                                             <a href="https://steamcommunity.com/profiles/{{ $player->steamids[0] }}">
                                                 <i class="icon icon-steam" style="font-size:1.3rem; margin-left:1rem;"></i>
@@ -138,7 +140,11 @@
                             <div class="stats hidden-lg">
                                 <div class="player-name">
                                     <div class="player-rank-name">
-                                        <h3>{{ $player->name ?? 'WIP' }}</h3>
+                                        <h3>
+                                            @if (array_key_exists($player->steamids[0], $steamLookup))
+                                                {{ \App\ViewHelper::renderSpecialOctal($steamLookup[$player->steamids[0]]) }}
+                                            @endif
+                                        </h3>
                                     </div>
                                     <div class="other-stats">
                                         <div class="player-rank-stat">

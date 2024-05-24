@@ -23,11 +23,13 @@ class LadderController extends Controller
     public function getLadderIndex(Request $request)
     {
         $data = $this->nineBitArmiesAPI->getLeaderboard();
+        $steamLookup = $this->nineBitArmiesAPI->getSteamIdNameLookupTable();
 
         return view(
             'pages.9bitarmies.ladder.listings',
             [
                 'data' => $data,
+                'steamLookup' => $steamLookup,
                 'gameName' => '9-Bit Armies: A Bit Too Far'
             ]
         );

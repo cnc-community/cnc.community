@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Log;
 class NineBitArmiesAPI
 {
     private $_apiUrl = "http://8Bit2CoordLB1-339611218.us-east-1.elb.amazonaws.com:6530/Coordinator/webresources/com.petroglyph.coord.leaderboard.queryv2/";
+    private $_recentMatchesUrl = "http://8bit2coordlb1-339611218.us-east-1.elb.amazonaws.com:6530/Coordinator/webresources/com.petroglyph.coord.matches.recent";
 
     public function __construct()
     {
@@ -21,6 +22,8 @@ class NineBitArmiesAPI
 
     public function getLeaderboard()
     {
+        $this->buildSteamIdNameLookupTable();
+
         return Cache::remember("9bitarmies.ladder.listing", 900, function ()
         {
             $data = $this->sendLeaderboardRequest(200, 0);
@@ -68,5 +71,71 @@ class NineBitArmiesAPI
         {
         }
         return [];
+    }
+
+    private function buildSteamIdNameLookupTable()
+    {
+        return Cache::remember("9bitarmies.steamid_name_lookup", 3600, function ()
+        {
+            $client = new Client();
+            $offset = 0;
+            $limit = 200;
+            $lookupTable = [];
+            $totalMatches = null;
+
+            do
+            {
+                $response = $client->request('GET', $this->_recentMatchesUrl, [
+                    'query' => [
+                        'limit' => $limit,
+                        'offset' => $offset
+                    ],
+                    'headers' => [
+                        'Accept' => 'application/json',
+                        'Content-Type' => 'application/json;charset=utf-8'
+                    ]
+                ]);
+
+                if ($response->getStatusCode() == 200)
+                {
+                    $data = json_decode($response->getBody(), true);
+
+                    if ($offset == 0)
+                    {
+                        $totalMatches = $data['totalmatches'];
+                    }
+
+                    $matches = $data['matches'];
+
+                    if (empty($matches))
+                    {
+                        break;
+                    }
+
+                    foreach ($matches as $match)
+                    {
+                        foreach ($match['players'] as $index => $steamid)
+                        {
+                            $lookupTable[$steamid] = $match['names'][$index];
+                        }
+                    }
+
+                    $offset += $limit;
+
+                    Log::info("Offset: $offset");
+                }
+                else
+                {
+                    dd("Bad request", $response->getStatusCode());
+                }
+            } while ($offset < $totalMatches);
+
+            return $lookupTable;
+        });
+    }
+
+    public function getSteamIdNameLookupTable()
+    {
+        return Cache::get("9bitarmies.steamid_name_lookup", []);
     }
 }
