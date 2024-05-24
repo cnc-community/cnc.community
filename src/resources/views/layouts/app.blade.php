@@ -7,7 +7,7 @@
     <title>@yield('title') - C&C Community</title>
 
     <meta property="og:type" content="website">
-    <meta property="og:title" content="@yield('title') - Command &amp; Conquer">
+    <meta property="og:title" content="@yield('title')">
     <meta property="og:site_name" content="C&C Community">
 
     @if (View::hasSection('meta'))
