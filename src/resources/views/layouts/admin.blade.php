@@ -134,11 +134,6 @@
                                     Manage Users
                                 </a>
 
-                                <div class="sb-sidenav-menu-heading">Leaderboard</div>
-                                <a class="nav-link" href="/admin/leaderboard">
-                                    <div class="sb-nav-link-icon"><i class="fas fa-trophy"></i></div>
-                                    Manage Leaderboard
-                                </a>
                                 <?php endif; ?>
                             @endguest
                         </div>
