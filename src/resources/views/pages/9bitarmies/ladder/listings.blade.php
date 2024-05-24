@@ -80,14 +80,16 @@
                             <div class="col col-40 visible-lg">
                                 <div class="player-name">
                                     <h3>
-                                        @if (array_key_exists($player->steamids[0], $steamLookup))
-                                            {{ \App\ViewHelper::renderSpecialOctal($steamLookup[$player->steamids[0]]) }}
-                                        @endif
-                                        <span>
+                                        <span style="margin-right:1rem;">
                                             <a href="https://steamcommunity.com/profiles/{{ $player->steamids[0] }}">
                                                 <i class="icon icon-steam" style="font-size:1.3rem; margin-left:1rem;"></i>
                                             </a>
                                         </span>
+
+                                        @if (array_key_exists($player->steamids[0], $steamLookup))
+                                            {{ \App\ViewHelper::renderSpecialOctal($steamLookup[$player->steamids[0]]) }}
+                                        @endif
+
                                     </h3>
                                 </div>
                             </div>

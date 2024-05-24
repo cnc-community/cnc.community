@@ -5,7 +5,7 @@
             <i class="icon icon-dropdown"></i>
         </div>
 
-        <div class="nav-dropdown-contents nav-drop-col-2">
+        <div class="nav-dropdown-contents nav-drop-col-3">
             <div class="dropdown-container">
                 <div class="category">
                     <div class="title">
@@ -38,6 +38,18 @@
                     </div>
                     <a href="/command-and-conquer-remastered/leaderboard/tiberian-dawn" title="Tiberian Dawn Leaderboard">Tiberian Dawn</a>
                     <a href="/command-and-conquer-remastered/leaderboard/red-alert" title="Red Alert Leaderboard">Red Alert</a> --}}
+                </div>
+
+                <div class="category">
+                    <div class="title">
+                        <a href="https://petroglyphgames.com/" title="Petroglpyh">Petroglpyh</a>
+                    </div>
+                    <a href="https://petroglyphgames.com/" title="Visit Website">Visit Website</a>
+
+                    <div class="title" style="margin-top:10px;">
+                        Leaderboard
+                    </div>
+                    <a href="{{ route('9bit.leaderboard') }}" title="Leaderboard">9-BIT ARMIES: A BIT TOO FAR</a>
                 </div>
             </div>
         </div>
