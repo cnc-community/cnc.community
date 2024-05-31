@@ -227,10 +227,15 @@
             }
         });
 
+        // Show last 7 days graph data
+        var currentDate = new Date();
+        var minDate = new Date();
+        minDate.setDate(currentDate.getDate() - 91); // 3months-ish
+
         flatpickr("#jsDateTimePicker", {
             enableTime: false,
             dateFormat: "Y-m-d",
-            minDate: "2024-02-23",
+            minDate: minDate,
             maxDate: new Date().toISOString().split('T')[0],
             onChange: function(selectedDates, dateStr, instanc) {
                 updateTimeScale(selectedDates[0], new Date());
@@ -283,10 +288,10 @@
         });
 
 
-        // Show last 7 days graph data
+        // Show last 21 days graph data
         var currentDate = new Date();
         var pastDate = new Date();
-        pastDate.setDate(currentDate.getDate() - 7);
+        pastDate.setDate(currentDate.getDate() - 21);
         updateTimeScale(pastDate, currentDate);
     </script>
 

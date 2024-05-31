@@ -11,6 +11,9 @@ class GameStatGraph extends Model
 {
     protected $table = 'game_stats_graph';
 
+    public const GAME_STAT_GRAPH_CACHE_3_MONTHS = "GAME_STAT_GRAPH_CACHE_3_MONTHS";
+    public const GAME_STAT_STEAM_IN_GAME_GRAPH_CACHE_3_MONTHS = "GAME_STAT_STEAM_IN_GAME_GRAPH_CACHE_3_MONTHS";
+
     public const GAME_STAT_GRAPH_CACHE_5_YEARS = "GAME_STAT_GRAPH_CACHE_5_YEARS";
     public const GAME_STAT_STEAM_IN_GAME_GRAPH_CACHE_5_YEARS = "GAME_STAT_STEAM_IN_GAME_GRAPH_CACHE_5_YEARS";
 
@@ -87,6 +90,21 @@ class GameStatGraph extends Model
             "created_at",
             array(
                 Carbon::now()->subYears(5)->toDateTimeString(),
+                Carbon::now()->toDateTimeString()
+            )
+        )
+            ->orderBy("created_at", "DESC")
+            ->get();
+    }
+
+    public static function getLast3Months()
+    {
+        ini_set('memory_limit', '1024M');
+
+        return GameStatGraph::whereBetween(
+            "created_at",
+            array(
+                Carbon::now()->subMonths(3)->toDateTimeString(),
                 Carbon::now()->toDateTimeString()
             )
         )

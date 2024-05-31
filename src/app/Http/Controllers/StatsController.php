@@ -32,7 +32,7 @@ class StatsController extends Controller
         try
         {
             Log::info("runCacheTask ** Started");
-            $data = GameStatGraph::getLast5Years();
+            $data = GameStatGraph::getLast3Months();
             Log::info("runCacheTask ** Data found");
 
             $filteredGameAbbreviations = Constants::getGameAbbreviations();
@@ -47,7 +47,7 @@ class StatsController extends Controller
             );
 
             StatsCache::saveCache(
-                GameStatGraph::GAME_STAT_GRAPH_CACHE_5_YEARS,
+                GameStatGraph::GAME_STAT_GRAPH_CACHE_3_MONTHS,
                 $graphData,
                 20
             ); // 20 minutes
@@ -58,7 +58,7 @@ class StatsController extends Controller
             );
 
             StatsCache::saveCache(
-                GameStatGraph::GAME_STAT_STEAM_IN_GAME_GRAPH_CACHE_5_YEARS,
+                GameStatGraph::GAME_STAT_STEAM_IN_GAME_GRAPH_CACHE_3_MONTHS,
                 $graphDataSteamInGame,
                 20
             ); // 20 minutes
@@ -67,7 +67,6 @@ class StatsController extends Controller
         }
         catch (Exception $ex)
         {
-            dd($ex);
             Log::info("Error running cache task: " . $ex->getMessage());
         }
     }
@@ -83,11 +82,11 @@ class StatsController extends Controller
         $games = $this->cncOnlineCount->getGameCounts();
         $mods = $this->cncOnlineCount->getModCounts();
         $standalone =  $this->cncOnlineCount->getStandaloneCounts();
-        $graphData = StatsCache::getCache(GameStatGraph::GAME_STAT_GRAPH_CACHE_5_YEARS) ?? [];
+        $graphData = StatsCache::getCache(GameStatGraph::GAME_STAT_GRAPH_CACHE_3_MONTHS) ?? [];
 
         if ($request->steamInGame)
         {
-            $graphData = StatsCache::getCache(GameStatGraph::GAME_STAT_STEAM_IN_GAME_GRAPH_CACHE_5_YEARS) ?? [];
+            $graphData = StatsCache::getCache(GameStatGraph::GAME_STAT_STEAM_IN_GAME_GRAPH_CACHE_3_MONTHS) ?? [];
         }
 
         $selectedLabels = explode(",", $request->filteredGames) ?? [];
