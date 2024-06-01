@@ -31,6 +31,12 @@ class Kernel extends ConsoleKernel
 
         $schedule->call(function ()
         {
+            $task = new \App\Http\Controllers\StatsController();
+            $task->runTask();
+        })->everyTenMinutes();
+
+        $schedule->call(function ()
+        {
             $task = new \App\Http\Controllers\LadderController();
             $task->syncRemasters();
         })->everyFourHours();
@@ -58,21 +64,6 @@ class Kernel extends ConsoleKernel
             $task = new \App\Http\Controllers\FeedController();
             $task->runTaskDaily();
         })->daily();
-
-
-        // $schedule->call('App\Http\Controllers\LeaderboardController@runMatchesTask')
-        //     ->hourly()
-        //     ->runInBackground();
-
-        // $schedule->call('App\Http\Controllers\LeaderboardController@runRALeaderboardTasks')
-        //     ->hourly()
-        //     ->runInBackground();
-
-        // $schedule->call('App\Http\Controllers\LeaderboardController@runTDLeaderboardTasks')
-        //     ->everyThirtyMinutes()
-        //     ->runInBackground();
-
-        // $schedule->call('App\Http\Controllers\LeaderboardController@runProfileDataTask')->daily()->runInBackground();
     }
 
     /**
