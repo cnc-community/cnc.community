@@ -13,11 +13,14 @@ Check out [our mission](https://cnc.community/news/official-news/our-mission)
 Node 14.21.3
 
 ```shell
-docker-compose -f docker-compose-dev.yml build
-docker-compose -f docker-compose-dev.yml up -d 
-docker-compose -f docker-compose-dev.yml exec app bash ./install.sh
-
+docker-compose -f docker-dev-compose.yml build
+docker-compose -f docker-dev-compose.yml up -d 
+docker-compose -f docker-dev-compose.yml exec app bash ./install.sh
 ```
+
+### Vite Configuration
+To access public routes you may need to have the vite manifest.json file configured.
+To do this you can run npm install && npm run build within the src directory.
 
 ## Production
 ```
@@ -26,10 +29,22 @@ docker-compose up -d
 docker-compose exec app bash ./install.sh
 ```
 
-
 ## Seeding Leaderboard for Local Development
 - Login to `localhost:8080/admin/dashboard` with local env credentials: `admin@cnc.community` & `password` 
-- Run the leaderboard sync - `localhost:8080/admin/seed-local-development` (It will likely timeout but there will be enough data to use)
+- Run the leaderboard sync. This will require Steam credentials to be filled into the src/.env file.
+
+```
+# exec into your running app container
+docker exec -it <container-id> sh
+
+# manually run the sync commands
+php artisan remasters:sync
+php artisan ninebitarmies:sync
+
+# additional graph sync command
+php artisan cache:graphstats
+```
+
 - Login to phpmyadmin `localhost:8081/` with `root` and `cnccommunity`. Run the sql queries in the `cnccommunity_ladder` table:
 
 ```
@@ -41,7 +56,6 @@ ALTER TABLE `matches` ADD INDEX `matches_leaderboard_history_id_index` (leaderbo
 ALTER TABLE `matches` ADD FULLTEXT `matches_fulltext_players_index` (players)
 ALTER TABLE `matches` ADD FULLTEXT `matches_fulltext_names_index` (names)
 ```
-
 
 ## Other
 
