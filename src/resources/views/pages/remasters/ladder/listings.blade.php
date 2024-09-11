@@ -77,13 +77,20 @@
                                 <div class="player-name">
                                     @foreach ($steamLookup as $steamProfile)
                                         @if ($player->steamids[0] == $steamProfile->steam_id)
+                                            @php
+                                                $avatarUrl = $steamProfile->avatarfull ?? 'https://avatars.akamai.steamstatic.com/fef49e7fa7e1997310d705b2a6158ff8dc1cdfeb_full.jpg';
+                                            @endphp
                                             @if ($steamProfile->avatarfull)
                                                 <a href="https://steamcommunity.com/profiles/{{ $player->steamids[0] }}" class="profile-avatar" rel="nofollow">
                                                     <div class="profile-avatar-fx"></div>
-                                                    <div class="profile-avatar-image" style="background-image: url('{{ $steamProfile->avatarfull }}')"></div>
+                                                    <div class="profile-avatar-image" style="background-image: url('{{ $avatarUrl }}')"></div>
                                                 </a>
+                                            @else
+                                                <div class="profile-avatar">
+                                                    <div class="profile-avatar-fx"></div>
+                                                    <div class="profile-avatar-image" style="background-image: url('{{ $avatarUrl }}')"></div>
+                                                </div>
                                             @endif
-
                                             <h3>
                                                 {{ \App\ViewHelper::renderSpecialOctal($steamProfile->personaname) }}
                                             </h3>
