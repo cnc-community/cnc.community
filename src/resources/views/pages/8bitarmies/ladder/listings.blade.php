@@ -11,28 +11,24 @@
     $randomImage = $imageClasses[array_rand($imageClasses)];
 @endphp
 
-@section('hero-video')
-    <?php new \App\Http\CustomView\Components\VideoPlayer($heroVideo); ?>
-@endsection
-
 @section('page-class', "$slug $randomImage")
 
 @section('hero')
     <div class="content center">
         <div class="leaderboard-logo" style="margin-bottom:1rem;">
-            @if ($abbrev == 'red-alert')
-                <img src="{{ Vite::asset('resources/assets/images/logos/red-alert-remastered.png') }}" alt="{{ $gameName }} logo" />
-            @else
-                <img src="{{ Vite::asset('resources/assets/images/logos/tiberian-dawn-remastered.png') }}" alt="{{ $gameName }} logo" />
-            @endif
+            <img src="{{ Vite::asset('resources/assets/images/8bit/8bit-logo.png') }}" alt="{{ $gameName }} logo" />
         </div>
         <div class="buttons">
-            <a href="https://www.ea.com/games/command-and-conquer/command-and-conquer-remastered" class="btn btn-secondary btn-icon" target="_blank">
+            <a href="https://store.steampowered.com/app/427250/8Bit_Armies/" class="btn btn-secondary btn-icon" target="_blank">
                 Buy on Steam
                 <i class="icon-steam"></i>
             </a>
+
+            <a class="btn btn-secondary btn-icon" target="_blank" title="Visit Petroglpyh Website" rel="nofollow" href="https://petroglyphgames.com/">
+                Petroglyph Homepage
+                <i class="icon-petroglyph"></i>
+            </a>
         </div>
-        {{-- <h1 class="text-uppercase">{{ $gameName }} Leaderboards</h1> --}}
     </div>
 @endsection
 
@@ -44,8 +40,15 @@
             <div class="leaderboard-hero">
                 <div class="leaderboard-description">
                     <h1 class="leaderboard-hero-title">{{ $gameName }}<br /> <span class="light">Leaderboard Rankings</span></h1>
+                    <div class="button-group">
+                        <a href="https://discord.gg/ygGFZxz" class="btn btn-secondary btn-icon" title="Join the official Petroglyph Discord" target="_blank">
+                            Join the official Petroglyph Discord
+                            <i class="icon-discord"></i>
+                        </a>
+                    </div>
                 </div>
                 <div class="leaderboard-logo">
+                    <img src="{{ Vite::asset('resources/assets/images/8bit/8bit-factions.png') }}" alt="{{ $gameName }} factions" />
                 </div>
             </div>
         </div>
@@ -77,20 +80,13 @@
                                 <div class="player-name">
                                     @foreach ($steamLookup as $steamProfile)
                                         @if ($player->steamids[0] == $steamProfile->steam_id)
-                                            @php
-                                                $avatarUrl = $steamProfile->avatarfull ?? 'https://avatars.akamai.steamstatic.com/fef49e7fa7e1997310d705b2a6158ff8dc1cdfeb_full.jpg';
-                                            @endphp
                                             @if ($steamProfile->avatarfull)
                                                 <a href="https://steamcommunity.com/profiles/{{ $player->steamids[0] }}" class="profile-avatar" rel="nofollow">
                                                     <div class="profile-avatar-fx"></div>
-                                                    <div class="profile-avatar-image" style="background-image: url('{{ $avatarUrl }}')"></div>
+                                                    <div class="profile-avatar-image" style="background-image: url('{{ $steamProfile->avatarfull }}')"></div>
                                                 </a>
-                                            @else
-                                                <div class="profile-avatar">
-                                                    <div class="profile-avatar-fx"></div>
-                                                    <div class="profile-avatar-image" style="background-image: url('{{ $avatarUrl }}')"></div>
-                                                </div>
                                             @endif
+
                                             <h3>
                                                 {{ \App\ViewHelper::renderSpecialOctal($steamProfile->personaname) }}
                                             </h3>

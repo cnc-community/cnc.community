@@ -89,7 +89,8 @@ Route::get('/stats', 'StatsController@showStats')->name('pages.stats')->middlewa
 Route::get('/command-and-conquer-ultimate-collection-steam', 'SiteController@showTUCPage')->name('pages.tuc')->middleware('cache.headers:public;max_age=400');
 Route::get('/command-and-conquer-ultimate-collection-online', 'SiteController@showTUCMultiplayerPage')->name('pages.tucMultiplayer')->middleware('cache.headers:public;max_age=400');
 
-// 9bit
+// Petro games
+Route::get('/8bitarmies/leaderboard', 'LadderController@getEightBitArmiesIndex')->name('8bit.leaderboard');
 Route::get('/9bitarmies/leaderboard', 'LadderController@getNineBitArmiesIndex')->name('9bit.leaderboard');
 Route::get('/command-and-conquer-remastered/leaderboard/{game}', 'LadderController@getRemasteredIndex')->middleware('cache.headers:public;max_age=480');
 

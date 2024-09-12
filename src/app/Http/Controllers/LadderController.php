@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Constants;
+use App\Http\Services\Petroglyph\EightBitArmiesAPI;
 use App\Http\Services\Petroglyph\NineBitArmiesAPI;
 use App\Http\Services\Petroglyph\PetroglyphSteamProfileService;
 use App\Http\Services\Petroglyph\RemastersAPI;
@@ -11,15 +12,37 @@ use Illuminate\Http\Request;
 
 class LadderController extends Controller
 {
+    private EightBitArmiesAPI $eightBitArmiesAPI;
     private NineBitArmiesAPI $nineBitArmiesAPI;
     private RemastersAPI $remastersAPI;
     private PetroglyphSteamProfileService $petroglyphSteamProfileService;
 
     public function __construct()
     {
+        $this->eightBitArmiesAPI = new EightBitArmiesAPI();
         $this->nineBitArmiesAPI = new NineBitArmiesAPI();
         $this->remastersAPI = new RemastersAPI;
         $this->petroglyphSteamProfileService = new PetroglyphSteamProfileService();
+    }
+
+    public function getEightBitArmiesIndex(Request $request)
+    {
+        $data = $this->eightBitArmiesAPI->getLeaderboard();
+        $steamIds = [];
+        foreach ($data as $d)
+        {
+            $steamIds[] = $d->steamids[0];
+        }
+
+        $steamLookup = $this->petroglyphSteamProfileService->getSteamProfilesByIds($steamIds);
+        return view(
+            'pages.8bitarmies.ladder.listings',
+            [
+                'data' => $data,
+                'steamLookup' => $steamLookup,
+                'gameName' => '8-Bit Armies: A Bit Too Far'
+            ]
+        );
     }
 
     public function getNineBitArmiesIndex(Request $request)
