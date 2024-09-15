@@ -11,6 +11,7 @@ class NineBitArmiesAPI
 {
     private $_apiUrl = "http://8Bit2CoordLB1-339611218.us-east-1.elb.amazonaws.com:6530/Coordinator/webresources/com.petroglyph.coord.leaderboard.queryv2/";
     private $_recentMatchesUrl = "http://8bit2coordlb1-339611218.us-east-1.elb.amazonaws.com:6530/Coordinator/webresources/com.petroglyph.coord.matches.recent";
+    private $_allSeasonLeaderboardUrls = "http://8bit2coordlb1-339611218.us-east-1.elb.amazonaws.com:6530/Coordinator/webresources/com.petroglyph.coord.leaderboard.list.query/";
 
     private const NINEBIT_ARMIES_CACHE = "9bitarmies.cache";
     private const CACHE_TIME_SECONDS = 900; // Time we cache the leaderboard requests
@@ -21,9 +22,12 @@ class NineBitArmiesAPI
 
     public function getLeaderboard()
     {
-        return Cache::remember(NineBitArmiesAPI::NINEBIT_ARMIES_CACHE, NineBitArmiesAPI::CACHE_TIME_SECONDS, function ()
+        $seasons = $this->getLatestSeason();
+        $latestLadderBoardName = $seasons["9bitarmies"];
+
+        return Cache::remember(NineBitArmiesAPI::NINEBIT_ARMIES_CACHE, NineBitArmiesAPI::CACHE_TIME_SECONDS, function () use ($latestLadderBoardName)
         {
-            $data = $this->sendLeaderboardRequest(200, 0);
+            $data = $this->sendLeaderboardRequest($latestLadderBoardName, 200, 0);
             $data = json_decode(json_encode($data["ranks"]));
 
             return $data;
@@ -31,14 +35,64 @@ class NineBitArmiesAPI
         return [];
     }
 
-    private function sendLeaderboardRequest($limit = 200, $offset = 0)
+    private function getLatestSeason()
+    {
+        $client = new Client();
+        $response = $client->request('GET', $this->_allSeasonLeaderboardUrls, [
+            'headers' => [
+                'Accept' => 'application/json',
+                'Content-Type' => 'application/json;charset=utf-8'
+            ]
+        ]);
+
+        if ($response->getStatusCode() == 200)
+        {
+            $data = json_decode($response->getBody(), true);
+            $leaderboards = $data['leaderboards'];
+
+            // Initialize arrays to store the latest expiration times for each mmrtype
+            $latestSeasons = [
+                1 => ['season' => null, 'expirationtime' => '0000-00-00T00:00:00'],
+                2 => ['season' => null, 'expirationtime' => '0000-00-00T00:00:00']
+            ];
+
+            // Iterate through the leaderboards and find the latest season for each mmrtype
+            foreach ($leaderboards as $leaderboard)
+            {
+                if (isset($leaderboard['mmrtype']) && isset($leaderboard['expirationtime']))
+                {
+                    $mmrtype = $leaderboard['mmrtype'];
+                    $expirationtime = $leaderboard['expirationtime'];
+                    $season = $leaderboard['boardname'];
+
+                    // Check if this expirationtime is later than the currently stored one
+                    if ($expirationtime > $latestSeasons[$mmrtype]['expirationtime'])
+                    {
+                        $latestSeasons[$mmrtype] = ['season' => $season, 'expirationtime' => $expirationtime];
+                    }
+                }
+            }
+
+            // Return only the latest seasons
+            return [
+                "9bitarmies" => $latestSeasons[1]['season'],
+            ];
+        }
+        else
+        {
+            Log::error("Failed to retrieve data. Status code: " . $response->getStatusCode());
+            return null;
+        }
+    }
+
+    private function sendLeaderboardRequest(string $boardName, int $limit = 200, int $offset = 0)
     {
         try
         {
             $request = json_encode(
                 array(
                     "leaderboardQueryV2" => [
-                        "boardName" => "1V1_MMR_BOARD",
+                        "boardName" => $boardName,
                         "offset" => $offset,
                         "limit" => $limit
                     ]
@@ -61,7 +115,7 @@ class NineBitArmiesAPI
             }
             else
             {
-                dd("Bad request", $r->getStatusCode());
+                return [];
             }
         }
         catch (Exception $ex)

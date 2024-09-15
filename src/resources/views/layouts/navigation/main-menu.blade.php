@@ -49,7 +49,7 @@
                     <div class="title" style="margin-top:10px;">
                         Leaderboard
                     </div>
-                    <a href="{{ route('8bit.leaderboard') }}" title="Leaderboard">8-BIT ARMIES</a>
+                    {{-- <a href="{{ route('8bit.leaderboard') }}" title="Leaderboard">8-BIT ARMIES</a> --}}
                     <a href="{{ route('9bit.leaderboard') }}" title="Leaderboard">9-BIT ARMIES: A BIT TOO FAR</a>
                 </div>
             </div>
