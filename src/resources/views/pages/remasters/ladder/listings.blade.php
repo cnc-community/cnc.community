@@ -9,6 +9,19 @@
     $slug = Str::slug($gameName);
     $imageClasses = ['hero-bg', 'hero-bg-1', 'hero-bg-2', 'hero-bg-3', 'hero-bg-4'];
     $randomImage = $imageClasses[array_rand($imageClasses)];
+    function getRankIcon($rank) {
+        if ($rank <= 16) {
+            return 'general.png';
+        } elseif ($rank <= 200) {
+            return 'major.png';
+        } elseif ($rank <= 400) {
+            return 'captain.png';
+        } elseif ($rank <= 600) {
+            return 'lieutenant.png';
+        } else {
+            return 'sergeant.png';
+        }
+    }
 @endphp
 
 @section('hero-video')
@@ -54,26 +67,32 @@
             <div class="leaderboard-player-listings">
                 <div class="leaderboard-listings">
                     <div class="headers">
+                        <div class="col col-10 rank"></div>
                         <div class="col col-10 rank">Rank</div>
-                        <div class="col col-40">Name</div>
+                        <div class="col col-20">Name</div>
                         <div class="col col-10">Points</div>
                         <div class="col col-10">Wins</div>
                         <div class="col col-10">Losses</div>
                         <div class="col col-10">Played</div>
+                        <div class="col col-10">Win Rate</div>
                         <div class="col col-10">History</div>
                         {{-- <div class="col col-10"></div> --}}
                     </div>
 
                     @foreach ($data as $player)
                         <div class="leaderboard-table-row @if ($player->rank == 1) gold @endif">
-
+                            <div class="col col-10 visible-lg">
+                                <div class="rank">
+                                    <img style="max-height: 4rem" src="https://raw.githubusercontent.com/cnc-community/cnc.community/master/src/resources/assets/images/leaderboard/{{ getRankIcon($player->rank) }}" alt="Rank Icon" />
+                                </div>
+                            </div>
                             <div class="col col-10 visible-lg">
                                 <div class="rank">
                                     <span style="font-size:1.4rem">#{{ $player->rank }}</span>
                                 </div>
                             </div>
 
-                            <div class="col col-40 visible-lg">
+                            <div class="col col-20 visible-lg">
                                 <div class="player-name">
                                     @foreach ($steamLookup as $steamProfile)
                                         @if ($player->steamids[0] == $steamProfile->steam_id)
@@ -114,6 +133,18 @@
                             <div class="col col-10 visible-lg">
                                 <div class="played">{{ $player->wins += $player->loses }}</div>
                             </div>
+
+                            <div class="col col-10 visible-lg">
+                                @php
+                                    $totalGames = $player->wins + $player->loses;
+                                    $winRate = $totalGames > 0 ? ($player->wins / $totalGames) * 100 : 0;
+                                    $roundedWinRate = ceil($winRate);
+                                @endphp
+                                <div>
+                                    {{ $roundedWinRate }}%
+                                </div>
+                            </div>
+
                             {{--
                             <div class="col col-10 visible-lg">
                                  <i class="icon icon-right"></i>
