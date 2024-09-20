@@ -65,7 +65,7 @@
 
         <div class="main-content">
             <div class="season-selector" style="padding-left:40px">
-                <span>Current Selected Season: <br /><strong>Season {{ $currentSelectedSeason }}</strong></span><br /><br />
+                <span>Current Selected Season <br /><strong>Season {{ $currentSelectedSeason }}</strong></span><br /><br />
                 <label for="season">Previous Season Select</label><br/>
                 <select id="season" name="season" onchange="fetchSeasonData()">
                     <option value="" disabled selected>-- Select Season --</option>
@@ -90,8 +90,7 @@
                 <div class="leaderboard-listings">
                     <div class="headers">
                         <div class="col col-10 rank">Rank</div>
-                        <div class="col col-10 rank">Position</div>
-                        <div class="col col-20">Name</div>
+                        <div class="col col-30">Name</div>
                         <div class="col col-10">Points</div>
                         <div class="col col-10">Wins</div>
                         <div class="col col-10">Losses</div>
@@ -103,18 +102,18 @@
 
                     @foreach ($data as $player)
                         <div class="leaderboard-table-row @if ($player->rank == 1) gold @endif">
-                            <div class="col col-10 visible-lg">
+                            <!-- <div class="col col-10 visible-lg">
                                 <div class="rank">
                                     <img style="max-height: 3.6rem" src="https://raw.githubusercontent.com/cnc-community/cnc.community/master/src/resources/assets/images/leaderboard/{{ getRankIcon($player->rank) }}" alt="Rank Icon" />
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="col col-10 visible-lg">
                                 <div class="rank">
                                     <span style="font-size:1.4rem">#{{ $player->rank }} </span>
                                 </div>
                             </div>
 
-                            <div class="col col-20 visible-lg">
+                            <div class="col col-30 visible-lg">
                                 <div class="player-name">
                                     @foreach ($steamLookup as $steamProfile)
                                         @if ($player->steamids[0] == $steamProfile->steam_id)
@@ -133,23 +132,7 @@
                                                 </div>
                                             @endif
                                             <h3>
-                                                @if ($player->rank == 1)
-                                                    🎖️
-                                                @elseif ($player->rank == 2)
-                                                    🥈
-                                                @elseif ($player->rank == 3)
-                                                    🥉
-                                                @endif
-
                                                 {{ \App\ViewHelper::renderSpecialOctal($steamProfile->personaname) }}
-
-                                                @if ($player->rank == 1)
-                                                    🎖️
-                                                @elseif ($player->rank == 2)
-                                                    🥈
-                                                @elseif ($player->rank == 3)
-                                                    🥉
-                                                @endif
                                             </h3>
                                         @endif
                                     @endforeach
