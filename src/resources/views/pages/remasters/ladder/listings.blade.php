@@ -203,6 +203,38 @@
                                             <div class="losses"><strong>Losses:</strong> {{ $player->loses }}</div>
                                             <div class="played"><strong>Played:</strong> {{ $player->wins += $player->loses }}</div>
                                             <div class="points"><strong>Points:</strong> {{ round($player->points) }}</div>
+                                            <div class="win-rate"><strong>Win Rate:</strong> 
+                                                @php
+                                                    $totalGames = $player->wins + $player->loses;
+                                                    $winRate = $totalGames > 0 ? ($player->wins / $totalGames) * 100 : 0;
+                                                    $roundedWinRate = ceil($winRate);
+                                                @endphp
+                                                {{ $roundedWinRate }}%
+                                            </div>
+                                            <div class="history"><strong>History:</strong>
+                                                @php
+                                                    $rankHistory = array_splice($player->rankhistory, -1);
+                                                @endphp
+                                                @foreach ($rankHistory as $rank)
+                                                    @if ($rank !== $player->rank)
+                                                        @if ($rank > $player->rank)
+                                                            <span class="rank-history rank-green" style="color: #01ad00;">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 -960 960 960" width="1em" fill="#01ad00">
+                                                                    <path d="m280-400 200-200 200 200H280Z" />
+                                                                </svg>
+                                                                #{{ $rank }}
+                                                            </span>
+                                                        @else
+                                                            <span class="rank-history rank-red" style="color: #ad0036;">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 -960 960 960" width="1em" fill="#ad0036">
+                                                                    <path d="M480-360 280-560h400L480-360Z" />
+                                                                </svg>
+                                                                #{{ $rank }}
+                                                            </span>
+                                                        @endif
+                                                    @endif
+                                                @endforeach
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
