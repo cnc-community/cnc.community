@@ -46,7 +46,7 @@
                     {{-- <a href="{{ route('8bit.leaderboard') }}" title="Leaderboard">8-BIT ARMIES</a> --}}
                     <a href="/command-and-conquer-remastered/leaderboard/tiberian-dawn" title="Tiberian Dawn Leaderboard">Tiberian Dawn</a>
                     <a href="/command-and-conquer-remastered/leaderboard/red-alert" title="Red Alert Leaderboard">Red Alert</a>
-                    <a href="{{ route('9bit.leaderboard') }}" title="Leaderboard">9-Bit Armies: A Bit Too Far</a>
+                    <a href="/9bitarmies/leaderboard" title="9-Bit Leaderboard">9-Bit Armies: A Bit Too Far</a>
                 </div>
             </div>
         </div>

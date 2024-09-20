@@ -35,7 +35,7 @@ class NineBitArmiesAPI
         return [];
     }
 
-    private function getLatestSeason()
+    public function getLatestSeason()
     {
         $client = new Client();
         $response = $client->request('GET', $this->_allSeasonLeaderboardUrls, [
@@ -85,7 +85,7 @@ class NineBitArmiesAPI
         }
     }
 
-    private function sendLeaderboardRequest(string $boardName, int $limit = 200, int $offset = 0)
+    public function sendLeaderboardRequest(string $boardName, int $limit = 200, int $offset = 0)
     {
         try
         {

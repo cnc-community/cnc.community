@@ -54,6 +54,27 @@
         </div>
 
         <div class="main-content">
+            <div class="season-selector" style="padding-left:40px; background: #001127e3; padding-bottom: 1em;">
+                <span>Current Selected Season <br /><strong>Season {{ $currentSelectedSeason }}</strong></span><br /><br />
+                <label for="9bit-season">Previous Season Select</label><br/>
+                <select id="9bit-season" name="9bit-season" onchange="fetchSeasonNineBitData()">
+                    <option value="" disabled selected>-- Select Season --</option>
+                    @for ($i = 1; $i <= $latestSeason; $i++)
+                        <option value="{{ $i }}">Season {{ $i }}</option>
+                    @endfor
+                </select>
+            </div>
+        </div>
+
+        <script>
+            function fetchSeasonNineBitData() {
+                var season = document.getElementById('9bit-season').value;
+                var currentUrl = window.location.href;
+                window.location.href = `/9bitarmies/leaderboard/season/` + season;
+            }
+        </script>
+
+        <div class="main-content">
             <div class="leaderboard-player-listings">
                 <div class="leaderboard-listings">
                     <div class="headers">

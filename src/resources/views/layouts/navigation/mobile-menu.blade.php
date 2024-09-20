@@ -36,14 +36,14 @@
         </div>
         <a href="https://petroglyphgames.com/" title="Visit Website" target="_blank" class="nav-link">Visit Website</a>
     </div>
-    
+
     <div class="category">
         <div class="title" style="margin-top:10px;">
             Leaderboards
         </div>
         <a href="/command-and-conquer-remastered/leaderboard/tiberian-dawn" title="Tiberian Dawn Leaderboard" class="nav-link">Tiberian Dawn</a>
-        <a href="/command-and-conquer-remastered/leaderboard/red-alert" title="Tiberian Dawn Leaderboard" class="nav-link">Red Alert</a>
-        <a href="{{ route('9bit.leaderboard') }}" title="Leaderboard" class="nav-link">9-BIT ARMIES: A BIT TOO FAR</a>
+        <a href="/command-and-conquer-remastered/leaderboard/red-alert" title="Red Alert Leaderboard" class="nav-link">Red Alert</a>
+        <a href="/9bitarmies/leaderboard" title="9-Bit Leaderboard" class="nav-link">9-Bit Armies: A Bit Too Far</a>
     </div>
 
     <div class="category">
