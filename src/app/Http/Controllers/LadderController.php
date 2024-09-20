@@ -98,6 +98,34 @@ class LadderController extends Controller
         );
     }
 
+    public function getSpecificSeasonTDLeaderboard(Request $request, $season)
+    {
+        # S1-9 need prefixing to match formatting 01, 02, 03 for table names
+        $tdSeasonBoardName = '1V1_BOARD_S_' . str_pad($season, 2, '0', STR_PAD_LEFT);
+
+        $data = $this->remastersAPI->sendLeaderboardRequest($tdSeasonBoardName, 200, 0);
+        $data = json_decode(json_encode($data["ranks"]));
+
+        $steamIds = [];
+        foreach ($data as $d)
+        {
+            $steamIds[] = $d->steamids[0];
+        }
+
+        $steamLookup = $this->petroglyphSteamProfileService->getSteamProfilesByIds($steamIds);
+        $heroVideo = Constants::getVideoWithPoster("command-and-conquer-remastered");
+
+        return view(
+            'pages.remasters.ladder.listings',
+            [
+                'data' => $data,
+                'steamLookup' => $steamLookup,
+                'gameName' => 'Tiberian Dawn',
+                'heroVideo' => $heroVideo,
+                'abbrev' => 'Tiberian Dawn Remastered'
+            ]
+        );
+    }
 
 
     /**
@@ -115,10 +143,23 @@ class LadderController extends Controller
             $steamIds[] = $d->steamids[0];
         }
 
-        $data = $this->remastersAPI->getTDLeaderboard();
-        foreach ($data as $d)
-        {
-            $steamIds[] = $d->steamids[0];
+        // $data = $this->remastersAPI->getTDLeaderboard();
+        // foreach ($data as $d)
+        // {
+        //     $steamIds[] = $d->steamids[0];
+        // }
+
+        // Sync Tiberian Dawn leaderboard for all seasons
+        $latestSeason = 18; // Replace with logic to get the latest season dynamically if needed
+        for ($season = 1; $season <= $latestSeason; $season++) {
+            $tdSeasonBoardName = '1V1_BOARD_S_' . str_pad($season, 2, '0', STR_PAD_LEFT);
+            $data = $this->remastersAPI->sendLeaderboardRequest($tdSeasonBoardName, 200, 0);
+            $data = json_decode(json_encode($data["ranks"]));
+
+            foreach ($data as $d)
+            {
+                $steamIds[] = $d->steamids[0];
+            }
         }
 
         // Sync from steam

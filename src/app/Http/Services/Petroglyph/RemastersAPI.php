@@ -102,7 +102,7 @@ class RemastersAPI
         }
     }
 
-    private function sendLeaderboardRequest(string $boardName, int $limit = 200, int $offset = 0)
+    public function sendLeaderboardRequest(string $boardName, int $limit = 200, int $offset = 0)
     {
         try
         {

@@ -94,6 +94,8 @@ Route::get('/8bitarmies/leaderboard', 'LadderController@getEightBitArmiesIndex')
 Route::get('/9bitarmies/leaderboard', 'LadderController@getNineBitArmiesIndex')->name('9bit.leaderboard');
 Route::get('/command-and-conquer-remastered/leaderboard/{game}', 'LadderController@getRemasteredIndex')->middleware('cache.headers:public;max_age=480');
 
+Route::get('/command-and-conquer-remastered/leaderboard/tiberian-dawn/season/{season}', 'LadderController@getSpecificSeasonTDLeaderboard');
+
 Route::get('/cnc-streamers', 'SiteController@showCreatorsListings')->name('pages.creators.listing')->middleware('cache.headers:public;max_age=1800');
 Route::get('/creators', function ()
 {

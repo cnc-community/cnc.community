@@ -62,6 +62,24 @@
                 </div>
             </div>
         </div>
+        
+        <div class="main-content">
+            <div class="season-selector" style="padding-left:40px">
+                <label for="season">Previous Season Select</label><br/>
+                <select id="season" name="season" onchange="fetchSeasonData()">
+                    @for ($i = 1; $i <= 18; $i++)
+                        <option value="{{ $i }}">Season {{ $i }}</option>
+                    @endfor
+                </select>
+            </div>
+        </div>
+
+        <script>
+            function fetchSeasonData() {
+                var season = document.getElementById('season').value;
+                window.location.href = '/command-and-conquer-remastered/leaderboard/tiberian-dawn/season/' + season;
+            }
+        </script>
 
         <div class="main-content">
             <div class="leaderboard-player-listings">
@@ -120,7 +138,7 @@
                                                 @endif
 
                                                 {{ \App\ViewHelper::renderSpecialOctal($steamProfile->personaname) }}
-                                                
+
                                                 @if ($player->rank == 1)
                                                     🎖️
                                                 @elseif ($player->rank == 2)
