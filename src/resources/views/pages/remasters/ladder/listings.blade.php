@@ -67,8 +67,8 @@
             <div class="leaderboard-player-listings">
                 <div class="leaderboard-listings">
                     <div class="headers">
-                        <div class="col col-10 rank"></div>
                         <div class="col col-10 rank">Rank</div>
+                        <div class="col col-10 rank">Poisition</div>
                         <div class="col col-20">Name</div>
                         <div class="col col-10">Points</div>
                         <div class="col col-10">Wins</div>
@@ -83,12 +83,12 @@
                         <div class="leaderboard-table-row @if ($player->rank == 1) gold @endif">
                             <div class="col col-10 visible-lg">
                                 <div class="rank">
-                                    <img style="max-height: 4rem" src="https://raw.githubusercontent.com/cnc-community/cnc.community/master/src/resources/assets/images/leaderboard/{{ getRankIcon($player->rank) }}" alt="Rank Icon" />
+                                    <img style="max-height: 3.6rem" src="https://raw.githubusercontent.com/cnc-community/cnc.community/master/src/resources/assets/images/leaderboard/{{ getRankIcon($player->rank) }}" alt="Rank Icon" />
                                 </div>
                             </div>
                             <div class="col col-10 visible-lg">
                                 <div class="rank">
-                                    <span style="font-size:1.4rem">#{{ $player->rank }}</span>
+                                    <span style="font-size:1.4rem">#{{ $player->rank }} </span>
                                 </div>
                             </div>
 
@@ -111,7 +111,23 @@
                                                 </div>
                                             @endif
                                             <h3>
+                                                @if ($player->rank == 1)
+                                                    🎖️
+                                                @elseif ($player->rank == 2)
+                                                    🥈
+                                                @elseif ($player->rank == 3)
+                                                    🥉
+                                                @endif
+
                                                 {{ \App\ViewHelper::renderSpecialOctal($steamProfile->personaname) }}
+                                                
+                                                @if ($player->rank == 1)
+                                                    🎖️
+                                                @elseif ($player->rank == 2)
+                                                    🥈
+                                                @elseif ($player->rank == 3)
+                                                    🥉
+                                                @endif
                                             </h3>
                                         @endif
                                     @endforeach
