@@ -62,12 +62,14 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="main-content">
             <div class="season-selector" style="padding-left:40px">
+                <span>Current Selected Season: <br /><strong>Season {{ $currentSelectedSeason }}</strong></span><br /><br />
                 <label for="season">Previous Season Select</label><br/>
                 <select id="season" name="season" onchange="fetchSeasonData()">
-                    @for ($i = 1; $i <= 18; $i++)
+                    <option value="" disabled selected>-- Select Season --</option>
+                    @for ($i = 1; $i <= $latestSeason; $i++)
                         <option value="{{ $i }}">Season {{ $i }}</option>
                     @endfor
                 </select>
@@ -77,7 +79,9 @@
         <script>
             function fetchSeasonData() {
                 var season = document.getElementById('season').value;
-                window.location.href = '/command-and-conquer-remastered/leaderboard/tiberian-dawn/season/' + season;
+                var currentUrl = window.location.href;
+                var game = currentUrl.includes('tiberian-dawn') ? 'tiberian-dawn' : 'red-alert';
+                window.location.href = `/command-and-conquer-remastered/leaderboard/${game}/season/` + season;
             }
         </script>
 
@@ -86,7 +90,7 @@
                 <div class="leaderboard-listings">
                     <div class="headers">
                         <div class="col col-10 rank">Rank</div>
-                        <div class="col col-10 rank">Poisition</div>
+                        <div class="col col-10 rank">Position</div>
                         <div class="col col-20">Name</div>
                         <div class="col col-10">Points</div>
                         <div class="col col-10">Wins</div>

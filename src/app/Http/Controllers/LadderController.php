@@ -25,6 +25,20 @@ class LadderController extends Controller
         $this->petroglyphSteamProfileService = new PetroglyphSteamProfileService();
     }
 
+    /**
+     * Extract the integer at the end of a string. Usually in format 
+     *
+     * @param string $seasonString
+     * @return int|null
+     */
+    public function extractSeasonNumber($seasonString)
+    {
+        if (preg_match('/_(\d+)$/', $seasonString, $matches)) {
+            return (int) $matches[1];
+        }
+        return null;
+    }
+
     public function getEightBitArmiesIndex(Request $request)
     {
         $data = $this->eightBitArmiesAPI->getLeaderboard();
@@ -85,6 +99,11 @@ class LadderController extends Controller
         $steamLookup = $this->petroglyphSteamProfileService->getSteamProfilesByIds($steamIds);
         $heroVideo = Constants::getVideoWithPoster("command-and-conquer-remastered");
         $gameName = $game == "red-alert" ? "Red Alert Remastered" : "Tiberian Dawn Remastered";
+        $latestSeasons = $this->remastersAPI->getLatestSeason();
+        $latestSeason = $game == "red-alert" ? $this->extractSeasonNumber($latestSeasons['RedAlert']) : $this->extractSeasonNumber($latestSeasons['TiberianDawn']);
+        
+        // Use the season from the URL if provided, otherwise default to the latest season
+        $currentSeason = $season ?? $latestSeason;
 
         return view(
             'pages.remasters.ladder.listings',
@@ -93,17 +112,19 @@ class LadderController extends Controller
                 'heroVideo' => $heroVideo,
                 'abbrev' => $game,
                 'steamLookup' => $steamLookup,
-                'gameName' => $gameName
+                'gameName' => $gameName,
+                'latestSeason' => $latestSeason,
+                'currentSelectedSeason' => $currentSeason
             ]
         );
     }
 
-    public function getSpecificSeasonTDLeaderboard(Request $request, $season)
+    public function getSpecificSeasonLeaderboard(Request $request, $season, $game)
     {
         # S1-9 need prefixing to match formatting 01, 02, 03 for table names
-        $tdSeasonBoardName = '1V1_BOARD_S_' . str_pad($season, 2, '0', STR_PAD_LEFT);
+        $seasonBoardName = ($game === 'tiberian-dawn' ? '1V1_BOARD_S_' : 'R1V1_BOARD_S_') . str_pad($season, 2, '0', STR_PAD_LEFT);
 
-        $data = $this->remastersAPI->sendLeaderboardRequest($tdSeasonBoardName, 200, 0);
+        $data = $this->remastersAPI->sendLeaderboardRequest($seasonBoardName, 200, 0);
         $data = json_decode(json_encode($data["ranks"]));
 
         $steamIds = [];
@@ -114,20 +135,28 @@ class LadderController extends Controller
 
         $steamLookup = $this->petroglyphSteamProfileService->getSteamProfilesByIds($steamIds);
         $heroVideo = Constants::getVideoWithPoster("command-and-conquer-remastered");
+        $gameName = $game == "red-alert" ? "Red Alert Remastered" : "Tiberian Dawn Remastered";
+        $latestSeasons = $this->remastersAPI->getLatestSeason();
+        $latestSeason = $game == "red-alert" ? $this->extractSeasonNumber($latestSeasons['RedAlert']) : $this->extractSeasonNumber($latestSeasons['TiberianDawn']);
+        
+        // Use the season from the URL if provided, otherwise default to the latest season
+        $currentSeason = $season ?? $latestSeason;
 
         return view(
             'pages.remasters.ladder.listings',
             [
                 'data' => $data,
                 'steamLookup' => $steamLookup,
-                'gameName' => 'Tiberian Dawn',
+                'gameName' => $gameName,
                 'heroVideo' => $heroVideo,
-                'abbrev' => 'Tiberian Dawn Remastered'
+                'abbrev' => $game,
+                'latestSeason' => $latestSeason,
+                'currentSelectedSeason' => $currentSeason
             ]
         );
     }
 
-
+    
     /**
      * Sync via cron task
      * @param mixed $steamIds 
@@ -136,36 +165,46 @@ class LadderController extends Controller
      */
     public function syncRemasters()
     {
-        $data = $this->remastersAPI->getRALeaderboard();
+        $latestSeason = extractSeasonNumber($this->remastersAPI->getLatestSeason());
         $steamIds = [];
-        foreach ($data as $d)
-        {
-            $steamIds[] = $d->steamids[0];
-        }
 
-        // $data = $this->remastersAPI->getTDLeaderboard();
-        // foreach ($data as $d)
-        // {
-        //     $steamIds[] = $d->steamids[0];
-        // }
+        // Sync Red Alert leaderboard (defaulting to 18 in case it has issues getting latest season)
+        $latestSeason = isset($latestSeasons['RedAlert']) ? extractSeasonNumber($latestSeasons['RedAlert']) : 18;
+        $steamIds = array_merge($steamIds, $this->syncGameLeaderboard('R1V1_BOARD_S_', $latestSeason));
 
-        // Sync Tiberian Dawn leaderboard for all seasons
-        $latestSeason = 18; // Replace with logic to get the latest season dynamically if needed
+        // Sync Tiberian Dawn leaderboard (defaulting to 18 in case it has issues getting latest season)
+        $latestSeason = isset($latestSeasons['TiberianDawn']) ? extractSeasonNumber($latestSeasons['TiberianDawn']) : 18;
+        $steamIds = array_merge($steamIds, $this->syncGameLeaderboard('1V1_BOARD_S_', $latestSeason));
+
+        // Sync from steam
+        $this->petroglyphSteamProfileService->syncSteamProfiles($steamIds, Constants::remastersAppId());
+
+        // Sync from recent games list
+        $this->petroglyphSteamProfileService->syncRemastersFromRecentGames();
+    }
+
+    /**
+     * Sync leaderboard data for a specific game
+     * @param string $boardPrefix
+     * @param int $latestSeason
+     * @return array
+     * @throws GuzzleException
+     */
+    private function syncGameLeaderboard($boardPrefix, $latestSeason)
+    {
+        $steamIds = [];
+
         for ($season = 1; $season <= $latestSeason; $season++) {
-            $tdSeasonBoardName = '1V1_BOARD_S_' . str_pad($season, 2, '0', STR_PAD_LEFT);
-            $data = $this->remastersAPI->sendLeaderboardRequest($tdSeasonBoardName, 200, 0);
+            $seasonBoardName = $boardPrefix . str_pad($season, 2, '0', STR_PAD_LEFT);
+            $data = $this->remastersAPI->sendLeaderboardRequest($seasonBoardName, 200, 0);
             $data = json_decode(json_encode($data["ranks"]));
 
-            foreach ($data as $d)
-            {
+            foreach ($data as $d) {
                 $steamIds[] = $d->steamids[0];
             }
         }
 
-        // Sync from steam
-        $this->petroglyphSteamProfileService->syncSteamProfiles($steamIds, Constants::remastersAppId());
-        // Sync from recent games list
-        $this->petroglyphSteamProfileService->syncRemastersFromRecentGames();
+        return $steamIds;
     }
 
     /**

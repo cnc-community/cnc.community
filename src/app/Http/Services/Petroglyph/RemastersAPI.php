@@ -49,7 +49,7 @@ class RemastersAPI
         return [];
     }
 
-    private function getLatestSeason()
+    public function getLatestSeason()
     {
         $client = new Client();
         $response = $client->request('GET', $this->_allSeasonLeaderboardUrls, [

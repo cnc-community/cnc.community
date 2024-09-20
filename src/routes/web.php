@@ -80,7 +80,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin']], function ()
 });
 
 
-//
 // Public routes
 Route::get('/', 'SiteController@index')->name('home')->middleware('cache.headers:public;max_age=1800');
 Route::get('/funny', 'SiteController@showFunnyListings')->name('pages.funny.listing')->middleware('cache.headers:public;max_age=3600');
@@ -94,7 +93,9 @@ Route::get('/8bitarmies/leaderboard', 'LadderController@getEightBitArmiesIndex')
 Route::get('/9bitarmies/leaderboard', 'LadderController@getNineBitArmiesIndex')->name('9bit.leaderboard');
 Route::get('/command-and-conquer-remastered/leaderboard/{game}', 'LadderController@getRemasteredIndex')->middleware('cache.headers:public;max_age=480');
 
-Route::get('/command-and-conquer-remastered/leaderboard/tiberian-dawn/season/{season}', 'LadderController@getSpecificSeasonTDLeaderboard');
+// Season specific Leaderboards for Remasters
+Route::get('/command-and-conquer-remastered/leaderboard/tiberian-dawn/season/{season}', 'LadderController@getSpecificSeasonLeaderboard')->defaults('game', 'tiberian-dawn');;
+Route::get('/command-and-conquer-remastered/leaderboard/red-alert/season/{season}', 'LadderController@getSpecificSeasonLeaderboard')->defaults('game', 'red-alert');;
 
 Route::get('/cnc-streamers', 'SiteController@showCreatorsListings')->name('pages.creators.listing')->middleware('cache.headers:public;max_age=1800');
 Route::get('/creators', function ()
