@@ -54,7 +54,7 @@ class Constants
     }
 
     // RA3 - 17480
-    // Uprising - 24800
+    // Uprising - 22652
 
     public static function getCacheSeconds()
     {
@@ -100,6 +100,7 @@ class Constants
                 "red-alert-2-yuris-revenge" => "5090", // Command & Conquer: Yuri's Revenge
                 "renegade" => "3813", // Command & Conquer: Renegade
                 "red-alert-3" => "18881", // Command & Conquer: Red Alert 3
+                "red-alert-3-uprising" => "22652", // Command & Conquer: Red Alert 3 - Uprising
                 "command-and-conquer-3-kanes-wrath" => "18733", // Command & Conquer 3: Kane's Wrath
                 "tiberium-wars" => "16106", // Command & Conquer 3: Tiberium Wars
                 "generals" => "10070", // Command & Conquer: Generals
