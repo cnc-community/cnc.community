@@ -9,7 +9,8 @@
     $slug = Str::slug($gameName);
     $imageClasses = ['hero-bg', 'hero-bg-1', 'hero-bg-2', 'hero-bg-3', 'hero-bg-4'];
     $randomImage = $imageClasses[array_rand($imageClasses)];
-    function getRankIcon($rank) {
+    function getRankIcon($rank)
+    {
         if ($rank <= 16) {
             return 'general.png';
         } elseif ($rank <= 200) {
@@ -64,13 +65,13 @@
         </div>
 
         <div class="main-content">
-            <div class="season-selector" style="padding-left:40px">
+            <div class="season-select" style="padding-left:40px">
                 <span>Current Selected Season <br /><strong>Season {{ $currentSelectedSeason }}</strong></span><br /><br />
-                <label for="season">Previous Season Select</label><br/>
+                <label for="season">Previous Season Select</label><br />
                 <select id="season" name="season" onchange="fetchSeasonData()">
                     <option value="" disabled selected>-- Select Season --</option>
                     @for ($i = 1; $i <= $latestSeason; $i++)
-                        <option value="{{ $i }}">Season {{ $i }}</option>
+                        <option value="{{ $i }}" @if ($i == $currentSelectedSeason) selected @endif>Season {{ $i }}</option>
                     @endfor
                 </select>
             </div>
@@ -103,10 +104,10 @@
                     @foreach ($data as $player)
                         <div class="leaderboard-table-row @if ($player->rank == 1) gold @endif">
                             <!-- <div class="col col-10 visible-lg">
-                                <div class="rank">
-                                    <img style="max-height: 3.6rem" src="https://raw.githubusercontent.com/cnc-community/cnc.community/master/src/resources/assets/images/leaderboard/{{ getRankIcon($player->rank) }}" alt="Rank Icon" />
-                                </div>
-                            </div> -->
+                                            <div class="rank">
+                                                <img style="max-height: 3.6rem" src="https://raw.githubusercontent.com/cnc-community/cnc.community/master/src/resources/assets/images/leaderboard/{{ getRankIcon($player->rank) }}" alt="Rank Icon" />
+                                            </div>
+                                        </div> -->
                             <div class="col col-10 visible-lg">
                                 <div class="rank">
                                     <span style="font-size:1.4rem">#{{ $player->rank }} </span>
@@ -118,7 +119,9 @@
                                     @foreach ($steamLookup as $steamProfile)
                                         @if ($player->steamids[0] == $steamProfile->steam_id)
                                             @php
-                                                $avatarUrl = $steamProfile->avatarfull ?? 'https://avatars.akamai.steamstatic.com/fef49e7fa7e1997310d705b2a6158ff8dc1cdfeb_full.jpg';
+                                                $avatarUrl =
+                                                    $steamProfile->avatarfull ??
+                                                    'https://avatars.akamai.steamstatic.com/fef49e7fa7e1997310d705b2a6158ff8dc1cdfeb_full.jpg';
                                             @endphp
                                             @if ($steamProfile->avatarfull)
                                                 <a href="https://steamcommunity.com/profiles/{{ $player->steamids[0] }}" class="profile-avatar" rel="nofollow">
@@ -224,7 +227,7 @@
                                             <div class="losses"><strong>Losses:</strong> {{ $player->loses }}</div>
                                             <div class="played"><strong>Played:</strong> {{ $player->wins += $player->loses }}</div>
                                             <div class="points"><strong>Points:</strong> {{ round($player->points) }}</div>
-                                            <div class="win-rate"><strong>Win Rate:</strong> 
+                                            <div class="win-rate"><strong>Win Rate:</strong>
                                                 @php
                                                     $totalGames = $player->wins + $player->loses;
                                                     $winRate = $totalGames > 0 ? ($player->wins / $totalGames) * 100 : 0;
@@ -240,14 +243,16 @@
                                                     @if ($rank !== $player->rank)
                                                         @if ($rank > $player->rank)
                                                             <span class="rank-history rank-green" style="color: #01ad00;">
-                                                                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 -960 960 960" width="1em" fill="#01ad00">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 -960 960 960" width="1em"
+                                                                    fill="#01ad00">
                                                                     <path d="m280-400 200-200 200 200H280Z" />
                                                                 </svg>
                                                                 #{{ $rank }}
                                                             </span>
                                                         @else
                                                             <span class="rank-history rank-red" style="color: #ad0036;">
-                                                                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 -960 960 960" width="1em" fill="#ad0036">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 -960 960 960" width="1em"
+                                                                    fill="#ad0036">
                                                                     <path d="M480-360 280-560h400L480-360Z" />
                                                                 </svg>
                                                                 #{{ $rank }}

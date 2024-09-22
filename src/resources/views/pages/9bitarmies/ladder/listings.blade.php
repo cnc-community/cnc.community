@@ -54,13 +54,13 @@
         </div>
 
         <div class="main-content">
-            <div class="season-selector" style="padding-left:40px; background: #001127e3; padding-bottom: 1em;">
+            <div class="season-select" style="padding-left:40px; background: #001127e3; padding-bottom: 1em;">
                 <span>Current Selected Season <br /><strong>Season {{ $currentSelectedSeason }}</strong></span><br /><br />
-                <label for="9bit-season">Previous Season Select</label><br/>
-                <select id="9bit-season" name="9bit-season" onchange="fetchSeasonNineBitData()">
+                <label for="season">Previous Season Select</label><br />
+                <select id="season" name="season" onchange="fetchSeasonNineBitData()" style="border: 1px solid #173081">
                     <option value="" disabled selected>-- Select Season --</option>
                     @for ($i = 1; $i <= $latestSeason; $i++)
-                        <option value="{{ $i }}">Season {{ $i }}</option>
+                        <option value="{{ $i }}" @if ($i == $currentSelectedSeason) selected @endif>Season {{ $i }}</option>
                     @endfor
                 </select>
             </div>
@@ -68,7 +68,7 @@
 
         <script>
             function fetchSeasonNineBitData() {
-                var season = document.getElementById('9bit-season').value;
+                var season = document.getElementById('season').value;
                 var currentUrl = window.location.href;
                 window.location.href = `/9bitarmies/leaderboard/season/` + season;
             }
@@ -100,10 +100,12 @@
 
                             <div class="col col-30 visible-lg">
                                 <div class="player-name">
-                                @foreach ($steamLookup as $steamProfile)
+                                    @foreach ($steamLookup as $steamProfile)
                                         @if ($player->steamids[0] == $steamProfile->steam_id)
                                             @php
-                                                $avatarUrl = $steamProfile->avatarfull ?? 'https://avatars.akamai.steamstatic.com/fef49e7fa7e1997310d705b2a6158ff8dc1cdfeb_full.jpg';
+                                                $avatarUrl =
+                                                    $steamProfile->avatarfull ??
+                                                    'https://avatars.akamai.steamstatic.com/fef49e7fa7e1997310d705b2a6158ff8dc1cdfeb_full.jpg';
                                             @endphp
                                             @if ($steamProfile->avatarfull)
                                                 <a href="https://steamcommunity.com/profiles/{{ $player->steamids[0] }}" class="profile-avatar" rel="nofollow">
@@ -187,7 +189,8 @@
                                         @foreach ($steamLookup as $steamProfile)
                                             @if ($player->steamids[0] == $steamProfile->steam_id)
                                                 @if ($steamProfile->avatarfull)
-                                                    <a href="https://steamcommunity.com/profiles/{{ $player->steamids[0] }}" class="profile-avatar" rel="nofollow">
+                                                    <a href="https://steamcommunity.com/profiles/{{ $player->steamids[0] }}" class="profile-avatar"
+                                                        rel="nofollow">
                                                         <div class="profile-avatar-fx"></div>
                                                         <div class="profile-avatar-image" style="background-image: url('{{ $steamProfile->avatarfull }}')">
                                                         </div>
@@ -209,7 +212,7 @@
                                             <div class="losses"><strong>Losses:</strong> {{ $player->loses }}</div>
                                             <div class="played"><strong>Played:</strong> {{ $player->wins += $player->loses }}</div>
                                             <div class="points"><strong>Points:</strong> {{ round($player->points) }}</div>
-                                            <div class="win-rate"><strong>Win Rate:</strong> 
+                                            <div class="win-rate"><strong>Win Rate:</strong>
                                                 @php
                                                     $totalGames = $player->wins + $player->loses;
                                                     $winRate = $totalGames > 0 ? ($player->wins / $totalGames) * 100 : 0;
@@ -225,14 +228,16 @@
                                                     @if ($rank !== $player->rank)
                                                         @if ($rank > $player->rank)
                                                             <span class="rank-history rank-green" style="color: #01ad00;">
-                                                                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 -960 960 960" width="1em" fill="#01ad00">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 -960 960 960" width="1em"
+                                                                    fill="#01ad00">
                                                                     <path d="m280-400 200-200 200 200H280Z" />
                                                                 </svg>
                                                                 #{{ $rank }}
                                                             </span>
                                                         @else
                                                             <span class="rank-history rank-red" style="color: #ad0036;">
-                                                                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 -960 960 960" width="1em" fill="#ad0036">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 -960 960 960" width="1em"
+                                                                    fill="#ad0036">
                                                                     <path d="M480-360 280-560h400L480-360Z" />
                                                                 </svg>
                                                                 #{{ $rank }}

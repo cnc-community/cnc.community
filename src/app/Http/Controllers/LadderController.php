@@ -33,7 +33,8 @@ class LadderController extends Controller
      */
     public function extractSeasonNumber($seasonString)
     {
-        if (preg_match('/_(\d+)$/', $seasonString, $matches)) {
+        if (preg_match('/_(\d+)$/', $seasonString, $matches))
+        {
             return (int) $matches[1];
         }
         return null;
@@ -74,7 +75,7 @@ class LadderController extends Controller
 
         $latestSeasons = $this->nineBitArmiesAPI->getLatestSeason();
         $latestSeason = $this->extractSeasonNumber($latestSeasons['9bitarmies']);
-        
+
         // Use the season from the URL if provided, otherwise default to the latest season
         $currentSeason = $season ?? $latestSeason;
 
@@ -113,7 +114,7 @@ class LadderController extends Controller
         $gameName = $game == "red-alert" ? "Red Alert Remastered" : "Tiberian Dawn Remastered";
         $latestSeasons = $this->remastersAPI->getLatestSeason();
         $latestSeason = $game == "red-alert" ? $this->extractSeasonNumber($latestSeasons['RedAlert']) : $this->extractSeasonNumber($latestSeasons['TiberianDawn']);
-        
+
         // Use the season from the URL if provided, otherwise default to the latest season
         $currentSeason = $season ?? $latestSeason;
 
@@ -150,7 +151,7 @@ class LadderController extends Controller
         $gameName = $game == "red-alert" ? "Red Alert Remastered" : "Tiberian Dawn Remastered";
         $latestSeasons = $this->remastersAPI->getLatestSeason();
         $latestSeason = $game == "red-alert" ? $this->extractSeasonNumber($latestSeasons['RedAlert']) : $this->extractSeasonNumber($latestSeasons['TiberianDawn']);
-        
+
         // Use the season from the URL if provided, otherwise default to the latest season
         $currentSeason = $season ?? $latestSeason;
 
@@ -183,28 +184,30 @@ class LadderController extends Controller
             $steamIds[] = $d->steamids[0];
         }
 
+        $heroVideo = Constants::getVideoWithPoster("nine-bit-armies");
+
         $steamLookup = $this->petroglyphSteamProfileService->getSteamProfilesByIds($steamIds);
-        
+
         $latestSeasons = $this->nineBitArmiesAPI->getLatestSeason();
         $latestSeason = $this->extractSeasonNumber($latestSeasons['9bitarmies']);
-        
+
         // Use the season from the URL if provided, otherwise default to the latest season
         $currentSeason = $season ?? $latestSeason;
 
         return view(
-            'pages.remasters.ladder.listings',
+            'pages.9bitarmies.ladder.listings',
             [
                 'data' => $data,
                 'steamLookup' => $steamLookup,
                 'gameName' => '9-Bit Armies: A Bit Too Far',
-                'abbrev' => '9bitarmies',
+                'heroVideo' => $heroVideo,
                 'latestSeason' => $latestSeason,
                 'currentSelectedSeason' => $currentSeason
             ]
         );
     }
 
-    
+
     /**
      * Sync via cron task
      * @param mixed $steamIds 
@@ -239,16 +242,18 @@ class LadderController extends Controller
      * @throws GuzzleException
      */
     private function syncGameLeaderboard($boardPrefix, $latestSeason, $is9bit = false)
-    {   
+    {
         $steamIds = [];
 
-        for ($season = 1; $season <= $latestSeason; $season++) {
+        for ($season = 1; $season <= $latestSeason; $season++)
+        {
             $seasonBoardName = $boardPrefix . str_pad($season, 2, '0', STR_PAD_LEFT);
             // diff api calls depending if its 9bit or not, can make this more dynamic as needed by changing function signature, defaults to remasteredAPI
             $data = $is9bit ? $this->nineBitArmiesAPI->sendLeaderboardRequest($seasonBoardName, 200, 0) : $this->remastersAPI->sendLeaderboardRequest($seasonBoardName, 200, 0);
             $data = json_decode(json_encode($data["ranks"]));
 
-            foreach ($data as $d) {
+            foreach ($data as $d)
+            {
                 $steamIds[] = $d->steamids[0];
             }
         }
@@ -263,7 +268,7 @@ class LadderController extends Controller
      * @throws GuzzleException 
      */
     public function syncNineBitArmies()
-    {   
+    {
         $latestSeasons = $this->nineBitArmiesAPI->getLatestSeason();
         $latestSeason = isset($latestSeasons['9bitarmies']) ? $this->extractSeasonNumber($latestSeasons['9bitarmies']) : 2;
 
