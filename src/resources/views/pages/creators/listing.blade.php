@@ -59,7 +59,7 @@
                 <a href="?gameName=red-alert-3" id="game-id-18881" class="twitch-game-link {{ $gameName == 'red-alert-3' ? ' active' : '' }}">
                     Red Alert 3 <span class="count">0</span>
                 </a>
-                <a href="?gameName=red-alert-3-uprising" id="game-id-24800" class="twitch-game-link {{ $gameName == 'red-alert-3-uprising' ? ' active' : '' }}">
+                <a href="?gameName=red-alert-3-uprising" id="game-id-22652" class="twitch-game-link {{ $gameName == 'red-alert-3-uprising' ? ' active' : '' }}">
                     Red Alert 3 - Uprising<span class="count">0</span>
                 </a>
                 <a href="?gameName=remasters" id="game-id-517837" class="twitch-game-link {{ $gameName == 'remasters' ? ' active' : '' }}">
