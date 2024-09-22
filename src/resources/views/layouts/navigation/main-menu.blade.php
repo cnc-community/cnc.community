@@ -32,12 +32,6 @@
                     <a href="/command-and-conquer-remastered#streams" title="C&C Streams">Streams</a>
                     <a href="/command-and-conquer-remastered/workshop-mods" title="Steam Workshop">Steam Workshop</a>
                     <a href="/command-and-conquer-remastered#help" title="Help & Support">Help &amp; Support</a>
-
-                    <div class="title" style="margin-top:10px;">
-                        Leaderboard
-                    </div>
-                    <a href="/command-and-conquer-remastered/leaderboard/tiberian-dawn" title="Tiberian Dawn Leaderboard">Tiberian Dawn</a>
-                    <a href="/command-and-conquer-remastered/leaderboard/red-alert" title="Red Alert Leaderboard">Red Alert</a>
                 </div>
 
                 <div class="category">
@@ -47,10 +41,12 @@
                     <a href="https://petroglyphgames.com/" title="Visit Website" target="_blank">Visit Website</a>
 
                     <div class="title" style="margin-top:10px;">
-                        Leaderboard
+                        Leaderboards
                     </div>
                     {{-- <a href="{{ route('8bit.leaderboard') }}" title="Leaderboard">8-BIT ARMIES</a> --}}
-                    <a href="{{ route('9bit.leaderboard') }}" title="Leaderboard">9-BIT ARMIES: A BIT TOO FAR</a>
+                    <a href="/command-and-conquer-remastered/leaderboard/tiberian-dawn" title="Tiberian Dawn Leaderboard">Tiberian Dawn</a>
+                    <a href="/command-and-conquer-remastered/leaderboard/red-alert" title="Red Alert Leaderboard">Red Alert</a>
+                    <a href="/9bitarmies/leaderboard" title="9-Bit Leaderboard">9-Bit Armies: A Bit Too Far</a>
                 </div>
             </div>
         </div>

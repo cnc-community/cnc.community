@@ -80,7 +80,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin']], function ()
 });
 
 
-//
 // Public routes
 Route::get('/', 'SiteController@index')->name('home')->middleware('cache.headers:public;max_age=1800');
 Route::get('/funny', 'SiteController@showFunnyListings')->name('pages.funny.listing')->middleware('cache.headers:public;max_age=3600');
@@ -89,10 +88,15 @@ Route::get('/stats', 'StatsController@showStats')->name('pages.stats')->middlewa
 Route::get('/command-and-conquer-ultimate-collection-steam', 'SiteController@showTUCPage')->name('pages.tuc')->middleware('cache.headers:public;max_age=400');
 Route::get('/command-and-conquer-ultimate-collection-online', 'SiteController@showTUCMultiplayerPage')->name('pages.tucMultiplayer')->middleware('cache.headers:public;max_age=400');
 
-// Petro games
+// Petro Leaderboards
 Route::get('/8bitarmies/leaderboard', 'LadderController@getEightBitArmiesIndex')->name('8bit.leaderboard');
 Route::get('/9bitarmies/leaderboard', 'LadderController@getNineBitArmiesIndex')->name('9bit.leaderboard');
+Route::get('/9bitarmies/leaderboard/season/{season}', 'LadderController@getSpecificNineBitSeasonLeaderboard')->defaults('game', '9bit');
+
+// C&C Leaderboards
 Route::get('/command-and-conquer-remastered/leaderboard/{game}', 'LadderController@getRemasteredIndex')->middleware('cache.headers:public;max_age=480');
+Route::get('/command-and-conquer-remastered/leaderboard/tiberian-dawn/season/{season}', 'LadderController@getSpecificRemasteredSeasonLeaderboard')->defaults('game', 'tiberian-dawn');
+Route::get('/command-and-conquer-remastered/leaderboard/red-alert/season/{season}', 'LadderController@getSpecificRemasteredSeasonLeaderboard')->defaults('game', 'red-alert');
 
 Route::get('/cnc-streamers', 'SiteController@showCreatorsListings')->name('pages.creators.listing')->middleware('cache.headers:public;max_age=1800');
 Route::get('/creators', function ()
