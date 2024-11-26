@@ -1,17 +1,17 @@
 <article class="item generic-box-item">
     <div class="image">
-        <a href="https://cnc-comm.com/sole-survivor" title="{{ $title }}" rel="nofollow noreferrer" target="_blank" class="image-link">
+        <a href="{{ $url }}" title="{{ $title }}" rel="nofollow noreferrer" target="_blank" class="image-link">
             <img src="{{ Vite::asset($image) }}" alt="{{ $title }}" loading="lazy">
         </a>
 
         <div class="button">
-            <a href="https://cnc-comm.com/sole-survivor" title="{{ $title }}" rel="nofollow noreferrer" target="_blank" class="btn-link">
+            <a href="{{ $url }}" title="{{ $title }}" rel="nofollow noreferrer" target="_blank" class="btn-link">
                 <i class="icon-link"></i>
             </a>
         </div>
         <div>
             <h3 class="title">
-                <a href="https://cnc-comm.com/sole-survivor" title="{{ $title }}" rel="nofollow noreferrer" target="_blank">
+                <a href="{{ $url }}" title="{{ $title }}" rel="nofollow noreferrer" target="_blank">
                     {{ $title }}
                 </a>
             </h3>
