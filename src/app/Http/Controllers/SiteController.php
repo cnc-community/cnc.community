@@ -39,6 +39,9 @@ class SiteController extends Controller
     {
         $key = "cache_";
 
+        $task = new \App\Http\Controllers\StatsController();
+        $task->runCacheTask();
+
         $officialNewsCache = Cache::remember($key . "home.index.officialNews", Constants::getCacheSeconds(), function ()
         {
             return News::officialNewsPaginated(9);
