@@ -8,6 +8,7 @@ use App\Http\Services\CnCNet\CnCNetAPI;
 use App\Http\Services\CnCNet\CnCNetSoleAPI;
 use App\Http\Services\CnCOnline\CnCOnlineAPI;
 use App\Http\Services\OpenRA\OpenRAAPI;
+use App\Http\Services\RA3BattleNet\RA3BattleNetAPI;
 use App\Http\Services\RenegadeX\RenegadeXAPI;
 use App\Http\Services\W3DHub\W3DHubAPI;
 use Illuminate\Support\Facades\Cache;
@@ -22,6 +23,7 @@ class CNCOnlineCount
     private $renegadexAPI;
     private $steamHelper;
     private $cncnetSoleAPI;
+    private $ra3BattleNetAPI;
 
     public function __construct()
     {
@@ -32,6 +34,7 @@ class CNCOnlineCount
         $this->renegadexAPI = new RenegadeXAPI();
         $this->steamHelper = new SteamHelper();
         $this->cncnetSoleAPI = new CnCNetSoleAPI();
+        $this->ra3BattleNetAPI = new RA3BattleNetAPI();
     }
 
     public function runCountTasks()
@@ -42,6 +45,7 @@ class CNCOnlineCount
         $openraCounts = $this->openRAAPI->getOnlineCount();
         $renegadexCounts = $this->renegadexAPI->getOnlineCount();
         $cncnetSoleCounts = $this->cncnetSoleAPI->getOnlineCount();
+        $ra3battleNetCounts = $this->ra3BattleNetAPI->getOnlineCount();
 
         // Leaving this out for now until we get proper online numbers
         $remasterOnlineCount = ["cncremastered" => $this->steamHelper->getSteamPlayerCount(Constants::remastersAppId())];
@@ -53,7 +57,8 @@ class CNCOnlineCount
             $openraCounts,
             $remasterOnlineCount,
             $renegadexCounts,
-            $cncnetSoleCounts
+            $cncnetSoleCounts,
+            ["ra3Battlenet" => $ra3battleNetCounts]
         );
 
         $combined["total"] = $this->total($combined);
@@ -120,6 +125,7 @@ class CNCOnlineCount
             "cnc3" => 9,
             "cnc3kw" => 10,
             "ra3" => 11,
+            "ra3Battlenet" => 12
         ];
 
         $steamGamesFilter = [

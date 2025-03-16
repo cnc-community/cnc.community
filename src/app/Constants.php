@@ -241,6 +241,7 @@ class Constants
             "generals",
             "generalszh",
             "ra3",
+            "ra3Battlenet",
             "cncremastered",
             "apb",
             "ia",
@@ -417,6 +418,17 @@ class Constants
                     "graph_color" => "rgba(253, 75, 75, 0.3)",
                     "graph_border_color" => "rgba(253, 75, 75, 1)",
                     'online_service' => 'C&C:Online',
+                ];
+
+            case "ra3Battlenet":
+                return [
+                    "url" => "red-alert-3",
+                    "logo" => ViewHelper::getGameLogoPathByName("red-alert-3"),
+                    "external_link" => false,
+                    "name" => "Red Alert 3 (BattleNet)",
+                    "graph_color" => "rgba(253, 75, 75, 0.3)",
+                    "graph_border_color" => "rgba(253, 75, 75, 1)",
+                    'online_service' => 'RA3 Battlenet',
                 ];
 
             case "cncremastered":
