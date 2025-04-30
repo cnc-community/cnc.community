@@ -245,6 +245,7 @@ class Constants
             "cncremastered",
             "apb",
             "ia",
+            "ar",
             "openra_cnc",
             "openra_ra",
             "renegadex",
@@ -461,6 +462,17 @@ class Constants
                     "name" => "Interim Apex",
                     "graph_color" => "rgba(0, 218, 186, 0.2)",
                     "graph_border_color" => "rgba(0, 218, 186, 0.8)",
+                    'online_service' => 'W3D Hub',
+                ];
+
+            case "ar":
+                return [
+                    "url" => "https://w3dhub.com/games/red-alert-2-apocalypse-rising/",
+                    "logo" => ViewHelper::getGameLogoPathByName("ar"),
+                    "external_link" => true,
+                    "name" => "Apocalypse Rising",
+                    "graph_color" => "rgba(218, 0, 0, 0.2)",
+                    "graph_border_color" => "rgba(218, 0, 0, 0.8)",
                     'online_service' => 'W3D Hub',
                 ];
 

@@ -21,12 +21,12 @@ class W3DHubAPI
     {
         return Cache::remember('W3DHubAPI.getOnlineCount', 450, function ()
         {
-            try 
+            try
             {
                 $response = Http::get($this->_apiUrl);
                 return $this->getPlayerCountFromResponse($response->json());
             }
-            catch(Exception $exception)
+            catch (Exception $exception)
             {
                 Log::error($exception);
                 return [];
@@ -41,10 +41,11 @@ class W3DHubAPI
         $games = [
             "ren", // renegade
             "apb", // a path beyond
-            "ia" //interim apex
+            "ia", // interim apex,
+            "ar" // apocalypse rising
         ];
-        
-        foreach($response as $server)
+
+        foreach ($response as $server)
         {
             $serverListing = new GSHServerListing($server);
 

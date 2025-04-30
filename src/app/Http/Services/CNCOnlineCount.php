@@ -109,6 +109,7 @@ class CNCOnlineCount
             "renegadex" => 5,
             "openra_ra" => 6,
             "openra_cnc" => 7,
+            "ar" => 8
         ];
 
         // Abbreviation + order
