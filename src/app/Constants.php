@@ -241,9 +241,11 @@ class Constants
             "generals",
             "generalszh",
             "ra3",
+            "ra3Battlenet",
             "cncremastered",
             "apb",
             "ia",
+            "ar",
             "openra_cnc",
             "openra_ra",
             "renegadex",
@@ -419,6 +421,17 @@ class Constants
                     'online_service' => 'C&C:Online',
                 ];
 
+            case "ra3Battlenet":
+                return [
+                    "url" => "red-alert-3",
+                    "logo" => ViewHelper::getGameLogoPathByName("red-alert-3"),
+                    "external_link" => false,
+                    "name" => "Red Alert 3 (BattleNet)",
+                    "graph_color" => "rgba(253, 75, 75, 0.3)",
+                    "graph_border_color" => "rgba(253, 75, 75, 1)",
+                    'online_service' => 'RA3 Battlenet',
+                ];
+
             case "cncremastered":
                 return [
                     "url" => "command-and-conquer-remastered",
@@ -449,6 +462,17 @@ class Constants
                     "name" => "Interim Apex",
                     "graph_color" => "rgba(0, 218, 186, 0.2)",
                     "graph_border_color" => "rgba(0, 218, 186, 0.8)",
+                    'online_service' => 'W3D Hub',
+                ];
+
+            case "ar":
+                return [
+                    "url" => "https://w3dhub.com/games/red-alert-2-apocalypse-rising/",
+                    "logo" => ViewHelper::getGameLogoPathByName("ar"),
+                    "external_link" => true,
+                    "name" => "Apocalypse Rising",
+                    "graph_color" => "rgba(218, 0, 0, 0.2)",
+                    "graph_border_color" => "rgba(218, 0, 0, 0.8)",
                     'online_service' => 'W3D Hub',
                 ];
 
