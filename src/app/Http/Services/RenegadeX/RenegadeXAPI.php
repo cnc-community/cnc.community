@@ -20,15 +20,15 @@ class RenegadeXAPI
     {
         return Cache::remember('RenegadeXAPI.getOnlineCount', 450, function ()
         {
-            try 
+            try
             {
                 $response = Http::get(
                     $this->_apiUrl
                 );
-        
+
                 return $this->getPlayerCountFromResponse($response->json());
             }
-            catch(Exception $exception)
+            catch (Exception $exception)
             {
                 Log::error($exception);
                 return [];
@@ -38,6 +38,6 @@ class RenegadeXAPI
 
     private function getPlayerCountFromResponse($data)
     {
-        return ["renegadex" => $data["player_count"]];
+        return ["renegadex" => $data["player_count"] ?? 0];
     }
 }
