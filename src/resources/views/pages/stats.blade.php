@@ -83,7 +83,7 @@
         </div>
     </section>
 
-    <section id="stats" class="section game-stats-chart">
+    <section id="stats" class="section game-stats-chart" style="display:none;">
         <div class="main-content">
             <h3>C&amp;C Stats - Players Online</h3>
 
