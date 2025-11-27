@@ -37,6 +37,7 @@
                         'onlineCount' => $game->getOnlineCount(),
                         'steamInGameCount' => $game->steam_players_online,
                         'onlineService' => $gameByAbbreviation['online_service'],
+                        'generalsOnlineCount' => $game->generals_online_players ?? 0,
                     ])
                 @endforeach
             </div>

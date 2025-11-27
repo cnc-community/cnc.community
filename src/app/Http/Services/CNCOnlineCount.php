@@ -7,6 +7,7 @@ use App\GameStat;
 use App\Http\Services\CnCNet\CnCNetAPI;
 use App\Http\Services\CnCNet\CnCNetSoleAPI;
 use App\Http\Services\CnCOnline\CnCOnlineAPI;
+use App\Http\Services\GeneralsOnline\GeneralsOnlineAPI;
 use App\Http\Services\OpenRA\OpenRAAPI;
 use App\Http\Services\RA3BattleNet\RA3BattleNetAPI;
 use App\Http\Services\RenegadeX\RenegadeXAPI;
@@ -24,6 +25,7 @@ class CNCOnlineCount
     private $steamHelper;
     private $cncnetSoleAPI;
     private $ra3BattleNetAPI;
+    private $generalsOnlineAPI;
 
     public function __construct()
     {
@@ -35,6 +37,7 @@ class CNCOnlineCount
         $this->steamHelper = new SteamHelper();
         $this->cncnetSoleAPI = new CnCNetSoleAPI();
         $this->ra3BattleNetAPI = new RA3BattleNetAPI();
+        $this->generalsOnlineAPI = new GeneralsOnlineAPI();
     }
 
     public function runCountTasks()
@@ -150,6 +153,7 @@ class CNCOnlineCount
                 $newResults["games"][$game] = $count;
                 $order = $gamesFilter[$game];
                 $steamInGameCount = 0;
+                $generalsOnlineCount = 0;
 
                 // Hack - Fetch individual steam players online
                 if (in_array($game, $steamGamesFilter))
@@ -161,12 +165,19 @@ class CNCOnlineCount
                     }
                 }
 
+                // Fetch Generals Online count for Generals Zero Hour
+                if ($game === 'generalszh')
+                {
+                    $generalsOnlineCount = $this->generalsOnlineAPI->getOnlineCount();
+                }
+
                 GameStat::createOrUpdateStat(
                     $game,
                     $count,
                     GameStat::TYPE_GAME,
                     $order,
-                    $steamInGameCount
+                    $steamInGameCount,
+                    $generalsOnlineCount
                 );
             }
 

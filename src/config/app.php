@@ -26,6 +26,10 @@ return [
 
     'steam_api_key' => env('STEAM_API_KEY', null),
 
+    'generals_online_api_url' => env('GENERALS_ONLINE_API_URL', null),
+
+    'generals_online_api_key' => env('GENERALS_ONLINE_API_KEY', null),
+
     /*
     |--------------------------------------------------------------------------
     | Application Environment

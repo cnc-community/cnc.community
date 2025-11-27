@@ -13,6 +13,11 @@
                 <strong>{{ $onlineCount }} online {{ $onlineService ?? '' }}</strong>
             @endif
         </div>
+        <div style="padding: 0 0.5rem 0.5rem 0.5rem;">
+            @if (isset($generalsOnlineCount) && $generalsOnlineCount > 0)
+                <strong>{{ $generalsOnlineCount }} online GeneralsOnline</strong>
+            @endif
+        </div>
         <div style="color:#e5e5e5">
             @if (isset($steamInGameCount) && $steamInGameCount > 0)
                 <strong style="font-size:0.9rem;color:#a3a3a3;">{{ $steamInGameCount }} Players On Steam</strong>
