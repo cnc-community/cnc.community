@@ -1,21 +1,48 @@
 .stat-game-box 
 {
+    display: flex;
+    flex-direction: column;
     background: #212121;
     padding: 25px;
     width: 100%;
     margin-bottom: 15px;
     margin-right: 15px;
     flex-grow: 1;
-    transition: ease-in background 250ms;
-
-    &:hover {
-        background: #000;
-    }
     
     @media(min-width: $lg-width)
     {
         width: 22%;
     }
+}
+
+.stat-game-box .stats-container 
+{
+    gap: 1rem;
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+    align-items: center;
+}
+
+.stat-game-box .service-link 
+{
+    color: #ffffff;
+    font-weight: bold;
+    background: #373737;
+    border-radius: 0.25rem;
+    padding: 0.25rem 0.5rem;
+    transition: ease all 350ms;
+
+    &:hover 
+    {
+        background: #585858;
+    }
+}
+
+.stat-game-box .how-to-play 
+{
+    display: flex;
+    justify-content: center;
 }
 
 .stat-game-box-logo 
@@ -25,7 +52,8 @@
     align-items: center;
     justify-content: center;
     margin: 0 auto;
-    & img { 
+    & img 
+    {
         width: 200px;
         max-width: 100%;
     }
@@ -38,10 +66,17 @@
     align-items: center;
 }
 
+.stat-game-box .how-to-play .btn 
+{
+    padding: 0.5rem;
+}
+
 .stat-game-box .stat-game-online-count
 {
     text-align: center;
     font-size: 1.1rem;
+    margin: auto;
+    padding-bottom: 1rem;
 }
 
 .stat-game-box .stat-game-online-count strong 

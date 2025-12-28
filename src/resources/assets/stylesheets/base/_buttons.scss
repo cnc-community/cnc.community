@@ -43,7 +43,7 @@
     &:focus 
     {
         background: lighten($color-gold, 1%);
-        color: #ffffff;
+        color: #000;
         border-color:lighten($color-gold, 1%);
     }
 }
@@ -91,7 +91,8 @@
     background: transparent;
     color: $color-white;
 
-    &:hover { 
+    &:hover 
+    {
         background: $color-white;
         color: #000;
     }
@@ -103,7 +104,8 @@
     color: $color-white;
     border: 1px solid $color-white;
 
-    &:hover { 
+    &:hover 
+    {
         background: $color-white;
         color: #000;
     }
@@ -134,7 +136,8 @@
 }
 
 .btn-xs { font-size: $font-size-xs; }
-.btn-sm { 
+.btn-sm 
+{
     padding: 14px 22px;
     font-size: $font-size-sm; 
 }
@@ -149,12 +152,14 @@
     background: #101010e0;
     border-radius: 10px;
 
-    &:hover {
+    &:hover 
+    {
         background: #efc634;
         color: #fff;
     }
 
-    .icon-play:before { 
+    .icon-play:before 
+    {
         font-size: 2.5rem;
     }
 }
@@ -181,7 +186,8 @@
     background: #a90000e6;
     text-shadow: none;
     color: #fff;
-    &:hover { 
+    &:hover 
+    {
         border-color: #ff0000;
         color: #ff0000;
         background: #2700007a;
@@ -194,7 +200,8 @@
     border-color: #f6941e;
     color: #f6941e;
 
-    &:hover { 
+    &:hover 
+    {
         background: #9c550075;
         border-color: #ff8b00;
         color: #ffffff;
@@ -206,7 +213,8 @@
     border-color: #06f300;
     color: #06f300;
 
-    &:hover { 
+    &:hover 
+    {
         border-color: #06ff00;
         color: #ffffff;
         background: #012700d9;
@@ -218,7 +226,8 @@
     color: #00b9da;
     border-color: #00b9da;
 
-    &:hover { 
+    &:hover 
+    {
         color: #ffffff;
         border-color: #00b9da;
         background: #006a7dc7;

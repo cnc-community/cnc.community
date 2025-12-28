@@ -79,6 +79,11 @@ Route::group(['prefix' => 'admin', 'middleware' => ['admin']], function ()
     Route::post('/upload/image', 'ImageUploadController@upload')->name('uploadImage');
 });
 
+Route::get('/task', function ()
+{
+    $task = new \App\Http\Controllers\StatsController();
+    $task->runTask();
+});
 
 // Public routes
 Route::get('/', 'SiteController@index')->name('home')->middleware('cache.headers:public;max_age=1800');

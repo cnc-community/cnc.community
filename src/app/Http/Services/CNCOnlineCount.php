@@ -49,6 +49,7 @@ class CNCOnlineCount
         $renegadexCounts = $this->renegadexAPI->getOnlineCount();
         $cncnetSoleCounts = $this->cncnetSoleAPI->getOnlineCount();
         $ra3battleNetCounts = $this->ra3BattleNetAPI->getOnlineCount();
+        $generalsOnlineCounts = $this->generalsOnlineAPI->getOnlineCount();
 
         // Leaving this out for now until we get proper online numbers
         $remasterOnlineCount = ["cncremastered" => $this->steamHelper->getSteamPlayerCount(Constants::remastersAppId())];
@@ -61,7 +62,8 @@ class CNCOnlineCount
             $remasterOnlineCount,
             $renegadexCounts,
             $cncnetSoleCounts,
-            ["ra3Battlenet" => $ra3battleNetCounts]
+            ["ra3Battlenet" => $ra3battleNetCounts],
+            ["generalsOnline" => $generalsOnlineCounts]
         );
 
         $combined["total"] = $this->total($combined);
@@ -125,11 +127,12 @@ class CNCOnlineCount
             "cncnet5_yr" => 5,
             "ren" => 6,
             "generals" => 7,
-            "generalszh" => 8,
-            "cnc3" => 9,
-            "cnc3kw" => 10,
-            "ra3" => 11,
-            "ra3Battlenet" => 12
+            "generalsOnline" => 8,
+            "generalszh" => 9,
+            "cnc3" => 10,
+            "cnc3kw" => 11,
+            "ra3" => 12,
+            "ra3Battlenet" => 13,
         ];
 
         $steamGamesFilter = [
@@ -165,19 +168,12 @@ class CNCOnlineCount
                     }
                 }
 
-                // Fetch Generals Online count for Generals Zero Hour
-                if ($game === 'generalszh')
-                {
-                    $generalsOnlineCount = $this->generalsOnlineAPI->getOnlineCount();
-                }
-
                 GameStat::createOrUpdateStat(
                     $game,
                     $count,
                     GameStat::TYPE_GAME,
                     $order,
                     $steamInGameCount,
-                    $generalsOnlineCount
                 );
             }
 

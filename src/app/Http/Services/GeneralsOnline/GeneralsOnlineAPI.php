@@ -19,11 +19,11 @@ class GeneralsOnlineAPI
         $this->_apiKey = config('app.generals_online_api_key');
     }
 
-    public function getOnlineCount()
+    public function getOnlineCount(): int
     {
         return Cache::remember('GeneralsOnlineAPI.getOnlineCount', 450, function ()
         {
-            try 
+            try
             {
                 $response = Http::withHeaders([
                     'X-API-Key' => $this->_apiKey,
@@ -34,11 +34,11 @@ class GeneralsOnlineAPI
                 {
                     return $this->getPlayerCountFromResponse($response->json());
                 }
-                
+
                 Log::error('GeneralsOnlineAPI failed: ' . $response->status());
                 return 0;
             }
-            catch(Exception $exception)
+            catch (Exception $exception)
             {
                 Log::error('GeneralsOnlineAPI exception: ' . $exception->getMessage());
                 return 0;
@@ -54,7 +54,7 @@ class GeneralsOnlineAPI
         {
             return count($data['active_users']);
         }
-        
+
         return 0;
     }
 }
