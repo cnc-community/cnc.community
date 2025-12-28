@@ -265,6 +265,7 @@ class Constants
                     "graph_color" => "rgba(255, 215, 0, 0.3)",
                     "graph_border_color" => "rgba(255, 215, 0, 1)",
                     'online_service' => 'CnCNet',
+                    'online_service_url' => 'https://cncnet.org'
                 ];
 
             case "cncnet5_ra":
@@ -276,6 +277,7 @@ class Constants
                     "graph_color" => "rgba(255, 0, 0, 0.3)",
                     "graph_border_color" => "rgba(255, 0, 0, 1)",
                     'online_service' => 'CnCNet',
+                    'online_service_url' => 'https://cncnet.org'
                 ];
 
             case "cncnet5_ts":
@@ -287,6 +289,7 @@ class Constants
                     "graph_color" => "rgba(212, 127, 0, 0.3)",
                     "graph_border_color" => "rgba(212, 127, 0, 1)",
                     'online_service' => 'CnCNet',
+                    'online_service_url' => 'https://cncnet.org'
                 ];
 
             case "sole":
@@ -298,6 +301,7 @@ class Constants
                     "graph_color" => "rgba(255,255,255,0.5)",
                     "graph_border_color" => "rgba(255,255,255,0.5)",
                     'online_service' => 'CnCNet',
+                    'online_service_url' => 'https://cncnet.org'
                 ];
 
             case "cncnet5_yr":
@@ -305,10 +309,11 @@ class Constants
                     "url" => "red-alert-2",
                     "logo" => ViewHelper::getGameLogoPathByName("yuris-revenge"),
                     "external_link" => false,
-                    "name" => "Yuri's Revenge",
+                    "name" => "Red Alert 2 & Yuri's Revenge",
                     "graph_color" => "rgba(255, 19, 128, 0.3)",
                     "graph_border_color" => "rgba(255, 19, 128, 1)",
                     'online_service' => 'CnCNet',
+                    'online_service_url' => 'https://cncnet.org'
                 ];
 
             case "cncnet5_dta":
@@ -320,6 +325,7 @@ class Constants
                     "graph_color" => "rgba(0, 184, 255, 0.2)",
                     "graph_border_color" => "rgba(0, 184, 255, 0.8)",
                     'online_service' => 'CnCNet',
+                    'online_service_url' => 'https://cncnet.org'
                 ];
 
             case "cncnet5_mo":
@@ -331,6 +337,7 @@ class Constants
                     "graph_color" => "rgba(202, 21, 251, 0.2)",
                     "graph_border_color" => "rgba(202, 21, 251, 0.8)",
                     'online_service' => 'CnCNet',
+                    'online_service_url' => 'https://cncnet.org'
                 ];
 
             case "cncnet5_rr":
@@ -342,6 +349,7 @@ class Constants
                     "graph_color" => "rgba(230, 109, 154, 0.2)",
                     "graph_border_color" => "rgba(230, 109, 154, 0.8)",
                     'online_service' => 'CnCNet',
+                    'online_service_url' => 'https://cncnet.org'
                 ];
 
             case "cncnet5_cncr":
@@ -353,6 +361,7 @@ class Constants
                     "graph_color" => "rgba(42, 212, 0, 0.2)",
                     "graph_border_color" => "rgba(42, 212, 0, 0.8)",
                     'online_service' => 'CnCNet',
+                    'online_service_url' => 'https://cncnet.org'
                 ];
 
             case "cnc3":
@@ -364,6 +373,7 @@ class Constants
                     "graph_color" => "rgba(31, 255, 48, 0.3)",
                     "graph_border_color" => "rgba(31, 255, 48, 1)",
                     'online_service' => 'C&C:Online',
+                    'online_service_url' => 'https://cnc-online.net/'
                 ];
 
             case "ren":
@@ -375,6 +385,7 @@ class Constants
                     "graph_color" => "rgba(185, 114, 255, 0.3)",
                     "graph_border_color" => "rgba(185, 114, 255, 1)",
                     'online_service' => 'W3D Hub',
+                    'online_service_url' => 'https://w3dhub.com/'
                 ];
 
             case "cnc3kw":
@@ -386,6 +397,7 @@ class Constants
                     "graph_color" => "rgba(0, 55, 255, 0.3)",
                     "graph_border_color" => "rgba(0, 55, 255, 1)",
                     'online_service' => 'C&C:Online',
+                    'online_service_url' => 'https://cnc-online.net/'
                 ];
 
             case "generals":
@@ -397,6 +409,7 @@ class Constants
                     "graph_color" => "rgba(30, 144, 23, 0.3)",
                     "graph_border_color" => "rgba(30, 144, 23, 1)",
                     'online_service' => 'C&C:Online',
+                    'online_service_url' => 'https://cnc-online.net/'
                 ];
 
             case "generalszh":
@@ -408,6 +421,19 @@ class Constants
                     "graph_color" => "rgba(253, 198, 75, 0.3)",
                     "graph_border_color" => "rgba(253, 198, 75, 1)",
                     'online_service' => 'C&C:Online',
+                    'online_service_url' => 'https://cnc-online.net/'
+                ];
+
+            case "generalsOnline":
+                return [
+                    "url" => "generals",
+                    "logo" => ViewHelper::getGameLogoPathByName("generals"),
+                    "external_link" => false,
+                    "name" => "Generals ",
+                    "graph_color" => "rgba(30, 144, 23, 0.3)",
+                    "graph_border_color" => "rgba(30, 144, 23, 1)",
+                    'online_service' => 'GeneralsOnline',
+                    "online_service_url" => 'https://www.playgenerals.online/'
                 ];
 
             case "ra3":
@@ -419,6 +445,7 @@ class Constants
                     "graph_color" => "rgba(253, 75, 75, 0.3)",
                     "graph_border_color" => "rgba(253, 75, 75, 1)",
                     'online_service' => 'C&C:Online',
+                    'online_service_url' => 'https://cnc-online.net/'
                 ];
 
             case "ra3Battlenet":
@@ -430,6 +457,7 @@ class Constants
                     "graph_color" => "rgba(253, 75, 75, 0.3)",
                     "graph_border_color" => "rgba(253, 75, 75, 1)",
                     'online_service' => 'RA3 Battlenet',
+                    "online_service_url" => 'https://ra3battle.net/'
                 ];
 
             case "cncremastered":
@@ -441,6 +469,7 @@ class Constants
                     "graph_color" => "rgba(0, 255, 208, 0.3)",
                     "graph_border_color" => "rgba(0, 255, 208, 1)",
                     'online_service' => '',
+                    "online_service_url" => 'command-and-conquer-remastered'
                 ];
 
             case "apb":
@@ -452,6 +481,7 @@ class Constants
                     "graph_color" => "rgba(253, 3, 1, 0.2)",
                     "graph_border_color" => "rgba(253, 3, 1, 0.8)",
                     'online_service' => 'W3D Hub',
+                    "online_service_url" => 'https://w3dhub.com/'
                 ];
 
             case "ia":
@@ -463,6 +493,7 @@ class Constants
                     "graph_color" => "rgba(0, 218, 186, 0.2)",
                     "graph_border_color" => "rgba(0, 218, 186, 0.8)",
                     'online_service' => 'W3D Hub',
+                    "online_service_url" => 'https://w3dhub.com/'
                 ];
 
             case "ar":
@@ -474,6 +505,7 @@ class Constants
                     "graph_color" => "rgba(218, 0, 0, 0.2)",
                     "graph_border_color" => "rgba(218, 0, 0, 0.8)",
                     'online_service' => 'W3D Hub',
+                    "online_service_url" => 'https://w3dhub.com/'
                 ];
 
             case "openra_cnc":
@@ -485,6 +517,7 @@ class Constants
                     "graph_color" => "rgba(121, 121, 121,0.2)",
                     "graph_border_color" => "rgba(121, 121, 121, 0.8)",
                     'online_service' => 'OpenRA',
+                    "online_service_url" => 'https://www.openra.net/'
                 ];
 
             case "openra_ra":
@@ -496,6 +529,7 @@ class Constants
                     "graph_color" => "rgba(255, 211, 0, 0.2)",
                     "graph_border_color" => "rgba(255, 211, 0, 0.8)",
                     'online_service' => 'OpenRA',
+                    "online_service_url" => 'https://www.openra.net/'
                 ];
 
             case "renegadex":
@@ -507,15 +541,19 @@ class Constants
                     "graph_color" => "rgba(136, 232, 249, 0.2)",
                     "graph_border_color" => "rgba(136, 232, 249, 1)",
                     'online_service' => 'Totem Arts',
+                    "online_service_url" => 'https://totemarts.games/games/renegade-x/'
                 ];
         }
 
         return [
             "url" => "",
             "logo" => "",
-            "external_link" => false,
-            "name" => "",
-            "graph_color" => "rgb(18 3 47)"
+            "external_link" => true,
+            "name" => "Renegade X",
+            "graph_color" => "rgba(136, 232, 249, 0.2)",
+            "graph_border_color" => "rgba(136, 232, 249, 1)",
+            'online_service' => '',
+            "online_service_url" => ''
         ];
     }
 }

@@ -28,16 +28,39 @@
                 @foreach ($games as $game)
                     <?php $gameByAbbreviation = App\Constants::getGameFromOnlineAbbreviation($game->getAbbreviation()); ?>
 
-                    @include('components.online-box', [
-                        'title' => $gameByAbbreviation['name'],
-                        'url' => $gameByAbbreviation['url'],
-                        'logo' => $gameByAbbreviation['logo'],
-                        'externalLink' => $gameByAbbreviation['external_link'],
-                        'gameAbrev' => $game->getAbbreviation(),
-                        'onlineCount' => $game->getOnlineCount(),
-                        'steamInGameCount' => $game->steam_players_online,
-                        'onlineService' => $gameByAbbreviation['online_service'],
-                    ])
+                    @if ($game->abbrev == 'generalszh')
+                        @include('components.online-box-combined-stats', [
+                            'title' => $gameByAbbreviation['name'],
+                            'url' => $gameByAbbreviation['url'],
+                            'logo' => $gameByAbbreviation['logo'],
+                            'externalLink' => $gameByAbbreviation['external_link'],
+                            'gameAbrev' => $game->getAbbreviation(),
+                            'steamInGameCount' => $game->steam_players_online,
+                            'stats' => $generalsStats,
+                        ])
+                    @elseif ($game->abbrev == 'ra3')
+                        @include('components.online-box-combined-stats', [
+                            'title' => $gameByAbbreviation['name'],
+                            'url' => $gameByAbbreviation['url'],
+                            'logo' => $gameByAbbreviation['logo'],
+                            'externalLink' => $gameByAbbreviation['external_link'],
+                            'gameAbrev' => $game->getAbbreviation(),
+                            'steamInGameCount' => $game->steam_players_online,
+                            'stats' => $ra3Stats,
+                        ])
+                    @else
+                        @include('components.online-box', [
+                            'title' => $gameByAbbreviation['name'],
+                            'url' => $gameByAbbreviation['url'],
+                            'logo' => $gameByAbbreviation['logo'],
+                            'externalLink' => $gameByAbbreviation['external_link'],
+                            'gameAbrev' => $game->getAbbreviation(),
+                            'onlineCount' => $game->getOnlineCount(),
+                            'steamInGameCount' => $game->steam_players_online,
+                            'onlineService' => $gameByAbbreviation['online_service'],
+                            'onlineServiceUrl' => $gameByAbbreviation['online_service_url'],
+                        ])
+                    @endif
                 @endforeach
             </div>
         </div>
@@ -57,6 +80,7 @@
                         'onlineCount' => $game->getOnlineCount(),
                         'steamInGameCount' => $game->steam_players_online,
                         'onlineService' => $gameByAbbreviation['online_service'],
+                        'onlineServiceUrl' => $gameByAbbreviation['online_service_url'],
                     ])
                 @endforeach
             </div>
@@ -77,6 +101,7 @@
                         'onlineCount' => $game->getOnlineCount(),
                         'steamInGameCount' => $game->steam_players_online,
                         'onlineService' => $gameByAbbreviation['online_service'],
+                        'onlineServiceUrl' => $gameByAbbreviation['online_service_url'],
                     ])
                 @endforeach
             </div>

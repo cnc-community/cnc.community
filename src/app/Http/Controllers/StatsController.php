@@ -79,7 +79,13 @@ class StatsController extends Controller
 
     public function showStats(Request $request)
     {
-        $games = $this->cncOnlineCount->getGameCounts();
+        $allGames = $this->cncOnlineCount->getGameCounts();
+
+        // Separate out generalsOnline and ra3Battlenet from the main games list
+        $games = $allGames->filter(function($game) {
+            return !in_array($game->abbrev, ['generalsOnline', 'ra3Battlenet']);
+        });
+
         $mods = $this->cncOnlineCount->getModCounts();
         $standalone =  $this->cncOnlineCount->getStandaloneCounts();
         $graphData = StatsCache::getCache(GameStatGraph::GAME_STAT_GRAPH_CACHE_3_MONTHS) ?? [];
@@ -118,6 +124,10 @@ class StatsController extends Controller
             $steamInGameOnly .= urlencode($gameByAbbreviation["name"] . ',');
         }
 
+        // Build combined stats for Generals and RA3
+        $generalsStats = $this->buildGeneralsStats($allGames);
+        $ra3Stats = $this->buildRA3Stats($allGames);
+
         return view(
             'pages.stats',
             [
@@ -130,7 +140,67 @@ class StatsController extends Controller
                 "modGamesUrlOnly" => $modGamesUrlOnly,
                 "standaloneUrlOnly" => $standaloneUrlOnly,
                 "steamInGameOnly" => $steamInGameOnly,
+                "generalsStats" => $generalsStats,
+                "ra3Stats" => $ra3Stats,
             ]
         );
+    }
+
+    private function buildGeneralsStats($allGames)
+    {
+        $stats = [];
+
+        // Get both generalszh and generalsOnline
+        $generalszh = $allGames->firstWhere('abbrev', 'generalszh');
+        $generalsOnline = $allGames->firstWhere('abbrev', 'generalsOnline');
+
+        if ($generalszh) {
+            $generalszhInfo = Constants::getGameFromOnlineAbbreviation('generalszh');
+            $stats[] = [
+                'count' => $generalszh->players_online,
+                'service' => $generalszhInfo['online_service'],
+                'serviceUrl' => $generalszhInfo['online_service_url'],
+            ];
+        }
+
+        if ($generalsOnline) {
+            $generalsOnlineInfo = Constants::getGameFromOnlineAbbreviation('generalsOnline');
+            $stats[] = [
+                'count' => $generalsOnline->players_online,
+                'service' => $generalsOnlineInfo['online_service'],
+                'serviceUrl' => $generalsOnlineInfo['online_service_url'],
+            ];
+        }
+
+        return $stats;
+    }
+
+    private function buildRA3Stats($allGames)
+    {
+        $stats = [];
+
+        // Get both ra3 and ra3Battlenet
+        $ra3 = $allGames->firstWhere('abbrev', 'ra3');
+        $ra3Battlenet = $allGames->firstWhere('abbrev', 'ra3Battlenet');
+
+        if ($ra3) {
+            $ra3Info = Constants::getGameFromOnlineAbbreviation('ra3');
+            $stats[] = [
+                'count' => $ra3->players_online,
+                'service' => $ra3Info['online_service'],
+                'serviceUrl' => $ra3Info['online_service_url'],
+            ];
+        }
+
+        if ($ra3Battlenet) {
+            $ra3BattlenetInfo = Constants::getGameFromOnlineAbbreviation('ra3Battlenet');
+            $stats[] = [
+                'count' => $ra3Battlenet->players_online,
+                'service' => $ra3BattlenetInfo['online_service'],
+                'serviceUrl' => $ra3BattlenetInfo['online_service_url'],
+            ];
+        }
+
+        return $stats;
     }
 }

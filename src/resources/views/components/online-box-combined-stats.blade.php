@@ -3,9 +3,10 @@
     <div class="stat-game-box-logo">
         <img src="{{ $logo }}" alt="Game Logo" />
     </div>
-
     <div class="stat-game-online-count">
-        <strong>{{ $title }}</strong>
+        <strong>
+            {{ $title }}
+        </strong>
 
         <div style="color:#e5e5e5">
             @if (isset($steamInGameCount) && $steamInGameCount > 0)
@@ -14,11 +15,15 @@
         </div>
 
         <div class="stats-container">
-            @if ($onlineServiceUrl)
-                <a href="{{ $onlineServiceUrl }}" rel="nofollow noreferrer" target="_blank" class="service-link" title="{{ $onlineServiceUrl }}">
-                    {{ $onlineCount }} online {{ $onlineService }}
-                </a>
-            @endif
+            @foreach ($stats as $stat)
+                <div>
+                    @if ($stat['serviceUrl'])
+                        <a href="{{ $stat['serviceUrl'] }}" rel="nofollow noreferrer" target="_blank" class="service-link" title="{{ $stat['service'] }}">
+                            {{ $stat['count'] }} online {{ $stat['service'] }}
+                        </a>
+                    @endif
+                </div>
+            @endforeach
         </div>
     </div>
 
