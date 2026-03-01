@@ -64,6 +64,11 @@ class Kernel extends ConsoleKernel
             $task = new \App\Http\Controllers\FeedController();
             $task->runTaskDaily();
         })->daily();
+
+        $schedule->call(function ()
+        {
+            \App\GameStatGraph::deleteOldRecords();
+        })->daily();
     }
 
     /**

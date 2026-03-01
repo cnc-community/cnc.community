@@ -19,9 +19,6 @@ class GameStatGraph extends Model
 
     public static function createStat($gameStatId, $playersOnline, $steamInGameCount = 0)
     {
-        // Always ensure we only keep the data we want
-        GameStatGraph::deleteOldRecords();
-
         $gameStat = GameStat::where("id", $gameStatId)->first();
         if ($gameStat == null)
         {
@@ -50,7 +47,7 @@ class GameStatGraph extends Model
         return $gameStatGraph;
     }
 
-    private static function deleteOldRecords()
+    public static function deleteOldRecords()
     {
         // Delete anything older than 5 years
         return GameStatGraph::where("created_at", "<=", Carbon::now()->subYears(5)->toDateTimeString())->delete();
@@ -109,6 +106,28 @@ class GameStatGraph extends Model
             )
         )
             ->orderBy("created_at", "DESC")
+            ->get();
+    }
+
+    /**
+     * Get last 3 months of data pre-aggregated into hourly buckets.
+     * Returns lightweight stdClass objects instead of Eloquent models.
+     */
+    public static function getLast3MonthsHourly()
+    {
+        return DB::table('game_stats_graph')
+            ->select(
+                'game_stats_id',
+                DB::raw("DATE_FORMAT(created_at, '%Y-%m-%d %H:00:00') as hour_bucket"),
+                DB::raw('ROUND(AVG(players_online)) as players_online'),
+                DB::raw('ROUND(AVG(steam_players_online)) as steam_players_online')
+            )
+            ->whereBetween('created_at', [
+                Carbon::now()->subMonths(3)->toDateTimeString(),
+                Carbon::now()->toDateTimeString(),
+            ])
+            ->groupBy('game_stats_id', DB::raw("DATE_FORMAT(created_at, '%Y-%m-%d %H:00:00')"))
+            ->orderBy('hour_bucket', 'ASC')
             ->get();
     }
 

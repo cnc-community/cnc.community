@@ -32,36 +32,24 @@ class StatsController extends Controller
         try
         {
             Log::info("runCacheTask ** Started");
-            $data = GameStatGraph::getLast3Months();
-            Log::info("runCacheTask ** Data found");
 
+            $data = GameStatGraph::getLast3MonthsHourly();
             $filteredGameAbbreviations = Constants::getGameAbbreviations();
-            Log::info("runCacheTask ** Abbreviations found");
-
             $onlineCount = new CNCOnlineCount();
-            Log::info("runCacheTask ** Created service");
 
-            $graphData = $onlineCount->createGraph(
-                $data,
-                $filteredGameAbbreviations
-            );
+            $graphs = $onlineCount->createGraphs($data, $filteredGameAbbreviations);
 
             StatsCache::saveCache(
                 GameStatGraph::GAME_STAT_GRAPH_CACHE_3_MONTHS,
-                $graphData,
+                $graphs['online'],
                 20
-            ); // 20 minutes
-
-            $graphDataSteamInGame = $onlineCount->createGraphForInGameStats(
-                $data,
-                $filteredGameAbbreviations
             );
 
             StatsCache::saveCache(
                 GameStatGraph::GAME_STAT_STEAM_IN_GAME_GRAPH_CACHE_3_MONTHS,
-                $graphDataSteamInGame,
+                $graphs['steam'],
                 20
-            ); // 20 minutes
+            );
 
             Log::info("runCacheTask Completed");
         }

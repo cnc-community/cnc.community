@@ -206,99 +206,61 @@ class CNCOnlineCount
         return $total;
     }
 
-    public function createGraph($graphData, $includeGameAbbreviations = [])
+    /**
+     * Build both online and steam in-game graph datasets in a single pass.
+     * Expects pre-aggregated hourly data from GameStatGraph::getLast3MonthsHourly().
+     *
+     * @return array ['online' => [...], 'steam' => [...]]
+     */
+    public function createGraphs($graphData, $includeGameAbbreviations = [])
     {
-        // Format for Chart.js
-        $dataSets = [];
-
-        ini_set('memory_limit', '1024M');
-
-        Log::info("createGraph ** Memory limit set");
-
         $gameStatsIds = collect($graphData)->pluck('game_stats_id')->unique();
-        Log::info("createGraph ** gameStatsIds collected");
-
         $gameStats = GameStat::whereIn('id', $gameStatsIds)->get()->keyBy('id');
 
-        Log::info("createGraph ** gameStats query complete");
+        $onlineDataSets = [];
+        $steamDataSets = [];
 
-        foreach ($graphData as $gameStatGraph)
+        foreach ($graphData as $row)
         {
-            if (isset($gameStats[$gameStatGraph->game_stats_id]))
+            if (!isset($gameStats[$row->game_stats_id]))
             {
-                $gameStat = $gameStats[$gameStatGraph->game_stats_id];
-                $dataSets[$gameStat->getAbbreviation()][] = [
-                    $gameStatGraph->created_at,
-                    $gameStatGraph->players_online
-                ];
+                continue;
             }
-        }
 
-        Log::info("createGraph ** graphData loop complete");
+            $abbrev = $gameStats[$row->game_stats_id]->getAbbreviation();
 
-        $chartJsFormat = [];
-        foreach ($dataSets as $abbrev => $dataSet)
-        {
             if (!in_array($abbrev, $includeGameAbbreviations))
             {
                 continue;
             }
-            $chartJsFormat[$abbrev]["data"] = $this->createChartJsFormat($dataSet, 60);
-            $chartJsFormat[$abbrev]["label"] = $this->getNameByAbbrev($abbrev);
-            $chartJsFormat[$abbrev]["backgroundColor"] = $this->getColourByAbbrev($abbrev);
-            $chartJsFormat[$abbrev]["borderColor"] = $this->getBorderColorByAbbrev($abbrev);
+
+            $point = ["t" => $row->hour_bucket, "y" => (int) $row->players_online];
+            $onlineDataSets[$abbrev][] = $point;
+
+            $steamPoint = ["t" => $row->hour_bucket, "y" => (int) $row->steam_players_online];
+            $steamDataSets[$abbrev][] = $steamPoint;
         }
 
-        Log::info("Returning Chart JS Format");
+        $onlineChart = $this->formatDataSetsForChartJs($onlineDataSets);
+        $steamChart = $this->formatDataSetsForChartJs($steamDataSets);
 
-        return $chartJsFormat;
+        Log::info("createGraphs ** Completed");
+
+        return ['online' => $onlineChart, 'steam' => $steamChart];
     }
 
-    public function createGraphForInGameStats($graphData, $includeGameAbbreviations = [])
+    private function formatDataSetsForChartJs($dataSets)
     {
-        // Format for Chart.js
-        $dataSets = [];
-
-        ini_set('memory_limit', '2G');
-
-        Log::info("createGraph ** Memory limit set");
-
-        $gameStatsIds = collect($graphData)->pluck('game_stats_id')->unique();
-        Log::info("createGraph ** gameStatsIds collected");
-
-        $gameStats = GameStat::whereIn('id', $gameStatsIds)->get()->keyBy('id');
-
-        Log::info("createGraph ** gameStats query complete");
-
-        foreach ($graphData as $gameStatGraph)
-        {
-            if (isset($gameStats[$gameStatGraph->game_stats_id]))
-            {
-                $gameStat = $gameStats[$gameStatGraph->game_stats_id];
-                $dataSets[$gameStat->getAbbreviation()][] = [
-                    $gameStatGraph->created_at,
-                    $gameStatGraph->steam_players_online
-                ];
-            }
-        }
-
-        Log::info("createGraph ** graphData loop complete");
-
         $chartJsFormat = [];
         foreach ($dataSets as $abbrev => $dataSet)
         {
-            if (!in_array($abbrev, $includeGameAbbreviations))
-            {
-                continue;
-            }
-            $chartJsFormat[$abbrev]["data"] = $this->createChartJsFormat($dataSet, 60);
-            $chartJsFormat[$abbrev]["label"] = $this->getNameByAbbrev($abbrev);
-            $chartJsFormat[$abbrev]["backgroundColor"] = $this->getColourByAbbrev($abbrev);
-            $chartJsFormat[$abbrev]["borderColor"] = $this->getBorderColorByAbbrev($abbrev);
+            $chartJsFormat[$abbrev] = [
+                "data" => $dataSet,
+                "label" => $this->getNameByAbbrev($abbrev),
+                "backgroundColor" => $this->getColourByAbbrev($abbrev),
+                "borderColor" => $this->getBorderColorByAbbrev($abbrev),
+            ];
         }
-
-        Log::info("Returning Chart JS Format");
-
         return $chartJsFormat;
     }
 
@@ -317,51 +279,4 @@ class CNCOnlineCount
         return Constants::getGameFromOnlineAbbreviation($gameAbbrev)["graph_border_color"];
     }
 
-    /**
-     * 
-     * @param mixed $arr 
-     * @param int $timeGapMinutes - Value in which to have a gap between each dataset 
-     * @return array 
-     */
-    private function createChartJsFormat($arr, $timeGapMinutes = 60)
-    {
-        $newResult = [];
-        $prevCarbon = null;
-
-        foreach ($arr as $obj)
-        {
-            $currentCarbonTime = $obj[0]; // Assuming 't' is the key for Carbon object
-            $currentValue = $obj[1];
-
-            if ($prevCarbon === null)
-            {
-                $prevCarbon = $currentCarbonTime;
-            }
-            else
-            {
-                // Calculate the time difference in minutes
-                $timeDiffMinutes = $currentCarbonTime->diffInMinutes($prevCarbon);
-
-                // If the time difference is at least 1 hr
-                if ($timeDiffMinutes >= $timeGapMinutes)
-                {
-                    $newResult[] = [
-                        "t" => $currentCarbonTime,
-                        "y" => $currentValue,
-                    ];
-
-                    // Update the previous carbon timestamp
-                    $prevCarbon = $currentCarbonTime;
-                }
-            }
-
-            // Update the previous carbon timestamp if it's null
-            if ($prevCarbon === null)
-            {
-                $prevCarbon = $currentCarbonTime;
-            }
-        }
-
-        return $newResult;
-    }
 }
