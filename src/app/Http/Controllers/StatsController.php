@@ -70,7 +70,8 @@ class StatsController extends Controller
         $allGames = $this->cncOnlineCount->getGameCounts();
 
         // Separate out generalsOnline and ra3Battlenet from the main games list
-        $games = $allGames->filter(function($game) {
+        $games = $allGames->filter(function ($game)
+        {
             return !in_array($game->abbrev, ['generalsOnline', 'ra3Battlenet']);
         });
 
@@ -142,7 +143,8 @@ class StatsController extends Controller
         $generalszh = $allGames->firstWhere('abbrev', 'generalszh');
         $generalsOnline = $allGames->firstWhere('abbrev', 'generalsOnline');
 
-        if ($generalszh) {
+        if ($generalszh)
+        {
             $generalszhInfo = Constants::getGameFromOnlineAbbreviation('generalszh');
             $stats[] = [
                 'count' => $generalszh->players_online,
@@ -151,7 +153,8 @@ class StatsController extends Controller
             ];
         }
 
-        if ($generalsOnline) {
+        if ($generalsOnline)
+        {
             $generalsOnlineInfo = Constants::getGameFromOnlineAbbreviation('generalsOnline');
             $stats[] = [
                 'count' => $generalsOnline->players_online,
@@ -171,7 +174,8 @@ class StatsController extends Controller
         $ra3 = $allGames->firstWhere('abbrev', 'ra3');
         $ra3Battlenet = $allGames->firstWhere('abbrev', 'ra3Battlenet');
 
-        if ($ra3) {
+        if ($ra3)
+        {
             $ra3Info = Constants::getGameFromOnlineAbbreviation('ra3');
             $stats[] = [
                 'count' => $ra3->players_online,
@@ -180,7 +184,8 @@ class StatsController extends Controller
             ];
         }
 
-        if ($ra3Battlenet) {
+        if ($ra3Battlenet)
+        {
             $ra3BattlenetInfo = Constants::getGameFromOnlineAbbreviation('ra3Battlenet');
             $stats[] = [
                 'count' => $ra3Battlenet->players_online,
