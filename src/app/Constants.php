@@ -408,8 +408,8 @@ class Constants
                     "name" => "Generals",
                     "graph_color" => "rgba(30, 144, 23, 0.3)",
                     "graph_border_color" => "rgba(30, 144, 23, 1)",
-                    'online_service' => 'C&C:Online',
-                    'online_service_url' => 'https://cnc-online.net/'
+                    'online_service' => null,
+                    'online_service_url' =>  null,
                 ];
 
             case "generalszh":

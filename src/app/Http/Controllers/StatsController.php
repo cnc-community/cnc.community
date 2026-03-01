@@ -143,6 +143,7 @@ class StatsController extends Controller
         $generalszh = $allGames->firstWhere('abbrev', 'generalszh');
         $generalsOnline = $allGames->firstWhere('abbrev', 'generalsOnline');
 
+        /*
         if ($generalszh)
         {
             $generalszhInfo = Constants::getGameFromOnlineAbbreviation('generalszh');
@@ -152,6 +153,7 @@ class StatsController extends Controller
                 'serviceUrl' => $generalszhInfo['online_service_url'],
             ];
         }
+        */
 
         if ($generalsOnline)
         {
