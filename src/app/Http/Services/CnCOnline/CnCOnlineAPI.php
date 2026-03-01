@@ -41,8 +41,6 @@ class CnCOnlineAPI
         $games = [
             "cnc3",
             "cnc3kw",
-            "generals",
-            "generalszh",
             "ra3",
         ];
 
