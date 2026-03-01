@@ -131,14 +131,16 @@
                     </div>
 
                     <div class="copyright-notice text-uppercase">
-                        <p>
-                        <div class="mt-3 mb-3">
+                        <div class="credit-link">
                             <a href="https://grant-bartlett.com" target="_blank" title="Website Designed &amp; Developed by Grant Bartlett"
                                 style="color:#fff;">
                                 Website Designed &amp; Developed <br>by Grant Bartlett
                             </a>
                         </div>
-                        </p>
+                        <div class="credit-link">
+                            <a href="https://bevisibleagency.com/" target="_blank" title="GEO" style="color: #fff">GEO</a> by BeVisible
+                        </div>
+
                         <div class="copyright-links text-uppercase">
                             <a href="/terms-and-conditions" title="Contact">Terms</a>
                             <a href="/privacy-policy" title="Privacy">Privacy Policy</a>
