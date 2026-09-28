@@ -900,29 +900,29 @@ ul.pagination
 .avatar.ppm 
 {
     border: 2px solid #e5e0a0;
-    background-image: url("../images/sites/thumbnails/ppm.png");
+    background-image: url("/resources/assets/images/sites/thumbnails/ppm.png");
 }
 
 .avatar.cncnz 
 {
     border: 2px solid #ffc100;
-    background-image: url("../images/sites/thumbnails/cncnz.png");
+    background-image: url("/resources/assets/images/sites/thumbnails/cncnz.png");
 }
 
 .news-item .author .avatar.w3dhub 
 {
-    background-image: url("../images/sites/w3dhub.gif");
+    background-image: url("/resources/assets/images/sites/w3dhub.gif");
     background-size: 100%;
 }
 
 .avatar.steam 
 {
-    background-image: url("../images/sites/thumbnails/steam.png");
+    background-image: url("/resources/assets/images/sites/thumbnails/steam.png");
 }
 
 .avatar.reddit 
 {
-    background-image: url("../images/sites/thumbnails/reddit.png");
+    background-image: url("/resources/assets/images/sites/thumbnails/reddit.png");
 }
 
 .red-alert .page-background::before 
@@ -931,7 +931,7 @@ ul.pagination
     position: absolute;
     top: 0;
     right: 0;
-    background: url("../images/leaderboard-profile/head-right.png");
+    background: url("/resources/assets/images/leaderboard-profile/head-right.png");
     background-size: contain;
     background-repeat: no-repeat;
     width: 100%;
@@ -945,7 +945,7 @@ ul.pagination
     position: absolute;
     top: 0;
     left: 0;
-    background: url("../images/leaderboard-profile/head-left.png");
+    background: url("/resources/assets/images/leaderboard-profile/head-left.png");
     background-size: contain;
     background-repeat: no-repeat;
     width: 100%;

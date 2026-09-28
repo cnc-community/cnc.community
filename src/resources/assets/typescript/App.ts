@@ -4,7 +4,7 @@ import.meta.glob([
     '../images/**',
     '../fonts/**',
     '../vendor/**',
-]);
+], { eager: true });
 
 import { TwitchCountNav } from "./TwitchCountNav";
 import { NavBarJs } from "./navbar/NavBarJs";

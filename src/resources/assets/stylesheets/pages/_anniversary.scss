@@ -3,7 +3,7 @@
 // Homepage Hero
 .page-anniversary .hero 
 {
-    background: url("../images/homepage-header-mobile.jpg");
+    background: url("/resources/assets/images/homepage-header-mobile.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -38,7 +38,7 @@
 {
     .page-anniversary .hero 
     {
-        background: url("../images/bg-anniversary.jpg");
+        background: url("/resources/assets/images/bg-anniversary.jpg");
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
@@ -51,7 +51,7 @@
         right: 0;
         width: 100%;
         height: 100%;
-        background: url("../images/ra-head-right.png");
+        background: url("/resources/assets/images/ra-head-right.png");
         background-size: contain;
         background-repeat: no-repeat;
         background-position: right;
@@ -64,7 +64,7 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background: url("../images/head-left.png");
+        background: url("/resources/assets/images/head-left.png");
         background-size: contain;
         background-repeat: no-repeat;
         background-position: left;
