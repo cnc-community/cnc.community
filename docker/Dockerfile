@@ -1,6 +1,6 @@
 # PHP-FPM is a FastCGI implementation for PHP.
 # Read more here: https://hub.docker.com/_/php
-FROM php:8.1.0-fpm
+FROM php:8.4-fpm
 
 # Args from Docker-compose
 ARG user
@@ -15,9 +15,8 @@ RUN apt-get update && apt-get install -y \
     libzip-dev
 
 # Install PHP extensions
-RUN docker-php-ext-install pdo_mysql exif pcntl bcmath gd zip \
-    && docker-php-ext-configure gd --with-freetype=/usr/include/ --with-jpeg=/usr/include/ \
-    && docker-php-ext-install -j$(nproc) gd
+RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-install -j$(nproc) pdo_mysql exif pcntl bcmath gd zip
 
 # Clear cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,9 +21,6 @@ use Illuminate\Support\Facades\Redirect;
 Route::group(['prefix' => 'admin', 'middleware' => ['admin']], function ()
 {
     Auth::routes(['register' => false]);
-
-    // Seed local leaderboard development 
-    Route::get('/seed-local-development', 'LeaderboardController@seedLocalDevelopment');
 
     // Admin routes 
     Route::get('/dashboard', 'AdminController@index')->name('admin.index')->middleware('role:admin,editor');
@@ -98,9 +96,10 @@ Route::get('/command-and-conquer-remastered/leaderboard/tiberian-dawn/season/{se
 Route::get('/command-and-conquer-remastered/leaderboard/red-alert/season/{season}', 'LadderController@getSpecificRemasteredSeasonLeaderboard')->defaults('game', 'red-alert');
 
 Route::get('/cnc-streamers', 'SiteController@showCreatorsListings')->name('pages.creators.listing')->middleware('cache.headers:public;max_age=1800');
-Route::get('/creators', function ()
+Route::get('/creators', function (Request $request)
 {
-    return Redirect::to('/cnc-streamers', 301);
+    $query = $request->getQueryString();
+    return Redirect::to('/cnc-streamers' . ($query ? '?' . $query : ''), 301);
 });
 Route::get('/command-and-conquer-25-years', 'AnniversaryController@index')->name('pages.anniversary')->middleware('cache.headers:public;max_age=1800');
 Route::get('/command-and-conquer-remastered', 'SiteController@showRemastersListings')->name('pages.remasters.listing')->middleware('cache.headers:public;max_age=1800');

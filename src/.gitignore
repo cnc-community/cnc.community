@@ -18,3 +18,4 @@ public/assets/css
 .cache/
 public/assets/js
 *.log
+.phpunit.cache/

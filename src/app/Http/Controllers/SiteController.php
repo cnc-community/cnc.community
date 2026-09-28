@@ -144,7 +144,7 @@ class SiteController extends Controller
         }
 
         $streamsPaginated = ViewHelper::createPaginationFromArray($streams, 20, $request->page);
-        $streamsPaginated->withPath('/creators');
+        $streamsPaginated->withPath(route('pages.creators.listing', [], false));
 
         return view('pages.creators.listing', [
             "streams" => $streamsPaginated,
