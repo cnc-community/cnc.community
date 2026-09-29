@@ -1,0 +1,60 @@
+# C&C Community
+
+> C&C Community is an ongoing project that aims to improve the accessibility of the Command & Conquer franchise and celebrate the tireless efforts of the wider communities that keep the games alive with mods, video content, streams and compatibility patches for modern operating systems. The site has how to play guides for Command & Conquer games, C&C news and C&C mods from the C&C community, including C&C Remastered Leaderboards.
+
+C&C Community has no affiliation with Electronic Arts or Petroglyph Games. The team is made up of C&C Community veterans from communities such as CnCNet, W3D Hub and The Assembly Armada.
+
+The Command & Conquer Ultimate Collection is available on Steam and the EA App, and contains 10 base games and 7 in-depth expansion packs. Tiberian Dawn, Red Alert and Tiberian Sun can be played for free using community installers.
+
+## How to play guides
+
+- [Tiberian Dawn & The Covert Operations](https://cnc.community/tiberian-dawn/how-to-play): Play the campaign and multiplayer on Windows 10 for free, using the community installer from ModDB
+- [Red Alert, Counterstrike & The Aftermath](https://cnc.community/red-alert/how-to-play): Play the campaign and multiplayer on Windows 10 for free, using the community installer from CnCNet
+- [Tiberian Sun & Firestorm](https://cnc.community/tiberian-sun/how-to-play): Play the campaign and multiplayer on Windows 10 for free, using the community installer from C&C Communications Centre
+- [Red Alert 2 & Yuri's Revenge](https://cnc.community/red-alert-2/how-to-play): Play the campaign and multiplayer online on Windows 10 & 11
+- [Renegade](https://cnc.community/renegade/how-to-play): Play the campaign and multiplayer on Windows 10 & 11 with the Tiberian Technologies Community Patch
+- [Generals & Zero Hour](https://cnc.community/generals/how-to-play): Play the campaign and multiplayer online on Windows 10 and Windows 11
+- [C&C3: Tiberium Wars & Kane's Wrath](https://cnc.community/command-and-conquer-3/how-to-play): Play the campaign and multiplayer on Windows 10
+- [Red Alert 3 & Uprising](https://cnc.community/red-alert-3/how-to-play): Play the campaign and multiplayer on Windows 10
+- [C&C Ultimate Collection](https://cnc.community/command-and-conquer-ultimate-collection-steam): How to play the Command & Conquer Ultimate Collection on Steam, with guides for each game and frequently asked questions
+- [Play the Ultimate Collection online](https://cnc.community/command-and-conquer-ultimate-collection-online): Which community project provides online multiplayer for each game
+
+## Playing online
+
+- [CnCNet](https://cncnet.org): Supports online multiplayer for Tiberian Dawn, Red Alert, Tiberian Sun and Red Alert 2 & Yuri's Revenge, and works with Steam and EA App digital downloads
+- [W3D Hub](https://w3dhub.com): Supports Renegade online multiplayer and a range of community made mods, and works with Steam and EA App digital downloads
+- [C&C:Online](https://cnc-online.net/en/): Supports Generals, Tiberium Wars and Red Alert 3, and works with Steam and EA App digital downloads
+- [GeneralsOnline](https://www.playgenerals.online/): Online multiplayer for Generals Zero Hour, with players online shown on the [C&C games statistics](https://cnc.community/stats) page
+
+## Games
+
+- [Tiberian Dawn](https://cnc.community/tiberian-dawn): The original Command & Conquer, which defined and popularised the real-time strategy genre. How to play, videos and news
+- [Red Alert](https://cnc.community/red-alert): Released a year after Command & Conquer, with the Counterstrike and The Aftermath expansions. How to play, streamers and news
+- [Tiberian Sun](https://cnc.community/tiberian-sun): Released in 1999, with the Firestorm expansion. How to play, streamers and news
+- [Red Alert 2](https://cnc.community/red-alert-2): Released in 2000 by Westwood Pacific, with the Yuri's Revenge expansion. How to play, streamers and news
+- [Renegade](https://cnc.community/renegade): A tactical shooter set within the Tiberium universe, developed by Westwood's core team. How to play, videos and news
+- [Generals](https://cnc.community/generals): A modern warfare setting with three factions, from Westwood Pacific (then EA Pacific). How to play, streamers and news
+- [Command & Conquer 3](https://cnc.community/command-and-conquer-3): C&C3: Tiberium Wars (2007) and its expansion Kane's Wrath, featuring GDI, Nod and the Scrin. How to play, videos and news
+- [Red Alert 3](https://cnc.community/red-alert-3): Takes the exaggerated feel of Red Alert 2 to all new heights. How to play, streamers and news
+- [Other C&C games](https://cnc.community/other-cnc-games): Sole Survivor, C&C 4: Tiberian Twilight, Tiberium Alliances and Rivals
+
+## C&C Remastered Collection
+
+- [C&C Remastered Collection](https://cnc.community/command-and-conquer-remastered): The latest streams, mods and maps for the C&C Remastered Collection by Petroglyph Games
+- [Steam Workshop mods and maps](https://cnc.community/command-and-conquer-remastered/workshop-mods): Tiberian Dawn and Red Alert Remastered maps and mods trending this week on the Steam Workshop
+- [Tiberian Dawn Remastered leaderboard](https://cnc.community/command-and-conquer-remastered/leaderboard/tiberian-dawn): 1vs1 leaderboard rankings
+- [Red Alert Remastered leaderboard](https://cnc.community/command-and-conquer-remastered/leaderboard/red-alert): 1vs1 leaderboard rankings
+
+## Community
+
+- [Official news](https://cnc.community/news/official-news): Official news from the C&C Community team, including patches, tournaments and community events
+- [C&C games statistics](https://cnc.community/stats): Players online for official C&C titles, C&C mods and C&C community games
+- [Watch C&C livestreams](https://cnc.community/cnc-streamers): Twitch streamers who play Command & Conquer, and recent videos
+- [Our mission](https://cnc.community/news/official-news/our-mission): What C&C Community is and who is behind it
+- [Contact](https://cnc.community/contact): Get in touch with the C&C Community team on Discord
+
+## Optional
+
+- [Donate](https://cnc.community/donate): Donations go towards hosting and domain renewal costs for the site
+- [Privacy policy](https://cnc.community/privacy-policy)
+- [Terms and conditions](https://cnc.community/terms-and-conditions)
