@@ -1,297 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset
-      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
-
-
-<url>
-  <loc>https://cnc.community/</loc>
-  <changefreq>daily</changefreq>
-  <priority>1.00</priority>
-</url>
-<url>
-  <loc>https://cnc.community/tiberian-dawn</loc>
-  <changefreq>daily</changefreq>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://cnc.community/red-alert</loc>
-  <changefreq>daily</changefreq>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://cnc.community/tiberian-sun</loc>
-  <changefreq>daily</changefreq>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://cnc.community/red-alert-2</loc>
-  <changefreq>daily</changefreq>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://cnc.community/renegade</loc>
-  <changefreq>daily</changefreq>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://cnc.community/generals</loc>
-  <changefreq>daily</changefreq>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://cnc.community/command-and-conquer-3</loc>
-  <changefreq>daily</changefreq>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://cnc.community/red-alert-3</loc>
-  <changefreq>daily</changefreq>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://cnc.community/other-cnc-games</loc>
-  <changefreq>daily</changefreq>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://cnc.community/command-and-conquer-remastered</loc>
-  <changefreq>daily</changefreq>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://cnc.community/command-and-conquer-remastered/workshop-mods</loc>
-  <changefreq>daily</changefreq>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://cnc.community/command-and-conquer-remastered/leaderboard</loc>
-  <changefreq>daily</changefreq>
-  <priority>1.00</priority>
-</url>
-<url>
-  <loc>https://cnc.community/command-and-conquer-remastered/leaderboard/tiberian-dawn</loc>
-  <changefreq>daily</changefreq>
-  <priority>1.00</priority>
-</url>
-<url>
-  <loc>https://cnc.community/command-and-conquer-remastered/leaderboard/red-alert</loc>
-  <changefreq>daily</changefreq>
-  <priority>1.00</priority>
-</url>
-<url>
-  <loc>https://cnc.community/creators</loc>
-  <changefreq>daily</changefreq>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://cnc.community/funny</loc>
-  <changefreq>daily</changefreq>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://cnc.community/tiberian-dawn/how-to-play</loc>
-  <changefreq>daily</changefreq>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://cnc.community/red-alert/how-to-play</loc>
-  <changefreq>daily</changefreq>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://cnc.community/tiberian-sun/how-to-play</loc>
-  <changefreq>daily</changefreq>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://cnc.community/red-alert-2/how-to-play</loc>
-  <changefreq>daily</changefreq>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://cnc.community/renegade/how-to-play</loc>
-  <changefreq>daily</changefreq>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://cnc.community/generals/how-to-play</loc>
-  <changefreq>daily</changefreq>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://cnc.community/command-and-conquer-3/how-to-play</loc>
-  <changefreq>daily</changefreq>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://cnc.community/red-alert-3/how-to-play</loc>
-  <changefreq>daily</changefreq>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://cnc.community/command-and-conquer-remastered/</loc>
-  <changefreq>daily</changefreq>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://cnc.community/news/official-news/cc-remastered-scores-84100-on-metacritic</loc>
-  <changefreq>daily</changefreq>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://cnc.community/news/official-news/welcome-to-cc-community</loc>
-  <changefreq>daily</changefreq>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://cnc.community/news/official-news</loc>
-  <changefreq>daily</changefreq>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://cnc.community/news/official-news/our-mission-what-is-cc-community</loc>
-  <changefreq>daily</changefreq>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://cnc.community/terms-and-conditions</loc>
-  <changefreq>daily</changefreq>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://cnc.community/privacy-policy</loc>
-  <changefreq>daily</changefreq>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://cnc.community/contact</loc>
-  <changefreq>daily</changefreq>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://cnc.community/creators?gameName=remasters</loc>
-  <changefreq>daily</changefreq>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://cnc.community/command-and-conquer-remastered/leaderboard/</loc>
-  <changefreq>daily</changefreq>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://cnc.community/command-and-conquer-remastered/leaderboard/tiberian-dawn?page=2</loc>
-  <changefreq>daily</changefreq>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://cnc.community/command-and-conquer-remastered/leaderboard/tiberian-dawn?page=3</loc>
-  <changefreq>daily</changefreq>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://cnc.community/command-and-conquer-remastered/leaderboard/tiberian-dawn?page=4</loc>
-  <changefreq>daily</changefreq>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://cnc.community/command-and-conquer-remastered/leaderboard/red-alert?page=2</loc>
-  <changefreq>daily</changefreq>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://cnc.community/command-and-conquer-remastered/leaderboard/red-alert?page=3</loc>
-  <changefreq>daily</changefreq>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://cnc.community/command-and-conquer-remastered/leaderboard/red-alert?page=4</loc>
-  <changefreq>daily</changefreq>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://cnc.community/creators?gameName=tiberian-dawn</loc>
-  <changefreq>daily</changefreq>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://cnc.community/creators?gameName=red-alert</loc>
-  <changefreq>daily</changefreq>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://cnc.community/creators?gameName=tiberian-sun</loc>
-  <changefreq>daily</changefreq>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://cnc.community/creators?gameName=red-alert-2</loc>
-  <changefreq>daily</changefreq>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://cnc.community/creators?gameName=red-alert-2-yuris-revenge</loc>
-  <changefreq>daily</changefreq>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://cnc.community/creators?gameName=renegade</loc>
-  <changefreq>daily</changefreq>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://cnc.community/creators?gameName=generals</loc>
-  <changefreq>daily</changefreq>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://cnc.community/creators?gameName=zero-hour</loc>
-  <changefreq>daily</changefreq>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://cnc.community/creators?gameName=tiberium-wars</loc>
-  <changefreq>daily</changefreq>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://cnc.community/creators?gameName=command-and-conquer-3-kanes-wrath</loc>
-  <changefreq>daily</changefreq>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://cnc.community/creators?gameName=red-alert-3</loc>
-  <changefreq>daily</changefreq>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://cnc.community/creators?page=2</loc>
-  <changefreq>daily</changefreq>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://cnc.community/news/official-news/cc-remastered-preload-available-on-steam</loc>
-  <changefreq>daily</changefreq>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://cnc.community/command-and-conquer-remastered/leaderboard/tiberian-dawn?page=1</loc>
-  <changefreq>daily</changefreq>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://cnc.community/command-and-conquer-remastered/leaderboard/red-alert?page=1</loc>
-  <changefreq>daily</changefreq>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://cnc.community/creators?page=1</loc>
-  <changefreq>daily</changefreq>
-  <priority>0.51</priority>
-</url>
-
-
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://cnc.community/</loc></url>
+  <url><loc>https://cnc.community/9bitarmies/leaderboard</loc></url>
+  <url><loc>https://cnc.community/cnc-streamers</loc></url>
+  <url><loc>https://cnc.community/command-and-conquer-3</loc></url>
+  <url><loc>https://cnc.community/command-and-conquer-3/how-to-play</loc></url>
+  <url><loc>https://cnc.community/command-and-conquer-4</loc></url>
+  <url><loc>https://cnc.community/command-and-conquer-4/how-to-play</loc></url>
+  <url><loc>https://cnc.community/command-and-conquer-remastered</loc></url>
+  <url><loc>https://cnc.community/command-and-conquer-remastered/leaderboard/red-alert</loc></url>
+  <url><loc>https://cnc.community/command-and-conquer-remastered/leaderboard/tiberian-dawn</loc></url>
+  <url><loc>https://cnc.community/command-and-conquer-remastered/workshop-mods</loc></url>
+  <url><loc>https://cnc.community/command-and-conquer-ultimate-collection-online</loc></url>
+  <url><loc>https://cnc.community/command-and-conquer-ultimate-collection-steam</loc></url>
+  <url><loc>https://cnc.community/contact</loc></url>
+  <url><loc>https://cnc.community/donate</loc></url>
+  <url><loc>https://cnc.community/funny</loc></url>
+  <url><loc>https://cnc.community/generals</loc></url>
+  <url><loc>https://cnc.community/generals/how-to-play</loc></url>
+  <url><loc>https://cnc.community/legal</loc></url>
+  <url><loc>https://cnc.community/other-cnc-games</loc></url>
+  <url><loc>https://cnc.community/privacy-policy</loc></url>
+  <url><loc>https://cnc.community/red-alert</loc></url>
+  <url><loc>https://cnc.community/red-alert-2</loc></url>
+  <url><loc>https://cnc.community/red-alert-2/how-to-play</loc></url>
+  <url><loc>https://cnc.community/red-alert-3</loc></url>
+  <url><loc>https://cnc.community/red-alert-3/how-to-play</loc></url>
+  <url><loc>https://cnc.community/red-alert/how-to-play</loc></url>
+  <url><loc>https://cnc.community/renegade</loc></url>
+  <url><loc>https://cnc.community/renegade/how-to-play</loc></url>
+  <url><loc>https://cnc.community/stats</loc></url>
+  <url><loc>https://cnc.community/terms-and-conditions</loc></url>
+  <url><loc>https://cnc.community/tiberian-dawn</loc></url>
+  <url><loc>https://cnc.community/tiberian-dawn/how-to-play</loc></url>
+  <url><loc>https://cnc.community/tiberian-sun</loc></url>
+  <url><loc>https://cnc.community/tiberian-sun/how-to-play</loc></url>
+  <url><loc>https://cnc.community/news/command-and-conquer-3-news</loc></url>
+  <url><loc>https://cnc.community/news/command-and-conquer-4-news</loc></url>
+  <url><loc>https://cnc.community/news/command-and-conquer-remastered-news</loc></url>
+  <url><loc>https://cnc.community/news/funny</loc></url>
+  <url><loc>https://cnc.community/news/generals-news</loc></url>
+  <url><loc>https://cnc.community/news/official-news</loc></url>
+  <url><loc>https://cnc.community/news/official-news/cc-remastered-preload-available-on-steam</loc></url>
+  <url><loc>https://cnc.community/news/official-news/cc-remastered-scores-84100-on-metacritic</loc></url>
+  <url><loc>https://cnc.community/news/official-news/cc-remastered-update</loc></url>
+  <url><loc>https://cnc.community/news/official-news/cc-renegade-turns-21</loc></url>
+  <url><loc>https://cnc.community/news/official-news/cc-steam-workshop-support-source-code</loc></url>
+  <url><loc>https://cnc.community/news/official-news/celebrating-19-years-of-command-conquer-renegade</loc></url>
+  <url><loc>https://cnc.community/news/official-news/command-conquer-30th-anniversary-community-event</loc></url>
+  <url><loc>https://cnc.community/news/official-news/generals-zero-hour-18th-anniversary-announcement</loc></url>
+  <url><loc>https://cnc.community/news/official-news/our-mission</loc></url>
+  <url><loc>https://cnc.community/news/official-news/outpost-live-2022-the-real-life-lan-meet-up-for-cc-generals-zero-hour</loc></url>
+  <url><loc>https://cnc.community/news/official-news/red-alert-2-apocalypse-rising-available-now</loc></url>
+  <url><loc>https://cnc.community/news/official-news/red-alert-2-apocalypse-rising-open-beta-announced</loc></url>
+  <url><loc>https://cnc.community/news/official-news/welcome-to-cc-community</loc></url>
+  <url><loc>https://cnc.community/news/official-news/world-series-2025-final</loc></url>
+  <url><loc>https://cnc.community/news/official-news/world-series-2025-semi-finals</loc></url>
+  <url><loc>https://cnc.community/news/other</loc></url>
+  <url><loc>https://cnc.community/news/red-alert-2-news</loc></url>
+  <url><loc>https://cnc.community/news/red-alert-3-news</loc></url>
+  <url><loc>https://cnc.community/news/red-alert-news</loc></url>
+  <url><loc>https://cnc.community/news/renegade-news</loc></url>
+  <url><loc>https://cnc.community/news/tiberian-dawn-news</loc></url>
+  <url><loc>https://cnc.community/news/tiberian-sun-news</loc></url>
 </urlset>

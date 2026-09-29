@@ -16,7 +16,7 @@
         @endphp
 
         @foreach ($games as $game)
-            <a href="{{ $game['slug'] }}{{ isset($howToPlayLinks) ? '/how-to-play' : '' }}"
+            <a href="{{ $game['slug'] }}{{ isset($howToPlayLinks) && $game['slug'] !== 'other-cnc-games' ? '/how-to-play' : '' }}"
                 class="swiper-slide box {{ str_replace('-', ' ', $game['slug']) }} {{ $game['classname'] }}" title="How to play {{ $game['title'] }}">
                 <div class="logo">
                     <img src="{{ Vite::asset("resources/assets/images/boxes/logos/{$game['logo']}") }}" loading="lazy" alt="{{ $game['title'] }} logo" />
