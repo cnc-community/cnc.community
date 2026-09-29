@@ -240,6 +240,7 @@ class Constants
             "cnc3kw",
             "generals",
             "generalszh",
+            "generalsOnline",
             "ra3",
             "ra3Battlenet",
             "cncremastered",
@@ -429,9 +430,9 @@ class Constants
                     "url" => "generals",
                     "logo" => ViewHelper::getGameLogoPathByName("generals"),
                     "external_link" => false,
-                    "name" => "Generals ",
-                    "graph_color" => "rgba(30, 144, 23, 0.3)",
-                    "graph_border_color" => "rgba(30, 144, 23, 1)",
+                    "name" => "Generals Zero Hour",
+                    "graph_color" => "rgba(210, 180, 140, 0.3)",
+                    "graph_border_color" => "rgba(210, 180, 140, 1)",
                     'online_service' => 'GeneralsOnline',
                     "online_service_url" => 'https://www.playgenerals.online/'
                 ];
