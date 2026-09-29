@@ -7,7 +7,7 @@
 @section('hero')
     <div class="feature-image-text">
         <div class="feature-image">
-            <img src="{{ Vite::asset('resources/assets/images/tuc/tuc-logo.png') }}" alt="C&C Ultimate Collection on Steam" />
+            <img src="{{ Vite::asset('resources/assets/images/tuc/tuc-logo.webp') }}" width="547" height="491" alt="C&C Ultimate Collection on Steam" />
         </div>
         <div class="feature-text">
             <div class="content">

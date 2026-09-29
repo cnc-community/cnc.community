@@ -30,7 +30,10 @@
         Tiberian Dawn Remastered, Red Alert 2,Generals,C&amp;C3: Tiberium Wars, C&amp;C Mods, C&amp;C Mod Workshop, C&amp;C Steam Workshop" />
     <meta property="fb:pages" content="100994338349629" />
 
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;500;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;500;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;500;700&display=swap" rel="stylesheet"></noscript>
     <meta name="google-site-verification" content="xrCaa-F6MyCOiXD6KvugZJtt80qKj8uPbmoU74lxAPE" />
 
     @yield('head')
@@ -174,24 +177,33 @@
         </div>
 
         @yield('scripts')
-        <script src="/static/vendor/masonry.js"></script>
+        <script src="/static/vendor/masonry.js?v={{ filemtime(public_path('static/vendor/masonry.js')) }}" defer></script>
         <script>
-            var baseWidth = 250;
-            if (window.innerWidth >= 768) {
-                baseWidth = 450;
-            }
+            document.addEventListener("DOMContentLoaded", function() {
+                var baseWidth = 250;
+                if (window.innerWidth >= 768) {
+                    baseWidth = 450;
+                }
 
-            var selectors = document.querySelectorAll(".masonry-wrap");
-            for (var i = 0; i < selectors.length; i++) {
-                var masonry = new MiniMasonry({
-                    container: selectors[i],
-                    baseWidth: baseWidth,
-                    surroundingGutter: false,
-                    gutter: 35
-                });
-                window.addEventListener("load", () => masonry.layout());
-                window.addEventListener("resize", () => masonry.layout());
-            }
+                var selectors = document.querySelectorAll(".masonry-wrap");
+                for (var i = 0; i < selectors.length; i++) {
+                    const masonry = new MiniMasonry({
+                        container: selectors[i],
+                        baseWidth: baseWidth,
+                        surroundingGutter: false,
+                        gutter: 35
+                    });
+                    window.addEventListener("load", () => masonry.layout());
+                    window.addEventListener("resize", () => masonry.layout());
+
+                    // Images are lazy loaded, so re-layout as each one arrives and changes its card height
+                    selectors[i].querySelectorAll("img").forEach(function(img) {
+                        if (!img.complete) {
+                            img.addEventListener("load", () => masonry.layout());
+                        }
+                    });
+                }
+            });
         </script>
     </main>
 </body>

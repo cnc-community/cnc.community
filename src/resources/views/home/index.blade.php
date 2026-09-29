@@ -7,7 +7,7 @@
 @section('hero')
     <div class="feature-image-text">
         <div class="feature-image">
-            <img src="{{ Vite::asset('resources/assets/images/tuc/tuc-logo.png') }}" alt="C&C Ultimate Collection on Steam" />
+            <img src="{{ Vite::asset('resources/assets/images/tuc/tuc-logo.webp') }}" width="547" height="491" fetchpriority="high" alt="C&C Ultimate Collection on Steam" />
         </div>
         <div class="feature-text">
             <div class="content">
@@ -96,7 +96,7 @@
                         video content, streams and compatibility patches for moderns operating systems.
                     </p>
                     <div class="buttons">
-                        <a class="btn btn-primary" title="What is C&C Community?" href="/news/official-news/our-mission">Read more</a>
+                        <a class="btn btn-primary" title="What is C&C Community?" href="/news/official-news/our-mission">Read our mission</a>
                     </div>
                 </div>
 

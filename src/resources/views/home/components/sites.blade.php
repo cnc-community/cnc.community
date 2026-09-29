@@ -6,7 +6,7 @@
     </a>
     <a href="https://w3dhub.com" target="_blank" class="site-item" title="W3DHub" rel="nofollow noreferrer">
         <div class="logo text-center">
-            <img src="{{ Vite::asset('resources/assets/images/sites/w3dhub.gif') }}" loading="lazy" alt="W3DHub Logo" />
+            <img src="{{ Vite::asset('resources/assets/images/sites/w3dhub.webp') }}" loading="lazy" alt="W3DHub Logo" />
         </div>
     </a>
     <a href="https://cncnz.com" target="_blank" class="site-item" title="CNCNZ" rel="nofollow noreferrer">

@@ -31,9 +31,9 @@
 <div class="swiper-button-next"></div>
 
 @section('scripts')
-    <script src="/static/vendor/swiper.min.js"></script>
+    <script src="/static/vendor/swiper.min.js?v={{ filemtime(public_path('static/vendor/swiper.min.js')) }}" defer></script>
     <script>
-        (function() {
+        document.addEventListener("DOMContentLoaded", function() {
             let swiper = new Swiper(".swiper-container", {
                 slidesPerView: 1,
                 loop: false,
@@ -75,6 +75,6 @@
                     },
                 }
             });
-        })();
+        });
     </script>
 @endsection

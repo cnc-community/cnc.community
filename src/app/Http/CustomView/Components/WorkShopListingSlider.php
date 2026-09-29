@@ -56,9 +56,9 @@ class WorkShopListingSlider extends AbstractCustomView
         <div class="swiper-button-next"></div>
 
         <?php $this->env->startSection('scripts'); ?>
-        <script src="/static/vendor/swiper.min.js"></script>
+        <script src="/static/vendor/swiper.min.js?v=<?php echo filemtime(public_path('static/vendor/swiper.min.js')); ?>" defer></script>
         <script>
-            (function() {
+            document.addEventListener("DOMContentLoaded", function() {
                 let swiper = new Swiper("#<?php echo $this->id; ?>", {
                     slidesPerView: 4,
                     spaceBetween: 25,
@@ -87,7 +87,7 @@ class WorkShopListingSlider extends AbstractCustomView
                     }
                 });
                 console.log(swiper);
-            })();
+            });
         </script>
         <?php $this->env->stopSection(); ?>
 <?php

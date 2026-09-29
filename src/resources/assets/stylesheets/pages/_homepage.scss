@@ -1,12 +1,13 @@
 //
 // Homepage Hero
 .page-homepage .hero {
-    background-image: url("/resources/assets/images/tuc/homepage-header.jpg");
+    background-image: url("/resources/assets/images/tuc/homepage-header-sm.webp");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 
     @media (min-width: $lg-width) {
+        background-image: url("/resources/assets/images/tuc/homepage-header.webp");
         background-attachment: fixed;
     }
 }
@@ -359,6 +360,6 @@
     justify-content: center;
     width: 250px;
     max-width: 100%;
-    padding-left: 1rem;
-    padding-right: 1rem;
+    min-height: 64px;
+    padding: 0.5rem 1rem;
 }

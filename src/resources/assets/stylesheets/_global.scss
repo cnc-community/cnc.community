@@ -151,9 +151,10 @@ ul
     margin-right: 25px;
 }
 
-img 
+img
 {
     max-width: 100%;
+    height: auto;
 }
 
 .hidden 
@@ -911,7 +912,7 @@ ul.pagination
 
 .news-item .author .avatar.w3dhub 
 {
-    background-image: url("/resources/assets/images/sites/w3dhub.gif");
+    background-image: url("/resources/assets/images/sites/w3dhub.webp");
     background-size: 100%;
 }
 
