@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Log;
 
 class CnCOnlineAPI
 {
-    private $_apiUrl = "https://info.server.cnc-online.net/";
+    private $_apiUrl = "https://cnc-online.net/api/serverinfo/";
 
     public function __construct()
     {
@@ -26,11 +26,19 @@ class CnCOnlineAPI
                     $this->_apiUrl
                 );
 
-                return $this->getPlayerCountFromResponse($response->json());
+                $data = $response->json();
+
+                if ($response->successful() && is_array($data))
+                {
+                    return $this->getPlayerCountFromResponse($data);
+                }
+
+                Log::error('CnCOnlineAPI failed: ' . $response->status() . ' ' . $response->header('Content-Type'));
+                return [];
             }
             catch (Exception $exception)
             {
-                Log::error($exception);
+                Log::error('CnCOnlineAPI exception: ' . $exception->getMessage());
                 return [];
             }
         });
@@ -47,7 +55,7 @@ class CnCOnlineAPI
         $result = [];
         foreach ($data as $gameKey => $gameArr)
         {
-            if (in_array($gameKey, $games))
+            if (in_array($gameKey, $games) && isset($gameArr["users"]) && is_array($gameArr["users"]))
             {
                 $result[$gameKey] = count($gameArr["users"]);
             }
