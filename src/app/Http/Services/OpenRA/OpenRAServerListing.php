@@ -14,11 +14,21 @@ interface OpenRAServerListingInterface
 
 class OpenRAServerListing implements OpenRAServerListingInterface
 {
+    private $id = "";
+    private $name = "";
+    private $mod = "";
+    private $modtitle = "";
+    private $players = 0;
+    private $spectators = 0;
+
     public function __construct($json)
     {
-        foreach($json as $k => $v) 
+        foreach($json as $k => $v)
         {
-            $this->{$k} = $v;
+            if (property_exists($this, $k))
+            {
+                $this->{$k} = $v;
+            }
         }
     }
 
